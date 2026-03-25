@@ -32,6 +32,7 @@
     --s-color-stars: {{ section.settings.color_stars }};
     --s-color-testimonial-bg: {{ section.settings.color_testimonial_bg }};
     --s-color-verified: {{ section.settings.color_verified_text }};
+    --s-color-trust-icon: {{ section.settings.color_trust_icon }};
     --s-font-heading: 'Plus Jakarta Sans', sans-serif;
     --s-font-body: 'Open Sans', sans-serif;
     --s-font-size-heading: {{ section.settings.heading_font_size }}px;
@@ -389,6 +390,16 @@
     white-space: nowrap;
   }
 
+  /* Testimonial stars: mobile/desktop visibility */
+  #shopify-section-{{ section.id }} .testimonial-stars--mobile {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-stars--desktop {
+    display: flex;
+    gap: 2px;
+  }
+
   /* Responsive — Tablet */
   @media (max-width: 1024px) {
     #shopify-section-{{ section.id }} .hero-content {
@@ -404,13 +415,20 @@
     }
 
     #shopify-section-{{ section.id }} .hero-inner {
-      flex-direction: column-reverse;
+      flex-direction: column;
     }
 
     #shopify-section-{{ section.id }} .hero-content {
       padding: {{ section.settings.content_padding_mobile }}px;
+      padding-bottom: 0;
       flex: none;
-      gap: 32px;
+      gap: 24px;
+      text-align: center;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .hero-heading {
+      line-height: 1.4;
     }
 
     #shopify-section-{{ section.id }} .hero-image {
@@ -420,23 +438,53 @@
       max-height: 400px;
     }
 
+    #shopify-section-{{ section.id }} .cta-button {
+      height: 44px;
+    }
+
+    #shopify-section-{{ section.id }} .cta-button span {
+      font-size: 14px;
+    }
+
     #shopify-section-{{ section.id }} .trust-badges {
       gap: 10px;
     }
 
+    #shopify-section-{{ section.id }} .trust-badge svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .trust-badge span {
+      font-size: 10px;
+    }
+
     #shopify-section-{{ section.id }} .testimonial-card {
-      flex-direction: column;
-      gap: 16px;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 12px;
     }
 
     #shopify-section-{{ section.id }} .testimonial-avatar {
-      width: 100%;
-      height: 180px;
+      width: 64px;
+      height: 64px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-body {
+      gap: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-stars--mobile {
+      display: flex;
+      gap: 2px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-stars--desktop {
+      display: none;
     }
 
     #shopify-section-{{ section.id }} .testimonial-footer {
-      flex-direction: column;
-      align-items: flex-start;
+      justify-content: flex-start;
     }
   }
 {% endstyle %}
@@ -512,7 +560,7 @@
                       <div class="trust-divider"></div>
                     {% endunless %}
                     <div class="trust-badge" {{ block.shopify_attributes }}>
-                      <svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.color_accent }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg>
+                      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" fill="var(--s-color-trust-icon)"/><polyline points="8 12 11 15 16 9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
                       {% if block.settings.label != blank %}
                         <span>{{ block.settings.label }}</span>
                       {% endif %}
@@ -538,6 +586,13 @@
             {% endif %}
           </div>
           <div class="testimonial-body">
+            <!-- Stars: mobile only (above text) -->
+            <div class="stars testimonial-stars--mobile">
+              {% assign testimonial_stars = section.settings.testimonial_rating %}
+              {% for i in (1..testimonial_stars) %}
+                <svg viewBox="0 0 24 24" fill="{{ section.settings.color_stars }}" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              {% endfor %}
+            </div>
             {% if section.settings.testimonial_text != blank %}
               <p class="testimonial-text">{{ section.settings.testimonial_text }}</p>
             {% endif %}
@@ -556,7 +611,8 @@
                   </div>
                 {% endif %}
               </div>
-              <div class="stars">
+              <!-- Stars: desktop only (in footer) -->
+              <div class="stars testimonial-stars--desktop">
                 {% assign testimonial_stars = section.settings.testimonial_rating %}
                 {% for i in (1..testimonial_stars) %}
                   <svg viewBox="0 0 24 24" fill="{{ section.settings.color_stars }}" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -759,7 +815,7 @@
       "type": "color",
       "id": "color_text_secondary",
       "label": "Secondary text",
-      "default": "#5a7182"
+      "default": "#4A5D6E"
     },
     {
       "type": "color",
@@ -807,7 +863,13 @@
       "type": "color",
       "id": "color_verified_text",
       "label": "Verified text color",
-      "default": "#5a7182"
+      "default": "#4A5D6E"
+    },
+    {
+      "type": "color",
+      "id": "color_trust_icon",
+      "label": "Trust badge icon",
+      "default": "#065BDC"
     },
     {
       "type": "color",
@@ -837,7 +899,7 @@
       "max": 48,
       "step": 1,
       "unit": "px",
-      "default": 26
+      "default": 24
     },
     {
       "type": "range",
@@ -857,7 +919,7 @@
       "max": 22,
       "step": 1,
       "unit": "px",
-      "default": 16
+      "default": 14
     },
     {
       "type": "range",
