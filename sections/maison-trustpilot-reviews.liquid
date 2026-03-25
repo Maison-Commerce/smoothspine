@@ -322,7 +322,7 @@
   }
 
   /* Mobile */
-  @media (max-width: 767px) {
+  @media (max-width: 1199px) {
     #shopify-section-{{ section.id }} .maisoncode_reviews {
       flex-direction: column;
       padding: {{ section.settings.padding_vertical_mobile }}px {{ section.settings.padding_horizontal_mobile }}px;
@@ -505,13 +505,11 @@
       breakpoints: {
         0: {
           slidesPerView: 'auto',
-          grid: {
-            rows: 1,
-            fill: 'row'
-          }
+          slidesPerGroup: 1,
         },
-        768: {
+        1200: {
           slidesPerView: 2,
+          slidesPerGroup: 2,
           grid: {
             rows: 2,
             fill: 'row'
