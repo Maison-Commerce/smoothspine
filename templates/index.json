@@ -91,6 +91,73 @@
         "image_min_height": 500
       }
     },
+    "maison_logo_list_WiqtyW": {
+      "type": "maison-logo-list",
+      "blocks": {
+        "logo_TkemED": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-1.png"
+          }
+        },
+        "logo_V3rLrt": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-2.png"
+          }
+        },
+        "logo_BHHNKH": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo3.png"
+          }
+        },
+        "logo_PW9A4h": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-4.png"
+          }
+        },
+        "logo_DRfX9C": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-5.png"
+          }
+        },
+        "logo_Be7ehP": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-6.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_TkemED",
+        "logo_V3rLrt",
+        "logo_BHHNKH",
+        "logo_PW9A4h",
+        "logo_DRfX9C",
+        "logo_Be7ehP"
+      ],
+      "name": "Logo List",
+      "settings": {
+        "heading": "As Advertised In",
+        "color_bg": "#FDFCFA",
+        "color_heading": "#102A43",
+        "heading_font_size": 20,
+        "heading_font_size_mobile": 18,
+        "logo_height": 96,
+        "logo_height_mobile": 72,
+        "gap": 20,
+        "logo_gap_mobile": 24,
+        "padding_top": 32,
+        "padding_bottom": 0,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 8
+      }
+    },
     "section-15": {
       "type": "feature-chart",
       "blocks": {
@@ -211,6 +278,7 @@
   },
   "order": [
     "maison_home_hero_64CB4L",
+    "maison_logo_list_WiqtyW",
     "section-15"
   ]
 }
