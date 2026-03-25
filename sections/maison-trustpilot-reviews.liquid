@@ -437,7 +437,7 @@
     <div class="reviews-content__top">
       <div class="reviews-content__header">
         {% if section.settings.heading != blank %}
-          <h2 class="reviews-heading">{{ section.settings.heading }}</h2>
+          <div class="reviews-heading">{{ section.settings.heading }}</div>
         {% endif %}
 
         {% if section.settings.show_badge %}
@@ -533,10 +533,10 @@
       "content": "Content"
     },
     {
-      "type": "inline_richtext",
+      "type": "richtext",
       "id": "heading",
       "label": "Heading (italic = underline)",
-      "default": "Loved By People Who've Tried <em>Everything</em>"
+      "default": "<p>Loved By People Who've Tried <em>Everything</em></p>"
     },
     {
       "type": "textarea",
