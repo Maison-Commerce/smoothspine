@@ -338,6 +338,16 @@
     display: block;
   }
 
+  #shopify-section-{{ section.id }} .pi-wave--top {
+    position: relative;
+    top: -1px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-wave--bottom {
+    position: relative;
+    top: 1px;
+  }
+
   /* === CARD 2: Guarantee === */
   #shopify-section-{{ section.id }} .pi-card2 {
     background-color: var(--s-color-bg-card2);
@@ -639,7 +649,7 @@
     {%- comment -%} Wave connectors {%- endcomment -%}
     {% if section.settings.show_wave_connectors %}
       {% if section.settings.wave_top_image != blank %}
-        <div class="pi-wave">
+        <div class="pi-wave pi-wave--top">
           {{ section.settings.wave_top_image | image_url: width: 1600 | image_tag:
             loading: 'lazy',
             widths: '800, 1200, 1600',
@@ -648,7 +658,7 @@
         </div>
       {% endif %}
       {% if section.settings.wave_bottom_image != blank %}
-        <div class="pi-wave">
+        <div class="pi-wave pi-wave--bottom">
           {{ section.settings.wave_bottom_image | image_url: width: 1600 | image_tag:
             loading: 'lazy',
             widths: '800, 1200, 1600',
