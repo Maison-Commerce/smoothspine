@@ -182,8 +182,7 @@
   #shopify-section-{{ section.id }} .reviews-scrollbar {
     width: 100%;
     height: 2px;
-    background-color: var(--s-color-text-primary);
-    opacity: 0.1;
+    background-color: {{ section.settings.color_text_primary | color_modify: 'alpha', 0.1 }};
     border-radius: 100px;
     position: relative;
     display: none;
@@ -192,7 +191,6 @@
   #shopify-section-{{ section.id }} .reviews-scrollbar .swiper-scrollbar-drag {
     background-color: var(--s-color-text-primary);
     border-radius: 100px;
-    opacity: 1;
   }
 
   /* Content side */
