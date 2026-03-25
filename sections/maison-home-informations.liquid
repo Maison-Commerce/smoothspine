@@ -1,0 +1,1284 @@
+{% comment %}
+  Section: Product Informations
+  Description: Two-card product information section. Card 1 features a star rating,
+    heading with highlight, description, checklist, CTA button, and trust badges
+    alongside a product image. Card 2 displays a guarantee badge image with
+    guarantee title and body copy. Cards are connected by decorative wave elements.
+    Responsive: stacks vertically on mobile.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings), 'Open Sans' (body) — must be loaded by the theme
+
+  Blocks:
+  - checklist_item: Individual checklist item with checkmark icon and text (limit: 8)
+  - trust_badge: Trust badge below CTA button with icon and label (limit: 6)
+
+  Notes:
+  - Star rating row and Trustpilot badge are toggleable via checkbox settings
+  - Wave connector images between cards use image_picker settings
+  - Guarantee badge uses image_picker; falls back to placeholder
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_product-informations
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_product-informations {
+    --s-color-bg-page: {{ section.settings.color_bg_page }};
+    --s-color-bg-card1: {{ section.settings.color_bg_card1 }};
+    --s-color-bg-card2: {{ section.settings.color_bg_card2 }};
+    --s-color-text-primary: {{ section.settings.color_text_primary }};
+    --s-color-text-secondary: {{ section.settings.color_text_secondary }};
+    --s-color-accent-orange: {{ section.settings.color_accent_orange }};
+    --s-color-accent-orange-dark: {{ section.settings.color_accent_orange_dark }};
+    --s-color-accent-blue: {{ section.settings.color_accent_blue }};
+    --s-color-white: {{ section.settings.color_white }};
+    --s-color-divider: {{ section.settings.color_divider }};
+    --s-color-rating-text: {{ section.settings.color_rating_text }};
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+    --s-font-size-title: {{ section.settings.title_font_size }}px;
+    --s-font-size-description: {{ section.settings.description_font_size }}px;
+    --s-font-size-checklist: {{ section.settings.checklist_font_size }}px;
+    --s-font-size-cta: {{ section.settings.cta_font_size }}px;
+    --s-font-size-trust-badge: {{ section.settings.trust_badge_font_size }}px;
+    --s-font-size-rating: {{ section.settings.rating_font_size }}px;
+    --s-font-size-card2-title: {{ section.settings.card2_title_font_size }}px;
+    --s-font-size-card2-body: {{ section.settings.card2_body_font_size }}px;
+    --s-radius-card1: {{ section.settings.card1_border_radius }}px;
+    --s-radius-card2: {{ section.settings.card2_border_radius }}px;
+    --s-radius-image: {{ section.settings.product_image_border_radius }}px;
+    --s-radius-cta: {{ section.settings.cta_border_radius }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-card-padding-v: {{ section.settings.card_padding_vertical }}px;
+    --s-card-padding-h: {{ section.settings.card_padding_horizontal }}px;
+    --s-card-gap: {{ section.settings.card_inner_gap }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+    --s-cta-height: {{ section.settings.cta_height }}px;
+    --s-guarantee-badge-size: {{ section.settings.guarantee_badge_size }}px;
+
+    box-sizing: border-box;
+    background-color: var(--s-color-bg-page);
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    font-family: var(--s-font-body);
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_product-informations *,
+  #shopify-section-{{ section.id }} .maisoncode_product-informations *::before,
+  #shopify-section-{{ section.id }} .maisoncode_product-informations *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pi-inner {
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* === CARD 1: Product Info === */
+  #shopify-section-{{ section.id }} .pi-card1 {
+    background-color: var(--s-color-bg-card1);
+    border-radius: var(--s-radius-card1) var(--s-radius-card1) 0 var(--s-radius-card1);
+    padding: var(--s-card-padding-v) var(--s-card-padding-h);
+    display: flex;
+    gap: var(--s-card-gap);
+    align-items: center;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .pi-card1-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pi-card1-top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-card1-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .pi-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .pi-rating-text {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-rating);
+    line-height: 1.5;
+    color: var(--s-color-rating-text);
+  }
+
+  #shopify-section-{{ section.id }} .pi-rating-text a {
+    color: var(--s-color-rating-text);
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .pi-trustpilot {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-trustpilot svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-trustpilot span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-rating);
+    line-height: 1.5;
+    color: var(--s-color-rating-text);
+  }
+
+  #shopify-section-{{ section.id }} .pi-title {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-title);
+    line-height: 1.4;
+    color: var(--s-color-text-primary);
+    text-transform: capitalize;
+    max-width: 500px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-title .pi-highlight {
+    color: var(--s-color-accent-orange);
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .pi-description {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-description);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .pi-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--s-color-divider);
+    opacity: 0.1;
+  }
+
+  /* Checklist */
+  #shopify-section-{{ section.id }} .pi-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-check-item svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pi-check-item span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-checklist);
+    line-height: 1.5;
+    color: var(--s-color-text-primary);
+  }
+
+  /* CTA */
+  #shopify-section-{{ section.id }} .pi-cta-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .pi-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: var(--s-cta-height);
+    background-color: var(--s-color-accent-orange);
+    border: none;
+    border-bottom: 4px solid var(--s-color-accent-orange-dark);
+    border-radius: var(--s-radius-cta);
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .pi-cta-btn:hover {
+    opacity: 0.9;
+  }
+
+  #shopify-section-{{ section.id }} .pi-cta-btn span {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-cta);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--s-color-white);
+  }
+
+  #shopify-section-{{ section.id }} .pi-trust-badges {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .pi-trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-trust-badge svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pi-trust-badge span {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-trust-badge);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--s-color-text-primary);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .pi-trust-sep {
+    width: 1px;
+    height: 16px;
+    background-color: var(--s-color-text-primary);
+    opacity: 0.3;
+  }
+
+  /* Product image */
+  #shopify-section-{{ section.id }} .pi-card1-image {
+    flex: 1;
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--s-radius-image);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .pi-card1-image img {
+    width: 110%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    margin-left: -5%;
+  }
+
+  #shopify-section-{{ section.id }} .pi-card1-image .pi-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8d5c4 0%, #f0e6da 50%, #d4bfae 100%);
+  }
+
+  #shopify-section-{{ section.id }} .pi-card1-image .pi-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+    color: var(--s-color-text-secondary);
+  }
+
+  /* Wave connector */
+  #shopify-section-{{ section.id }} .pi-wave {
+    width: 100%;
+    display: block;
+    line-height: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pi-wave img {
+    width: 100%;
+    height: 32px;
+    display: block;
+  }
+
+  /* === CARD 2: Guarantee === */
+  #shopify-section-{{ section.id }} .pi-card2 {
+    background-color: var(--s-color-bg-card2);
+    border-radius: 0 var(--s-radius-card2) var(--s-radius-card2) var(--s-radius-card2);
+    padding: var(--s-card-padding-v) var(--s-card-padding-h);
+    display: flex;
+    gap: var(--s-card-gap);
+    align-items: center;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .pi-guarantee-badge {
+    width: var(--s-guarantee-badge-size);
+    height: var(--s-guarantee-badge-size);
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pi-guarantee-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .pi-guarantee-badge .pi-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #c4d5e8 0%, #dae6f0 50%, #aebfd4 100%);
+    border-radius: 50%;
+  }
+
+  #shopify-section-{{ section.id }} .pi-guarantee-badge .pi-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .pi-card2-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 600px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-card2-title {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-card2-title);
+    line-height: 1.5;
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .pi-card2-title .pi-blue {
+    color: var(--s-color-accent-blue);
+  }
+
+  #shopify-section-{{ section.id }} .pi-card2-title .pi-dark {
+    color: var(--s-color-text-primary);
+  }
+
+  #shopify-section-{{ section.id }} .pi-card2-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .pi-card2-body p {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-card2-body);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .pi-card2-body strong {
+    font-weight: 700;
+    color: var(--s-color-text-secondary);
+  }
+
+  /* === Responsive === */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_product-informations {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+      --s-font-size-title: {{ section.settings.title_font_size_mobile }}px;
+      --s-font-size-description: {{ section.settings.description_font_size_mobile }}px;
+      --s-font-size-checklist: {{ section.settings.checklist_font_size_mobile }}px;
+      --s-font-size-card2-title: {{ section.settings.card2_title_font_size_mobile }}px;
+      --s-font-size-card2-body: {{ section.settings.card2_body_font_size_mobile }}px;
+      --s-guarantee-badge-size: {{ section.settings.guarantee_badge_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .pi-card1 {
+      flex-direction: column-reverse;
+      padding: 20px;
+      gap: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .pi-card1-content {
+      text-align: center;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .pi-card1-image {
+      width: 100%;
+      max-height: 320px;
+    }
+
+    #shopify-section-{{ section.id }} .pi-title {
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .pi-badge-row {
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .pi-cta-btn {
+      height: 44px;
+    }
+
+    #shopify-section-{{ section.id }} .pi-cta-btn span {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .pi-trust-badges {
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .pi-trust-badge svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .pi-trust-badge span {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .pi-trust-badge:nth-child(n+5) {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .pi-trust-sep:nth-child(n+4) {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .pi-card2 {
+      flex-direction: column;
+      padding: 20px;
+      gap: 24px;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .pi-card2-content {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .pi-card2-title {
+      line-height: 1.4;
+    }
+
+    #shopify-section-{{ section.id }} .pi-check-item {
+      text-align: left;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_product-informations">
+  <div class="pi-inner">
+
+    {%- comment -%} Card 1: Product Info {%- endcomment -%}
+    <article class="pi-card1">
+      <div class="pi-card1-content">
+        <div class="pi-card1-top">
+          <header class="pi-card1-header">
+
+            {%- comment -%} Rating Badge {%- endcomment -%}
+            {% if section.settings.show_rating_badge %}
+              <div class="pi-badge-row">
+                <div class="pi-stars">
+                  {% for i in (1..5) %}
+                    {% if i <= section.settings.star_full_count %}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                    {% else %}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><rect x="8" width="8" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                {% if section.settings.rating_text != blank %}
+                  <span class="pi-rating-text">{{ section.settings.rating_text }}</span>
+                {% endif %}
+                {% if section.settings.show_trustpilot %}
+                  <div class="pi-trustpilot">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 10.6761L10.0417 9.86164L11.3125 14L7 10.6761ZM14 5.32704H8.64583L7 0L5.35417 5.32704H0L4.33334 8.62893L2.6875 13.956L7.02083 10.6541L9.6875 8.62893L14 5.32704Z" fill="#00B67A"/></svg>
+                    <span>{{ section.settings.trustpilot_label }}</span>
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            {%- comment -%} Title {%- endcomment -%}
+            {% if section.settings.title != blank %}
+              <h2 class="pi-title">{{ section.settings.title }}</h2>
+            {% endif %}
+          </header>
+
+          {%- comment -%} Description {%- endcomment -%}
+          {% if section.settings.description != blank %}
+            <p class="pi-description">{{ section.settings.description }}</p>
+          {% endif %}
+
+          {% if section.settings.show_divider %}
+            <div class="pi-divider"></div>
+          {% endif %}
+        </div>
+
+        {%- comment -%} Checklist (Blocks) {%- endcomment -%}
+        {% assign checklist_blocks = section.blocks | where: "type", "checklist_item" %}
+        {% if checklist_blocks.size > 0 %}
+          <div class="pi-checklist">
+            {% for block in section.blocks %}
+              {% if block.type == 'checklist_item' %}
+                <div class="pi-check-item" {{ block.shopify_attributes }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#check-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.6235 2.6235C4.37209 0.874903 6.8971 0 10 0C13.1029 0 15.6279 0.874903 17.3766 2.6235C19.1251 4.37209 20 6.8971 20 10C20 13.1029 19.1251 15.6279 17.3766 17.3766C15.6279 19.1251 13.1029 20 10 20C6.8971 20 4.37209 19.1251 2.6235 17.3766C0.874903 15.6279 0 13.1029 0 10C0 6.8971 0.874903 4.37209 2.6235 2.6235ZM14.1713 7.08989C14.5366 6.75857 14.564 6.19391 14.2327 5.82869C13.9014 5.46346 13.3368 5.43596 12.9715 5.76727C11.7848 6.84384 10.8933 7.81137 10.1408 8.98594C9.59271 9.84133 9.13136 10.7863 8.67961 11.9317L7.06956 10.2713C6.72627 9.9173 6.16101 9.9086 5.80701 10.2519C5.45301 10.5952 5.44431 11.1604 5.78759 11.5144L8.38499 14.193C8.60064 14.4154 8.91617 14.5101 9.21866 14.4433C9.52113 14.3764 9.76736 14.1575 9.8692 13.865C10.4695 12.1405 11.0025 10.9511 11.6443 9.94926C12.2827 8.95296 13.0528 8.10454 14.1713 7.08989Z" fill="#065BDC"/></g><defs><clipPath id="check-{{ block.id }}"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                  {% if block.settings.text != blank %}
+                    <span>{{ block.settings.text }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {%- comment -%} CTA {%- endcomment -%}
+        {% if section.settings.cta_label != blank %}
+          <div class="pi-cta-area">
+            <a
+              {% if section.settings.cta_link != blank %}
+                href="{{ section.settings.cta_link }}"
+              {% endif %}
+              class="pi-cta-btn"
+            >
+              <span>{{ section.settings.cta_label }}</span>
+            </a>
+
+            {%- comment -%} Trust Badges (Blocks) {%- endcomment -%}
+            {% assign badge_blocks = section.blocks | where: "type", "trust_badge" %}
+            {% if badge_blocks.size > 0 %}
+              <div class="pi-trust-badges">
+                {% assign trust_badge_index = 0 %}
+                {% for block in section.blocks %}
+                  {% if block.type == 'trust_badge' %}
+                    {% if trust_badge_index > 0 %}
+                      <div class="pi-trust-sep"></div>
+                    {% endif %}
+                    {% assign trust_badge_index = trust_badge_index | plus: 1 %}
+                    <div class="pi-trust-badge" {{ block.shopify_attributes }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#trust-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.6235 2.6235C4.37209 0.874903 6.8971 0 10 0C13.1029 0 15.6279 0.874903 17.3766 2.6235C19.1251 4.37209 20 6.8971 20 10C20 13.1029 19.1251 15.6279 17.3766 17.3766C15.6279 19.1251 13.1029 20 10 20C6.8971 20 4.37209 19.1251 2.6235 17.3766C0.874903 15.6279 0 13.1029 0 10C0 6.8971 0.874903 4.37209 2.6235 2.6235ZM14.1713 7.08989C14.5366 6.75857 14.564 6.19391 14.2327 5.82869C13.9014 5.46346 13.3368 5.43596 12.9715 5.76727C11.7848 6.84384 10.8933 7.81137 10.1408 8.98594C9.59271 9.84133 9.13136 10.7863 8.67961 11.9317L7.06956 10.2713C6.72627 9.9173 6.16101 9.9086 5.80701 10.2519C5.45301 10.5952 5.44431 11.1604 5.78759 11.5144L8.38499 14.193C8.60064 14.4154 8.91617 14.5101 9.21866 14.4433C9.52113 14.3764 9.76736 14.1575 9.8692 13.865C10.4695 12.1405 11.0025 10.9511 11.6443 9.94926C12.2827 8.95296 13.0528 8.10454 14.1713 7.08989Z" fill="#065BDC"/></g><defs><clipPath id="trust-{{ block.id }}"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                      {% if block.settings.label != blank %}
+                        <span>{{ block.settings.label }}</span>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      {%- comment -%} Product Image {%- endcomment -%}
+      {% if section.settings.product_image != blank %}
+        <figure class="pi-card1-image">
+          {{ section.settings.product_image | image_url: width: 1200 | image_tag:
+            loading: 'lazy',
+            widths: '375, 550, 750, 1000, 1200',
+            sizes: '(max-width: 767px) 100vw, 50vw'
+          }}
+        </figure>
+      {% else %}
+        <figure class="pi-card1-image">
+          <div class="pi-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+        </figure>
+      {% endif %}
+    </article>
+
+    {%- comment -%} Wave connectors {%- endcomment -%}
+    {% if section.settings.show_wave_connectors %}
+      {% if section.settings.wave_top_image != blank %}
+        <div class="pi-wave">
+          {{ section.settings.wave_top_image | image_url: width: 1600 | image_tag:
+            loading: 'lazy',
+            widths: '800, 1200, 1600',
+            sizes: '100vw'
+          }}
+        </div>
+      {% endif %}
+      {% if section.settings.wave_bottom_image != blank %}
+        <div class="pi-wave">
+          {{ section.settings.wave_bottom_image | image_url: width: 1600 | image_tag:
+            loading: 'lazy',
+            widths: '800, 1200, 1600',
+            sizes: '100vw'
+          }}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    {%- comment -%} Card 2: Guarantee {%- endcomment -%}
+    {% if section.settings.show_guarantee_card %}
+      <article class="pi-card2">
+        {% if section.settings.guarantee_badge_image != blank %}
+          <figure class="pi-guarantee-badge">
+            {{ section.settings.guarantee_badge_image | image_url: width: 600 | image_tag:
+              loading: 'lazy',
+              widths: '200, 300, 400, 600',
+              sizes: '(max-width: 767px) 200px, 290px'
+            }}
+          </figure>
+        {% else %}
+          <figure class="pi-guarantee-badge">
+            <div class="pi-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="8 12 11 15 16 9"/>
+              </svg>
+            </div>
+          </figure>
+        {% endif %}
+
+        <div class="pi-card2-content">
+          {% if section.settings.guarantee_title != blank %}
+            <h2 class="pi-card2-title">{{ section.settings.guarantee_title }}</h2>
+          {% endif %}
+
+          {% if section.settings.guarantee_body != blank %}
+            <div class="pi-card2-body">{{ section.settings.guarantee_body }}</div>
+          {% endif %}
+        </div>
+      </article>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Informations",
+  "tag": "section",
+  "class": "product-informations-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Card 1 — Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "The Triple Fusion Massager &ndash; A <span class=\"pi-highlight\">15-Minute At-Home</span> Routine For Melting Away Your Back Pain"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Combines three therapies in one guided session: gentle traction to decompress your spine, soothing heat to relax surrounding muscles, and targeted massage to reduce tension. Plug in, lie down, press start. Within 15 minutes, the tension & pain melts away. No need for appointments."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show divider line",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Rating badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating_badge",
+      "label": "Show rating badge",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "star_full_count",
+      "label": "Full stars",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "4.4/5 (2,295 + reviews)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot",
+      "label": "Show Trustpilot badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_label",
+      "label": "Trustpilot label",
+      "default": "Trustpilot"
+    },
+    {
+      "type": "header",
+      "content": "CTA button"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "SEE HOW IT HELPS"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Card 1 — Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product image"
+    },
+    {
+      "type": "header",
+      "content": "Wave connectors"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wave_connectors",
+      "label": "Show wave connectors",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "wave_top_image",
+      "label": "Wave top image"
+    },
+    {
+      "type": "image_picker",
+      "id": "wave_bottom_image",
+      "label": "Wave bottom image"
+    },
+    {
+      "type": "header",
+      "content": "Card 2 — Guarantee"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_guarantee_card",
+      "label": "Show guarantee card",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "guarantee_badge_image",
+      "label": "Guarantee badge image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "guarantee_title",
+      "label": "Guarantee title",
+      "default": "<span class=\"pi-blue\">100% Satisfaction 90-Day</span><br/><span class=\"pi-dark\">Money Back Guarantee</span>"
+    },
+    {
+      "type": "richtext",
+      "id": "guarantee_body",
+      "label": "Guarantee body text",
+      "default": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee.</strong> If you don't experience the remarkable <strong>relief from back pain and Sciatica</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days</strong>, let us know and we will refund every single penny of your investment.</p><p><strong>No questions asked.</strong> We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_page",
+      "label": "Page background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_card1",
+      "label": "Card 1 background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_card2",
+      "label": "Card 2 background",
+      "default": "#E5EEFB"
+    },
+    {
+      "type": "color",
+      "id": "color_text_primary",
+      "label": "Primary text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_text_secondary",
+      "label": "Secondary text",
+      "default": "#4A5D6E"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_orange",
+      "label": "Accent orange",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_orange_dark",
+      "label": "Button border (orange dark)",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_blue",
+      "label": "Accent blue",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_white",
+      "label": "Button text color",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "color",
+      "id": "color_divider",
+      "label": "Divider color",
+      "default": "#424140"
+    },
+    {
+      "type": "color",
+      "id": "color_rating_text",
+      "label": "Rating text color",
+      "default": "#111111"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Card 1 title font size (desktop)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Card 1 title font size (mobile)",
+      "min": 14,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Description font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "description_font_size_mobile",
+      "label": "Description font size (mobile)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "checklist_font_size",
+      "label": "Checklist font size (desktop)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "checklist_font_size_mobile",
+      "label": "Checklist font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "cta_font_size",
+      "label": "CTA button font size",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "trust_badge_font_size",
+      "label": "Trust badge font size",
+      "min": 8,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "rating_font_size",
+      "label": "Rating text font size",
+      "min": 8,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card2_title_font_size",
+      "label": "Card 2 title font size (desktop)",
+      "min": 20,
+      "max": 52,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card2_title_font_size_mobile",
+      "label": "Card 2 title font size (mobile)",
+      "min": 16,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card2_body_font_size",
+      "label": "Card 2 body font size (desktop)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card2_body_font_size_mobile",
+      "label": "Card 2 body font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_padding_vertical",
+      "label": "Card padding vertical",
+      "min": 16,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "card_padding_horizontal",
+      "label": "Card padding horizontal",
+      "min": 16,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "card_inner_gap",
+      "label": "Card columns gap",
+      "min": 16,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "card1_border_radius",
+      "label": "Card 1 border radius",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card2_border_radius",
+      "label": "Card 2 border radius",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "product_image_border_radius",
+      "label": "Product image border radius",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "cta_border_radius",
+      "label": "CTA button border radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "cta_height",
+      "label": "CTA button height",
+      "min": 40,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "guarantee_badge_size",
+      "label": "Guarantee badge size (desktop)",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 290
+    },
+    {
+      "type": "range",
+      "id": "guarantee_badge_size_mobile",
+      "label": "Guarantee badge size (mobile)",
+      "min": 80,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 180
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "checklist_item",
+      "name": "Checklist item",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Checklist item text"
+        }
+      ]
+    },
+    {
+      "type": "trust_badge",
+      "name": "Trust badge",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Trust badge"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Informations",
+      "blocks": [
+        {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Gentle traction decompression"
+          }
+        },
+        {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Soothing heat therapy"
+          }
+        },
+        {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Targeted massage"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Doctor Developed"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Rapid Pain Relief"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Easy Returns"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
