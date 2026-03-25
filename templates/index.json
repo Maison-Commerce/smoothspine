@@ -38,8 +38,6 @@
       ],
       "name": "Home Hero",
       "settings": {
-        "heading_prefix": "The Smoothest Way To",
-        "heading_accent": "Pain Relief",
         "heading": "The Smoothest Way To <em>Pain Relief</em>",
         "subtext": "Used by thousands of adults 45+ to manage sciatica and back pain at home, backed by a 90-day results-or-refund guarantee.",
         "button_label": "Shop Now & SAVE 60% Today",
@@ -142,8 +140,8 @@
       "name": "Logo List",
       "settings": {
         "heading": "As Advertised In",
-        "color_bg": "#FDFCFA",
-        "color_heading": "#102A43",
+        "color_bg": "#fdfcfa",
+        "color_heading": "#102a43",
         "heading_font_size": 20,
         "heading_font_size_mobile": 18,
         "logo_height": 96,
@@ -156,6 +154,116 @@
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20,
         "padding_horizontal_mobile": 8
+      }
+    },
+    "maison_home_informations_LEM7ar": {
+      "type": "maison-home-informations",
+      "blocks": {
+        "checklist_item_naMfk4": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Gentle traction decompression"
+          }
+        },
+        "checklist_item_6ATkqF": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Soothing heat therapy"
+          }
+        },
+        "checklist_item_VX4qye": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Targeted massage"
+          }
+        },
+        "trust_badge_iJtjw8": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Doctor Developed"
+          }
+        },
+        "trust_badge_dM3PG3": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Rapid Pain Relief"
+          }
+        },
+        "trust_badge_Trj6gH": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Easy Returns"
+          }
+        }
+      },
+      "block_order": [
+        "checklist_item_naMfk4",
+        "checklist_item_6ATkqF",
+        "checklist_item_VX4qye",
+        "trust_badge_iJtjw8",
+        "trust_badge_dM3PG3",
+        "trust_badge_Trj6gH"
+      ],
+      "name": "Product Informations",
+      "settings": {
+        "title": "The Triple Fusion Massager – A <em>15-Minute At-Home</em> Routine For Melting Away Your Back Pain",
+        "description": "Combines three therapies in one guided session: gentle traction to decompress your spine, soothing heat to relax surrounding muscles, and targeted massage to reduce tension. Plug in, lie down, press start. Within 15 minutes, the tension & pain melts away. No need for appointments.",
+        "show_divider": true,
+        "show_rating_badge": true,
+        "star_full_count": 4,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot": true,
+        "trustpilot_label": "Trustpilot",
+        "cta_label": "SEE HOW IT HELPS",
+        "cta_link": "",
+        "product_image": "shopify://shop_images/Home-Inform-Guar.png",
+        "show_wave_connectors": true,
+        "wave_top_image": "shopify://shop_images/banner-wave-top.svg",
+        "wave_bottom_image": "shopify://shop_images/banner-wave-bottom.svg",
+        "show_guarantee_card": true,
+        "guarantee_title": "<em>100% Satisfaction 90-Day</em> Money Back Guarantee",
+        "guarantee_body": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee.</strong> If you don't experience the remarkable <strong>relief from back pain and Sciatica</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days</strong>, let us know and we will refund every single penny of your investment.</p><p><strong>No questions asked.</strong> We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>",
+        "color_bg_page": "#FDFCFA",
+        "color_bg_card1": "#F8F4EE",
+        "color_bg_card2": "#E5EEFB",
+        "color_text_primary": "#102A43",
+        "color_text_secondary": "#4A5D6E",
+        "color_accent_orange": "#F07E3B",
+        "color_accent_orange_dark": "#BF642F",
+        "color_accent_blue": "#065BDC",
+        "color_white": "#FFFCFB",
+        "color_divider": "#424140",
+        "color_rating_text": "#111111",
+        "title_font_size": 24,
+        "title_font_size_mobile": 24,
+        "description_font_size": 18,
+        "description_font_size_mobile": 14,
+        "checklist_font_size": 16,
+        "checklist_font_size_mobile": 14,
+        "cta_font_size": 16,
+        "trust_badge_font_size": 12,
+        "rating_font_size": 12,
+        "card2_title_font_size": 32,
+        "card2_title_font_size_mobile": 24,
+        "card2_body_font_size": 16,
+        "card2_body_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "padding_horizontal": 80,
+        "padding_horizontal_mobile": 16,
+        "card_padding_vertical": 48,
+        "card_padding_horizontal": 64,
+        "card_inner_gap": 64,
+        "card1_border_radius": 16,
+        "card2_border_radius": 16,
+        "product_image_border_radius": 8,
+        "cta_border_radius": 8,
+        "cta_height": 56,
+        "guarantee_badge_size": 290,
+        "guarantee_badge_size_mobile": 180,
+        "max_width": 1400
       }
     },
     "section-15": {
@@ -279,6 +387,7 @@
   "order": [
     "maison_home_hero_64CB4L",
     "maison_logo_list_WiqtyW",
+    "maison_home_informations_LEM7ar",
     "section-15"
   ]
 }
