@@ -181,9 +181,10 @@
     text-transform: capitalize;
   }
 
-  #shopify-section-{{ section.id }} .hero-heading .accent {
+  #shopify-section-{{ section.id }} .hero-heading em {
     color: var(--s-color-accent);
     text-decoration: underline;
+    font-style: normal;
   }
 
   /* Subtext */
@@ -537,7 +538,7 @@
 
             <!-- Heading -->
             {% if section.settings.heading != blank %}
-              <h1 class="hero-heading">{{ section.settings.heading_prefix }} <span class="accent">{{ section.settings.heading_accent }}</span></h1>
+              <h1 class="hero-heading">{{ section.settings.heading }}</h1>
             {% endif %}
           </div>
 
@@ -660,21 +661,9 @@
       "content": "Content"
     },
     {
-      "type": "text",
-      "id": "heading_prefix",
-      "label": "Heading (before accent)",
-      "default": "The Smoothest Way To"
-    },
-    {
-      "type": "text",
-      "id": "heading_accent",
-      "label": "Heading (accent text)",
-      "default": "Pain Relief"
-    },
-    {
       "type": "inline_richtext",
       "id": "heading",
-      "label": "Full heading (enable toggle)",
+      "label": "Heading (italic = accent)",
       "default": "The Smoothest Way To <em>Pain Relief</em>"
     },
     {

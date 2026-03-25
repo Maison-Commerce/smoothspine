@@ -169,9 +169,10 @@
     max-width: 500px;
   }
 
-  #shopify-section-{{ section.id }} .pi-title .pi-highlight {
+  #shopify-section-{{ section.id }} .pi-title em {
     color: var(--s-color-accent-orange);
     text-decoration: underline;
+    font-style: normal;
   }
 
   #shopify-section-{{ section.id }} .pi-description {
@@ -394,12 +395,13 @@
     text-transform: capitalize;
   }
 
-  #shopify-section-{{ section.id }} .pi-card2-title .pi-blue {
-    color: var(--s-color-accent-blue);
+  #shopify-section-{{ section.id }} .pi-card2-title {
+    color: var(--s-color-text-primary);
   }
 
-  #shopify-section-{{ section.id }} .pi-card2-title .pi-dark {
-    color: var(--s-color-text-primary);
+  #shopify-section-{{ section.id }} .pi-card2-title em {
+    color: var(--s-color-accent-blue);
+    font-style: normal;
   }
 
   #shopify-section-{{ section.id }} .pi-card2-body {
@@ -707,8 +709,8 @@
     {
       "type": "inline_richtext",
       "id": "title",
-      "label": "Title",
-      "default": "The Triple Fusion Massager &ndash; A <span class=\"pi-highlight\">15-Minute At-Home</span> Routine For Melting Away Your Back Pain"
+      "label": "Title (italic = accent)",
+      "default": "The Triple Fusion Massager – A <em>15-Minute At-Home</em> Routine For Melting Away Your Back Pain"
     },
     {
       "type": "textarea",
@@ -821,8 +823,8 @@
     {
       "type": "inline_richtext",
       "id": "guarantee_title",
-      "label": "Guarantee title",
-      "default": "<span class=\"pi-blue\">100% Satisfaction 90-Day</span><br/><span class=\"pi-dark\">Money Back Guarantee</span>"
+      "label": "Guarantee title (italic = blue)",
+      "default": "<em>100% Satisfaction 90-Day</em> Money Back Guarantee"
     },
     {
       "type": "richtext",
