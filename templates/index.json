@@ -267,6 +267,127 @@
         "max_width": 1400
       }
     },
+    "maison_trustpilot_reviews_RdTkqQ": {
+      "type": "maison-trustpilot-reviews",
+      "blocks": {
+        "review_nWbd6p": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_AfckzY": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_9WLMb8": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_iFDLDT": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_gPJgPj": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_Ct3gK9": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_WKT8aL": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_NRBjtL": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        }
+      },
+      "block_order": [
+        "review_nWbd6p",
+        "review_AfckzY",
+        "review_9WLMb8",
+        "review_iFDLDT",
+        "review_gPJgPj",
+        "review_Ct3gK9",
+        "review_WKT8aL",
+        "review_NRBjtL"
+      ],
+      "name": "Trustpilot Reviews",
+      "settings": {
+        "heading": "Loved By People Who've Tried <em>Everything</em>",
+        "description": "Our community of 2,400+ people trust SmoothSpine. Let real results inspire your confidence.",
+        "show_badge": true,
+        "rating_full_stars": 4,
+        "rating_show_half_star": true,
+        "badge_text": "<p>4.4/5 (<a href=\"#\">2,295 + reviews</a>)</p>",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "color_bg": "#FDFCFA",
+        "color_text_primary": "#102A43",
+        "color_text_secondary": "#4A5D6E",
+        "color_card_bg": "#FFFFFF",
+        "color_card_shadow": "#E9E8E6",
+        "color_badge_text": "#111111",
+        "color_nav_bg": "#102A43",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "description_font_size": 18,
+        "description_font_size_mobile": 14,
+        "padding_vertical": 40,
+        "padding_horizontal": 80,
+        "padding_vertical_mobile": 40,
+        "padding_horizontal_mobile": 20
+      }
+    },
     "section-15": {
       "type": "feature-chart",
       "blocks": {
@@ -389,6 +510,7 @@
     "maison_home_hero_64CB4L",
     "maison_logo_list_WiqtyW",
     "maison_home_informations_LEM7ar",
+    "maison_trustpilot_reviews_RdTkqQ",
     "section-15"
   ]
 }
