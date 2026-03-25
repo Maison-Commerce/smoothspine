@@ -11,7 +11,7 @@
 {% endcomment %}
 
 {% style %}
-  #shopify-section-{{ section.id }} .maisoncode_logo-list {
+  #shopify-section-{{ section.id }}{
     --s-color-bg: {{ section.settings.color_bg }};
     --s-color-heading: {{ section.settings.color_heading }};
     --s-font-heading: 'Plus Jakarta Sans', sans-serif;
@@ -21,11 +21,14 @@
     --s-padding-bottom: {{ section.settings.padding_bottom }}px;
     --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
     --s-gap: {{ section.settings.gap }}px;
-
+    background-color: var(--s-color-bg);
+  }
+  #shopify-section-{{ section.id }} .maisoncode_logo-list {
     box-sizing: border-box;
     width: 100%;
-    background-color: var(--s-color-bg);
     display: flex;
+    max-width: 1440px;
+    margin: 0 auto;
     flex-direction: column;
     align-items: center;
     gap: var(--s-gap);
