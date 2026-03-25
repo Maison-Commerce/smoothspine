@@ -1,0 +1,829 @@
+{% comment %}
+  Section: Trustpilot Reviews
+  Description: Review carousel with Trustpilot-style review cards. Desktop shows a 2x2
+    grid of cards on the left with heading/description/nav on the right. Mobile shows
+    heading on top with horizontal scrollable cards below. Navigation arrows cycle
+    through pages of reviews.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings), 'Open Sans' (body) — must be loaded by theme
+
+  Blocks:
+  - review: Individual review card with stars, date, title, body, and author (limit: 20)
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_reviews {
+    --s-color-bg: {{ section.settings.color_bg }};
+    --s-color-text-primary: {{ section.settings.color_text_primary }};
+    --s-color-text-secondary: {{ section.settings.color_text_secondary }};
+    --s-color-card-bg: {{ section.settings.color_card_bg }};
+    --s-color-card-shadow: {{ section.settings.color_card_shadow }};
+    --s-color-badge-text: {{ section.settings.color_badge_text }};
+    --s-color-nav-bg: {{ section.settings.color_nav_bg }};
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+
+    box-sizing: border-box;
+    width: 100%;
+    background-color: var(--s-color-bg);
+    padding: {{ section.settings.padding_vertical }}px {{ section.settings.padding_horizontal }}px;
+    font-family: var(--s-font-body);
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_reviews *,
+  #shopify-section-{{ section.id }} .maisoncode_reviews *::before,
+  #shopify-section-{{ section.id }} .maisoncode_reviews *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Cards area */
+  #shopify-section-{{ section.id }} .reviews-cards-area {
+    flex-shrink: 0;
+    width: 620px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Review card */
+  #shopify-section-{{ section.id }} .review-card {
+    background: var(--s-color-card-bg);
+    padding: 16px;
+    width: 300px;
+    flex-shrink: 0;
+    box-shadow: 0px 1px 0px 0px var(--s-color-card-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__date {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__title {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--s-color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__body {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+  }
+
+  #shopify-section-{{ section.id }} .review-card__author {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--s-color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Progress bar */
+  #shopify-section-{{ section.id }} .reviews-progress {
+    display: flex;
+    gap: 20px;
+    height: 2px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-progress__bar {
+    flex: 1;
+    height: 100%;
+    background-color: var(--s-color-text-primary);
+    opacity: 0.1;
+    border-radius: 100px;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-progress__bar.active {
+    opacity: 1;
+  }
+
+  /* Content side */
+  #shopify-section-{{ section.id }} .reviews-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: stretch;
+    padding: 40px;
+    gap: 40px;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-content__top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-content__header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-heading {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: {{ section.settings.heading_font_size }}px;
+    line-height: 1.5;
+    color: var(--s-color-text-primary);
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-heading em {
+    text-decoration: underline;
+    font-style: normal;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-badge__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-badge__stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-badge__text {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--s-color-badge-text);
+  }
+
+  #shopify-section-{{ section.id }} .reviews-badge__text a {
+    color: var(--s-color-badge-text);
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-trustpilot {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-trustpilot svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-trustpilot span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--s-color-badge-text);
+  }
+
+  #shopify-section-{{ section.id }} .reviews-description {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: {{ section.settings.description_font_size }}px;
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+    max-width: 420px;
+  }
+
+  /* Nav buttons */
+  #shopify-section-{{ section.id }} .reviews-nav {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-nav__btn {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--s-color-nav-bg);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-nav__btn:disabled {
+    opacity: 0.1;
+    cursor: default;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-nav__btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_reviews {
+      flex-direction: column;
+      padding: {{ section.settings.padding_vertical_mobile }}px {{ section.settings.padding_horizontal_mobile }}px;
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-cards-area {
+      width: 100%;
+      gap: 20px;
+      order: 2;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-grid {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 20px;
+      justify-content: flex-start;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .review-card {
+      width: 240px;
+      padding: 20px;
+      scroll-snap-align: start;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-progress {
+      gap: 0;
+      position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-progress__bar {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-progress__track {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: var(--s-color-text-primary);
+      opacity: 0.1;
+      border-radius: 999px;
+      position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-progress__indicator {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120px;
+      height: 2px;
+      background-color: var(--s-color-text-primary);
+      border-radius: 999px;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-content {
+      padding: 0;
+      order: 1;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-content__top {
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-content__header {
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-heading {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+      line-height: 1.4;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-description {
+      font-size: {{ section.settings.description_font_size_mobile }}px;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-nav {
+      display: none;
+    }
+  }
+
+  /* Desktop: hide mobile progress elements */
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .reviews-progress__track {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-progress__indicator {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_reviews">
+  <!-- Cards Area -->
+  <div class="reviews-cards-area">
+    <div class="reviews-grid" id="reviews-grid-{{ section.id }}">
+      {% for block in section.blocks %}
+        {% if block.type == 'review' %}
+          <div class="review-card" {{ block.shopify_attributes }}>
+            <div class="review-card__top">
+              <div class="review-card__header">
+                <div class="review-card__stars">
+                  {% assign stars = block.settings.stars | default: 5 %}
+                  {% for i in (1..stars) %}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  {% endfor %}
+                </div>
+                {% if block.settings.date != blank %}
+                  <span class="review-card__date">{{ block.settings.date }}</span>
+                {% endif %}
+              </div>
+              <div class="review-card__text">
+                {% if block.settings.title != blank %}
+                  <p class="review-card__title">{{ block.settings.title }}</p>
+                {% endif %}
+                {% if block.settings.body != blank %}
+                  <p class="review-card__body">{{ block.settings.body }}</p>
+                {% endif %}
+              </div>
+            </div>
+            {% if block.settings.author != blank %}
+              <span class="review-card__author">{{ block.settings.author }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Progress bar -->
+    <div class="reviews-progress" id="reviews-progress-{{ section.id }}">
+      <!-- Desktop: segmented bars (rendered by JS) -->
+      <!-- Mobile: track + indicator -->
+      <div class="reviews-progress__track">
+        <div class="reviews-progress__indicator" id="reviews-indicator-{{ section.id }}"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Side -->
+  <div class="reviews-content">
+    <div class="reviews-content__top">
+      <div class="reviews-content__header">
+        {% if section.settings.heading != blank %}
+          <h2 class="reviews-heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+
+        {% if section.settings.show_badge %}
+          <div class="reviews-badge">
+            <div class="reviews-badge__stars">
+              {% assign full_stars = section.settings.rating_full_stars %}
+              {% assign show_half = section.settings.rating_show_half_star %}
+              {% for i in (1..full_stars) %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+              {% endfor %}
+              {% if show_half %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><rect x="8" width="8" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+              {% endif %}
+            </div>
+            {% if section.settings.badge_text != blank %}
+              <span class="reviews-badge__text">{{ section.settings.badge_text }}</span>
+            {% endif %}
+            {% if section.settings.show_trustpilot_logo %}
+              <div class="reviews-trustpilot">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 10.6761L10.0417 9.86164L11.3125 14L7 10.6761ZM14 5.32704H8.64583L7 0L5.35417 5.32704H0L4.33334 8.62893L2.6875 13.956L7.02083 10.6541L9.6875 8.62893L14 5.32704Z" fill="#00B67A"/></svg>
+                <span>{{ section.settings.trustpilot_label }}</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if section.settings.description != blank %}
+        <p class="reviews-description">{{ section.settings.description }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Nav Arrows -->
+    <div class="reviews-nav">
+      <button class="reviews-nav__btn" id="reviews-prev-{{ section.id }}" aria-label="Previous reviews" disabled>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 4 6 10 12 16"/></svg>
+      </button>
+      <button class="reviews-nav__btn" id="reviews-next-{{ section.id }}" aria-label="Next reviews">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 4 14 10 8 16"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    var sectionId = '{{ section.id }}';
+    var grid = document.getElementById('reviews-grid-' + sectionId);
+    var prevBtn = document.getElementById('reviews-prev-' + sectionId);
+    var nextBtn = document.getElementById('reviews-next-' + sectionId);
+    var progressContainer = document.getElementById('reviews-progress-' + sectionId);
+    var cards = grid ? grid.querySelectorAll('.review-card') : [];
+    var perPage = 4;
+    var currentPage = 0;
+    var totalPages = Math.ceil(cards.length / perPage);
+
+    function isMobile() {
+      return window.innerWidth < 768;
+    }
+
+    function renderProgress() {
+      var existing = progressContainer.querySelectorAll('.reviews-progress__bar');
+      existing.forEach(function(el) { el.remove(); });
+
+      if (!isMobile() && totalPages > 1) {
+        for (var i = 0; i < totalPages; i++) {
+          var bar = document.createElement('div');
+          bar.className = 'reviews-progress__bar' + (i === currentPage ? ' active' : '');
+          progressContainer.insertBefore(bar, progressContainer.firstChild);
+        }
+      }
+    }
+
+    function showPage(page) {
+      if (isMobile()) return;
+      currentPage = page;
+      var start = page * perPage;
+
+      cards.forEach(function(card, i) {
+        card.style.display = (i >= start && i < start + perPage) ? '' : 'none';
+      });
+
+      if (prevBtn) prevBtn.disabled = (currentPage === 0);
+      if (nextBtn) nextBtn.disabled = (currentPage >= totalPages - 1);
+      renderProgress();
+    }
+
+    function initMobile() {
+      cards.forEach(function(card) { card.style.display = ''; });
+      renderProgress();
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function() {
+        if (currentPage > 0) showPage(currentPage - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function() {
+        if (currentPage < totalPages - 1) showPage(currentPage + 1);
+      });
+    }
+
+    function init() {
+      if (isMobile()) {
+        initMobile();
+      } else {
+        showPage(0);
+      }
+    }
+
+    init();
+    window.addEventListener('resize', function() { init(); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Trustpilot Reviews",
+  "tag": "section",
+  "class": "trustpilot-reviews-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = underline)",
+      "default": "Loved By People Who've Tried <em>Everything</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Our community of 2,400+ people trust SmoothSpine. Let real results inspire your confidence."
+    },
+    {
+      "type": "header",
+      "content": "Trustpilot badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show Trustpilot badge",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating_full_stars",
+      "label": "Full stars",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "rating_show_half_star",
+      "label": "Show half star",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "<p>4.4/5 (<a href=\"#\">2,295 + reviews</a>)</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot_logo",
+      "label": "Show Trustpilot logo",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_label",
+      "label": "Trustpilot label",
+      "default": "Trustpilot"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_text_primary",
+      "label": "Primary text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_text_secondary",
+      "label": "Secondary text",
+      "default": "#4A5D6E"
+    },
+    {
+      "type": "color",
+      "id": "color_card_bg",
+      "label": "Card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_card_shadow",
+      "label": "Card shadow color",
+      "default": "#E9E8E6"
+    },
+    {
+      "type": "color",
+      "id": "color_badge_text",
+      "label": "Badge text color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "color_nav_bg",
+      "label": "Nav button background",
+      "default": "#102A43"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading size (desktop)",
+      "min": 20,
+      "max": 52,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading size (mobile)",
+      "min": 18,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Description size (desktop)",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "description_font_size_mobile",
+      "label": "Description size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical padding (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_mobile",
+      "label": "Vertical padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "limit": 20,
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Star rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "Mar 8, 2026"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review title",
+          "default": "Stress Eliminator"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Review body",
+          "default": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author name",
+          "default": "Beverly"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trustpilot Reviews",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}
