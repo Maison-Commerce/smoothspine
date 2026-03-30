@@ -212,6 +212,7 @@
         "logo": "shopify://shop_images/Logo-Black.png",
         "menu": "main-menu",
         "featured_image": "shopify://shop_images/header-menu-img.png",
+        "featured_image_mobile": "shopify://shop_images/drawer-mobile-img.png",
         "featured_title": "<p>Our Bestseller</p><p>Triple Fusion Massager</p>",
         "featured_button_label": "SEE #1 BACK PAIN BESTSELLER",
         "featured_button_link": "",
