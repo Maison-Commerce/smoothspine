@@ -40,8 +40,6 @@
 
     font-family: var(--s-font-body);
     box-sizing: border-box;
-    background-color: var(--s-color-white);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   #shopify-section-{{ section.id }} {
@@ -52,6 +50,8 @@
   }
 
   #shopify-section-{{ section.id }} .header-slide-wrapper {
+    background-color: var(--s-color-white);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     transform: translateY(0);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
