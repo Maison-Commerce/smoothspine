@@ -554,12 +554,12 @@
         "verified_text": "Verified Buyer",
         "show_nav_buttons": true,
         "show_progress_bar": true,
-        "color_background": "#FDFCFA",
-        "color_primary": "#102A43",
-        "color_text_secondary": "#4A5D6E",
-        "color_white": "#FFFFFF",
-        "color_nav_bg": "#102A43",
-        "color_progress_bar": "#102A43",
+        "color_background": "#fdfcfa",
+        "color_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_white": "#ffffff",
+        "color_nav_bg": "#102a43",
+        "color_progress_bar": "#102a43",
         "heading_font_size": 32,
         "heading_font_size_mobile": 24,
         "body_font_size": 14,
@@ -579,6 +579,79 @@
         "border_radius_md": 16,
         "nav_button_size": 56,
         "play_button_size": 56,
+        "max_width": 1400
+      }
+    },
+    "maison_how_it_work_njJCj8": {
+      "type": "maison-how-it-work",
+      "blocks": {
+        "step_card_wLcnF4": {
+          "type": "step_card",
+          "settings": {
+            "image": "shopify://shop_images/67e9ab94c2eb4c879f0f9c0cd77be3717385fdc6.png",
+            "image_alt": "Step 1 - Plug in the USB cable to the device",
+            "badge_label": "STEP 1",
+            "description": "<p><strong>Plug in the USB cable to the device.</strong> The button controls will light up, confirming it's ready to use. Place the massager on a flat surface like your floor or bed.</p>"
+          }
+        },
+        "step_card_p6iNHa": {
+          "type": "step_card",
+          "settings": {
+            "image": "shopify://shop_images/c689f526162a5f3a0fec30db5c9ccfd35011816c.png",
+            "image_alt": "Step 2 - Hold the power button to turn it on",
+            "badge_label": "STEP 2",
+            "description": "<p><strong>Hold the power button to turn it on.</strong> The device will automatically cycle through massage, traction, and heat therapy for a full session.</p>"
+          }
+        },
+        "step_card_qBz7UF": {
+          "type": "step_card",
+          "settings": {
+            "image": "shopify://shop_images/90fdd075107aef8cb3b6b912e29b401892cc7d3e.png",
+            "image_alt": "Step 3 - Lay back and relax",
+            "badge_label": "STEP 3",
+            "description": "<p><strong>Lay back, relax, and enjoy the soothing relief for 15-30 minutes</strong> while SmoothSpine works its magic on your back.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_card_wLcnF4",
+        "step_card_p6iNHa",
+        "step_card_qBz7UF"
+      ],
+      "name": "How It Works",
+      "settings": {
+        "heading_colored": "3 Simple Steps To Relieve",
+        "button_label": "Get Started, Shop Now",
+        "button_link": "",
+        "color_button_bg": "#F07E3B",
+        "color_button_border": "#BF642F",
+        "color_button_text": "#FFFCFB",
+        "heading_dark": "Sciatica And Back Pain",
+        "color_bg_top": "#e5eefb",
+        "color_bg_bottom": "#fdfcfa",
+        "color_brand": "#065BDC",
+        "color_text_primary": "#102A43",
+        "color_text_secondary": "#4A5D6E",
+        "color_card_bg": "#FFFFFC",
+        "color_card_text_bg": "#FFFFFF",
+        "color_badge_text": "#FAFCFE",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "badge_font_size": 16,
+        "body_font_size": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_horizontal_mobile": 20,
+        "cards_gap": 40,
+        "inner_gap": 40,
+        "card_border_radius": 16,
+        "image_height": 400,
+        "badge_width": 96,
+        "badge_height": 48,
+        "heading_max_width": 600,
         "max_width": 1400
       }
     },
@@ -707,6 +780,7 @@
     "maison_trustpilot_reviews_RdTkqQ",
     "maison_before_after_JNUeiP",
     "maison_ugc_section_qiCzY3",
+    "maison_how_it_work_njJCj8",
     "section-15"
   ]
 }
