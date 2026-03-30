@@ -1,0 +1,890 @@
+{% comment %}
+  Section: UGC Video Carousel
+  Description: Horizontal scrolling carousel showcasing user-generated content
+    video testimonials with thumbnail images, play buttons, quotes, and
+    verified buyer badges. Uses Swiper.js for carousel functionality with
+    navigation arrows and a progress bar. Ideal for social proof sections
+    on product or landing pages.
+
+  Dependencies:
+  - Script: Swiper.js v11 (swiper-bundle.min.js + swiper-bundle.min.css) — must be loaded by theme or included externally
+  - Font: 'Plus Jakarta Sans' (heading), 'Open Sans' (body) — must be loaded by theme
+
+  Blocks:
+  - ugc_slide: Individual UGC card with thumbnail image, play button, quote, author name, and verified badge (limit: 12)
+
+  Notes:
+  - Swiper.js is required for carousel functionality; ensure it is loaded before this section
+  - Play buttons are visual only by default; merchant can link each slide to a video URL
+  - Progress bar updates dynamically based on carousel scroll position
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_ugc-section
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_ugc-section {
+    --s-color-bg: {{ section.settings.color_background }};
+    --s-color-primary: {{ section.settings.color_primary }};
+    --s-color-text-secondary: {{ section.settings.color_text_secondary }};
+    --s-color-white: {{ section.settings.color_white }};
+    --s-color-nav-bg: {{ section.settings.color_nav_bg }};
+    --s-color-progress: {{ section.settings.color_progress_bar }};
+    --s-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --s-font-size-body: {{ section.settings.body_font_size }}px;
+    --s-font-size-author: {{ section.settings.author_font_size }}px;
+    --s-radius-sm: {{ section.settings.border_radius_sm }}px;
+    --s-radius-md: {{ section.settings.border_radius_md }}px;
+    --s-radius-full: 999px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-container-padding: {{ section.settings.container_padding }}px;
+    --s-section-gap: {{ section.settings.section_gap }}px;
+    --s-slide-gap: {{ section.settings.slide_gap }}px;
+    --s-card-width: {{ section.settings.card_width }}px;
+    --s-card-height: {{ section.settings.card_height }}px;
+    --s-nav-size: {{ section.settings.nav_button_size }}px;
+    --s-play-size: {{ section.settings.play_button_size }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+
+    background-color: var(--s-color-bg);
+    padding: var(--s-padding-top) 0 var(--s-padding-bottom);
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_ugc-section *,
+  #shopify-section-{{ section.id }} .maisoncode_ugc-section *::before,
+  #shopify-section-{{ section.id }} .maisoncode_ugc-section *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-container {
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+    padding: 0 var(--s-container-padding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-section-gap);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: var(--s-font-size-heading);
+    line-height: 1.5;
+    color: var(--s-color-primary);
+    text-transform: capitalize;
+    max-width: 600px;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-nav-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-nav-btn {
+    width: var(--s-nav-size);
+    height: var(--s-nav-size);
+    border-radius: var(--s-radius-sm);
+    background-color: var(--s-color-nav-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    padding: 16px;
+    transition: opacity 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-nav-btn.swiper-button-disabled {
+    opacity: 0.1;
+    cursor: default;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-nav-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    fill: none;
+    stroke: var(--s-color-white);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-swiper {
+    width: 100%;
+    overflow: visible;
+  }
+
+  #shopify-section-{{ section.id }} .swiper-slide {
+    width: var(--s-card-width) !important;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: var(--s-card-width);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-card-image {
+    position: relative;
+    width: var(--s-card-width);
+    height: var(--s-card-height);
+    border-radius: var(--s-radius-md);
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: #e0e0e0;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-card-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-card-image .ugc-placeholder-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-card-image .ugc-placeholder-svg svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.3;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-play-btn {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    width: var(--s-play-size);
+    height: var(--s-play-size);
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: var(--s-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: none;
+    z-index: 1;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-play-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--s-color-white);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    padding-top: 16px;
+    width: var(--s-card-width);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-card-text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: var(--s-font-size-body);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+    text-align: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-card-author {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-author-name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: var(--s-font-size-author);
+    line-height: 1.5;
+    color: var(--s-color-primary);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--s-color-primary);
+    opacity: 0.3;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-verified {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-verified-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-verified-text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: var(--s-font-size-author);
+    line-height: 1.5;
+    color: var(--s-color-primary);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-progress-bar {
+    position: relative;
+    height: 2px;
+    width: 100%;
+    border-radius: var(--s-radius-full);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-progress-track {
+    position: absolute;
+    inset: 0;
+    background-color: var(--s-color-progress);
+    opacity: 0.1;
+    border-radius: var(--s-radius-full);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: var(--s-color-progress);
+    border-radius: var(--s-radius-full);
+    transition: width 0.3s ease;
+    width: 17.65%;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_ugc-section {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
+      --s-container-padding: 20px;
+      --s-section-gap: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-header {
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-title {
+      font-size: var(--s-font-size-heading);
+      line-height: 1.4;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-nav-buttons {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .swiper-slide {
+      width: {{ section.settings.card_width_mobile }}px !important;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-card {
+      width: {{ section.settings.card_width_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-card-image {
+      width: {{ section.settings.card_width_mobile }}px;
+      height: {{ section.settings.card_height_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-card-content {
+      width: {{ section.settings.card_width_mobile }}px;
+      gap: 8px;
+      padding-top: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-card-text {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-author-name,
+    #shopify-section-{{ section.id }} .ugc-verified-text {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-verified-icon {
+      width: 12px;
+      height: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-play-btn {
+      width: 48px;
+      height: 48px;
+      padding: 12px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_ugc-section">
+  <div class="ugc-container">
+
+    {%- comment -%} Header {%- endcomment -%}
+    <header class="ugc-header">
+      {% if section.settings.heading != blank %}
+        <h2 class="ugc-title">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.show_nav_buttons %}
+        <nav class="ugc-nav-buttons" aria-label="Carousel navigation">
+          <button class="ugc-nav-btn ugc-prev-{{ section.id }}" aria-label="Previous slide">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="ugc-nav-btn ugc-next-{{ section.id }}" aria-label="Next slide">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </nav>
+      {% endif %}
+    </header>
+
+    {%- comment -%} Swiper Carousel {%- endcomment -%}
+    {% if section.blocks.size > 0 %}
+      <div class="ugc-swiper ugc-swiper-{{ section.id }} swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% if block.type == 'ugc_slide' %}
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                <article class="ugc-card">
+                  <figure class="ugc-card-image">
+                    {% if block.settings.image != blank %}
+                      {{ block.settings.image | image_url: width: 600 | image_tag:
+                        loading: 'lazy',
+                        widths: '200, 300, 400, 600',
+                        sizes: '(max-width: 767px) 200px, 240px'
+                      }}
+                    {% else %}
+                      <div class="ugc-placeholder-svg">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                          <circle cx="8.5" cy="8.5" r="1.5"/>
+                          <polyline points="21 15 16 10 5 21"/>
+                        </svg>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.show_play_button %}
+                      {% if block.settings.video_url != blank %}
+                        <a href="{{ block.settings.video_url }}" class="ugc-play-btn" aria-label="Play video" target="_blank" rel="noopener">
+                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8 5 20 12 8 19"/></svg>
+                        </a>
+                      {% else %}
+                        <button class="ugc-play-btn" aria-label="Play video">
+                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8 5 20 12 8 19"/></svg>
+                        </button>
+                      {% endif %}
+                    {% endif %}
+                  </figure>
+                  <div class="ugc-card-content">
+                    {% if block.settings.quote != blank %}
+                      <p class="ugc-card-text">{{ block.settings.quote }}</p>
+                    {% endif %}
+                    <div class="ugc-card-author">
+                      {% if block.settings.author_name != blank %}
+                        <span class="ugc-author-name">{{ block.settings.author_name }}</span>
+                      {% endif %}
+                      {% if block.settings.show_verified and block.settings.author_name != blank %}
+                        <span class="ugc-dot"></span>
+                        <span class="ugc-verified">
+                          <svg class="ugc-verified-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#ugc-verified-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.84687 0.422743C7.50338 -0.141185 8.47232 -0.140794 9.12851 0.423196C9.37005 0.630789 9.6083 0.838566 9.8436 1.04685C10.1567 0.983031 10.472 0.921248 10.7899 0.861387C11.6405 0.70127 12.4794 1.18608 12.7657 2.00261C12.8711 2.30314 12.9735 2.60222 13.0731 2.90025C13.3761 3.0015 13.6801 3.10563 13.9854 3.21278C14.8019 3.49937 15.2862 4.3387 15.1258 5.18897C15.0655 5.50886 15.0033 5.82587 14.9391 6.1405C15.1521 6.38097 15.3646 6.62451 15.5768 6.87149C16.1408 7.52768 16.1411 8.49662 15.5773 9.15313C15.3664 9.39862 15.1552 9.64083 14.9433 9.88008C15.0061 10.188 15.0669 10.4982 15.1259 10.8111C15.2863 11.6614 14.8021 12.5007 13.9855 12.7873C13.6801 12.8945 13.3761 12.9986 13.073 13.0999C12.9734 13.3979 12.871 13.697 12.7656 13.9975C12.4793 14.8141 11.6403 15.2989 10.7898 15.1387C10.4788 15.0801 10.1704 15.0198 9.86415 14.9575C9.63008 15.1646 9.39318 15.3711 9.15313 15.5773C8.49662 16.1411 7.52767 16.1408 6.87149 15.5768C6.62998 15.3693 6.39175 15.1615 6.15647 14.9533C5.84335 15.017 5.52799 15.0789 5.20995 15.1387C4.35943 15.2989 3.52049 14.8141 3.23422 13.9975C3.12885 13.697 3.02641 13.3979 2.92679 13.0999C2.62369 12.9986 2.31968 12.8945 2.0143 12.7873C1.19767 12.5007 0.713537 11.6614 0.873872 10.8111C0.934217 10.4911 0.996441 10.174 1.06067 9.85921C0.847755 9.61883 0.635379 9.37538 0.423195 9.12851C-0.140793 8.47232 -0.141185 7.50338 0.422742 6.84687C0.63357 6.60143 0.844727 6.35926 1.05653 6.12006C0.993801 5.81215 0.932989 5.50193 0.873976 5.18897C0.713643 4.3387 1.19777 3.49937 2.01441 3.21278C2.3197 3.10563 2.62363 3.0015 2.92665 2.90025C3.02629 2.60222 3.12873 2.30314 3.23411 2.00261C3.52039 1.18608 4.35933 0.701269 5.20985 0.861387C5.52089 0.919943 5.82937 0.980338 6.13569 1.04268C6.36982 0.835525 6.60678 0.628976 6.84687 0.422743ZM10.8616 6.34914C11.2122 6.03109 11.2386 5.48902 10.9206 5.1384C10.6025 4.78777 10.0604 4.76138 9.70982 5.07944C8.86921 5.84199 8.22869 6.53552 7.68647 7.38183C7.34702 7.91166 7.05533 8.48701 6.77625 9.1553L5.89491 8.24644C5.56537 7.90658 5.02272 7.89824 4.68288 8.22778C4.34304 8.55734 4.33469 9.09998 4.66423 9.43983L6.48465 11.3171C6.69168 11.5306 6.99457 11.6216 7.28496 11.5574C7.57535 11.4933 7.81171 11.2831 7.90949 11.0022C8.32745 9.80161 8.69395 8.98709 9.12992 8.30662C9.56249 7.63144 10.0865 7.05226 10.8616 6.34914Z" fill="#065BDC"/></g><defs><clipPath id="ugc-verified-{{ block.id }}"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
+                          <span class="ugc-verified-text">{{ section.settings.verified_text }}</span>
+                        </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </article>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {%- comment -%} Progress Bar {%- endcomment -%}
+    {% if section.settings.show_progress_bar %}
+      <div class="ugc-progress-bar">
+        <div class="ugc-progress-track"></div>
+        <div class="ugc-progress-fill ugc-progress-fill-{{ section.id }}"></div>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (typeof Swiper === 'undefined') return;
+
+    var sectionId = '{{ section.id }}';
+    var swiperEl = document.querySelector('#shopify-section-' + sectionId + ' .ugc-swiper-' + sectionId);
+    var progressFill = document.querySelector('#shopify-section-' + sectionId + ' .ugc-progress-fill-' + sectionId);
+
+    if (!swiperEl) return;
+
+    var ugcSwiper = new Swiper(swiperEl, {
+      slidesPerView: 'auto',
+      spaceBetween: {{ section.settings.slide_gap }},
+      breakpoints: {
+        0: { spaceBetween: 16 },
+        768: { spaceBetween: {{ section.settings.slide_gap }} }
+      },
+      navigation: {
+        prevEl: '#shopify-section-' + sectionId + ' .ugc-prev-' + sectionId,
+        nextEl: '#shopify-section-' + sectionId + ' .ugc-next-' + sectionId,
+      },
+      on: {
+        init: function () {
+          updateProgress(this);
+        },
+        slideChange: function () {
+          updateProgress(this);
+        },
+      },
+    });
+
+    function updateProgress(swiper) {
+      if (!progressFill) return;
+      var totalSlides = swiper.slides.length;
+      var progress = swiper.progress;
+      var fillWidth = (progress * 100);
+      if (progress === 0) fillWidth = (1 / totalSlides) * 100;
+      if (progress >= 1) fillWidth = 100;
+      progressFill.style.width = fillWidth + '%';
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "UGC Video Carousel",
+  "tag": "section",
+  "class": "ugc-carousel-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Real People. Real Results."
+    },
+    {
+      "type": "text",
+      "id": "verified_text",
+      "label": "Verified badge text",
+      "default": "Verified Buyer"
+    },
+    {
+      "type": "header",
+      "content": "Features"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nav_buttons",
+      "label": "Show navigation arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_progress_bar",
+      "label": "Show progress bar",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_text_secondary",
+      "label": "Secondary text",
+      "default": "#4A5D6E"
+    },
+    {
+      "type": "color",
+      "id": "color_white",
+      "label": "Icon / arrow color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_nav_bg",
+      "label": "Navigation button background",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_progress_bar",
+      "label": "Progress bar color",
+      "default": "#102A43"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "body_font_size",
+      "label": "Quote font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "author_font_size",
+      "label": "Author font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "container_padding",
+      "label": "Container side padding",
+      "min": 16,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_gap",
+      "label": "Gap between header, carousel, and progress",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "slide_gap",
+      "label": "Gap between slides",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_width",
+      "label": "Card width (desktop)",
+      "min": 160,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 240
+    },
+    {
+      "type": "range",
+      "id": "card_height",
+      "label": "Card image height (desktop)",
+      "min": 200,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "default": 380
+    },
+    {
+      "type": "range",
+      "id": "card_width_mobile",
+      "label": "Card width (mobile)",
+      "min": 140,
+      "max": 320,
+      "step": 10,
+      "unit": "px",
+      "default": 180
+    },
+    {
+      "type": "range",
+      "id": "card_height_mobile",
+      "label": "Card image height (mobile)",
+      "min": 180,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "default": 280
+    },
+    {
+      "type": "range",
+      "id": "border_radius_sm",
+      "label": "Navigation button border radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "border_radius_md",
+      "label": "Card image border radius",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "nav_button_size",
+      "label": "Navigation button size",
+      "min": 36,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "play_button_size",
+      "label": "Play button size",
+      "min": 36,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ugc_slide",
+      "name": "UGC Slide",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Thumbnail image"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_play_button",
+          "label": "Show play button",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "Very easy to use. I look forward to those 15 min each day because it feels so good."
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author name",
+          "default": "Mikki"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_verified",
+          "label": "Show verified badge",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGC Video Carousel",
+      "settings": {
+        "heading": "Real People. Real Results."
+      },
+      "blocks": [
+        {
+          "type": "ugc_slide",
+          "settings": {
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true,
+            "show_play_button": true
+          }
+        },
+        {
+          "type": "ugc_slide",
+          "settings": {
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true,
+            "show_play_button": true
+          }
+        },
+        {
+          "type": "ugc_slide",
+          "settings": {
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true,
+            "show_play_button": true
+          }
+        },
+        {
+          "type": "ugc_slide",
+          "settings": {
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true,
+            "show_play_button": true
+          }
+        },
+        {
+          "type": "ugc_slide",
+          "settings": {
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true,
+            "show_play_button": true
+          }
+        },
+        {
+          "type": "ugc_slide",
+          "settings": {
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true,
+            "show_play_button": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
