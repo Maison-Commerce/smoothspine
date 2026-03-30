@@ -64,10 +64,166 @@
         "background_opacity": 100,
         "background_blur_radius": 0
       }
+    },
+    "maison_header_h9REXH": {
+      "type": "maison-header",
+      "blocks": {
+        "nav_link_pxfKUw": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Shop",
+            "link": "",
+            "has_dropdown": true
+          }
+        },
+        "nav_link_6rBJUb": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Best Sellers",
+            "link": "",
+            "has_dropdown": false
+          }
+        },
+        "nav_link_mh3MG6": {
+          "type": "nav_link",
+          "settings": {
+            "label": "About Us",
+            "link": "",
+            "has_dropdown": false
+          }
+        },
+        "nav_link_XeX8qp": {
+          "type": "nav_link",
+          "settings": {
+            "label": "Contact",
+            "link": "",
+            "has_dropdown": false
+          }
+        },
+        "dropdown_link_HfNVwj": {
+          "type": "dropdown_link",
+          "settings": {
+            "label": "All Products",
+            "link": ""
+          }
+        },
+        "dropdown_link_zt9DJ3": {
+          "type": "dropdown_link",
+          "settings": {
+            "label": "Back Pain",
+            "link": ""
+          }
+        },
+        "dropdown_link_hiRdC6": {
+          "type": "dropdown_link",
+          "settings": {
+            "label": "Neck Pain",
+            "link": ""
+          }
+        },
+        "dropdown_link_JiknJR": {
+          "type": "dropdown_link",
+          "settings": {
+            "label": "Foot Pain",
+            "link": ""
+          }
+        },
+        "dropdown_link_VBbpNE": {
+          "type": "dropdown_link",
+          "settings": {
+            "label": "Bundles",
+            "link": ""
+          }
+        },
+        "drawer_primary_link_YqeqcP": {
+          "type": "drawer_primary_link",
+          "settings": {
+            "label": "Home",
+            "link": "",
+            "show_arrow": true
+          }
+        },
+        "drawer_primary_link_pxd8wd": {
+          "type": "drawer_primary_link",
+          "settings": {
+            "label": "Best Sellers",
+            "link": "",
+            "show_arrow": true
+          }
+        },
+        "drawer_secondary_link_FzdzQB": {
+          "type": "drawer_secondary_link",
+          "settings": {
+            "label": "Track Your Order",
+            "link": ""
+          }
+        },
+        "drawer_secondary_link_imakmQ": {
+          "type": "drawer_secondary_link",
+          "settings": {
+            "label": "About Us",
+            "link": ""
+          }
+        },
+        "drawer_secondary_link_QQxVxG": {
+          "type": "drawer_secondary_link",
+          "settings": {
+            "label": "Contact Us",
+            "link": ""
+          }
+        },
+        "social_link_kQG8bd": {
+          "type": "social_link",
+          "settings": {
+            "label": "Instagram",
+            "link": "",
+            "platform": "instagram"
+          }
+        },
+        "social_link_A8G9KD": {
+          "type": "social_link",
+          "settings": {
+            "label": "Facebook",
+            "link": "",
+            "platform": "facebook"
+          }
+        }
+      },
+      "block_order": [
+        "nav_link_pxfKUw",
+        "nav_link_6rBJUb",
+        "nav_link_mh3MG6",
+        "nav_link_XeX8qp",
+        "dropdown_link_HfNVwj",
+        "dropdown_link_zt9DJ3",
+        "dropdown_link_hiRdC6",
+        "dropdown_link_JiknJR",
+        "dropdown_link_VBbpNE",
+        "drawer_primary_link_YqeqcP",
+        "drawer_primary_link_pxd8wd",
+        "drawer_secondary_link_FzdzQB",
+        "drawer_secondary_link_imakmQ",
+        "drawer_secondary_link_QQxVxG",
+        "social_link_kQG8bd",
+        "social_link_A8G9KD"
+      ],
+      "name": "Maison Header",
+      "settings": {
+        "featured_title": "Our Bestseller\nTriple Fusion Massager",
+        "featured_button_label": "SEE #1 BACK PAIN BESTSELLER",
+        "featured_button_link": "",
+        "shop_accordion_title": "Shop by your pain",
+        "login_text": "Login to account",
+        "login_link": "",
+        "account_link": "",
+        "cart_link": "",
+        "search_link": ""
+      }
     }
   },
   "order": [
     "announcement-bar",
-    "header"
+    "header",
+    "maison_header_h9REXH"
   ]
 }
