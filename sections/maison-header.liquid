@@ -390,6 +390,12 @@
     justify-content: space-between;
     padding: 16px 0;
     border-bottom: 1px solid var(--s-color-border);
+    width: 100%;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .drawer-arrow-btn svg {
+    transition: transform 0.2s ease;
   }
 
   #shopify-section-{{ section.id }} .drawer-primary-label {
@@ -560,7 +566,7 @@
 
 <script src="//unpkg.com/alpinejs" defer></script>
 
-<div class="maisoncode_Header" x-data="{ drawerOpen: false, shopOpen: false }">
+<div class="maisoncode_Header" x-data="{ drawerOpen: false, shopOpen: true }" x-effect="document.body.style.overflow = drawerOpen ? 'hidden' : ''">
 <height-observer variable="header">
   <store-header {% if section.settings.hide_on_scroll %}hide-on-scroll="100"{% endif %} {% if section.settings.enable_sticky %}sticky{% endif %}>
   {%- comment -%} ════ DESKTOP HEADER ════ {%- endcomment -%}
@@ -692,8 +698,19 @@
         @click.outside="drawerOpen = false"
         style="display: none;"
       >
-        {%- comment -%} Drag bar (mobile only) {%- endcomment -%}
-        <div class="drawer-drag-bar">
+        {%- comment -%} Drag bar (mobile only) — swipe down to close {%- endcomment -%}
+        <div class="drawer-drag-bar"
+          @touchstart.passive="$el._startY = $event.touches[0].clientY; $el._startH = $el.closest('.drawer-panel').offsetHeight"
+          @touchmove.passive="
+            let dy = $event.touches[0].clientY - $el._startY;
+            if (dy > 0) { $el.closest('.drawer-panel').style.height = ($el._startH - dy) + 'px'; }
+          "
+          @touchend="
+            let panel = $el.closest('.drawer-panel');
+            if (parseInt(panel.style.height) < 200) { drawerOpen = false; }
+            panel.style.height = '';
+          "
+        >
           <div class="drawer-drag-indicator"></div>
         </div>
 
@@ -754,28 +771,57 @@
             </div>
           {%- endif -%}
 
-          {%- comment -%} Primary drawer links {%- endcomment -%}
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'drawer_primary_link' -%}
-              <a href="{{ block.settings.link }}" class="drawer-primary-link" {{ block.shopify_attributes }}>
-                <span class="drawer-primary-label">{{ block.settings.label }}</span>
-                {%- if block.settings.show_arrow -%}
+          {%- comment -%} Menu links from link_list (with sub-level support) {%- endcomment -%}
+          {%- if section.settings.menu != blank -%}
+            {%- for link in section.settings.menu.links -%}
+              {%- if link.links.size > 0 -%}
+                {%- comment -%} Has sub-menu — skip if it's the shop accordion (already rendered above) {%- endcomment -%}
+                {%- unless forloop.first and has_dropdown_links -%}
+                  <div x-data="{ subOpen: false }">
+                    <button class="drawer-primary-link" @click="subOpen = !subOpen">
+                      <span class="drawer-primary-label">{{ link.title }}</span>
+                      <span class="drawer-arrow-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="subOpen ? 'transform: rotate(90deg)' : ''"><path d="M4.02081 0.84375L8.93415 5.75708C8.96608 5.78897 8.99141 5.82683 9.00869 5.86852C9.02597 5.9102 9.03487 5.95488 9.03487 6C9.03487 6.04512 9.02597 6.0898 9.00869 6.13148C8.99141 6.17317 8.96608 6.21103 8.93415 6.24292L4.02081 11.1562" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </span>
+                    </button>
+                    <div x-show="subOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" style="display: none;">
+                      {%- for sub_link in link.links -%}
+                        <a href="{{ sub_link.url }}" class="drawer-sub-item">{{ sub_link.title }}</a>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endunless -%}
+              {%- else -%}
+                <a href="{{ link.url }}" class="drawer-primary-link">
+                  <span class="drawer-primary-label">{{ link.title }}</span>
                   <span class="drawer-arrow-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.02081 0.84375L8.93415 5.75708C8.96608 5.78897 8.99141 5.82683 9.00869 5.86852C9.02597 5.9102 9.03487 5.95488 9.03487 6C9.03487 6.04512 9.02597 6.0898 9.00869 6.13148C8.99141 6.17317 8.96608 6.21103 8.93415 6.24292L4.02081 11.1562" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </span>
-                {%- endif -%}
-              </a>
-            {%- endif -%}
-          {%- endfor -%}
-
-          {%- comment -%} Secondary drawer links {%- endcomment -%}
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'drawer_secondary_link' -%}
-              <a href="{{ block.settings.link }}" class="drawer-secondary-link" {{ block.shopify_attributes }}>
-                {{ block.settings.label }}
-              </a>
-            {%- endif -%}
-          {%- endfor -%}
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            {%- comment -%} Fallback: block-based links {%- endcomment -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'drawer_primary_link' -%}
+                <a href="{{ block.settings.link }}" class="drawer-primary-link" {{ block.shopify_attributes }}>
+                  <span class="drawer-primary-label">{{ block.settings.label }}</span>
+                  {%- if block.settings.show_arrow -%}
+                    <span class="drawer-arrow-btn">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.02081 0.84375L8.93415 5.75708C8.96608 5.78897 8.99141 5.82683 9.00869 5.86852C9.02597 5.9102 9.03487 5.95488 9.03487 6C9.03487 6.04512 9.02597 6.0898 9.00869 6.13148C8.99141 6.17317 8.96608 6.21103 8.93415 6.24292L4.02081 11.1562" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                  {%- endif -%}
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'drawer_secondary_link' -%}
+                <a href="{{ block.settings.link }}" class="drawer-secondary-link" {{ block.shopify_attributes }}>
+                  {{ block.settings.label }}
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
         </div>
 
         {%- comment -%} Drawer footer {%- endcomment -%}
