@@ -96,7 +96,8 @@
     100% { background-position: -200% 0; }
   }
 
-  #shopify-section-{{ section.id }} .ba-main-img {
+  #shopify-section-{{ section.id }} .ba-main-img,
+  #shopify-section-{{ section.id }} .ba-main-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -335,11 +336,20 @@
 <section class="maisoncode_before-after">
   <div class="ba-container">
 
-    {%- comment -%} Image Column {%- endcomment -%}
+    {%- comment -%} Media Column {%- endcomment -%}
     <div class="ba-image-col">
       <div class="ba-img-wrapper">
         <div class="ba-img-skeleton" aria-hidden="true"></div>
-        {% if section.settings.image != blank %}
+        {% if section.settings.video != blank %}
+          {{ section.settings.video | video_tag:
+            class: 'ba-main-video',
+            autoplay: true,
+            loop: true,
+            muted: true,
+            playsinline: true,
+            controls: false
+          }}
+        {% elsif section.settings.image != blank %}
           {{ section.settings.image | image_url: width: 1200 | image_tag:
             class: 'ba-main-img',
             loading: 'lazy',
@@ -464,9 +474,14 @@
       "content": "Media"
     },
     {
+      "type": "video",
+      "id": "video",
+      "label": "Video (takes priority over image)"
+    },
+    {
       "type": "image_picker",
       "id": "image",
-      "label": "Image"
+      "label": "Image (fallback if no video)"
     },
     {
       "type": "text",
