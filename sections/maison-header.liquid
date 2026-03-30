@@ -60,7 +60,6 @@
 
   #shopify-section-{{ section.id }} .maisoncode_Header a {
     text-decoration: none;
-    color: inherit;
   }
 
   #shopify-section-{{ section.id }} .maisoncode_Header button {
@@ -296,6 +295,19 @@
     height: 100%;
     object-fit: cover;
     z-index: 0;
+  }
+
+  #shopify-section-{{ section.id }} .drawer-featured-bg--mobile {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .drawer-featured-bg--mobile {
+      display: block;
+    }
+    #shopify-section-{{ section.id }} .drawer-featured--has-mobile .drawer-featured-bg--desktop {
+      display: none;
+    }
   }
 
   #shopify-section-{{ section.id }} .drawer-featured-content {
@@ -733,13 +745,21 @@
         <div class="drawer-body">
           {%- comment -%} Featured product card {%- endcomment -%}
           {%- if section.settings.featured_image != blank -%}
-            <a href="{{ section.settings.featured_button_link }}" class="drawer-featured">
+            <a href="{{ section.settings.featured_button_link }}" class="drawer-featured{% if section.settings.featured_image_mobile != blank %} drawer-featured--has-mobile{% endif %}">
               <img
-                class="drawer-featured-bg"
+                class="drawer-featured-bg drawer-featured-bg--desktop"
                 src="{{ section.settings.featured_image | image_url: width: 1040 }}"
                 alt="{{ section.settings.featured_title | escape }}"
                 loading="lazy"
               >
+              {%- if section.settings.featured_image_mobile != blank -%}
+                <img
+                  class="drawer-featured-bg drawer-featured-bg--mobile"
+                  src="{{ section.settings.featured_image_mobile | image_url: width: 750 }}"
+                  alt="{{ section.settings.featured_title | escape }}"
+                  loading="lazy"
+                >
+              {%- endif -%}
               <div class="drawer-featured-content">
                 <div class="drawer-featured-title">{{ section.settings.featured_title }}</div>
                 {%- if section.settings.featured_button_label != blank -%}
@@ -890,7 +910,12 @@
     {
       "type": "image_picker",
       "id": "featured_image",
-      "label": "Featured image"
+      "label": "Featured image (desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "featured_image_mobile",
+      "label": "Featured image (mobile)"
     },
     {
       "type": "richtext",
