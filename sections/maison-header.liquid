@@ -40,11 +40,14 @@
 
     font-family: var(--s-font-body);
     box-sizing: border-box;
-    position: sticky;
-    top: 0;
-    z-index: 100;
     background-color: var(--s-color-white);
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  }
+
+  #shopify-section-{{ section.id }} {
+    position: {% if section.settings.enable_sticky %}sticky{% else %}relative{% endif %};
+    top: 0;
+    z-index: 10;
   }
 
   #shopify-section-{{ section.id }} .maisoncode_Header *,
@@ -125,6 +128,35 @@
     align-items: center;
     justify-content: flex-end;
     gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .header-cart-link {
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .header-cart-count {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .header-cart-count .count-bubble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: var(--s-color-accent);
+    color: var(--s-color-white);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .header-cart-count .opacity-0 {
+    opacity: 0;
   }
 
   #shopify-section-{{ section.id }} .header-icon {
@@ -526,7 +558,8 @@
   }
 {% endstyle %}
 
-<div class="maisoncode_Header" x-data="{ drawerOpen: false, shopOpen: false }">
+<height-observer variable="header">
+  <store-header class="maisoncode_Header" {% if section.settings.hide_on_scroll %}hide-on-scroll="100"{% endif %} {% if section.settings.enable_sticky %}sticky{% endif %} x-data="{ drawerOpen: false, shopOpen: false }">
   {%- comment -%} ════ DESKTOP HEADER ════ {%- endcomment -%}
   <header class="header-bar">
     <div class="header-left">
@@ -546,27 +579,47 @@
     </div>
 
     <nav class="header-nav">
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'nav_link' -%}
-          <a href="{{ block.settings.link }}" class="header-nav-item" {{ block.shopify_attributes }}>
-            {{ block.settings.label }}
-            {%- if block.settings.has_dropdown -%}
+      {%- if section.settings.menu != blank -%}
+        {%- for link in section.settings.menu.links -%}
+          <a href="{{ link.url }}" class="header-nav-item" {% if link.current %}aria-current="page"{% endif %}>
+            {{ link.title }}
+            {%- if link.links.size > 0 -%}
               <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             {%- endif -%}
           </a>
-        {%- endif -%}
-      {%- endfor -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'nav_link' -%}
+            <a href="{{ block.settings.link }}" class="header-nav-item" {{ block.shopify_attributes }}>
+              {{ block.settings.label }}
+              {%- if block.settings.has_dropdown -%}
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              {%- endif -%}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
     </nav>
 
     <div class="header-right">
-      <a href="{{ section.settings.search_link | default: '/search' }}" class="header-icon" aria-label="Search">
+      <a href="{{ routes.search_url }}" class="header-icon" aria-controls="search-drawer" aria-label="Search">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.92884 3.92884C2.81093 5.04676 2.14286 6.76043 2.14286 9.14757C2.14286 11.5347 2.81093 13.2484 3.92884 14.3663C5.04676 15.4843 6.76043 16.1523 9.14757 16.1523C11.5347 16.1523 13.2484 15.4843 14.3663 14.3663C15.4843 13.2484 16.1523 11.5347 16.1523 9.14757C16.1523 6.76043 15.4843 5.04676 14.3663 3.92884C13.2484 2.81093 11.5347 2.14286 9.14757 2.14286C6.76043 2.14286 5.04676 2.81093 3.92884 3.92884ZM2.41361 2.41361C4.04159 0.785636 6.36598 0 9.14757 0C11.9292 0 14.2536 0.785636 15.8816 2.41361C17.5096 4.04159 18.2951 6.36599 18.2951 9.14757C18.2951 11.348 17.8036 13.2623 16.7921 14.772L18.8673 16.847C19.4251 17.4049 19.4251 18.3094 18.8673 18.8673C18.3094 19.4253 17.4049 19.4253 16.847 18.8673L14.7719 16.7923C13.2621 17.8036 11.3479 18.2951 9.14757 18.2951C6.36598 18.2951 4.04159 17.5096 2.41361 15.8816C0.785636 14.2536 0 11.9292 0 9.14757C0 6.36599 0.785636 4.04159 2.41361 2.41361Z" fill="#102A43"/></svg>
       </a>
-      <a href="{{ section.settings.account_link }}" class="header-icon" aria-label="Account">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#clip0_account_d)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 20C16.4 20 20 16.4 20 10C20 3.6 16.4 0 10 0C3.6 0 0 3.6 0 10C0 16.4 3.6 20 10 20ZM15.1951 16.4697C14.8314 15.792 14.3359 15.1871 13.7317 14.6934C12.6786 13.8326 11.3602 13.3624 10.0001 13.3624C8.63997 13.3624 7.32166 13.8326 6.26854 14.6934C5.6644 15.1871 5.16886 15.792 4.80503 16.4697C5.99417 17.3244 7.68524 17.8571 10.0001 17.8571C12.315 17.8571 14.0061 17.3244 15.1951 16.4697ZM13.3644 7.52684C13.3644 9.6807 12.1529 10.8922 9.99903 10.8922C7.84519 10.8922 6.63364 9.6807 6.63364 7.52684C6.63364 5.373 7.84519 4.16146 9.99903 4.16146C12.1529 4.16146 13.3644 5.373 13.3644 7.52684Z" fill="#102A43"/></g><defs><clipPath id="clip0_account_d"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
-      </a>
-      <a href="{{ section.settings.cart_link | default: '/cart' }}" class="header-icon" aria-label="Cart">
+      {%- if shop.customer_accounts_enabled -%}
+        <shopify-account class="header-icon">
+          <div slot="signed-out-avatar" class="header-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#clip0_account_d)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 20C16.4 20 20 16.4 20 10C20 3.6 16.4 0 10 0C3.6 0 0 3.6 0 10C0 16.4 3.6 20 10 20ZM15.1951 16.4697C14.8314 15.792 14.3359 15.1871 13.7317 14.6934C12.6786 13.8326 11.3602 13.3624 10.0001 13.3624C8.63997 13.3624 7.32166 13.8326 6.26854 14.6934C5.6644 15.1871 5.16886 15.792 4.80503 16.4697C5.99417 17.3244 7.68524 17.8571 10.0001 17.8571C12.315 17.8571 14.0061 17.3244 15.1951 16.4697ZM13.3644 7.52684C13.3644 9.6807 12.1529 10.8922 9.99903 10.8922C7.84519 10.8922 6.63364 9.6807 6.63364 7.52684C6.63364 5.373 7.84519 4.16146 9.99903 4.16146C12.1529 4.16146 13.3644 5.373 13.3644 7.52684Z" fill="#102A43"/></g><defs><clipPath id="clip0_account_d"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+          </div>
+        </shopify-account>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="header-icon header-cart-link" data-no-instant {% if settings.cart_type != 'page' and request.page_type != 'cart' %}aria-controls="cart-drawer"{% endif %} aria-label="Cart">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#clip0_cart_d)"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.64289 6.73499C4.64289 5.49706 5.34319 4.42052 6.37152 3.88359C6.77855 4.56808 7.52558 5.02676 8.37975 5.02676H11.6208C12.4749 5.02676 13.2218 4.56816 13.6289 3.88376C14.657 4.42076 15.3572 5.49719 15.3572 6.73499V7.50003H4.64289V6.73499ZM13.9246 1.68156C13.8502 1.65536 13.775 1.63785 13.6998 1.62849C13.313 0.873711 12.5272 0.357178 11.6208 0.357178H8.37975C7.47335 0.357178 6.68758 0.873681 6.30071 1.62842C6.22542 1.63776 6.14998 1.65531 6.07549 1.68156C3.99418 2.41538 2.50003 4.39932 2.50003 6.73499V7.50048C1.29115 7.52406 0.291717 8.47831 0.360532 9.68071C0.46161 11.4469 0.731869 14.2194 1.32442 16.6659C1.65291 18.0222 2.72035 19.114 4.23618 19.3247C5.48949 19.499 7.36322 19.6429 10 19.6429C12.6368 19.6429 14.5106 19.499 15.7639 19.3247C17.2797 19.114 18.3472 18.0222 18.6756 16.6659C19.2682 14.2194 19.5385 11.4469 19.6396 9.68071C19.7083 8.47831 18.7089 7.52406 17.5 7.50048V6.73499C17.5 4.39932 16.0059 2.41538 13.9246 1.68156ZM6.14889 12.1429C6.14889 11.6498 5.74915 11.25 5.25603 11.25C4.76292 11.25 4.36318 11.6498 4.36318 12.1429V14.8587C4.36318 15.3519 4.76292 15.7516 5.25603 15.7516C5.74915 15.7516 6.14889 15.3519 6.14889 14.8587V12.1429ZM10.8929 12.1429C10.8929 11.6498 10.4931 11.25 10 11.25C9.50692 11.25 9.10718 11.6498 9.10718 12.1429V14.8587C9.10718 15.3519 9.50692 15.7516 10 15.7516C10.4931 15.7516 10.8929 15.3519 10.8929 14.8587V12.1429ZM14.744 11.25C15.2372 11.25 15.6369 11.6498 15.6369 12.1429V14.8587C15.6369 15.3519 15.2372 15.7516 14.744 15.7516C14.2509 15.7516 13.8512 15.3519 13.8512 14.8587V12.1429C13.8512 11.6498 14.2509 11.25 14.744 11.25Z" fill="#102A43"/></g><defs><clipPath id="clip0_cart_d"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+        <div class="header-cart-count">
+          <cart-count class="count-bubble {% if cart.item_count == 0 %}opacity-0{% endif %}">
+            <span aria-hidden="true">{{ cart.item_count }}</span>
+          </cart-count>
+        </div>
       </a>
     </div>
   </header>
@@ -577,7 +630,7 @@
       <button class="mobile-icon" @click="drawerOpen = true" aria-label="Open menu">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#clip0_burger)"><path fill-rule="evenodd" clip-rule="evenodd" d="M-0.000488281 1.99947C-0.000488281 1.52609 0.383267 1.14233 0.856655 1.14233H15.143C15.6164 1.14233 16.0002 1.52609 16.0002 1.99947C16.0002 2.47287 15.6164 2.85662 15.143 2.85662H0.856655C0.383267 2.85662 -0.000488281 2.47287 -0.000488281 1.99947ZM-0.000488281 7.99965C-0.000488281 7.52626 0.383267 7.1425 0.856655 7.1425H15.143C15.6164 7.1425 16.0002 7.52626 16.0002 7.99965C16.0002 8.47304 15.6164 8.85679 15.143 8.85679H0.856655C0.383267 8.85679 -0.000488281 8.47304 -0.000488281 7.99965ZM0.856655 13.1432C0.383267 13.1432 -0.000488281 13.527 -0.000488281 14.0004C-0.000488281 14.4737 0.383267 14.8575 0.856655 14.8575H15.143C15.6164 14.8575 16.0002 14.4737 16.0002 14.0004C16.0002 13.527 15.6164 13.1432 15.143 13.1432H0.856655Z" fill="#102A43"/></g><defs><clipPath id="clip0_burger"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
       </button>
-      <a href="{{ section.settings.search_link | default: '/search' }}" class="mobile-icon" aria-label="Search">
+      <a href="{{ routes.search_url }}" class="mobile-icon" aria-controls="search-drawer" aria-label="Search">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.92884 3.92884C2.81093 5.04676 2.14286 6.76043 2.14286 9.14757C2.14286 11.5347 2.81093 13.2484 3.92884 14.3663C5.04676 15.4843 6.76043 16.1523 9.14757 16.1523C11.5347 16.1523 13.2484 15.4843 14.3663 14.3663C15.4843 13.2484 16.1523 11.5347 16.1523 9.14757C16.1523 6.76043 15.4843 5.04676 14.3663 3.92884C13.2484 2.81093 11.5347 2.14286 9.14757 2.14286C6.76043 2.14286 5.04676 2.81093 3.92884 3.92884ZM2.41361 2.41361C4.04159 0.785636 6.36598 0 9.14757 0C11.9292 0 14.2536 0.785636 15.8816 2.41361C17.5096 4.04159 18.2951 6.36599 18.2951 9.14757C18.2951 11.348 17.8036 13.2623 16.7921 14.772L18.8673 16.847C19.4251 17.4049 19.4251 18.3094 18.8673 18.8673C18.3094 19.4253 17.4049 19.4253 16.847 18.8673L14.7719 16.7923C13.2621 17.8036 11.3479 18.2951 9.14757 18.2951C6.36598 18.2951 4.04159 17.5096 2.41361 15.8816C0.785636 14.2536 0 11.9292 0 9.14757C0 6.36599 0.785636 4.04159 2.41361 2.41361Z" fill="#102A43"/></svg>
       </a>
     </div>
@@ -599,11 +652,20 @@
     </div>
 
     <div class="header-mobile-right">
-      <a href="{{ section.settings.account_link }}" class="mobile-icon" aria-label="Account">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none"><g clip-path="url(#clip0_account_m)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 20C16.4 20 20 16.4 20 10C20 3.6 16.4 0 10 0C3.6 0 0 3.6 0 10C0 16.4 3.6 20 10 20ZM15.1951 16.4697C14.8314 15.792 14.3359 15.1871 13.7317 14.6934C12.6786 13.8326 11.3602 13.3624 10.0001 13.3624C8.63997 13.3624 7.32166 13.8326 6.26854 14.6934C5.6644 15.1871 5.16886 15.792 4.80503 16.4697C5.99417 17.3244 7.68524 17.8571 10.0001 17.8571C12.315 17.8571 14.0061 17.3244 15.1951 16.4697ZM13.3644 7.52684C13.3644 9.6807 12.1529 10.8922 9.99903 10.8922C7.84519 10.8922 6.63364 9.6807 6.63364 7.52684C6.63364 5.373 7.84519 4.16146 9.99903 4.16146C12.1529 4.16146 13.3644 5.373 13.3644 7.52684Z" fill="#102A43"/></g><defs><clipPath id="clip0_account_m"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
-      </a>
-      <a href="{{ section.settings.cart_link | default: '/cart' }}" class="mobile-icon" aria-label="Cart">
+      {%- if shop.customer_accounts_enabled -%}
+        <shopify-account class="mobile-icon">
+          <div slot="signed-out-avatar" class="mobile-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none"><g clip-path="url(#clip0_account_m)"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 20C16.4 20 20 16.4 20 10C20 3.6 16.4 0 10 0C3.6 0 0 3.6 0 10C0 16.4 3.6 20 10 20ZM15.1951 16.4697C14.8314 15.792 14.3359 15.1871 13.7317 14.6934C12.6786 13.8326 11.3602 13.3624 10.0001 13.3624C8.63997 13.3624 7.32166 13.8326 6.26854 14.6934C5.6644 15.1871 5.16886 15.792 4.80503 16.4697C5.99417 17.3244 7.68524 17.8571 10.0001 17.8571C12.315 17.8571 14.0061 17.3244 15.1951 16.4697ZM13.3644 7.52684C13.3644 9.6807 12.1529 10.8922 9.99903 10.8922C7.84519 10.8922 6.63364 9.6807 6.63364 7.52684C6.63364 5.373 7.84519 4.16146 9.99903 4.16146C12.1529 4.16146 13.3644 5.373 13.3644 7.52684Z" fill="#102A43"/></g><defs><clipPath id="clip0_account_m"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+          </div>
+        </shopify-account>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="mobile-icon header-cart-link" data-no-instant {% if settings.cart_type != 'page' and request.page_type != 'cart' %}aria-controls="cart-drawer"{% endif %} aria-label="Cart">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none"><g clip-path="url(#clip0_cart_m)"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.64289 6.73499C4.64289 5.49706 5.34319 4.42052 6.37152 3.88359C6.77855 4.56808 7.52558 5.02676 8.37975 5.02676H11.6208C12.4749 5.02676 13.2218 4.56816 13.6289 3.88376C14.657 4.42076 15.3572 5.49719 15.3572 6.73499V7.50003H4.64289V6.73499ZM13.9246 1.68156C13.8502 1.65536 13.775 1.63785 13.6998 1.62849C13.313 0.873711 12.5272 0.357178 11.6208 0.357178H8.37975C7.47335 0.357178 6.68758 0.873681 6.30071 1.62842C6.22542 1.63776 6.14998 1.65531 6.07549 1.68156C3.99418 2.41538 2.50003 4.39932 2.50003 6.73499V7.50048C1.29115 7.52406 0.291717 8.47831 0.360532 9.68071C0.46161 11.4469 0.731869 14.2194 1.32442 16.6659C1.65291 18.0222 2.72035 19.114 4.23618 19.3247C5.48949 19.499 7.36322 19.6429 10 19.6429C12.6368 19.6429 14.5106 19.499 15.7639 19.3247C17.2797 19.114 18.3472 18.0222 18.6756 16.6659C19.2682 14.2194 19.5385 11.4469 19.6396 9.68071C19.7083 8.47831 18.7089 7.52406 17.5 7.50048V6.73499C17.5 4.39932 16.0059 2.41538 13.9246 1.68156ZM6.14889 12.1429C6.14889 11.6498 5.74915 11.25 5.25603 11.25C4.76292 11.25 4.36318 11.6498 4.36318 12.1429V14.8587C4.36318 15.3519 4.76292 15.7516 5.25603 15.7516C5.74915 15.7516 6.14889 15.3519 6.14889 14.8587V12.1429ZM10.8929 12.1429C10.8929 11.6498 10.4931 11.25 10 11.25C9.50692 11.25 9.10718 11.6498 9.10718 12.1429V14.8587C9.10718 15.3519 9.50692 15.7516 10 15.7516C10.4931 15.7516 10.8929 15.3519 10.8929 14.8587V12.1429ZM14.744 11.25C15.2372 11.25 15.6369 11.6498 15.6369 12.1429V14.8587C15.6369 15.3519 15.2372 15.7516 14.744 15.7516C14.2509 15.7516 13.8512 15.3519 13.8512 14.8587V12.1429C13.8512 11.6498 14.2509 11.25 14.744 11.25Z" fill="#102A43"/></g><defs><clipPath id="clip0_cart_m"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+        <div class="header-cart-count header-cart-count--mobile">
+          <cart-count class="count-bubble {% if cart.item_count == 0 %}opacity-0{% endif %}">
+            <span aria-hidden="true">{{ cart.item_count }}</span>
+          </cart-count>
+        </div>
       </a>
     </div>
   </header>
@@ -752,7 +814,12 @@
       </div>
     </div>
   </template>
-</div>
+  </store-header>
+</height-observer>
+
+<script>
+  document.documentElement.style.setProperty('--header-height', Math.round(document.getElementById('shopify-section-{{ section.id }}').clientHeight) + 'px');
+</script>
 
 {% schema %}
 {
@@ -768,6 +835,16 @@
       "type": "image_picker",
       "id": "logo",
       "label": "Logo image"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Desktop menu",
+      "default": "main-menu"
     },
     {
       "type": "header",
@@ -818,22 +895,19 @@
     },
     {
       "type": "header",
-      "content": "Links"
+      "content": "Sticky behavior"
     },
     {
-      "type": "url",
-      "id": "account_link",
-      "label": "Account link"
+      "type": "checkbox",
+      "id": "enable_sticky",
+      "label": "Enable sticky header",
+      "default": true
     },
     {
-      "type": "url",
-      "id": "cart_link",
-      "label": "Cart link"
-    },
-    {
-      "type": "url",
-      "id": "search_link",
-      "label": "Search link"
+      "type": "checkbox",
+      "id": "hide_on_scroll",
+      "label": "Hide on scroll down",
+      "default": false
     }
   ],
   "blocks": [
