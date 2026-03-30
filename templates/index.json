@@ -388,6 +388,93 @@
         "padding_horizontal_mobile": 20
       }
     },
+    "maison_before_after_JNUeiP": {
+      "type": "maison-before-after",
+      "blocks": {
+        "pain_point_rHReAt": {
+          "type": "pain_point",
+          "settings": {
+            "text": "You’ve done chiro, PT, injections, and woke up in the same pain the next morning"
+          }
+        },
+        "pain_point_AgiUgp": {
+          "type": "pain_point",
+          "settings": {
+            "text": "You’ve spent $3,000+ and your spine still feels like it’s being crushed"
+          }
+        },
+        "pain_point_rEeUUj": {
+          "type": "pain_point",
+          "settings": {
+            "text": "You cancel plans because you can’t predict how bad it’ll be that day"
+          }
+        },
+        "pain_point_pa4CrJ": {
+          "type": "pain_point",
+          "settings": {
+            "text": "You map every trip around where you can sit down within 10 minutes"
+          }
+        },
+        "pain_point_7hdT4z": {
+          "type": "pain_point",
+          "settings": {
+            "text": "Surgery terrifies you, but you’re starting to think it’s the only option left"
+          }
+        },
+        "pain_point_3xzCH7": {
+          "type": "pain_point",
+          "settings": {
+            "text": "You just want to feel normal again. Not fixed. Just normal."
+          }
+        }
+      },
+      "block_order": [
+        "pain_point_rHReAt",
+        "pain_point_AgiUgp",
+        "pain_point_rEeUUj",
+        "pain_point_pa4CrJ",
+        "pain_point_7hdT4z",
+        "pain_point_3xzCH7"
+      ],
+      "name": "Before After Pain Points",
+      "settings": {
+        "subheading": "You're in the right place if…",
+        "heading": "Sound Familiar?",
+        "button_label": "GET 60% OFF TODAY ONLY!",
+        "button_link": "",
+        "image_placeholder_text": "Before and After image",
+        "image_aspect_ratio": "1 / 1",
+        "color_background": "#FDFCFA",
+        "color_subheading": "#065BDC",
+        "color_heading": "#102A43",
+        "color_body_text": "#4A5D6E",
+        "color_icon_fallback": "#F04438",
+        "color_button_bg": "#F07E3B",
+        "color_button_border": "#BF642F",
+        "color_button_text": "#FFFCFB",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "subheading_font_size": 12,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "button_font_size": 16,
+        "button_font_size_mobile": 14,
+        "padding_top": 20,
+        "padding_bottom": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "column_gap": 40,
+        "list_gap": 16,
+        "text_inner_gap": 24,
+        "text_inner_padding_v": 48,
+        "text_inner_padding_h": 32,
+        "image_border_radius": 16,
+        "button_border_radius": 8,
+        "button_height": 56,
+        "container_padding": 80,
+        "max_width": 1400
+      }
+    },
     "section-15": {
       "type": "feature-chart",
       "blocks": {
@@ -511,6 +598,7 @@
     "maison_logo_list_WiqtyW",
     "maison_home_informations_LEM7ar",
     "maison_trustpilot_reviews_RdTkqQ",
+    "maison_before_after_JNUeiP",
     "section-15"
   ]
 }
