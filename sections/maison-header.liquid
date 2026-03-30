@@ -520,10 +520,6 @@
       margin-bottom: 12px;
     }
 
-    #shopify-section-{{ section.id }} .drawer-featured-bg {
-      filter: blur(2px);
-    }
-
     #shopify-section-{{ section.id }} .drawer-featured-title {
       font-size: 18px;
     }
@@ -794,9 +790,6 @@
               {%- else -%}
                 <a href="{{ link.url }}" class="drawer-primary-link">
                   <span class="drawer-primary-label">{{ link.title }}</span>
-                  <span class="drawer-arrow-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.02081 0.84375L8.93415 5.75708C8.96608 5.78897 8.99141 5.82683 9.00869 5.86852C9.02597 5.9102 9.03487 5.95488 9.03487 6C9.03487 6.04512 9.02597 6.0898 9.00869 6.13148C8.99141 6.17317 8.96608 6.21103 8.93415 6.24292L4.02081 11.1562" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </span>
                 </a>
               {%- endif -%}
             {%- endfor -%}
