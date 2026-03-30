@@ -866,7 +866,7 @@
           {%- if shop.customer_accounts_enabled -%}
             <shopify-account class="drawer-footer-login-wrap">
               <div slot="signed-out-avatar" class="drawer-footer-login">
-                {{ section.settings.login_text | default: 'Login to account' }}
+                Login to account
               </div>
             </shopify-account>
           {%- endif -%}
@@ -943,17 +943,6 @@
       "id": "shop_accordion_title",
       "label": "Shop accordion title",
       "default": "Shop by your pain"
-    },
-    {
-      "type": "text",
-      "id": "login_text",
-      "label": "Login text",
-      "default": "Login to account"
-    },
-    {
-      "type": "url",
-      "id": "login_link",
-      "label": "Login link"
     },
     {
       "type": "header",
