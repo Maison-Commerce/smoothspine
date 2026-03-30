@@ -476,6 +476,112 @@
         "max_width": 1400
       }
     },
+    "maison_ugc_section_qiCzY3": {
+      "type": "maison-ugc-section",
+      "blocks": {
+        "ugc_slide_qYanEM": {
+          "type": "ugc_slide",
+          "settings": {
+            "show_play_button": true,
+            "video_url": "",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
+          }
+        },
+        "ugc_slide_GUqY3e": {
+          "type": "ugc_slide",
+          "settings": {
+            "show_play_button": true,
+            "video_url": "",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
+          }
+        },
+        "ugc_slide_VRt7Jk": {
+          "type": "ugc_slide",
+          "settings": {
+            "show_play_button": true,
+            "video_url": "",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
+          }
+        },
+        "ugc_slide_qdJFBr": {
+          "type": "ugc_slide",
+          "settings": {
+            "show_play_button": true,
+            "video_url": "",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
+          }
+        },
+        "ugc_slide_HHPcQd": {
+          "type": "ugc_slide",
+          "settings": {
+            "show_play_button": true,
+            "video_url": "",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
+          }
+        },
+        "ugc_slide_Kywjd6": {
+          "type": "ugc_slide",
+          "settings": {
+            "show_play_button": true,
+            "video_url": "",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
+          }
+        }
+      },
+      "block_order": [
+        "ugc_slide_qYanEM",
+        "ugc_slide_GUqY3e",
+        "ugc_slide_VRt7Jk",
+        "ugc_slide_qdJFBr",
+        "ugc_slide_HHPcQd",
+        "ugc_slide_Kywjd6"
+      ],
+      "name": "UGC Video Carousel",
+      "settings": {
+        "heading": "Real People. Real Results.",
+        "verified_text": "Verified Buyer",
+        "show_nav_buttons": true,
+        "show_progress_bar": true,
+        "color_background": "#FDFCFA",
+        "color_primary": "#102A43",
+        "color_text_secondary": "#4A5D6E",
+        "color_white": "#FFFFFF",
+        "color_nav_bg": "#102A43",
+        "color_progress_bar": "#102A43",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "body_font_size": 14,
+        "author_font_size": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "container_padding": 80,
+        "section_gap": 40,
+        "slide_gap": 20,
+        "card_width": 240,
+        "card_height": 380,
+        "card_width_mobile": 180,
+        "card_height_mobile": 280,
+        "border_radius_sm": 8,
+        "border_radius_md": 16,
+        "nav_button_size": 56,
+        "play_button_size": 56,
+        "max_width": 1400
+      }
+    },
     "section-15": {
       "type": "feature-chart",
       "blocks": {
@@ -600,6 +706,7 @@
     "maison_home_informations_LEM7ar",
     "maison_trustpilot_reviews_RdTkqQ",
     "maison_before_after_JNUeiP",
+    "maison_ugc_section_qiCzY3",
     "section-15"
   ]
 }
