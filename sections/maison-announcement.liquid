@@ -1,0 +1,316 @@
+{% comment %}
+  Section: Announcement Bar
+  Description: A full-width top-of-page announcement bar with an optional icon
+    and a single line of uppercase text. Ideal for promotions, sales, shipping
+    notices, or trust signals. Centered content with configurable colors,
+    typography, and spacing.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (weight 800) — must be loaded by the theme or via Google Fonts
+
+  Blocks:
+  - (none)
+
+  Notes:
+  - Icon is optional via image_picker; hidden when no image is set
+  - Text uses uppercase + letter-spacing by default; both are merchant-configurable
+  - All colors, font sizes, padding, and icon dimensions are editable
+  - Original source class prefix: maisoncode_announcement-bar
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_announcement-bar {
+    --s-color-bg: {{ section.settings.color_background }};
+    --s-color-text: {{ section.settings.color_text }};
+    --s-font-size: {{ section.settings.font_size }}px;
+    --s-letter-spacing: {{ section.settings.letter_spacing }}px;
+    --s-padding-vertical: {{ section.settings.padding_vertical }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-icon-size: {{ section.settings.icon_size }}px;
+    --s-icon-gap: {{ section.settings.icon_gap }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+
+    background-color: var(--s-color-bg);
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_announcement-bar *,
+  #shopify-section-{{ section.id }} .maisoncode_announcement-bar *::before,
+  #shopify-section-{{ section.id }} .maisoncode_announcement-bar *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ab-inner {
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--s-padding-vertical) var(--s-padding-horizontal);
+  }
+
+  #shopify-section-{{ section.id }} .ab-content {
+    display: flex;
+    align-items: center;
+    gap: var(--s-icon-gap);
+  }
+
+  #shopify-section-{{ section.id }} .ab-icon {
+    width: var(--s-icon-size);
+    height: var(--s-icon-size);
+    flex-shrink: 0;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ab-text {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: var(--s-font-size);
+    line-height: 1.5;
+    letter-spacing: var(--s-letter-spacing);
+    text-transform: uppercase;
+    color: var(--s-color-text);
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  {% if section.settings.enable_link %}
+    #shopify-section-{{ section.id }} .ab-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      width: 100%;
+    }
+  {% endif %}
+
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .ab-inner {
+      padding: {{ section.settings.padding_vertical_mobile }}px {{ section.settings.padding_horizontal_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .ab-icon {
+      width: {{ section.settings.icon_size_mobile }}px;
+      height: {{ section.settings.icon_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .ab-text {
+      font-size: {{ section.settings.font_size_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_announcement-bar">
+  {% if section.settings.enable_link and section.settings.bar_link != blank %}
+    <a href="{{ section.settings.bar_link }}" class="ab-link">
+  {% endif %}
+
+  <div class="ab-inner">
+    <div class="ab-content">
+      {% if section.settings.show_icon %}
+        {% if section.settings.icon_image != blank %}
+          {{ section.settings.icon_image | image_url: width: 80 | image_tag:
+            class: 'ab-icon',
+            loading: 'eager',
+            widths: '20, 40, 60, 80',
+            sizes: '20px'
+          }}
+        {% endif %}
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <span class="ab-text">{{ section.settings.text }}</span>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if section.settings.enable_link and section.settings.bar_link != blank %}
+    </a>
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "tag": "div",
+  "class": "announcement-bar-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement text",
+      "default": "Valentine Sale | 90-Day Guarantee"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_link",
+      "label": "Make bar clickable",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "bar_link",
+      "label": "Bar link"
+    },
+    {
+      "type": "header",
+      "content": "Icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show icon",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Icon image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background color",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text color",
+      "default": "#FAFCFE"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size (desktop)",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "letter_spacing",
+      "label": "Letter spacing",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical padding (desktop)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_mobile",
+      "label": "Vertical padding (mobile)",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size (desktop)",
+      "min": 10,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "icon_size_mobile",
+      "label": "Icon size (mobile)",
+      "min": 10,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "icon_gap",
+      "label": "Gap between icon and text",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar"
+    }
+  ]
+}
+{% endschema %}
