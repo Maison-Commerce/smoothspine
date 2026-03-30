@@ -11,6 +11,139 @@
   "type": "footer",
   "name": "Footer group",
   "sections": {
+    "maison_footer_PrXfKf": {
+      "type": "maison-footer",
+      "blocks": {
+        "shop_link_VqWbwN": {
+          "type": "shop_link",
+          "settings": {
+            "label": "About us",
+            "link": ""
+          }
+        },
+        "shop_link_rp7Frx": {
+          "type": "shop_link",
+          "settings": {
+            "label": "Contact Us",
+            "link": ""
+          }
+        },
+        "shop_link_TDafPf": {
+          "type": "shop_link",
+          "settings": {
+            "label": "Best Sellers",
+            "link": ""
+          }
+        },
+        "shop_link_Ti4wjX": {
+          "type": "shop_link",
+          "settings": {
+            "label": "Shipping",
+            "link": ""
+          }
+        },
+        "shop_link_dPCDWC": {
+          "type": "shop_link",
+          "settings": {
+            "label": "Refund Policy",
+            "link": ""
+          }
+        },
+        "help_link_GQG3Gg": {
+          "type": "help_link",
+          "settings": {
+            "label": "Privacy Policy",
+            "link": ""
+          }
+        },
+        "help_link_UGMdJB": {
+          "type": "help_link",
+          "settings": {
+            "label": "Terms of Service",
+            "link": ""
+          }
+        },
+        "help_link_hMTfFq": {
+          "type": "help_link",
+          "settings": {
+            "label": "Your Privacy Choices",
+            "link": ""
+          }
+        },
+        "help_link_mDTGhG": {
+          "type": "help_link",
+          "settings": {
+            "label": "Accessibility Statement",
+            "link": ""
+          }
+        },
+        "social_link_PWFdcr": {
+          "type": "social_link",
+          "settings": {
+            "label": "Instagram",
+            "link": ""
+          }
+        },
+        "social_link_JLQwQY": {
+          "type": "social_link",
+          "settings": {
+            "label": "Facebook",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "shop_link_VqWbwN",
+        "shop_link_rp7Frx",
+        "shop_link_TDafPf",
+        "shop_link_Ti4wjX",
+        "shop_link_dPCDWC",
+        "help_link_GQG3Gg",
+        "help_link_UGMdJB",
+        "help_link_hMTfFq",
+        "help_link_mDTGhG",
+        "social_link_PWFdcr",
+        "social_link_JLQwQY"
+      ],
+      "name": "Footer",
+      "settings": {
+        "brand_name": "SmoothSpine",
+        "newsletter_title": "Join The Family!",
+        "newsletter_text": "<p>Join the SmoothSpine Family and be the first to hear about new ways to relief pain and get access to <strong>exclusive mystery sales!</strong></p>",
+        "show_newsletter": true,
+        "email_placeholder": "Enter your email",
+        "shop_column_title": "Shop",
+        "help_column_title": "Help",
+        "community_column_title": "Our Community",
+        "copyright_text": "© 2026 SmoothSpine. All Rights Reserved.",
+        "color_bg": "#02183b",
+        "color_white": "#fafcfe",
+        "color_light_blue": "#bcd3f6",
+        "color_input_bg": "rgba(250, 252, 254, 0.08)",
+        "color_divider": "rgba(250, 252, 251, 0.1)",
+        "color_subscribe_btn_bg": "#bcd3f6",
+        "color_social_bg": "rgba(250, 252, 254, 0.08)",
+        "column_title_font_size": 16,
+        "body_font_size": 14,
+        "copyright_font_size": 14,
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_horizontal": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "column_gap": 64,
+        "sections_gap": 40,
+        "border_radius_section": 24,
+        "border_radius_section_mobile": 16,
+        "border_radius_input": 8,
+        "border_radius_button": 4,
+        "newsletter_max_width": 325,
+        "social_icon_size": 48,
+        "payment_icon_width": 35,
+        "payment_icon_height": 24,
+        "max_width": 1400
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -45,6 +178,7 @@
         "links",
         "text"
       ],
+      "disabled": true,
       "settings": {
         "show_social_media": true,
         "show_payment_icons": true,
@@ -58,6 +192,7 @@
     }
   },
   "order": [
+    "maison_footer_PrXfKf",
     "footer"
   ]
 }
