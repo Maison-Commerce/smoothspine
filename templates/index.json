@@ -680,6 +680,7 @@
           "type": "gift_item",
           "settings": {
             "badge_text": "FREE $29",
+            "image": "shopify://shop_images/dc43829b1674bae58a96a2b9dbbd09fbe430dfc2.png",
             "label": "Back pain & Sciatica Guide"
           }
         },
@@ -687,6 +688,7 @@
           "type": "gift_item",
           "settings": {
             "badge_text": "FREE $20",
+            "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
             "label": "12x Back Pain Relief Patches"
           }
         },
@@ -694,6 +696,7 @@
           "type": "gift_item",
           "settings": {
             "badge_text": "FREE $15",
+            "image": "shopify://shop_images/065b619786c92ea90a4ca80d38ede506276401d8.png",
             "label": "Zip Lock Travel Bag"
           }
         },
@@ -705,7 +708,8 @@
             "badge_label": "EXPERT ENDORSED",
             "quote": "After 18 years treating patients with chronic back pain and sciatica, I know one thing for certain: recovery happens at home, not in a clinic.\n\nThe SmoothSpine Triple Fusion Massager is the first at-home device I recommend with confidence — it combines decompression, massage, and heat in a single 15-minute session, and for patients dealing with nerve compression, disc stiffness, or that locked-up morning feeling, it genuinely fills the gap between clinical visits and daily relief.",
             "author_name": "Dr. Blane Schilling",
-            "author_role": "Licensed Physical Therapist"
+            "author_role": "Licensed Physical Therapist",
+            "image": "shopify://shop_images/5c0b920f0ebab86769e2a7b32aa4f3b4b82fe02b.png"
           }
         },
         "endorsement_PrdgAb": {
@@ -767,33 +771,34 @@
         "cta_link": "",
         "show_cta_note": true,
         "cta_note": "Note: Not Available on Amazon or eBay",
+        "offer_image": "shopify://shop_images/e145c8657a0ce71caabd4bdcd69218a3f7cd9ff7.png",
         "show_authority_block": true,
         "show_trust_block": true,
         "wave_offer_to_authority": "shopify://shop_images/banner-wave-top.svg",
         "wave_top_authority": "shopify://shop_images/banner-wave-bottom.svg",
         "wave_authority_to_trust": "shopify://shop_images/mc-home-wave-rt-bottom.svg",
         "wave_top_trust": "shopify://shop_images/mc-home-wave-rt-top.svg",
-        "color_bg_outer": "#FDFCFA",
-        "color_bg_offer": "#F8F4EE",
-        "color_bg_authority": "#E5EEFB",
-        "color_bg_trust": "#F8F4EE",
-        "color_text_primary": "#102A43",
-        "color_text_secondary": "#4A5D6E",
-        "color_highlight": "#F07E3B",
-        "color_accent": "#065BDC",
+        "color_bg_outer": "#fdfcfa",
+        "color_bg_offer": "#f8f4ee",
+        "color_bg_authority": "#e5eefb",
+        "color_bg_trust": "#f8f4ee",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_highlight": "#f07e3b",
+        "color_accent": "#065bdc",
         "color_divider": "#424140",
-        "color_btn_bg": "#F07E3B",
-        "color_btn_border": "#BF642F",
-        "color_btn_text": "#FFFCFB",
-        "color_gift_bg": "#EEEAE5",
-        "color_gift_border": "#065BDC",
-        "color_gift_badge_bg": "#065BDC",
-        "color_gift_badge_text": "#FAFCFE",
-        "color_trust_icon_bg": "#FAFCFE",
-        "color_trust_icon_border": "#065BDC",
-        "color_trust_divider": "#C5C2BD",
-        "color_tab_active": "#065BDC",
-        "color_expert_badge": "#065BDC",
+        "color_btn_bg": "#f07e3b",
+        "color_btn_border": "#bf642f",
+        "color_btn_text": "#fffcfb",
+        "color_gift_bg": "#eeeae5",
+        "color_gift_border": "#065bdc",
+        "color_gift_badge_bg": "#065bdc",
+        "color_gift_badge_text": "#fafcfe",
+        "color_trust_icon_bg": "#fafcfe",
+        "color_trust_icon_border": "#065bdc",
+        "color_trust_divider": "#c5c2bd",
+        "color_tab_active": "#065bdc",
+        "color_expert_badge": "#065bdc",
         "heading_font_size": 32,
         "heading_font_size_mobile": 26,
         "subtext_font_size": 18,
