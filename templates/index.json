@@ -623,18 +623,18 @@
         "heading_colored": "3 Simple Steps To Relieve",
         "button_label": "Get Started, Shop Now",
         "button_link": "",
-        "color_button_bg": "#F07E3B",
-        "color_button_border": "#BF642F",
-        "color_button_text": "#FFFCFB",
+        "color_button_bg": "#f07e3b",
+        "color_button_border": "#bf642f",
+        "color_button_text": "#fffcfb",
         "heading_dark": "Sciatica And Back Pain",
         "color_bg_top": "#e5eefb",
         "color_bg_bottom": "#fdfcfa",
-        "color_brand": "#065BDC",
-        "color_text_primary": "#102A43",
-        "color_text_secondary": "#4A5D6E",
-        "color_card_bg": "#FFFFFC",
-        "color_card_text_bg": "#FFFFFF",
-        "color_badge_text": "#FAFCFE",
+        "color_brand": "#065bdc",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_card_bg": "#fffffc",
+        "color_card_text_bg": "#ffffff",
+        "color_badge_text": "#fafcfe",
         "heading_font_size": 32,
         "heading_font_size_mobile": 24,
         "badge_font_size": 16,
@@ -653,6 +653,174 @@
         "badge_height": 48,
         "heading_max_width": 600,
         "max_width": 1400
+      }
+    },
+    "maison_offer_auth_x8yHUt": {
+      "type": "maison-offer-auth",
+      "blocks": {
+        "checklist_item_GTW3Vr": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "90-Day Results or Refund Guarantee"
+          }
+        },
+        "checklist_item_dahxQm": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "60% OFF - SmoothSpine Massager (All-Inclusive treatment kit)"
+          }
+        },
+        "checklist_item_868qn7": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Fast & FREE Shipping"
+          }
+        },
+        "gift_item_gMYUyR": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $29",
+            "label": "Back pain & Sciatica Guide"
+          }
+        },
+        "gift_item_GaMkAy": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $20",
+            "label": "12x Back Pain Relief Patches"
+          }
+        },
+        "gift_item_VRyaqH": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $15",
+            "label": "Zip Lock Travel Bag"
+          }
+        },
+        "endorsement_WNRKPL": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Blane Schilling",
+            "title": "Endorsed by Dr. Blane Schilling",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "After 18 years treating patients with chronic back pain and sciatica, I know one thing for certain: recovery happens at home, not in a clinic.\n\nThe SmoothSpine Triple Fusion Massager is the first at-home device I recommend with confidence — it combines decompression, massage, and heat in a single 15-minute session, and for patients dealing with nerve compression, disc stiffness, or that locked-up morning feeling, it genuinely fills the gap between clinical visits and daily relief.",
+            "author_name": "Dr. Blane Schilling",
+            "author_role": "Licensed Physical Therapist"
+          }
+        },
+        "endorsement_PrdgAb": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Adam Story",
+            "title": "Endorsed by Dr. Adam Story",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "As a chiropractor, I've seen how daily spinal decompression and targeted heat therapy can accelerate recovery. The SmoothSpine Massager delivers exactly that — conveniently at home.",
+            "author_name": "Dr. Adam Story",
+            "author_role": "Licensed Chiropractor"
+          }
+        },
+        "trust_item_Tbeqiw": {
+          "type": "trust_item",
+          "settings": {
+            "heading": "90-DAY MONEY BACK GUARANTEE",
+            "description": "If you're not thrilled, we will refund your investment. No hassle."
+          }
+        },
+        "trust_item_KDKD9F": {
+          "type": "trust_item",
+          "settings": {
+            "heading": "FREE SHIPPING",
+            "description": "We provide fast shipping on all orders. Enjoy free shipping on orders over $60."
+          }
+        },
+        "trust_item_piyLNm": {
+          "type": "trust_item",
+          "settings": {
+            "heading": "GUARANTEED HIGH QUALITY",
+            "description": "Made of high quality materials. Enjoy consistent, trouble-free performance for a long time."
+          }
+        }
+      },
+      "block_order": [
+        "checklist_item_GTW3Vr",
+        "checklist_item_dahxQm",
+        "checklist_item_868qn7",
+        "gift_item_gMYUyR",
+        "gift_item_GaMkAy",
+        "gift_item_VRyaqH",
+        "endorsement_WNRKPL",
+        "endorsement_PrdgAb",
+        "trust_item_Tbeqiw",
+        "trust_item_KDKD9F",
+        "trust_item_piyLNm"
+      ],
+      "name": "Offer Authority Trust",
+      "settings": {
+        "show_offer_block": true,
+        "show_rating_badge": true,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_badge": true,
+        "offer_heading": "<em><u>Special Offer</u></em> On Now!",
+        "offer_subtext": "Try Your SmoothSpine Massager NOW <u>Risk-Free</u> at an All Time Low Price! Act Now and You'll Get:",
+        "gifts_heading": "Exclusive Offer! Order today for free gifts (valued at $64)!",
+        "cta_label": "GET 60% OFF TODAY ONLY!",
+        "cta_link": "",
+        "show_cta_note": true,
+        "cta_note": "Note: Not Available on Amazon or eBay",
+        "show_authority_block": true,
+        "show_trust_block": true,
+        "color_bg_outer": "#FDFCFA",
+        "color_bg_offer": "#F8F4EE",
+        "color_bg_authority": "#E5EEFB",
+        "color_bg_trust": "#F8F4EE",
+        "color_text_primary": "#102A43",
+        "color_text_secondary": "#4A5D6E",
+        "color_highlight": "#F07E3B",
+        "color_accent": "#065BDC",
+        "color_divider": "#424140",
+        "color_btn_bg": "#F07E3B",
+        "color_btn_border": "#BF642F",
+        "color_btn_text": "#FFFCFB",
+        "color_gift_bg": "#EEEAE5",
+        "color_gift_border": "#065BDC",
+        "color_gift_badge_bg": "#065BDC",
+        "color_gift_badge_text": "#FAFCFE",
+        "color_trust_icon_bg": "#FAFCFE",
+        "color_trust_icon_border": "#065BDC",
+        "color_trust_divider": "#C5C2BD",
+        "color_tab_active": "#065BDC",
+        "color_expert_badge": "#065BDC",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 26,
+        "subtext_font_size": 18,
+        "subtext_font_size_mobile": 16,
+        "checklist_font_size": 16,
+        "endorsement_title_font_size": 24,
+        "endorsement_title_font_size_mobile": 20,
+        "quote_font_size": 18,
+        "quote_font_size_mobile": 16,
+        "trust_heading_font_size": 18,
+        "trust_body_font_size": 14,
+        "btn_font_size": 16,
+        "badge_font_size": 10,
+        "tab_font_size": 14,
+        "tab_font_size_mobile": 12,
+        "rating_font_size": 12,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "padding_x": 80,
+        "padding_x_mobile": 16,
+        "max_width": 1400,
+        "block_padding_x": 64,
+        "block_padding_y": 48,
+        "column_gap": 64,
+        "block_border_radius": 16,
+        "image_border_radius": 8,
+        "btn_border_radius": 8,
+        "gift_border_radius": 8,
+        "trust_icon_border_radius": 8
       }
     },
     "section-15": {
@@ -781,6 +949,7 @@
     "maison_before_after_JNUeiP",
     "maison_ugc_section_qiCzY3",
     "maison_how_it_work_njJCj8",
+    "maison_offer_auth_x8yHUt",
     "section-15"
   ]
 }
