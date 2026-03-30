@@ -81,14 +81,16 @@
           "type": "social_link",
           "settings": {
             "label": "Instagram",
-            "link": ""
+            "link": "",
+            "icon": "shopify://shop_images/inst-blue-logo.svg"
           }
         },
         "social_link_JLQwQY": {
           "type": "social_link",
           "settings": {
             "label": "Facebook",
-            "link": ""
+            "link": "",
+            "icon": "shopify://shop_images/face-blue-logo.svg"
           }
         }
       },
