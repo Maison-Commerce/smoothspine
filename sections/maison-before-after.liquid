@@ -221,34 +221,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
     width: 100%;
     height: {{ section.settings.button_height }}px;
     background-color: var(--ba-color-btn-bg);
     border: none;
     border-bottom: 4px solid var(--ba-color-btn-border);
     border-radius: var(--ba-radius-sm);
-    padding: 16px 32px;
     cursor: pointer;
     text-decoration: none;
-    overflow: hidden;
-    position: relative;
-    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.2s;
   }
 
-  #shopify-section-{{ section.id }} .ba-btn:active {
-    transform: scale(0.96);
+  #shopify-section-{{ section.id }} .ba-btn:hover {
+    opacity: 0.9;
   }
 
-  #shopify-section-{{ section.id }} .ba-btn-text-wrap {
-    position: relative;
-    overflow: hidden;
-    height: 24px;
-    display: flex;
-    align-items: center;
-  }
-
-  #shopify-section-{{ section.id }} .ba-btn-label {
+  #shopify-section-{{ section.id }} .ba-btn span {
     font-family: var(--ba-font-heading);
     font-weight: 800;
     font-size: var(--ba-font-size-btn);
@@ -257,34 +245,6 @@
     text-transform: uppercase;
     color: var(--ba-color-btn-text);
     white-space: nowrap;
-    display: block;
-    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1), opacity 350ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  #shopify-section-{{ section.id }} .ba-btn-label-clone {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    font-family: var(--ba-font-heading);
-    font-weight: 800;
-    font-size: var(--ba-font-size-btn);
-    line-height: 1.5;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--ba-color-btn-text);
-    white-space: nowrap;
-    display: block;
-    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1), opacity 350ms cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  #shopify-section-{{ section.id }} .ba-btn:hover .ba-btn-label {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-
-  #shopify-section-{{ section.id }} .ba-btn:hover .ba-btn-label-clone {
-    transform: translateY(-100%);
-    opacity: 1;
   }
 
   /* Mobile < 768px */
@@ -327,8 +287,8 @@
       height: 44px;
     }
 
-    #shopify-section-{{ section.id }} .ba-btn-text-wrap {
-      height: 21px;
+    #shopify-section-{{ section.id }} .ba-btn span {
+      font-size: var(--ba-font-size-btn);
     }
   }
 {% endstyle %}
@@ -419,10 +379,7 @@
               {% endif %}
               class="ba-btn"
             >
-              <span class="ba-btn-text-wrap">
-                <span class="ba-btn-label">{{ section.settings.button_label }}</span>
-                <span class="ba-btn-label-clone" aria-hidden="true">{{ section.settings.button_label }}</span>
-              </span>
+              <span>{{ section.settings.button_label }}</span>
             </a>
           </div>
         {% endif %}
