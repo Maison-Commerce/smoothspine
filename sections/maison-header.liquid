@@ -450,6 +450,10 @@
     display: block;
   }
 
+  #shopify-section-{{ section.id }} .drawer-footer-login-wrap {
+    cursor: pointer;
+  }
+
   #shopify-section-{{ section.id }} .drawer-footer-login {
     font-family: var(--s-font-heading);
     font-size: 12px;
@@ -457,6 +461,8 @@
     text-transform: uppercase;
     text-decoration: underline;
     color: var(--s-color-primary);
+    letter-spacing: 1px;
+    cursor: pointer;
   }
 
   /* ── Mobile drawer overrides ── */
@@ -464,8 +470,8 @@
     display: none;
   }
 
-  @media screen and (max-width: 767px) {
-    /* Swap header layouts */
+  /* Header switches to mobile at 1100px */
+  @media screen and (max-width: 1100px) {
     #shopify-section-{{ section.id }} .header-bar {
       display: none;
     }
@@ -473,16 +479,19 @@
       display: flex;
       position: relative;
     }
+  }
 
-    /* Drawer: slide from bottom */
+  /* Drawer switches to mobile (bottom sheet) at 768px */
+  @media screen and (max-width: 768px) {
     #shopify-section-{{ section.id }} .drawer-panel {
       top: auto;
       bottom: 0;
       left: 0;
       right: 0;
       width: 100%;
-      max-height: 600px;
-      height: auto;
+      height: 85vh;
+      min-height: 45vh;
+      max-height: 85vh;
       border-radius: 16px 16px 0 0;
     }
 
@@ -694,18 +703,19 @@
         @click.outside="drawerOpen = false"
         style="display: none;"
       >
-        {%- comment -%} Drag bar (mobile only) — swipe down to close {%- endcomment -%}
+        {%- comment -%} Drag bar (mobile only) — drag to resize {%- endcomment -%}
         <div class="drawer-drag-bar"
           @touchstart.passive="$el._startY = $event.touches[0].clientY; $el._startH = $el.closest('.drawer-panel').offsetHeight"
           @touchmove.passive="
             let dy = $event.touches[0].clientY - $el._startY;
-            if (dy > 0) { $el.closest('.drawer-panel').style.height = ($el._startH - dy) + 'px'; }
-          "
-          @touchend="
             let panel = $el.closest('.drawer-panel');
-            if (parseInt(panel.style.height) < 200) { drawerOpen = false; }
-            panel.style.height = '';
+            let newH = $el._startH - dy;
+            let minH = window.innerHeight * 0.45;
+            let maxH = window.innerHeight * 0.85;
+            newH = Math.max(minH, Math.min(maxH, newH));
+            panel.style.height = newH + 'px';
           "
+          @touchend=""
         >
           <div class="drawer-drag-indicator"></div>
         </div>
@@ -832,10 +842,12 @@
               {%- endif -%}
             {%- endfor -%}
           </div>
-          {%- if section.settings.login_text != blank -%}
-            <a href="{{ section.settings.login_link }}" class="drawer-footer-login">
-              {{ section.settings.login_text }}
-            </a>
+          {%- if shop.customer_accounts_enabled -%}
+            <shopify-account class="drawer-footer-login-wrap">
+              <div slot="signed-out-avatar" class="drawer-footer-login">
+                {{ section.settings.login_text | default: 'Login to account' }}
+              </div>
+            </shopify-account>
           {%- endif -%}
         </div>
       </div>
