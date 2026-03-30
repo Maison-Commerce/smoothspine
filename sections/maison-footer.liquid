@@ -583,7 +583,7 @@
               <line x1="0" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.5"/>
             </svg>
           </button>
-          <div class="footer-accordion-content" x-show="shopOpen" x-collapse>
+          <div class="footer-accordion-content" x-show="shopOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
             <ul class="footer-links">
               {% for block in shop_links %}
                 <li {{ block.shopify_attributes }}>
@@ -608,7 +608,7 @@
               <line x1="0" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.5"/>
             </svg>
           </button>
-          <div class="footer-accordion-content" x-show="helpOpen" x-collapse>
+          <div class="footer-accordion-content" x-show="helpOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
             <ul class="footer-links">
               {% for block in help_links %}
                 <li {{ block.shopify_attributes }}>
