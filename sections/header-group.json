@@ -25,6 +25,7 @@
       "block_order": [
         "message"
       ],
+      "disabled": true,
       "settings": {
         "enable_sticky": false,
         "show_on_homepage_only": false,
@@ -63,6 +64,30 @@
         "reduce_padding": false,
         "background_opacity": 100,
         "background_blur_radius": 0
+      }
+    },
+    "maison_announcement_yz9qTb": {
+      "type": "maison-announcement",
+      "name": "Announcement Bar",
+      "settings": {
+        "text": "Valentine Sale | 90-Day Guarantee",
+        "enable_link": false,
+        "bar_link": "",
+        "show_icon": true,
+        "icon_image": "shopify://shop_images/Discount-Percent-Circle--Streamline-Flex.svg",
+        "color_background": "#065BDC",
+        "color_text": "#FAFCFE",
+        "font_size": 12,
+        "font_size_mobile": 12,
+        "letter_spacing": 1,
+        "padding_vertical": 8,
+        "padding_horizontal": 80,
+        "padding_vertical_mobile": 8,
+        "padding_horizontal_mobile": 16,
+        "icon_size": 20,
+        "icon_size_mobile": 16,
+        "icon_gap": 8,
+        "max_width": 1400
       }
     },
     "maison_header_h9REXH": {
@@ -217,8 +242,6 @@
         "featured_button_label": "SEE #1 BACK PAIN BESTSELLER",
         "featured_button_link": "",
         "shop_accordion_title": "Shop by your pain",
-        "login_text": "Login to account",
-        "login_link": "",
         "enable_sticky": true,
         "hide_on_scroll": false
       }
@@ -227,6 +250,7 @@
   "order": [
     "announcement-bar",
     "header",
+    "maison_announcement_yz9qTb",
     "maison_header_h9REXH"
   ]
 }
