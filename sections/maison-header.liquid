@@ -43,6 +43,8 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    background-color: var(--s-color-white);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   #shopify-section-{{ section.id }} .maisoncode_Header *,
@@ -67,13 +69,12 @@
 
   /* ── Header bar ── */
   #shopify-section-{{ section.id }} .header-bar {
-    background-color: var(--s-color-white);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
     padding: 20px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     max-width: 1440px;
+    margin: 0 auto;
   }
 
   #shopify-section-{{ section.id }} .header-left {
