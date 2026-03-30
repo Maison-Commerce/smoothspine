@@ -471,24 +471,15 @@
         nextEl: '#shopify-section-' + sectionId + ' .ugc-next-' + sectionId,
       },
       on: {
-        init: function () {
-          updateProgress(this);
-        },
-        slideChange: function () {
-          updateProgress(this);
+        progress: function (swiper, progress) {
+          if (!progressFill) return;
+          var clampedProgress = Math.max(0, Math.min(1, progress));
+          var minWidth = 5;
+          var fillWidth = minWidth + clampedProgress * (100 - minWidth);
+          progressFill.style.width = fillWidth + '%';
         },
       },
     });
-
-    function updateProgress(swiper) {
-      if (!progressFill) return;
-      var totalSlides = swiper.slides.length;
-      var progress = swiper.progress;
-      var fillWidth = (progress * 100);
-      if (progress === 0) fillWidth = (1 / totalSlides) * 100;
-      if (progress >= 1) fillWidth = 100;
-      progressFill.style.width = fillWidth + '%';
-    }
   });
 </script>
 
