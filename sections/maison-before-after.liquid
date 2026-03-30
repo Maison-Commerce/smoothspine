@@ -1,0 +1,824 @@
+{% comment %}
+  Section: Before After Pain Points
+  Description: Two-column layout with a before/after image on the left
+    and a subheading, heading, pain-point checklist, and CTA button on the right.
+    Responsive: stacks vertically on mobile. Ideal for product landing pages
+    to highlight relatable customer pain points and drive conversions.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings), 'Open Sans' (body) — must be loaded by the theme or via @import
+
+  Blocks:
+  - pain_point: Individual pain point with icon and text (limit: 10)
+
+  Notes:
+  - Image uses aspect-ratio 1:1 with shimmer skeleton loader preserved via CSS animation
+  - Button has hover text-slide animation preserved
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_before-after
+  - Icon images on blocks use image_picker; falls back to a default error-style icon SVG
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_before-after {
+    --ba-color-bg: {{ section.settings.color_background }};
+    --ba-color-brand-blue: {{ section.settings.color_subheading }};
+    --ba-color-text-primary: {{ section.settings.color_heading }};
+    --ba-color-text-secondary: {{ section.settings.color_body_text }};
+    --ba-color-btn-bg: {{ section.settings.color_button_bg }};
+    --ba-color-btn-border: {{ section.settings.color_button_border }};
+    --ba-color-btn-text: {{ section.settings.color_button_text }};
+    --ba-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --ba-font-body: 'Open Sans', sans-serif;
+    --ba-radius-md: {{ section.settings.image_border_radius }}px;
+    --ba-radius-sm: {{ section.settings.button_border_radius }}px;
+    --ba-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --ba-font-size-subheading: {{ section.settings.subheading_font_size }}px;
+    --ba-font-size-body: {{ section.settings.body_font_size }}px;
+    --ba-font-size-btn: {{ section.settings.button_font_size }}px;
+    --ba-padding-top: {{ section.settings.padding_top }}px;
+    --ba-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --ba-gap-columns: {{ section.settings.column_gap }}px;
+    --ba-gap-list: {{ section.settings.list_gap }}px;
+    --ba-max-width: {{ section.settings.max_width }}px;
+    --ba-container-padding: {{ section.settings.container_padding }}px;
+
+    background-color: var(--ba-color-bg);
+    padding: var(--ba-padding-top) 0 var(--ba-padding-bottom);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_before-after *,
+  #shopify-section-{{ section.id }} .maisoncode_before-after *::before,
+  #shopify-section-{{ section.id }} .maisoncode_before-after *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ba-container {
+    max-width: var(--ba-max-width);
+    margin: 0 auto;
+    padding: 0 var(--ba-container-padding);
+    display: flex;
+    align-items: center;
+    gap: var(--ba-gap-columns);
+  }
+
+  /* Image Column */
+  #shopify-section-{{ section.id }} .ba-image-col {
+    flex: 1;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ba-img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: {{ section.settings.image_aspect_ratio }};
+    border-radius: var(--ba-radius-md);
+    overflow: hidden;
+    background: #d8d4cf;
+  }
+
+  #shopify-section-{{ section.id }} .ba-img-skeleton {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+    background-size: 200% 100%;
+    animation: ba-shimmer-{{ section.id }} 1.5s ease-in-out infinite;
+    border-radius: var(--ba-radius-md);
+    z-index: 0;
+  }
+
+  @keyframes ba-shimmer-{{ section.id }} {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  #shopify-section-{{ section.id }} .ba-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--ba-radius-md);
+    position: relative;
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .ba-img-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+    gap: 8px;
+    z-index: 1;
+  }
+
+  #shopify-section-{{ section.id }} .ba-img-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+  }
+
+  /* Text Column */
+  #shopify-section-{{ section.id }} .ba-text-col {
+    flex: 1;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ba-text-inner {
+    padding: {{ section.settings.text_inner_padding_v }}px {{ section.settings.text_inner_padding_h }}px;
+    display: flex;
+    flex-direction: column;
+    gap: {{ section.settings.text_inner_gap }}px;
+  }
+
+  #shopify-section-{{ section.id }} .ba-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ba-subheading {
+    font-family: var(--ba-font-heading);
+    font-weight: 800;
+    font-size: var(--ba-font-size-subheading);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ba-color-brand-blue);
+  }
+
+  #shopify-section-{{ section.id }} .ba-heading {
+    font-family: var(--ba-font-heading);
+    font-weight: 800;
+    font-size: var(--ba-font-size-heading);
+    line-height: 1.5;
+    color: var(--ba-color-text-primary);
+    text-transform: capitalize;
+  }
+
+  /* List */
+  #shopify-section-{{ section.id }} .ba-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ba-gap-list);
+    list-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .ba-list-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .ba-list-icon-wrap {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .ba-list-icon-wrap img {
+    position: absolute;
+    inset: 8.33%;
+    width: 83.34%;
+    height: 83.34%;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ba-list-icon-wrap svg {
+    position: absolute;
+    inset: 8.33%;
+    width: 83.34%;
+    height: 83.34%;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ba-list-text {
+    font-family: var(--ba-font-body);
+    font-weight: 600;
+    font-size: var(--ba-font-size-body);
+    line-height: 1.5;
+    color: var(--ba-color-text-secondary);
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Button */
+  #shopify-section-{{ section.id }} .ba-btn-wrap {
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ba-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: {{ section.settings.button_height }}px;
+    background-color: var(--ba-color-btn-bg);
+    border: none;
+    border-bottom: 4px solid var(--ba-color-btn-border);
+    border-radius: var(--ba-radius-sm);
+    padding: 16px 32px;
+    cursor: pointer;
+    text-decoration: none;
+    overflow: hidden;
+    position: relative;
+    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #shopify-section-{{ section.id }} .ba-btn:active {
+    transform: scale(0.96);
+  }
+
+  #shopify-section-{{ section.id }} .ba-btn-text-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .ba-btn-label {
+    font-family: var(--ba-font-heading);
+    font-weight: 800;
+    font-size: var(--ba-font-size-btn);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ba-color-btn-text);
+    white-space: nowrap;
+    display: block;
+    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1), opacity 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #shopify-section-{{ section.id }} .ba-btn-label-clone {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    font-family: var(--ba-font-heading);
+    font-weight: 800;
+    font-size: var(--ba-font-size-btn);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ba-color-btn-text);
+    white-space: nowrap;
+    display: block;
+    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1), opacity 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #shopify-section-{{ section.id }} .ba-btn:hover .ba-btn-label {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ba-btn:hover .ba-btn-label-clone {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+
+  /* Mobile < 768px */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_before-after {
+      --ba-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --ba-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --ba-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
+      --ba-font-size-body: {{ section.settings.body_font_size_mobile }}px;
+      --ba-font-size-btn: {{ section.settings.button_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .ba-container {
+      flex-direction: column;
+      padding: 0 20px;
+      gap: 32px;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .ba-image-col {
+      width: 100%;
+      max-width: 335px;
+    }
+
+    #shopify-section-{{ section.id }} .ba-text-col {
+      width: 100%;
+      max-width: 335px;
+    }
+
+    #shopify-section-{{ section.id }} .ba-text-inner {
+      padding: 0;
+      gap: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .ba-btn-wrap {
+      margin-top: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .ba-btn {
+      height: 44px;
+    }
+
+    #shopify-section-{{ section.id }} .ba-btn-text-wrap {
+      height: 21px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_before-after">
+  <div class="ba-container">
+
+    {%- comment -%} Image Column {%- endcomment -%}
+    <div class="ba-image-col">
+      <div class="ba-img-wrapper">
+        <div class="ba-img-skeleton" aria-hidden="true"></div>
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 1200 | image_tag:
+            class: 'ba-main-img',
+            loading: 'lazy',
+            widths: '375, 550, 750, 1000, 1200',
+            sizes: '(max-width: 767px) 100vw, 50vw'
+          }}
+        {% else %}
+          <div class="ba-img-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>{{ section.settings.image_placeholder_text }}</span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {%- comment -%} Text Column {%- endcomment -%}
+    <div class="ba-text-col">
+      <div class="ba-text-inner">
+        <header class="ba-header">
+          {% if section.settings.subheading != blank %}
+            <p class="ba-subheading">{{ section.settings.subheading }}</p>
+          {% endif %}
+          {% if section.settings.heading != blank %}
+            <h2 class="ba-heading">{{ section.settings.heading }}</h2>
+          {% endif %}
+        </header>
+
+        {%- comment -%} Pain Points List (Blocks) {%- endcomment -%}
+        {% if section.blocks.size > 0 %}
+          <ul class="ba-list">
+            {% for block in section.blocks %}
+              {% if block.type == 'pain_point' %}
+                <li class="ba-list-item" {{ block.shopify_attributes }}>
+                  <span class="ba-list-icon-wrap" aria-hidden="true">
+                    {% if block.settings.icon != blank %}
+                      {{ block.settings.icon | image_url: width: 48 | image_tag:
+                        loading: 'lazy',
+                        widths: '24, 48'
+                      }}
+                    {% else %}
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.color_icon_fallback }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="15" y1="9" x2="9" y2="15"/>
+                        <line x1="9" y1="9" x2="15" y2="15"/>
+                      </svg>
+                    {% endif %}
+                  </span>
+                  {% if block.settings.text != blank %}
+                    <p class="ba-list-text">{{ block.settings.text }}</p>
+                  {% endif %}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {%- comment -%} CTA Button {%- endcomment -%}
+        {% if section.settings.button_label != blank %}
+          <div class="ba-btn-wrap">
+            <a
+              {% if section.settings.button_link != blank %}
+                href="{{ section.settings.button_link }}"
+              {% endif %}
+              class="ba-btn"
+            >
+              <span class="ba-btn-text-wrap">
+                <span class="ba-btn-label">{{ section.settings.button_label }}</span>
+                <span class="ba-btn-label-clone" aria-hidden="true">{{ section.settings.button_label }}</span>
+              </span>
+            </a>
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Before After Pain Points",
+  "tag": "section",
+  "class": "before-after-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "You're in the right place if\u2026"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Sound Familiar?"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "GET 60% OFF TODAY ONLY!"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_placeholder_text",
+      "label": "Image placeholder text",
+      "default": "Before and After image"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        { "value": "1 / 1", "label": "1:1 (Square)" },
+        { "value": "3 / 4", "label": "3:4 (Portrait)" },
+        { "value": "4 / 5", "label": "4:5 (Tall)" },
+        { "value": "16 / 9", "label": "16:9 (Wide)" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_subheading",
+      "label": "Subheading text",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_body_text",
+      "label": "Body text",
+      "default": "#4A5D6E"
+    },
+    {
+      "type": "color",
+      "id": "color_icon_fallback",
+      "label": "Fallback icon color",
+      "default": "#F04438"
+    },
+    {
+      "type": "color",
+      "id": "color_button_bg",
+      "label": "Button background",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_button_border",
+      "label": "Button border",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_button_text",
+      "label": "Button text",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_size",
+      "label": "Subheading font size",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "body_font_size",
+      "label": "Body font size (desktop)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "label": "Body font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button font size (desktop)",
+      "min": 10,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_font_size_mobile",
+      "label": "Button font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap",
+      "min": 16,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "list_gap",
+      "label": "Space between list items",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_inner_gap",
+      "label": "Content area gap",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "text_inner_padding_v",
+      "label": "Content vertical padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "text_inner_padding_h",
+      "label": "Content horizontal padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_height",
+      "label": "Button height (desktop)",
+      "min": 36,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "container_padding",
+      "label": "Container side padding",
+      "min": 16,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pain_point",
+      "name": "Pain point",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Describe a pain point your customer relates to."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Before After Pain Points",
+      "blocks": [
+        {
+          "type": "pain_point",
+          "settings": {
+            "text": "You\u2019ve done chiro, PT, injections, and woke up in the same pain the next morning"
+          }
+        },
+        {
+          "type": "pain_point",
+          "settings": {
+            "text": "You\u2019ve spent $3,000+ and your spine still feels like it\u2019s being crushed"
+          }
+        },
+        {
+          "type": "pain_point",
+          "settings": {
+            "text": "You cancel plans because you can\u2019t predict how bad it\u2019ll be that day"
+          }
+        },
+        {
+          "type": "pain_point",
+          "settings": {
+            "text": "You map every trip around where you can sit down within 10 minutes"
+          }
+        },
+        {
+          "type": "pain_point",
+          "settings": {
+            "text": "Surgery terrifies you, but you\u2019re starting to think it\u2019s the only option left"
+          }
+        },
+        {
+          "type": "pain_point",
+          "settings": {
+            "text": "You just want to feel normal again. Not fixed. Just normal."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
