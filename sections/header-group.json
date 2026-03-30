@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header group",
@@ -8,7 +17,8 @@
         "message": {
           "type": "message",
           "settings": {
-            "text": "Announce something here"
+            "text": "Announce something here",
+            "url": ""
           }
         }
       },
@@ -17,15 +27,20 @@
       ],
       "settings": {
         "enable_sticky": false,
-        "text_size": "text-xs",
+        "show_on_homepage_only": false,
         "navigation_mode": "scrolling",
+        "autoplay": false,
+        "cycle_speed": 6,
         "scrolling_speed": 10,
+        "text_size": "text-xs",
         "background": "#1a1a1a",
+        "background_gradient": "",
         "text_color": "#ffffff"
       }
     },
     "header": {
       "type": "header",
+      "disabled": true,
       "settings": {
         "enable_sticky": true,
         "hide_on_scroll": false,
@@ -33,10 +48,15 @@
         "logo_max_width": 120,
         "logo_mobile_max_width": 100,
         "menu": "main-menu",
+        "sidebar_menu": "",
+        "secondary_menu": "",
+        "customer_account_menu": "customer-account-main-menu",
         "menu_open_trigger": "click",
         "opening_from": "bottom",
         "layout": "logo_left_navigation_center",
         "show_social_media": true,
+        "show_locale_selector": true,
+        "show_country_selector": true,
         "show_country_flag": true,
         "show_country_name": false,
         "transparent_header_text_color": "#ffffff",
