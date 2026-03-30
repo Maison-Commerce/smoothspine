@@ -558,6 +558,8 @@
   }
 {% endstyle %}
 
+<script src="//unpkg.com/alpinejs" defer></script>
+
 <div class="maisoncode_Header" x-data="{ drawerOpen: false, shopOpen: false }">
 <height-observer variable="header">
   <store-header {% if section.settings.hide_on_scroll %}hide-on-scroll="100"{% endif %} {% if section.settings.enable_sticky %}sticky{% endif %}>
@@ -675,33 +677,20 @@
 </height-observer>
 
   {%- comment -%} ════ DRAWER ════ {%- endcomment -%}
-  <template x-if="drawerOpen">
-    <div>
       {%- comment -%} Backdrop {%- endcomment -%}
       <div
         class="drawer-backdrop"
-        @click="drawerOpen = false"
         x-show="drawerOpen"
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="opacity-0"
-        x-transition:enter-end="opacity-100"
-        x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="opacity-100"
-        x-transition:leave-end="opacity-0"
-        style="opacity: 1;"
+        @click="drawerOpen = false"
+        style="display: none;"
       ></div>
 
       {%- comment -%} Panel {%- endcomment -%}
       <div
         class="drawer-panel"
         x-show="drawerOpen"
-        x-transition:enter="transition ease-out duration-300"
-        x-transition:enter-start="transform -translate-x-full max-[767px]:-translate-x-0 max-[767px]:translate-y-full"
-        x-transition:enter-end="transform translate-x-0 max-[767px]:translate-y-0"
-        x-transition:leave="transition ease-in duration-200"
-        x-transition:leave-start="transform translate-x-0 max-[767px]:translate-y-0"
-        x-transition:leave-end="transform -translate-x-full max-[767px]:-translate-x-0 max-[767px]:translate-y-full"
         @click.outside="drawerOpen = false"
+        style="display: none;"
       >
         {%- comment -%} Drag bar (mobile only) {%- endcomment -%}
         <div class="drawer-drag-bar">
@@ -750,12 +739,7 @@
               <button class="drawer-accordion-header" @click="shopOpen = !shopOpen">
                 <span class="drawer-accordion-label">{{ section.settings.shop_accordion_title }}</span>
                 <span class="drawer-accordion-toggle" :class="{ 'is-open': shopOpen }">
-                  <template x-if="shopOpen">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M0.843751 7.97913L5.75708 3.06579C5.78897 3.03386 5.82683 3.00853 5.86852 2.99125C5.9102 2.97397 5.95488 2.96507 6 2.96507C6.04512 2.96507 6.0898 2.97397 6.13149 2.99125C6.17317 3.00853 6.21103 3.03386 6.24292 3.06579L11.1563 7.97913" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </template>
-                  <template x-if="!shopOpen">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </template>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="shopOpen ? 'transform: rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
               </button>
               <div x-show="shopOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
@@ -816,8 +800,6 @@
           {%- endif -%}
         </div>
       </div>
-    </div>
-  </template>
 </div>
 
 <script>
