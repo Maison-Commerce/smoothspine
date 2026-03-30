@@ -209,7 +209,9 @@
       ],
       "name": "Maison Header",
       "settings": {
-        "featured_title": "Our Bestseller\nTriple Fusion Massager",
+        "logo": "shopify://shop_images/Logo-Black.png",
+        "featured_image": "shopify://shop_images/header-menu-img.png",
+        "featured_title": "Our BestsellerTriple Fusion Massager",
         "featured_button_label": "SEE #1 BACK PAIN BESTSELLER",
         "featured_button_link": "",
         "shop_accordion_title": "Shop by your pain",
