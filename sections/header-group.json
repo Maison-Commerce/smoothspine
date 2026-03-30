@@ -243,7 +243,7 @@
         "featured_button_link": "",
         "shop_accordion_title": "Shop by your pain",
         "enable_sticky": true,
-        "hide_on_scroll": false
+        "hide_on_scroll": true
       }
     }
   },
