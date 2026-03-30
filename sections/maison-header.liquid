@@ -558,8 +558,9 @@
   }
 {% endstyle %}
 
+<div class="maisoncode_Header" x-data="{ drawerOpen: false, shopOpen: false }">
 <height-observer variable="header">
-  <store-header class="maisoncode_Header" {% if section.settings.hide_on_scroll %}hide-on-scroll="100"{% endif %} {% if section.settings.enable_sticky %}sticky{% endif %} x-data="{ drawerOpen: false, shopOpen: false }">
+  <store-header {% if section.settings.hide_on_scroll %}hide-on-scroll="100"{% endif %} {% if section.settings.enable_sticky %}sticky{% endif %}>
   {%- comment -%} ════ DESKTOP HEADER ════ {%- endcomment -%}
   <header class="header-bar">
     <div class="header-left">
@@ -669,6 +670,9 @@
       </button>
     </div>
   </header>
+
+  </store-header>
+</height-observer>
 
   {%- comment -%} ════ DRAWER ════ {%- endcomment -%}
   <template x-if="drawerOpen">
@@ -814,8 +818,7 @@
       </div>
     </div>
   </template>
-  </store-header>
-</height-observer>
+</div>
 
 <script>
   document.documentElement.style.setProperty('--header-height', Math.round(document.getElementById('shopify-section-{{ section.id }}').clientHeight) + 'px');
