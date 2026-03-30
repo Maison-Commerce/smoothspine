@@ -210,13 +210,16 @@
       "name": "Maison Header",
       "settings": {
         "logo": "shopify://shop_images/Logo-Black.png",
+        "menu": "main-menu",
         "featured_image": "shopify://shop_images/header-menu-img.png",
-        "featured_title": "Our Bestseller Triple Fusion Massager",
+        "featured_title": "<p>Our Bestseller</p><p>Triple Fusion Massager</p>",
         "featured_button_label": "SEE #1 BACK PAIN BESTSELLER",
         "featured_button_link": "",
         "shop_accordion_title": "Shop by your pain",
         "login_text": "Login to account",
-        "login_link": ""
+        "login_link": "",
+        "enable_sticky": true,
+        "hide_on_scroll": false
       }
     }
   },
