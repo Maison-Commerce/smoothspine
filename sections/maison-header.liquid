@@ -116,6 +116,14 @@
     white-space: nowrap;
   }
 
+  #shopify-section-{{ section.id }} .header-nav-item {
+    transition: opacity 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .header-nav-item:hover {
+    opacity: 0.6;
+  }
+
   #shopify-section-{{ section.id }} .header-nav-item svg {
     flex-shrink: 0;
   }
@@ -372,6 +380,25 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .drawer-accordion-body {
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .transition-accordion {
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-closed {
+    max-height: 0;
+    opacity: 0;
+  }
+
+  #shopify-section-{{ section.id }} .accordion-open {
+    max-height: 500px;
+    opacity: 1;
   }
 
   #shopify-section-{{ section.id }} .drawer-accordion-toggle svg {
@@ -786,7 +813,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="shopOpen ? 'transform: rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
               </button>
-              <div x-show="shopOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 transform -translate-y-2" x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+              <div class="drawer-accordion-body" x-show="shopOpen" x-transition:enter="transition-accordion" x-transition:enter-start="accordion-closed" x-transition:enter-end="accordion-open" x-transition:leave="transition-accordion" x-transition:leave-start="accordion-open" x-transition:leave-end="accordion-closed">
                 {%- for block in section.blocks -%}
                   {%- if block.type == 'dropdown_link' -%}
                     <a href="{{ block.settings.link }}" class="drawer-sub-item" {{ block.shopify_attributes }}>
@@ -811,7 +838,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="subOpen ? 'transform: rotate(90deg)' : ''"><path d="M4.02081 0.84375L8.93415 5.75708C8.96608 5.78897 8.99141 5.82683 9.00869 5.86852C9.02597 5.9102 9.03487 5.95488 9.03487 6C9.03487 6.04512 9.02597 6.0898 9.00869 6.13148C8.99141 6.17317 8.96608 6.21103 8.93415 6.24292L4.02081 11.1562" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                       </span>
                     </button>
-                    <div x-show="subOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" style="display: none;">
+                    <div class="drawer-accordion-body" x-show="subOpen" x-transition:enter="transition-accordion" x-transition:enter-start="accordion-closed" x-transition:enter-end="accordion-open" x-transition:leave="transition-accordion" x-transition:leave-start="accordion-open" x-transition:leave-end="accordion-closed" style="display: none;">
                       {%- for sub_link in link.links -%}
                         <a href="{{ sub_link.url }}" class="drawer-sub-item">{{ sub_link.title }}</a>
                       {%- endfor -%}
