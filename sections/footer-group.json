@@ -92,6 +92,76 @@
             "link": "",
             "icon": "shopify://shop_images/face-blue-logo.svg"
           }
+        },
+        "payment_icon_eBhYPn": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/Amex.svg"
+          }
+        },
+        "payment_icon_KtirLw": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/ApPay.svg"
+          }
+        },
+        "payment_icon_AAjbYE": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/bancontact.png"
+          }
+        },
+        "payment_icon_LzxDEA": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/GPay.svg"
+          }
+        },
+        "payment_icon_QAXkUj": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/Pay.svg"
+          }
+        },
+        "payment_icon_jXJCVG": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/Master.svg"
+          }
+        },
+        "payment_icon_hrDxkc": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/Paypal.png"
+          }
+        },
+        "payment_icon_TmKwj6": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/ShopPay.png"
+          }
+        },
+        "payment_icon_rQANDM": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/UnionPay.png"
+          }
+        },
+        "payment_icon_KyYMcq": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/Visa.svg"
+          }
         }
       },
       "block_order": [
@@ -105,7 +175,17 @@
         "help_link_hMTfFq",
         "help_link_mDTGhG",
         "social_link_PWFdcr",
-        "social_link_JLQwQY"
+        "social_link_JLQwQY",
+        "payment_icon_eBhYPn",
+        "payment_icon_KtirLw",
+        "payment_icon_AAjbYE",
+        "payment_icon_LzxDEA",
+        "payment_icon_QAXkUj",
+        "payment_icon_jXJCVG",
+        "payment_icon_hrDxkc",
+        "payment_icon_TmKwj6",
+        "payment_icon_rQANDM",
+        "payment_icon_KyYMcq"
       ],
       "name": "Footer",
       "settings": {
