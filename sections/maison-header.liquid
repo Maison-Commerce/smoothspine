@@ -48,15 +48,12 @@
     position: {% if section.settings.enable_sticky %}sticky{% else %}relative{% endif %};
     top: 0;
     z-index: 10;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  #shopify-section-{{ section.id }} store-header {
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
   }
 
-  #shopify-section-{{ section.id }} store-header:not([visible]) {
+  #shopify-section-{{ section.id }}.header--hidden {
     transform: translateY(-100%);
   }
 
@@ -623,7 +620,7 @@
 
 <div class="maisoncode_Header" x-data="{ drawerOpen: false, shopOpen: true }" x-effect="document.body.style.overflow = drawerOpen ? 'hidden' : ''">
 <height-observer variable="header">
-  <store-header {% if section.settings.hide_on_scroll %}hide-on-scroll="100"{% endif %} {% if section.settings.enable_sticky %}sticky{% endif %}>
+  <store-header {% if section.settings.enable_sticky %}sticky{% endif %}>
   {%- comment -%} ════ DESKTOP HEADER ════ {%- endcomment -%}
   <header class="header-bar">
     <div class="header-left">
@@ -912,7 +909,32 @@
 </div>
 
 <script>
-  document.documentElement.style.setProperty('--header-height', Math.round(document.getElementById('shopify-section-{{ section.id }}').clientHeight) + 'px');
+  (function() {
+    var section = document.getElementById('shopify-section-{{ section.id }}');
+    if (section) {
+      document.documentElement.style.setProperty('--header-height', Math.round(section.clientHeight) + 'px');
+    }
+
+    {% if section.settings.hide_on_scroll and section.settings.enable_sticky %}
+      var lastScrollY = 0;
+      var scrollThreshold = 80;
+      var accumulated = 0;
+
+      window.addEventListener('scroll', function() {
+        var currentY = window.scrollY;
+        if (currentY > lastScrollY) {
+          accumulated += currentY - lastScrollY;
+          if (accumulated > scrollThreshold) {
+            section.classList.add('header--hidden');
+          }
+        } else {
+          accumulated = 0;
+          section.classList.remove('header--hidden');
+        }
+        lastScrollY = currentY;
+      }, { passive: true });
+    {% endif %}
+  })();
 </script>
 
 {% schema %}
