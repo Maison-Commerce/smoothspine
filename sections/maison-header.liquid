@@ -48,12 +48,15 @@
     position: {% if section.settings.enable_sticky %}sticky{% else %}relative{% endif %};
     top: 0;
     z-index: 10;
+  }
+
+  #shopify-section-{{ section.id }} .header-slide-wrapper {
     transform: translateY(0);
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
   }
 
-  #shopify-section-{{ section.id }}.header--hidden {
+  #shopify-section-{{ section.id }}.header--hidden .header-slide-wrapper {
     transform: translateY(-100%);
   }
 
@@ -619,6 +622,7 @@
 <script src="//unpkg.com/alpinejs" defer></script>
 
 <div class="maisoncode_Header" x-data="{ drawerOpen: false, shopOpen: true }" x-effect="document.body.style.overflow = drawerOpen ? 'hidden' : ''">
+<div class="header-slide-wrapper">
 <height-observer variable="header">
   <store-header {% if section.settings.enable_sticky %}sticky{% endif %}>
   {%- comment -%} ════ DESKTOP HEADER ════ {%- endcomment -%}
@@ -733,6 +737,7 @@
 
   </store-header>
 </height-observer>
+</div>
 
   {%- comment -%} ════ DRAWER ════ {%- endcomment -%}
       {%- comment -%} Backdrop {%- endcomment -%}
