@@ -821,7 +821,7 @@
         "padding_bottom_mobile": 24,
         "padding_x": 80,
         "padding_x_mobile": 16,
-        "max_width": 1400,
+        "max_width": 1280,
         "block_padding_x": 64,
         "block_padding_y": 48,
         "column_gap": 64,
