@@ -1,0 +1,956 @@
+{% comment %}
+  Section: Contact Options
+  Description: Contact section with three contact method cards (Chat, Email, Call)
+    on desktop and a contact form on mobile. Each card displays an icon, title,
+    description, contact info, and business hours. Mobile view shows a form with
+    name, email, message fields and a submit button.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings), 'Open Sans' (body) — must be loaded by theme
+
+  Blocks:
+  - contact_card: Individual contact method with icon, title, description, contact info, and hours (limit: 6)
+
+  Notes:
+  - Desktop shows contact cards in a 3-column grid; mobile shows a contact form instead
+  - Mobile form is a static HTML form (not connected to any backend by default)
+  - Card icons use image_picker; merchants must upload their own icons
+  - Clock icon for hours uses image_picker at section level
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_contact-options
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_contact-options {
+    --s-color-primary: {{ section.settings.color_primary }};
+    --s-color-secondary: {{ section.settings.color_secondary }};
+    --s-color-brand-blue: {{ section.settings.color_brand_blue }};
+    --s-color-brand-blue-light: {{ section.settings.color_brand_blue_light }};
+    --s-color-white: {{ section.settings.color_white }};
+    --s-color-card-bg: {{ section.settings.color_card_bg }};
+    --s-color-bg-from: {{ section.settings.color_bg_from }};
+    --s-color-bg-to: {{ section.settings.color_bg_to }};
+    --s-color-orange: {{ section.settings.color_orange }};
+    --s-color-orange-dark: {{ section.settings.color_orange_dark }};
+    --s-color-input-bg: {{ section.settings.color_input_bg }};
+    --s-color-input-border: {{ section.settings.color_input_border }};
+    --s-color-btn-text: {{ section.settings.color_btn_text }};
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+    --s-radius-sm: {{ section.settings.radius_sm }}px;
+    --s-radius-md: {{ section.settings.radius_md }}px;
+    --s-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --s-font-size-subheading: {{ section.settings.subheading_font_size }}px;
+    --s-font-size-card-title: {{ section.settings.card_title_font_size }}px;
+    --s-font-size-card-desc: {{ section.settings.card_desc_font_size }}px;
+    --s-font-size-contact: {{ section.settings.contact_font_size }}px;
+    --s-font-size-hours: {{ section.settings.hours_font_size }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-gap-section: {{ section.settings.section_gap }}px;
+    --s-gap-cards: {{ section.settings.cards_gap }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+
+    width: 100%;
+    background: linear-gradient(to bottom, var(--s-color-bg-from), var(--s-color-bg-to));
+    font-family: var(--s-font-body);
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_contact-options *,
+  #shopify-section-{{ section.id }} .maisoncode_contact-options *::before,
+  #shopify-section-{{ section.id }} .maisoncode_contact-options *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .co-inner {
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-gap-section);
+  }
+
+  /* Section Title */
+  #shopify-section-{{ section.id }} .co-title-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+    max-width: 600px;
+  }
+
+  #shopify-section-{{ section.id }} .co-heading {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-heading);
+    line-height: 1.5;
+    color: var(--s-color-primary);
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .co-subheading {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-subheading);
+    line-height: 1.5;
+    color: var(--s-color-secondary);
+    max-width: 544px;
+  }
+
+  /* Cards Grid */
+  #shopify-section-{{ section.id }} .co-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-gap-cards);
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  #shopify-section-{{ section.id }} .co-card {
+    background: var(--s-color-card-bg);
+    border-radius: var(--s-radius-md);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-icon {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-title {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-card-title);
+    line-height: 1.4;
+    color: var(--s-color-primary);
+  }
+
+  #shopify-section-{{ section.id }} .co-card-desc {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-card-desc);
+    line-height: 1.5;
+    color: var(--s-color-secondary);
+    max-width: 280px;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-info {
+    background: var(--s-color-brand-blue-light);
+    border-radius: var(--s-radius-sm);
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-contact {
+    font-family: var(--s-font-body);
+    font-weight: 700;
+    font-size: var(--s-font-size-contact);
+    line-height: 1.5;
+    color: var(--s-color-brand-blue);
+    text-align: center;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-contact--underline {
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-hours {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-hours svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .co-card-hours span {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-hours);
+    line-height: 1.5;
+    color: var(--s-color-secondary);
+    text-align: center;
+  }
+
+  /* Mobile Form - hidden on desktop */
+  #shopify-section-{{ section.id }} .co-form-wrapper {
+    display: none;
+  }
+
+  /* Desktop cards - visible on desktop */
+  #shopify-section-{{ section.id }} .co-desktop {
+    display: contents;
+  }
+
+  #shopify-section-{{ section.id }} .co-mobile {
+    display: none;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_contact-options {
+      background: linear-gradient(to bottom, #F8F4EE, #FDFCFA);
+      --s-padding-top: 24px;
+      --s-padding-bottom: 24px;
+      --s-font-size-heading: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .co-inner {
+      padding: var(--s-padding-top) 20px var(--s-padding-bottom);
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .co-heading {
+      line-height: 1.4;
+    }
+
+    #shopify-section-{{ section.id }} .co-subheading {
+      font-size: 14px;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .co-cards {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .co-card {
+      flex-direction: column;
+      padding: 18px;
+      gap: 18px;
+      background: rgba(255, 255, 255, 0.83);
+    }
+
+    #shopify-section-{{ section.id }} .co-card-header {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .co-card-text {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    #shopify-section-{{ section.id }} .co-card-title {
+      font-size: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .co-card-desc {
+      font-size: 14px;
+      max-width: 100%;
+    }
+
+    /* Hide mobile form section, show cards */
+    #shopify-section-{{ section.id }} .co-desktop {
+      display: contents;
+    }
+
+    #shopify-section-{{ section.id }} .co-mobile {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .co-mobile-heading {
+      font-family: var(--s-font-heading);
+      font-weight: 800;
+      font-size: 24px;
+      line-height: 1.4;
+      color: var(--s-color-primary);
+      text-align: center;
+      text-transform: capitalize;
+    }
+
+    #shopify-section-{{ section.id }} .co-form {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .co-form-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .co-input {
+      width: 100%;
+      height: 56px;
+      background: var(--s-color-input-bg);
+      border: 1px solid var(--s-color-input-border);
+      border-radius: var(--s-radius-sm);
+      padding: 20px;
+      font-family: var(--s-font-body);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--s-color-primary);
+      outline: none;
+    }
+
+    #shopify-section-{{ section.id }} .co-input::placeholder {
+      color: var(--s-color-secondary);
+    }
+
+    #shopify-section-{{ section.id }} .co-textarea {
+      width: 100%;
+      height: 120px;
+      background: var(--s-color-input-bg);
+      border: 1px solid var(--s-color-input-border);
+      border-radius: var(--s-radius-sm);
+      padding: 20px;
+      font-family: var(--s-font-body);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--s-color-primary);
+      resize: vertical;
+      outline: none;
+    }
+
+    #shopify-section-{{ section.id }} .co-textarea::placeholder {
+      color: var(--s-color-secondary);
+    }
+
+    #shopify-section-{{ section.id }} .co-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .co-checkbox {
+      width: 20px;
+      height: 20px;
+      background: var(--s-color-input-bg);
+      border: 1px solid var(--s-color-input-border);
+      border-radius: 4px;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    #shopify-section-{{ section.id }} .co-checkbox:checked {
+      background: var(--s-color-brand-blue);
+      border-color: var(--s-color-brand-blue);
+    }
+
+    #shopify-section-{{ section.id }} .co-checkbox-label {
+      font-family: var(--s-font-body);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--s-color-primary);
+    }
+
+    #shopify-section-{{ section.id }} .co-submit-btn {
+      width: 100%;
+      height: 44px;
+      background: var(--s-color-orange);
+      border: none;
+      border-bottom: 4px solid var(--s-color-orange-dark);
+      border-radius: var(--s-radius-sm);
+      font-family: var(--s-font-heading);
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--s-color-btn-text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  /* Tablet adjustment */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .co-inner {
+      padding: 48px 40px;
+    }
+
+    #shopify-section-{{ section.id }} .co-cards {
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .co-heading {
+      font-size: 28px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_contact-options">
+  <div class="co-inner">
+    {%- comment -%} Desktop View {%- endcomment -%}
+    <div class="co-desktop">
+      <header class="co-title-block">
+        {% if section.settings.heading != blank %}
+          <h2 class="co-heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.subheading != blank %}
+          <p class="co-subheading">{{ section.settings.subheading }}</p>
+        {% endif %}
+      </header>
+
+      {% if section.blocks.size > 0 %}
+        <div class="co-cards">
+          {% for block in section.blocks %}
+            {% if block.type == 'contact_card' %}
+              <article class="co-card" {{ block.shopify_attributes }}>
+                <div class="co-card-header">
+                  {% if block.settings.icon != blank %}
+                    <div class="co-card-icon">
+                      {{ block.settings.icon | image_url: width: 140 | image_tag:
+                        loading: 'lazy',
+                        widths: '70, 140',
+                        sizes: '70px'
+                      }}
+                    </div>
+                  {% endif %}
+                  <div class="co-card-text">
+                    {% if block.settings.title != blank %}
+                      <h3 class="co-card-title">{{ block.settings.title }}</h3>
+                    {% endif %}
+                    {% if block.settings.description != blank %}
+                      <p class="co-card-desc">{{ block.settings.description }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+                  <div class="co-card-info">
+                    {% if block.settings.contact_text != blank %}
+                      {% if block.settings.contact_link != blank %}
+                        <a href="{{ block.settings.contact_link }}" class="co-card-contact{% if block.settings.underline_contact %} co-card-contact--underline{% endif %}">
+                          {{ block.settings.contact_text }}
+                        </a>
+                      {% else %}
+                        <span class="co-card-contact">{{ block.settings.contact_text }}</span>
+                      {% endif %}
+                    {% endif %}
+                    {% if block.settings.hours_text != blank %}
+                      <div class="co-card-hours">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="{{ section.settings.color_secondary }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="8" cy="8" r="6.5"/>
+                          <polyline points="8 4.5 8 8 10.5 9.5"/>
+                        </svg>
+                        <span>{{ block.settings.hours_text }}</span>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    {%- comment -%} Mobile View {%- endcomment -%}
+    {% if section.settings.show_mobile_form %}
+      <div class="co-mobile">
+        {% if section.settings.mobile_heading != blank %}
+          <h2 class="co-mobile-heading">{{ section.settings.mobile_heading }}</h2>
+        {% endif %}
+
+        <form class="co-form" onsubmit="return false;">
+          <div class="co-form-fields">
+            <input type="text" class="co-input" placeholder="{{ section.settings.form_name_placeholder }}">
+            <input type="email" class="co-input" placeholder="{{ section.settings.form_email_placeholder }}">
+            <textarea class="co-textarea" placeholder="{{ section.settings.form_message_placeholder }}"></textarea>
+            {% if section.settings.show_privacy_checkbox %}
+              <label class="co-checkbox-row">
+                <input type="checkbox" class="co-checkbox">
+                <span class="co-checkbox-label">{{ section.settings.privacy_label }}</span>
+              </label>
+            {% endif %}
+          </div>
+          {% if section.settings.submit_button_text != blank %}
+            <button type="submit" class="co-submit-btn">{{ section.settings.submit_button_text }}</button>
+          {% endif %}
+        </form>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Options",
+  "tag": "section",
+  "class": "contact-options-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We're Here To Help"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Real people. Real answers. Whether you have a question before buying or need help with your order, we'll get back to you within 24 hours."
+    },
+    {
+      "type": "header",
+      "content": "Mobile form"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_mobile_form",
+      "label": "Show mobile contact form",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "mobile_heading",
+      "label": "Mobile heading",
+      "default": "Still Have Questions?<br>Get In Touch"
+    },
+    {
+      "type": "text",
+      "id": "form_name_placeholder",
+      "label": "Name field placeholder",
+      "default": "Name"
+    },
+    {
+      "type": "text",
+      "id": "form_email_placeholder",
+      "label": "Email field placeholder",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "form_message_placeholder",
+      "label": "Message field placeholder",
+      "default": "Type your message..."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_privacy_checkbox",
+      "label": "Show privacy policy checkbox",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "privacy_label",
+      "label": "Privacy checkbox label",
+      "default": "I accept the Privacy Policy"
+    },
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "label": "Submit button text",
+      "default": "Send Message"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary text color",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_secondary",
+      "label": "Secondary text color",
+      "default": "#102A43"
+    },
+    {
+      "type": "paragraph",
+      "content": "Secondary text uses 75% opacity of the color above."
+    },
+    {
+      "type": "color",
+      "id": "color_brand_blue",
+      "label": "Brand blue (contact links)",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_brand_blue_light",
+      "label": "Info box background",
+      "default": "#E5EEFB"
+    },
+    {
+      "type": "color",
+      "id": "color_white",
+      "label": "Mobile background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_card_bg",
+      "label": "Card background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_from",
+      "label": "Gradient start",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_to",
+      "label": "Gradient end",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_orange",
+      "label": "Button color",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_orange_dark",
+      "label": "Button border color",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_input_bg",
+      "label": "Input background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_input_border",
+      "label": "Input border",
+      "default": "#DCD9D3"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_text",
+      "label": "Button text color",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "subheading_font_size",
+      "label": "Subheading font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_title_font_size",
+      "label": "Card title font size",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_desc_font_size",
+      "label": "Card description font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "contact_font_size",
+      "label": "Contact info font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "hours_font_size",
+      "label": "Hours font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 16,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_gap",
+      "label": "Gap between heading and cards",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "cards_gap",
+      "label": "Gap between cards",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "radius_sm",
+      "label": "Small border radius (inputs, info box)",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "radius_md",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "contact_card",
+      "name": "Contact Card",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Contact Method"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "A short description of this contact method."
+        },
+        {
+          "type": "text",
+          "id": "contact_text",
+          "label": "Contact info text",
+          "default": "contact@example.com"
+        },
+        {
+          "type": "url",
+          "id": "contact_link",
+          "label": "Contact link"
+        },
+        {
+          "type": "checkbox",
+          "id": "underline_contact",
+          "label": "Underline contact text",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "hours_text",
+          "label": "Hours / availability text",
+          "default": "Mon-Fri: 9am-5pm CT"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Options",
+      "blocks": [
+        {
+          "type": "contact_card",
+          "settings": {
+            "title": "Chat With Us",
+            "description": "Speak with a real person who can answer your questions.",
+            "contact_text": "1-800-SMOOTH-1",
+            "underline_contact": false,
+            "hours_text": "Mon-Fri: 8am-6pm CT"
+          }
+        },
+        {
+          "type": "contact_card",
+          "settings": {
+            "title": "Email Support",
+            "description": "Send us a detailed message and we'll get back to you quickly.",
+            "contact_text": "support@smoothspine.com",
+            "contact_link": "mailto:support@smoothspine.com",
+            "underline_contact": true,
+            "hours_text": "Response within 24 hours"
+          }
+        },
+        {
+          "type": "contact_card",
+          "settings": {
+            "title": "Call Us",
+            "description": "Get instant help while you're browsing our products.",
+            "contact_text": "+12295445875",
+            "contact_link": "tel:+12295445875",
+            "underline_contact": false,
+            "hours_text": "Mon-Fri: 9am-5pm CT"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
