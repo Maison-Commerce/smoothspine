@@ -121,44 +121,69 @@
   }
 
   /* ── Maison: Custom filter bar ── */
+  /* ── Maison: Filter bar layout ── */
   #shopify-section-{{ section.id }} .maison-filter-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 0;
+    margin-bottom: 8px;
   }
 
-  #shopify-section-{{ section.id }} .maison-filter-bar__left {
+  #shopify-section-{{ section.id }} .maison-filter-bar__left,
+  #shopify-section-{{ section.id }} .maison-filter-bar__right {
     display: flex;
     align-items: center;
     gap: 16px;
   }
 
-  #shopify-section-{{ section.id }} .maison-filter-btn {
+  /* Filter label (desktop: "Filter:", mobile: "Filter and sort") */
+  #shopify-section-{{ section.id }} .maison-filter-label {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: none;
-    border: none;
-    cursor: pointer;
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
     font-size: 14px;
     line-height: 1.5;
     color: #102A43;
-    padding: 0;
+    white-space: nowrap;
   }
 
-  #shopify-section-{{ section.id }} .maison-filter-btn:hover {
-    opacity: 0.7;
-  }
-
-  #shopify-section-{{ section.id }} .maison-filter-btn svg {
+  #shopify-section-{{ section.id }} .maison-filter-label svg {
     width: 16px;
     height: 16px;
     flex-shrink: 0;
   }
 
+  #shopify-section-{{ section.id }} .maison-filter-label--desktop {
+    display: flex;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-label--mobile {
+    display: none;
+  }
+
+  /* Sort label */
+  #shopify-section-{{ section.id }} .maison-sort-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-sort-label svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* Product count */
   #shopify-section-{{ section.id }} .maison-product-count {
     font-family: 'Open Sans', sans-serif;
     font-weight: 700;
@@ -166,81 +191,71 @@
     line-height: 1.5;
     color: #102A43;
     opacity: 0.5;
-  }
-
-  /* ── Maison: Filter dropdowns ── */
-  #shopify-section-{{ section.id }} .maison-filter-dropdowns {
-    display: none;
-    align-items: center;
-    gap: 8px;
-  }
-
-  @media screen and (min-width: 768px) {
-    #shopify-section-{{ section.id }} .maison-filter-dropdowns {
-      display: flex;
-    }
-  }
-
-  #shopify-section-{{ section.id }} .maison-filter-dropdown {
-    position: relative;
-  }
-
-  #shopify-section-{{ section.id }} .maison-filter-dropdown__trigger {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 12px;
-    background: #F8F4EE;
-    border: 1px solid #FEFEFD;
-    border-radius: 8px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    color: #102A43;
-    cursor: pointer;
     white-space: nowrap;
   }
 
-  #shopify-section-{{ section.id }} .maison-filter-dropdown__trigger:hover {
-    opacity: 0.85;
+  /* ── Filter/Sort pills ── */
+  #shopify-section-{{ section.id }} .maison-pill {
+    position: relative;
   }
 
-  #shopify-section-{{ section.id }} .maison-filter-dropdown__trigger svg {
-    transition: transform 0.2s;
-    flex-shrink: 0;
-  }
-
-  #shopify-section-{{ section.id }} .maison-filter-badge {
-    display: inline-flex;
+  #shopify-section-{{ section.id }} .maison-pill__trigger {
+    display: flex;
     align-items: center;
-    justify-content: center;
-    min-width: 18px;
-    height: 18px;
-    padding: 0 4px;
-    border-radius: 999px;
-    background: #065BDC;
-    color: white;
-    font-size: 10px;
-    font-weight: 700;
-    line-height: 1;
+    gap: 24px;
+    height: 36px;
+    padding: 0 16px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(16, 42, 67, 0.75);
   }
 
-  #shopify-section-{{ section.id }} .maison-filter-dropdown__panel {
+  #shopify-section-{{ section.id }} .maison-pill__trigger:hover {
+    border-color: rgba(0, 0, 0, 0.16);
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill__trigger svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill--sort .maison-pill__trigger {
+    min-width: 160px;
+    justify-content: space-between;
+  }
+
+  /* Pill dropdown panel */
+  #shopify-section-{{ section.id }} .maison-pill__panel {
     position: absolute;
     top: calc(100% + 4px);
     left: 0;
     min-width: 200px;
-    background: white;
-    border: 1px solid #E8E6E3;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     z-index: 10;
     padding: 8px 0;
-    max-height: 280px;
+    max-height: 300px;
     overflow-y: auto;
   }
 
-  #shopify-section-{{ section.id }} .maison-filter-option {
+  #shopify-section-{{ section.id }} .maison-pill--sort .maison-pill__panel {
+    left: auto;
+    right: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill__option {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -253,87 +268,64 @@
     transition: background 0.15s;
   }
 
-  #shopify-section-{{ section.id }} .maison-filter-option:hover {
+  #shopify-section-{{ section.id }} .maison-pill__option:hover {
     background: #F8F4EE;
   }
 
-  #shopify-section-{{ section.id }} .maison-filter-option--active {
+  #shopify-section-{{ section.id }} .maison-pill__option--active {
     font-weight: 700;
     color: #065BDC;
   }
 
-  #shopify-section-{{ section.id }} .maison-filter-option__count {
+  #shopify-section-{{ section.id }} .maison-pill__option-count {
     color: rgba(16, 42, 67, 0.5);
     font-size: 12px;
   }
 
-  /* ── Maison: Sort dropdown ── */
-  #shopify-section-{{ section.id }} .maison-sort {
-    position: relative;
-    display: none;
+  /* Desktop-only elements */
+  #shopify-section-{{ section.id }} .maison-desktop-only {
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  @media screen and (min-width: 768px) {
-    #shopify-section-{{ section.id }} .maison-sort {
-      display: block;
+  /* Mobile filter button (opens drawer) */
+  #shopify-section-{{ section.id }} .maison-filter-mobile-btn {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maison-desktop-only {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .maison-filter-label--desktop {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .maison-filter-label--mobile {
+      display: flex;
+    }
+
+    #shopify-section-{{ section.id }} .maison-filter-mobile-btn {
+      display: flex;
+    }
+
+    #shopify-section-{{ section.id }} .maison-sort-label {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .maison-filter-bar__right .maison-pill {
+      display: none;
     }
   }
 
-  #shopify-section-{{ section.id }} .maison-sort__trigger {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: none;
-    border: none;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    color: #102A43;
-    cursor: pointer;
-    padding: 0;
-    white-space: nowrap;
-  }
-
-  #shopify-section-{{ section.id }} .maison-sort__trigger strong {
-    font-weight: 700;
-  }
-
-  #shopify-section-{{ section.id }} .maison-sort__trigger svg {
-    flex-shrink: 0;
-    transition: transform 0.2s;
-  }
-
-  #shopify-section-{{ section.id }} .maison-sort__panel {
-    position: absolute;
-    top: calc(100% + 4px);
-    right: 0;
-    min-width: 200px;
-    background: white;
-    border: 1px solid #E8E6E3;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    z-index: 10;
-    padding: 8px 0;
-  }
-
-  #shopify-section-{{ section.id }} .maison-sort__option {
-    display: block;
-    padding: 8px 16px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 13px;
-    color: #102A43;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-
-  #shopify-section-{{ section.id }} .maison-sort__option:hover {
-    background: #F8F4EE;
-  }
-
-  #shopify-section-{{ section.id }} .maison-sort__option--active {
-    font-weight: 700;
-    color: #065BDC;
-  }
 
   /* ── Maison: Pagination ── */
   #shopify-section-{{ section.id }} .maison-pagination {
@@ -699,31 +691,58 @@
 
           {%- if section.settings.filter_layout == 'maison' -%}
             {%- comment -%} Maison custom filter bar {%- endcomment -%}
-            <div class="maison-filter-bar">
+            <div class="maison-filter-bar" x-data="{}">
               <div class="maison-filter-bar__left">
-                <button type="button" class="maison-filter-btn" aria-controls="facets-drawer">
+                {%- comment -%} Desktop: "Filter:" label + filter pills {%- endcomment -%}
+                <span class="maison-filter-label maison-filter-label--desktop">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.33301 2.66675H14.6663M3.99967 8.00008H11.9997M6.66634 13.3334H9.33301" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  <span>Filter and sort</span>
+                  Filter:
+                </span>
+
+                {%- comment -%} Mobile: "Filter and sort" button (opens drawer) {%- endcomment -%}
+                <button type="button" class="maison-filter-label maison-filter-label--mobile" aria-controls="facets-drawer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.33301 2.66675H14.6663M3.99967 8.00008H11.9997M6.66634 13.3334H9.33301" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Filter and sort
                 </button>
+
+                {%- comment -%} Desktop: filter pills {%- endcomment -%}
                 {%- if show_filters -%}
-                  <div class="maison-filter-dropdowns">
+                  <div class="maison-desktop-only">
                     {%- for filter in collection.filters -%}
                       {%- if filter.type == 'list' and filter.values.size > 0 -%}
-                        <div class="maison-filter-dropdown" x-data="{ open: false }">
-                          <button type="button" class="maison-filter-dropdown__trigger" @click="open = !open" @click.outside="open = false">
+                        <div class="maison-pill" x-data="{ open: false }">
+                          <button type="button" class="maison-pill__trigger" @click="open = !open" @click.outside="open = false">
                             <span>{{ filter.label }}</span>
-                            {%- assign active_count = 0 -%}
-                            {%- for value in filter.values -%}{%- if value.active -%}{%- assign active_count = active_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
-                            {%- if active_count > 0 -%}<span class="maison-filter-badge">{{ active_count }}</span>{%- endif -%}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                           </button>
-                          <div class="maison-filter-dropdown__panel" x-show="open" style="display:none;">
+                          <div class="maison-pill__panel" x-show="open" style="display:none;">
                             {%- for value in filter.values -%}
-                              <a href="{{ value.url }}" class="maison-filter-option {% if value.active %}maison-filter-option--active{% endif %}">
+                              <a href="{{ value.url }}" class="maison-pill__option {% if value.active %}maison-pill__option--active{% endif %}">
                                 <span>{{ value.label }}</span>
-                                <span class="maison-filter-option__count">({{ value.count }})</span>
+                                <span class="maison-pill__option-count">({{ value.count }})</span>
                               </a>
                             {%- endfor -%}
+                          </div>
+                        </div>
+                      {%- elsif filter.type == 'price_range' -%}
+                        {%- assign price_label = 'Price' -%}
+                        {%- if filter.min_value.value or filter.max_value.value -%}
+                          {%- assign price_label = 'From ' | append: filter.min_value.value | default: 0 | money_without_trailing_zeros | append: ' to ' | append: filter.max_value.value | default: filter.range_max | money_without_trailing_zeros -%}
+                        {%- endif -%}
+                        <div class="maison-pill" x-data="{ open: false }">
+                          <button type="button" class="maison-pill__trigger" @click="open = !open" @click.outside="open = false">
+                            <span>{{ price_label }}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </button>
+                          <div class="maison-pill__panel" x-show="open" style="display:none; padding: 16px;">
+                            <form method="get" action="{{ collection.url }}" style="display:flex;flex-direction:column;gap:12px;">
+                              <div style="display:flex;align-items:center;gap:8px;">
+                                <input type="number" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value | money_without_currency }}" min="0" placeholder="Min" style="width:80px;padding:8px;border:1px solid rgba(0,0,0,0.08);border-radius:6px;font-size:13px;">
+                                <span style="color:rgba(16,42,67,0.5);">—</span>
+                                <input type="number" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value | money_without_currency }}" min="0" placeholder="Max" style="width:80px;padding:8px;border:1px solid rgba(0,0,0,0.08);border-radius:6px;font-size:13px;">
+                              </div>
+                              <button type="submit" style="padding:8px 16px;background:#102A43;color:white;border:none;border-radius:6px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Apply</button>
+                            </form>
                           </div>
                         </div>
                       {%- endif -%}
@@ -731,24 +750,31 @@
                   </div>
                 {%- endif -%}
               </div>
+
               <div class="maison-filter-bar__right">
-                <span class="maison-product-count">{{ collection.products_count }} products</span>
-                {%- if section.settings.show_sort_by -%}
-                  <div class="maison-sort" x-data="{ open: false }">
-                    <button type="button" class="maison-sort__trigger" @click="open = !open" @click.outside="open = false">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2v12M4 14l-3-3M4 14l3-3M12 14V2M12 2l-3 3M12 2l3 3" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      <span>Sort by: <strong>{{ collection.sort_by | default: collection.default_sort_by | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</strong></span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </button>
-                    <div class="maison-sort__panel" x-show="open" style="display:none;">
-                      {%- for option in collection.sort_options -%}
-                        <a href="{{ collection.url }}?sort_by={{ option.value }}" class="maison-sort__option {% if collection.sort_by == option.value or collection.default_sort_by == option.value and collection.sort_by == blank %}maison-sort__option--active{% endif %}">
-                          {{ option.name }}
-                        </a>
-                      {%- endfor -%}
+                {%- comment -%} Desktop: Sort by + pill + product count {%- endcomment -%}
+                <div class="maison-desktop-only" style="gap:16px;">
+                  {%- if section.settings.show_sort_by -%}
+                    <span class="maison-sort-label">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.66699 2.66675V13.3334M4.66699 13.3334L2.00033 10.6668M4.66699 13.3334L7.33366 10.6668M11.3337 13.3334V2.66675M11.3337 2.66675L8.66699 5.33341M11.3337 2.66675L14.0003 5.33341" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Sort by:
+                    </span>
+                    <div class="maison-pill maison-pill--sort" x-data="{ open: false }">
+                      <button type="button" class="maison-pill__trigger" @click="open = !open" @click.outside="open = false">
+                        <span>{{ collection.sort_by | default: collection.default_sort_by | replace: 'best-selling', 'Best selling' | replace: 'price-ascending', 'Price: low to high' | replace: 'price-descending', 'Price: high to low' | replace: 'title-ascending', 'A-Z' | replace: 'title-descending', 'Z-A' | replace: 'created-ascending', 'Oldest' | replace: 'created-descending', 'Newest' }}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                      <div class="maison-pill__panel" x-show="open" style="display:none;">
+                        {%- for option in collection.sort_options -%}
+                          <a href="{{ collection.url }}?sort_by={{ option.value }}" class="maison-pill__option {% if collection.sort_by == option.value or collection.default_sort_by == option.value and collection.sort_by == blank %}maison-pill__option--active{% endif %}">
+                            {{ option.name }}
+                          </a>
+                        {%- endfor -%}
+                      </div>
                     </div>
-                  </div>
-                {%- endif -%}
+                  {%- endif -%}
+                </div>
+                <span class="maison-product-count">{{ collection.products_count }} products</span>
               </div>
             </div>
           {%- elsif section.settings.filter_layout == 'horizontal' -%}
