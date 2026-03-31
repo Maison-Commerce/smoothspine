@@ -62,7 +62,7 @@
           "type": "tab_item",
           "settings": {
             "label": "The Result",
-            "link": ""
+            "link": "#the-result"
           }
         },
         "tab_4": {
@@ -206,6 +206,19 @@
         "custom_id": "usage-safety",
         "heading": "Usage & Safety"
       }
+    },
+    "maison_faq_the_result": {
+      "type": "maison-faq-content",
+      "blocks": {
+        "q1": { "type": "faq_item", "settings": { "question": "What's Actually In The Box?", "answer": "<p>Your order includes the SmoothSpine Triple Fusion Massager, a USB charging cable, a quick-start guide, and a protective carry pouch. Everything you need to start your first session right away.</p>" } },
+        "q2": { "type": "faq_item", "settings": { "question": "Is This The Same Product I Saw In The Ad?", "answer": "<p>Yes! The SmoothSpine Triple Fusion Massager you see in our ads is the exact same device you'll receive. What you see is what you get — no substitutions or downgrades.</p>" } },
+        "q3": { "type": "faq_item", "settings": { "question": "Does One Size Fit All Body Types?", "answer": "<p>The SmoothSpine Massager is designed with a universal ergonomic shape that adapts to a wide range of body types. Whether you're petite or tall, the device contours to your spine's natural curve for effective relief.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"],
+      "settings": {
+        "custom_id": "the-result",
+        "heading": "The Result"
+      }
     }
   },
   "order": [
@@ -213,6 +226,7 @@
     "maison_faq_banner_MBryTQ",
     "maison_faq_tabs",
     "maison_faq_content_bQ8cBQ",
-    "maison_faq_usage_safety"
+    "maison_faq_usage_safety",
+    "maison_faq_the_result"
   ]
 }
