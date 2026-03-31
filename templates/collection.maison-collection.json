@@ -30,30 +30,75 @@
         "overlay_opacity": 30
       }
     },
-    "maison_collection_banner": {
+    "maison_collection_banner_zLw9fd": {
       "type": "maison-collection-banner",
       "blocks": {
-        "trust_1": {
+        "trust_badge_item_GGhQkq": {
           "type": "trust_badge_item",
           "settings": {
             "label": "Doctor Developed"
           }
         },
-        "trust_2": {
+        "trust_badge_item_pfth7j": {
           "type": "trust_badge_item",
           "settings": {
             "label": "Rapid Pain Relief"
           }
         },
-        "trust_3": {
+        "trust_badge_item_JrUiwg": {
           "type": "trust_badge_item",
           "settings": {
             "label": "Easy Returns"
           }
         }
       },
-      "block_order": ["trust_1", "trust_2", "trust_3"],
-      "settings": {}
+      "block_order": [
+        "trust_badge_item_GGhQkq",
+        "trust_badge_item_pfth7j",
+        "trust_badge_item_JrUiwg"
+      ],
+      "name": "Collection Header",
+      "settings": {
+        "heading": "SmoothSpine",
+        "heading_accent": "Helped Thousands Become Pain Free",
+        "description": "Are you next? Browse SmoothSpine's solutions by your condition and find what's right for your body.",
+        "button_label": "SEE #1 BACK PAIN BESTSELLER",
+        "button_link": "",
+        "show_trustpilot": true,
+        "rating_value": 4.5,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "rating_link": "",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "image": "shopify://shop_images/SM-Collection-Banner.png",
+        "image_alt": "Happy customer holding SmoothSpine product",
+        "image_placeholder_text": "Collection image",
+        "hide_last_badge_mobile": true,
+        "color_background": "#F8F4EE",
+        "color_primary": "#102A43",
+        "color_primary_muted": "#4A5D6E",
+        "color_accent": "#F07E3B",
+        "color_accent_dark": "#BF642F",
+        "color_button_text": "#FFFCFB",
+        "color_text_dark": "#111111",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "description_font_size": 18,
+        "description_font_size_mobile": 14,
+        "button_font_size": 16,
+        "button_font_size_mobile": 14,
+        "rating_font_size": 12,
+        "trust_label_font_size": 12,
+        "content_padding": 80,
+        "content_padding_mobile": 20,
+        "inner_max_width": 700,
+        "inner_gap": 40,
+        "text_block_gap": 20,
+        "cta_block_gap": 16,
+        "button_height": 56,
+        "button_height_mobile": 44,
+        "button_border_radius": 8
+      }
     },
     "main": {
       "type": "main-collection",
@@ -72,7 +117,7 @@
   },
   "order": [
     "banner",
-    "maison_collection_banner",
+    "maison_collection_banner_zLw9fd",
     "main"
   ]
 }
