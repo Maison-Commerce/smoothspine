@@ -187,12 +187,12 @@
         "heading": "What We Stand For",
         "subtitle": "Our mission is to provide those with chronic back pain options beyond surgery and costly treatments.",
         "show_dividers": true,
-        "color_background": "#E5EEFB",
-        "color_heading": "#102A43",
-        "color_body_text": "#102A43",
-        "color_icon_border": "#065BDC",
-        "color_icon_bg": "#FAFCFE",
-        "color_divider": "#102A43",
+        "color_background": "#e5eefb",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43",
+        "color_icon_border": "#065bdc",
+        "color_icon_bg": "#fafcfe",
+        "color_divider": "#102a43",
         "title_font_size": 32,
         "title_font_size_mobile": 24,
         "subtitle_font_size": 16,
@@ -216,12 +216,69 @@
         "max_width": 1400,
         "header_max_width": 600
       }
+    },
+    "maison_about_endorsement_PcNL4T": {
+      "type": "maison-about-endorsement",
+      "blocks": {
+        "endorsement_ibkjxH": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Jane Smith",
+            "title": "Endorsed by Dr. Blane Schilling",
+            "description": "<p>We didn't build this alone. We worked with physical therapists and spine specialists to create something that actually makes sense for chronic pain.</p>",
+            "image": "shopify://shop_images/5c0b920f0ebab86769e2a7b32aa4f3b4b82fe02b.png"
+          }
+        },
+        "endorsement_cAHEp3": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. John Doe",
+            "title": "Clinically proven results",
+            "description": ""
+          }
+        },
+        "checklist_item_VwkkVk": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "<p><strong>Real Clinical Input:</strong> Every feature in our devices was reviewed by licensed physical therapists who treat chronic back pain every day. They told us what actually works, and what doesn't.</p>"
+          }
+        },
+        "checklist_item_W4iFTV": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "<p><strong>Tested on Real People:</strong> Before we sold a single unit, we had real patients, people with herniated discs, sciatica, and spinal stenosis, test our products for weeks. Their feedback shaped everything.</p>"
+          }
+        },
+        "checklist_item_R39zbA": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "<p><strong>No Shortcuts:</strong> We could have launched faster. We could have cut corners. But we didn't. Because people living with pain deserve better than another cheap gimmick.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "endorsement_ibkjxH",
+        "endorsement_cAHEp3",
+        "checklist_item_VwkkVk",
+        "checklist_item_W4iFTV",
+        "checklist_item_R39zbA"
+      ],
+      "name": "About Endorsement",
+      "settings": {
+        "color_bg": "#FDFCFA",
+        "color_checklist_bg": "#F8F4EE",
+        "padding_top": 40,
+        "padding_bottom": 20,
+        "padding_horizontal": 80,
+        "max_width": 1200
+      }
     }
   },
   "order": [
     "main",
     "maison_legal_banner_xftUHf",
     "maison_about_content_X84pWw",
-    "maison_about_usps_w3A3Jm"
+    "maison_about_usps_w3A3Jm",
+    "maison_about_endorsement_PcNL4T"
   ]
 }
