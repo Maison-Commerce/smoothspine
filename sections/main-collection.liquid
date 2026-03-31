@@ -892,7 +892,11 @@
                       </div>
                     {%- endfor -%}
 
-                    {%- render 'product-card', product: product, stacked: true, position: forloop.index, show_badges: true -%}
+                    {%- if section.settings.filter_layout == 'maison' -%}
+                      {%- render 'maison-product-card', product: product, position: forloop.index -%}
+                    {%- else -%}
+                      {%- render 'product-card', product: product, stacked: true, position: forloop.index, show_badges: true -%}
+                    {%- endif -%}
                   {%- endfor -%}
                 </product-list>
               </reveal-items>
