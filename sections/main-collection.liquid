@@ -540,11 +540,11 @@
             </div>
           {%- else -%}
             <div class="v-stack gap-6">
-              <div class="v-stack gap-4 md:hidden">
+              {% comment %} <div class="v-stack gap-4 md:hidden">
                 {%- comment -%}We have to duplicate some information on mobile and tablet here{%- endcomment -%}
                 <p class="text-center">{{ 'collection.products_count' | t: count: collection.products_count }}</p>
                 {%- render 'active-facets', results: collection -%}
-              </div>
+              </div> {% endcomment %}
 
               <reveal-items selector=".product-list > *">
                 <product-list class="product-list" role="region" aria-live="polite">
