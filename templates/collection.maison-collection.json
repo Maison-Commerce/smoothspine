@@ -102,6 +102,50 @@
     },
     "main": {
       "type": "main-collection",
+      "blocks": {
+        "category_tab_ReaCGh": {
+          "type": "category_tab",
+          "settings": {
+            "label": "All Products",
+            "collection": "all"
+          }
+        },
+        "category_tab_dmzi4B": {
+          "type": "category_tab",
+          "settings": {
+            "label": "Back Pain",
+            "collection": ""
+          }
+        },
+        "category_tab_cmYWfy": {
+          "type": "category_tab",
+          "settings": {
+            "label": "Neck Pain",
+            "collection": ""
+          }
+        },
+        "category_tab_BNe4AV": {
+          "type": "category_tab",
+          "settings": {
+            "label": "Foot Pain",
+            "collection": ""
+          }
+        },
+        "category_tab_wzt77A": {
+          "type": "category_tab",
+          "settings": {
+            "label": "Bundles",
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_tab_ReaCGh",
+        "category_tab_dmzi4B",
+        "category_tab_cmYWfy",
+        "category_tab_BNe4AV",
+        "category_tab_wzt77A"
+      ],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
