@@ -117,6 +117,113 @@
     max-width: 1440px;
     margin: 0 auto;
   }
+
+  /* ── Maison: Filter bar overrides ── */
+  #shopify-section-{{ section.id }} .collection-top-bar {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  #shopify-section-{{ section.id }} .collection-top-bar__filter-button,
+  #shopify-section-{{ section.id }} .collection-top-bar__sort-by-label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .collection-top-bar__product-count {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #102A43;
+    opacity: 0.5;
+  }
+
+  /* Filter dropdowns */
+  #shopify-section-{{ section.id }} select,
+  #shopify-section-{{ section.id }} .select select {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #102A43;
+    border-radius: 8px;
+    border-color: #E8E6E3;
+    background-color: #FFFFFF;
+  }
+
+  /* Facets sidebar */
+  #shopify-section-{{ section.id }} .facets-vertical .accordion__title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #102A43;
+  }
+
+  /* ── Maison: Pagination overrides ── */
+  #shopify-section-{{ section.id }} .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .pagination a,
+  #shopify-section-{{ section.id }} .pagination span.current {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .pagination a {
+    background-color: #F8F4EE;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .pagination a:hover {
+    opacity: 0.85;
+  }
+
+  #shopify-section-{{ section.id }} .pagination span.current {
+    background-color: #424140;
+    color: #FFFFFF;
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .pagination a,
+    #shopify-section-{{ section.id }} .pagination span.current {
+      width: 32px;
+      height: 32px;
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .pagination {
+      gap: 16px;
+    }
+  }
+
+  /* ── Maison: Product grid gap adjustment ── */
+  #shopify-section-{{ section.id }} .product-list {
+    gap: 32px;
+  }
+
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .product-list {
+      gap: 16px 12px;
+    }
+  }
 </style>
 
 {%- comment -%} ── Maison: Category tabs ── {%- endcomment -%}
