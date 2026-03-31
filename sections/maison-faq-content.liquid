@@ -195,7 +195,7 @@
   }
 {% endstyle %}
 
-<section class="maisoncode_faq-content">
+<section class="maisoncode_faq-content" {% if section.settings.custom_id != blank %}id="{{ section.settings.custom_id }}"{% endif %}>
   <div class="faq-inner">
 
     {%- comment -%} Left Column: Heading {%- endcomment -%}
@@ -288,6 +288,12 @@
     {
       "type": "header",
       "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Section anchor ID",
+      "info": "Used for tab linking (e.g. 'how-it-works'). No spaces or special characters."
     },
     {
       "type": "text",
