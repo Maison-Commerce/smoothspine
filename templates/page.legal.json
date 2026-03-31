@@ -252,8 +252,24 @@
       }
     }
   },
+  "maison_legal_tabs": {
+      "type": "maison-faq-tabs",
+      "blocks": {
+        "tab_1": { "type": "tab_item", "settings": { "label": "Terms of service" } },
+        "tab_2": { "type": "tab_item", "settings": { "label": "Privacy Policy" } },
+        "tab_3": { "type": "tab_item", "settings": { "label": "Cookie Policy" } },
+        "tab_4": { "type": "tab_item", "settings": { "label": "Return Policy" } }
+      },
+      "block_order": ["tab_1", "tab_2", "tab_3", "tab_4"],
+      "settings": {
+        "subtitle": "",
+        "mobile_columns": 1
+      }
+    }
+  },
   "order": [
     "maison_legal_banner_GWt8Xq",
+    "maison_legal_tabs",
     "main",
     "maison_legal_content_QyYU7L",
     "maison_offer_auth_KVBRzz"
