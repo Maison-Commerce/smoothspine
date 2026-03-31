@@ -483,7 +483,7 @@
                 </button>
               </div>
               <div class="maison-filter-bar__right">
-                <span class="maison-product-count">{{ collection.products_count }} {{ 'collection.products_count' | t: count: collection.products_count }}</span>
+                <span class="maison-product-count">{{ 'collection.products_count' | t: count: collection.products_count }}</span>
               </div>
             </div>
           {%- elsif section.settings.filter_layout == 'horizontal' -%}
