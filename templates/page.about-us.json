@@ -125,9 +125,9 @@
       "name": "About Page Content",
       "settings": {
         "heading": "It Started with One Question",
-        "color_background": "#FDFCFA",
-        "color_heading": "#102A43",
-        "color_body_text": "#102A43BF",
+        "color_background": "#fdfcfa",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43bf",
         "heading_font_size": 24,
         "heading_font_size_mobile": 20,
         "body_font_size": 16,
@@ -148,11 +148,80 @@
         "image_border_radius": 16,
         "max_width": 1400
       }
+    },
+    "maison_about_usps_w3A3Jm": {
+      "type": "maison-about-usps",
+      "blocks": {
+        "usp_item_qRmPk6": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/ag2g23g3vrgb.svg",
+            "title": "Relief You Can Feel",
+            "description": "We offer a daily routine with traction, heat, and massage to decompress your spine."
+          }
+        },
+        "usp_item_JQE77G": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/bwfjkabwjaw.svg",
+            "title": "On Your Time, At Home",
+            "description": "No appointments or waiting. Just 15 minutes a day in your living room."
+          }
+        },
+        "usp_item_h6Vewb": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/jabwfabwfjkg3g.svg",
+            "title": "No Risk, Real Support",
+            "description": "90 days to see if it works. If not, get your money back. A real person is here to help."
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_qRmPk6",
+        "usp_item_JQE77G",
+        "usp_item_h6Vewb"
+      ],
+      "name": "About Page USPs",
+      "settings": {
+        "heading": "What We Stand For",
+        "subtitle": "Our mission is to provide those with chronic back pain options beyond surgery and costly treatments.",
+        "show_dividers": true,
+        "color_background": "#E5EEFB",
+        "color_heading": "#102A43",
+        "color_body_text": "#102A43",
+        "color_icon_border": "#065BDC",
+        "color_icon_bg": "#FAFCFE",
+        "color_divider": "#102A43",
+        "title_font_size": 32,
+        "title_font_size_mobile": 24,
+        "subtitle_font_size": 16,
+        "subtitle_font_size_mobile": 14,
+        "usp_title_font_size": 18,
+        "usp_desc_font_size": 14,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal": 80,
+        "sections_gap": 40,
+        "header_gap": 16,
+        "usps_gap": 32,
+        "icon_text_gap": 20,
+        "text_gap": 8,
+        "icon_border_radius": 8,
+        "icon_box_size": 56,
+        "icon_image_size": 32,
+        "divider_height": 64,
+        "max_width": 1400,
+        "header_max_width": 600
+      }
     }
   },
   "order": [
     "main",
     "maison_legal_banner_xftUHf",
-    "maison_about_content_X84pWw"
+    "maison_about_content_X84pWw",
+    "maison_about_usps_w3A3Jm"
   ]
 }
