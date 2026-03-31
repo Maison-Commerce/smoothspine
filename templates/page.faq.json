@@ -193,9 +193,8 @@
         "arrow_size": 20,
         "max_width": 1400
       }
-    }
-  },
-  "maison_faq_usage_safety": {
+    },
+    "maison_faq_usage_safety": {
       "type": "maison-faq-content",
       "blocks": {
         "q1": { "type": "faq_item", "settings": { "question": "Is It Safe To Use With Osteoporosis?", "answer": "<p>We recommend consulting your doctor before use if you have osteoporosis. While many users with mild osteoporosis have used the device comfortably, it's best to get personalized medical advice for your specific condition.</p>" } },
