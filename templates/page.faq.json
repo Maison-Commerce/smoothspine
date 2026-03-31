@@ -16,6 +16,19 @@
         "content_width": "80ch"
       }
     },
+    "maison_faq_tabs": {
+      "type": "maison-faq-tabs",
+      "blocks": {
+        "tab_1": { "type": "tab_item", "settings": { "label": "How It Works" } },
+        "tab_2": { "type": "tab_item", "settings": { "label": "Usage & Safety" } },
+        "tab_3": { "type": "tab_item", "settings": { "label": "The Result" } },
+        "tab_4": { "type": "tab_item", "settings": { "label": "Shipping & Delivery" } },
+        "tab_5": { "type": "tab_item", "settings": { "label": "Returns & Guarantee" } },
+        "tab_6": { "type": "tab_item", "settings": { "label": "Billing & Charges" } }
+      },
+      "block_order": ["tab_1", "tab_2", "tab_3", "tab_4", "tab_5", "tab_6"],
+      "settings": {}
+    },
     "maison_faq_banner_MBryTQ": {
       "type": "maison-faq-banner",
       "name": "FAQ Header",
@@ -44,6 +57,7 @@
   },
   "order": [
     "main",
-    "maison_faq_banner_MBryTQ"
+    "maison_faq_banner_MBryTQ",
+    "maison_faq_tabs"
   ]
 }
