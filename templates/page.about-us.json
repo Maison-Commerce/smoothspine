@@ -570,6 +570,7 @@
         "offer_image": "shopify://shop_images/e145c8657a0ce71caabd4bdcd69218a3f7cd9ff7.png",
         "show_authority_block": false,
         "show_trust_block": true,
+        "wave_offer_to_authority": "shopify://shop_images/banner-wave-top.svg",
         "wave_authority_to_trust": "shopify://shop_images/banner-wave-top.svg",
         "wave_top_trust": "shopify://shop_images/banner-wave-bottom.svg",
         "color_bg_outer": "#fdfcfa",
