@@ -15,9 +15,9 @@
       "settings": {
         "heading": "<p>Terms of service</p>",
         "description": "This page contains important legal information governing the use of our website, privacy policy, return policy, and other aspects of cooperation.",
-        "color_background": "#F8F4EE",
-        "color_heading": "#102A43",
-        "color_body_text": "#102A43",
+        "color_background": "#f8f4ee",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43",
         "body_text_opacity": 75,
         "heading_font_size": 32,
         "heading_font_size_mobile": 24,
@@ -39,13 +39,33 @@
     },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "content_width": "80ch"
+      }
+    },
+    "maison_legal_content_QyYU7L": {
+      "type": "maison-legal-content",
+      "name": "Legal Content",
+      "settings": {
+        "color_background": "#FDFCFA",
+        "color_text": "#1B1F1D",
+        "body_font_size": 16,
+        "body_font_size_mobile": 16,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "max_width": 1400,
+        "content_max_width": 600
       }
     }
   },
   "order": [
     "maison_legal_banner_GWt8Xq",
-    "main"
+    "main",
+    "maison_legal_content_QyYU7L"
   ]
 }
