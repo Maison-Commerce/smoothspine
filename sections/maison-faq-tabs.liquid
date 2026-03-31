@@ -84,20 +84,25 @@
     margin: 0;
   }
 
-  /* Tab Row */
+  /* Tab Row — desktop: horizontal scroll like category tabs */
   #shopify-section-{{ section.id }} .faq-tabs__row {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: var(--s-gap-tabs);
     align-items: center;
-    justify-content: center;
     width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #shopify-section-{{ section.id }} .faq-tabs__row::-webkit-scrollbar {
+    display: none;
   }
 
   /* Individual Tab */
   #shopify-section-{{ section.id }} .faq-tabs__tab {
-    flex: 1 0 0;
-    min-width: 0;
+    flex: 1 0 auto;
     height: var(--s-tab-height);
     display: flex;
     align-items: center;
@@ -156,11 +161,14 @@
     }
 
     #shopify-section-{{ section.id }} .faq-tabs__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: {{ section.settings.tab_gap_mobile }}px;
+      overflow-x: visible;
     }
 
     #shopify-section-{{ section.id }} .faq-tabs__tab {
-      flex: 0 0 calc(50% - {{ section.settings.tab_gap_mobile | divided_by: 2 }}px);
+      flex: unset;
       height: {{ section.settings.tab_height_mobile }}px;
       padding: {{ section.settings.tab_padding_vertical_mobile }}px {{ section.settings.tab_padding_horizontal_mobile }}px;
     }
