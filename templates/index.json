@@ -726,6 +726,7 @@
         "trust_item_Tbeqiw": {
           "type": "trust_item",
           "settings": {
+            "icon": "shopify://shop_images/Shipment-Return--Streamline-Flex.svg",
             "heading": "90-DAY MONEY BACK GUARANTEE",
             "description": "If you're not thrilled, we will refund your investment. No hassle."
           }
@@ -733,6 +734,7 @@
         "trust_item_KDKD9F": {
           "type": "trust_item",
           "settings": {
+            "icon": "shopify://shop_images/Transfer-Van--Streamline-Flex.svg",
             "heading": "FREE SHIPPING",
             "description": "We provide fast shipping on all orders. Enjoy free shipping on orders over $60."
           }
@@ -740,6 +742,7 @@
         "trust_item_piyLNm": {
           "type": "trust_item",
           "settings": {
+            "icon": "shopify://shop_images/Warranty-Badge-Highlight--Streamline-Flex.svg",
             "heading": "GUARANTEED HIGH QUALITY",
             "description": "Made of high quality materials. Enjoy consistent, trouble-free performance for a long time."
           }
