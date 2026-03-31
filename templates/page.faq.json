@@ -16,28 +16,15 @@
         "content_width": "80ch"
       }
     },
-    "maison_faq_tabs": {
-      "type": "maison-faq-tabs",
-      "blocks": {
-        "tab_1": { "type": "tab_item", "settings": { "label": "How It Works" } },
-        "tab_2": { "type": "tab_item", "settings": { "label": "Usage & Safety" } },
-        "tab_3": { "type": "tab_item", "settings": { "label": "The Result" } },
-        "tab_4": { "type": "tab_item", "settings": { "label": "Shipping & Delivery" } },
-        "tab_5": { "type": "tab_item", "settings": { "label": "Returns & Guarantee" } },
-        "tab_6": { "type": "tab_item", "settings": { "label": "Billing & Charges" } }
-      },
-      "block_order": ["tab_1", "tab_2", "tab_3", "tab_4", "tab_5", "tab_6"],
-      "settings": {}
-    },
     "maison_faq_banner_MBryTQ": {
       "type": "maison-faq-banner",
       "name": "FAQ Header",
       "settings": {
         "heading": "How Can We Help?",
         "subtitle": "Quickly find answers to your question or contact us.",
-        "color_background": "#F8F4EE",
-        "color_heading": "#102A43",
-        "color_subtitle": "#4A5D6E",
+        "color_background": "#f8f4ee",
+        "color_heading": "#102a43",
+        "color_subtitle": "#4a5d6e",
         "heading_font_size": 32,
         "heading_font_size_mobile": 24,
         "subtitle_font_size": 18,
@@ -53,19 +40,157 @@
         "content_max_width": 600,
         "subtitle_max_width": 545
       }
-    }
-  },
-    "maison_faq_content": {
+    },
+    "maison_faq_tabs": {
+      "type": "maison-faq-tabs",
+      "blocks": {
+        "tab_1": {
+          "type": "tab_item",
+          "settings": {
+            "label": "How It Works",
+            "link": ""
+          }
+        },
+        "tab_2": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Usage & Safety",
+            "link": ""
+          }
+        },
+        "tab_3": {
+          "type": "tab_item",
+          "settings": {
+            "label": "The Result",
+            "link": ""
+          }
+        },
+        "tab_4": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Shipping & Delivery",
+            "link": ""
+          }
+        },
+        "tab_5": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Returns & Guarantee",
+            "link": ""
+          }
+        },
+        "tab_6": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Billing & Charges",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tab_1",
+        "tab_2",
+        "tab_3",
+        "tab_4",
+        "tab_5",
+        "tab_6"
+      ],
+      "settings": {
+        "subtitle": "Quickly go to questions about...",
+        "nav_aria_label": "FAQ categories",
+        "color_background": "#fdfcfa",
+        "color_tab_bg": "#f8f4ee",
+        "color_tab_border": "#fefefd",
+        "color_text_secondary": "#4a5d6e",
+        "color_tab_text": "#34393d",
+        "color_tab_hover_bg": "#f0e9df",
+        "color_tab_active_bg": "#ece4d6",
+        "color_tab_active_border": "#d5c9b5",
+        "subtitle_font_size": 18,
+        "subtitle_font_size_mobile": 16,
+        "tab_label_font_size": 12,
+        "tab_label_font_size_mobile": 11,
+        "tab_letter_spacing": 1,
+        "tab_letter_spacing_mobile": 1,
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 16,
+        "section_gap": 24,
+        "section_gap_mobile": 16,
+        "tab_gap": 16,
+        "tab_gap_mobile": 12,
+        "tab_border_radius": 8,
+        "tab_height": 44,
+        "tab_height_mobile": 40,
+        "tab_padding_vertical": 12,
+        "tab_padding_horizontal": 16,
+        "tab_padding_vertical_mobile": 10,
+        "tab_padding_horizontal_mobile": 12,
+        "max_width": 1400
+      }
+    },
+    "maison_faq_content_bQ8cBQ": {
       "type": "maison-faq-content",
       "blocks": {
-        "q1": { "type": "faq_item", "settings": { "question": "What Exactly Does The Triple Fusion Massager Do?", "answer": "<p>The Triple Fusion Massager combines three therapeutic technologies — heat therapy, vibration massage, and red light therapy — into one easy-to-use device. Together, they work to relieve tension, reduce stiffness, and support recovery in the spine and surrounding muscles.</p>" } },
-        "q2": { "type": "faq_item", "settings": { "question": "What Conditions Has It Helped With?", "answer": "<p>Our users have reported relief from a variety of conditions including chronic back pain, sciatica, herniated discs, muscle spasms, poor posture-related discomfort, and general stiffness from sedentary lifestyles.</p>" } },
-        "q3": { "type": "faq_item", "settings": { "question": "How Soon Will I Feel Something?", "answer": "<p>Many users feel a noticeable difference after their very first session. Consistent use over 2–4 weeks typically delivers the most significant, lasting improvements in comfort and mobility.</p>" } },
-        "q4": { "type": "faq_item", "settings": { "question": "I've Tried Everything. Why Would This Be Different?", "answer": "<p>Unlike single-method solutions, the Triple Fusion Massager addresses pain from multiple angles simultaneously. The combination of heat, vibration, and red light therapy creates a synergistic effect that many standalone treatments simply can't match.</p>" } }
+        "faq_item_qYLNBJ": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What Exactly Does The Triple Fusion Massager Do?",
+            "answer": "<p>The Triple Fusion Massager combines three therapeutic technologies — heat therapy, vibration massage, and red light therapy — into one easy-to-use device. Together, they work to relieve tension, reduce stiffness, and support recovery in the spine and surrounding muscles.</p>"
+          }
+        },
+        "faq_item_UjxdLL": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What Conditions Has It Helped With?",
+            "answer": "<p>Our users have reported relief from a variety of conditions including chronic back pain, sciatica, herniated discs, muscle spasms, poor posture-related discomfort, and general stiffness from sedentary lifestyles.</p>"
+          }
+        },
+        "faq_item_jzw4xH": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How Soon Will I Feel Something?",
+            "answer": "<p>Many users feel a noticeable difference after their very first session. Consistent use over 2–4 weeks typically delivers the most significant, lasting improvements in comfort and mobility.</p>"
+          }
+        },
+        "faq_item_Cjc4wz": {
+          "type": "faq_item",
+          "settings": {
+            "question": "I've Tried Everything. Why Would This Be Different?",
+            "answer": "<p>Unlike single-method solutions, the Triple Fusion Massager addresses pain from multiple angles simultaneously. The combination of heat, vibration, and red light therapy creates a synergistic effect that many standalone treatments simply can't match.</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4"],
+      "block_order": [
+        "faq_item_qYLNBJ",
+        "faq_item_UjxdLL",
+        "faq_item_jzw4xH",
+        "faq_item_Cjc4wz"
+      ],
+      "name": "FAQ Accordion",
       "settings": {
-        "heading": "How It Works"
+        "heading": "How It Works",
+        "color_background": "#FDFCFA",
+        "color_heading": "#102A43",
+        "color_text": "#102A43",
+        "color_border": "#000000",
+        "border_opacity": 8,
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "question_font_size": 18,
+        "question_font_size_mobile": 16,
+        "answer_font_size": 16,
+        "answer_opacity": 75,
+        "padding_vertical": 40,
+        "padding_horizontal": 80,
+        "padding_vertical_mobile": 24,
+        "padding_horizontal_mobile": 20,
+        "column_gap": 80,
+        "arrow_size": 20,
+        "max_width": 1400
       }
     }
   },
@@ -73,6 +198,6 @@
     "main",
     "maison_faq_banner_MBryTQ",
     "maison_faq_tabs",
-    "maison_faq_content"
+    "maison_faq_content_bQ8cBQ"
   ]
 }
