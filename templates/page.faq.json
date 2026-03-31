@@ -76,7 +76,7 @@
           "type": "tab_item",
           "settings": {
             "label": "Returns & Guarantee",
-            "link": ""
+            "link": "#returns-guarantee"
           }
         },
         "tab_6": {
@@ -232,6 +232,20 @@
         "custom_id": "shipping-delivery",
         "heading": "Shipping & Delivery"
       }
+    },
+    "maison_faq_returns": {
+      "type": "maison-faq-content",
+      "blocks": {
+        "q1": { "type": "faq_item", "settings": { "question": "How Does The 90-Day Guarantee Actually Work?", "answer": "<p>It's simple: try the SmoothSpine Massager for up to 90 days. If you're not satisfied with your results, contact our support team and we'll process a full refund — no questions asked, no hoops to jump through.</p>" } },
+        "q2": { "type": "faq_item", "settings": { "question": "Do I Have To Pay For Return Shipping?", "answer": "<p>Return shipping costs are the responsibility of the customer. However, if your product arrived damaged or defective, we'll cover the return shipping at no cost to you.</p>" } },
+        "q3": { "type": "faq_item", "settings": { "question": "What Condition Does The Device Need To Be In To Qualify For A Refund?", "answer": "<p>The device should be in reasonable condition — we understand you've been using it. Light wear from normal use is perfectly fine. We just ask that all original components are included in the return.</p>" } },
+        "q4": { "type": "faq_item", "settings": { "question": "I Read Some Reviews Saying Refunds Were Delayed. What Changed?", "answer": "<p>We've completely overhauled our returns process. Refunds are now processed within 5–7 business days of receiving your return. Our dedicated support team is available 24/7 to ensure a smooth experience.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": {
+        "custom_id": "returns-guarantee",
+        "heading": "Returns & Guarantee"
+      }
     }
   },
   "order": [
@@ -241,6 +255,7 @@
     "maison_faq_content_bQ8cBQ",
     "maison_faq_usage_safety",
     "maison_faq_the_result",
-    "maison_faq_shipping"
+    "maison_faq_shipping",
+    "maison_faq_returns"
   ]
 }
