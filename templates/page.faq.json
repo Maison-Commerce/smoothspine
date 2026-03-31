@@ -83,7 +83,7 @@
           "type": "tab_item",
           "settings": {
             "label": "Billing & Charges",
-            "link": ""
+            "link": "#billing-charges"
           }
         }
       },
@@ -246,6 +246,19 @@
         "custom_id": "returns-guarantee",
         "heading": "Returns & Guarantee"
       }
+    },
+    "maison_faq_billing": {
+      "type": "maison-faq-content",
+      "blocks": {
+        "q1": { "type": "faq_item", "settings": { "question": "Is This A One-Time Purchase?", "answer": "<p>Yes! The SmoothSpine Massager is a one-time purchase. There are no hidden fees, subscriptions, or recurring charges. You pay once and the device is yours to keep.</p>" } },
+        "q2": { "type": "faq_item", "settings": { "question": "I've Seen Mentions Of A Patch Subscription. What Is That?", "answer": "<p>Some of our bundle options include an optional subscription for replacement relief patches. This is entirely optional and clearly labeled at checkout. You can skip, pause, or cancel at any time with no penalties.</p>" } },
+        "q3": { "type": "faq_item", "settings": { "question": "What Will I See On My Bank Statement?", "answer": "<p>Your charge will appear as 'SMOOTHSPINE' or 'SP*SMOOTHSPINE' on your bank or credit card statement. If you don't recognize a charge, please contact our support team and we'll help clarify.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"],
+      "settings": {
+        "custom_id": "billing-charges",
+        "heading": "Billing & Charges"
+      }
     }
   },
   "order": [
@@ -256,6 +269,7 @@
     "maison_faq_usage_safety",
     "maison_faq_the_result",
     "maison_faq_shipping",
-    "maison_faq_returns"
+    "maison_faq_returns",
+    "maison_faq_billing"
   ]
 }
