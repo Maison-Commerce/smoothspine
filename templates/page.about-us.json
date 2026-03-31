@@ -266,12 +266,65 @@
       ],
       "name": "About Endorsement",
       "settings": {
-        "color_bg": "#FDFCFA",
-        "color_checklist_bg": "#F8F4EE",
+        "color_bg": "#fdfcfa",
+        "color_checklist_bg": "#f8f4ee",
         "padding_top": 40,
         "padding_bottom": 20,
         "padding_horizontal": 80,
         "max_width": 1200
+      }
+    },
+    "maison_about_story_ffbFkg": {
+      "type": "maison-about-story",
+      "blocks": {
+        "paragraph_pWNCj9": {
+          "type": "paragraph",
+          "settings": {
+            "text": "It's the messages we get from customers like Margaret, who told us she slept through the night for the first time in months."
+          }
+        },
+        "paragraph_ftaaYG": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Or Richard, who said he almost didn't buy it because he'd been burned before, but now he can walk his dog without stopping every few minutes."
+          }
+        },
+        "paragraph_DyCmVb": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Or Carol, who wrote, \"I thought bending down to tie my shoes was gone for good. Thank you for giving me that back.\""
+          }
+        },
+        "paragraph_7bpBjX": {
+          "type": "paragraph",
+          "settings": {
+            "text": "That's why we do this. Not every product works for every person, we're honest about that. But when it does work, it changes lives."
+          }
+        },
+        "paragraph_DbpJTa": {
+          "type": "paragraph",
+          "settings": {
+            "text": "That question became SmoothSpine."
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_pWNCj9",
+        "paragraph_ftaaYG",
+        "paragraph_DyCmVb",
+        "paragraph_7bpBjX",
+        "paragraph_DbpJTa"
+      ],
+      "name": "About Story Block",
+      "settings": {
+        "heading": "What Keeps Us Going",
+        "image": "shopify://shop_images/5bd512d73970be097b56c4e3bf0af5ccf1af2084.png",
+        "color_bg": "#FDFCFA",
+        "color_text": "#102A43",
+        "padding_top": 20,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "max_width": 1400
       }
     }
   },
@@ -280,6 +333,7 @@
     "maison_legal_banner_xftUHf",
     "maison_about_content_X84pWw",
     "maison_about_usps_w3A3Jm",
-    "maison_about_endorsement_PcNL4T"
+    "maison_about_endorsement_PcNL4T",
+    "maison_about_story_ffbFkg"
   ]
 }
