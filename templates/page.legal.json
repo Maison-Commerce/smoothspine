@@ -51,28 +51,28 @@
           "type": "tab_item",
           "settings": {
             "label": "Terms of service",
-            "link": "#how-it-works"
+            "link": "shopify://pages/legal"
           }
         },
         "tab_item_w4pNR3": {
           "type": "tab_item",
           "settings": {
             "label": "Privacy Policy",
-            "link": "#usage-safety"
+            "link": "shopify://policies/privacy-policy"
           }
         },
         "tab_item_6aB7xr": {
           "type": "tab_item",
           "settings": {
             "label": "Return Policy",
-            "link": "#the-result"
+            "link": "shopify://policies/refund-policy"
           }
         },
         "tab_item_jG8Qh7": {
           "type": "tab_item",
           "settings": {
             "label": "Shipping & Delivery",
-            "link": "#shipping-delivery"
+            "link": "shopify://policies/shipping-policy"
           }
         }
       },
