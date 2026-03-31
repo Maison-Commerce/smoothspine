@@ -76,7 +76,10 @@
     --s-block-padding-x: {{ section.settings.block_padding_x }}px;
     --s-block-padding-y: {{ section.settings.block_padding_y }}px;
     --s-column-gap: {{ section.settings.column_gap }}px;
-    --s-radius-block: {{ section.settings.block_border_radius }}px;
+    --s-radius-block-tl: {{ section.settings.block_border_radius_tl }}px;
+    --s-radius-block-tr: {{ section.settings.block_border_radius_tr }}px;
+    --s-radius-block-br: {{ section.settings.block_border_radius_br }}px;
+    --s-radius-block-bl: {{ section.settings.block_border_radius_bl }}px;
     --s-radius-image: {{ section.settings.image_border_radius }}px;
     --s-radius-btn: {{ section.settings.btn_border_radius }}px;
     --s-radius-gift: {{ section.settings.gift_border_radius }}px;
@@ -114,7 +117,7 @@
 
   #shopify-section-{{ section.id }} .oa-offer {
     background: var(--s-color-bg-offer);
-    border-radius: var(--s-radius-block) var(--s-radius-block) 0 var(--s-radius-block);
+    border-radius: var(--s-radius-block-tl) var(--s-radius-block-tr) var(--s-radius-block-br) var(--s-radius-block-bl);
     padding: var(--s-block-padding-y) var(--s-block-padding-x);
     display: flex;
     gap: var(--s-column-gap);
@@ -441,7 +444,7 @@
 
   #shopify-section-{{ section.id }} .oa-authority {
     background: var(--s-color-bg-authority);
-    border-radius: 0 var(--s-radius-block) 0 var(--s-radius-block);
+    border-radius: var(--s-radius-block-tl) var(--s-radius-block-tr) var(--s-radius-block-br) var(--s-radius-block-bl);
     padding: var(--s-block-padding-y) var(--s-block-padding-x);
     display: flex;
     gap: var(--s-column-gap);
@@ -586,7 +589,7 @@
 
   #shopify-section-{{ section.id }} .oa-trust {
     background: var(--s-color-bg-trust);
-    border-radius: 0 var(--s-radius-block) var(--s-radius-block) var(--s-radius-block);
+    border-radius: var(--s-radius-block-tl) var(--s-radius-block-tr) var(--s-radius-block-br) var(--s-radius-block-bl);
     padding: var(--s-block-padding-y) var(--s-block-padding-x);
     display: flex;
     align-items: center;
@@ -1623,8 +1626,38 @@
     },
     {
       "type": "range",
-      "id": "block_border_radius",
-      "label": "Block border radius",
+      "id": "block_border_radius_tl",
+      "label": "Block radius — top left",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "block_border_radius_tr",
+      "label": "Block radius — top right",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "block_border_radius_br",
+      "label": "Block radius — bottom right",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "block_border_radius_bl",
+      "label": "Block radius — bottom left",
       "min": 0,
       "max": 48,
       "step": 2,
