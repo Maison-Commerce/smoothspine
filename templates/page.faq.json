@@ -48,7 +48,7 @@
           "type": "tab_item",
           "settings": {
             "label": "How It Works",
-            "link": ""
+            "link": "#how-it-works"
           }
         },
         "tab_2": {
@@ -172,10 +172,11 @@
       ],
       "name": "FAQ Accordion",
       "settings": {
+        "custom_id": "how-it-works",
         "heading": "How It Works",
-        "color_background": "#FDFCFA",
-        "color_heading": "#102A43",
-        "color_text": "#102A43",
+        "color_background": "#fdfcfa",
+        "color_heading": "#102a43",
+        "color_text": "#102a43",
         "color_border": "#000000",
         "border_opacity": 8,
         "heading_font_size": 32,
