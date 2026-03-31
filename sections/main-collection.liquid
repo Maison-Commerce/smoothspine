@@ -224,6 +224,137 @@
       gap: 16px 12px;
     }
   }
+
+  /* ── Maison: Product card overrides ── */
+  #shopify-section-{{ section.id }} product-card {
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  /* Image */
+  #shopify-section-{{ section.id }} .product-card__figure {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .product-card__image {
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+  }
+
+  /* Card info */
+  #shopify-section-{{ section.id }} .product-card__info {
+    padding: 12px;
+    gap: 20px;
+  }
+
+  /* Title */
+  #shopify-section-{{ section.id }} .product-card__title a {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* Price */
+  #shopify-section-{{ section.id }} .price-list {
+    font-family: 'Open Sans', sans-serif;
+    gap: 8px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .price--compare {
+    font-weight: 600;
+    font-size: 12px;
+    color: #102A43;
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .price {
+    font-weight: 700;
+    font-size: 16px;
+    color: #102A43;
+  }
+
+  /* Rating */
+  #shopify-section-{{ section.id }} .product-card .rating-with-text {
+    gap: 8px;
+  }
+
+  /* Vendor */
+  #shopify-section-{{ section.id }} .product-card .text-xs {
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(16, 42, 67, 0.75);
+  }
+
+  /* Badges (sale/discount) */
+  #shopify-section-{{ section.id }} .product-card__badge-list .badge--sale,
+  #shopify-section-{{ section.id }} .product-card__badge-list .badge--on-sale {
+    background-color: #12B76A;
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 8px;
+  }
+
+  /* Quick buy button override */
+  #shopify-section-{{ section.id }} .product-card__quick-buy .button,
+  #shopify-section-{{ section.id }} .product-card__quick-buy button[type="submit"] {
+    background-color: #F07E3B;
+    border: none;
+    border-bottom: 4px solid #BF642F;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFCFB;
+    height: 44px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .product-card__quick-buy .button:hover,
+  #shopify-section-{{ section.id }} .product-card__quick-buy button[type="submit"]:hover {
+    opacity: 0.9;
+  }
+
+  /* Mobile card overrides */
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .product-card__info {
+      padding: 4px 4px 4px;
+      padding-top: 8px;
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .product-card__title a {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .price--compare {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .price {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .product-card__quick-buy .button,
+    #shopify-section-{{ section.id }} .product-card__quick-buy button[type="submit"] {
+      height: 32px;
+      font-size: 12px;
+    }
+  }
 </style>
 
 {%- comment -%} ── Maison: Category tabs ── {%- endcomment -%}
