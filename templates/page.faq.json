@@ -9,20 +9,41 @@
  */
 {
   "sections": {
-    "maison_faq_banner": {
-      "type": "maison-faq-banner",
-      "settings": {}
-    },
     "main": {
       "type": "main-page",
       "disabled": true,
       "settings": {
         "content_width": "80ch"
       }
+    },
+    "maison_faq_banner_MBryTQ": {
+      "type": "maison-faq-banner",
+      "name": "FAQ Header",
+      "settings": {
+        "heading": "How Can We Help?",
+        "subtitle": "Quickly find answers to your question or contact us.",
+        "color_background": "#F8F4EE",
+        "color_heading": "#102A43",
+        "color_subtitle": "#4A5D6E",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "subtitle_font_size": 18,
+        "subtitle_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "padding_horizontal_mobile": 20,
+        "content_gap": 16,
+        "max_width": 1400,
+        "content_max_width": 600,
+        "subtitle_max_width": 545
+      }
     }
   },
   "order": [
-    "maison_faq_banner",
-    "main"
+    "main",
+    "maison_faq_banner_MBryTQ"
   ]
 }
