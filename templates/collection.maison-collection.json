@@ -278,12 +278,193 @@
         "padding_vertical_mobile": 40,
         "padding_horizontal_mobile": 20
       }
+    },
+    "maison_offer_auth_pRdjrq": {
+      "type": "maison-offer-auth",
+      "blocks": {
+        "checklist_item_eDXKmK": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "90-Day Results or Refund Guarantee"
+          }
+        },
+        "checklist_item_nkiRJG": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "60% OFF - SmoothSpine Massager (All-Inclusive treatment kit)"
+          }
+        },
+        "checklist_item_EGCDcY": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Fast & FREE Shipping"
+          }
+        },
+        "gift_item_czgMjD": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $29",
+            "image": "shopify://shop_images/dc43829b1674bae58a96a2b9dbbd09fbe430dfc2.png",
+            "label": "Back pain & Sciatica Guide"
+          }
+        },
+        "gift_item_tPjNHQ": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $20",
+            "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
+            "label": "12x Back Pain Relief Patches"
+          }
+        },
+        "gift_item_KbQpPT": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $15",
+            "image": "shopify://shop_images/gsejnjn3gn4knf_egegh.png",
+            "label": "Zip Lock Travel Bag"
+          }
+        },
+        "endorsement_6zcG89": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Blane Schilling",
+            "title": "Endorsed by Dr. Blane Schilling",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "After 18 years treating patients with chronic back pain and sciatica, I know one thing for certain: recovery happens at home, not in a clinic.\n\nThe SmoothSpine Triple Fusion Massager is the first at-home device I recommend with confidence — it combines decompression, massage, and heat in a single 15-minute session, and for patients dealing with nerve compression, disc stiffness, or that locked-up morning feeling, it genuinely fills the gap between clinical visits and daily relief.",
+            "author_name": "Dr. Blane Schilling",
+            "author_role": "Licensed Physical Therapist",
+            "image": "shopify://shop_images/5c0b920f0ebab86769e2a7b32aa4f3b4b82fe02b.png"
+          }
+        },
+        "endorsement_qnyBn9": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Adam Story",
+            "title": "Endorsed by Dr. Adam Story",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "As a chiropractor, I've seen how daily spinal decompression and targeted heat therapy can accelerate recovery. The SmoothSpine Massager delivers exactly that — conveniently at home.",
+            "author_name": "Dr. Adam Story",
+            "author_role": "Licensed Chiropractor"
+          }
+        },
+        "trust_item_aRUQC7": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Shipment-Return--Streamline-Flex.svg",
+            "heading": "90-DAY MONEY BACK GUARANTEE",
+            "description": "If you're not thrilled, we will refund your investment. No hassle."
+          }
+        },
+        "trust_item_JFabWN": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Transfer-Van--Streamline-Flex.svg",
+            "heading": "FREE SHIPPING",
+            "description": "We provide fast shipping on all orders. Enjoy free shipping on orders over $60."
+          }
+        },
+        "trust_item_T6mfar": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Warranty-Badge-Highlight--Streamline-Flex.svg",
+            "heading": "GUARANTEED HIGH QUALITY",
+            "description": "Made of high quality materials. Enjoy consistent, trouble-free performance for a long time."
+          }
+        }
+      },
+      "block_order": [
+        "checklist_item_eDXKmK",
+        "checklist_item_nkiRJG",
+        "checklist_item_EGCDcY",
+        "gift_item_czgMjD",
+        "gift_item_tPjNHQ",
+        "gift_item_KbQpPT",
+        "endorsement_6zcG89",
+        "endorsement_qnyBn9",
+        "trust_item_aRUQC7",
+        "trust_item_JFabWN",
+        "trust_item_T6mfar"
+      ],
+      "name": "Offer Authority Trust",
+      "settings": {
+        "show_offer_block": true,
+        "show_rating_badge": true,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_badge": true,
+        "offer_heading": "<span style=\"text-decoration:underline\"><em>Special Offer</em></span> On Now!",
+        "offer_subtext": "Try Your SmoothSpine Massager NOW <span style=\"text-decoration:underline\">Risk-Free</span> at an All Time Low Price! Act Now and You'll Get:",
+        "gifts_heading": "Exclusive Offer! Order today for free gifts (valued at $64)!",
+        "cta_label": "GET 60% OFF TODAY ONLY!",
+        "cta_link": "",
+        "show_cta_note": true,
+        "cta_note": "Note: Not Available on Amazon or eBay",
+        "offer_image": "shopify://shop_images/e145c8657a0ce71caabd4bdcd69218a3f7cd9ff7.png",
+        "show_authority_block": true,
+        "show_trust_block": true,
+        "wave_offer_to_authority": "shopify://shop_images/banner-wave-top.svg",
+        "wave_top_authority": "shopify://shop_images/banner-wave-bottom.svg",
+        "wave_authority_to_trust": "shopify://shop_images/mc-home-wave-rt-bottom.svg",
+        "wave_top_trust": "shopify://shop_images/mc-home-wave-rt-top.svg",
+        "color_bg_outer": "#fdfcfa",
+        "color_bg_offer": "#f8f4ee",
+        "color_bg_authority": "#e5eefb",
+        "color_bg_trust": "#f8f4ee",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_highlight": "#f07e3b",
+        "color_accent": "#065bdc",
+        "color_divider": "#424140",
+        "color_btn_bg": "#f07e3b",
+        "color_btn_border": "#bf642f",
+        "color_btn_text": "#fffcfb",
+        "color_gift_bg": "#eeeae5",
+        "color_gift_border": "#065bdc",
+        "color_gift_badge_bg": "#065bdc",
+        "color_gift_badge_text": "#fafcfe",
+        "color_trust_icon_bg": "#fafcfe",
+        "color_trust_icon_border": "#065bdc",
+        "color_trust_divider": "#c5c2bd",
+        "color_tab_active": "#065bdc",
+        "color_expert_badge": "#065bdc",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 26,
+        "subtext_font_size": 18,
+        "subtext_font_size_mobile": 16,
+        "checklist_font_size": 16,
+        "endorsement_title_font_size": 24,
+        "endorsement_title_font_size_mobile": 20,
+        "quote_font_size": 18,
+        "quote_font_size_mobile": 16,
+        "trust_heading_font_size": 18,
+        "trust_body_font_size": 14,
+        "btn_font_size": 16,
+        "badge_font_size": 10,
+        "tab_font_size": 14,
+        "tab_font_size_mobile": 12,
+        "rating_font_size": 12,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "padding_x": 80,
+        "padding_x_mobile": 16,
+        "max_width": 1280,
+        "block_padding_x": 64,
+        "block_padding_y": 48,
+        "column_gap": 64,
+        "block_border_radius": 16,
+        "image_border_radius": 8,
+        "btn_border_radius": 8,
+        "gift_border_radius": 8,
+        "trust_icon_border_radius": 8
+      }
     }
   },
   "order": [
     "banner",
     "maison_collection_banner_zLw9fd",
     "main",
-    "maison_trustpilot_reviews_ijYQc4"
+    "maison_trustpilot_reviews_ijYQc4",
+    "maison_offer_auth_pRdjrq"
   ]
 }
