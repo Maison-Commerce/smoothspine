@@ -100,7 +100,7 @@
     font-weight: 400;
     font-size: var(--s-font-size-subheading);
     line-height: 1.5;
-    color: var(--s-color-secondary);
+    color: {{ section.settings.color_secondary | color_modify: 'alpha', 0.75 }};
     max-width: 544px;
   }
 
@@ -173,7 +173,7 @@
     font-weight: 400;
     font-size: var(--s-font-size-card-desc);
     line-height: 1.5;
-    color: var(--s-color-secondary);
+    color: {{ section.settings.color_secondary | color_modify: 'alpha', 0.75 }};
     max-width: 280px;
   }
 
@@ -219,23 +219,10 @@
     font-weight: 400;
     font-size: var(--s-font-size-hours);
     line-height: 1.5;
-    color: var(--s-color-secondary);
+    color: {{ section.settings.color_secondary | color_modify: 'alpha', 0.75 }};
     text-align: center;
   }
 
-  /* Mobile Form - hidden on desktop */
-  #shopify-section-{{ section.id }} .co-form-wrapper {
-    display: none;
-  }
-
-  /* Desktop cards - visible on desktop */
-  #shopify-section-{{ section.id }} .co-desktop {
-    display: contents;
-  }
-
-  #shopify-section-{{ section.id }} .co-mobile {
-    display: none;
-  }
 
   /* Mobile styles */
   @media (max-width: 767px) {
@@ -290,15 +277,6 @@
     #shopify-section-{{ section.id }} .co-card-desc {
       font-size: 14px;
       max-width: 100%;
-    }
-
-    /* Hide mobile form section, show cards */
-    #shopify-section-{{ section.id }} .co-desktop {
-      display: contents;
-    }
-
-    #shopify-section-{{ section.id }} .co-mobile {
-      display: none;
     }
 
     #shopify-section-{{ section.id }} .co-mobile-heading {
@@ -434,92 +412,68 @@
 
 <section class="maisoncode_contact-options">
   <div class="co-inner">
-    {%- comment -%} Desktop View {%- endcomment -%}
-    <div class="co-desktop">
-      <header class="co-title-block">
-        {% if section.settings.heading != blank %}
-          <h2 class="co-heading">{{ section.settings.heading }}</h2>
-        {% endif %}
-        {% if section.settings.subheading != blank %}
-          <p class="co-subheading">{{ section.settings.subheading }}</p>
-        {% endif %}
-      </header>
-
-      {% if section.blocks.size > 0 %}
-        <div class="co-cards">
-          {% for block in section.blocks %}
-            {% if block.type == 'contact_card' %}
-              <article class="co-card" {{ block.shopify_attributes }}>
-                <div class="co-card-header">
-                  {% if block.settings.icon != blank %}
-                    <div class="co-card-icon">
-                      {{ block.settings.icon | image_url: width: 140 | image_tag:
-                        loading: 'lazy',
-                        widths: '70, 140',
-                        sizes: '70px'
-                      }}
-                    </div>
-                  {% endif %}
-                  <div class="co-card-text">
-                    {% if block.settings.title != blank %}
-                      <h3 class="co-card-title">{{ block.settings.title }}</h3>
-                    {% endif %}
-                    {% if block.settings.description != blank %}
-                      <p class="co-card-desc">{{ block.settings.description }}</p>
-                    {% endif %}
-                  </div>
-                </div>
-                  <div class="co-card-info">
-                    {% if block.settings.contact_text != blank %}
-                      {% if block.settings.contact_link != blank %}
-                        <a href="{{ block.settings.contact_link }}" class="co-card-contact{% if block.settings.underline_contact %} co-card-contact--underline{% endif %}">
-                          {{ block.settings.contact_text }}
-                        </a>
-                      {% else %}
-                        <span class="co-card-contact">{{ block.settings.contact_text }}</span>
-                      {% endif %}
-                    {% endif %}
-                    {% if block.settings.hours_text != blank %}
-                      <div class="co-card-hours">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="{{ section.settings.color_secondary }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                          <circle cx="8" cy="8" r="6.5"/>
-                          <polyline points="8 4.5 8 8 10.5 9.5"/>
-                        </svg>
-                        <span>{{ block.settings.hours_text }}</span>
-                      </div>
-                    {% endif %}
-                  </div>
-                </div>
-              </article>
-            {% endif %}
-          {% endfor %}
-        </div>
+    <header class="co-title-block">
+      {% if section.settings.heading != blank %}
+        <h2 class="co-heading">{{ section.settings.heading }}</h2>
       {% endif %}
-    </div>
+      {% if section.settings.subheading != blank %}
+        <p class="co-subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </header>
 
-    {%- comment -%} Mobile View {%- endcomment -%}
-    {% if section.settings.show_mobile_form %}
-      <div class="co-mobile">
-        {% if section.settings.mobile_heading != blank %}
-          <h2 class="co-mobile-heading">{{ section.settings.mobile_heading }}</h2>
-        {% endif %}
-
-        <form class="co-form" onsubmit="return false;">
-          <div class="co-form-fields">
-            <input type="text" class="co-input" placeholder="{{ section.settings.form_name_placeholder }}">
-            <input type="email" class="co-input" placeholder="{{ section.settings.form_email_placeholder }}">
-            <textarea class="co-textarea" placeholder="{{ section.settings.form_message_placeholder }}"></textarea>
-            {% if section.settings.show_privacy_checkbox %}
-              <label class="co-checkbox-row">
-                <input type="checkbox" class="co-checkbox">
-                <span class="co-checkbox-label">{{ section.settings.privacy_label }}</span>
-              </label>
-            {% endif %}
-          </div>
-          {% if section.settings.submit_button_text != blank %}
-            <button type="submit" class="co-submit-btn">{{ section.settings.submit_button_text }}</button>
+    {% if section.blocks.size > 0 %}
+      <div class="co-cards">
+        {% for block in section.blocks %}
+          {% if block.type == 'contact_card' %}
+            <div class="co-card" {{ block.shopify_attributes }}>
+              <div class="co-card-header">
+                {% if block.settings.icon != blank %}
+                  <div class="co-card-icon">
+                    {{ block.settings.icon | image_url: width: 140 | image_tag:
+                      loading: 'lazy',
+                      widths: '70, 140',
+                      sizes: '70px'
+                    }}
+                  </div>
+                {% endif %}
+                <div class="co-card-text">
+                  {% if block.settings.title != blank %}
+                    <h3 class="co-card-title">{{ block.settings.title }}</h3>
+                  {% endif %}
+                  {% if block.settings.description != blank %}
+                    <p class="co-card-desc">{{ block.settings.description }}</p>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="co-card-info">
+                {% if block.settings.contact_text != blank %}
+                  {% if block.settings.contact_link != blank %}
+                    <a href="{{ block.settings.contact_link }}" class="co-card-contact{% if block.settings.underline_contact %} co-card-contact--underline{% endif %}">
+                      {{ block.settings.contact_text }}
+                    </a>
+                  {% else %}
+                    <span class="co-card-contact">{{ block.settings.contact_text }}</span>
+                  {% endif %}
+                {% endif %}
+                {% if block.settings.hours_text != blank %}
+                  <div class="co-card-hours">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <g clip-path="url(#clip0_4078_18349{{ block.id }})">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2.0995 2.0995C3.49981 0.699178 5.52055 0 8 0C10.4795 0 12.5002 0.699178 13.9005 2.0995C15.3008 3.49981 16 5.52055 16 8C16 10.4795 15.3008 12.5002 13.9005 13.9005C12.5002 15.3008 10.4795 16 8 16C5.52055 16 3.49981 15.3008 2.0995 13.9005C0.699178 12.5002 0 10.4795 0 8C0 5.52055 0.699178 3.49981 2.0995 2.0995ZM8.03711 3.60157C8.51049 3.60157 8.89425 3.98531 8.89425 4.45871V7.60485L10.7101 9.45282C11.0419 9.79048 11.0371 10.3332 10.6995 10.6649C10.3618 10.9967 9.81912 10.992 9.48733 10.6543L7.42573 8.55625C7.26822 8.39596 7.17997 8.18022 7.17997 7.9555V4.45871C7.17997 3.98531 7.56373 3.60157 8.03711 3.60157Z" fill="#102A43"/>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_4078_18349{{ block.id }}">
+                          <rect width="16" height="16" fill="white"/>
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    <span>{{ block.settings.hours_text }}</span>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
           {% endif %}
-        </form>
+        {% endfor %}
       </div>
     {% endif %}
   </div>
