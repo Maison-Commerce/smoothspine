@@ -55,9 +55,24 @@
       }
     }
   },
+    "maison_faq_content": {
+      "type": "maison-faq-content",
+      "blocks": {
+        "q1": { "type": "faq_item", "settings": { "question": "What Exactly Does The Triple Fusion Massager Do?", "answer": "<p>The Triple Fusion Massager combines three therapeutic technologies — heat therapy, vibration massage, and red light therapy — into one easy-to-use device. Together, they work to relieve tension, reduce stiffness, and support recovery in the spine and surrounding muscles.</p>" } },
+        "q2": { "type": "faq_item", "settings": { "question": "What Conditions Has It Helped With?", "answer": "<p>Our users have reported relief from a variety of conditions including chronic back pain, sciatica, herniated discs, muscle spasms, poor posture-related discomfort, and general stiffness from sedentary lifestyles.</p>" } },
+        "q3": { "type": "faq_item", "settings": { "question": "How Soon Will I Feel Something?", "answer": "<p>Many users feel a noticeable difference after their very first session. Consistent use over 2–4 weeks typically delivers the most significant, lasting improvements in comfort and mobility.</p>" } },
+        "q4": { "type": "faq_item", "settings": { "question": "I've Tried Everything. Why Would This Be Different?", "answer": "<p>Unlike single-method solutions, the Triple Fusion Massager addresses pain from multiple angles simultaneously. The combination of heat, vibration, and red light therapy creates a synergistic effect that many standalone treatments simply can't match.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4"],
+      "settings": {
+        "heading": "How It Works"
+      }
+    }
+  },
   "order": [
     "main",
     "maison_faq_banner_MBryTQ",
-    "maison_faq_tabs"
+    "maison_faq_tabs",
+    "maison_faq_content"
   ]
 }
