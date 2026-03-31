@@ -44,7 +44,7 @@
     --s-field-gap: {{ section.settings.field_gap }}px;
     --s-form-gap: {{ section.settings.form_gap }}px;
     --s-max-width: {{ section.settings.max_width }}px;
-    --s-input-padding: {{ section.settings.input_padding }}px;
+    --s-input-padding: {{ section.settings.input_padding | minus: 1 }}px {{ section.settings.input_padding }}px;
     --s-button-height: {{ section.settings.button_height }}px;
 
     background-color: var(--s-color-bg);
