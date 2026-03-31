@@ -69,7 +69,7 @@
           "type": "tab_item",
           "settings": {
             "label": "Shipping & Delivery",
-            "link": ""
+            "link": "#shipping-delivery"
           }
         },
         "tab_5": {
@@ -219,6 +219,19 @@
         "custom_id": "the-result",
         "heading": "The Result"
       }
+    },
+    "maison_faq_shipping": {
+      "type": "maison-faq-content",
+      "blocks": {
+        "q1": { "type": "faq_item", "settings": { "question": "How Long Does Shipping Take?", "answer": "<p>We offer free standard shipping on all orders, which typically takes 5–10 business days depending on your location. Expedited shipping options are also available at checkout for faster delivery.</p>" } },
+        "q2": { "type": "faq_item", "settings": { "question": "What If My Tracking Isn't Updating?", "answer": "<p>Tracking information can sometimes take 24–48 hours to update after your order ships. If your tracking hasn't updated after 3 business days, please contact our support team and we'll investigate right away.</p>" } },
+        "q3": { "type": "faq_item", "settings": { "question": "What If My Order Arrives Damaged?", "answer": "<p>If your order arrives damaged, please contact us within 48 hours with photos of the damage. We'll send a replacement at no extra cost or issue a full refund — whichever you prefer.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"],
+      "settings": {
+        "custom_id": "shipping-delivery",
+        "heading": "Shipping & Delivery"
+      }
     }
   },
   "order": [
@@ -227,6 +240,7 @@
     "maison_faq_tabs",
     "maison_faq_content_bQ8cBQ",
     "maison_faq_usage_safety",
-    "maison_faq_the_result"
+    "maison_faq_the_result",
+    "maison_faq_shipping"
   ]
 }
