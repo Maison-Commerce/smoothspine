@@ -1,0 +1,369 @@
+{% comment %}
+  Section: About Page Stats
+  Description: Horizontal stats bar displaying key metrics (e.g. customers helped,
+    average rating, guarantees). Shows as a centered row on desktop and stacks
+    vertically with label-left / value-right layout on mobile.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (weight 800) — must be loaded by the theme or via font_picker
+
+  Blocks:
+  - stat_item: Individual stat with a value and label (limit: 8)
+
+  Notes:
+  - All stat items use extra-bold (800) weight from Plus Jakarta Sans
+  - On mobile, items flip to row layout with label on left, value on right
+  - All colors, typography, spacing, and layout values are merchant-configurable
+  - Original source class prefix: maisoncode_about-page-stats
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_about-page-stats {
+    --s-color-brand: {{ section.settings.color_brand }};
+    --s-color-bg: {{ section.settings.color_background }};
+    --s-color-text-secondary: {{ section.settings.color_label_text }};
+    --s-font-size-value: {{ section.settings.value_font_size }}px;
+    --s-font-size-label: {{ section.settings.label_font_size }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-gap: {{ section.settings.items_gap }}px;
+    --s-border-radius: {{ section.settings.item_border_radius }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+    --s-label-letter-spacing: {{ section.settings.label_letter_spacing }}px;
+
+    background-color: var(--s-color-bg);
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_about-page-stats *,
+  #shopify-section-{{ section.id }} .maisoncode_about-page-stats *::before,
+  #shopify-section-{{ section.id }} .maisoncode_about-page-stats *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .stats-container {
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-gap);
+  }
+
+  #shopify-section-{{ section.id }} .stat-item {
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    border-radius: var(--s-border-radius);
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .stat-value {
+    font-size: var(--s-font-size-value);
+    line-height: 1.5;
+    color: var(--s-color-brand);
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .stat-label {
+    font-size: var(--s-font-size-label);
+    line-height: 1.5;
+    letter-spacing: var(--s-label-letter-spacing);
+    text-transform: uppercase;
+    color: {{ section.settings.color_label_text | color_modify: 'alpha', 0.75 }};
+  }
+
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_about-page-stats {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+      --s-font-size-value: {{ section.settings.value_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .stat-value {
+      line-height: 1.4;
+    }
+
+    #shopify-section-{{ section.id }} .stats-container {
+      flex-direction: column;
+      gap: {{ section.settings.items_gap_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .stat-item {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      text-align: left;
+      gap: 0;
+    }
+
+    #shopify-section-{{ section.id }} .stat-item .stat-label {
+      order: -1;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_about-page-stats">
+  <div class="stats-container">
+    {% for block in section.blocks %}
+      {% if block.type == 'stat_item' %}
+        <div class="stat-item" {{ block.shopify_attributes }}>
+          {% if block.settings.value != blank %}
+            <span class="stat-value">{{ block.settings.value }}</span>
+          {% endif %}
+          {% if block.settings.label != blank %}
+            <span class="stat-label">{{ block.settings.label }}</span>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Page Stats",
+  "tag": "section",
+  "class": "about-page-stats-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background color",
+      "default": "#E5EEFB"
+    },
+    {
+      "type": "color",
+      "id": "color_brand",
+      "label": "Value text color",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_label_text",
+      "label": "Label text color",
+      "default": "#102A43"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "value_font_size",
+      "label": "Value font size (desktop)",
+      "min": 16,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "value_font_size_mobile",
+      "label": "Value font size (mobile)",
+      "min": 14,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "label_font_size",
+      "label": "Label font size",
+      "min": 8,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "label_letter_spacing",
+      "label": "Label letter spacing",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "items_gap",
+      "label": "Gap between items (desktop)",
+      "min": 8,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "items_gap_mobile",
+      "label": "Gap between items (mobile)",
+      "min": 4,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_border_radius",
+      "label": "Item border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat_item",
+      "name": "Stat",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "100+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Stat Label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Page Stats",
+      "blocks": [
+        {
+          "type": "stat_item",
+          "settings": {
+            "value": "57,000+",
+            "label": "Customers Helped"
+          }
+        },
+        {
+          "type": "stat_item",
+          "settings": {
+            "value": "4.4\u2605",
+            "label": "Average Rating"
+          }
+        },
+        {
+          "type": "stat_item",
+          "settings": {
+            "value": "90-Day",
+            "label": "Money-Back Guarantee"
+          }
+        },
+        {
+          "type": "stat_item",
+          "settings": {
+            "value": "15 Min",
+            "label": "Daily Use Time"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
