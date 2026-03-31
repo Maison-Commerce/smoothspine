@@ -44,6 +44,81 @@
         "content_width": "80ch"
       }
     },
+    "maison_faq_tabs_HALcrR": {
+      "type": "maison-faq-tabs",
+      "blocks": {
+        "tab_item_Tim7Vp": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Terms of service",
+            "link": "#how-it-works"
+          }
+        },
+        "tab_item_w4pNR3": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Privacy Policy",
+            "link": "#usage-safety"
+          }
+        },
+        "tab_item_6aB7xr": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Return Policy",
+            "link": "#the-result"
+          }
+        },
+        "tab_item_jG8Qh7": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Shipping & Delivery",
+            "link": "#shipping-delivery"
+          }
+        }
+      },
+      "block_order": [
+        "tab_item_Tim7Vp",
+        "tab_item_w4pNR3",
+        "tab_item_6aB7xr",
+        "tab_item_jG8Qh7"
+      ],
+      "settings": {
+        "subtitle": "",
+        "nav_aria_label": "FAQ categories",
+        "color_background": "#fdfcfa",
+        "color_tab_bg": "#f8f4ee",
+        "color_tab_border": "#fefefd",
+        "color_text_secondary": "#4a5d6e",
+        "color_tab_text": "#34393d",
+        "color_tab_hover_bg": "#f0e9df",
+        "color_tab_active_bg": "#ece4d6",
+        "color_tab_active_border": "#d5c9b5",
+        "subtitle_font_size": 18,
+        "subtitle_font_size_mobile": 16,
+        "tab_label_font_size": 12,
+        "tab_label_font_size_mobile": 11,
+        "tab_letter_spacing": 1,
+        "tab_letter_spacing_mobile": 1,
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 16,
+        "section_gap": 24,
+        "section_gap_mobile": 16,
+        "tab_gap": 16,
+        "tab_gap_mobile": 12,
+        "tab_border_radius": 8,
+        "tab_height": 44,
+        "tab_height_mobile": 40,
+        "tab_padding_vertical": 12,
+        "tab_padding_horizontal": 16,
+        "tab_padding_vertical_mobile": 10,
+        "tab_padding_horizontal_mobile": 12,
+        "max_width": 1400
+      }
+    },
     "maison_legal_content_QyYU7L": {
       "type": "maison-legal-content",
       "name": "Legal Content",
@@ -252,25 +327,10 @@
       }
     }
   },
-  "maison_legal_tabs": {
-      "type": "maison-faq-tabs",
-      "blocks": {
-        "tab_1": { "type": "tab_item", "settings": { "label": "Terms of service" } },
-        "tab_2": { "type": "tab_item", "settings": { "label": "Privacy Policy" } },
-        "tab_3": { "type": "tab_item", "settings": { "label": "Cookie Policy" } },
-        "tab_4": { "type": "tab_item", "settings": { "label": "Return Policy" } }
-      },
-      "block_order": ["tab_1", "tab_2", "tab_3", "tab_4"],
-      "settings": {
-        "subtitle": "",
-        "mobile_columns": 1
-      }
-    }
-  },
   "order": [
     "maison_legal_banner_GWt8Xq",
-    "maison_legal_tabs",
     "main",
+    "maison_faq_tabs_HALcrR",
     "maison_legal_content_QyYU7L",
     "maison_offer_auth_KVBRzz"
   ]
