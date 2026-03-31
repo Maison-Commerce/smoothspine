@@ -30,6 +30,31 @@
         "overlay_opacity": 30
       }
     },
+    "maison_collection_banner": {
+      "type": "maison-collection-banner",
+      "blocks": {
+        "trust_1": {
+          "type": "trust_badge_item",
+          "settings": {
+            "label": "Doctor Developed"
+          }
+        },
+        "trust_2": {
+          "type": "trust_badge_item",
+          "settings": {
+            "label": "Rapid Pain Relief"
+          }
+        },
+        "trust_3": {
+          "type": "trust_badge_item",
+          "settings": {
+            "label": "Easy Returns"
+          }
+        }
+      },
+      "block_order": ["trust_1", "trust_2", "trust_3"],
+      "settings": {}
+    },
     "main": {
       "type": "main-collection",
       "settings": {
@@ -47,6 +72,7 @@
   },
   "order": [
     "banner",
+    "maison_collection_banner",
     "main"
   ]
 }
