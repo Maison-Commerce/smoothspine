@@ -500,12 +500,14 @@
 
   /* ── Maison: Product grid gap adjustment ── */
   #shopify-section-{{ section.id }} .product-list {
-    gap: 32px;
+    row-gap: 20px;
+    column-gap: 20px;
   }
 
   @media screen and (max-width: 767px) {
     #shopify-section-{{ section.id }} .product-list {
-      gap: 16px 12px;
+      row-gap: 12px;
+      column-gap: 16px;
     }
   }
 
