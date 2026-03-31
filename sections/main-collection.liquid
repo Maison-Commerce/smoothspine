@@ -32,14 +32,14 @@
 
   @media screen and (min-width: 1000px) {
     #shopify-section-{{ section.id }} {
-      --product-list-items-per-row: {% if section.settings.filter_layout == 'sidebar' %}2{% else %}{{ section.settings.products_per_row_desktop | at_most: 3 }}{% endif %};
+      --product-list-items-per-row: {% if section.settings.filter_layout == 'sidebar' %}2{% elsif section.settings.filter_layout == 'maison' %}{{ section.settings.products_per_row_desktop | at_most: 4 }}{% else %}{{ section.settings.products_per_row_desktop | at_most: 3 }}{% endif %};
       --product-list-promo-grid-column: span 2;
     }
   }
 
   @media screen and (min-width: 1200px) {
     #shopify-section-{{ section.id }} {
-      --product-list-items-per-row: {% if section.settings.filter_layout == 'sidebar' %}{{ section.settings.products_per_row_desktop | at_most: 3 }}{% else %}{{ section.settings.products_per_row_desktop }}{% endif %};
+      --product-list-items-per-row: {% if section.settings.filter_layout == 'sidebar' %}{{ section.settings.products_per_row_desktop | at_most: 3 }}{% elsif section.settings.filter_layout == 'maison' %}{{ section.settings.products_per_row_desktop }}{% else %}{{ section.settings.products_per_row_desktop }}{% endif %};
     }
   }
 
@@ -118,7 +118,69 @@
     margin: 0 auto;
   }
 
-  /* ── Maison: Filter bar overrides ── */
+  /* ── Maison: Custom filter bar ── */
+  #shopify-section-{{ section.id }} .maison-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    margin-bottom: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-bar__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-btn:hover {
+    opacity: 0.7;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-product-count {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    opacity: 0.5;
+  }
+
+  /* Hide default top bar in Maison mode */
+  {% if section.settings.filter_layout == 'maison' %}
+    #shopify-section-{{ section.id }} .collection-top-bar {
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .facets__floating-filter {
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .collection__facets {
+      display: none;
+    }
+  {% endif %}
+
+  /* ── Maison: Filter bar overrides (legacy) ── */
   #shopify-section-{{ section.id }} .collection-top-bar {
     font-family: 'Open Sans', sans-serif;
   }
@@ -411,7 +473,20 @@
             {%- render 'facets-vertical', results: collection, show_filters: show_filters, show_sort_by: section.settings.show_sort_by, update_on_change: false -%}
           </facet-drawer>
 
-          {%- if section.settings.filter_layout == 'horizontal' -%}
+          {%- if section.settings.filter_layout == 'maison' -%}
+            {%- comment -%} Maison custom filter bar {%- endcomment -%}
+            <div class="maison-filter-bar">
+              <div class="maison-filter-bar__left">
+                <button type="button" class="maison-filter-btn" aria-controls="facets-drawer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.33301 2.66675H14.6663M3.99967 8.00008H11.9997M6.66634 13.3334H9.33301" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span>Filter and sort</span>
+                </button>
+              </div>
+              <div class="maison-filter-bar__right">
+                <span class="maison-product-count">{{ collection.products_count }} {{ 'collection.products_count' | t: count: collection.products_count }}</span>
+              </div>
+            </div>
+          {%- elsif section.settings.filter_layout == 'horizontal' -%}
             {%- render 'collection-top-bar', results: collection, show_filters: show_filters, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by -%}
           {%- else -%}
             {%- render 'collection-top-bar', results: collection, show_filters: false, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by -%}
@@ -419,20 +494,22 @@
 
           {%- comment -%}We also need to render the button, that is floating on mobile{%- endcomment -%}
           {%- if show_filters or section.settings.show_sort_by -%}
-            {%- capture content_key -%}
-              {%- if show_filters and section.settings.show_sort_by -%}
-                collection.faceting.filter_and_sort
-              {%- elsif show_filters and section.settings.show_sort_by == false -%}
-                collection.faceting.filter_button
-              {%- elsif show_filters == false and section.settings.show_sort_by -%}
-                collection.faceting.sort_by
-              {%- endif -%}
-            {%- endcapture -%}
+            {%- unless section.settings.filter_layout == 'maison' -%}
+              {%- capture content_key -%}
+                {%- if show_filters and section.settings.show_sort_by -%}
+                  collection.faceting.filter_and_sort
+                {%- elsif show_filters and section.settings.show_sort_by == false -%}
+                  collection.faceting.filter_button
+                {%- elsif show_filters == false and section.settings.show_sort_by -%}
+                  collection.faceting.sort_by
+                {%- endif -%}
+              {%- endcapture -%}
 
-            <facet-floating-filter class="facets__floating-filter md:hidden">
-              {%- assign filter_label = content_key | t -%}
-              {%- render 'button', size: 'xl', content: filter_label, icon: 'filter', style: 'fill', background: settings.text_color, text_color: settings.background, aria_controls: 'facets-drawer' -%}
-            </facet-floating-filter>
+              <facet-floating-filter class="facets__floating-filter md:hidden">
+                {%- assign filter_label = content_key | t -%}
+                {%- render 'button', size: 'xl', content: filter_label, icon: 'filter', style: 'fill', background: settings.text_color, text_color: settings.background, aria_controls: 'facets-drawer' -%}
+              </facet-floating-filter>
+            {%- endunless -%}
           {%- endif -%}
         {%- endif -%}
 
@@ -988,9 +1065,13 @@
         {
           "value": "drawer",
           "label": "Drawer"
+        },
+        {
+          "value": "maison",
+          "label": "Maison"
         }
       ],
-      "default": "sidebar"
+      "default": "maison"
     },
     {
       "type": "checkbox",
