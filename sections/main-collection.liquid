@@ -168,6 +168,227 @@
     opacity: 0.5;
   }
 
+  /* ── Maison: Filter dropdowns ── */
+  #shopify-section-{{ section.id }} .maison-filter-dropdowns {
+    display: none;
+    align-items: center;
+    gap: 8px;
+  }
+
+  @media screen and (min-width: 768px) {
+    #shopify-section-{{ section.id }} .maison-filter-dropdowns {
+      display: flex;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-dropdown {
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-dropdown__trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: #F8F4EE;
+    border: 1px solid #FEFEFD;
+    border-radius: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #102A43;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-dropdown__trigger:hover {
+    opacity: 0.85;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-dropdown__trigger svg {
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: #065BDC;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-dropdown__panel {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 200px;
+    background: white;
+    border: 1px solid #E8E6E3;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    z-index: 10;
+    padding: 8px 0;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #102A43;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-option:hover {
+    background: #F8F4EE;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-option--active {
+    font-weight: 700;
+    color: #065BDC;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-option__count {
+    color: rgba(16, 42, 67, 0.5);
+    font-size: 12px;
+  }
+
+  /* ── Maison: Sort dropdown ── */
+  #shopify-section-{{ section.id }} .maison-sort {
+    position: relative;
+    display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+    #shopify-section-{{ section.id }} .maison-sort {
+      display: block;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .maison-sort__trigger {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #102A43;
+    cursor: pointer;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-sort__trigger strong {
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .maison-sort__trigger svg {
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-sort__panel {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    min-width: 200px;
+    background: white;
+    border: 1px solid #E8E6E3;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    z-index: 10;
+    padding: 8px 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-sort__option {
+    display: block;
+    padding: 8px 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #102A43;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-sort__option:hover {
+    background: #F8F4EE;
+  }
+
+  #shopify-section-{{ section.id }} .maison-sort__option--active {
+    font-weight: 700;
+    color: #065BDC;
+  }
+
+  /* ── Maison: Pagination ── */
+  #shopify-section-{{ section.id }} .maison-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 32px 0 16px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pagination__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #F8F4EE;
+    color: #102A43;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pagination__btn:hover {
+    opacity: 0.85;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pagination__btn--active {
+    background-color: #424140;
+    color: #FFFFFF;
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pagination__btn--gap {
+    background: none;
+    cursor: default;
+    width: auto;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pagination__btn--arrow {
+    background-color: #F8F4EE;
+  }
+
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maison-pagination__btn {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
   /* Hide default top bar in Maison mode */
   {% if section.settings.filter_layout == 'maison' %}
     #shopify-section-{{ section.id }} .collection-top-bar {
@@ -482,9 +703,50 @@
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.33301 2.66675H14.6663M3.99967 8.00008H11.9997M6.66634 13.3334H9.33301" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   <span>Filter and sort</span>
                 </button>
+                {%- if show_filters -%}
+                  <div class="maison-filter-dropdowns">
+                    {%- for filter in collection.filters -%}
+                      {%- if filter.type == 'list' and filter.values.size > 0 -%}
+                        <div class="maison-filter-dropdown" x-data="{ open: false }">
+                          <button type="button" class="maison-filter-dropdown__trigger" @click="open = !open" @click.outside="open = false">
+                            <span>{{ filter.label }}</span>
+                            {%- assign active_count = 0 -%}
+                            {%- for value in filter.values -%}{%- if value.active -%}{%- assign active_count = active_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+                            {%- if active_count > 0 -%}<span class="maison-filter-badge">{{ active_count }}</span>{%- endif -%}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </button>
+                          <div class="maison-filter-dropdown__panel" x-show="open" style="display:none;">
+                            {%- for value in filter.values -%}
+                              <a href="{{ value.url }}" class="maison-filter-option {% if value.active %}maison-filter-option--active{% endif %}">
+                                <span>{{ value.label }}</span>
+                                <span class="maison-filter-option__count">({{ value.count }})</span>
+                              </a>
+                            {%- endfor -%}
+                          </div>
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
               </div>
               <div class="maison-filter-bar__right">
-                <span class="maison-product-count">{{ 'collection.products_count' | t: count: collection.products_count }}</span>
+                <span class="maison-product-count">{{ collection.products_count }} products</span>
+                {%- if section.settings.show_sort_by -%}
+                  <div class="maison-sort" x-data="{ open: false }">
+                    <button type="button" class="maison-sort__trigger" @click="open = !open" @click.outside="open = false">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 2v12M4 14l-3-3M4 14l3-3M12 14V2M12 2l-3 3M12 2l3 3" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <span>Sort by: <strong>{{ collection.sort_by | default: collection.default_sort_by | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</strong></span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="maison-sort__panel" x-show="open" style="display:none;">
+                      {%- for option in collection.sort_options -%}
+                        <a href="{{ collection.url }}?sort_by={{ option.value }}" class="maison-sort__option {% if collection.sort_by == option.value or collection.default_sort_by == option.value and collection.sort_by == blank %}maison-sort__option--active{% endif %}">
+                          {{ option.name }}
+                        </a>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endif -%}
               </div>
             </div>
           {%- elsif section.settings.filter_layout == 'horizontal' -%}
@@ -638,7 +900,28 @@
           {%- endif -%}
         </div>
 
-        {%- render 'pagination', paginate: paginate, facet: true, class: 'collection__pagination' -%}
+        {%- if section.settings.filter_layout == 'maison' and paginate.pages > 1 -%}
+          <nav class="maison-pagination" role="navigation" aria-label="Pagination">
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}" class="maison-pagination__btn {% if part.title == paginate.current_page %}maison-pagination__btn--active{% endif %}">
+                  {{ part.title }}
+                </a>
+              {%- elsif part.title == paginate.current_page -%}
+                <span class="maison-pagination__btn maison-pagination__btn--active">{{ part.title }}</span>
+              {%- else -%}
+                <span class="maison-pagination__btn maison-pagination__btn--gap">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if paginate.next.is_link -%}
+              <a href="{{ paginate.next.url }}" class="maison-pagination__btn maison-pagination__btn--arrow" aria-label="Next page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.02081 0.84375L8.93415 5.75708C8.96608 5.78897 8.99141 5.82683 9.00869 5.86852C9.02597 5.9102 9.03487 5.95488 9.03487 6C9.03487 6.04512 9.02597 6.0898 9.00869 6.13148C8.99141 6.17317 8.96608 6.21103 8.93415 6.24292L4.02081 11.1562" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            {%- endif -%}
+          </nav>
+        {%- else -%}
+          {%- render 'pagination', paginate: paginate, facet: true, class: 'collection__pagination' -%}
+        {%- endif -%}
       </div>
     {%- endpaginate -%}
   {%- endif -%}
