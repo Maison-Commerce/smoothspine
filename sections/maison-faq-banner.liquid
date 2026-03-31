@@ -1,0 +1,319 @@
+{% comment %}
+  Section: FAQ Header
+  Description: Centered FAQ header section with a heading and subtitle.
+    Used at the top of FAQ pages to introduce the help/support content.
+    Fully responsive with centered text layout.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (heading), 'Open Sans' (body) — must be loaded by theme
+
+  Blocks:
+  - None
+
+  Notes:
+  - Simple centered content block with no repeating elements
+  - All colors, typography, spacing are merchant-configurable
+  - Subtitle max-width is configurable for readability control
+  - Original source class prefix: maisoncode_FAQ_Header
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_FAQ_Header {
+    --s-color-bg: {{ section.settings.color_background }};
+    --s-color-heading: {{ section.settings.color_heading }};
+    --s-color-text-secondary: {{ section.settings.color_subtitle }};
+    --s-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --s-font-size-subtitle: {{ section.settings.subtitle_font_size }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-content-gap: {{ section.settings.content_gap }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+    --s-content-max-width: {{ section.settings.content_max_width }}px;
+    --s-subtitle-max-width: {{ section.settings.subtitle_max_width }}px;
+
+    background-color: var(--s-color-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_FAQ_Header *,
+  #shopify-section-{{ section.id }} .maisoncode_FAQ_Header *::before,
+  #shopify-section-{{ section.id }} .maisoncode_FAQ_Header *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .faq-header__inner {
+    max-width: var(--s-max-width);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .faq-header__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-content-gap);
+    text-align: center;
+    max-width: var(--s-content-max-width);
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .faq-header__title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: var(--s-font-size-heading);
+    line-height: 1.5;
+    color: var(--s-color-heading);
+    text-transform: capitalize;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .faq-header__subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: var(--s-font-size-subtitle);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+    max-width: var(--s-subtitle-max-width);
+    margin: 0;
+  }
+
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_FAQ_Header {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+      --s-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
+      --s-font-size-subtitle: {{ section.settings.subtitle_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .faq-header__title {
+      line-height: 1.4;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_FAQ_Header">
+  <div class="faq-header__inner">
+    <div class="faq-header__content">
+      {% if section.settings.heading != blank %}
+        <h2 class="faq-header__title">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="faq-header__subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Header",
+  "tag": "section",
+  "class": "faq-header-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How Can We Help?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Quickly find answers to your question or contact us."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background color",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading color",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_subtitle",
+      "label": "Subtitle color",
+      "default": "#4A5D6E"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "label": "Subtitle font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "label": "Subtitle font size (mobile)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Gap between heading and subtitle",
+      "min": 4,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content area max width",
+      "min": 300,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "subtitle_max_width",
+      "label": "Subtitle max width",
+      "min": 300,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 544
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Header"
+    }
+  ]
+}
+{% endschema %}

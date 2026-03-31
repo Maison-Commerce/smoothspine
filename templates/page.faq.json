@@ -9,6 +9,10 @@
  */
 {
   "sections": {
+    "maison_faq_banner": {
+      "type": "maison-faq-banner",
+      "settings": {}
+    },
     "main": {
       "type": "main-page",
       "disabled": true,
@@ -18,6 +22,7 @@
     }
   },
   "order": [
+    "maison_faq_banner",
     "main"
   ]
 }
