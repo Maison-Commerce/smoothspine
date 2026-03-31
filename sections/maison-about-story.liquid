@@ -1,0 +1,238 @@
+{% comment %}
+  Section: About Story Block
+  Description: Two-column layout with a single image on the left and heading
+    with paragraphs on the right. Stacks vertically on mobile.
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_about-story {
+    background-color: {{ section.settings.color_bg }};
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_horizontal }}px {{ section.settings.padding_bottom }}px;
+    display: flex;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_about-story *,
+  #shopify-section-{{ section.id }} .maisoncode_about-story *::before,
+  #shopify-section-{{ section.id }} .maisoncode_about-story *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .as-inner {
+    max-width: {{ section.settings.max_width }}px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  #shopify-section-{{ section.id }} .as-image {
+    flex: 1 1 0;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .as-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .as-image .as-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e8d5c4 0%, #f0e6da 50%, #d4bfae 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .as-content {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 48px 32px 32px;
+  }
+
+  #shopify-section-{{ section.id }} .as-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.4;
+    color: #102A43;
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .as-paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .as-paragraphs p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: {{ section.settings.color_text | color_modify: 'alpha', 0.75 }};
+  }
+
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_about-story {
+      padding: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .as-inner {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .as-image {
+      flex: none;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .as-content {
+      flex: none;
+      width: 100%;
+      padding: 0;
+      gap: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .as-heading {
+      font-size: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .as-paragraphs {
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .as-paragraphs p {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_about-story">
+  <div class="as-inner">
+    <div class="as-image">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1200 | image_tag:
+          loading: 'lazy',
+          widths: '375, 550, 750, 1000, 1200',
+          sizes: '(max-width: 767px) 100vw, 50vw'
+        }}
+      {% else %}
+        <div class="as-placeholder"></div>
+      {% endif %}
+    </div>
+
+    <div class="as-content">
+      {% if section.settings.heading != blank %}
+        <h2 class="as-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.blocks.size > 0 %}
+        <div class="as-paragraphs">
+          {% for block in section.blocks %}
+            {% if block.type == 'paragraph' and block.settings.text != blank %}
+              <p {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Story Block",
+  "tag": "section",
+  "class": "about-story-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Keeps Us Going"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text color",
+      "default": "#102A43"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0, "max": 120, "step": 4, "unit": "px", "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0, "max": 120, "step": 4, "unit": "px", "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 0, "max": 120, "step": 4, "unit": "px", "default": 80
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 800, "max": 1600, "step": 20, "unit": "px", "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Paragraph text goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Story Block",
+      "blocks": [
+        { "type": "paragraph", "settings": { "text": "It's the messages we get from customers like Margaret, who told us she slept through the night for the first time in months." } },
+        { "type": "paragraph", "settings": { "text": "Or Richard, who said he almost didn't buy it because he'd been burned before, but now he can walk his dog without stopping every few minutes." } },
+        { "type": "paragraph", "settings": { "text": "Or Carol, who wrote, \"I thought bending down to tie my shoes was gone for good. Thank you for giving me that back.\"" } },
+        { "type": "paragraph", "settings": { "text": "That's why we do this. Not every product works for every person, we're honest about that. But when it does work, it changes lives." } },
+        { "type": "paragraph", "settings": { "text": "That question became SmoothSpine." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
