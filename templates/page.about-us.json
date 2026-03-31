@@ -43,10 +43,116 @@
         "max_width_text": 600,
         "max_width_description": 545
       }
+    },
+    "maison_about_content_X84pWw": {
+      "type": "maison-about-content",
+      "blocks": {
+        "grid_image_pm9XaH": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/0a4404729c600d3380bea7f64f588fb8d639aec5.png",
+            "image_alt": "Woman in kitchen preparing food"
+          }
+        },
+        "grid_image_WYwnnw": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/309b7dfc64c8f1da594ddac55fc01aee4b3f2aa8.png",
+            "image_alt": "Man driving experiencing back discomfort"
+          }
+        },
+        "grid_image_gPmaPt": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/872f4e04a6ec365dd563318786a6056794fd2f15.png",
+            "image_alt": "Man working at desk with back pain"
+          }
+        },
+        "grid_image_y6XxyT": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/d2936fe515172c0d3bdd8ef3d1d9b5532cc50c5b.png",
+            "image_alt": "Man walking outdoors with back pain"
+          }
+        },
+        "paragraph_xNUPcD": {
+          "type": "paragraph",
+          "settings": {
+            "text": "\"Why is relief so hard to find?\"",
+            "italic": true
+          }
+        },
+        "paragraph_VGX3WJ": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Our founder asked that question after watching his father, a man who'd worked hard his entire life, spend years cycling through treatments that never lasted. Chiropractors. Medications. Injections. Physical therapy appointments that cost a fortune and required time he didn't have.",
+            "italic": false
+          }
+        },
+        "paragraph_J6hGYP": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Nothing stuck. The pain always came back.",
+            "italic": false
+          }
+        },
+        "paragraph_gY4far": {
+          "type": "paragraph",
+          "settings": {
+            "text": "He started asking doctors a different question: \"What if someone could do this at home? What if relief didn't have to mean endless appointments or pills?\"",
+            "italic": false
+          }
+        },
+        "paragraph_PGQF77": {
+          "type": "paragraph",
+          "settings": {
+            "text": "That question became SmoothSpine.",
+            "italic": false
+          }
+        }
+      },
+      "block_order": [
+        "grid_image_pm9XaH",
+        "grid_image_WYwnnw",
+        "grid_image_gPmaPt",
+        "grid_image_y6XxyT",
+        "paragraph_xNUPcD",
+        "paragraph_VGX3WJ",
+        "paragraph_J6hGYP",
+        "paragraph_gY4far",
+        "paragraph_PGQF77"
+      ],
+      "name": "About Page Content",
+      "settings": {
+        "heading": "It Started with One Question",
+        "color_background": "#FDFCFA",
+        "color_heading": "#102A43",
+        "color_body_text": "#102A43BF",
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "column_gap": 40,
+        "column_gap_mobile": 32,
+        "text_content_gap": 24,
+        "paragraphs_gap": 16,
+        "text_padding_top": 48,
+        "text_padding_bottom": 32,
+        "text_padding_horizontal": 32,
+        "image_border_radius": 16,
+        "max_width": 1400
+      }
     }
   },
   "order": [
     "main",
-    "maison_legal_banner_xftUHf"
+    "maison_legal_banner_xftUHf",
+    "maison_about_content_X84pWw"
   ]
 }
