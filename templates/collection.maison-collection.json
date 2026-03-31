@@ -387,7 +387,7 @@
       ],
       "name": "Offer Authority Trust",
       "settings": {
-        "show_offer_block": true,
+        "show_offer_block": false,
         "show_rating_badge": true,
         "rating_text": "4.4/5 (2,295 + reviews)",
         "show_trustpilot_badge": true,
