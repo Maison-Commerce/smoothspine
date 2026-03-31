@@ -76,10 +76,18 @@
     --s-block-padding-x: {{ section.settings.block_padding_x }}px;
     --s-block-padding-y: {{ section.settings.block_padding_y }}px;
     --s-column-gap: {{ section.settings.column_gap }}px;
-    --s-radius-block-tl: {{ section.settings.block_border_radius_tl }}px;
-    --s-radius-block-tr: {{ section.settings.block_border_radius_tr }}px;
-    --s-radius-block-br: {{ section.settings.block_border_radius_br }}px;
-    --s-radius-block-bl: {{ section.settings.block_border_radius_bl }}px;
+    --s-radius-offer-tl: {{ section.settings.offer_radius_tl }}px;
+    --s-radius-offer-tr: {{ section.settings.offer_radius_tr }}px;
+    --s-radius-offer-br: {{ section.settings.offer_radius_br }}px;
+    --s-radius-offer-bl: {{ section.settings.offer_radius_bl }}px;
+    --s-radius-auth-tl: {{ section.settings.auth_radius_tl }}px;
+    --s-radius-auth-tr: {{ section.settings.auth_radius_tr }}px;
+    --s-radius-auth-br: {{ section.settings.auth_radius_br }}px;
+    --s-radius-auth-bl: {{ section.settings.auth_radius_bl }}px;
+    --s-radius-trust-tl: {{ section.settings.trust_radius_tl }}px;
+    --s-radius-trust-tr: {{ section.settings.trust_radius_tr }}px;
+    --s-radius-trust-br: {{ section.settings.trust_radius_br }}px;
+    --s-radius-trust-bl: {{ section.settings.trust_radius_bl }}px;
     --s-radius-image: {{ section.settings.image_border_radius }}px;
     --s-radius-btn: {{ section.settings.btn_border_radius }}px;
     --s-radius-gift: {{ section.settings.gift_border_radius }}px;
@@ -117,7 +125,7 @@
 
   #shopify-section-{{ section.id }} .oa-offer {
     background: var(--s-color-bg-offer);
-    border-radius: var(--s-radius-block-tl) var(--s-radius-block-tr) var(--s-radius-block-br) var(--s-radius-block-bl);
+    border-radius: var(--s-radius-offer-tl) var(--s-radius-offer-tr) var(--s-radius-offer-br) var(--s-radius-offer-bl);
     padding: var(--s-block-padding-y) var(--s-block-padding-x);
     display: flex;
     gap: var(--s-column-gap);
@@ -444,7 +452,7 @@
 
   #shopify-section-{{ section.id }} .oa-authority {
     background: var(--s-color-bg-authority);
-    border-radius: var(--s-radius-block-tl) var(--s-radius-block-tr) var(--s-radius-block-br) var(--s-radius-block-bl);
+    border-radius: var(--s-radius-auth-tl) var(--s-radius-auth-tr) var(--s-radius-auth-br) var(--s-radius-auth-bl);
     padding: var(--s-block-padding-y) var(--s-block-padding-x);
     display: flex;
     gap: var(--s-column-gap);
@@ -589,7 +597,7 @@
 
   #shopify-section-{{ section.id }} .oa-trust {
     background: var(--s-color-bg-trust);
-    border-radius: var(--s-radius-block-tl) var(--s-radius-block-tr) var(--s-radius-block-br) var(--s-radius-block-bl);
+    border-radius: var(--s-radius-trust-tl) var(--s-radius-trust-tr) var(--s-radius-trust-br) var(--s-radius-trust-bl);
     padding: var(--s-block-padding-y) var(--s-block-padding-x);
     display: flex;
     align-items: center;
@@ -1625,44 +1633,88 @@
       "default": 64
     },
     {
-      "type": "range",
-      "id": "block_border_radius_tl",
-      "label": "Block radius — top left",
-      "min": 0,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "default": 16
+      "type": "header",
+      "content": "Offer block radius"
     },
     {
       "type": "range",
-      "id": "block_border_radius_tr",
-      "label": "Block radius — top right",
-      "min": 0,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "default": 16
+      "id": "offer_radius_tl",
+      "label": "Offer — top left",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 16
     },
     {
       "type": "range",
-      "id": "block_border_radius_br",
-      "label": "Block radius — bottom right",
-      "min": 0,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "default": 0
+      "id": "offer_radius_tr",
+      "label": "Offer — top right",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 16
     },
     {
       "type": "range",
-      "id": "block_border_radius_bl",
-      "label": "Block radius — bottom left",
-      "min": 0,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "default": 16
+      "id": "offer_radius_br",
+      "label": "Offer — bottom right",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 0
+    },
+    {
+      "type": "range",
+      "id": "offer_radius_bl",
+      "label": "Offer — bottom left",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Authority block radius"
+    },
+    {
+      "type": "range",
+      "id": "auth_radius_tl",
+      "label": "Authority — top left",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 0
+    },
+    {
+      "type": "range",
+      "id": "auth_radius_tr",
+      "label": "Authority — top right",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 16
+    },
+    {
+      "type": "range",
+      "id": "auth_radius_br",
+      "label": "Authority — bottom right",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 0
+    },
+    {
+      "type": "range",
+      "id": "auth_radius_bl",
+      "label": "Authority — bottom left",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Trust block radius"
+    },
+    {
+      "type": "range",
+      "id": "trust_radius_tl",
+      "label": "Trust — top left",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 0
+    },
+    {
+      "type": "range",
+      "id": "trust_radius_tr",
+      "label": "Trust — top right",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 16
+    },
+    {
+      "type": "range",
+      "id": "trust_radius_br",
+      "label": "Trust — bottom right",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 16
+    },
+    {
+      "type": "range",
+      "id": "trust_radius_bl",
+      "label": "Trust — bottom left",
+      "min": 0, "max": 48, "step": 2, "unit": "px", "default": 16
     },
     {
       "type": "range",
