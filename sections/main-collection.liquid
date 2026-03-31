@@ -58,7 +58,92 @@
       }
     {%- endfor -%}
   }
+
+  /* ── Maison: Category tabs ── */
+  #shopify-section-{{ section.id }} {
+    background-color: #FDFCFA;
+  }
+
+  #shopify-section-{{ section.id }} .maison-category-tabs {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0 8px;
+    max-width: 1440px;
+    margin: 0 auto 20px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-category-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .maison-category-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.2s, color 0.2s;
+    background-color: #F8F4EE;
+    border: 1px solid #FEFEFD;
+    color: #34393D;
+  }
+
+  #shopify-section-{{ section.id }} .maison-category-tab:hover {
+    opacity: 0.85;
+  }
+
+  #shopify-section-{{ section.id }} .maison-category-tab--active {
+    background-color: #424140;
+    border-color: #424140;
+    color: #FFFFFF;
+  }
+
+  #shopify-section-{{ section.id }} .container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
 </style>
+
+{%- comment -%} ── Maison: Category tabs ── {%- endcomment -%}
+{%- assign category_blocks = section.blocks | where: "type", "category_tab" -%}
+{%- if category_blocks.size > 0 -%}
+  <div class="maison-category-tabs">
+    {%- for block in category_blocks -%}
+      {%- assign is_active = false -%}
+      {%- if block.settings.collection != blank -%}
+        {%- if block.settings.collection == collection.handle or block.settings.collection.handle == collection.handle -%}
+          {%- assign is_active = true -%}
+        {%- endif -%}
+        <a
+          href="{{ block.settings.collection.url | default: collections[block.settings.collection].url }}"
+          class="maison-category-tab {% if is_active %}maison-category-tab--active{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          {{ block.settings.label | default: block.settings.collection.title }}
+        </a>
+      {%- else -%}
+        <span class="maison-category-tab" {{ block.shopify_attributes }}>
+          {{ block.settings.label | default: 'Category' }}
+        </span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
 
 <div class="container">
   {%- if collection.all_products_count == 0 -%}
@@ -246,8 +331,26 @@
   "name": "Collection page",
   "class": "shopify-section--main-collection",
   "tag": "section",
-  "max_blocks": 5,
+  "max_blocks": 20,
   "blocks": [
+    {
+      "type": "category_tab",
+      "name": "Category tab",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label (override)",
+          "info": "Leave blank to use collection title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    },
     {
       "type": "promotion_image",
       "name": "Promotion image",
