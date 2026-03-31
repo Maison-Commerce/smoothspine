@@ -55,7 +55,7 @@
           "type": "tab_item",
           "settings": {
             "label": "Usage & Safety",
-            "link": ""
+            "link": "#usage-safety"
           }
         },
         "tab_3": {
@@ -195,10 +195,25 @@
       }
     }
   },
+  "maison_faq_usage_safety": {
+      "type": "maison-faq-content",
+      "blocks": {
+        "q1": { "type": "faq_item", "settings": { "question": "Is It Safe To Use With Osteoporosis?", "answer": "<p>We recommend consulting your doctor before use if you have osteoporosis. While many users with mild osteoporosis have used the device comfortably, it's best to get personalized medical advice for your specific condition.</p>" } },
+        "q2": { "type": "faq_item", "settings": { "question": "What If It Makes My Pain Worse?", "answer": "<p>Some users may experience mild soreness after the first few sessions as the body adjusts — similar to starting a new exercise routine. If pain persists or worsens, discontinue use and consult your healthcare provider. Our 90-day guarantee covers you if it's not the right fit.</p>" } },
+        "q3": { "type": "faq_item", "settings": { "question": "Are There Any Conditions Where I Shouldn't Use It?", "answer": "<p>The device should not be used if you have an active spinal infection, recent spinal surgery (within 6 months), spinal tumors, or are pregnant. Always consult your physician if you're unsure whether the device is appropriate for your condition.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"],
+      "settings": {
+        "custom_id": "usage-safety",
+        "heading": "Usage & Safety"
+      }
+    }
+  },
   "order": [
     "main",
     "maison_faq_banner_MBryTQ",
     "maison_faq_tabs",
-    "maison_faq_content_bQ8cBQ"
+    "maison_faq_content_bQ8cBQ",
+    "maison_faq_usage_safety"
   ]
 }
