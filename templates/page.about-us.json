@@ -11,10 +11,42 @@
   "sections": {
     "main": {
       "type": "main-page",
-      "settings": {}
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "maison_legal_banner_xftUHf": {
+      "type": "maison-legal-banner",
+      "name": "About Page Header",
+      "settings": {
+        "heading": "<p>Get Ready For Lasting Relief!</p>",
+        "description": "We're here because we know what it's like to live with chronic pain. And we know how many \"solutions\" have let you down before.",
+        "color_background": "#f8f4ee",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43",
+        "body_text_opacity": 75,
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "body_font_size": 18,
+        "body_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "content_gap": 32,
+        "title_gap": 16,
+        "title_gap_mobile": 12,
+        "max_width": 1400,
+        "max_width_text": 600,
+        "max_width_description": 545
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "maison_legal_banner_xftUHf"
   ]
 }
