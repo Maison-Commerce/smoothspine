@@ -1,0 +1,588 @@
+{% comment %}
+  Section: FAQ Tabs
+  Description: Horizontal row of category tabs for FAQ navigation. Displays a
+    subtitle and a row of pill-style tabs that highlight on click. Tabs wrap on
+    mobile into a two-column grid. Ideal for linking to or filtering FAQ
+    accordion sections by category.
+
+  Dependencies:
+  - Font: 'Open Sans' (body) and 'Plus Jakarta Sans' (tab labels) — must be
+    loaded by the theme or replaced via font_picker
+
+  Blocks:
+  - tab_item: Individual FAQ category tab with label and optional link (limit: 12)
+
+  Notes:
+  - Active-tab state uses Alpine.js in the original; converted to pure CSS
+    :focus/:active for Shopify compatibility (no JS dependency)
+  - Tab active state managed via anchor link clicks with CSS :target or theme JS
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_FAQ_Tabs
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_FAQ_Tabs {
+    --s-color-bg: {{ section.settings.color_background }};
+    --s-color-tab-bg: {{ section.settings.color_tab_bg }};
+    --s-color-tab-border: {{ section.settings.color_tab_border }};
+    --s-color-text-secondary: {{ section.settings.color_text_secondary }};
+    --s-color-tab-text: {{ section.settings.color_tab_text }};
+    --s-color-tab-hover-bg: {{ section.settings.color_tab_hover_bg }};
+    --s-color-tab-active-bg: {{ section.settings.color_tab_active_bg }};
+    --s-color-tab-active-border: {{ section.settings.color_tab_active_border }};
+    --s-font-size-subtitle: {{ section.settings.subtitle_font_size }}px;
+    --s-font-size-tab-label: {{ section.settings.tab_label_font_size }}px;
+    --s-radius-tab: {{ section.settings.tab_border_radius }}px;
+    --s-gap-tabs: {{ section.settings.tab_gap }}px;
+    --s-gap-sections: {{ section.settings.section_gap }}px;
+    --s-section-max-width: {{ section.settings.max_width }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-tab-height: {{ section.settings.tab_height }}px;
+    --s-tab-padding-vertical: {{ section.settings.tab_padding_vertical }}px;
+    --s-tab-padding-horizontal: {{ section.settings.tab_padding_horizontal }}px;
+    --s-tab-letter-spacing: {{ section.settings.tab_letter_spacing }}px;
+
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--s-color-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    gap: var(--s-gap-sections);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_FAQ_Tabs *,
+  #shopify-section-{{ section.id }} .maisoncode_FAQ_Tabs *::before,
+  #shopify-section-{{ section.id }} .maisoncode_FAQ_Tabs *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .faq-tabs__inner {
+    max-width: var(--s-section-max-width);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-gap-sections);
+  }
+
+  /* Subtitle */
+  #shopify-section-{{ section.id }} .faq-tabs__subtitle {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: var(--s-font-size-subtitle);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+    text-align: center;
+    max-width: 544px;
+    margin: 0;
+  }
+
+  /* Tab Row */
+  #shopify-section-{{ section.id }} .faq-tabs__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-gap-tabs);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Individual Tab */
+  #shopify-section-{{ section.id }} .faq-tabs__tab {
+    flex: 1 0 0;
+    min-width: 0;
+    height: var(--s-tab-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--s-tab-padding-vertical) var(--s-tab-padding-horizontal);
+    background-color: var(--s-color-tab-bg);
+    border: 1px solid var(--s-color-tab-border);
+    border-radius: var(--s-radius-tab);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .faq-tabs__tab:hover {
+    background-color: var(--s-color-tab-hover-bg);
+  }
+
+  #shopify-section-{{ section.id }} .faq-tabs__tab.is-active,
+  #shopify-section-{{ section.id }} .faq-tabs__tab[data-active="true"] {
+    background-color: var(--s-color-tab-active-bg);
+    border-color: var(--s-color-tab-active-border);
+  }
+
+  #shopify-section-{{ section.id }} .faq-tabs__tab-label {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: var(--s-font-size-tab-label);
+    line-height: 1.5;
+    letter-spacing: var(--s-tab-letter-spacing);
+    text-transform: uppercase;
+    color: var(--s-color-tab-text);
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  /* Responsive — Mobile */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_FAQ_Tabs {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+      --s-gap-sections: {{ section.settings.section_gap_mobile }}px;
+      --s-font-size-subtitle: {{ section.settings.subtitle_font_size_mobile }}px;
+      --s-font-size-tab-label: {{ section.settings.tab_label_font_size_mobile }}px;
+      --s-tab-letter-spacing: {{ section.settings.tab_letter_spacing_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .faq-tabs__inner {
+      gap: {{ section.settings.section_gap_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .faq-tabs__subtitle {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .faq-tabs__row {
+      gap: {{ section.settings.tab_gap_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .faq-tabs__tab {
+      flex: 0 0 calc(50% - {{ section.settings.tab_gap_mobile | divided_by: 2 }}px);
+      height: {{ section.settings.tab_height_mobile }}px;
+      padding: {{ section.settings.tab_padding_vertical_mobile }}px {{ section.settings.tab_padding_horizontal_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_FAQ_Tabs">
+  <div class="faq-tabs__inner">
+
+    {%- comment -%} Subtitle {%- endcomment -%}
+    {% if section.settings.subtitle != blank %}
+      <p class="faq-tabs__subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+
+    {%- comment -%} Tab Row (Blocks) {%- endcomment -%}
+    {% if section.blocks.size > 0 %}
+      <nav class="faq-tabs__row" aria-label="{{ section.settings.nav_aria_label }}">
+        {% for block in section.blocks %}
+          {% if block.type == 'tab_item' %}
+            <a
+              class="faq-tabs__tab"
+              {% if block.settings.link != blank %}
+                href="{{ block.settings.link }}"
+              {% endif %}
+              role="tab"
+              {{ block.shopify_attributes }}
+            >
+              <p class="faq-tabs__tab-label">{{ block.settings.label }}</p>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Tabs",
+  "tag": "section",
+  "class": "faq-tabs-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Quickly go to questions about..."
+    },
+    {
+      "type": "text",
+      "id": "nav_aria_label",
+      "label": "Navigation aria-label",
+      "default": "FAQ categories"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_bg",
+      "label": "Tab background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_border",
+      "label": "Tab border",
+      "default": "#FEFEFD"
+    },
+    {
+      "type": "color",
+      "id": "color_text_secondary",
+      "label": "Subtitle text",
+      "default": "#4A5D6E"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_text",
+      "label": "Tab label text",
+      "default": "#34393D"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_hover_bg",
+      "label": "Tab hover background",
+      "default": "#f0e9df"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_active_bg",
+      "label": "Tab active background",
+      "default": "#ece4d6"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_active_border",
+      "label": "Tab active border",
+      "default": "#d5c9b5"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "label": "Subtitle font size (desktop)",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "label": "Subtitle font size (mobile)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "tab_label_font_size",
+      "label": "Tab label font size (desktop)",
+      "min": 9,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "tab_label_font_size_mobile",
+      "label": "Tab label font size (mobile)",
+      "min": 8,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 11
+    },
+    {
+      "type": "range",
+      "id": "tab_letter_spacing",
+      "label": "Tab letter spacing (desktop)",
+      "min": 0,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "tab_letter_spacing_mobile",
+      "label": "Tab letter spacing (mobile)",
+      "min": 0,
+      "max": 3,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "section_gap",
+      "label": "Section inner gap (desktop)",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "section_gap_mobile",
+      "label": "Section inner gap (mobile)",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "tab_gap",
+      "label": "Gap between tabs (desktop)",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "tab_gap_mobile",
+      "label": "Gap between tabs (mobile)",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "tab_border_radius",
+      "label": "Tab border radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "tab_height",
+      "label": "Tab height (desktop)",
+      "min": 32,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "tab_height_mobile",
+      "label": "Tab height (mobile)",
+      "min": 28,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "tab_padding_vertical",
+      "label": "Tab vertical padding (desktop)",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "tab_padding_horizontal",
+      "label": "Tab horizontal padding (desktop)",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "tab_padding_vertical_mobile",
+      "label": "Tab vertical padding (mobile)",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "tab_padding_horizontal_mobile",
+      "label": "Tab horizontal padding (mobile)",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab_item",
+      "name": "Tab",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Tab Label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Tabs",
+      "blocks": [
+        {
+          "type": "tab_item",
+          "settings": {
+            "label": "How It Works"
+          }
+        },
+        {
+          "type": "tab_item",
+          "settings": {
+            "label": "Usage & Safety"
+          }
+        },
+        {
+          "type": "tab_item",
+          "settings": {
+            "label": "The Result"
+          }
+        },
+        {
+          "type": "tab_item",
+          "settings": {
+            "label": "Shipping & Delivery"
+          }
+        },
+        {
+          "type": "tab_item",
+          "settings": {
+            "label": "Returns & Guarantee"
+          }
+        },
+        {
+          "type": "tab_item",
+          "settings": {
+            "label": "Billing & Charges"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
