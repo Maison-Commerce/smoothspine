@@ -1,0 +1,455 @@
+{% comment %}
+  Section: UGC Tabs
+  Description: CTA banner with heading, description, and button on top.
+    Two tabs below, each containing custom Liquid content.
+    Tabs switch content via Alpine.js.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans', 'Open Sans' — must be loaded by theme
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_ugc-tabs {
+    background-color: {{ section.settings.color_background }};
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_horizontal }}px {{ section.settings.padding_bottom }}px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: {{ section.settings.section_gap }}px;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_ugc-tabs *,
+  #shopify-section-{{ section.id }} .maisoncode_ugc-tabs *::before,
+  #shopify-section-{{ section.id }} .maisoncode_ugc-tabs *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* CTA Banner */
+  #shopify-section-{{ section.id }} .ugc-tabs-cta {
+    background-color: {{ section.settings.color_cta_bg }};
+    border-radius: 16px;
+    padding: 48px 64px;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1.4;
+    color: {{ section.settings.color_heading }};
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-desc {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: {{ section.settings.color_heading | color_modify: 'alpha', 0.75 }};
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-btn {
+    flex-shrink: 0;
+    width: 320px;
+    height: 44px;
+    background: {{ section.settings.color_btn_bg }};
+    border: none;
+    border-bottom: 4px solid {{ section.settings.color_btn_border }};
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-btn:hover { opacity: 0.92; }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-btn span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: {{ section.settings.color_btn_text }};
+    white-space: nowrap;
+  }
+
+  /* Tabs row */
+  #shopify-section-{{ section.id }} .ugc-tabs-row {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tab-btn {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid {{ section.settings.color_tab_inactive_border }};
+    background: {{ section.settings.color_tab_inactive_bg }};
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: {{ section.settings.color_tab_inactive_text }};
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tab-btn.is-active {
+    background: {{ section.settings.color_tab_active_bg }};
+    color: {{ section.settings.color_tab_active_text }};
+    border-color: {{ section.settings.color_tab_active_bg }};
+  }
+
+  /* Tab content */
+  #shopify-section-{{ section.id }} .ugc-tab-content {
+    width: 100%;
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tab-content.is-active {
+    display: block;
+  }
+
+  /* Mobile */
+  @media (max-width: 949px) {
+    #shopify-section-{{ section.id }} .maisoncode_ugc-tabs {
+      padding: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_horizontal_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+      gap: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-tabs-cta {
+      flex-direction: column;
+      padding: 20px;
+      gap: 24px;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-tabs-cta-btn {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-tabs-row {
+      gap: 16px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-tabs-row::-webkit-scrollbar { display: none; }
+
+    #shopify-section-{{ section.id }} .ugc-tab-btn {
+      flex: 0 0 auto;
+      font-size: 12px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_ugc-tabs" x-data="{ activeTab: 0 }">
+
+  {%- comment -%} CTA Banner {%- endcomment -%}
+  {% if section.settings.show_cta %}
+    <div class="ugc-tabs-cta">
+      <div class="ugc-tabs-cta-content">
+        {% if section.settings.cta_heading != blank %}
+          <h2 class="ugc-tabs-cta-heading">{{ section.settings.cta_heading }}</h2>
+        {% endif %}
+        {% if section.settings.cta_description != blank %}
+          <p class="ugc-tabs-cta-desc">{{ section.settings.cta_description }}</p>
+        {% endif %}
+      </div>
+      {% if section.settings.cta_button_label != blank %}
+        <a
+          {% if section.settings.cta_button_link != blank %}href="{{ section.settings.cta_button_link }}"{% endif %}
+          class="ugc-tabs-cta-btn"
+        >
+          <span>{{ section.settings.cta_button_label }}</span>
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {%- comment -%} Tabs {%- endcomment -%}
+  {% if section.settings.tab_1_label != blank or section.settings.tab_2_label != blank %}
+    <div class="ugc-tabs-row">
+      {% if section.settings.tab_1_label != blank %}
+        <button
+          type="button"
+          class="ugc-tab-btn"
+          :class="{ 'is-active': activeTab === 0 }"
+          @click="activeTab = 0"
+        >{{ section.settings.tab_1_label }}</button>
+      {% endif %}
+      {% if section.settings.tab_2_label != blank %}
+        <button
+          type="button"
+          class="ugc-tab-btn"
+          :class="{ 'is-active': activeTab === 1 }"
+          @click="activeTab = 1"
+        >{{ section.settings.tab_2_label }}</button>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {%- comment -%} Tab 1 Content {%- endcomment -%}
+  <div class="ugc-tab-content" :class="{ 'is-active': activeTab === 0 }" x-show="activeTab === 0">
+    {{ section.settings.tab_1_content }}
+  </div>
+
+  {%- comment -%} Tab 2 Content {%- endcomment -%}
+  <div class="ugc-tab-content" :class="{ 'is-active': activeTab === 1 }" x-show="activeTab === 1">
+    {{ section.settings.tab_2_content }}
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "UGC Tabs",
+  "tag": "section",
+  "class": "ugc-tabs-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "CTA Banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA banner",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA heading",
+      "default": "Be an inspiration for others"
+    },
+    {
+      "type": "text",
+      "id": "cta_description",
+      "label": "CTA description",
+      "default": "Click the button below and share your story!"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_label",
+      "label": "CTA button label",
+      "default": "SHARE YOUR STORY"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_link",
+      "label": "CTA button link"
+    },
+    {
+      "type": "header",
+      "content": "Tab 1"
+    },
+    {
+      "type": "text",
+      "id": "tab_1_label",
+      "label": "Tab 1 label",
+      "default": "All Products"
+    },
+    {
+      "type": "liquid",
+      "id": "tab_1_content",
+      "label": "Tab 1 content (Liquid)"
+    },
+    {
+      "type": "header",
+      "content": "Tab 2"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_label",
+      "label": "Tab 2 label",
+      "default": "Back Pain"
+    },
+    {
+      "type": "liquid",
+      "id": "tab_2_content",
+      "label": "Tab 2 content (Liquid)"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Section background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_cta_bg",
+      "label": "CTA banner background",
+      "default": "#E5EEFB"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading color",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_bg",
+      "label": "Button background",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_border",
+      "label": "Button border",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_text",
+      "label": "Button text",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_active_bg",
+      "label": "Active tab background",
+      "default": "#424140"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_active_text",
+      "label": "Active tab text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_inactive_bg",
+      "label": "Inactive tab background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_inactive_text",
+      "label": "Inactive tab text",
+      "default": "#34393D"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_inactive_border",
+      "label": "Inactive tab border",
+      "default": "#FEFEFD"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_gap",
+      "label": "Section gap",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGC Tabs"
+    }
+  ]
+}
+{% endschema %}
