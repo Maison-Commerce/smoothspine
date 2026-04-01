@@ -1198,48 +1198,44 @@
         _isCleaningBundle = true;
         var giftKeys = Object.keys(keysToRemove);
 
-        /* Remove all gifts at once */
-        fetch('/cart/update.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ updates: keysToRemove })
-        })
-        .then(function() {
-          _isCleaningBundle = false;
-
-          /* Find cart drawer section ID and fetch fresh HTML */
-          var cartDrawer = document.querySelector('cart-drawer');
-          if (!cartDrawer) return;
+        /* Get cart drawer section ID for bundled section rendering */
+        var cartDrawer = document.querySelector('cart-drawer');
+        var sectionId = '';
+        if (cartDrawer) {
           var shopifySection = cartDrawer.closest('.shopify-section');
-          if (!shopifySection) return;
-          var sectionId = shopifySection.id.replace('shopify-section-', '');
+          if (shopifySection) sectionId = shopifySection.id.replace('shopify-section-', '');
+        }
 
-          return fetch(window.location.pathname + '?section_id=' + sectionId);
-        })
-        .then(function(res) { if (res) return res.text(); })
-        .then(function(html) {
-          if (!html) return;
-          var cartDrawer = document.querySelector('cart-drawer');
-          if (!cartDrawer) return;
-
-          /* Replace entire cart-drawer element content */
-          var tmp = document.createElement('div');
-          tmp.innerHTML = html;
-          var freshInner = tmp.querySelector('.cart-drawer__inner');
-          var currentInner = cartDrawer.querySelector('.cart-drawer__inner');
-          if (freshInner && currentInner) {
-            currentInner.innerHTML = freshInner.innerHTML;
-          }
-
-          /* Update all cart-count elements on page */
-          var freshCount = tmp.querySelector('cart-count');
-          if (freshCount) {
-            document.querySelectorAll('cart-count').forEach(function(el) {
-              el.innerHTML = freshCount.innerHTML;
+        /* Remove gifts one by one using the same method as the theme */
+        var lastResponse = null;
+        var chain = Promise.resolve();
+        giftKeys.forEach(function(key) {
+          chain = chain.then(function() {
+            var body = { id: key, quantity: 0 };
+            if (sectionId) body.sections = sectionId;
+            return fetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(body)
+            }).then(function(res) { return res.json(); }).then(function(data) {
+              lastResponse = data;
             });
+          });
+        });
+
+        chain.then(function() {
+          _isCleaningBundle = false;
+          /* Dispatch cart:change exactly like the theme does — this triggers the drawer to update */
+          if (lastResponse) {
+            document.documentElement.dispatchEvent(new CustomEvent('cart:change', {
+              bubbles: true,
+              detail: {
+                baseEvent: 'line-item:change',
+                cart: lastResponse
+              }
+            }));
           }
-        })
-        .catch(function() { _isCleaningBundle = false; });
+        }).catch(function() { _isCleaningBundle = false; });
       }
     });
   }
