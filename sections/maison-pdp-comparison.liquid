@@ -317,10 +317,7 @@
         <article class="comparison-card comparison-card--good">
           <div class="comparison-card__header">
             <span class="comparison-card__header-title">{{ section.settings.good_card_title }}</span>
-            <svg class="comparison-card__header-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="{{ section.settings.color_card_header_text }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <polyline points="22 4 12 14.01 9 11.01" stroke="{{ section.settings.color_card_header_text }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg class="comparison-card__header-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" d="M23.3222 0.521797C23.9481 1.18803 23.9154 2.23551 23.2492 2.86142C20.026 5.88942 17.7765 8.44865 15.9202 11.4603C14.0577 14.4823 12.5474 18.0309 10.8853 23.0881C10.706 23.6337 10.2567 24.0473 9.69817 24.181C9.13969 24.3148 8.55181 24.1494 8.14489 23.7442L0.487132 16.118C-0.160589 15.473 -0.162758 14.425 0.482286 13.7773C1.12733 13.1295 2.17533 13.1274 2.82304 13.7724L8.60245 19.5279C9.99984 15.5954 11.3961 12.4915 13.1021 9.72342C15.1642 6.37765 17.635 3.59374 20.9826 0.448772C21.6487 -0.177131 22.6962 -0.144436 23.3222 0.521797Z" fill="white"/></svg>
           </div>
           <div class="comparison-card__body">
             {% for block in section.blocks %}
@@ -349,11 +346,7 @@
         <article class="comparison-card comparison-card--bad">
           <div class="comparison-card__header">
             <span class="comparison-card__header-title">{{ section.settings.bad_card_title }}</span>
-            <svg class="comparison-card__header-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="10" stroke="{{ section.settings.color_card_header_text }}" stroke-width="2"/>
-              <line x1="15" y1="9" x2="9" y2="15" stroke="{{ section.settings.color_card_header_text }}" stroke-width="2" stroke-linecap="round"/>
-              <line x1="9" y1="9" x2="15" y2="15" stroke="{{ section.settings.color_card_header_text }}" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+            <svg class="comparison-card__header-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none"><path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" d="M2.79791 23.5845C2.07865 24.199 1.00491 24.1057 0.399681 23.3762C-0.205558 22.6468 -0.11311 21.5572 0.606165 20.9427C3.74888 18.2581 6.79664 15.4961 9.75905 12.6475C6.78312 9.47672 3.90166 6.21098 1.10435 2.83943C0.499117 2.10995 0.591563 1.02046 1.31084 0.406004C2.03011 -0.208453 3.10383 -0.115207 3.70908 0.614275C6.45737 3.92678 9.28796 7.13519 12.2112 10.2504C15.2414 7.23911 18.1822 4.13143 21.0444 0.916864C21.6747 0.208949 22.7512 0.153234 23.4485 0.792418C24.1458 1.4316 24.2002 2.52365 23.5699 3.23157C20.6567 6.50344 17.663 9.66663 14.5782 12.7316C17.4394 15.6819 20.3888 18.5486 23.4361 21.3412C24.1334 21.9805 24.1877 23.0726 23.5575 23.7804C22.9272 24.4883 21.8507 24.5441 21.1534 23.9049C18.0479 21.0586 15.0418 18.1365 12.126 15.1289C9.10706 18.0329 6.00088 20.8483 2.79791 23.5845Z" fill="white"/></svg>
           </div>
           <div class="comparison-card__body">
             {% for block in section.blocks %}
