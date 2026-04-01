@@ -16,6 +16,34 @@
         "content_width": "80ch"
       }
     },
+    "maison_ugc_banner_aeifh4": {
+      "type": "maison-ugc-banner",
+      "name": "UGC Page Banner",
+      "settings": {
+        "heading": "SmoothSpine success stories",
+        "description": "Hear real stories from customers about how SmoothSpine has helped them relieve back pain, move more freely, and get back to daily life.",
+        "show_trustpilot_badge": true,
+        "rating_value": 4,
+        "rating_text_before": "4.4/5 (",
+        "rating_text_reviews": "2,295 + reviews",
+        "rating_text_after": ")",
+        "color_background": "#F8F4EE",
+        "color_heading": "#102A43",
+        "color_body_text": "#102A43",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "body_font_size": 18,
+        "body_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "content_gap": 20,
+        "content_max_width": 600
+      }
+    },
     "maison_offer_auth_KkrXfj": {
       "type": "maison-offer-auth",
       "blocks": {
@@ -209,6 +237,7 @@
   },
   "order": [
     "main",
+    "maison_ugc_banner_aeifh4",
     "maison_offer_auth_KkrXfj"
   ]
 }
