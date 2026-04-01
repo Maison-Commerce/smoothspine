@@ -1127,13 +1127,21 @@
           return;
         }
 
+        console.log('[PDP Bundle] Adding items:', JSON.stringify(items, null, 2));
+
         fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ items: items })
         })
         .then(function(res) { return res.json(); })
-        .then(function() {
+        .then(function(data) {
+          console.log('[PDP Bundle] Add response:', JSON.stringify(data, null, 2));
+          return fetch('/cart.js');
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(cart) {
+          console.log('[PDP Bundle] Full cart items:', cart.items.map(function(i) { return { title: i.title, properties: i.properties, qty: i.quantity }; }));
           addBtn.classList.remove('is-loading');
           var cartDrawer = document.getElementById('cart-drawer');
           if (cartDrawer) {
