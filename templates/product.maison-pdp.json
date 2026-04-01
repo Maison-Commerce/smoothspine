@@ -112,9 +112,184 @@
         "input_background": "rgba(0,0,0,0)",
         "input_text_color": ""
       }
+    },
+    "maison_pd_hero_JHyDcq": {
+      "type": "maison-pd-hero",
+      "blocks": {
+        "gallery_image_FXykz4": {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "SmoothSpine Triple Fusion Massager"
+          }
+        },
+        "gallery_image_ac6VdY": {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product angle view"
+          }
+        },
+        "gallery_image_aiXFdC": {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product in use"
+          }
+        },
+        "gallery_image_p6fqCk": {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product detail"
+          }
+        },
+        "gallery_image_rUK9aC": {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product features"
+          }
+        },
+        "gallery_image_pNkLPp": {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product lifestyle"
+          }
+        },
+        "gallery_image_TPE9Wp": {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product packaging"
+          }
+        },
+        "check_item_AtN6R7": {
+          "type": "check_item",
+          "settings": {
+            "text": "Provides Fast Relief From Sciatica And Herniated Discs"
+          }
+        },
+        "check_item_DLQCxf": {
+          "type": "check_item",
+          "settings": {
+            "text": "Rehydrates and Restores Your Spinal Discs"
+          }
+        },
+        "check_item_Gat3yA": {
+          "type": "check_item",
+          "settings": {
+            "text": "Relieves Back Pain, Stiffness, and Discomfort"
+          }
+        },
+        "check_item_JTW6TX": {
+          "type": "check_item",
+          "settings": {
+            "text": "Feel The Difference In Just 15 Minutes Per Day"
+          }
+        },
+        "gift_item_UEQDWi": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "",
+            "name": "Back pain & Sciatica Guide"
+          }
+        },
+        "gift_item_wh6nam": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "",
+            "name": "12x Back Pain Relief Patches"
+          }
+        },
+        "gift_item_tRjWC7": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "",
+            "name": "Zip Lock Travel Bag"
+          }
+        }
+      },
+      "block_order": [
+        "gallery_image_FXykz4",
+        "gallery_image_ac6VdY",
+        "gallery_image_aiXFdC",
+        "gallery_image_p6fqCk",
+        "gallery_image_rUK9aC",
+        "gallery_image_pNkLPp",
+        "gallery_image_TPE9Wp",
+        "check_item_AtN6R7",
+        "check_item_DLQCxf",
+        "check_item_Gat3yA",
+        "check_item_JTW6TX",
+        "gift_item_UEQDWi",
+        "gift_item_wh6nam",
+        "gift_item_tRjWC7"
+      ],
+      "name": "PDP Hero",
+      "settings": {
+        "title": "SmoothSpine™️ – Triple Fusion Massager",
+        "description": "<p>Struggling With Sciatica, Lower Back Pain, or Herniated Discs?</p><p><strong><u>Get Relief In Just 15 Minutes A Day!</u></strong></p><p>SmoothSpine Massager Uses a Special “Triple Fusion” Technology to Rehydrate and Restore Spinal Discs, Relieving Sciatica, Lower Back, and Leg Pain Naturally.</p>",
+        "show_price": true,
+        "price_compare": "$299.95",
+        "price": "$119.95",
+        "price_badge": "Save 60%",
+        "show_trustpilot": true,
+        "trustpilot_full_stars": 4,
+        "trustpilot_has_half_star": true,
+        "trustpilot_rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_logo": true,
+        "button_label": "Add to cart",
+        "show_cart_icon": true,
+        "show_guarantee": true,
+        "guarantee_text": "90-Day Risk-Free Trial",
+        "show_gifts": true,
+        "gifts_title": "Exclusive Offer! Order today for free gifts (valued at $64)!",
+        "show_review": true,
+        "review_text": "\"I've struggled with crippling back pain and Sciatica for years. Sitting, standing up, lying down, it all hurt. I was skeptical but after using this massager for just 1 week, I noticed a HUGE difference. The stabbing pain in my low back is finally gone, and I can move without wincing again. I still use it daily, it's so well-made. If you're on the fence, trust me, it's worth it!\"",
+        "review_author": "Maggie S.",
+        "review_rating": 5,
+        "show_verified_badge": true,
+        "verified_text": "Verified Purchase",
+        "show_payment_icons": true,
+        "show_divider": true,
+        "color_primary": "#102A43",
+        "color_secondary": "#102A43",
+        "color_bg_start": "#fbf9f6",
+        "color_bg_end": "#fefefd",
+        "color_white": "#FFFFFF",
+        "color_success": "#12B76A",
+        "color_cta": "#F07E3B",
+        "color_cta_border": "#BF642F",
+        "color_cta_text": "#FFFCFB",
+        "color_cream": "#F8F4EE",
+        "color_border_light": "#C5C2BD",
+        "color_divider": "#424140",
+        "color_off_white": "#FFFCFB",
+        "color_stars": "#F07E3B",
+        "title_font_size": 32,
+        "title_font_size_mobile": 24,
+        "description_font_size": 18,
+        "description_font_size_mobile": 14,
+        "check_font_size": 16,
+        "check_font_size_mobile": 14,
+        "price_old_font_size": 18,
+        "price_old_font_size_mobile": 14,
+        "price_new_font_size": 24,
+        "price_new_font_size_mobile": 20,
+        "review_font_size": 14,
+        "button_font_size": 16,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "column_gap": 80,
+        "max_width": 1400,
+        "radius_sm": 8,
+        "radius_md": 12,
+        "radius_lg": 16,
+        "thumb_size": 80,
+        "button_height": 56
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "maison_pd_hero_JHyDcq"
   ]
 }
