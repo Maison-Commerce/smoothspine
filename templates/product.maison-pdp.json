@@ -631,7 +631,7 @@
         "show_trustpilot_logo": true,
         "button_label": "GET 60% OFF TODAY ONLY!",
         "button_link": "",
-        "desktop_media_position": "left",
+        "desktop_media_position": "right",
         "mobile_media_position": "top",
         "video": "shopify://files/videos/home-before-after.mp4",
         "image_placeholder_text": "Before and After image",
