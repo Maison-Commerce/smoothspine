@@ -1,0 +1,2068 @@
+{% comment %}
+  Section: PDP Hero
+  Description: Full product detail page hero section with a two-column layout.
+    Left column features a product image gallery with thumbnails (desktop) or
+    horizontal slider (mobile). Right column includes Trustpilot rating, product
+    title, description, pricing with discount badge, benefit checklist, free gift
+    cards, CTA button, guarantee badge, payment icons, and a customer review card.
+    Responsive: stacks vertically on mobile with a swipeable gallery.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings/buttons) — must be loaded by the theme
+  - Font: 'Open Sans' (body text) — must be loaded by the theme
+
+  Blocks:
+  - gallery_image: Product gallery image with thumbnail (limit: 10)
+  - check_item: Benefit checklist item with checkmark icon (limit: 8)
+  - gift_item: Free gift card with image, name, and value badge (limit: 6)
+
+  Notes:
+  - Alpine.js dependency removed; replaced with vanilla JS for gallery interaction
+  - Desktop gallery shows a single main image that swaps on thumbnail click
+  - Mobile gallery shows a horizontal scroll slider with snap points
+  - Review card appears below gallery on desktop and below CTA on mobile
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_pdp-hero
+  - Payment icons use image_picker settings (up to 10 slots)
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_pdp-hero {
+    /* Settings-driven CSS custom properties */
+    --s-color-primary: {{ section.settings.color_primary }};
+    --s-color-secondary: {{ section.settings.color_secondary | color_modify: 'alpha', 0.75 }};
+    --s-color-bg-start: {{ section.settings.color_bg_start }};
+    --s-color-bg-end: {{ section.settings.color_bg_end }};
+    --s-color-white: {{ section.settings.color_white }};
+    --s-color-success: {{ section.settings.color_success }};
+    --s-color-cta: {{ section.settings.color_cta }};
+    --s-color-cta-border: {{ section.settings.color_cta_border }};
+    --s-color-cta-text: {{ section.settings.color_cta_text }};
+    --s-color-cream: {{ section.settings.color_cream }};
+    --s-color-border-light: {{ section.settings.color_border_light }};
+    --s-color-divider: {{ section.settings.color_divider }};
+    --s-color-off-white: {{ section.settings.color_off_white }};
+    --s-color-stars: {{ section.settings.color_stars }};
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+    --s-radius-sm: {{ section.settings.radius_sm }}px;
+    --s-radius-md: {{ section.settings.radius_md }}px;
+    --s-radius-lg: {{ section.settings.radius_lg }}px;
+    --s-font-size-title: {{ section.settings.title_font_size }}px;
+    --s-font-size-description: {{ section.settings.description_font_size }}px;
+    --s-font-size-check: {{ section.settings.check_font_size }}px;
+    --s-font-size-price-old: {{ section.settings.price_old_font_size }}px;
+    --s-font-size-price-new: {{ section.settings.price_new_font_size }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+    --s-column-gap: {{ section.settings.column_gap }}px;
+
+    background: linear-gradient(180deg, var(--s-color-bg-start) 0%, var(--s-color-bg-end) 100%);
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    font-family: var(--s-font-body);
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_pdp-hero *,
+  #shopify-section-{{ section.id }} .maisoncode_pdp-hero *::before,
+  #shopify-section-{{ section.id }} .maisoncode_pdp-hero *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-inner {
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+    display: flex;
+    gap: var(--s-column-gap);
+    align-items: flex-start;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-divider {
+    position: absolute;
+    left: 50%;
+    top: 4%;
+    bottom: 4%;
+    width: 1px;
+    background: var(--s-color-divider);
+    opacity: 0.1;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  /* LEFT COLUMN */
+  #shopify-section-{{ section.id }} .pdp-images {
+    width: 48%;
+    max-width: 600px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-main-image {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--s-radius-lg);
+    overflow: hidden;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Skeleton / Preloader */
+  #shopify-section-{{ section.id }} .pdp-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-img-skeleton {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(200,200,200,0.12) 25%, rgba(200,200,200,0.25) 50%, rgba(200,200,200,0.12) 75%);
+    background-size: 200% 100%;
+    animation: maisoncode_pdp-shimmer 1.5s ease-in-out infinite;
+    border-radius: var(--s-radius-sm);
+    z-index: 0;
+  }
+
+  @keyframes maisoncode_pdp-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  #shopify-section-{{ section.id }} .pdp-lazy-img {
+    opacity: 0;
+    transition: opacity 500ms ease;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-lazy-img.is-loaded {
+    opacity: 1;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-main-image .pdp-img-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8d5c4 0%, #f0e6da 50%, #d4bfae 100%);
+    color: #7a9aa8;
+    font-size: 14px;
+    text-align: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-img-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+  }
+
+  /* Thumbnails */
+  #shopify-section-{{ section.id }} .pdp-thumbs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-thumbs::-webkit-scrollbar { display: none; }
+
+  #shopify-section-{{ section.id }} .pdp-thumb {
+    width: {{ section.settings.thumb_size }}px;
+    height: {{ section.settings.thumb_size }}px;
+    border-radius: var(--s-radius-lg);
+    overflow: hidden;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-thumb.is-active {
+    border-color: var(--s-color-primary);
+  }
+
+  #shopify-section-{{ section.id }} .pdp-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Review Card */
+  #shopify-section-{{ section.id }} .pdp-review-card {
+    background: var(--s-color-white);
+    border-radius: var(--s-radius-lg);
+    padding: 12px 20px 12px 12px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    box-shadow: 0 1px 3px rgba(16,24,40,0.1), 0 1px 2px rgba(16,24,40,0.06);
+  }
+
+  #shopify-section-{{ section.id }} .pdp-review-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: var(--s-radius-sm);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-review-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-review-text {
+    font-family: var(--s-font-body);
+    font-size: {{ section.settings.review_font_size }}px;
+    line-height: 1.5;
+    color: var(--s-color-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .pdp-review-text strong {
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-review-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-review-author-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-review-author {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--s-color-primary);
+  }
+
+  #shopify-section-{{ section.id }} .pdp-verified {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-verified svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  #shopify-section-{{ section.id }} .pdp-verified span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--s-color-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .pdp-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-stars svg { width: 16px; height: 16px; display: block; }
+
+  /* RIGHT COLUMN */
+  #shopify-section-{{ section.id }} .pdp-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* Trustpilot */
+  #shopify-section-{{ section.id }} .pdp-trustpilot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-trustpilot-rating {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #111;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-trustpilot-rating a {
+    color: #111;
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-trustpilot-logo {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-trustpilot-logo svg { width: 14px; height: 14px; }
+
+  #shopify-section-{{ section.id }} .pdp-trustpilot-logo span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #111;
+  }
+
+  /* Title */
+  #shopify-section-{{ section.id }} .pdp-title {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-title);
+    line-height: 1.5;
+    color: var(--s-color-primary);
+    text-transform: capitalize;
+  }
+
+  /* Description */
+  #shopify-section-{{ section.id }} .pdp-description {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-description p {
+    font-family: var(--s-font-body);
+    font-size: var(--s-font-size-description);
+    line-height: 1.5;
+    color: var(--s-color-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .pdp-description .pdp-desc-bold {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  /* Link underline effect */
+  #shopify-section-{{ section.id }} .pdp-link-underline {
+    display: inline;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    transition: background-size 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-link-underline:hover {
+    background-size: 0% 1px;
+  }
+
+  /* Price */
+  #shopify-section-{{ section.id }} .pdp-price-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-price-old {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-price-old);
+    line-height: 1.5;
+    color: var(--s-color-primary);
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-price-new {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-price-new);
+    line-height: 1.4;
+    color: var(--s-color-primary);
+  }
+
+  #shopify-section-{{ section.id }} .pdp-price-badge {
+    background: var(--s-color-success);
+    color: var(--s-color-white);
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-hr {
+    width: 100%;
+    height: 1px;
+    background: var(--s-color-divider);
+    opacity: 0.1;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-info-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Checkmarks */
+  #shopify-section-{{ section.id }} .pdp-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-check-item svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-check-item span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-check);
+    line-height: 1.5;
+    color: var(--s-color-primary);
+  }
+
+  /* Gifts */
+  #shopify-section-{{ section.id }} .pdp-gifts-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-gifts-title {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--s-color-primary);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-gifts-row {
+    display: flex;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-gift-card {
+    flex: 1;
+    min-width: 0;
+    background: var(--s-color-cream);
+    border: 1px dashed var(--s-color-border-light);
+    border-radius: var(--s-radius-sm);
+    padding: 20px 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-gift-img-wrap {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-gift-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-gift-name {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--s-color-primary);
+    text-align: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-gift-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--s-color-success);
+    border-radius: 4px;
+    padding: 2px 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-gift-badge svg { width: 12px; height: 12px; }
+
+  #shopify-section-{{ section.id }} .pdp-gift-badge span,
+  #shopify-section-{{ section.id }} .pdp-gift-badge s {
+    font-family: var(--s-font-body);
+    font-weight: 700;
+    font-size: 10px;
+    color: var(--s-color-white);
+    line-height: 1.5;
+  }
+
+  /* CTA */
+  #shopify-section-{{ section.id }} .pdp-cta-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-btn {
+    width: 100%;
+    height: {{ section.settings.button_height }}px;
+    background: var(--s-color-cta);
+    border: none;
+    border-bottom: 4px solid var(--s-color-cta-border);
+    border-radius: var(--s-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 32px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-btn:active { transform: scale(0.96); }
+
+  #shopify-section-{{ section.id }} .pdp-btn svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-btn-text-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-btn-text,
+  #shopify-section-{{ section.id }} .pdp-btn-text-clone {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: {{ section.settings.button_font_size }}px;
+    line-height: 1.5;
+    color: var(--s-color-cta-text);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #shopify-section-{{ section.id }} .pdp-btn-text-clone {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    opacity: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-btn:hover .pdp-btn-text {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-btn:hover .pdp-btn-text-clone {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+
+  /* Shield */
+  #shopify-section-{{ section.id }} .pdp-shield-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-shield-row svg { width: 20px; height: 20px; }
+
+  #shopify-section-{{ section.id }} .pdp-shield-row span {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--s-color-primary);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Payment */
+  #shopify-section-{{ section.id }} .pdp-payments {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-payment-icon {
+    width: 35px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.08);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-payment-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Mobile gallery */
+  #shopify-section-{{ section.id }} .pdp-mobile-gallery { display: none; }
+  #shopify-section-{{ section.id }} .pdp-mobile-review { display: none; }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_pdp-hero {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-padding-horizontal: 20px;
+      --s-font-size-title: {{ section.settings.title_font_size_mobile }}px;
+      --s-font-size-description: {{ section.settings.description_font_size_mobile }}px;
+      --s-font-size-check: {{ section.settings.check_font_size_mobile }}px;
+      --s-font-size-price-old: {{ section.settings.price_old_font_size_mobile }}px;
+      --s-font-size-price-new: {{ section.settings.price_new_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .pdp-inner {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .pdp-divider { display: none; }
+    #shopify-section-{{ section.id }} .pdp-images { display: none; }
+
+    #shopify-section-{{ section.id }} .pdp-mobile-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .pdp-mobile-slider {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    #shopify-section-{{ section.id }} .pdp-mobile-slider::-webkit-scrollbar { display: none; }
+
+    #shopify-section-{{ section.id }} .pdp-mobile-slide {
+      width: calc(50% - 4px);
+      flex-shrink: 0;
+      aspect-ratio: 1;
+      border-radius: var(--s-radius-lg);
+      overflow: hidden;
+      scroll-snap-align: start;
+      position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .pdp-mobile-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .pdp-mobile-thumbs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    #shopify-section-{{ section.id }} .pdp-mobile-thumbs::-webkit-scrollbar { display: none; }
+
+    #shopify-section-{{ section.id }} .pdp-mobile-thumb {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--s-radius-lg);
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    #shopify-section-{{ section.id }} .pdp-mobile-thumb.is-active { border-color: var(--s-color-primary); }
+
+    #shopify-section-{{ section.id }} .pdp-mobile-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    #shopify-section-{{ section.id }} .pdp-description { gap: 8px; }
+    #shopify-section-{{ section.id }} .pdp-gifts-title { font-size: 12px; }
+    #shopify-section-{{ section.id }} .pdp-gift-img-wrap { width: 64px; height: 64px; }
+    #shopify-section-{{ section.id }} .pdp-btn { height: 44px; }
+    #shopify-section-{{ section.id }} .pdp-btn-text,
+    #shopify-section-{{ section.id }} .pdp-btn-text-clone { font-size: 14px; }
+    #shopify-section-{{ section.id }} .pdp-payment-icon { width: 23px; height: 16px; }
+    #shopify-section-{{ section.id }} .pdp-payments { gap: 8px; }
+    #shopify-section-{{ section.id }} .pdp-shield-row svg { width: 16px; height: 16px; }
+    #shopify-section-{{ section.id }} .pdp-review-card { padding: 12px; gap: 12px; }
+    #shopify-section-{{ section.id }} .pdp-review-avatar { width: 64px; height: 64px; }
+    #shopify-section-{{ section.id }} .pdp-review-body { gap: 8px; }
+    #shopify-section-{{ section.id }} .pdp-mobile-review { display: flex !important; }
+    #shopify-section-{{ section.id }} .pdp-desktop-review { display: none; }
+  }
+
+  @media (min-width: 768px) {
+    #shopify-section-{{ section.id }} .pdp-mobile-review { display: none !important; }
+    #shopify-section-{{ section.id }} .pdp-desktop-review { display: flex; }
+    #shopify-section-{{ section.id }} .pdp-review-card .pdp-review-stars-mobile { display: none; }
+  }
+{% endstyle %}
+
+{%- comment -%} Collect gallery_image blocks {%- endcomment -%}
+{%- assign gallery_images = "" -%}
+{%- assign check_items = "" -%}
+{%- assign gift_items = "" -%}
+
+<section class="maisoncode_pdp-hero">
+  <div class="pdp-inner">
+    {% if section.settings.show_divider %}
+      <div class="pdp-divider"></div>
+    {% endif %}
+
+    {%- comment -%} DESKTOP GALLERY {%- endcomment -%}
+    <div class="pdp-images">
+      {%- assign first_gallery_image = nil -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'gallery_image' and first_gallery_image == nil -%}
+          {%- assign first_gallery_image = block -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      <div class="pdp-main-image">
+        {%- if first_gallery_image and first_gallery_image.settings.image != blank -%}
+          <div class="pdp-img-wrapper" data-pdp-main-image>
+            <div class="pdp-img-skeleton" aria-hidden="true"></div>
+            {{ first_gallery_image.settings.image | image_url: width: 1200 | image_tag:
+              class: 'pdp-lazy-img',
+              loading: 'eager',
+              widths: '375, 550, 750, 1000, 1200',
+              sizes: '(max-width: 767px) 100vw, 48vw',
+              alt: first_gallery_image.settings.alt_text
+            }}
+          </div>
+        {%- else -%}
+          <div class="pdp-img-placeholder" data-pdp-main-image>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>Product image</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Desktop Thumbnails {%- endcomment -%}
+      {%- assign gallery_count = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'gallery_image' -%}
+          {%- assign gallery_count = gallery_count | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if gallery_count > 1 -%}
+        <div class="pdp-thumbs" data-pdp-thumbs>
+          {%- assign thumb_index = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'gallery_image' -%}
+              <div class="pdp-thumb{% if thumb_index == 0 %} is-active{% endif %}" data-pdp-thumb="{{ thumb_index }}" {{ block.shopify_attributes }}>
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 200 | image_tag:
+                    loading: 'lazy',
+                    widths: '80, 160, 200',
+                    sizes: '80px',
+                    alt: block.settings.alt_text
+                  }}
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+              {%- assign thumb_index = thumb_index | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Desktop Review Card {%- endcomment -%}
+      {% if section.settings.show_review %}
+        <div class="pdp-review-card pdp-desktop-review">
+          {% if section.settings.review_avatar != blank %}
+            <div class="pdp-review-avatar">
+              <div class="pdp-img-wrapper">
+                <div class="pdp-img-skeleton" aria-hidden="true"></div>
+                {{ section.settings.review_avatar | image_url: width: 200 | image_tag:
+                  class: 'pdp-lazy-img',
+                  loading: 'lazy',
+                  widths: '96, 128, 200',
+                  sizes: '96px',
+                  alt: section.settings.review_author
+                }}
+              </div>
+            </div>
+          {% endif %}
+          <div class="pdp-review-body">
+            {% if section.settings.review_text != blank %}
+              <p class="pdp-review-text">{{ section.settings.review_text }}</p>
+            {% endif %}
+            <div class="pdp-review-meta">
+              <div class="pdp-review-author-row">
+                {% if section.settings.review_author != blank %}
+                  <span class="pdp-review-author">{{ section.settings.review_author }}</span>
+                {% endif %}
+                {% if section.settings.show_verified_badge %}
+                  <div class="pdp-verified">
+                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="8" cy="8" r="8" fill="{{ section.settings.color_success }}"/>
+                      <path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>{{ section.settings.verified_text }}</span>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="pdp-stars">
+                {%- for i in (1..5) -%}
+                  {%- if i <= section.settings.review_rating -%}
+                    <svg viewBox="0 0 24 24" fill="{{ section.settings.color_stars }}" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  {%- else -%}
+                    <svg viewBox="0 0 24 24" fill="#D0D5DD" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    {%- comment -%} MOBILE GALLERY {%- endcomment -%}
+    <div class="pdp-mobile-gallery">
+      <div class="pdp-mobile-slider">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'gallery_image' -%}
+            <div class="pdp-mobile-slide">
+              {%- if block.settings.image != blank -%}
+                <div class="pdp-img-wrapper">
+                  <div class="pdp-img-skeleton" aria-hidden="true"></div>
+                  {{ block.settings.image | image_url: width: 750 | image_tag:
+                    class: 'pdp-lazy-img',
+                    loading: 'lazy',
+                    widths: '375, 550, 750',
+                    sizes: '50vw',
+                    alt: block.settings.alt_text
+                  }}
+                </div>
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      {%- if gallery_count > 1 -%}
+        <div class="pdp-mobile-thumbs" data-pdp-mobile-thumbs>
+          {%- assign mobile_thumb_index = 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'gallery_image' -%}
+              <div class="pdp-mobile-thumb{% if mobile_thumb_index == 0 %} is-active{% endif %}" data-pdp-mobile-thumb="{{ mobile_thumb_index }}">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 150 | image_tag:
+                    loading: 'lazy',
+                    widths: '64, 128, 150',
+                    sizes: '64px',
+                    alt: block.settings.alt_text
+                  }}
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+              {%- assign mobile_thumb_index = mobile_thumb_index | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} CONTENT COLUMN {%- endcomment -%}
+    <div class="pdp-content">
+      <div class="pdp-info-header">
+
+        {%- comment -%} Trustpilot {%- endcomment -%}
+        {% if section.settings.show_trustpilot %}
+          <div class="pdp-trustpilot">
+            <div class="pdp-stars">
+              {%- for i in (1..5) -%}
+                {%- if i <= section.settings.trustpilot_full_stars -%}
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" rx="1" fill="#00B67A"/><path d="M8 2.5L9.39 5.7L12.8 6.1L10.2 8.5L10.9 12L8 10.3L5.1 12L5.8 8.5L3.2 6.1L6.61 5.7L8 2.5Z" fill="white"/></svg>
+                {%- elsif i == section.settings.trustpilot_full_stars | plus: 1 and section.settings.trustpilot_has_half_star -%}
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="tp-half-left-{{ section.id }}"><rect x="0" y="0" width="8" height="16"/></clipPath></defs><rect width="16" height="16" rx="1" fill="#DCDCE6"/><rect width="16" height="16" rx="1" fill="#00B67A" clip-path="url(#tp-half-left-{{ section.id }})"/><path d="M8 2.5L9.39 5.7L12.8 6.1L10.2 8.5L10.9 12L8 10.3L5.1 12L5.8 8.5L3.2 6.1L6.61 5.7L8 2.5Z" fill="white"/></svg>
+                {%- else -%}
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="16" height="16" rx="1" fill="#DCDCE6"/><path d="M8 2.5L9.39 5.7L12.8 6.1L10.2 8.5L10.9 12L8 10.3L5.1 12L5.8 8.5L3.2 6.1L6.61 5.7L8 2.5Z" fill="white"/></svg>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+            {% if section.settings.trustpilot_rating_text != blank %}
+              <span class="pdp-trustpilot-rating">{{ section.settings.trustpilot_rating_text }}</span>
+            {% endif %}
+            {% if section.settings.show_trustpilot_logo %}
+              <div class="pdp-trustpilot-logo">
+                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L8.854 5.146L13 5.729L10 8.646L10.708 13L7 10.896L3.292 13L4 8.646L1 5.729L5.146 5.146L7 1Z" fill="#00B67A"/></svg>
+                <span>Trustpilot</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div style="display:flex;flex-direction:column;gap:20px;">
+          {%- comment -%} Title {%- endcomment -%}
+          {% if section.settings.title != blank %}
+            <h1 class="pdp-title">{{ section.settings.title }}</h1>
+          {% endif %}
+
+          {%- comment -%} Description {%- endcomment -%}
+          {% if section.settings.description != blank %}
+            <div class="pdp-description">
+              {{ section.settings.description }}
+            </div>
+          {% endif %}
+
+          {%- comment -%} Price {%- endcomment -%}
+          {% if section.settings.show_price %}
+            <div class="pdp-price-row">
+              {% if section.settings.price_compare != blank %}
+                <span class="pdp-price-old">{{ section.settings.price_compare }}</span>
+              {% endif %}
+              {% if section.settings.price != blank %}
+                <span class="pdp-price-new">{{ section.settings.price }}</span>
+              {% endif %}
+              {% if section.settings.price_badge != blank %}
+                <span class="pdp-price-badge">{{ section.settings.price_badge }}</span>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          <div class="pdp-hr"></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:32px;">
+        {%- comment -%} Checkmarks {%- endcomment -%}
+        {%- assign has_checks = false -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'check_item' -%}
+            {%- assign has_checks = true -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if has_checks -%}
+          <div class="pdp-checks">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'check_item' -%}
+                <div class="pdp-check-item" {{ block.shopify_attributes }}>
+                  <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="10" fill="#065BDC"/>
+                    <path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {% if block.settings.text != blank %}
+                    <span>{{ block.settings.text }}</span>
+                  {% endif %}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} Gifts Section {%- endcomment -%}
+        {%- assign has_gifts = false -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'gift_item' -%}
+            {%- assign has_gifts = true -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if has_gifts and section.settings.show_gifts -%}
+          <div class="pdp-gifts-section">
+            {% if section.settings.gifts_title != blank %}
+              <p class="pdp-gifts-title">{{ section.settings.gifts_title }}</p>
+            {% endif %}
+            <div class="pdp-gifts-row">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'gift_item' -%}
+                  {%- assign gift_product = block.settings.gift_product -%}
+                  {%- comment -%} Image: custom override → product featured image → placeholder {%- endcomment -%}
+                  {%- assign gift_image = block.settings.image -%}
+                  {%- if gift_image == blank and gift_product != blank -%}
+                    {%- assign gift_image = gift_product.featured_image -%}
+                  {%- endif -%}
+                  {%- comment -%} Name: custom override → product title {%- endcomment -%}
+                  {%- assign gift_name = block.settings.name -%}
+                  {%- if gift_name == blank and gift_product != blank -%}
+                    {%- assign gift_name = gift_product.title -%}
+                  {%- endif -%}
+                  {%- comment -%} Badge price from compare_at_price {%- endcomment -%}
+                  {%- assign gift_badge_price = nil -%}
+                  {%- if gift_product != blank and gift_product.compare_at_price > 0 -%}
+                    {%- assign gift_badge_price = gift_product.compare_at_price | money -%}
+                  {%- endif -%}
+
+                  <div class="pdp-gift-card" {{ block.shopify_attributes }}>
+                    {%- if gift_badge_price != nil -%}
+                      <div class="pdp-gift-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <g clip-path="url(#gift-clip-{{ block.id }})">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.43307 1.91747C9.13342 1.38593 8.28778 1.35269 7.94454 1.87462L7.08891 3.17576C7.51708 3.18028 7.99172 3.18717 8.47008 3.19654C8.48242 3.1899 8.49507 3.18361 8.508 3.1777L9.06159 2.9246C9.49984 2.72426 9.62859 2.26442 9.43307 1.91747ZM4.91221 3.17576L4.05658 1.87462C3.71334 1.35269 2.86767 1.38593 2.56806 1.91747C2.3725 2.26442 2.50131 2.72426 2.9395 2.9246L3.49312 3.1777C3.50605 3.18361 3.51869 3.1899 3.53104 3.19654C4.0094 3.18717 4.48404 3.18028 4.91221 3.17576ZM6.00056 2.49076L6.87029 1.16819C7.73677 -0.149421 9.77576 -0.0929568 10.5531 1.28615C10.9223 1.94116 10.8761 2.68219 10.5271 3.26583C11.1752 3.36285 11.6973 3.85529 11.7571 4.52053C11.7759 4.72947 11.7863 4.9414 11.7863 5.15671C11.7863 5.37201 11.7759 5.58396 11.7571 5.79291C11.6922 6.51574 11.0813 7.03457 10.3561 7.06378C9.20147 7.1103 7.60415 7.13561 6.53627 7.14242V4.48882C6.53627 4.19296 6.29643 3.95311 6.00056 3.95311C5.70469 3.95311 5.46484 4.19296 5.46484 4.48882V7.14242C4.39696 7.13561 2.79967 7.1103 1.64496 7.06378C0.919801 7.03457 0.308992 6.51574 0.243971 5.79291C0.225175 5.58396 0.214844 5.37201 0.214844 5.15671C0.214844 4.9414 0.225174 4.72947 0.243969 4.52053C0.303809 3.85529 0.825933 3.36285 1.47402 3.26582C1.12507 2.68219 1.07882 1.94116 1.44802 1.28615C2.22537 -0.0929568 4.26435 -0.149421 5.13082 1.16819L6.00056 2.49076ZM1.71386 8.17234C2.87672 8.21667 4.42197 8.24076 5.46484 8.24733V11.7851C4.60525 11.7767 3.83381 11.7474 3.13046 11.6949C2.03062 11.6128 1.16237 10.7497 1.06498 9.65112C1.01866 9.12861 0.990541 8.59675 0.986324 8.05398C1.2205 8.12247 1.4652 8.16286 1.71386 8.17234ZM8.8683 11.6949C8.16558 11.7474 7.39492 11.7767 6.53627 11.7851V8.24732C7.57913 8.24073 9.12339 8.21666 10.2856 8.17234C10.534 8.16287 10.7784 8.12255 11.0124 8.05419C11.0082 8.59684 10.98 9.12861 10.9338 9.65112C10.8364 10.7497 9.9681 11.6128 8.8683 11.6949Z" fill="#FAFCFE"/>
+                          </g>
+                          <defs>
+                            <clipPath id="gift-clip-{{ block.id }}">
+                              <rect width="12" height="12" fill="white"/>
+                            </clipPath>
+                          </defs>
+                        </svg>
+                        <span>FREE </span><s>{{ gift_badge_price }}</s>
+                      </div>
+                    {%- endif -%}
+                    {% if gift_image != blank %}
+                      <div class="pdp-gift-img-wrap">
+                        {{ gift_image | image_url: width: 200 | image_tag:
+                          loading: 'lazy',
+                          widths: '80, 128, 200',
+                          sizes: '80px',
+                          alt: gift_name
+                        }}
+                      </div>
+                    {% else %}
+                      <div class="pdp-gift-img-wrap">
+                        {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    {% endif %}
+                    {% if gift_name != blank %}
+                      <p class="pdp-gift-name">{{ gift_name }}</p>
+                    {% endif %}
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} CTA Section {%- endcomment -%}
+      <div class="pdp-cta-section">
+        {% if section.settings.button_label != blank %}
+          <button class="pdp-btn" type="button" data-pdp-add-to-cart>
+            {% if section.settings.show_cart_icon %}
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 6h12l-1.5 9h-9L6 6zm0 0L5 2H2" stroke="{{ section.settings.color_cta_text }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="9" cy="18" r="1" fill="{{ section.settings.color_cta_text }}"/>
+                <circle cx="15" cy="18" r="1" fill="{{ section.settings.color_cta_text }}"/>
+              </svg>
+            {% endif %}
+            <span class="pdp-btn-text-wrap">
+              <span class="pdp-btn-text">{{ section.settings.button_label }}</span>
+              <span class="pdp-btn-text-clone" aria-hidden="true">{{ section.settings.button_label }}</span>
+            </span>
+          </button>
+        {% endif %}
+
+        {% if section.settings.show_guarantee %}
+          <div class="pdp-shield-row">
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 1l6 3v5c0 4.5-3 7.5-6 9-3-1.5-6-4.5-6-9V4l6-3z" stroke="{{ section.settings.color_primary }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 10l2 2 4-4" stroke="{{ section.settings.color_success }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {% if section.settings.guarantee_text != blank %}
+              <span>{{ section.settings.guarantee_text }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.show_payment_icons %}
+          <nav class="pdp-payments" aria-label="Accepted payment methods">
+            {%- for i in (1..10) -%}
+              {%- capture payment_setting -%}payment_icon_{{ i }}{%- endcapture -%}
+              {%- if section.settings[payment_setting] != blank -%}
+                <div class="pdp-payment-icon">
+                  {{ section.settings[payment_setting] | image_url: width: 70 | image_tag:
+                    loading: 'lazy',
+                    widths: '35, 70',
+                    sizes: '35px',
+                    alt: 'Payment method'
+                  }}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </nav>
+        {% endif %}
+      </div>
+
+      {%- comment -%} Mobile Review Card {%- endcomment -%}
+      {% if section.settings.show_review %}
+        <div class="pdp-review-card pdp-mobile-review">
+          {% if section.settings.review_avatar != blank %}
+            <div class="pdp-review-avatar">
+              <div class="pdp-img-wrapper">
+                <div class="pdp-img-skeleton" aria-hidden="true"></div>
+                {{ section.settings.review_avatar | image_url: width: 150 | image_tag:
+                  class: 'pdp-lazy-img',
+                  loading: 'lazy',
+                  widths: '64, 128, 150',
+                  sizes: '64px',
+                  alt: section.settings.review_author
+                }}
+              </div>
+            </div>
+          {% endif %}
+          <div class="pdp-review-body">
+            <div class="pdp-stars pdp-review-stars-mobile">
+              {%- for i in (1..5) -%}
+                {%- if i <= section.settings.review_rating -%}
+                  <svg viewBox="0 0 24 24" fill="{{ section.settings.color_stars }}" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                {%- else -%}
+                  <svg viewBox="0 0 24 24" fill="#D0D5DD" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+            {% if section.settings.review_text != blank %}
+              <p class="pdp-review-text">{{ section.settings.review_text }}</p>
+            {% endif %}
+            <div class="pdp-review-author-row">
+              {% if section.settings.review_author != blank %}
+                <span class="pdp-review-author">{{ section.settings.review_author }}</span>
+              {% endif %}
+              {% if section.settings.show_verified_badge %}
+                <div class="pdp-verified">
+                  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="8" fill="{{ section.settings.color_success }}"/>
+                    <path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <span>{{ section.settings.verified_text }}</span>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    var section = document.getElementById('shopify-section-{{ section.id }}');
+    if (!section) return;
+
+    /* Desktop thumbnail click → swap main image */
+    var thumbs = section.querySelectorAll('[data-pdp-thumb]');
+    var mainImageWrap = section.querySelector('[data-pdp-main-image]');
+    thumbs.forEach(function(thumb) {
+      thumb.addEventListener('click', function() {
+        thumbs.forEach(function(t) { t.classList.remove('is-active'); });
+        thumb.classList.add('is-active');
+        var img = thumb.querySelector('img');
+        if (img && mainImageWrap) {
+          var mainImg = mainImageWrap.querySelector('img');
+          if (mainImg) {
+            mainImg.src = img.src;
+            mainImg.srcset = img.srcset || '';
+          }
+        }
+      });
+    });
+
+    /* Mobile thumbnail click */
+    var mobileThumbs = section.querySelectorAll('[data-pdp-mobile-thumb]');
+    mobileThumbs.forEach(function(thumb) {
+      thumb.addEventListener('click', function() {
+        mobileThumbs.forEach(function(t) { t.classList.remove('is-active'); });
+        thumb.classList.add('is-active');
+      });
+    });
+
+    /* Lazy image onload handler */
+    var lazyImgs = section.querySelectorAll('.pdp-lazy-img');
+    lazyImgs.forEach(function(img) {
+      if (img.complete) {
+        img.classList.add('is-loaded');
+        var skel = img.previousElementSibling;
+        if (skel && skel.classList.contains('pdp-img-skeleton')) skel.style.display = 'none';
+      } else {
+        img.addEventListener('load', function() {
+          img.classList.add('is-loaded');
+          var skel = img.previousElementSibling;
+          if (skel && skel.classList.contains('pdp-img-skeleton')) skel.style.display = 'none';
+        });
+      }
+    });
+
+    /* Add to cart: main product + gift products */
+    var addBtn = section.querySelector('[data-pdp-add-to-cart]');
+    if (addBtn) {
+      addBtn.addEventListener('click', function() {
+        if (addBtn.classList.contains('is-loading')) return;
+        addBtn.classList.add('is-loading');
+
+        var items = [];
+
+        /* Main product from product template */
+        {% if product and product.selected_or_first_available_variant %}
+          items.push({
+            id: {{ product.selected_or_first_available_variant.id }},
+            quantity: 1
+          });
+        {% endif %}
+
+        /* Gift products */
+        {% for block in section.blocks %}
+          {% if block.type == 'gift_item' and block.settings.gift_product != blank %}
+            {% assign gp = block.settings.gift_product %}
+            {% if gp.available %}
+              items.push({
+                id: {{ gp.first_available_variant.id }},
+                quantity: 1
+              });
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+
+        if (items.length === 0) {
+          addBtn.classList.remove('is-loading');
+          return;
+        }
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: items })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function() {
+          addBtn.classList.remove('is-loading');
+          /* Open cart drawer if available */
+          var cartDrawer = document.getElementById('cart-drawer');
+          if (cartDrawer) {
+            cartDrawer.setAttribute('open', '');
+            var openEvt = new CustomEvent('cart:refresh');
+            document.dispatchEvent(openEvt);
+          } else {
+            window.location.href = '/cart';
+          }
+        })
+        .catch(function() {
+          addBtn.classList.remove('is-loading');
+          window.location.href = '/cart';
+        });
+      });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "PDP Hero",
+  "tag": "section",
+  "class": "pdp-hero-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Product title",
+      "default": "SmoothSpine\u2122\ufe0f \u2013 Triple Fusion Massager"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Product description",
+      "default": "<p>Struggling With Sciatica, Lower Back Pain, or Herniated Discs?</p><p><strong><u>Get Relief In Just 15 Minutes A Day!</u></strong></p><p>SmoothSpine Massager Uses a Special \u201cTriple Fusion\u201d Technology to Rehydrate and Restore Spinal Discs, Relieving Sciatica, Lower Back, and Leg Pain Naturally.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Pricing"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Show price row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "price_compare",
+      "label": "Compare-at price",
+      "default": "$299.95"
+    },
+    {
+      "type": "text",
+      "id": "price",
+      "label": "Price",
+      "default": "$119.95"
+    },
+    {
+      "type": "text",
+      "id": "price_badge",
+      "label": "Price badge text",
+      "default": "Save 60%"
+    },
+    {
+      "type": "header",
+      "content": "Trustpilot"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot",
+      "label": "Show Trustpilot rating",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "trustpilot_full_stars",
+      "label": "Full stars",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "trustpilot_has_half_star",
+      "label": "Show half star after full stars",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_rating_text",
+      "label": "Rating text",
+      "default": "4.4/5 (2,295 + reviews)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot_logo",
+      "label": "Show Trustpilot logo",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Add to cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_icon",
+      "label": "Show cart icon",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Guarantee"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_guarantee",
+      "label": "Show guarantee badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee text",
+      "default": "90-Day Risk-Free Trial"
+    },
+    {
+      "type": "header",
+      "content": "Gifts"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gifts",
+      "label": "Show gifts section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "gifts_title",
+      "label": "Gifts heading",
+      "default": "Exclusive Offer! Order today for free gifts (valued at $64)!"
+    },
+    {
+      "type": "header",
+      "content": "Review"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_review",
+      "label": "Show review card",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "review_avatar",
+      "label": "Reviewer photo"
+    },
+    {
+      "type": "textarea",
+      "id": "review_text",
+      "label": "Review text",
+      "default": "\"I've struggled with crippling back pain and Sciatica for years. Sitting, standing up, lying down, it all hurt. I was skeptical but after using this massager for just 1 week, I noticed a HUGE difference. The stabbing pain in my low back is finally gone, and I can move without wincing again. I still use it daily, it's so well-made. If you're on the fence, trust me, it's worth it!\""
+    },
+    {
+      "type": "text",
+      "id": "review_author",
+      "label": "Reviewer name",
+      "default": "Maggie S."
+    },
+    {
+      "type": "range",
+      "id": "review_rating",
+      "label": "Review star rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_verified_badge",
+      "label": "Show verified badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "verified_text",
+      "label": "Verified text",
+      "default": "Verified Purchase"
+    },
+    {
+      "type": "header",
+      "content": "Payment Icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_1",
+      "label": "Payment icon 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_2",
+      "label": "Payment icon 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_3",
+      "label": "Payment icon 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_4",
+      "label": "Payment icon 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_5",
+      "label": "Payment icon 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_6",
+      "label": "Payment icon 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_7",
+      "label": "Payment icon 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_8",
+      "label": "Payment icon 8"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_9",
+      "label": "Payment icon 9"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_10",
+      "label": "Payment icon 10"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show center divider line",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_secondary",
+      "label": "Secondary text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_start",
+      "label": "Background gradient start",
+      "default": "#fbf9f6"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_end",
+      "label": "Background gradient end",
+      "default": "#fefefd"
+    },
+    {
+      "type": "color",
+      "id": "color_white",
+      "label": "White / card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_success",
+      "label": "Success / badge color",
+      "default": "#12B76A"
+    },
+    {
+      "type": "color",
+      "id": "color_cta",
+      "label": "CTA button background",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_cta_border",
+      "label": "CTA button border",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_cta_text",
+      "label": "CTA button text",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "color",
+      "id": "color_cream",
+      "label": "Gift card background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_border_light",
+      "label": "Gift card border",
+      "default": "#C5C2BD"
+    },
+    {
+      "type": "color",
+      "id": "color_divider",
+      "label": "Divider color",
+      "default": "#424140"
+    },
+    {
+      "type": "color",
+      "id": "color_off_white",
+      "label": "Off-white accent",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "color",
+      "id": "color_stars",
+      "label": "Star rating color",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title font size (mobile)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Description font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "description_font_size_mobile",
+      "label": "Description font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "check_font_size",
+      "label": "Checkmark text font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "check_font_size_mobile",
+      "label": "Checkmark text font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "price_old_font_size",
+      "label": "Compare-at price font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "price_old_font_size_mobile",
+      "label": "Compare-at price font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "price_new_font_size",
+      "label": "Sale price font size (desktop)",
+      "min": 16,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "price_new_font_size_mobile",
+      "label": "Sale price font size (mobile)",
+      "min": 14,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "review_font_size",
+      "label": "Review text font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "radius_sm",
+      "label": "Border radius (small)",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "radius_md",
+      "label": "Border radius (medium)",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "radius_lg",
+      "label": "Border radius (large)",
+      "min": 0,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "thumb_size",
+      "label": "Thumbnail size (desktop)",
+      "min": 48,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "button_height",
+      "label": "Button height (desktop)",
+      "min": 40,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "gallery_image",
+      "name": "Gallery Image",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt text",
+          "default": "Product image"
+        }
+      ]
+    },
+    {
+      "type": "check_item",
+      "name": "Benefit Checkmark",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Benefit text goes here"
+        }
+      ]
+    },
+    {
+      "type": "gift_item",
+      "name": "Free Gift",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "product",
+          "id": "gift_product",
+          "label": "Gift product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom image (overrides product image)"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Custom name (overrides product title)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP Hero",
+      "blocks": [
+        {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "SmoothSpine Triple Fusion Massager"
+          }
+        },
+        {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product angle view"
+          }
+        },
+        {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product in use"
+          }
+        },
+        {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product detail"
+          }
+        },
+        {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product features"
+          }
+        },
+        {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product lifestyle"
+          }
+        },
+        {
+          "type": "gallery_image",
+          "settings": {
+            "alt_text": "Product packaging"
+          }
+        },
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Provides Fast Relief From Sciatica And Herniated Discs"
+          }
+        },
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Rehydrates and Restores Your Spinal Discs"
+          }
+        },
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Relieves Back Pain, Stiffness, and Discomfort"
+          }
+        },
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Feel The Difference In Just 15 Minutes Per Day"
+          }
+        },
+        {
+          "type": "gift_item",
+          "settings": {
+            "name": "Back pain & Sciatica Guide"
+          }
+        },
+        {
+          "type": "gift_item",
+          "settings": {
+            "name": "12x Back Pain Relief Patches"
+          }
+        },
+        {
+          "type": "gift_item",
+          "settings": {
+            "name": "Zip Lock Travel Bag"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
