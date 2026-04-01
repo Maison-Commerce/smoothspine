@@ -1196,41 +1196,50 @@
 
       if (Object.keys(keysToRemove).length > 0) {
         _isCleaningBundle = true;
-        /* Remove gifts one by one via /cart/change.js so the theme handles UI updates */
         var giftKeys = Object.keys(keysToRemove);
-        var chain = Promise.resolve();
-        giftKeys.forEach(function(key) {
-          chain = chain.then(function() {
-            return fetch('/cart/change.js', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ id: key, quantity: 0 })
-            }).then(function(res) { return res.json(); });
-          });
-        });
-        chain.then(function() {
+
+        /* Remove all gifts at once */
+        fetch('/cart/update.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ updates: keysToRemove })
+        })
+        .then(function() {
           _isCleaningBundle = false;
-          /* Force cart drawer to re-render */
+
+          /* Find cart drawer section ID and fetch fresh HTML */
           var cartDrawer = document.querySelector('cart-drawer');
-          if (cartDrawer) {
-            var sectionId = cartDrawer.closest('.shopify-section').id.replace('shopify-section-', '');
-            fetch('/?section_id=' + sectionId)
-              .then(function(res) { return res.text(); })
-              .then(function(html) {
-                var parser = new DOMParser();
-                var doc = parser.parseFromString(html, 'text/html');
-                var newDrawer = doc.querySelector('cart-drawer');
-                if (newDrawer && cartDrawer) {
-                  cartDrawer.querySelector('.cart-drawer__inner').innerHTML = newDrawer.querySelector('.cart-drawer__inner').innerHTML;
-                  /* Update cart count */
-                  var newCount = doc.querySelector('cart-count');
-                  document.querySelectorAll('cart-count').forEach(function(el) {
-                    if (newCount) el.innerHTML = newCount.innerHTML;
-                  });
-                }
-              });
+          if (!cartDrawer) return;
+          var shopifySection = cartDrawer.closest('.shopify-section');
+          if (!shopifySection) return;
+          var sectionId = shopifySection.id.replace('shopify-section-', '');
+
+          return fetch(window.location.pathname + '?section_id=' + sectionId);
+        })
+        .then(function(res) { if (res) return res.text(); })
+        .then(function(html) {
+          if (!html) return;
+          var cartDrawer = document.querySelector('cart-drawer');
+          if (!cartDrawer) return;
+
+          /* Replace entire cart-drawer element content */
+          var tmp = document.createElement('div');
+          tmp.innerHTML = html;
+          var freshInner = tmp.querySelector('.cart-drawer__inner');
+          var currentInner = cartDrawer.querySelector('.cart-drawer__inner');
+          if (freshInner && currentInner) {
+            currentInner.innerHTML = freshInner.innerHTML;
           }
-        }).catch(function() { _isCleaningBundle = false; });
+
+          /* Update all cart-count elements on page */
+          var freshCount = tmp.querySelector('cart-count');
+          if (freshCount) {
+            document.querySelectorAll('cart-count').forEach(function(el) {
+              el.innerHTML = freshCount.innerHTML;
+            });
+          }
+        })
+        .catch(function() { _isCleaningBundle = false; });
       }
     });
   }
