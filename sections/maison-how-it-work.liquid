@@ -82,6 +82,14 @@
     color: var(--s-color-brand);
   }
 
+  #shopify-section-{{ section.id }} .hiw-heading .hiw-heading-blue p {
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+
   #shopify-section-{{ section.id }} .hiw-heading .hiw-heading-dark {
     color: var(--s-color-text-primary);
   }
@@ -278,7 +286,7 @@
     {% if section.settings.heading_colored != blank or section.settings.heading_dark != blank %}
       <h2 class="hiw-heading">
         {% if section.settings.heading_colored != blank %}
-          <span class="hiw-heading-blue">{{ section.settings.heading_colored }} </span>
+          <span class="hiw-heading-blue">{{ section.settings.heading_colored }}</span>
         {% endif %}
         {% if section.settings.heading_dark != blank %}
           <span class="hiw-heading-dark">{{ section.settings.heading_dark }}</span>
@@ -350,10 +358,10 @@
       "content": "Content"
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "heading_colored",
       "label": "Heading (accent color)",
-      "default": "3 Simple Steps To Relieve"
+      "default": "<p>3 Simple Steps To Relieve</p>"
     },
     {
       "type": "header",
