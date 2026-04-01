@@ -1152,31 +1152,14 @@
         "max_width": 1280
       }
     },
-    "1775054390f1e0f076": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_snippet_widget_MAEUjX": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_snippet_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
-        },
-        "judge_me_reviews_review_widget_nkiLyp": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "review_data": "real_data",
-            "max_width": 1200,
-            "show_shop_reviews": false,
-            "empty_state": "empty_widget"
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_snippet_widget_MAEUjX",
-        "judge_me_reviews_review_widget_nkiLyp"
-      ],
+    "custom_liquid_MGtXtD": {
+      "type": "custom-liquid",
+      "name": "Custom Liquid",
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": false,
         "remove_horizontal_spacing": false,
+        "liquid": "<div class=\"maison-reviews-general\">\n<!-- Start of Judge.me code -->{% assign has_legacy = false %}{% if product.metafields.judgeme.widget.size > 20 %}{% assign has_legacy = true %}{% endif %}<div style='clear:both'></div><div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-product-id='{{ product.id }}' data-widget='review' data-auto-install='false' data-shop-reviews-count='{{ shop.metafields.judgeme.shop_reviews_count | default: 0 | escape }}' data-entry-point='review_widget.js' data-entry-key='review-widget/main.js'>{% if has_legacy %}<div class='jdgm-legacy-widget-content' style='display: none;'>{{ product.metafields.judgeme.widget }}</div>{% endif %}</div>{% if product.metafields.judgeme.review_widget_data %}<script>jdgm.data ||= {}; jdgm.data.reviewWidget ||= {}; jdgm.data.reviewWidget[{{ product.id }}] = {{ product.metafields.judgeme.review_widget_data }}</script>{% endif %}<!-- End of Judge.me code -->\n</div>",
         "background": "",
         "background_gradient": "",
         "text_color": ""
@@ -1198,6 +1181,6 @@
     "maison_how_it_work_gng7ta",
     "maison_pdp_offer_guarantee_V7EfKR",
     "maison_pdp_faq_NHzG9D",
-    "1775054390f1e0f076"
+    "custom_liquid_MGtXtD"
   ]
 }
