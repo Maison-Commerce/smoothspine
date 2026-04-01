@@ -779,10 +779,7 @@
   }
 {% endstyle %}
 
-{%- comment -%} Collect gallery_image blocks {%- endcomment -%}
-{%- assign gallery_images = "" -%}
-{%- assign check_items = "" -%}
-{%- assign gift_items = "" -%}
+{%- assign gallery_count = product.images.size -%}
 
 <section class="maisoncode_pdp-hero">
   <div class="pdp-inner">
@@ -792,23 +789,16 @@
 
     {%- comment -%} DESKTOP GALLERY {%- endcomment -%}
     <div class="pdp-images">
-      {%- assign first_gallery_image = nil -%}
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'gallery_image' and first_gallery_image == nil -%}
-          {%- assign first_gallery_image = block -%}
-        {%- endif -%}
-      {%- endfor -%}
-
       <div class="pdp-main-image">
-        {%- if first_gallery_image and first_gallery_image.settings.image != blank -%}
+        {%- if product.featured_image != blank -%}
           <div class="pdp-img-wrapper" data-pdp-main-image>
             <div class="pdp-img-skeleton" aria-hidden="true"></div>
-            {{ first_gallery_image.settings.image | image_url: width: 1200 | image_tag:
+            {{ product.featured_image | image_url: width: 1200 | image_tag:
               class: 'pdp-lazy-img',
               loading: 'eager',
               widths: '375, 550, 750, 1000, 1200',
               sizes: '(max-width: 767px) 100vw, 48vw',
-              alt: first_gallery_image.settings.alt_text
+              alt: product.featured_image.alt | default: product.title
             }}
           </div>
         {%- else -%}
@@ -824,32 +814,17 @@
       </div>
 
       {%- comment -%} Desktop Thumbnails {%- endcomment -%}
-      {%- assign gallery_count = 0 -%}
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'gallery_image' -%}
-          {%- assign gallery_count = gallery_count | plus: 1 -%}
-        {%- endif -%}
-      {%- endfor -%}
-
       {%- if gallery_count > 1 -%}
         <div class="pdp-thumbs" data-pdp-thumbs>
-          {%- assign thumb_index = 0 -%}
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'gallery_image' -%}
-              <div class="pdp-thumb{% if thumb_index == 0 %} is-active{% endif %}" data-pdp-thumb="{{ thumb_index }}" {{ block.shopify_attributes }}>
-                {%- if block.settings.image != blank -%}
-                  {{ block.settings.image | image_url: width: 200 | image_tag:
-                    loading: 'lazy',
-                    widths: '80, 160, 200',
-                    sizes: '80px',
-                    alt: block.settings.alt_text
-                  }}
-                {%- else -%}
-                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                {%- endif -%}
-              </div>
-              {%- assign thumb_index = thumb_index | plus: 1 -%}
-            {%- endif -%}
+          {%- for image in product.images -%}
+            <div class="pdp-thumb{% if forloop.first %} is-active{% endif %}" data-pdp-thumb="{{ forloop.index0 }}">
+              {{ image | image_url: width: 200 | image_tag:
+                loading: 'lazy',
+                widths: '80, 160, 200',
+                sizes: '80px',
+                alt: image.alt | default: product.title
+              }}
+            </div>
           {%- endfor -%}
         </div>
       {%- endif -%}
@@ -908,46 +883,32 @@
     {%- comment -%} MOBILE GALLERY {%- endcomment -%}
     <div class="pdp-mobile-gallery">
       <div class="pdp-mobile-slider">
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'gallery_image' -%}
-            <div class="pdp-mobile-slide">
-              {%- if block.settings.image != blank -%}
-                <div class="pdp-img-wrapper">
-                  <div class="pdp-img-skeleton" aria-hidden="true"></div>
-                  {{ block.settings.image | image_url: width: 750 | image_tag:
-                    class: 'pdp-lazy-img',
-                    loading: 'lazy',
-                    widths: '375, 550, 750',
-                    sizes: '50vw',
-                    alt: block.settings.alt_text
-                  }}
-                </div>
-              {%- else -%}
-                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-              {%- endif -%}
+        {%- for image in product.images -%}
+          <div class="pdp-mobile-slide">
+            <div class="pdp-img-wrapper">
+              <div class="pdp-img-skeleton" aria-hidden="true"></div>
+              {{ image | image_url: width: 750 | image_tag:
+                class: 'pdp-lazy-img',
+                loading: 'lazy',
+                widths: '375, 550, 750',
+                sizes: '50vw',
+                alt: image.alt | default: product.title
+              }}
             </div>
-          {%- endif -%}
+          </div>
         {%- endfor -%}
       </div>
       {%- if gallery_count > 1 -%}
         <div class="pdp-mobile-thumbs" data-pdp-mobile-thumbs>
-          {%- assign mobile_thumb_index = 0 -%}
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'gallery_image' -%}
-              <div class="pdp-mobile-thumb{% if mobile_thumb_index == 0 %} is-active{% endif %}" data-pdp-mobile-thumb="{{ mobile_thumb_index }}">
-                {%- if block.settings.image != blank -%}
-                  {{ block.settings.image | image_url: width: 150 | image_tag:
-                    loading: 'lazy',
-                    widths: '64, 128, 150',
-                    sizes: '64px',
-                    alt: block.settings.alt_text
-                  }}
-                {%- else -%}
-                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                {%- endif -%}
-              </div>
-              {%- assign mobile_thumb_index = mobile_thumb_index | plus: 1 -%}
-            {%- endif -%}
+          {%- for image in product.images -%}
+            <div class="pdp-mobile-thumb{% if forloop.first %} is-active{% endif %}" data-pdp-mobile-thumb="{{ forloop.index0 }}">
+              {{ image | image_url: width: 150 | image_tag:
+                loading: 'lazy',
+                widths: '64, 128, 150',
+                sizes: '64px',
+                alt: image.alt | default: product.title
+              }}
+            </div>
           {%- endfor -%}
         </div>
       {%- endif -%}
@@ -986,28 +947,29 @@
 
         <div style="display:flex;flex-direction:column;gap:20px;">
           {%- comment -%} Title {%- endcomment -%}
-          {% if section.settings.title != blank %}
-            <h1 class="pdp-title">{{ section.settings.title }}</h1>
+          {% if product.title != blank %}
+            <h1 class="pdp-title">{{ product.title }}</h1>
           {% endif %}
 
           {%- comment -%} Description {%- endcomment -%}
-          {% if section.settings.description != blank %}
+          {% if product.description != blank %}
             <div class="pdp-description">
-              {{ section.settings.description }}
+              {{ product.description }}
             </div>
           {% endif %}
 
-          {%- comment -%} Price {%- endcomment -%}
-          {% if section.settings.show_price %}
+          {%- comment -%} Price — from product {%- endcomment -%}
+          {%- assign current_variant = product.selected_or_first_available_variant -%}
+          {% if current_variant %}
             <div class="pdp-price-row">
-              {% if section.settings.price_compare != blank %}
-                <span class="pdp-price-old">{{ section.settings.price_compare }}</span>
+              {% if current_variant.compare_at_price > current_variant.price %}
+                <span class="pdp-price-old">{{ current_variant.compare_at_price | money }}</span>
               {% endif %}
-              {% if section.settings.price != blank %}
-                <span class="pdp-price-new">{{ section.settings.price }}</span>
-              {% endif %}
-              {% if section.settings.price_badge != blank %}
-                <span class="pdp-price-badge">{{ section.settings.price_badge }}</span>
+              <span class="pdp-price-new">{{ current_variant.price | money }}</span>
+              {% if current_variant.compare_at_price > current_variant.price %}
+                {%- assign save_amount = current_variant.compare_at_price | minus: current_variant.price -%}
+                {%- assign save_percent = save_amount | times: 100 | divided_by: current_variant.compare_at_price -%}
+                <span class="pdp-price-badge">Save {{ save_percent }}%</span>
               {% endif %}
             </div>
           {% endif %}
@@ -1335,50 +1297,6 @@
   "tag": "section",
   "class": "pdp-hero-wrapper",
   "settings": [
-    {
-      "type": "header",
-      "content": "Content"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Product title",
-      "default": "SmoothSpine\u2122\ufe0f \u2013 Triple Fusion Massager"
-    },
-    {
-      "type": "richtext",
-      "id": "description",
-      "label": "Product description",
-      "default": "<p>Struggling With Sciatica, Lower Back Pain, or Herniated Discs?</p><p><strong><u>Get Relief In Just 15 Minutes A Day!</u></strong></p><p>SmoothSpine Massager Uses a Special \u201cTriple Fusion\u201d Technology to Rehydrate and Restore Spinal Discs, Relieving Sciatica, Lower Back, and Leg Pain Naturally.</p>"
-    },
-    {
-      "type": "header",
-      "content": "Pricing"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_price",
-      "label": "Show price row",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "price_compare",
-      "label": "Compare-at price",
-      "default": "$299.95"
-    },
-    {
-      "type": "text",
-      "id": "price",
-      "label": "Price",
-      "default": "$119.95"
-    },
-    {
-      "type": "text",
-      "id": "price_badge",
-      "label": "Price badge text",
-      "default": "Save 60%"
-    },
     {
       "type": "header",
       "content": "Trustpilot"
@@ -1921,24 +1839,6 @@
   ],
   "blocks": [
     {
-      "type": "gallery_image",
-      "name": "Gallery Image",
-      "limit": 10,
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "alt_text",
-          "label": "Alt text",
-          "default": "Product image"
-        }
-      ]
-    },
-    {
       "type": "check_item",
       "name": "Benefit Checkmark",
       "limit": 8,
@@ -1978,48 +1878,6 @@
     {
       "name": "PDP Hero",
       "blocks": [
-        {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "SmoothSpine Triple Fusion Massager"
-          }
-        },
-        {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product angle view"
-          }
-        },
-        {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product in use"
-          }
-        },
-        {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product detail"
-          }
-        },
-        {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product features"
-          }
-        },
-        {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product lifestyle"
-          }
-        },
-        {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product packaging"
-          }
-        },
         {
           "type": "check_item",
           "settings": {
