@@ -875,22 +875,28 @@
 
         {%- comment -%} Gifts Section {%- endcomment -%}
         {%- assign gifts_total_value = 0 -%}
-        {%- assign gifts_with_product = 0 -%}
+        {%- assign gifts_count = 0 -%}
         {%- for block in section.blocks -%}
-          {%- if block.type == 'gift_item' and block.settings.gift_product != blank -%}
-            {%- assign gifts_with_product = gifts_with_product | plus: 1 -%}
-            {%- if block.settings.gift_product.compare_at_price > 0 -%}
+          {%- if block.type == 'gift_item' -%}
+            {%- if block.settings.gift_product != blank or block.settings.name != blank or block.settings.image != blank -%}
+              {%- assign gifts_count = gifts_count | plus: 1 -%}
+            {%- endif -%}
+            {%- if block.settings.gift_product != blank and block.settings.gift_product.compare_at_price > 0 -%}
               {%- assign gifts_total_value = gifts_total_value | plus: block.settings.gift_product.compare_at_price -%}
             {%- endif -%}
           {%- endif -%}
         {%- endfor -%}
 
-        {%- if gifts_with_product > 0 and section.settings.show_gifts -%}
+        {%- if gifts_count > 0 and section.settings.show_gifts -%}
           <div class="pdp-gifts-section">
-            <p class="pdp-gifts-title">Exclusive Offer! Order today for free gifts (valued at {{ gifts_total_value | money }})!</p>
+            {% if gifts_total_value > 0 %}
+              <p class="pdp-gifts-title">Exclusive Offer! Order today for free gifts (valued at {{ gifts_total_value | money }})!</p>
+            {% else %}
+              <p class="pdp-gifts-title">Exclusive Offer! Order today for free gifts!</p>
+            {% endif %}
             <div class="pdp-gifts-row">
               {%- for block in section.blocks -%}
-                {%- if block.type == 'gift_item' and block.settings.gift_product != blank -%}
+                {%- if block.type == 'gift_item' -%}
                   {%- assign gift_product = block.settings.gift_product -%}
                   {%- comment -%} Image: custom override → product featured image → placeholder {%- endcomment -%}
                   {%- assign gift_image = block.settings.image -%}
