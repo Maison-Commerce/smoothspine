@@ -328,25 +328,15 @@
     </div>
 
     {%- comment -%} Media Column (Video or Image) {%- endcomment -%}
-    {% if section.settings.video_url != blank %}
+    {% if section.settings.video != blank %}
       <figure class="cbl-image-wrap">
-        {% if section.settings.video_url.type == 'youtube' %}
-          <iframe
-            src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?autoplay=1&mute=1&loop=1&playlist={{ section.settings.video_url.id }}&controls=0&playsinline=1"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-            frameborder="0"
-            style="width:100%;height:100%;border-radius:var(--s-radius-lg);"
-          ></iframe>
-        {% elsif section.settings.video_url.type == 'vimeo' %}
-          <iframe
-            src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=1&muted=1&loop=1&background=1"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-            frameborder="0"
-            style="width:100%;height:100%;border-radius:var(--s-radius-lg);"
-          ></iframe>
-        {% endif %}
+        {{ section.settings.video | video_tag:
+          autoplay: true,
+          muted: true,
+          loop: true,
+          playsinline: true,
+          controls: false
+        }}
       </figure>
     {% elsif section.settings.image != blank %}
       <figure class="cbl-image-wrap">
@@ -404,11 +394,10 @@
       "label": "Image"
     },
     {
-      "type": "video_url",
-      "id": "video_url",
-      "label": "Video URL (overrides image)",
-      "accept": ["youtube", "vimeo"],
-      "info": "YouTube or Vimeo URL. Autoplays muted."
+      "type": "video",
+      "id": "video",
+      "label": "Video (overrides image)",
+      "info": "Upload via Shopify Files. Autoplays muted."
     },
     {
       "type": "text",
