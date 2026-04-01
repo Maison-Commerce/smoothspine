@@ -653,6 +653,10 @@
       max-width: 100%;
     }
 
+    #shopify-section-{{ section.id }} .pdp-main-image .swiper-slide {
+      width: 320px;
+    }
+
     #shopify-section-{{ section.id }} .pdp-thumbs .swiper-slide {
       width: 64px;
       height: 64px;
@@ -1078,9 +1082,17 @@
 
     if (mainEl) {
       new Swiper(mainEl, {
-        spaceBetween: 0,
+        spaceBetween: 8,
         slidesPerView: 1,
-        thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined
+        thumbs: thumbsSwiper ? { swiper: thumbsSwiper } : undefined,
+        breakpoints: {
+          0: {
+            slidesPerView: 'auto'
+          },
+          768: {
+            slidesPerView: 1
+          }
+        }
       });
     }
 
