@@ -761,15 +761,14 @@
         "subtitle": "It's non-addictive, works fast, and actually does GOOD things for your body.",
         "good_card_title": "SmoothSpine Massager",
         "bad_card_title": "Other Pain Relief Methods",
-        "color_primary": "#102A43",
-        "color_brand_blue": "#065BDC",
-        "color_text_secondary": "#102A43",
-        "color_white": "#FFFFFF",
-        "color_success": "#12B76A",
-        "color_error": "#F04438",
-        "color_card_header_text": "#FAFCFE",
-        "color_gradient_from": "#E5EEFB",
-        "color_gradient_to": "#FDFCFA",
+        "color_primary": "#102a43",
+        "color_brand_blue": "#065bdc",
+        "color_text_secondary": "#102a43",
+        "color_white": "#ffffff",
+        "color_success": "#12b76a",
+        "color_error": "#f04438",
+        "color_card_header_text": "#fafcfe",
+        "color_gradient": "linear-gradient(180deg, #E5EEFB 0%, #FDFCFA 100%)",
         "title_font_size": 32,
         "title_font_size_mobile": 24,
         "subtitle_font_size": 16,
@@ -794,6 +793,85 @@
         "good_card_rotation": 1,
         "bad_card_rotation": 1
       }
+    },
+    "maison_pdp_reviews_LNgKVr": {
+      "type": "maison-pdp-reviews",
+      "blocks": {
+        "review_card_qeifta": {
+          "type": "review_card",
+          "settings": {
+            "image": "shopify://shop_images/SM-Collection-Banner.png",
+            "rating": 5,
+            "title": "Finally, Real Relief After Years of Pain!",
+            "quote": "\"I've been struggling with back pain for years, and nothing seemed to work. The first time I used the SmoothSpine Massager, I felt instant relief. After a week, I could sit and stand without that sharp pain shooting down my leg. It's like my spine finally got the support it needed. I recommended anybody that asked me about it. Thank you again\"",
+            "author": "Maggie S.",
+            "show_verified": true
+          }
+        },
+        "review_card_mBbNxJ": {
+          "type": "review_card",
+          "settings": {
+            "image": "shopify://shop_images/1d472716c6ffa87196ca7f9ccfdce880c5abccf3.jpg",
+            "rating": 5,
+            "title": "Didn't Expect It to Work THIS Well!",
+            "quote": "\"I was not expecting this! When I laid down on the smoothspine massager, I could feel my back start to decompress in a good way. The heat and massage combined made a huge difference, and I could actually relax for the first time in months. My wife said I'm walking more upright. Definitely worth it trying!!\"",
+            "author": "John D.",
+            "show_verified": true
+          }
+        },
+        "review_card_7RU674": {
+          "type": "review_card",
+          "settings": {
+            "image": "shopify://shop_images/faeb5ca68eb985659295a2b8bf9c19fb00e86042.jpg",
+            "rating": 5,
+            "title": "I Can Move Freely Again!",
+            "quote": "\"Ok, mine got here last week. I was skeptical at first, but after just a few sessions, my stiffness and sciatica pain improved drastically. I used to dread getting out of bed in the morning because of the pain, but now I can move freely again. So easy to use, and the heat feels amazing on my lower back.\"",
+            "author": "Linda R.",
+            "show_verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_card_qeifta",
+        "review_card_mBbNxJ",
+        "review_card_7RU674"
+      ],
+      "name": "Customer Reviews",
+      "settings": {
+        "heading_accent": "Real Users",
+        "heading_dark": "Real Life-Changing Results",
+        "verified_text": "Verified Purchase",
+        "color_bg_start": "#fdfcfa",
+        "color_bg_end": "#e5eefb",
+        "color_brand": "#065BDC",
+        "color_primary": "#102A43",
+        "color_secondary": "#102A43",
+        "color_card_bg": "#FFFFFC",
+        "color_card_content_bg": "#FFFFFF",
+        "color_stars": "#F4B740",
+        "color_verified": "#065BDC",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "review_title_font_size": 16,
+        "body_font_size": 14,
+        "meta_font_size": 12,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "section_gap": 40,
+        "section_gap_mobile": 32,
+        "cards_gap": 40,
+        "card_border_radius": 16,
+        "card_padding": 20,
+        "card_image_height": 400,
+        "card_max_width": 420,
+        "mobile_card_width": 280,
+        "mobile_swiper_gap": 20,
+        "max_width": 1400
+      }
     }
   },
   "order": [
@@ -806,6 +884,7 @@
     "maison_pdp_content_list_tNqpGx",
     "maison_pdp_content_list_hcMWE3",
     "maison_before_after_U8xfYJ",
-    "maison_pdp_comparison_cGe9fV"
+    "maison_pdp_comparison_cGe9fV",
+    "maison_pdp_reviews_LNgKVr"
   ]
 }
