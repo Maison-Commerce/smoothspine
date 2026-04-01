@@ -237,7 +237,7 @@
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20,
         "column_gap": 80,
-        "max_width": 1400,
+        "max_width": 1280,
         "radius_sm": 8,
         "radius_md": 12,
         "radius_lg": 16,
