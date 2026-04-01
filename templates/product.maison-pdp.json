@@ -244,10 +244,79 @@
         "thumb_size": 80,
         "button_height": 56
       }
+    },
+    "maison_about_usps_dn6ghV": {
+      "type": "maison-about-usps",
+      "blocks": {
+        "usp_item_8qjUcG": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/ag2g23g3vrgb.svg",
+            "title": "Relief You Can Feel",
+            "description": "We offer a daily routine with traction, heat, and massage to decompress your spine."
+          }
+        },
+        "usp_item_8Vbz4q": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/bwfjkabwjaw.svg",
+            "title": "On Your Time, At Home",
+            "description": "No appointments or waiting. Just 15 minutes a day in your living room."
+          }
+        },
+        "usp_item_pfyEtU": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/jabwfabwfjkg3g.svg",
+            "title": "No Risk, Real Support",
+            "description": "90 days to see if it works. If not, get your money back. A real person is here to help."
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_8qjUcG",
+        "usp_item_8Vbz4q",
+        "usp_item_pfyEtU"
+      ],
+      "name": "About Page USPs",
+      "settings": {
+        "heading": "",
+        "subtitle": "",
+        "show_dividers": true,
+        "color_background": "#e5eefb",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43",
+        "color_icon_border": "#065bdc",
+        "color_icon_bg": "#fafcfe",
+        "color_divider": "#102a43",
+        "title_font_size": 32,
+        "title_font_size_mobile": 24,
+        "subtitle_font_size": 16,
+        "subtitle_font_size_mobile": 14,
+        "usp_title_font_size": 18,
+        "usp_desc_font_size": 14,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal": 80,
+        "sections_gap": 40,
+        "header_gap": 16,
+        "usps_gap": 32,
+        "icon_text_gap": 20,
+        "text_gap": 8,
+        "icon_border_radius": 8,
+        "icon_box_size": 56,
+        "icon_image_size": 32,
+        "divider_height": 64,
+        "max_width": 1400,
+        "header_max_width": 600
+      }
     }
   },
   "order": [
     "main",
-    "maison_pd_hero_JHyDcq"
+    "maison_pd_hero_JHyDcq",
+    "maison_about_usps_dn6ghV"
   ]
 }
