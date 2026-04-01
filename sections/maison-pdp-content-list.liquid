@@ -1,0 +1,749 @@
+{% comment %}
+  Section: Content Block List
+  Description: Two-column layout with a trust badge, heading, body text, and
+    checklist card on the left, and a product lifestyle image on the right.
+    Responsive: stacks vertically (image on top) on mobile. Ideal for product
+    landing pages to highlight key benefits with social proof.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings), 'Open Sans' (body) — must be loaded by the theme or via @import
+
+  Blocks:
+  - check_item: Individual checklist item with text label (limit: 10)
+
+  Notes:
+  - Trust badge (stars + Trustpilot) is toggleable via show_trust_badge setting
+  - Checklist card has its own background color setting
+  - Body text uses richtext setting for HTML formatting (trademark symbols, quotes, etc.)
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_Content_Block_List
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_Content_Block_List {
+    --s-color-bg: {{ section.settings.color_background }};
+    --s-color-bg-card: {{ section.settings.color_card_background }};
+    --s-color-text-primary: {{ section.settings.color_text_primary }};
+    --s-color-text-secondary: {{ section.settings.color_text_secondary | color_modify: 'alpha', 0.75 }};
+    --s-color-text-dark: {{ section.settings.color_text_dark }};
+    --s-color-stars: {{ section.settings.color_stars }};
+    --s-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --s-font-size-body: {{ section.settings.body_font_size }}px;
+    --s-font-size-check: {{ section.settings.check_font_size }}px;
+    --s-font-size-rating: {{ section.settings.rating_font_size }}px;
+    --s-radius-md: {{ section.settings.border_radius_md }}px;
+    --s-radius-lg: {{ section.settings.border_radius_lg }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-gap-columns: {{ section.settings.column_gap }}px;
+    --s-gap-checklist: {{ section.settings.checklist_gap }}px;
+    --s-gap-body: {{ section.settings.body_gap }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+
+    box-sizing: border-box;
+    background-color: var(--s-color-bg);
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_Content_Block_List *,
+  #shopify-section-{{ section.id }} .maisoncode_Content_Block_List *::before,
+  #shopify-section-{{ section.id }} .maisoncode_Content_Block_List *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-inner {
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: var(--s-gap-columns);
+  }
+
+  #shopify-section-{{ section.id }} .cbl-content {
+    flex: 1;
+    min-width: 0;
+    padding: 48px 32px;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-image-wrap {
+    flex: 1;
+    min-width: 0;
+    aspect-ratio: {{ section.settings.image_aspect_ratio }};
+    border-radius: var(--s-radius-lg);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--s-radius-lg);
+  }
+
+  #shopify-section-{{ section.id }} .cbl-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8d5c4 0%, #f0e6da 50%, #d4bfae 100%);
+    color: #7a9aa8;
+    font-size: 14px;
+    text-align: center;
+    gap: 8px;
+    min-height: 300px;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-image-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+  }
+
+  /* Badge / Trustpilot row */
+  #shopify-section-{{ section.id }} .cbl-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-rating {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: var(--s-font-size-rating);
+    line-height: 1.5;
+    color: var(--s-color-text-dark);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-rating a {
+    color: var(--s-color-text-dark);
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-trustpilot {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-trustpilot svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-trustpilot span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: var(--s-font-size-rating);
+    line-height: 1.5;
+    color: var(--s-color-text-dark);
+    white-space: nowrap;
+  }
+
+  /* Heading */
+  #shopify-section-{{ section.id }} .cbl-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: var(--s-font-size-heading);
+    line-height: 1.4;
+    color: var(--s-color-text-primary);
+    text-transform: capitalize;
+    margin-bottom: 24px;
+  }
+
+  /* Body paragraphs */
+  #shopify-section-{{ section.id }} .cbl-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-gap-body);
+  }
+
+  #shopify-section-{{ section.id }} .cbl-body p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: var(--s-font-size-body);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+  }
+
+  /* Checklist card */
+  #shopify-section-{{ section.id }} .cbl-checklist {
+    background-color: var(--s-color-bg-card);
+    border-radius: var(--s-radius-lg);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-gap-checklist);
+  }
+
+  #shopify-section-{{ section.id }} .cbl-check-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-check-item svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .cbl-check-item span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: var(--s-font-size-check);
+    line-height: 1.5;
+    color: var(--s-color-text-primary);
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_Content_Block_List {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+      --s-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
+      --s-font-size-body: {{ section.settings.body_font_size_mobile }}px;
+      --s-font-size-check: {{ section.settings.check_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .cbl-inner {
+      flex-direction: column-reverse;
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .cbl-content {
+      padding: 0;
+    }
+
+    #shopify-section-{{ section.id }} .cbl-image-wrap {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .cbl-heading {
+      margin-bottom: 18px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_Content_Block_List">
+  <div class="cbl-inner">
+    <div class="cbl-content">
+
+      {%- comment -%} Trust Badge {%- endcomment -%}
+      {% if section.settings.show_trust_badge %}
+        <div class="cbl-badge">
+          <div class="cbl-stars">
+            {% assign full_stars = section.settings.rating_stars | floor %}
+            {% assign has_half = section.settings.rating_stars | modulo: 1 %}
+            {% for i in (1..full_stars) %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+            {% endfor %}
+            {% if has_half > 0 %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><rect x="8" width="8" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+            {% endif %}
+          </div>
+          {% if section.settings.rating_text != blank %}
+            <span class="cbl-rating">
+              {% if section.settings.rating_link != blank %}
+                {{ section.settings.rating_text_before_link }}
+                <a href="{{ section.settings.rating_link }}">{{ section.settings.rating_link_text }}</a>
+              {% else %}
+                {{ section.settings.rating_text }}
+              {% endif %}
+            </span>
+          {% endif %}
+          {% if section.settings.show_trustpilot_logo %}
+            <div class="cbl-trustpilot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 10.6761L10.0417 9.86164L11.3125 14L7 10.6761ZM14 5.32704H8.64583L7 0L5.35417 5.32704H0L4.33334 8.62893L2.6875 13.956L7.02083 10.6541L9.6875 8.62893L14 5.32704Z" fill="#00B67A"/></svg>
+              <span>{{ section.settings.trustpilot_label }}</span>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {%- comment -%} Heading {%- endcomment -%}
+      {% if section.settings.heading != blank %}
+        <h2 class="cbl-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {%- comment -%} Body Text {%- endcomment -%}
+      {% if section.settings.body_text != blank %}
+        <div class="cbl-body">
+          {{ section.settings.body_text }}
+        </div>
+      {% endif %}
+
+      {%- comment -%} Checklist (Blocks) {%- endcomment -%}
+      {% if section.blocks.size > 0 %}
+        <div class="cbl-body">
+          <div class="cbl-checklist">
+            {% for block in section.blocks %}
+              {% if block.type == 'check_item' %}
+                <div class="cbl-check-item" {{ block.shopify_attributes }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#cbl-check-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.6235 2.6235C4.37209 0.874903 6.8971 0 10 0C13.1029 0 15.6279 0.874903 17.3766 2.6235C19.1251 4.37209 20 6.8971 20 10C20 13.1029 19.1251 15.6279 17.3766 17.3766C15.6279 19.1251 13.1029 20 10 20C6.8971 20 4.37209 19.1251 2.6235 17.3766C0.874903 15.6279 0 13.1029 0 10C0 6.8971 0.874903 4.37209 2.6235 2.6235ZM14.1713 7.08989C14.5366 6.75857 14.564 6.19391 14.2327 5.82869C13.9014 5.46346 13.3368 5.43596 12.9715 5.76727C11.7848 6.84384 10.8933 7.81137 10.1408 8.98594C9.59271 9.84133 9.13136 10.7863 8.67961 11.9317L7.06956 10.2713C6.72627 9.9173 6.16101 9.9086 5.80701 10.2519C5.45301 10.5952 5.44431 11.1604 5.78759 11.5144L8.38499 14.193C8.60064 14.4154 8.91617 14.5101 9.21866 14.4433C9.52113 14.3764 9.76736 14.1575 9.8692 13.865C10.4695 12.1405 11.0025 10.9511 11.6443 9.94926C12.2827 8.95296 13.0528 8.10454 14.1713 7.08989Z" fill="#065BDC"/></g><defs><clipPath id="cbl-check-{{ block.id }}"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                  {% if block.settings.text != blank %}
+                    <span>{{ block.settings.text }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+
+    {%- comment -%} Image Column {%- endcomment -%}
+    {% if section.settings.image != blank %}
+      <figure class="cbl-image-wrap">
+        {{ section.settings.image | image_url: width: 1200 | image_tag:
+          loading: 'lazy',
+          widths: '375, 550, 750, 1000, 1200',
+          sizes: '(max-width: 767px) 100vw, 50vw'
+        }}
+      </figure>
+    {% else %}
+      <figure class="cbl-image-wrap">
+        <div class="cbl-image-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>{{ section.settings.image_placeholder_text }}</span>
+        </div>
+      </figure>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Content Block List",
+  "tag": "section",
+  "class": "content-block-list-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Perfect Therapy Every Time"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "<p>The Entire Country Is Raving About the SmoothSpine\u2122 \u201cTriple Fusion\u201d Massager!</p><p>Users are reporting significant improvements after just a few sessions! And almost everyone continues using it daily.</p><p>This means that within a few days of using the SmoothSpine\u2122 \u201cTriple Fusion\u201d Massager, you can expect to start noticing:</p>"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_placeholder_text",
+      "label": "Image placeholder text",
+      "default": "Product lifestyle image"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        { "value": "1 / 1", "label": "1:1 (Square)" },
+        { "value": "3 / 4", "label": "3:4 (Portrait)" },
+        { "value": "4 / 5", "label": "4:5 (Tall)" },
+        { "value": "16 / 9", "label": "16:9 (Wide)" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "header",
+      "content": "Trust badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_badge",
+      "label": "Show trust badge",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "rating_stars",
+      "label": "Star rating",
+      "options": [
+        { "value": "3", "label": "3 stars" },
+        { "value": "3.5", "label": "3.5 stars" },
+        { "value": "4", "label": "4 stars" },
+        { "value": "4.5", "label": "4.5 stars" },
+        { "value": "5", "label": "5 stars" }
+      ],
+      "default": "4.5"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text (full)",
+      "default": "4.4/5 (2,295 + reviews)"
+    },
+    {
+      "type": "text",
+      "id": "rating_text_before_link",
+      "label": "Rating text before link",
+      "default": "4.4/5 ("
+    },
+    {
+      "type": "text",
+      "id": "rating_link_text",
+      "label": "Rating link text",
+      "default": "2,295 + reviews)"
+    },
+    {
+      "type": "url",
+      "id": "rating_link",
+      "label": "Rating link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot_logo",
+      "label": "Show Trustpilot logo",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_label",
+      "label": "Trustpilot label",
+      "default": "Trustpilot"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_card_background",
+      "label": "Checklist card background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_text_primary",
+      "label": "Primary text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_text_secondary",
+      "label": "Secondary text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_text_dark",
+      "label": "Dark text (rating)",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "color_stars",
+      "label": "Star rating color",
+      "default": "#00b67a"
+    },
+    {
+      "type": "color",
+      "id": "color_check_bg",
+      "label": "Checkmark circle background",
+      "default": "#00b67a"
+    },
+    {
+      "type": "color",
+      "id": "color_check_icon",
+      "label": "Checkmark icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading font size (desktop)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 14,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "body_font_size",
+      "label": "Body font size (desktop)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "label": "Body font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "check_font_size",
+      "label": "Checklist font size (desktop)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "check_font_size_mobile",
+      "label": "Checklist font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "rating_font_size",
+      "label": "Rating text font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "body_gap",
+      "label": "Body paragraph gap",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "checklist_gap",
+      "label": "Checklist item gap",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "border_radius_md",
+      "label": "Border radius (small)",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "border_radius_lg",
+      "label": "Border radius (large)",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "check_item",
+      "name": "Checklist Item",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Checklist item text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content Block List",
+      "blocks": [
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Freedom from discomfort in your back and legs"
+          }
+        },
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Improved mobility and less pain"
+          }
+        },
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Better nights of sleep feeling more rested"
+          }
+        },
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Boosted confidence while walking and standing"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
