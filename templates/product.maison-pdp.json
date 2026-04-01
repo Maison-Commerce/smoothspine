@@ -116,48 +116,6 @@
     "maison_pd_hero_JHyDcq": {
       "type": "maison-pd-hero",
       "blocks": {
-        "gallery_image_FXykz4": {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "SmoothSpine Triple Fusion Massager"
-          }
-        },
-        "gallery_image_ac6VdY": {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product angle view"
-          }
-        },
-        "gallery_image_aiXFdC": {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product in use"
-          }
-        },
-        "gallery_image_p6fqCk": {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product detail"
-          }
-        },
-        "gallery_image_rUK9aC": {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product features"
-          }
-        },
-        "gallery_image_pNkLPp": {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product lifestyle"
-          }
-        },
-        "gallery_image_TPE9Wp": {
-          "type": "gallery_image",
-          "settings": {
-            "alt_text": "Product packaging"
-          }
-        },
         "check_item_AtN6R7": {
           "type": "check_item",
           "settings": {
@@ -205,13 +163,6 @@
         }
       },
       "block_order": [
-        "gallery_image_FXykz4",
-        "gallery_image_ac6VdY",
-        "gallery_image_aiXFdC",
-        "gallery_image_p6fqCk",
-        "gallery_image_rUK9aC",
-        "gallery_image_pNkLPp",
-        "gallery_image_TPE9Wp",
         "check_item_AtN6R7",
         "check_item_DLQCxf",
         "check_item_Gat3yA",
@@ -222,12 +173,6 @@
       ],
       "name": "PDP Hero",
       "settings": {
-        "title": "SmoothSpine™️ – Triple Fusion Massager",
-        "description": "<p>Struggling With Sciatica, Lower Back Pain, or Herniated Discs?</p><p><strong><u>Get Relief In Just 15 Minutes A Day!</u></strong></p><p>SmoothSpine Massager Uses a Special “Triple Fusion” Technology to Rehydrate and Restore Spinal Discs, Relieving Sciatica, Lower Back, and Leg Pain Naturally.</p>",
-        "show_price": true,
-        "price_compare": "$299.95",
-        "price": "$119.95",
-        "price_badge": "Save 60%",
         "show_trustpilot": true,
         "trustpilot_full_stars": 4,
         "trustpilot_has_half_star": true,
@@ -238,8 +183,8 @@
         "show_guarantee": true,
         "guarantee_text": "90-Day Risk-Free Trial",
         "show_gifts": true,
-        "gifts_title": "Exclusive Offer! Order today for free gifts (valued at $64)!",
         "show_review": true,
+        "review_avatar": "shopify://shop_images/SM-Collection-Banner.png",
         "review_text": "\"I've struggled with crippling back pain and Sciatica for years. Sitting, standing up, lying down, it all hurt. I was skeptical but after using this massager for just 1 week, I noticed a HUGE difference. The stabbing pain in my low back is finally gone, and I can move without wincing again. I still use it daily, it's so well-made. If you're on the fence, trust me, it's worth it!\"",
         "review_author": "Maggie S.",
         "review_rating": 5,
@@ -247,20 +192,20 @@
         "verified_text": "Verified Purchase",
         "show_payment_icons": true,
         "show_divider": true,
-        "color_primary": "#102A43",
-        "color_secondary": "#102A43",
+        "color_primary": "#102a43",
+        "color_secondary": "#102a43",
         "color_bg_start": "#fbf9f6",
         "color_bg_end": "#fefefd",
-        "color_white": "#FFFFFF",
-        "color_success": "#12B76A",
-        "color_cta": "#F07E3B",
-        "color_cta_border": "#BF642F",
-        "color_cta_text": "#FFFCFB",
-        "color_cream": "#F8F4EE",
-        "color_border_light": "#C5C2BD",
+        "color_white": "#ffffff",
+        "color_success": "#12b76a",
+        "color_cta": "#f07e3b",
+        "color_cta_border": "#bf642f",
+        "color_cta_text": "#fffcfb",
+        "color_cream": "#f8f4ee",
+        "color_border_light": "#c5c2bd",
         "color_divider": "#424140",
-        "color_off_white": "#FFFCFB",
-        "color_stars": "#F07E3B",
+        "color_off_white": "#fffcfb",
+        "color_stars": "#f07e3b",
         "title_font_size": 32,
         "title_font_size_mobile": 24,
         "description_font_size": 18,
