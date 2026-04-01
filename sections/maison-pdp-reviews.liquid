@@ -200,7 +200,7 @@
   }
 
   /* Mobile */
-  @media (max-width: 767px) {
+  @media (max-width: 949px) {
     #shopify-section-{{ section.id }} .maisoncode_Reviews {
       --s-padding-top: {{ section.settings.padding_top_mobile }}px;
       --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
@@ -273,7 +273,7 @@
                 class: 'review-card-image',
                 loading: 'lazy',
                 widths: '280, 420, 560, 840',
-                sizes: '(max-width: 767px) 280px, 420px'
+                sizes: '(max-width: 949px) 280px, 420px'
               }}
             {% else %}
               <div class="review-card-placeholder">
@@ -368,12 +368,12 @@
 </section>
 
 {% if section.blocks.size > 0 %}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="(max-width: 767px)">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="(max-width: 949px)">
   <script>
     (function() {
       var sectionId = '{{ section.id }}';
       function initSwiper() {
-        if (window.innerWidth <= 767 && typeof Swiper !== 'undefined') {
+        if (window.innerWidth <= 949 && typeof Swiper !== 'undefined') {
           new Swiper('.reviews-swiper-' + sectionId, {
             slidesPerView: 'auto',
             spaceBetween: {{ section.settings.mobile_swiper_gap }},
