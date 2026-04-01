@@ -39,6 +39,7 @@
     --s-gap-columns: {{ section.settings.column_gap }}px;
     --s-gap-checklist: {{ section.settings.checklist_gap }}px;
     --s-gap-body: {{ section.settings.body_gap }}px;
+    --s-color-link: {{ section.settings.color_link }};
     --s-max-width: {{ section.settings.max_width }}px;
 
     box-sizing: border-box;
@@ -197,6 +198,16 @@
     font-size: var(--s-font-size-body);
     line-height: 1.5;
     color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .cbl-body a{
+    color: var(--s-color-link);
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
   }
 
   /* Checklist card */
@@ -551,6 +562,12 @@
       "id": "color_check_icon",
       "label": "Checkmark icon color",
       "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_link",
+      "label": "Link color",
+      "default": "#065BDC"
     },
     {
       "type": "header",
