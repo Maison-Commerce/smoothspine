@@ -492,6 +492,55 @@
         "border_radius_lg": 16,
         "max_width": 1400
       }
+    },
+    "maison_pdp_content_list_hcMWE3": {
+      "type": "maison-pdp-content-list",
+      "name": "Content Block List",
+      "settings": {
+        "heading": "How SmoothSpine “Triple Fusion” Massager Works",
+        "body_text": "<p>The best part about the SmoothSpine™ Massager is that it’s so simple to use.</p><ol><li>The first step, no short-lived batteries - You just plug it in using the cable that arrives together with your order.</li><li>The second step is to position SmoothSpine under your lower back and then use the button controls to start the program of traction, heat, and massage. Lay back and relax while SmoothSpine does its magic.</li><li>With consistent use, the damage to your spine can be reversed, providing long-lasting relief and allowing you to get back to living your life to the fullest without being held back by back pain or Sciatica.</li></ol>",
+        "video": "shopify://files/videos/4b62cf66768542578f49af24488d3063.mp4",
+        "image_placeholder_text": "Product lifestyle image",
+        "image_aspect_ratio": "1 / 1",
+        "desktop_media_position": "left",
+        "mobile_media_position": "top",
+        "show_trust_badge": true,
+        "rating_stars": "4.5",
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "rating_text_before_link": "4.4/5 (",
+        "rating_link_text": "2,295 + reviews)",
+        "rating_link": "",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "color_background": "#fdfcfa",
+        "color_card_background": "#f8f4ee",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#102a43",
+        "color_text_dark": "#111111",
+        "color_stars": "#00b67a",
+        "color_check_bg": "#00b67a",
+        "color_check_icon": "#ffffff",
+        "color_link": "#065bdc",
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "check_font_size": 16,
+        "check_font_size_mobile": 14,
+        "rating_font_size": 12,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "column_gap": 40,
+        "body_gap": 16,
+        "checklist_gap": 8,
+        "border_radius_md": 12,
+        "border_radius_lg": 16,
+        "max_width": 1400
+      }
     }
   },
   "order": [
@@ -500,6 +549,7 @@
     "maison_about_usps_dn6ghV",
     "maison_pdp_content_list_VNpB6J",
     "maison_pdp_content_list_VyRjjH",
-    "maison_pdp_content_list_tNqpGx"
+    "maison_pdp_content_list_tNqpGx",
+    "maison_pdp_content_list_hcMWE3"
   ]
 }
