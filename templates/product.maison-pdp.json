@@ -314,6 +314,87 @@
         "header_max_width": 600
       }
     },
+    "maison_pdp_content_list_VNpB6J": {
+      "type": "maison-pdp-content-list",
+      "blocks": {
+        "check_item_8QKx8y": {
+          "type": "check_item",
+          "settings": {
+            "text": "Freedom from discomfort in your back and legs"
+          }
+        },
+        "check_item_LfTQnj": {
+          "type": "check_item",
+          "settings": {
+            "text": "Improved mobility and less pain"
+          }
+        },
+        "check_item_RfzeQN": {
+          "type": "check_item",
+          "settings": {
+            "text": "Better nights of sleep feeling more rested"
+          }
+        },
+        "check_item_AthMiF": {
+          "type": "check_item",
+          "settings": {
+            "text": "Boosted confidence while walking and standing"
+          }
+        }
+      },
+      "block_order": [
+        "check_item_8QKx8y",
+        "check_item_LfTQnj",
+        "check_item_RfzeQN",
+        "check_item_AthMiF"
+      ],
+      "name": "Content Block List",
+      "settings": {
+        "heading": "If You Want To Relieve Sciatica And Back Pain… You Must Start With Your Spinal Discs",
+        "body_text": "<p>Your spinal discs act as the shock absorbers between your vertebrae, cushioning your spine and protecting your nerves.</p><p>When at full height, you should be able to move and bend without any issues, and your discs should be able to absorb any impact with ease.</p><p>But imagine, as we sit for prolonged periods, work long hours, and grow older…</p><p>Our discs dry out and shrink, forcing the vertebrae closer together and putting pressure on the nerves.</p><p>This is the root cause of Sciatica and the leading reason why back pain and stiffness feel never ending.</p><p>And until you rehydrate your spinal discs, the pain will never truly go away.</p>",
+        "video": "shopify://files/videos/560e1b00e09a4822b3dd9099f72c91b8.mp4",
+        "image_placeholder_text": "Product lifestyle image",
+        "image_aspect_ratio": "1 / 1",
+        "desktop_media_position": "left",
+        "mobile_media_position": "top",
+        "show_trust_badge": true,
+        "rating_stars": "4.5",
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "rating_text_before_link": "4.4/5 (",
+        "rating_link_text": "2,295 + reviews)",
+        "rating_link": "",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "color_background": "#fdfcfa",
+        "color_card_background": "#f8f4ee",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#102a43",
+        "color_text_dark": "#111111",
+        "color_stars": "#00b67a",
+        "color_check_bg": "#00b67a",
+        "color_check_icon": "#ffffff",
+        "color_link": "#065bdc",
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "check_font_size": 16,
+        "check_font_size_mobile": 14,
+        "rating_font_size": 12,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "column_gap": 40,
+        "body_gap": 16,
+        "checklist_gap": 8,
+        "border_radius_md": 12,
+        "border_radius_lg": 16,
+        "max_width": 1400
+      }
+    },
     "maison_pdp_content_list_VyRjjH": {
       "type": "maison-pdp-content-list",
       "name": "Content Block List",
@@ -341,6 +422,7 @@
         "color_stars": "#00b67a",
         "color_check_bg": "#00b67a",
         "color_check_icon": "#ffffff",
+        "color_link": "#065bdc",
         "heading_font_size": 24,
         "heading_font_size_mobile": 20,
         "body_font_size": 16,
@@ -421,6 +503,7 @@
         "color_stars": "#00b67a",
         "color_check_bg": "#00b67a",
         "color_check_icon": "#ffffff",
+        "color_link": "#065bdc",
         "heading_font_size": 24,
         "heading_font_size_mobile": 20,
         "body_font_size": 16,
@@ -447,6 +530,7 @@
     "main",
     "maison_pd_hero_JHyDcq",
     "maison_about_usps_dn6ghV",
+    "maison_pdp_content_list_VNpB6J",
     "maison_pdp_content_list_VyRjjH",
     "maison_pdp_content_list_tNqpGx"
   ]
