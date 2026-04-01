@@ -659,6 +659,12 @@
     #shopify-section-{{ section.id }} .pdp-desktop-review { display: none; }
   }
 
+  @media (max-width: 1250px) and (min-width: 768px) {
+    #shopify-section-{{ section.id }} .pdp-inner {
+      gap: 32px;
+    }
+  }
+
   @media (min-width: 768px) {
     #shopify-section-{{ section.id }} .pdp-mobile-review { display: none !important; }
     #shopify-section-{{ section.id }} .pdp-desktop-review { display: flex; }
