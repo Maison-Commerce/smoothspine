@@ -529,33 +529,22 @@
     justify-content: center;
     gap: 12px;
     cursor: pointer;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 0 32px;
-    position: relative;
-    overflow: hidden;
     text-decoration: none;
+    transition: opacity 0.3s ease;
   }
 
-  #shopify-section-{{ section.id }} .pdp-btn:active { transform: scale(0.96); }
+  #shopify-section-{{ section.id }} .pdp-btn:hover {
+    opacity: 0.92;
+  }
 
   #shopify-section-{{ section.id }} .pdp-btn svg {
     width: 20px;
     height: 20px;
     flex-shrink: 0;
-    position: relative;
-    z-index: 2;
   }
 
-  #shopify-section-{{ section.id }} .pdp-btn-text-wrap {
-    position: relative;
-    overflow: hidden;
-    height: 24px;
-    display: flex;
-    align-items: center;
-  }
-
-  #shopify-section-{{ section.id }} .pdp-btn-text,
-  #shopify-section-{{ section.id }} .pdp-btn-text-clone {
+  #shopify-section-{{ section.id }} .pdp-btn span {
     font-family: var(--s-font-heading);
     font-weight: 800;
     font-size: {{ section.settings.button_font_size }}px;
@@ -564,24 +553,6 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     white-space: nowrap;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  #shopify-section-{{ section.id }} .pdp-btn-text-clone {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    opacity: 0;
-  }
-
-  #shopify-section-{{ section.id }} .pdp-btn:hover .pdp-btn-text {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-
-  #shopify-section-{{ section.id }} .pdp-btn:hover .pdp-btn-text-clone {
-    transform: translateY(-100%);
-    opacity: 1;
   }
 
   /* Shield */
@@ -672,8 +643,7 @@
     #shopify-section-{{ section.id }} .pdp-gifts-title { font-size: 12px; }
     #shopify-section-{{ section.id }} .pdp-gift-img-wrap { width: 64px; height: 64px; }
     #shopify-section-{{ section.id }} .pdp-btn { height: 44px; }
-    #shopify-section-{{ section.id }} .pdp-btn-text,
-    #shopify-section-{{ section.id }} .pdp-btn-text-clone { font-size: 14px; }
+    #shopify-section-{{ section.id }} .pdp-btn span { font-size: 14px; }
     #shopify-section-{{ section.id }} .pdp-payment-icon { width: 23px; height: 16px; }
     #shopify-section-{{ section.id }} .pdp-payments { gap: 8px; }
     #shopify-section-{{ section.id }} .pdp-shield-row svg { width: 16px; height: 16px; }
@@ -774,10 +744,7 @@
                 {% endif %}
                 {% if section.settings.show_verified_badge %}
                   <div class="pdp-verified">
-                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="8" cy="8" r="8" fill="{{ section.settings.color_success }}"/>
-                      <path d="M5 8l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#verified-{{ section.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.84687 0.422743C7.50338 -0.141185 8.47232 -0.140794 9.12851 0.423196C9.37005 0.630789 9.6083 0.838566 9.8436 1.04685C10.1567 0.983031 10.472 0.921248 10.7899 0.861387C11.6405 0.70127 12.4794 1.18608 12.7657 2.00261C12.8711 2.30314 12.9735 2.60222 13.0731 2.90025C13.3761 3.0015 13.6801 3.10563 13.9854 3.21278C14.8019 3.49937 15.2862 4.3387 15.1258 5.18897C15.0655 5.50886 15.0033 5.82587 14.9391 6.1405C15.1521 6.38097 15.3646 6.62451 15.5768 6.87149C16.1408 7.52768 16.1411 8.49662 15.5773 9.15313C15.3664 9.39862 15.1552 9.64083 14.9433 9.88008C15.0061 10.188 15.0669 10.4982 15.1259 10.8111C15.2863 11.6614 14.8021 12.5007 13.9855 12.7873C13.6801 12.8945 13.3761 12.9986 13.073 13.0999C12.9734 13.3979 12.871 13.697 12.7656 13.9975C12.4793 14.8141 11.6403 15.2989 10.7898 15.1387C10.4788 15.0801 10.1704 15.0198 9.86415 14.9575C9.63008 15.1646 9.39318 15.3711 9.15313 15.5773C8.49662 16.1411 7.52767 16.1408 6.87149 15.5768C6.62998 15.3693 6.39175 15.1615 6.15647 14.9533C5.84335 15.017 5.52799 15.0789 5.20995 15.1387C4.35943 15.2989 3.52049 14.8141 3.23422 13.9975C3.12885 13.697 3.02641 13.3979 2.92679 13.0999C2.62369 12.9986 2.31968 12.8945 2.0143 12.7873C1.19767 12.5007 0.713537 11.6614 0.873872 10.8111C0.934217 10.4911 0.996441 10.174 1.06067 9.85921C0.847755 9.61883 0.635379 9.37538 0.423195 9.12851C-0.140793 8.47232 -0.141185 7.50338 0.422742 6.84687C0.63357 6.60143 0.844727 6.35926 1.05653 6.12006C0.993801 5.81215 0.932989 5.50193 0.873976 5.18897C0.713643 4.3387 1.19777 3.49937 2.01441 3.21278C2.3197 3.10563 2.62363 3.0015 2.92665 2.90025C3.02629 2.60222 3.12873 2.30314 3.23411 2.00261C3.52039 1.18608 4.35933 0.701269 5.20985 0.861387C5.52089 0.919943 5.82937 0.980338 6.13569 1.04268C6.36982 0.835525 6.60678 0.628976 6.84687 0.422743ZM10.8616 6.34914C11.2122 6.03109 11.2386 5.48902 10.9206 5.1384C10.6025 4.78777 10.0604 4.76138 9.70982 5.07944C8.86921 5.84199 8.22869 6.53552 7.68647 7.38183C7.34702 7.91166 7.05533 8.48701 6.77625 9.1553L5.89491 8.24644C5.56537 7.90658 5.02272 7.89824 4.68288 8.22778C4.34304 8.55734 4.33469 9.09998 4.66423 9.43983L6.48465 11.3171C6.69168 11.5306 6.99457 11.6216 7.28496 11.5574C7.57535 11.4933 7.81171 11.2831 7.90949 11.0022C8.32745 9.80161 8.69395 8.98709 9.12992 8.30662C9.56249 7.63144 10.0865 7.05226 10.8616 6.34914Z" fill="#065BDC"/></g><defs><clipPath id="verified-{{ section.id }}"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
                     <span>{{ section.settings.verified_text }}</span>
                   </div>
                 {% endif %}
@@ -785,9 +752,9 @@
               <div class="pdp-stars">
                 {%- for i in (1..5) -%}
                   {%- if i <= section.settings.review_rating -%}
-                    <svg viewBox="0 0 24 24" fill="{{ section.settings.color_stars }}" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
                   {%- else -%}
-                    <svg viewBox="0 0 24 24" fill="#D0D5DD" xmlns="http://www.w3.org/2000/svg"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
                   {%- endif -%}
                 {%- endfor -%}
               </div>
@@ -876,10 +843,7 @@
             {%- for block in section.blocks -%}
               {%- if block.type == 'check_item' -%}
                 <div class="pdp-check-item" {{ block.shopify_attributes }}>
-                  <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="10" cy="10" r="10" fill="#065BDC"/>
-                    <path d="M6 10l3 3 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#check-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.6235 2.6235C4.37209 0.874903 6.8971 0 10 0C13.1029 0 15.6279 0.874903 17.3766 2.6235C19.1251 4.37209 20 6.8971 20 10C20 13.1029 19.1251 15.6279 17.3766 17.3766C15.6279 19.1251 13.1029 20 10 20C6.8971 20 4.37209 19.1251 2.6235 17.3766C0.874903 15.6279 0 13.1029 0 10C0 6.8971 0.874903 4.37209 2.6235 2.6235ZM14.1713 7.08989C14.5366 6.75857 14.564 6.19391 14.2327 5.82869C13.9014 5.46346 13.3368 5.43596 12.9715 5.76727C11.7848 6.84384 10.8933 7.81137 10.1408 8.98594C9.59271 9.84133 9.13136 10.7863 8.67961 11.9317L7.06956 10.2713C6.72627 9.9173 6.16101 9.9086 5.80701 10.2519C5.45301 10.5952 5.44431 11.1604 5.78759 11.5144L8.38499 14.193C8.60064 14.4154 8.91617 14.5101 9.21866 14.4433C9.52113 14.3764 9.76736 14.1575 9.8692 13.865C10.4695 12.1405 11.0025 10.9511 11.6443 9.94926C12.2827 8.95296 13.0528 8.10454 14.1713 7.08989Z" fill="#065BDC"/></g><defs><clipPath id="check-{{ block.id }}"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
                   {% if block.settings.text != blank %}
                     <span>{{ block.settings.text }}</span>
                   {% endif %}
@@ -976,19 +940,13 @@
                 <circle cx="15" cy="18" r="1" fill="{{ section.settings.color_cta_text }}"/>
               </svg>
             {% endif %}
-            <span class="pdp-btn-text-wrap">
-              <span class="pdp-btn-text">{{ section.settings.button_label }}</span>
-              <span class="pdp-btn-text-clone" aria-hidden="true">{{ section.settings.button_label }}</span>
-            </span>
+            <span>{{ section.settings.button_label }}</span>
           </button>
         {% endif %}
 
         {% if section.settings.show_guarantee %}
           <div class="pdp-shield-row">
-            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 1l6 3v5c0 4.5-3 7.5-6 9-3-1.5-6-4.5-6-9V4l6-3z" stroke="{{ section.settings.color_primary }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M7 10l2 2 4-4" stroke="{{ section.settings.color_success }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#shield-{{ section.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.29329 0.220621C3.42804 0.079705 3.61454 0 3.80953 0H16.1904C16.3854 0 16.572 0.079705 16.7067 0.220621C17.1117 0.644153 17.9469 1.5181 18.6727 3.03603C19.3979 4.55263 20 6.68146 20 9.61537C20 13.1154 18.3371 15.523 16.2926 17.1356C14.27 18.7306 11.8633 19.5613 10.274 19.9767C10.1556 20.0077 10.0312 20.0077 9.91271 19.9767C8.32674 19.5621 5.87549 18.7327 3.80739 17.1407C1.71803 15.5321 0 13.1241 0 9.61537C0 6.68146 0.60217 4.55263 1.32731 3.03603C2.0531 1.5181 2.88827 0.644153 3.29329 0.220621ZM14.5157 6.4578C14.954 6.06023 14.987 5.38264 14.5894 4.94437C14.1918 4.50609 13.5142 4.4731 13.076 4.87067C11.81 6.01911 10.8542 7.05559 10.0465 8.31616C9.48717 9.18921 9.01299 10.1478 8.55296 11.2919L6.97349 9.66307C6.56156 9.23826 5.88324 9.22783 5.45844 9.63976C5.03363 10.0517 5.0232 10.73 5.43513 11.1548L8.19569 14.0016C8.45447 14.2685 8.8331 14.3821 9.19607 14.302C9.55906 14.2217 9.85451 13.9591 9.97673 13.608C10.6133 11.7794 11.176 10.5254 11.8508 9.47214C12.5214 8.42549 13.3316 7.53196 14.5157 6.4578Z" fill="#102A43"/></g><defs><clipPath id="shield-{{ section.id }}"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
             {% if section.settings.guarantee_text != blank %}
               <span>{{ section.settings.guarantee_text }}</span>
             {% endif %}
