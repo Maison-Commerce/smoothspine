@@ -84,15 +84,11 @@
   }
 
   #shopify-section-{{ section.id }} .pdp-divider {
-    position: absolute;
-    left: 50%;
-    top: 4%;
-    bottom: 4%;
     width: 1px;
+    align-self: stretch;
     background: var(--s-color-divider);
     opacity: 0.1;
-    transform: translateX(-50%);
-    pointer-events: none;
+    flex-shrink: 0;
   }
 
   /* LEFT COLUMN */
