@@ -363,6 +363,82 @@
         "max_width": 1400
       }
     },
+    "maison_pdp_content_benefits_kEPYcj": {
+      "type": "maison-pdp-content-benefits",
+      "blocks": {
+        "benefit_item_KBDgjd": {
+          "type": "benefit_item",
+          "settings": {
+            "description": "<strong>Dynamic Traction:</strong> Gently stretches and separates your vertebrae, reducing nerve compression and creating space for discs to rehydrate."
+          }
+        },
+        "benefit_item_jbJWct": {
+          "type": "benefit_item",
+          "settings": {
+            "description": "<strong>Target Point Massage:</strong> Targets tight muscles and deep knots, easing tension and improving circulation for faster relief."
+          }
+        },
+        "benefit_item_JWQKaf": {
+          "type": "benefit_item",
+          "settings": {
+            "description": "<strong>Soothing Heat Therapy:</strong> Warms tissues and enhances fluid absorption, accelerating disc rehydration and healing."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_item_KBDgjd",
+        "benefit_item_jbJWct",
+        "benefit_item_JWQKaf"
+      ],
+      "name": "Content Block Benefits",
+      "settings": {
+        "heading": "SmoothSpine \"Triple Fusion\" Massager Restores Spinal Disc Hydration and Relieves Pressure on Your Sciatic Nerve",
+        "body_text_above": "<p>The <a href=\"#\">SmoothSpine \"Triple Fusion\" Massager</a> fully harnesses the power of three advanced therapies to relieve nerve compression, stiffness, and pain in your back and legs.</p><p>The moment you lay back on the <strong>SmoothSpine \"Triple Fusion\" Massager</strong>, you'll immediately feel the powerful combination of <strong>dynamic traction, target point massage, and soothing heat therapy</strong> working together.</p>",
+        "body_text_below": "<p>These three therapies work in perfect harmony to rehydrate your discs and bring lasting relief.</p><p>The best part?</p><p>You can use it from the comfort of your own home, even in your bed.</p>",
+        "video": "shopify://files/videos/d6b555b3f24e4fd2b87985bb36f0c056.mp4",
+        "image_placeholder_text": "Product lifestyle image",
+        "image_aspect_ratio": "1 / 1",
+        "desktop_media_position": "right",
+        "mobile_media_position": "top",
+        "show_trust_badge": true,
+        "star_rating": 4.5,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot": true,
+        "trustpilot_label": "Trustpilot",
+        "color_background": "#FDFCFA",
+        "color_card_background": "#F8F4EE",
+        "color_text_primary": "#102A43",
+        "color_text_secondary": "#102A43",
+        "color_link": "#065BDC",
+        "color_text_dark": "#111111",
+        "color_stars": "#00b67a",
+        "color_check_bg": "#2D6A4F",
+        "color_check_icon": "#ffffff",
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "benefit_font_size": 16,
+        "benefit_font_size_mobile": 14,
+        "rating_font_size": 12,
+        "padding_section": 20,
+        "padding_section_mobile": 20,
+        "padding_inner_vertical": 20,
+        "padding_inner_horizontal": 60,
+        "padding_content_top": 48,
+        "padding_content_bottom": 32,
+        "padding_content_sides": 32,
+        "column_gap": 40,
+        "text_block_gap": 16,
+        "benefits_gap": 12,
+        "card_padding": 20,
+        "border_radius": 16,
+        "border_radius_mobile": 12,
+        "icon_size": 32,
+        "icon_size_mobile": 24,
+        "max_width": 1400
+      }
+    },
     "maison_pdp_content_list_VyRjjH": {
       "type": "maison-pdp-content-list",
       "name": "Content Block List",
@@ -548,6 +624,7 @@
     "maison_pd_hero_JHyDcq",
     "maison_about_usps_dn6ghV",
     "maison_pdp_content_list_VNpB6J",
+    "maison_pdp_content_benefits_kEPYcj",
     "maison_pdp_content_list_VyRjjH",
     "maison_pdp_content_list_tNqpGx",
     "maison_pdp_content_list_hcMWE3"
