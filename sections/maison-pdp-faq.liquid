@@ -1,0 +1,601 @@
+{% comment %}
+  Section: FAQ PDP
+  Description: Frequently Asked Questions accordion section with centered header
+    (title + subtitle) and a two-column layout on desktop that stacks to single
+    column on mobile. Each FAQ item expands/collapses on click. Ideal for product
+    detail pages or landing pages.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings, weight 800) — must be loaded by theme
+  - Font: 'Open Sans' (body/questions, weights 400 & 600) — must be loaded by theme
+
+  Blocks:
+  - faq_item: Individual FAQ with question and answer text (limit: 20)
+
+  Notes:
+  - Uses vanilla JS for accordion toggle (no Alpine.js dependency)
+  - FAQ items split into two columns on desktop via CSS columns
+  - Icon uses an inline SVG chevron; color is merchant-configurable
+  - Original source class prefix: maisoncode_faq-pdp
+  - All colors, typography, spacing, and border radius are merchant-configurable
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_faq-pdp {
+    --s-color-bg: {{ section.settings.color_background }};
+    --s-color-card-bg: {{ section.settings.color_card_bg }};
+    --s-color-heading: {{ section.settings.color_heading }};
+    --s-color-text-secondary: {{ section.settings.color_text_secondary | color_modify: 'alpha', 0.75 }};
+    --s-color-icon: {{ section.settings.color_icon }};
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+    --s-radius: {{ section.settings.card_border_radius }}px;
+    --s-font-size-title: {{ section.settings.title_font_size }}px;
+    --s-font-size-subtitle: {{ section.settings.subtitle_font_size }}px;
+    --s-font-size-question: {{ section.settings.question_font_size }}px;
+    --s-font-size-answer: {{ section.settings.answer_font_size }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-inline: {{ section.settings.padding_inline }}px;
+    --s-gap-header: {{ section.settings.header_gap }}px;
+    --s-gap-columns: {{ section.settings.columns_gap }}px;
+    --s-gap-items: {{ section.settings.items_gap }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+
+    background-color: var(--s-color-bg);
+    padding: var(--s-padding-top) var(--s-padding-inline) var(--s-padding-bottom);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_faq-pdp *,
+  #shopify-section-{{ section.id }} .maisoncode_faq-pdp *::before,
+  #shopify-section-{{ section.id }} .maisoncode_faq-pdp *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .faq-container {
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-gap-header);
+  }
+
+  #shopify-section-{{ section.id }} .faq-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .faq-title {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-title);
+    line-height: 1.4;
+    color: var(--s-color-heading);
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .faq-subtitle {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-subtitle);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .faq-columns {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-gap-columns);
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .faq-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-gap-items);
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .faq-item {
+    background-color: var(--s-color-card-bg);
+    border-radius: var(--s-radius);
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .faq-question {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 12px 20px;
+    min-height: 54px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: left;
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-question);
+    line-height: 1.5;
+    color: var(--s-color-heading);
+  }
+
+  #shopify-section-{{ section.id }} .faq-question:hover {
+    opacity: 0.85;
+  }
+
+  #shopify-section-{{ section.id }} .faq-question-text {
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .faq-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    transform: scaleY(-1);
+  }
+
+  #shopify-section-{{ section.id }} .faq-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .faq-icon.is-open {
+    transform: scaleY(1);
+  }
+
+  #shopify-section-{{ section.id }} .faq-answer {
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    max-height: 0;
+    padding: 0 20px;
+  }
+
+  #shopify-section-{{ section.id }} .faq-answer.is-open {
+    max-height: 300px;
+    padding: 0 20px 16px 20px;
+  }
+
+  #shopify-section-{{ section.id }} .faq-answer-text {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-answer);
+    line-height: 1.6;
+    color: var(--s-color-text-secondary);
+  }
+
+  @media (min-width: 950px) {
+    #shopify-section-{{ section.id }} .maisoncode_faq-pdp {
+      --s-padding-inline: {{ section.settings.padding_inline_desktop }}px;
+      --s-font-size-title: {{ section.settings.title_font_size_desktop }}px;
+      --s-font-size-subtitle: {{ section.settings.subtitle_font_size_desktop }}px;
+      --s-font-size-question: {{ section.settings.question_font_size_desktop }}px;
+      --s-font-size-answer: {{ section.settings.answer_font_size_desktop }}px;
+    }
+
+    #shopify-section-{{ section.id }} .faq-container {
+      gap: {{ section.settings.header_gap_desktop }}px;
+    }
+
+    #shopify-section-{{ section.id }} .faq-header {
+      gap: 20px;
+      max-width: 700px;
+    }
+
+    #shopify-section-{{ section.id }} .faq-columns {
+      flex-direction: row;
+      gap: var(--s-gap-columns);
+    }
+
+    #shopify-section-{{ section.id }} .faq-question {
+      min-height: 78px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_faq-pdp">
+  <div class="faq-container">
+
+    {%- comment -%} Header {%- endcomment -%}
+    {% if section.settings.heading != blank or section.settings.subtitle != blank %}
+      <header class="faq-header">
+        {% if section.settings.heading != blank %}
+          <h2 class="faq-title">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <p class="faq-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </header>
+    {% endif %}
+
+    {%- comment -%} FAQ Columns {%- endcomment -%}
+    {% if section.blocks.size > 0 %}
+      {% assign half = section.blocks.size | divided_by: 2 %}
+      {% assign remainder = section.blocks.size | modulo: 2 %}
+      {% if remainder > 0 %}
+        {% assign half = half | plus: 1 %}
+      {% endif %}
+
+      <div class="faq-columns">
+        <div class="faq-column">
+          {% for block in section.blocks %}
+            {% if block.type == 'faq_item' and forloop.index <= half %}
+              <article class="faq-item" {{ block.shopify_attributes }}>
+                <button
+                  class="faq-question"
+                  aria-expanded="false"
+                  onclick="(function(btn){var item=btn.closest('.faq-item');var answer=item.querySelector('.faq-answer');var icon=item.querySelector('.faq-icon');var isOpen=answer.classList.contains('is-open');var section=btn.closest('.maisoncode_faq-pdp');section.querySelectorAll('.faq-answer.is-open').forEach(function(a){a.classList.remove('is-open');a.closest('.faq-item').querySelector('.faq-icon').classList.remove('is-open');a.closest('.faq-item').querySelector('.faq-question').setAttribute('aria-expanded','false');});if(!isOpen){answer.classList.add('is-open');icon.classList.add('is-open');btn.setAttribute('aria-expanded','true');};})(this)"
+                >
+                  <span class="faq-question-text">{{ block.settings.question }}</span>
+                  <span class="faq-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.color_icon }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                  </span>
+                </button>
+                <div class="faq-answer">
+                  <div class="faq-answer-text">{{ block.settings.answer }}</div>
+                </div>
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="faq-column">
+          {% for block in section.blocks %}
+            {% if block.type == 'faq_item' and forloop.index > half %}
+              <article class="faq-item" {{ block.shopify_attributes }}>
+                <button
+                  class="faq-question"
+                  aria-expanded="false"
+                  onclick="(function(btn){var item=btn.closest('.faq-item');var answer=item.querySelector('.faq-answer');var icon=item.querySelector('.faq-icon');var isOpen=answer.classList.contains('is-open');var section=btn.closest('.maisoncode_faq-pdp');section.querySelectorAll('.faq-answer.is-open').forEach(function(a){a.classList.remove('is-open');a.closest('.faq-item').querySelector('.faq-icon').classList.remove('is-open');a.closest('.faq-item').querySelector('.faq-question').setAttribute('aria-expanded','false');});if(!isOpen){answer.classList.add('is-open');icon.classList.add('is-open');btn.setAttribute('aria-expanded','true');};})(this)"
+                >
+                  <span class="faq-question-text">{{ block.settings.question }}</span>
+                  <span class="faq-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.color_icon }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                  </span>
+                </button>
+                <div class="faq-answer">
+                  <div class="faq-answer-text">{{ block.settings.answer }}</div>
+                </div>
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ PDP",
+  "tag": "section",
+  "class": "faq-pdp-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "We want you to know exactly what to expect. That's why we've answerd the most common questions here."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background color",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_card_bg",
+      "label": "Card background color",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading / question color",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_text_secondary",
+      "label": "Body / answer text color",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_icon",
+      "label": "Chevron icon color",
+      "default": "#102A43"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title font size (mobile)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Title font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "label": "Subtitle font size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_desktop",
+      "label": "Subtitle font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "question_font_size",
+      "label": "Question font size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "question_font_size_desktop",
+      "label": "Question font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "answer_font_size",
+      "label": "Answer font size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "answer_font_size_desktop",
+      "label": "Answer font size (desktop)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_inline",
+      "label": "Side padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_inline_desktop",
+      "label": "Side padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "header_gap",
+      "label": "Header to content gap (mobile)",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "header_gap_desktop",
+      "label": "Header to content gap (desktop)",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "columns_gap",
+      "label": "Gap between columns",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "items_gap",
+      "label": "Gap between FAQ items",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "Question",
+      "limit": 20,
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Your question goes here?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Your answer goes here. Provide a clear and helpful response.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ PDP",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will SmoothSpine\u2122 Triple Fusion Massager Provide Relief From My Sciatica and Back Pain?",
+            "answer": "<p>Yes! The SmoothSpine\u2122 Triple Fusion Massager is specifically designed to target sciatica and back pain through its unique triple fusion technology combining heat therapy, vibration massage, and acupressure point stimulation for effective relief.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How Soon Will I Notice Results with SmoothSpine\u2122 Triple Fusion Massager?",
+            "answer": "<p>Many users report feeling relief after their very first session. For lasting results, we recommend consistent use over 2-4 weeks as part of your daily wellness routine.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's the Ideal Duration for Each SmoothSpine\u2122 Triple Fusion Massager Therapy Session?",
+            "answer": "<p>We recommend 15-20 minute sessions for optimal results. You can use it up to 2-3 times per day depending on your comfort level and needs.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do I need to buy batteries?",
+            "answer": "<p>No, the SmoothSpine\u2122 Triple Fusion Massager comes with a built-in rechargeable battery and a USB charging cable. No need to purchase batteries separately.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the dimensions of the SmoothSpine\u2122 Triple Fusion Back Massager?",
+            "answer": "<p>The SmoothSpine\u2122 Triple Fusion Back Massager is designed to be compact and portable, making it easy to use at home, in the office, or while traveling.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We offer a hassle-free return policy. If you're not completely satisfied with your SmoothSpine\u2122 Triple Fusion Massager, you can return it within 30 days for a full refund.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
