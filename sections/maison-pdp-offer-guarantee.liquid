@@ -38,6 +38,7 @@
     --s-color-btn-text: {{ section.settings.color_btn_text }};
     --s-color-gift-bg: {{ section.settings.color_gift_bg }};
     --s-color-gift-border: {{ section.settings.color_gift_border }};
+    --s-color-gift-badge-strike: {{ section.settings.color_gift_badge_strike }};
     --s-color-gift-badge-bg: {{ section.settings.color_gift_badge_bg }};
     --s-color-gift-badge-text: {{ section.settings.color_gift_badge_text }};
     --s-color-divider: {{ section.settings.color_divider }};
@@ -330,6 +331,14 @@
     font-size: 10px;
     line-height: 1.5;
     color: var(--s-color-gift-badge-text);
+  }
+
+  #shopify-section-{{ section.id }} .og-gift-badge {
+    color: var(--s-color-gift-badge-strike);
+    font-family: var(--s-font-body);
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 1.5;
   }
 
   /* CTA */
@@ -1103,6 +1112,12 @@
       "id": "color_gift_border",
       "label": "Gift card border",
       "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_gift_badge_strike",
+      "label": "Gift badge strikethrough color",
+      "default": "#85AFEE"
     },
     {
       "type": "color",
