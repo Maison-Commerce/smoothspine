@@ -1083,20 +1083,25 @@
       });
     }
 
-    /* Add to cart: main product + gift products */
+    /* Add to cart: main product + gift products with bundle ID */
     var addBtn = section.querySelector('[data-pdp-add-to-cart]');
     if (addBtn) {
       addBtn.addEventListener('click', function() {
         if (addBtn.classList.contains('is-loading')) return;
         addBtn.classList.add('is-loading');
 
+        var bundleId = 'bundle_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
         var items = [];
 
         /* Main product from product template */
         {% if product and product.selected_or_first_available_variant %}
           items.push({
             id: {{ product.selected_or_first_available_variant.id }},
-            quantity: 1
+            quantity: 1,
+            properties: {
+              '_bundle_id': bundleId,
+              '_bundle_role': 'main'
+            }
           });
         {% endif %}
 
@@ -1107,7 +1112,11 @@
             {% if gp.available %}
               items.push({
                 id: {{ gp.first_available_variant.id }},
-                quantity: 1
+                quantity: 1,
+                properties: {
+                  '_bundle_id': bundleId,
+                  '_bundle_role': 'gift'
+                }
               });
             {% endif %}
           {% endif %}
@@ -1126,12 +1135,10 @@
         .then(function(res) { return res.json(); })
         .then(function() {
           addBtn.classList.remove('is-loading');
-          /* Open cart drawer if available */
           var cartDrawer = document.getElementById('cart-drawer');
           if (cartDrawer) {
             cartDrawer.setAttribute('open', '');
-            var openEvt = new CustomEvent('cart:refresh');
-            document.dispatchEvent(openEvt);
+            document.dispatchEvent(new CustomEvent('cart:refresh'));
           } else {
             window.location.href = '/cart';
           }
@@ -1142,6 +1149,61 @@
         });
       });
     }
+
+    /* Remove gift items when main bundle product is removed */
+    function handleBundleRemoval() {
+      fetch('/cart.js')
+        .then(function(res) { return res.json(); })
+        .then(function(cart) {
+          var bundleIds = {};
+
+          /* Collect all bundle IDs and their roles */
+          cart.items.forEach(function(item, index) {
+            if (item.properties && item.properties._bundle_id) {
+              var bid = item.properties._bundle_id;
+              if (!bundleIds[bid]) bundleIds[bid] = { main: false, gifts: [] };
+              if (item.properties._bundle_role === 'main') {
+                bundleIds[bid].main = true;
+              } else if (item.properties._bundle_role === 'gift') {
+                bundleIds[bid].gifts.push(index + 1);
+              }
+            }
+          });
+
+          /* Find bundles where main was removed but gifts remain */
+          var updates = {};
+          Object.keys(bundleIds).forEach(function(bid) {
+            if (!bundleIds[bid].main && bundleIds[bid].gifts.length > 0) {
+              bundleIds[bid].gifts.forEach(function(line) {
+                updates[line] = 0;
+              });
+            }
+          });
+
+          if (Object.keys(updates).length > 0) {
+            /* Build updates object by cart item key */
+            var updatesByKey = {};
+            Object.keys(updates).forEach(function(line) {
+              var item = cart.items[parseInt(line) - 1];
+              if (item) updatesByKey[item.key] = 0;
+            });
+
+            fetch('/cart/update.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ updates: updatesByKey })
+            })
+            .then(function() {
+              document.dispatchEvent(new CustomEvent('cart:refresh'));
+            });
+          }
+        });
+    }
+
+    /* Listen for cart changes */
+    document.addEventListener('cart:refresh', function() {
+      setTimeout(handleBundleRemoval, 500);
+    });
   }
 
   if (typeof Swiper !== 'undefined') {
