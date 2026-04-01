@@ -78,11 +78,11 @@
     max-width: var(--s-heading-max-width);
   }
 
-  #shopify-section-{{ section.id }} .hiw-heading .hiw-heading-blue {
+  #shopify-section-{{ section.id }} .hiw-heading {
     color: var(--s-color-brand);
   }
 
-  #shopify-section-{{ section.id }} .hiw-heading .hiw-heading-blue p {
+  #shopify-section-{{ section.id }} .hiw-heading p {
     color: inherit;
     font-size: inherit;
     font-family: inherit;
@@ -90,8 +90,9 @@
     line-height: inherit;
   }
 
-  #shopify-section-{{ section.id }} .hiw-heading .hiw-heading-dark {
+  #shopify-section-{{ section.id }} .hiw-heading em {
     color: var(--s-color-text-primary);
+    font-style: normal;
   }
 
   #shopify-section-{{ section.id }} .hiw-cards {
@@ -283,15 +284,8 @@
   <div class="hiw-inner">
 
     {%- comment -%} Heading {%- endcomment -%}
-    {% if section.settings.heading_colored != blank or section.settings.heading_dark != blank %}
-      <h2 class="hiw-heading">
-        {% if section.settings.heading_colored != blank %}
-          <span class="hiw-heading-blue">{{ section.settings.heading_colored }}</span>
-        {% endif %}
-        {% if section.settings.heading_dark != blank %}
-          <span class="hiw-heading-dark">{{ section.settings.heading_dark }}</span>
-        {% endif %}
-      </h2>
+    {% if section.settings.heading != blank %}
+      <h2 class="hiw-heading">{{ section.settings.heading }}</h2>
     {% endif %}
 
     {%- comment -%} Step Cards (Blocks) {%- endcomment -%}
@@ -359,9 +353,10 @@
     },
     {
       "type": "richtext",
-      "id": "heading_colored",
-      "label": "Heading (accent color)",
-      "default": "<p>3 Simple Steps To Relieve</p>"
+      "id": "heading",
+      "label": "Heading",
+      "info": "Use italic (em) for dark color text",
+      "default": "<p>3 Simple Steps To Relieve <em>Sciatica And Back Pain</em></p>"
     },
     {
       "type": "header",
@@ -395,12 +390,6 @@
       "id": "color_button_text",
       "label": "Button text",
       "default": "#FFFCFB"
-    },
-    {
-      "type": "text",
-      "id": "heading_dark",
-      "label": "Heading (dark color)",
-      "default": "Sciatica And Back Pain"
     },
     {
       "type": "header",
