@@ -143,14 +143,16 @@
         "gift_item_UEQDWi": {
           "type": "gift_item",
           "settings": {
-            "gift_product": "",
+            "gift_product": "smoothspine™-30-day-sciatica-relief-plan-coc",
+            "image": "shopify://shop_images/dc43829b1674bae58a96a2b9dbbd09fbe430dfc2.png",
             "name": "Back pain & Sciatica Guide"
           }
         },
         "gift_item_wh6nam": {
           "type": "gift_item",
           "settings": {
-            "gift_product": "",
+            "gift_product": "sciatica-back-pain-relief-patches",
+            "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
             "name": "12x Back Pain Relief Patches"
           }
         },
