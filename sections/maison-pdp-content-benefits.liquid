@@ -307,7 +307,7 @@
   }
 
   /* ===== MOBILE ===== */
-  @media (max-width: 767px) {
+  @media (max-width: 949px) {
     #shopify-section-{{ section.id }} .maisoncode_Content_Block_Benefits {
       --s-padding-section: {{ section.settings.padding_section_mobile }}px;
       --s-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
@@ -434,7 +434,7 @@
         {{ section.settings.image | image_url: width: 1200 | image_tag:
           loading: 'lazy',
           widths: '375, 550, 750, 1000, 1200',
-          sizes: '(max-width: 767px) 100vw, 50vw'
+          sizes: '(max-width: 949px) 100vw, 50vw'
         }}
       </figure>
     {% else %}
