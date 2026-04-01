@@ -607,7 +607,7 @@
   #shopify-section-{{ section.id }} .pdp-mobile-review { display: none; }
 
   /* MOBILE */
-  @media (max-width: 767px) {
+  @media (max-width: 999px) {
     #shopify-section-{{ section.id }} .maisoncode_pdp-hero {
       --s-padding-top: {{ section.settings.padding_top_mobile }}px;
       --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
@@ -659,13 +659,13 @@
     #shopify-section-{{ section.id }} .pdp-desktop-review { display: none; }
   }
 
-  @media (max-width: 1250px) and (min-width: 768px) {
+  @media (max-width: 1250px) and (min-width: 1000px) {
     #shopify-section-{{ section.id }} .pdp-inner {
       gap: 32px;
     }
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1000px) {
     #shopify-section-{{ section.id }} .pdp-mobile-review { display: none !important; }
     #shopify-section-{{ section.id }} .pdp-desktop-review { display: flex; }
     #shopify-section-{{ section.id }} .pdp-review-card .pdp-review-stars-mobile { display: none; }
@@ -687,14 +687,14 @@
                   {{ image | image_url: width: 1200 | image_tag:
                     loading: 'eager',
                     widths: '375, 550, 750, 1000, 1200',
-                    sizes: '(max-width: 767px) 100vw, 48vw',
+                    sizes: '(max-width: 999px) 100vw, 48vw',
                     alt: image.alt | default: product.title
                   }}
                 {% else %}
                   {{ image | image_url: width: 1200 | image_tag:
                     loading: 'lazy',
                     widths: '375, 550, 750, 1000, 1200',
-                    sizes: '(max-width: 767px) 100vw, 48vw',
+                    sizes: '(max-width: 999px) 100vw, 48vw',
                     alt: image.alt | default: product.title
                   }}
                 {% endif %}
