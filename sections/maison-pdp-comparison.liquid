@@ -29,8 +29,7 @@
     --s-color-success: {{ section.settings.color_success }};
     --s-color-error: {{ section.settings.color_error }};
     --s-color-card-header-text: {{ section.settings.color_card_header_text }};
-    --s-color-gradient-from: {{ section.settings.color_gradient_from }};
-    --s-color-gradient-to: {{ section.settings.color_gradient_to }};
+    --s-color-gradient: {{ section.settings.color_gradient }};
     --s-font-heading: 'Plus Jakarta Sans', sans-serif;
     --s-font-body: 'Open Sans', sans-serif;
     --s-shadow-lg: 0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px rgba(16, 24, 40, 0.08);
@@ -52,7 +51,7 @@
     --s-bad-rotation: {{ section.settings.bad_card_rotation }}deg;
     --s-icon-size: {{ section.settings.icon_size }}px;
 
-    background: linear-gradient(to bottom, var(--s-color-gradient-from), var(--s-color-gradient-to));
+    background: var(--s-color-gradient);
     padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
     display: flex;
     flex-direction: column;
@@ -329,10 +328,7 @@
               {% if block.type == 'good_item' %}
                 <div class="comparison-item" {{ block.shopify_attributes }}>
                   <div class="comparison-item__icon">
-                    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="16" cy="16" r="16" fill="{{ section.settings.color_success }}"/>
-                      <path d="M10 16.5L14 20.5L22 12.5" stroke="{{ section.settings.color_white }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none"><g clip-path="url(#good-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M30.894 1.28939C31.6988 2.14598 31.6567 3.49274 30.8002 4.29748C26.6561 8.19063 23.7638 11.4811 21.3772 15.3532C18.9825 19.2386 17.0408 23.8011 14.9037 30.3032C14.6732 31.0047 14.0955 31.5364 13.3775 31.7083C12.6594 31.8804 11.9036 31.6677 11.3804 31.1467L1.53469 21.3417C0.701907 20.5124 0.699117 19.1649 1.52846 18.3321C2.3578 17.4994 3.70523 17.4966 4.538 18.3259L11.9687 25.7258C13.7653 20.6698 15.5605 16.679 17.754 13.12C20.4053 8.81835 23.5819 5.23903 27.886 1.19551C28.7425 0.390773 30.0892 0.432809 30.894 1.28939Z" fill="{{ section.settings.color_success }}"/></g><defs><clipPath id="good-{{ block.id }}"><rect width="32" height="32" fill="white" transform="translate(0 0.558594) rotate(-1)"/></clipPath></defs></svg>
                   </div>
                   <div class="comparison-item__content">
                     {% if block.settings.title != blank %}
@@ -365,10 +361,7 @@
               {% if block.type == 'bad_item' %}
                 <div class="comparison-item" {{ block.shopify_attributes }}>
                   <div class="comparison-item__icon">
-                    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="16" cy="16" r="16" fill="{{ section.settings.color_error }}"/>
-                      <path d="M11 11L21 21M21 11L11 21" stroke="{{ section.settings.color_white }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none"><g clip-path="url(#bad-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.77393 31.4927C2.81519 32.312 1.38395 32.1876 0.577211 31.215C-0.229539 30.2426 -0.106303 28.7899 0.852458 27.9706C5.04156 24.3913 9.10409 20.7088 13.0529 16.9108C9.08609 12.6834 5.24527 8.32932 1.51661 3.83419C0.709869 2.86161 0.833102 1.40904 1.79186 0.589803C2.75062 -0.229431 4.18184 -0.105115 4.9886 0.86747C8.65192 5.28388 12.4249 9.56151 16.3215 13.7149C20.3605 9.70002 24.2805 5.55667 28.0958 1.27081C28.9359 0.326969 30.3708 0.252681 31.3003 1.10487C32.2298 1.95707 32.3022 3.41305 31.4621 4.35689C27.5789 8.71915 23.5884 12.9365 19.4765 17.023C23.2904 20.9564 27.2218 24.7784 31.2836 28.5018C32.2131 29.354 32.2855 30.8101 31.4454 31.7538C30.6053 32.6977 29.1704 32.7721 28.2409 31.9198C24.1014 28.1249 20.0945 24.229 16.2079 20.2192C12.1838 24.091 8.04335 27.8446 3.77393 31.4927Z" fill="{{ section.settings.color_error }}"/></g><defs><clipPath id="bad-{{ block.id }}"><rect width="32" height="32" fill="white" transform="translate(0.558594) rotate(1)"/></clipPath></defs></svg>
                   </div>
                   <div class="comparison-item__content">
                     {% if block.settings.title != blank %}
@@ -480,16 +473,10 @@
       "default": "#FAFCFE"
     },
     {
-      "type": "color",
-      "id": "color_gradient_from",
-      "label": "Background gradient start",
-      "default": "#E5EEFB"
-    },
-    {
-      "type": "color",
-      "id": "color_gradient_to",
-      "label": "Background gradient end",
-      "default": "#FDFCFA"
+      "type": "color_background",
+      "id": "color_gradient",
+      "label": "Background gradient",
+      "default": "linear-gradient(180deg, #E5EEFB 0%, #FDFCFA 100%)"
     },
     {
       "type": "header",
