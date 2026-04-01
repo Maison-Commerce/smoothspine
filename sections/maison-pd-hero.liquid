@@ -1162,9 +1162,15 @@
     var _isCleaningBundle = false;
 
     document.documentElement.addEventListener('cart:change', function(e) {
+      console.log('[PDP Bundle] cart:change fired', e.detail);
       if (_isCleaningBundle) return;
       var cart = e.detail && e.detail.cart;
-      if (!cart || !cart.items) return;
+      console.log('[PDP Bundle] cart object:', cart);
+      console.log('[PDP Bundle] cart items:', cart && cart.items);
+      if (!cart || !cart.items) {
+        console.log('[PDP Bundle] No cart.items, skipping');
+        return;
+      }
 
       var bundleIds = {};
       cart.items.forEach(function(item) {
