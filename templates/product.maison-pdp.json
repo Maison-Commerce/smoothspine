@@ -1069,6 +1069,89 @@
         "guarantee_image_size": 290
       }
     },
+    "maison_pdp_faq_NHzG9D": {
+      "type": "maison-pdp-faq",
+      "blocks": {
+        "faq_item_8Q77DK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will SmoothSpine™ Triple Fusion Massager Provide Relief From My Sciatica and Back Pain?",
+            "answer": "<p>Yes! The SmoothSpine™ Triple Fusion Massager is specifically designed to target sciatica and back pain through its unique triple fusion technology combining heat therapy, vibration massage, and acupressure point stimulation for effective relief.</p>"
+          }
+        },
+        "faq_item_n3znAa": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How Soon Will I Notice Results with SmoothSpine™ Triple Fusion Massager?",
+            "answer": "<p>Many users report feeling relief after their very first session. For lasting results, we recommend consistent use over 2-4 weeks as part of your daily wellness routine.</p>"
+          }
+        },
+        "faq_item_yG8XBd": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's the Ideal Duration for Each SmoothSpine™ Triple Fusion Massager Therapy Session?",
+            "answer": "<p>We recommend 15-20 minute sessions for optimal results. You can use it up to 2-3 times per day depending on your comfort level and needs.</p>"
+          }
+        },
+        "faq_item_8QwAaW": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do I need to buy batteries?",
+            "answer": "<p>No, the SmoothSpine™ Triple Fusion Massager comes with a built-in rechargeable battery and a USB charging cable. No need to purchase batteries separately.</p>"
+          }
+        },
+        "faq_item_NExGR8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the dimensions of the SmoothSpine™ Triple Fusion Back Massager?",
+            "answer": "<p>The SmoothSpine™ Triple Fusion Back Massager is designed to be compact and portable, making it easy to use at home, in the office, or while traveling.</p>"
+          }
+        },
+        "faq_item_EmU9Cb": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We offer a hassle-free return policy. If you're not completely satisfied with your SmoothSpine™ Triple Fusion Massager, you can return it within 30 days for a full refund.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_8Q77DK",
+        "faq_item_n3znAa",
+        "faq_item_yG8XBd",
+        "faq_item_8QwAaW",
+        "faq_item_NExGR8",
+        "faq_item_EmU9Cb"
+      ],
+      "name": "FAQ PDP",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subtitle": "We want you to know exactly what to expect. That's why we've answerd the most common questions here.",
+        "color_background": "#FDFCFA",
+        "color_card_bg": "#F8F4EE",
+        "color_heading": "#102A43",
+        "color_text_secondary": "#102A43",
+        "color_icon": "#102A43",
+        "title_font_size": 24,
+        "title_font_size_desktop": 32,
+        "subtitle_font_size": 14,
+        "subtitle_font_size_desktop": 16,
+        "question_font_size": 14,
+        "question_font_size_desktop": 16,
+        "answer_font_size": 14,
+        "answer_font_size_desktop": 15,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_inline": 20,
+        "padding_inline_desktop": 80,
+        "header_gap": 32,
+        "header_gap_desktop": 40,
+        "columns_gap": 20,
+        "items_gap": 12,
+        "card_border_radius": 8,
+        "max_width": 1280
+      }
+    },
     "1775054390f1e0f076": {
       "type": "apps",
       "blocks": {
@@ -1077,7 +1160,7 @@
           "settings": {
             "data_source": "real",
             "theme": "expanded",
-            "button_theme_color": "#FFFFFF",
+            "button_theme_color": "#ffffff",
             "button_theme_text_color": "#000000",
             "show_keywords": true,
             "keywords_visibility": "shown",
@@ -1087,11 +1170,11 @@
             "title_size": "default",
             "text_size": "default",
             "corner_styling": "soft",
-            "widget_color": "#F9F9F9",
+            "widget_color": "#f9f9f9",
             "text_color": "#000000",
             "lighter_text_color": "#787878",
             "button_color": "#108474",
-            "button_text_color": "#FFFFFF",
+            "button_text_color": "#ffffff",
             "show_sentiment_colors": false,
             "max_width": 1100,
             "heading_text": "Customers rate this store",
@@ -1126,6 +1209,7 @@
     "maison_pdp_reviews_LNgKVr",
     "maison_how_it_work_gng7ta",
     "maison_pdp_offer_guarantee_V7EfKR",
+    "maison_pdp_faq_NHzG9D",
     "1775054390f1e0f076"
   ]
 }
