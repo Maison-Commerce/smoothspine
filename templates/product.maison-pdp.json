@@ -316,38 +316,6 @@
     },
     "maison_pdp_content_list_VNpB6J": {
       "type": "maison-pdp-content-list",
-      "blocks": {
-        "check_item_8QKx8y": {
-          "type": "check_item",
-          "settings": {
-            "text": "Freedom from discomfort in your back and legs"
-          }
-        },
-        "check_item_LfTQnj": {
-          "type": "check_item",
-          "settings": {
-            "text": "Improved mobility and less pain"
-          }
-        },
-        "check_item_RfzeQN": {
-          "type": "check_item",
-          "settings": {
-            "text": "Better nights of sleep feeling more rested"
-          }
-        },
-        "check_item_AthMiF": {
-          "type": "check_item",
-          "settings": {
-            "text": "Boosted confidence while walking and standing"
-          }
-        }
-      },
-      "block_order": [
-        "check_item_8QKx8y",
-        "check_item_LfTQnj",
-        "check_item_RfzeQN",
-        "check_item_AthMiF"
-      ],
       "name": "Content Block List",
       "settings": {
         "heading": "If You Want To Relieve Sciatica And Back Pain… You Must Start With Your Spinal Discs",
