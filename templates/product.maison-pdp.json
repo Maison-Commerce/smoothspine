@@ -667,6 +667,133 @@
         "container_padding": 80,
         "max_width": 1440
       }
+    },
+    "maison_pdp_comparison_cGe9fV": {
+      "type": "maison-pdp-comparison",
+      "blocks": {
+        "good_item_iMXrEk": {
+          "type": "good_item",
+          "settings": {
+            "title": "DRUG-FREE PAIN RELIEF",
+            "description": "It's natural and non-habit-forming."
+          }
+        },
+        "good_item_YE4Jk9": {
+          "type": "good_item",
+          "settings": {
+            "title": "FAST-ACTING & EFFECTIVE",
+            "description": "Works in as little as 15 minutes!"
+          }
+        },
+        "good_item_Q9Nb7k": {
+          "type": "good_item",
+          "settings": {
+            "title": "BACKED BY EXPERTS",
+            "description": "\"Highly recommended to anyone dealing with Sciatica, herniated discs, and back pain.\""
+          }
+        },
+        "good_item_jhp6Rr": {
+          "type": "good_item",
+          "settings": {
+            "title": "LONG-LASTING RELIEF",
+            "description": "Daily use can even completely realign your spine and rehydrate your discs"
+          }
+        },
+        "good_item_cyjtmy": {
+          "type": "good_item",
+          "settings": {
+            "title": "EASY TO USE AT HOME",
+            "description": "No need for expensive doctor visits"
+          }
+        },
+        "bad_item_cPiNNi": {
+          "type": "bad_item",
+          "settings": {
+            "title": "RELY ON DRUGS & CHEMICALS",
+            "description": "It's natural and non-habit-forming."
+          }
+        },
+        "bad_item_MbheKe": {
+          "type": "bad_item",
+          "settings": {
+            "title": "TAKE HOURS TO WORK",
+            "description": "Painkillers and other methods take hours or even days to show results."
+          }
+        },
+        "bad_item_FPWFty": {
+          "type": "bad_item",
+          "settings": {
+            "title": "QUESTIONED BY DOCTORS",
+            "description": "Medical professionals are increasingly skeptical of long-term painkiller use."
+          }
+        },
+        "bad_item_iEwJVr": {
+          "type": "bad_item",
+          "settings": {
+            "title": "SHORT-ACTING, REQUIRES CONSTANT USE",
+            "description": "Painkillers wear off quickly, forcing you to take more doses."
+          }
+        },
+        "bad_item_MeaaTQ": {
+          "type": "bad_item",
+          "settings": {
+            "title": "HARMFUL TO YOUR BODY",
+            "description": "Painkillers also don't help your mood, your stress or your anxiety."
+          }
+        }
+      },
+      "block_order": [
+        "good_item_iMXrEk",
+        "good_item_YE4Jk9",
+        "good_item_Q9Nb7k",
+        "good_item_jhp6Rr",
+        "good_item_cyjtmy",
+        "bad_item_cPiNNi",
+        "bad_item_MbheKe",
+        "bad_item_FPWFty",
+        "bad_item_iEwJVr",
+        "bad_item_MeaaTQ"
+      ],
+      "name": "Product Comparison",
+      "settings": {
+        "heading_highlight": "The SmoothSpine Massager",
+        "heading_main": "Is The Safer Healthier Choice",
+        "subtitle": "It's non-addictive, works fast, and actually does GOOD things for your body.",
+        "good_card_title": "SmoothSpine Massager",
+        "bad_card_title": "Other Pain Relief Methods",
+        "color_primary": "#102A43",
+        "color_brand_blue": "#065BDC",
+        "color_text_secondary": "#102A43",
+        "color_white": "#FFFFFF",
+        "color_success": "#12B76A",
+        "color_error": "#F04438",
+        "color_card_header_text": "#FAFCFE",
+        "color_gradient_from": "#E5EEFB",
+        "color_gradient_to": "#FDFCFA",
+        "title_font_size": 32,
+        "title_font_size_mobile": 24,
+        "subtitle_font_size": 16,
+        "subtitle_font_size_mobile": 14,
+        "card_header_font_size": 20,
+        "item_title_font_size": 16,
+        "item_desc_font_size": 16,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal": 80,
+        "section_gap": 48,
+        "header_gap": 24,
+        "cards_gap": 64,
+        "items_gap": 24,
+        "card_border_radius": 16,
+        "card_body_padding": 32,
+        "card_width": 420,
+        "icon_size": 32,
+        "max_width": 1400,
+        "good_card_rotation": 1,
+        "bad_card_rotation": 1
+      }
     }
   },
   "order": [
@@ -678,6 +805,7 @@
     "maison_pdp_content_list_VyRjjH",
     "maison_pdp_content_list_tNqpGx",
     "maison_pdp_content_list_hcMWE3",
-    "maison_before_after_U8xfYJ"
+    "maison_before_after_U8xfYJ",
+    "maison_pdp_comparison_cGe9fV"
   ]
 }
