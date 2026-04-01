@@ -1,0 +1,786 @@
+{% comment %}
+  Section: Customer Reviews
+  Description: Photo review cards displayed in a 3-column grid on desktop
+    and a horizontal swiper carousel on mobile. Each card features a customer
+    photo, star rating, review title, quote, author name, and verified badge.
+    Ideal for social proof sections on product or landing pages.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (heading), 'Open Sans' (body) — must be loaded by theme
+  - Script: Swiper 11 (CDN) — used for mobile carousel; loaded conditionally
+
+  Blocks:
+  - review_card: Individual review with image, rating, title, quote, and author (limit: 12)
+
+  Notes:
+  - Desktop shows a flex grid; mobile shows a Swiper carousel
+  - Background uses a gradient (color_bg_start → color_bg_end)
+  - Star icons rendered as inline SVGs; star color is configurable
+  - Verified badge is toggleable per block
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_Reviews
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_Reviews {
+    --s-color-brand: {{ section.settings.color_brand }};
+    --s-color-primary: {{ section.settings.color_primary }};
+    --s-color-secondary: {{ section.settings.color_secondary | color_modify: 'alpha', 0.75 }};
+    --s-color-card-bg: {{ section.settings.color_card_bg }};
+    --s-color-card-content-bg: {{ section.settings.color_card_content_bg }};
+    --s-color-stars: {{ section.settings.color_stars }};
+    --s-color-verified: {{ section.settings.color_verified }};
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+    --s-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --s-font-size-title: {{ section.settings.review_title_font_size }}px;
+    --s-font-size-body: {{ section.settings.body_font_size }}px;
+    --s-font-size-meta: {{ section.settings.meta_font_size }}px;
+    --s-radius-card: {{ section.settings.card_border_radius }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-gap-cards: {{ section.settings.cards_gap }}px;
+    --s-gap-sections: {{ section.settings.section_gap }}px;
+    --s-card-image-height: {{ section.settings.card_image_height }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+    --s-shadow-sm: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+
+    background: linear-gradient(to bottom, {{ section.settings.color_bg_start }}, {{ section.settings.color_bg_end }});
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-gap-sections);
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_Reviews *,
+  #shopify-section-{{ section.id }} .maisoncode_Reviews *::before,
+  #shopify-section-{{ section.id }} .maisoncode_Reviews *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-container {
+    max-width: var(--s-max-width);
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-heading {
+    text-align: center;
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-heading);
+    line-height: 1.5;
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .reviews-heading .heading-accent {
+    color: var(--s-color-brand);
+  }
+
+  #shopify-section-{{ section.id }} .reviews-heading .heading-dark {
+    color: var(--s-color-primary);
+  }
+
+  #shopify-section-{{ section.id }} .reviews-grid {
+    display: flex;
+    gap: var(--s-gap-cards);
+    justify-content: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .review-card {
+    flex: 1 1 0;
+    max-width: {{ section.settings.card_max_width }}px;
+    background: var(--s-color-card-bg);
+    border-radius: var(--s-radius-card);
+    overflow: hidden;
+    box-shadow: var(--s-shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .review-card-image {
+    width: 100%;
+    height: var(--s-card-image-height);
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .review-card-placeholder {
+    width: 100%;
+    height: var(--s-card-image-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 50%, #d0d0d0 100%);
+    color: #999;
+    font-size: 14px;
+    font-family: var(--s-font-body);
+  }
+
+  #shopify-section-{{ section.id }} .review-card-body {
+    background: var(--s-color-card-content-bg);
+    padding: {{ section.settings.card_padding }}px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .review-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .review-stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .review-title {
+    font-family: var(--s-font-body);
+    font-weight: 700;
+    font-size: var(--s-font-size-title);
+    line-height: 1.5;
+    color: var(--s-color-primary);
+  }
+
+  #shopify-section-{{ section.id }} .review-text {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-body);
+    line-height: 1.5;
+    color: var(--s-color-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .review-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  #shopify-section-{{ section.id }} .review-author {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-meta);
+    line-height: 1.5;
+    color: var(--s-color-primary);
+  }
+
+  #shopify-section-{{ section.id }} .review-verified {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .review-verified svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .review-verified span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-meta);
+    line-height: 1.5;
+    color: var(--s-color-secondary);
+  }
+
+  /* Desktop: hide swiper, show grid */
+  #shopify-section-{{ section.id }} .reviews-swiper-wrapper {
+    display: none;
+  }
+
+  /* Mobile */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_Reviews {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+      --s-gap-sections: {{ section.settings.section_gap_mobile }}px;
+      --s-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-heading {
+      line-height: 1.4;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-grid {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-swiper-wrapper {
+      display: block;
+      width: 100%;
+      overflow: visible;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-swiper-wrapper .swiper {
+      overflow: visible;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-swiper-wrapper .swiper-slide {
+      width: {{ section.settings.mobile_card_width }}px;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-swiper-wrapper .review-card {
+      max-width: none;
+      width: {{ section.settings.mobile_card_width }}px;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-swiper-wrapper .review-card-image,
+    #shopify-section-{{ section.id }} .reviews-swiper-wrapper .review-card-placeholder {
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+
+    #shopify-section-{{ section.id }} .reviews-swiper-wrapper .review-title {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_Reviews">
+  <div class="reviews-container">
+    {% if section.settings.heading_accent != blank or section.settings.heading_dark != blank %}
+      <header class="reviews-heading">
+        {% if section.settings.heading_accent != blank %}
+          <span class="heading-accent">{{ section.settings.heading_accent }}</span><br>
+        {% endif %}
+        {% if section.settings.heading_dark != blank %}
+          <span class="heading-dark">{{ section.settings.heading_dark }}</span>
+        {% endif %}
+      </header>
+    {% endif %}
+  </div>
+
+  {% if section.blocks.size > 0 %}
+    {%- comment -%} Desktop grid {%- endcomment -%}
+    <div class="reviews-container reviews-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'review_card' %}
+          <article class="review-card" {{ block.shopify_attributes }}>
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 840 | image_tag:
+                class: 'review-card-image',
+                loading: 'lazy',
+                widths: '280, 420, 560, 840',
+                sizes: '(max-width: 767px) 280px, 420px'
+              }}
+            {% else %}
+              <div class="review-card-placeholder">
+                {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            {% endif %}
+            <div class="review-card-body">
+              <div class="review-stars">
+                {% for i in (1..block.settings.rating) %}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                {% endfor %}
+              </div>
+              {% if block.settings.title != blank %}
+                <h3 class="review-title">{{ block.settings.title }}</h3>
+              {% endif %}
+              {% if block.settings.quote != blank %}
+                <p class="review-text">{{ block.settings.quote }}</p>
+              {% endif %}
+              <div class="review-meta">
+                {% if block.settings.author != blank %}
+                  <span class="review-author">{{ block.settings.author }}</span>
+                {% endif %}
+                {% if block.settings.show_verified %}
+                  <div class="review-verified">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#rv-verified-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.84687 0.422743C7.50338 -0.141185 8.47232 -0.140794 9.12851 0.423196C9.37005 0.630789 9.6083 0.838566 9.8436 1.04685C10.1567 0.983031 10.472 0.921248 10.7899 0.861387C11.6405 0.70127 12.4794 1.18608 12.7657 2.00261C12.8711 2.30314 12.9735 2.60222 13.0731 2.90025C13.3761 3.0015 13.6801 3.10563 13.9854 3.21278C14.8019 3.49937 15.2862 4.3387 15.1258 5.18897C15.0655 5.50886 15.0033 5.82587 14.9391 6.1405C15.1521 6.38097 15.3646 6.62451 15.5768 6.87149C16.1408 7.52768 16.1411 8.49662 15.5773 9.15313C15.3664 9.39862 15.1552 9.64083 14.9433 9.88008C15.0061 10.188 15.0669 10.4982 15.1259 10.8111C15.2863 11.6614 14.8021 12.5007 13.9855 12.7873C13.6801 12.8945 13.3761 12.9986 13.073 13.0999C12.9734 13.3979 12.871 13.697 12.7656 13.9975C12.4793 14.8141 11.6403 15.2989 10.7898 15.1387C10.4788 15.0801 10.1704 15.0198 9.86415 14.9575C9.63008 15.1646 9.39318 15.3711 9.15313 15.5773C8.49662 16.1411 7.52767 16.1408 6.87149 15.5768C6.62998 15.3693 6.39175 15.1615 6.15647 14.9533C5.84335 15.017 5.52799 15.0789 5.20995 15.1387C4.35943 15.2989 3.52049 14.8141 3.23422 13.9975C3.12885 13.697 3.02641 13.3979 2.92679 13.0999C2.62369 12.9986 2.31968 12.8945 2.0143 12.7873C1.19767 12.5007 0.713537 11.6614 0.873872 10.8111C0.934217 10.4911 0.996441 10.174 1.06067 9.85921C0.847755 9.61883 0.635379 9.37538 0.423195 9.12851C-0.140793 8.47232 -0.141185 7.50338 0.422742 6.84687C0.63357 6.60143 0.844727 6.35926 1.05653 6.12006C0.993801 5.81215 0.932989 5.50193 0.873976 5.18897C0.713643 4.3387 1.19777 3.49937 2.01441 3.21278C2.3197 3.10563 2.62363 3.0015 2.92665 2.90025C3.02629 2.60222 3.12873 2.30314 3.23411 2.00261C3.52039 1.18608 4.35933 0.701269 5.20985 0.861387C5.52089 0.919943 5.82937 0.980338 6.13569 1.04268C6.36982 0.835525 6.60678 0.628976 6.84687 0.422743ZM10.8616 6.34914C11.2122 6.03109 11.2386 5.48902 10.9206 5.1384C10.6025 4.78777 10.0604 4.76138 9.70982 5.07944C8.86921 5.84199 8.22869 6.53552 7.68647 7.38183C7.34702 7.91166 7.05533 8.48701 6.77625 9.1553L5.89491 8.24644C5.56537 7.90658 5.02272 7.89824 4.68288 8.22778C4.34304 8.55734 4.33469 9.09998 4.66423 9.43983L6.48465 11.3171C6.69168 11.5306 6.99457 11.6216 7.28496 11.5574C7.57535 11.4933 7.81171 11.2831 7.90949 11.0022C8.32745 9.80161 8.69395 8.98709 9.12992 8.30662C9.56249 7.63144 10.0865 7.05226 10.8616 6.34914Z" fill="#065BDC"/></g><defs><clipPath id="rv-verified-{{ block.id }}"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
+                    <span>{{ section.settings.verified_text }}</span>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {%- comment -%} Mobile swiper {%- endcomment -%}
+    <div class="reviews-container reviews-swiper-wrapper">
+      <div class="swiper reviews-swiper-{{ section.id }}">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% if block.type == 'review_card' %}
+              <div class="swiper-slide">
+                <article class="review-card" {{ block.shopify_attributes }}>
+                  {% if block.settings.image != blank %}
+                    {{ block.settings.image | image_url: width: 560 | image_tag:
+                      class: 'review-card-image',
+                      loading: 'lazy',
+                      widths: '280, 420, 560',
+                      sizes: '280px'
+                    }}
+                  {% else %}
+                    <div class="review-card-placeholder">
+                      {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                  {% endif %}
+                  <div class="review-card-body">
+                    <div class="review-stars">
+                      {% for i in (1..block.settings.rating) %}
+                        <svg viewBox="0 0 24 24" fill="{{ section.settings.color_stars }}" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                      {% endfor %}
+                    </div>
+                    {% if block.settings.title != blank %}
+                      <h3 class="review-title">{{ block.settings.title }}</h3>
+                    {% endif %}
+                    {% if block.settings.quote != blank %}
+                      <p class="review-text">{{ block.settings.quote }}</p>
+                    {% endif %}
+                    <div class="review-meta">
+                      {% if block.settings.author != blank %}
+                        <span class="review-author">{{ block.settings.author }}</span>
+                      {% endif %}
+                      {% if block.settings.show_verified %}
+                        <div class="review-verified">
+                          <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 0C3.58 0 0 3.58 0 8C0 12.42 3.58 16 8 16C12.42 16 16 12.42 16 8C16 3.58 12.42 0 8 0ZM6.4 12L2.4 8L3.528 6.872L6.4 9.736L12.472 3.664L13.6 4.8L6.4 12Z" fill="{{ section.settings.color_verified }}"/>
+                          </svg>
+                          <span>{{ section.settings.verified_text }}</span>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </article>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+{% if section.blocks.size > 0 %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="(max-width: 767px)">
+  <script>
+    (function() {
+      var sectionId = '{{ section.id }}';
+      function initSwiper() {
+        if (window.innerWidth <= 767 && typeof Swiper !== 'undefined') {
+          new Swiper('.reviews-swiper-' + sectionId, {
+            slidesPerView: 'auto',
+            spaceBetween: {{ section.settings.mobile_swiper_gap }},
+            centeredSlides: false,
+          });
+        }
+      }
+      if (typeof Swiper === 'undefined') {
+        var script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js';
+        script.onload = initSwiper;
+        document.head.appendChild(script);
+      } else {
+        initSwiper();
+      }
+    })();
+  </script>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Customer Reviews",
+  "tag": "section",
+  "class": "customer-reviews-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading accent line",
+      "default": "Real Users"
+    },
+    {
+      "type": "text",
+      "id": "heading_dark",
+      "label": "Heading main line",
+      "default": "Real Life-Changing Results"
+    },
+    {
+      "type": "text",
+      "id": "verified_text",
+      "label": "Verified badge text",
+      "default": "Verified Purchase"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_start",
+      "label": "Background gradient start",
+      "default": "#fdfcfa"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_end",
+      "label": "Background gradient end",
+      "default": "#e5eefb"
+    },
+    {
+      "type": "color",
+      "id": "color_brand",
+      "label": "Heading accent color",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary text color",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_secondary",
+      "label": "Secondary text color",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_card_bg",
+      "label": "Card background",
+      "default": "#FFFFFC"
+    },
+    {
+      "type": "color",
+      "id": "color_card_content_bg",
+      "label": "Card content background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_stars",
+      "label": "Star rating color",
+      "default": "#F4B740"
+    },
+    {
+      "type": "color",
+      "id": "color_verified",
+      "label": "Verified badge color",
+      "default": "#065BDC"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "review_title_font_size",
+      "label": "Review title font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size",
+      "label": "Body font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "meta_font_size",
+      "label": "Meta text font size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_gap",
+      "label": "Gap between heading and cards (desktop)",
+      "min": 8,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "section_gap_mobile",
+      "label": "Gap between heading and cards (mobile)",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "cards_gap",
+      "label": "Gap between cards",
+      "min": 8,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Card content padding",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_image_height",
+      "label": "Card image height (desktop)",
+      "min": 200,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "card_max_width",
+      "label": "Card max width",
+      "min": 280,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "default": 420
+    },
+    {
+      "type": "range",
+      "id": "mobile_card_width",
+      "label": "Mobile card width",
+      "min": 200,
+      "max": 360,
+      "step": 10,
+      "unit": "px",
+      "default": 280
+    },
+    {
+      "type": "range",
+      "id": "mobile_swiper_gap",
+      "label": "Mobile card gap",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review_card",
+      "name": "Review",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Customer photo"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Review title",
+          "default": "Amazing product!"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review text",
+          "default": "This product has completely changed my daily routine. I can't recommend it enough!"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author name",
+          "default": "Customer Name"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_verified",
+          "label": "Show verified badge",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews",
+      "blocks": [
+        {
+          "type": "review_card",
+          "settings": {
+            "rating": 5,
+            "title": "Finally, Real Relief After Years of Pain!",
+            "quote": "\"I've been struggling with back pain for years, and nothing seemed to work. The first time I used the SmoothSpine Massager, I felt instant relief. After a week, I could sit and stand without that sharp pain shooting down my leg. It's like my spine finally got the support it needed. I recommended anybody that asked me about it. Thank you again\"",
+            "author": "Maggie S.",
+            "show_verified": true
+          }
+        },
+        {
+          "type": "review_card",
+          "settings": {
+            "rating": 5,
+            "title": "Didn't Expect It to Work THIS Well!",
+            "quote": "\"I was not expecting this! When I laid down on the smoothspine massager, I could feel my back start to decompress in a good way. The heat and massage combined made a huge difference, and I could actually relax for the first time in months. My wife said I'm walking more upright. Definitely worth it trying!!\"",
+            "author": "John D.",
+            "show_verified": true
+          }
+        },
+        {
+          "type": "review_card",
+          "settings": {
+            "rating": 5,
+            "title": "I Can Move Freely Again!",
+            "quote": "\"Ok, mine got here last week. I was skeptical at first, but after just a few sessions, my stiffness and sciatica pain improved drastically. I used to dread getting out of bed in the morning because of the pain, but now I can move freely again. So easy to use, and the heat feels amazing on my lower back.\"",
+            "author": "Linda R.",
+            "show_verified": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
