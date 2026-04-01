@@ -47,7 +47,7 @@
     "maison_ugc_tabs_pgGqLJ": {
       "type": "maison-ugc-tabs",
       "custom_css": [
-        ".maisoncode_ugc-tabs {padding: 40px 0px 40px;}"
+        ".maisoncode_ugc-tabs {max-width: 1440px;}"
       ],
       "name": "UGC Tabs",
       "settings": {
