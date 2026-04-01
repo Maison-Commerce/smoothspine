@@ -119,6 +119,20 @@
     display: block;
   }
 
+  #shopify-section-{{ section.id }} .pdp-main-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  #shopify-section-{{ section.id }} .pdp-main-slide.is-active {
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   /* Skeleton / Preloader */
   #shopify-section-{{ section.id }} .pdp-img-wrapper {
     position: relative;
@@ -789,20 +803,22 @@
 
     {%- comment -%} DESKTOP GALLERY {%- endcomment -%}
     <div class="pdp-images">
-      <div class="pdp-main-image">
-        {%- if product.featured_image != blank -%}
-          <div class="pdp-img-wrapper" data-pdp-main-image>
-            <div class="pdp-img-skeleton" aria-hidden="true"></div>
-            {{ product.featured_image | image_url: width: 1200 | image_tag:
-              class: 'pdp-lazy-img',
-              loading: 'eager',
-              widths: '375, 550, 750, 1000, 1200',
-              sizes: '(max-width: 767px) 100vw, 48vw',
-              alt: product.featured_image.alt | default: product.title
-            }}
-          </div>
+      <div class="pdp-main-image" data-pdp-main-image>
+        {%- if product.images.size > 0 -%}
+          {%- for image in product.images -%}
+            <div class="pdp-img-wrapper pdp-main-slide{% if forloop.first %} is-active{% endif %}" data-pdp-slide="{{ forloop.index0 }}">
+              <div class="pdp-img-skeleton" aria-hidden="true"></div>
+              {{ image | image_url: width: 1200 | image_tag:
+                class: 'pdp-lazy-img',
+                loading: forloop.first | ternary: 'eager', 'lazy',
+                widths: '375, 550, 750, 1000, 1200',
+                sizes: '(max-width: 767px) 100vw, 48vw',
+                alt: image.alt | default: product.title
+              }}
+            </div>
+          {%- endfor -%}
         {%- else -%}
-          <div class="pdp-img-placeholder" data-pdp-main-image>
+          <div class="pdp-img-placeholder">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
               <circle cx="8.5" cy="8.5" r="1.5"/>
@@ -1186,21 +1202,17 @@
     var section = document.getElementById('shopify-section-{{ section.id }}');
     if (!section) return;
 
-    /* Desktop thumbnail click → swap main image */
+    /* Desktop thumbnail click → show/hide main slides */
     var thumbs = section.querySelectorAll('[data-pdp-thumb]');
-    var mainImageWrap = section.querySelector('[data-pdp-main-image]');
+    var mainSlides = section.querySelectorAll('[data-pdp-slide]');
     thumbs.forEach(function(thumb) {
       thumb.addEventListener('click', function() {
+        var index = thumb.getAttribute('data-pdp-thumb');
         thumbs.forEach(function(t) { t.classList.remove('is-active'); });
         thumb.classList.add('is-active');
-        var img = thumb.querySelector('img');
-        if (img && mainImageWrap) {
-          var mainImg = mainImageWrap.querySelector('img');
-          if (mainImg) {
-            mainImg.src = img.src;
-            mainImg.srcset = img.srcset || '';
-          }
-        }
+        mainSlides.forEach(function(slide) {
+          slide.classList.toggle('is-active', slide.getAttribute('data-pdp-slide') === index);
+        });
       });
     });
 
