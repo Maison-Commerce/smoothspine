@@ -157,14 +157,18 @@
     font-weight: 400;
     font-size: var(--s-font-size-usp-desc);
     line-height: 1.5;
-    color: var(--s-color-text-secondary);
+    color: {{ section.settings.color_body_text | hex_to_rgba: 0.75 }};
   }
 
   #shopify-section-{{ section.id }} .usp-divider {
     flex-shrink: 0;
-    width: 1px;
+    width: {% if section.settings.divider_style == 'dashed' %}0{% else %}1{% endif %}px;
     height: var(--s-divider-height);
-    background-color: var(--s-color-divider);
+    {% if section.settings.divider_style == 'dashed' %}
+      border-left: dashed 0.5px var(--s-color-divider);
+    {% else %}
+      background-color: var(--s-color-divider);
+    {% endif %}
   }
 
   /* Mobile < 768px */
@@ -202,7 +206,13 @@
 
     #shopify-section-{{ section.id }} .usp-divider {
       width: 100%;
-      height: 1px;
+      height: {% if section.settings.divider_style == 'dashed' %}0{% else %}1{% endif %}px;
+      {% if section.settings.divider_style == 'dashed' %}
+        border-left: none;
+        border-top: dashed 0.5px var(--s-color-divider);
+      {% else %}
+        background-color: var(--s-color-divider);
+      {% endif %}
     }
   }
 {% endstyle %}
@@ -293,6 +303,16 @@
       "id": "show_dividers",
       "label": "Show dividers between items",
       "default": true
+    },
+    {
+      "type": "select",
+      "id": "divider_style",
+      "label": "Divider style",
+      "options": [
+        { "value": "solid", "label": "Solid" },
+        { "value": "dashed", "label": "Dashed" }
+      ],
+      "default": "solid"
     },
     {
       "type": "header",
