@@ -670,10 +670,6 @@
 
 <section class="maisoncode_pdp-hero">
   <div class="pdp-inner">
-    {% if section.settings.show_divider %}
-      <div class="pdp-divider"></div>
-    {% endif %}
-
     {%- comment -%} GALLERY (Swiper) {%- endcomment -%}
     <div class="pdp-images">
       {%- if product.images.size > 0 -%}
@@ -777,6 +773,10 @@
         </div>
       {% endif %}
     </div>
+
+    {% if section.settings.show_divider %}
+      <div class="pdp-divider"></div>
+    {% endif %}
 
     {%- comment -%} CONTENT COLUMN {%- endcomment -%}
     <div class="pdp-content">
