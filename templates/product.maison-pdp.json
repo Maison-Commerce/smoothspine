@@ -944,6 +944,124 @@
         "heading_max_width": 600,
         "max_width": 1280
       }
+    },
+    "maison_pdp_offer_guarantee_V7EfKR": {
+      "type": "maison-pdp-offer-guarantee",
+      "blocks": {
+        "check_item_pktdCR": {
+          "type": "check_item",
+          "settings": {
+            "text": "Provides Fast Relief From Sciatica And Herniated Discs"
+          }
+        },
+        "check_item_fHyq7x": {
+          "type": "check_item",
+          "settings": {
+            "text": "Rehydrates and Restores Your Spinal Discs"
+          }
+        },
+        "check_item_Db6zmY": {
+          "type": "check_item",
+          "settings": {
+            "text": "Relieves Back Pain, Stiffness, and Discomfort"
+          }
+        },
+        "check_item_agiMKh": {
+          "type": "check_item",
+          "settings": {
+            "text": "Feel The Difference In Just 15 Minutes Per Day"
+          }
+        },
+        "gift_item_tWMj4K": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "",
+            "name": "Back pain & Sciatica Guide"
+          }
+        },
+        "gift_item_P6DjMz": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "",
+            "name": "12x Back Pain Relief Patches"
+          }
+        },
+        "gift_item_eh9AQd": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "",
+            "name": "Zip Lock Travel Bag"
+          }
+        }
+      },
+      "block_order": [
+        "check_item_pktdCR",
+        "check_item_fHyq7x",
+        "check_item_Db6zmY",
+        "check_item_agiMKh",
+        "gift_item_tWMj4K",
+        "gift_item_P6DjMz",
+        "gift_item_eh9AQd"
+      ],
+      "name": "PDP Offer + Guarantee",
+      "settings": {
+        "show_trustpilot": true,
+        "star_full_count": 4,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_logo": true,
+        "offer_heading": "<em>Special Offer</em> On Now!",
+        "offer_description": "Try Your SmoothSpine Massager NOW <span style=\"text-decoration:underline\">Risk-Free</span> at an All Time Low Price! Act Now and You'll Get:",
+        "show_gifts": true,
+        "cta_label": "GET 60% OFF TODAY ONLY!",
+        "cta_link": "",
+        "show_note": true,
+        "note_text": "Note: Not Available on Amazon or eBay",
+        "wave_offer_bottom": "shopify://shop_images/banner-wave-top.svg",
+        "wave_guarantee_top": "shopify://shop_images/banner-wave-bottom.svg",
+        "guarantee_heading": "100% Satisfaction 90-Day <em>Money Back Guarantee</em>",
+        "guarantee_body": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee.</strong> If you don't experience the remarkable <strong>relief from back pain and Sciatica</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days</strong>, let us know and we will refund every single penny of your investment.</p><p><strong>No questions asked.</strong> We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>",
+        "color_bg_outer": "#FDFCFA",
+        "color_bg_offer": "#F8F4EE",
+        "color_bg_guarantee": "#E5EEFB",
+        "color_text_primary": "#102A43",
+        "color_accent_orange": "#F07E3B",
+        "color_accent_blue": "#065BDC",
+        "color_divider": "#424140",
+        "color_btn_bg": "#F07E3B",
+        "color_btn_border": "#BF642F",
+        "color_accent_orange_dark": "#BF642F",
+        "color_btn_text": "#FFFCFB",
+        "color_gift_bg": "#EEEAE5",
+        "color_gift_border": "#065BDC",
+        "color_gift_badge_bg": "#065BDC",
+        "color_gift_badge_text": "#FAFCFE",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "description_font_size": 18,
+        "description_font_size_mobile": 14,
+        "checklist_font_size": 16,
+        "checklist_font_size_mobile": 14,
+        "btn_font_size": 16,
+        "rating_font_size": 12,
+        "guarantee_title_font_size": 32,
+        "guarantee_title_font_size_mobile": 24,
+        "guarantee_body_font_size": 16,
+        "guarantee_body_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_x": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_x_mobile": 20,
+        "max_width": 1200,
+        "block_padding_x": 64,
+        "block_padding_y": 48,
+        "column_gap": 40,
+        "image_border_radius": 8,
+        "btn_border_radius": 8,
+        "gift_border_radius": 8,
+        "guarantee_image_size": 290
+      }
     }
   },
   "order": [
@@ -958,6 +1076,7 @@
     "maison_before_after_U8xfYJ",
     "maison_pdp_comparison_cGe9fV",
     "maison_pdp_reviews_LNgKVr",
-    "maison_how_it_work_gng7ta"
+    "maison_how_it_work_gng7ta",
+    "maison_pdp_offer_guarantee_V7EfKR"
   ]
 }
