@@ -54,7 +54,7 @@
         "cta_button_label": "SHARE YOUR STORY",
         "cta_button_link": "",
         "tab_1_label": "Reviews",
-        "tab_1_content": "",
+        "tab_1_content": "<!-- Start of Judge.me code -->{% assign has_legacy = false %}{% if shop.metafields.judgeme.all_reviews_header.size > 20 %}{% assign has_legacy = true %}{% endif %}<div class='jdgm-widget jdgm-all-reviews-widget-v2025' data-widget='all-reviews-v2025' data-auto-install='false' data-entry-point='all_reviews_widget_v2025.js' data-entry-key='all-reviews-widget-v2025/main.js'>{% if has_legacy %}<div class='jdgm-legacy-widget-content' style='display: none;'><article class='jdgm-widget jdgm-all-reviews-widget'><style class='jdgm-temp-hiding-style'>.jdgm-all-reviews-widget{ display: none }</style>{{ shop.metafields.judgeme.all_reviews_header }}<div class='jdgm-all-reviews__body'>{% assign prefix = 'all_reviews_' %}{% for count in (0..65535) %}{% assign metafield_key = prefix | append: count %}{% assign current_metafield = shop.metafields.judgeme[metafield_key] %}{% unless current_metafield %}{% break %}{% endunless %}{{ current_metafield }}{% endfor %}</div></article></div>{% endif %}</div>{% if shop.metafields.judgeme.all_reviews_widget_v2025_data %}<script>jdgm.data ||= {}; jdgm.data.allReviewsWidgetV2025 = {{ shop.metafields.judgeme.all_reviews_widget_v2025_data }};</script>{% endif %}<!-- End of Judge.me code -->",
         "tab_2_label": "Videos",
         "tab_2_content": "",
         "color_background": "#FDFCFA",
