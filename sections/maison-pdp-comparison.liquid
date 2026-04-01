@@ -1,0 +1,851 @@
+{% comment %}
+  Section: Product Comparison
+  Description: Side-by-side comparison cards showing your product's benefits vs.
+    competing pain relief methods. Features a "good" card (green) and "bad" card (red)
+    with slight rotation effects. Stacks vertically on mobile.
+    Ideal for product landing pages to highlight competitive advantages.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings), 'Open Sans' (body) — must be loaded by theme
+
+  Blocks:
+  - good_item: Positive comparison point for your product (limit: 8)
+  - bad_item: Negative comparison point for competitors (limit: 8)
+
+  Notes:
+  - Cards use slight CSS rotation (configurable) for visual flair; disabled on mobile
+  - All colors, typography, spacing, and border radius are merchant-configurable
+  - Background uses a linear gradient from two configurable colors
+  - Icon SVGs are inline for the check/cross icons (no external dependencies)
+  - Original source class prefix: maisoncode_Comparison
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_Comparison {
+    --s-color-primary: {{ section.settings.color_primary }};
+    --s-color-brand-blue: {{ section.settings.color_brand_blue }};
+    --s-color-text-secondary: {{ section.settings.color_text_secondary | color_modify: 'alpha', 0.75 }};
+    --s-color-white: {{ section.settings.color_white }};
+    --s-color-success: {{ section.settings.color_success }};
+    --s-color-error: {{ section.settings.color_error }};
+    --s-color-card-header-text: {{ section.settings.color_card_header_text }};
+    --s-color-gradient-from: {{ section.settings.color_gradient_from }};
+    --s-color-gradient-to: {{ section.settings.color_gradient_to }};
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+    --s-shadow-lg: 0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px rgba(16, 24, 40, 0.08);
+    --s-radius-card: {{ section.settings.card_border_radius }}px;
+    --s-font-size-title: {{ section.settings.title_font_size }}px;
+    --s-font-size-subtitle: {{ section.settings.subtitle_font_size }}px;
+    --s-font-size-card-header: {{ section.settings.card_header_font_size }}px;
+    --s-font-size-item-title: {{ section.settings.item_title_font_size }}px;
+    --s-font-size-item-desc: {{ section.settings.item_desc_font_size }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-gap-sections: {{ section.settings.section_gap }}px;
+    --s-gap-cards: {{ section.settings.cards_gap }}px;
+    --s-gap-items: {{ section.settings.items_gap }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+    --s-card-width: {{ section.settings.card_width }}px;
+    --s-good-rotation: {{ section.settings.good_card_rotation }}deg;
+    --s-bad-rotation: {{ section.settings.bad_card_rotation }}deg;
+    --s-icon-size: {{ section.settings.icon_size }}px;
+
+    background: linear-gradient(to bottom, var(--s-color-gradient-from), var(--s-color-gradient-to));
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-gap-sections);
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_Comparison *,
+  #shopify-section-{{ section.id }} .maisoncode_Comparison *::before,
+  #shopify-section-{{ section.id }} .maisoncode_Comparison *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-inner {
+    max-width: var(--s-max-width);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-gap-sections);
+  }
+
+  #shopify-section-{{ section.id }} .comparison-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: {{ section.settings.header_gap }}px;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-title {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-title);
+    line-height: 1.5;
+    text-align: center;
+    color: var(--s-color-primary);
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-title .highlight {
+    color: var(--s-color-brand-blue);
+  }
+
+  #shopify-section-{{ section.id }} .comparison-subtitle {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-subtitle);
+    line-height: 1.5;
+    text-align: center;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .comparison-cards {
+    display: flex;
+    gap: var(--s-gap-cards);
+    align-items: center;
+    justify-content: center;
+    max-width: 1040px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card-wrapper--good {
+    transform: rotate(calc(-1 * var(--s-good-rotation)));
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card-wrapper--bad {
+    transform: rotate(var(--s-bad-rotation));
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card {
+    background: var(--s-color-white);
+    border: 2px solid;
+    border-radius: var(--s-radius-card);
+    box-shadow: var(--s-shadow-lg);
+    display: flex;
+    flex-direction: column;
+    width: var(--s-card-width);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card--good {
+    border-color: var(--s-color-success);
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card--bad {
+    border-color: var(--s-color-error);
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 12px 32px;
+    border-radius: var(--s-radius-card) var(--s-radius-card) 0 0;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card--good .comparison-card__header {
+    background: var(--s-color-success);
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card--bad .comparison-card__header {
+    background: var(--s-color-error);
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card__header-title {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-card-header);
+    line-height: 1.4;
+    color: var(--s-color-card-header-text);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card__header-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-card__body {
+    padding: {{ section.settings.card_body_padding }}px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-gap-items);
+  }
+
+  #shopify-section-{{ section.id }} .comparison-item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-item__icon {
+    width: var(--s-icon-size);
+    height: var(--s-icon-size);
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-item__icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-item__content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .comparison-item__title {
+    font-family: var(--s-font-body);
+    font-weight: 700;
+    font-size: var(--s-font-size-item-title);
+    line-height: 1.5;
+    color: var(--s-color-primary);
+  }
+
+  #shopify-section-{{ section.id }} .comparison-item__desc {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-item-desc);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+  }
+
+  /* Mobile styles */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_Comparison {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-padding-horizontal: 20px;
+      --s-gap-sections: 20px;
+      --s-font-size-title: {{ section.settings.title_font_size_mobile }}px;
+      --s-font-size-subtitle: {{ section.settings.subtitle_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-header {
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-cards {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-card-wrapper--good,
+    #shopify-section-{{ section.id }} .comparison-card-wrapper--bad {
+      transform: none;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-card {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-card__header {
+      padding: 8px 32px;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-card__header-title {
+      font-size: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-card__body {
+      padding: 20px;
+      gap: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-card--good .comparison-item__icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .comparison-card--good .comparison-item__title,
+    #shopify-section-{{ section.id }} .comparison-card--good .comparison-item__desc {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_Comparison">
+  <div class="comparison-inner">
+
+    {%- comment -%} Header {%- endcomment -%}
+    {% if section.settings.heading_highlight != blank or section.settings.heading_main != blank or section.settings.subtitle != blank %}
+      <header class="comparison-header">
+        {% if section.settings.heading_highlight != blank or section.settings.heading_main != blank %}
+          <h2 class="comparison-title">
+            {% if section.settings.heading_highlight != blank %}
+              <span class="highlight">{{ section.settings.heading_highlight }}</span><br>
+            {% endif %}
+            {{ section.settings.heading_main }}
+          </h2>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+          <p class="comparison-subtitle">{{ section.settings.subtitle }}</p>
+        {% endif %}
+      </header>
+    {% endif %}
+
+    <div class="comparison-cards">
+
+      {%- comment -%} Good Card {%- endcomment -%}
+      <div class="comparison-card-wrapper comparison-card-wrapper--good">
+        <article class="comparison-card comparison-card--good">
+          <div class="comparison-card__header">
+            <span class="comparison-card__header-title">{{ section.settings.good_card_title }}</span>
+            <svg class="comparison-card__header-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="{{ section.settings.color_card_header_text }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="22 4 12 14.01 9 11.01" stroke="{{ section.settings.color_card_header_text }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="comparison-card__body">
+            {% for block in section.blocks %}
+              {% if block.type == 'good_item' %}
+                <div class="comparison-item" {{ block.shopify_attributes }}>
+                  <div class="comparison-item__icon">
+                    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="16" cy="16" r="16" fill="{{ section.settings.color_success }}"/>
+                      <path d="M10 16.5L14 20.5L22 12.5" stroke="{{ section.settings.color_white }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div class="comparison-item__content">
+                    {% if block.settings.title != blank %}
+                      <strong class="comparison-item__title">{{ block.settings.title }}</strong>
+                    {% endif %}
+                    {% if block.settings.description != blank %}
+                      <span class="comparison-item__desc">{{ block.settings.description }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </article>
+      </div>
+
+      {%- comment -%} Bad Card {%- endcomment -%}
+      <div class="comparison-card-wrapper comparison-card-wrapper--bad">
+        <article class="comparison-card comparison-card--bad">
+          <div class="comparison-card__header">
+            <span class="comparison-card__header-title">{{ section.settings.bad_card_title }}</span>
+            <svg class="comparison-card__header-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="{{ section.settings.color_card_header_text }}" stroke-width="2"/>
+              <line x1="15" y1="9" x2="9" y2="15" stroke="{{ section.settings.color_card_header_text }}" stroke-width="2" stroke-linecap="round"/>
+              <line x1="9" y1="9" x2="15" y2="15" stroke="{{ section.settings.color_card_header_text }}" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="comparison-card__body">
+            {% for block in section.blocks %}
+              {% if block.type == 'bad_item' %}
+                <div class="comparison-item" {{ block.shopify_attributes }}>
+                  <div class="comparison-item__icon">
+                    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="16" cy="16" r="16" fill="{{ section.settings.color_error }}"/>
+                      <path d="M11 11L21 21M21 11L11 21" stroke="{{ section.settings.color_white }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div class="comparison-item__content">
+                    {% if block.settings.title != blank %}
+                      <strong class="comparison-item__title">{{ block.settings.title }}</strong>
+                    {% endif %}
+                    {% if block.settings.description != blank %}
+                      <span class="comparison-item__desc">{{ block.settings.description }}</span>
+                    {% endif %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Comparison",
+  "tag": "section",
+  "class": "comparison-section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading_highlight",
+      "label": "Heading highlight text",
+      "default": "The SmoothSpine Massager"
+    },
+    {
+      "type": "text",
+      "id": "heading_main",
+      "label": "Heading main text",
+      "default": "Is The Safer Healthier Choice"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "It's non-addictive, works fast, and actually does GOOD things for your body."
+    },
+    {
+      "type": "text",
+      "id": "good_card_title",
+      "label": "Good card title",
+      "default": "SmoothSpine Massager"
+    },
+    {
+      "type": "text",
+      "id": "bad_card_title",
+      "label": "Bad card title",
+      "default": "Other Pain Relief Methods"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary text color",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_brand_blue",
+      "label": "Highlight text color",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_text_secondary",
+      "label": "Secondary text color",
+      "default": "#102A43"
+    },
+    {
+      "type": "paragraph",
+      "content": "Note: Secondary text uses 75% opacity automatically."
+    },
+    {
+      "type": "color",
+      "id": "color_white",
+      "label": "Card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_success",
+      "label": "Good card color",
+      "default": "#12B76A"
+    },
+    {
+      "type": "color",
+      "id": "color_error",
+      "label": "Bad card color",
+      "default": "#F04438"
+    },
+    {
+      "type": "color",
+      "id": "color_card_header_text",
+      "label": "Card header text color",
+      "default": "#FAFCFE"
+    },
+    {
+      "type": "color",
+      "id": "color_gradient_from",
+      "label": "Background gradient start",
+      "default": "#E5EEFB"
+    },
+    {
+      "type": "color",
+      "id": "color_gradient_to",
+      "label": "Background gradient end",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title font size (mobile)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "label": "Subtitle font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size_mobile",
+      "label": "Subtitle font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_header_font_size",
+      "label": "Card header font size",
+      "min": 14,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "item_title_font_size",
+      "label": "Item title font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_desc_font_size",
+      "label": "Item description font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "section_gap",
+      "label": "Section gap",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "header_gap",
+      "label": "Header gap",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "cards_gap",
+      "label": "Gap between cards",
+      "min": 16,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "items_gap",
+      "label": "Gap between items",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_body_padding",
+      "label": "Card body padding",
+      "min": 12,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "card_width",
+      "label": "Card width",
+      "min": 300,
+      "max": 560,
+      "step": 10,
+      "unit": "px",
+      "default": 420
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Item icon size",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "good_card_rotation",
+      "label": "Good card rotation",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "deg",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "bad_card_rotation",
+      "label": "Bad card rotation",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "unit": "deg",
+      "default": 1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "good_item",
+      "name": "Good comparison point",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "BENEFIT TITLE"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "A short description of this positive comparison point."
+        }
+      ]
+    },
+    {
+      "type": "bad_item",
+      "name": "Bad comparison point",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "DRAWBACK TITLE"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "A short description of this negative comparison point."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Comparison",
+      "blocks": [
+        {
+          "type": "good_item",
+          "settings": {
+            "title": "DRUG-FREE PAIN RELIEF",
+            "description": "It's natural and non-habit-forming."
+          }
+        },
+        {
+          "type": "good_item",
+          "settings": {
+            "title": "FAST-ACTING & EFFECTIVE",
+            "description": "Works in as little as 15 minutes!"
+          }
+        },
+        {
+          "type": "good_item",
+          "settings": {
+            "title": "BACKED BY EXPERTS",
+            "description": "\"Highly recommended to anyone dealing with Sciatica, herniated discs, and back pain.\""
+          }
+        },
+        {
+          "type": "good_item",
+          "settings": {
+            "title": "LONG-LASTING RELIEF",
+            "description": "Daily use can even completely realign your spine and rehydrate your discs"
+          }
+        },
+        {
+          "type": "good_item",
+          "settings": {
+            "title": "EASY TO USE AT HOME",
+            "description": "No need for expensive doctor visits"
+          }
+        },
+        {
+          "type": "bad_item",
+          "settings": {
+            "title": "RELY ON DRUGS & CHEMICALS",
+            "description": "It's natural and non-habit-forming."
+          }
+        },
+        {
+          "type": "bad_item",
+          "settings": {
+            "title": "TAKE HOURS TO WORK",
+            "description": "Painkillers and other methods take hours or even days to show results."
+          }
+        },
+        {
+          "type": "bad_item",
+          "settings": {
+            "title": "QUESTIONED BY DOCTORS",
+            "description": "Medical professionals are increasingly skeptical of long-term painkiller use."
+          }
+        },
+        {
+          "type": "bad_item",
+          "settings": {
+            "title": "SHORT-ACTING, REQUIRES CONSTANT USE",
+            "description": "Painkillers wear off quickly, forcing you to take more doses."
+          }
+        },
+        {
+          "type": "bad_item",
+          "settings": {
+            "title": "HARMFUL TO YOUR BODY",
+            "description": "Painkillers also don't help your mood, your stress or your anxiety."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
