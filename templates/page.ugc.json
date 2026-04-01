@@ -44,6 +44,39 @@
         "content_max_width": 600
       }
     },
+    "maison_ugc_tabs_pgGqLJ": {
+      "type": "maison-ugc-tabs",
+      "name": "UGC Tabs",
+      "settings": {
+        "show_cta": true,
+        "cta_heading": "Be an inspiration for others",
+        "cta_description": "Click the button below and share your story!",
+        "cta_button_label": "SHARE YOUR STORY",
+        "cta_button_link": "",
+        "tab_1_label": "Reviews",
+        "tab_1_content": "",
+        "tab_2_label": "Videos",
+        "tab_2_content": "",
+        "color_background": "#FDFCFA",
+        "color_cta_bg": "#E5EEFB",
+        "color_heading": "#102A43",
+        "color_btn_bg": "#F07E3B",
+        "color_btn_border": "#BF642F",
+        "color_btn_text": "#FFFCFB",
+        "color_tab_active_bg": "#424140",
+        "color_tab_active_text": "#FFFFFF",
+        "color_tab_inactive_bg": "#F8F4EE",
+        "color_tab_inactive_text": "#34393D",
+        "color_tab_inactive_border": "#FEFEFD",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "section_gap": 40
+      }
+    },
     "maison_offer_auth_KkrXfj": {
       "type": "maison-offer-auth",
       "blocks": {
@@ -238,6 +271,7 @@
   "order": [
     "main",
     "maison_ugc_banner_aeifh4",
+    "maison_ugc_tabs_pgGqLJ",
     "maison_offer_auth_KkrXfj"
   ]
 }
