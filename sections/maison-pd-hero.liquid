@@ -1196,16 +1196,41 @@
 
       if (Object.keys(keysToRemove).length > 0) {
         _isCleaningBundle = true;
-        fetch('/cart/update.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ updates: keysToRemove })
-        })
-        .then(function() {
+        /* Remove gifts one by one via /cart/change.js so the theme handles UI updates */
+        var giftKeys = Object.keys(keysToRemove);
+        var chain = Promise.resolve();
+        giftKeys.forEach(function(key) {
+          chain = chain.then(function() {
+            return fetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: key, quantity: 0 })
+            }).then(function(res) { return res.json(); });
+          });
+        });
+        chain.then(function() {
           _isCleaningBundle = false;
-          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
-        })
-        .catch(function() { _isCleaningBundle = false; });
+          /* Force cart drawer to re-render */
+          var cartDrawer = document.querySelector('cart-drawer');
+          if (cartDrawer) {
+            var sectionId = cartDrawer.closest('.shopify-section').id.replace('shopify-section-', '');
+            fetch('/?section_id=' + sectionId)
+              .then(function(res) { return res.text(); })
+              .then(function(html) {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(html, 'text/html');
+                var newDrawer = doc.querySelector('cart-drawer');
+                if (newDrawer && cartDrawer) {
+                  cartDrawer.querySelector('.cart-drawer__inner').innerHTML = newDrawer.querySelector('.cart-drawer__inner').innerHTML;
+                  /* Update cart count */
+                  var newCount = doc.querySelector('cart-count');
+                  document.querySelectorAll('cart-count').forEach(function(el) {
+                    if (newCount) el.innerHTML = newCount.innerHTML;
+                  });
+                }
+              });
+          }
+        }).catch(function() { _isCleaningBundle = false; });
       }
     });
   }
