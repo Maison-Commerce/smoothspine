@@ -807,15 +807,17 @@
       <div class="pdp-main-image" data-pdp-main-image>
         {%- if product.images.size > 0 -%}
           {%- for image in product.images -%}
-            <div class="pdp-img-wrapper pdp-main-slide{% if forloop.first %} is-active{% endif %}" data-pdp-slide="{{ forloop.index0 }}">
-              <div class="pdp-img-skeleton" aria-hidden="true"></div>
-              {{ image | image_url: width: 1200 | image_tag:
-                class: 'pdp-lazy-img',
-                loading: forloop.first | ternary: 'eager', 'lazy',
-                widths: '375, 550, 750, 1000, 1200',
-                sizes: '(max-width: 767px) 100vw, 48vw',
-                alt: image.alt | default: product.title
-              }}
+            <div class="pdp-main-slide{% if forloop.first %} is-active{% endif %}" data-pdp-slide="{{ forloop.index0 }}">
+              <div class="pdp-img-wrapper">
+                <div class="pdp-img-skeleton" aria-hidden="true"></div>
+                {{ image | image_url: width: 1200 | image_tag:
+                  class: 'pdp-lazy-img',
+                  loading: forloop.first | ternary: 'eager', 'lazy',
+                  widths: '375, 550, 750, 1000, 1200',
+                  sizes: '(max-width: 767px) 100vw, 48vw',
+                  alt: image.alt | default: product.title
+                }}
+              </div>
             </div>
           {%- endfor -%}
         {%- else -%}
