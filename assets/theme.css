@@ -10226,3 +10226,10 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   display: -webkit-box;
   overflow: hidden;
 }
+
+.maison-reviews-general {
+  max-width: 1280px;
+  margin: 0 auto;
+  max-height: 2000px;
+  overflow: scroll;
+}
