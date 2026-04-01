@@ -313,11 +313,89 @@
         "max_width": 1400,
         "header_max_width": 600
       }
+    },
+    "maison_pdp_content_list_tNqpGx": {
+      "type": "maison-pdp-content-list",
+      "blocks": {
+        "check_item_HhN7G3": {
+          "type": "check_item",
+          "settings": {
+            "text": "Freedom from discomfort in your back and legs"
+          }
+        },
+        "check_item_nWrM4f": {
+          "type": "check_item",
+          "settings": {
+            "text": "Improved mobility and less pain"
+          }
+        },
+        "check_item_4FCY94": {
+          "type": "check_item",
+          "settings": {
+            "text": "Better nights of sleep feeling more rested"
+          }
+        },
+        "check_item_tptGmy": {
+          "type": "check_item",
+          "settings": {
+            "text": "Boosted confidence while walking and standing"
+          }
+        }
+      },
+      "block_order": [
+        "check_item_HhN7G3",
+        "check_item_nWrM4f",
+        "check_item_4FCY94",
+        "check_item_tptGmy"
+      ],
+      "name": "Content Block List",
+      "settings": {
+        "heading": "The Perfect Therapy Every Time",
+        "body_text": "<p>The Entire Country Is Raving About the SmoothSpine™ “Triple Fusion” Massager!</p><p>Users are reporting significant improvements after just a few sessions! And almost everyone continues using it daily.</p><p>This means that within a few days of using the SmoothSpine™ “Triple Fusion” Massager, you can expect to start noticing:</p>",
+        "image_placeholder_text": "Product lifestyle image",
+        "image_aspect_ratio": "1 / 1",
+        "show_trust_badge": true,
+        "rating_stars": "4.5",
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "rating_text_before_link": "4.4/5 (",
+        "rating_link_text": "2,295 + reviews)",
+        "rating_link": "",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "color_background": "#FDFCFA",
+        "color_card_background": "#F8F4EE",
+        "color_text_primary": "#102A43",
+        "color_text_secondary": "#102A43",
+        "color_text_dark": "#111111",
+        "color_stars": "#00b67a",
+        "color_check_bg": "#00b67a",
+        "color_check_icon": "#ffffff",
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "check_font_size": 16,
+        "check_font_size_mobile": 14,
+        "rating_font_size": 12,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "column_gap": 40,
+        "body_gap": 16,
+        "checklist_gap": 8,
+        "border_radius_md": 12,
+        "border_radius_lg": 16,
+        "max_width": 1400
+      }
     }
   },
   "order": [
     "main",
     "maison_pd_hero_JHyDcq",
-    "maison_about_usps_dn6ghV"
+    "maison_about_usps_dn6ghV",
+    "maison_pdp_content_list_tNqpGx"
   ]
 }
