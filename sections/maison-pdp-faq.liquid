@@ -143,7 +143,6 @@
     height: 32px;
     flex-shrink: 0;
     transition: transform 0.3s ease;
-    transform: scaleY(-1);
   }
 
   #shopify-section-{{ section.id }} .faq-icon svg {
@@ -153,7 +152,7 @@
   }
 
   #shopify-section-{{ section.id }} .faq-icon.is-open {
-    transform: scaleY(1);
+    transform: scaleY(-1);
   }
 
   #shopify-section-{{ section.id }} .faq-answer {
@@ -240,9 +239,7 @@
                 >
                   <span class="faq-question-text">{{ block.settings.question }}</span>
                   <span class="faq-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.color_icon }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="6 9 12 15 18 9"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8.88379 11.4697C8.78615 11.3721 8.6279 11.3721 8.53027 11.4697L8.17676 11.8232C8.07913 11.9209 8.07916 12.0791 8.17676 12.1768L15.8232 19.8232C15.9209 19.9209 16.0791 19.9209 16.1768 19.8232L23.8232 12.1768C23.9209 12.0791 23.9209 11.9209 23.8232 11.8232L23.4697 11.4697C23.3721 11.3721 23.2139 11.3721 23.1162 11.4697L16 18.5859L8.88379 11.4697Z" fill="{{ section.settings.color_icon }}" stroke="{{ section.settings.color_icon }}"/></svg>
                   </span>
                 </button>
                 <div class="faq-answer">
@@ -264,9 +261,7 @@
                 >
                   <span class="faq-question-text">{{ block.settings.question }}</span>
                   <span class="faq-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="{{ section.settings.color_icon }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="6 9 12 15 18 9"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8.88379 11.4697C8.78615 11.3721 8.6279 11.3721 8.53027 11.4697L8.17676 11.8232C8.07913 11.9209 8.07916 12.0791 8.17676 12.1768L15.8232 19.8232C15.9209 19.9209 16.0791 19.9209 16.1768 19.8232L23.8232 12.1768C23.9209 12.0791 23.9209 11.9209 23.8232 11.8232L23.4697 11.4697C23.3721 11.3721 23.2139 11.3721 23.1162 11.4697L16 18.5859L8.88379 11.4697Z" fill="{{ section.settings.color_icon }}" stroke="{{ section.settings.color_icon }}"/></svg>
                   </span>
                 </button>
                 <div class="faq-answer">
