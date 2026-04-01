@@ -676,12 +676,21 @@
           <div class="swiper-wrapper">
             {%- for image in product.images -%}
               <div class="swiper-slide">
-                {{ image | image_url: width: 1200 | image_tag:
-                  loading: forloop.first | ternary: 'eager', 'lazy',
-                  widths: '375, 550, 750, 1000, 1200',
-                  sizes: '(max-width: 767px) 100vw, 48vw',
-                  alt: image.alt | default: product.title
-                }}
+                {% if forloop.first %}
+                  {{ image | image_url: width: 1200 | image_tag:
+                    loading: 'eager',
+                    widths: '375, 550, 750, 1000, 1200',
+                    sizes: '(max-width: 767px) 100vw, 48vw',
+                    alt: image.alt | default: product.title
+                  }}
+                {% else %}
+                  {{ image | image_url: width: 1200 | image_tag:
+                    loading: 'lazy',
+                    widths: '375, 550, 750, 1000, 1200',
+                    sizes: '(max-width: 767px) 100vw, 48vw',
+                    alt: image.alt | default: product.title
+                  }}
+                {% endif %}
               </div>
             {%- endfor -%}
           </div>
