@@ -1155,35 +1155,18 @@
     "1775054390f1e0f076": {
       "type": "apps",
       "blocks": {
-        "judge_me_reviews_store_summary_dwJgxC": {
-          "type": "shopify://apps/judge-me-reviews/blocks/store_summary/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "judge_me_reviews_review_widget_nkiLyp": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
-            "data_source": "real",
-            "theme": "expanded",
-            "button_theme_color": "#ffffff",
-            "button_theme_text_color": "#000000",
-            "show_keywords": true,
-            "keywords_visibility": "shown",
-            "show_button": true,
-            "button_visibility": "shown",
-            "alignment": "left",
-            "title_size": "default",
-            "text_size": "default",
-            "corner_styling": "soft",
-            "widget_color": "#f9f9f9",
-            "text_color": "#000000",
-            "lighter_text_color": "#787878",
-            "button_color": "#108474",
-            "button_text_color": "#ffffff",
-            "show_sentiment_colors": false,
-            "max_width": 1100,
-            "heading_text": "Customers rate this store",
-            "button_text": "See AI reviews summary"
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
           }
         }
       },
       "block_order": [
-        "judge_me_reviews_store_summary_dwJgxC"
+        "judge_me_reviews_review_widget_nkiLyp"
       ],
       "settings": {
         "full_width": true,
