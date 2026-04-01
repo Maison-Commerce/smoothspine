@@ -125,12 +125,13 @@
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
+    z-index: 0;
   }
 
   #shopify-section-{{ section.id }} .pdp-main-slide.is-active {
-    position: relative;
     opacity: 1;
     pointer-events: auto;
+    z-index: 1;
   }
 
   /* Skeleton / Preloader */
