@@ -1159,59 +1159,73 @@
     }
 
     /* Remove gift items when main bundle product is removed */
+    var _isCleaningBundle = false;
     function handleBundleRemoval() {
+      if (_isCleaningBundle) return;
       fetch('/cart.js')
         .then(function(res) { return res.json(); })
         .then(function(cart) {
           var bundleIds = {};
 
-          /* Collect all bundle IDs and their roles */
-          cart.items.forEach(function(item, index) {
+          cart.items.forEach(function(item) {
             if (item.properties && item.properties._bundle_id) {
               var bid = item.properties._bundle_id;
-              if (!bundleIds[bid]) bundleIds[bid] = { main: false, gifts: [] };
+              if (!bundleIds[bid]) bundleIds[bid] = { main: false, giftKeys: [] };
               if (item.properties._bundle_role === 'main') {
                 bundleIds[bid].main = true;
               } else if (item.properties._bundle_role === 'gift') {
-                bundleIds[bid].gifts.push(index + 1);
+                bundleIds[bid].giftKeys.push(item.key);
               }
             }
           });
 
-          /* Find bundles where main was removed but gifts remain */
-          var updates = {};
+          /* Find orphaned gifts (main was removed) */
+          var keysToRemove = {};
           Object.keys(bundleIds).forEach(function(bid) {
-            if (!bundleIds[bid].main && bundleIds[bid].gifts.length > 0) {
-              bundleIds[bid].gifts.forEach(function(line) {
-                updates[line] = 0;
+            if (!bundleIds[bid].main && bundleIds[bid].giftKeys.length > 0) {
+              console.log('[PDP Bundle] Main removed for bundle:', bid, '— removing gifts');
+              bundleIds[bid].giftKeys.forEach(function(key) {
+                keysToRemove[key] = 0;
               });
             }
           });
 
-          if (Object.keys(updates).length > 0) {
-            /* Build updates object by cart item key */
-            var updatesByKey = {};
-            Object.keys(updates).forEach(function(line) {
-              var item = cart.items[parseInt(line) - 1];
-              if (item) updatesByKey[item.key] = 0;
-            });
-
+          if (Object.keys(keysToRemove).length > 0) {
+            _isCleaningBundle = true;
             fetch('/cart/update.js', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ updates: updatesByKey })
+              body: JSON.stringify({ updates: keysToRemove })
             })
             .then(function() {
+              _isCleaningBundle = false;
+              /* Reload cart UI */
               document.dispatchEvent(new CustomEvent('cart:refresh'));
-            });
+              /* Fallback: reload page if cart drawer doesn't update */
+              var cartDrawer = document.getElementById('cart-drawer');
+              if (cartDrawer && cartDrawer.hasAttribute('open')) {
+                location.reload();
+              }
+            })
+            .catch(function() { _isCleaningBundle = false; });
           }
         });
     }
 
-    /* Listen for cart changes */
-    document.addEventListener('cart:refresh', function() {
-      setTimeout(handleBundleRemoval, 500);
-    });
+    /* Intercept fetch to detect cart changes */
+    var _originalFetch = window.fetch;
+    window.fetch = function() {
+      var url = arguments[0];
+      if (typeof url === 'string' && (url.indexOf('/cart/change') !== -1 || url.indexOf('/cart/update') !== -1)) {
+        return _originalFetch.apply(this, arguments).then(function(response) {
+          if (!_isCleaningBundle) {
+            setTimeout(handleBundleRemoval, 300);
+          }
+          return response;
+        });
+      }
+      return _originalFetch.apply(this, arguments);
+    };
   }
 
   if (typeof Swiper !== 'undefined') {
