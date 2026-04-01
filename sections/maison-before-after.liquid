@@ -24,7 +24,7 @@
     --ba-color-bg: {{ section.settings.color_background }};
     --ba-color-brand-blue: {{ section.settings.color_subheading }};
     --ba-color-text-primary: {{ section.settings.color_heading }};
-    --ba-color-text-secondary: {{ section.settings.color_body_text }};
+    --ba-color-text-secondary: {{ section.settings.color_body_text | color_modify: 'alpha', 0.75 }};
     --ba-color-btn-bg: {{ section.settings.color_button_bg }};
     --ba-color-btn-border: {{ section.settings.color_button_border }};
     --ba-color-btn-text: {{ section.settings.color_button_text }};
@@ -64,7 +64,83 @@
     display: flex;
     align-items: center;
     gap: var(--ba-gap-columns);
+    {% if section.settings.desktop_media_position == 'right' %}
+      flex-direction: row-reverse;
+    {% endif %}
   }
+
+  /* Trustpilot badge */
+  #shopify-section-{{ section.id }} .ba-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ba-badge-stars { display: flex; gap: 2px; }
+  #shopify-section-{{ section.id }} .ba-badge-stars svg { width: 16px; height: 16px; display: block; }
+
+  #shopify-section-{{ section.id }} .ba-badge-rating {
+    font-family: var(--ba-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #111;
+  }
+
+  #shopify-section-{{ section.id }} .ba-badge-tp {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .ba-badge-tp svg { width: 14px; height: 14px; }
+
+  #shopify-section-{{ section.id }} .ba-badge-tp span {
+    font-family: var(--ba-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #111;
+  }
+
+  /* Richtext body */
+  #shopify-section-{{ section.id }} .ba-richtext {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .ba-richtext p {
+    font-family: var(--ba-font-body);
+    font-weight: 400;
+    font-size: var(--ba-font-size-body);
+    line-height: 1.5;
+    color: var(--ba-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .ba-richtext a {
+    color: {{ section.settings.color_link }};
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .ba-richtext strong { font-weight: 700; }
+
+  #shopify-section-{{ section.id }} .ba-richtext ol,
+  #shopify-section-{{ section.id }} .ba-richtext ul {
+    font-family: var(--ba-font-body);
+    font-weight: 400;
+    font-size: var(--ba-font-size-body);
+    line-height: 1.5;
+    color: var(--ba-color-text-secondary);
+    padding-left: 1.2em;
+  }
+
+  #shopify-section-{{ section.id }} .ba-richtext ol { list-style-type: decimal; }
+  #shopify-section-{{ section.id }} .ba-richtext ul { list-style-type: disc; }
+  #shopify-section-{{ section.id }} .ba-richtext li { margin-bottom: 16px; }
+  #shopify-section-{{ section.id }} .ba-richtext li:last-child { margin-bottom: 0; }
 
   /* Image Column */
   #shopify-section-{{ section.id }} .ba-image-col {
@@ -258,7 +334,7 @@
     }
 
     #shopify-section-{{ section.id }} .ba-container {
-      flex-direction: column;
+      flex-direction: {% if section.settings.mobile_media_position == 'bottom' %}column{% else %}column-reverse{% endif %};
       padding: 0 20px;
       gap: 32px;
       align-items: center;
@@ -332,6 +408,34 @@
     {%- comment -%} Text Column {%- endcomment -%}
     <div class="ba-text-col">
       <div class="ba-text-inner">
+        {% if section.settings.show_trust_badge %}
+          <div class="ba-badge">
+            <div class="ba-badge-stars">
+              {%- assign ba_full = section.settings.trust_stars | floor -%}
+              {%- assign ba_half = section.settings.trust_stars | modulo: 1 -%}
+              {%- assign ba_half_index = ba_full | plus: 1 -%}
+              {%- for i in (1..5) -%}
+                {%- if i <= ba_full -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                {%- elsif i == ba_half_index and ba_half > 0 -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><rect x="8" width="8" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                {%- else -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+            {% if section.settings.trust_rating_text != blank %}
+              <span class="ba-badge-rating">{{ section.settings.trust_rating_text }}</span>
+            {% endif %}
+            {% if section.settings.show_trustpilot_logo %}
+              <div class="ba-badge-tp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 10.6761L10.0417 9.86164L11.3125 14L7 10.6761ZM14 5.32704H8.64583L7 0L5.35417 5.32704H0L4.33334 8.62893L2.6875 13.956L7.02083 10.6541L9.6875 8.62893L14 5.32704Z" fill="#00B67A"/></svg>
+                <span>Trustpilot</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
         <header class="ba-header">
           {% if section.settings.subheading != blank %}
             <p class="ba-subheading">{{ section.settings.subheading }}</p>
@@ -340,6 +444,10 @@
             <h2 class="ba-heading">{{ section.settings.heading }}</h2>
           {% endif %}
         </header>
+
+        {% if section.settings.body_text != blank %}
+          <div class="ba-richtext">{{ section.settings.body_text }}</div>
+        {% endif %}
 
         {%- comment -%} Pain Points List (Blocks) {%- endcomment -%}
         {% if section.blocks.size > 0 %}
@@ -412,6 +520,42 @@
       "default": "Sound Familiar?"
     },
     {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body text (richtext)"
+    },
+    {
+      "type": "header",
+      "content": "Trust badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_badge",
+      "label": "Show trust badge",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "trust_stars",
+      "label": "Star rating",
+      "min": 1,
+      "max": 5,
+      "step": 0.5,
+      "default": 4.5
+    },
+    {
+      "type": "text",
+      "id": "trust_rating_text",
+      "label": "Rating text",
+      "default": "4.4/5 (2,295 + reviews)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot_logo",
+      "label": "Show Trustpilot logo",
+      "default": true
+    },
+    {
       "type": "header",
       "content": "Button"
     },
@@ -425,6 +569,30 @@
       "type": "url",
       "id": "button_link",
       "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "desktop_media_position",
+      "label": "Media position (desktop)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "mobile_media_position",
+      "label": "Media position (mobile)",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "top"
     },
     {
       "type": "header",
@@ -484,13 +652,19 @@
       "type": "color",
       "id": "color_body_text",
       "label": "Body text",
-      "default": "#4A5D6E"
+      "default": "#102A43"
     },
     {
       "type": "color",
       "id": "color_icon_fallback",
       "label": "Fallback icon color",
       "default": "#F04438"
+    },
+    {
+      "type": "color",
+      "id": "color_link",
+      "label": "Link color",
+      "default": "#065BDC"
     },
     {
       "type": "color",
