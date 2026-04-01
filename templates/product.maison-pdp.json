@@ -1154,6 +1154,9 @@
     },
     "custom_liquid_MGtXtD": {
       "type": "custom-liquid",
+      "custom_css": [
+        ".maison-reviews-general{max-width: 1280px; margin: 0 auto;}"
+      ],
       "name": "Custom Liquid",
       "settings": {
         "full_width": true,
