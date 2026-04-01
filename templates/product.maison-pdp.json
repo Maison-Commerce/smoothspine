@@ -283,6 +283,7 @@
         "heading": "",
         "subtitle": "",
         "show_dividers": true,
+        "divider_style": "dashed",
         "color_background": "#e5eefb",
         "color_heading": "#102a43",
         "color_body_text": "#102a43",
