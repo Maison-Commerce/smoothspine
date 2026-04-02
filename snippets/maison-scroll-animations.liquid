@@ -66,7 +66,22 @@
       ];
 
       var elements = document.querySelectorAll(selectors.join(','));
+      var firstSection = true;
       elements.forEach(function(el) {
+        /* Skip header */
+        if (el.closest('.maisoncode_Header') || el.classList.contains('maisoncode_Header')) return;
+        if (el.closest('header') || el.closest('[class*="header"]')) return;
+
+        /* Skip footer */
+        if (el.closest('.maisoncode_Footer') || el.classList.contains('maisoncode_Footer')) return;
+        if (el.closest('footer')) return;
+
+        /* Skip first visible section on the page */
+        if (firstSection) {
+          firstSection = false;
+          return;
+        }
+
         if (!el.hasAttribute('data-maison-animate')) {
           el.setAttribute('data-maison-animate', '');
         }
