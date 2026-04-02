@@ -32,6 +32,30 @@
         </div>
       </div>
 
+      {%- comment -%} FREE SHIPPING BAR {%- endcomment -%}
+      {% if section.settings.show_shipping_bar %}
+        {%- assign shipping_threshold = section.settings.free_shipping_threshold | times: 100 -%}
+        {%- assign cart_total = cart.total_price -%}
+        {%- assign remaining = shipping_threshold | minus: cart_total -%}
+        {%- if remaining < 0 -%}{%- assign remaining = 0 -%}{%- endif -%}
+        {%- assign progress = cart_total | times: 100 | divided_by: shipping_threshold -%}
+        {%- if progress > 100 -%}{%- assign progress = 100 -%}{%- endif -%}
+
+        <div class="maison-cart-shipping-bar">
+          <p class="maison-cart-shipping-bar__text">
+            {%- if remaining <= 0 -%}
+              {{ section.settings.shipping_unlocked_text }}
+            {%- else -%}
+              {%- assign remaining_formatted = remaining | money -%}
+              {{ section.settings.shipping_remaining_text | replace: '[amount]', remaining_formatted }}
+            {%- endif -%}
+          </p>
+          <div class="maison-cart-shipping-bar__track">
+            <div class="maison-cart-shipping-bar__fill" style="width: {{ progress }}%;"></div>
+          </div>
+        </div>
+      {% endif %}
+
       {%- comment -%} LINE ITEMS {%- endcomment -%}
       <div class="maison-cart-items">
         <div class="cart-drawer__line-items">
@@ -186,6 +210,55 @@
     width: 16px;
     height: 16px;
     opacity: 0.5;
+  }
+
+  /* Shipping Bar */
+  #shopify-section-{{ section.id }} .maison-cart-shipping-bar {
+    background: #E5EEFB;
+    padding: 12px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-shipping-bar__text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-shipping-bar__track {
+    width: 100%;
+    height: 10px;
+    border: 1px solid rgba(44,41,38,0.12);
+    border-radius: 999px;
+    padding: 2px;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-shipping-bar__track::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #EAECF0;
+    border-radius: 999px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-shipping-bar__fill {
+    height: 6px;
+    background: #065BDC;
+    border-radius: 999px;
+    position: relative;
+    z-index: 1;
+    transition: width 0.4s ease;
   }
 
   /* Drawer bg */
@@ -398,6 +471,15 @@
       gap: 8px;
     }
 
+    #shopify-section-{{ section.id }} .maison-cart-shipping-bar {
+      padding: 8px 40px;
+      gap: 4px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-shipping-bar__text {
+      font-size: 12px;
+    }
+
     #shopify-section-{{ section.id }} .maison-cart-header__row {
       padding: 20px 20px 8px;
     }
@@ -454,6 +536,40 @@
 {
   "name": "Maison Cart Drawer",
   "settings": [
+    {
+      "type": "header",
+      "content": "Free Shipping Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping_bar",
+      "label": "Show free shipping bar",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "free_shipping_threshold",
+      "label": "Free shipping threshold",
+      "min": 0,
+      "max": 500,
+      "step": 5,
+      "unit": "$",
+      "default": 100,
+      "info": "Cart total needed for free shipping"
+    },
+    {
+      "type": "text",
+      "id": "shipping_unlocked_text",
+      "label": "Shipping unlocked text",
+      "default": "FREE Shipping Unlocked!"
+    },
+    {
+      "type": "text",
+      "id": "shipping_remaining_text",
+      "label": "Remaining text",
+      "default": "Spend [amount] more for FREE Shipping!",
+      "info": "[amount] will be replaced with the remaining amount"
+    },
     {
       "type": "header",
       "content": "Checkout"
