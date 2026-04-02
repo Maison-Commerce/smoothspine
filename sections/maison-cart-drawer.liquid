@@ -134,7 +134,7 @@
                                 {{ gift_item.image | image_url: width: 96 | image_tag: loading: 'lazy', widths: '48, 96', sizes: '48px', class: 'maison-cart-gift-row__img-el' }}
                               </div>
                             {%- endif -%}
-                            <span class="maison-cart-gift-row__name">{{ gift_item.product.title }}</span>
+                            <span class="maison-cart-gift-row__name">{{ gift_item.product.title | truncate: 30 }}</span>
                           </div>
                           <div class="maison-cart-gift-row__prices">
                             {%- if gift_item.original_line_price > gift_item.final_line_price -%}
