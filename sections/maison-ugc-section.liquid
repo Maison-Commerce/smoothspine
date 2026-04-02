@@ -320,8 +320,7 @@
   #ugc-video-modal-{{ section.id }} .ugc-video-modal__content {
     position: relative;
     z-index: 1;
-    width: 90vw;
-    max-width: 400px;
+    max-width: 90vw;
     max-height: 90vh;
     display: flex;
     flex-direction: column;
@@ -330,7 +329,7 @@
 
   #ugc-video-modal-{{ section.id }} .ugc-video-modal__close {
     position: absolute;
-    top: -40px;
+    top: -44px;
     right: 0;
     background: none;
     border: none;
@@ -340,17 +339,19 @@
   }
 
   #ugc-video-modal-{{ section.id }} .ugc-video-modal__player {
-    width: 100%;
     border-radius: 16px;
     overflow: hidden;
     background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   #ugc-video-modal-{{ section.id }} .ugc-video-modal__player video {
-    width: 100%;
-    height: auto;
-    max-height: 80vh;
+    max-width: 90vw;
+    max-height: 85vh;
     display: block;
+    border-radius: 16px;
   }
 
   /* Mobile responsive */
@@ -562,6 +563,25 @@
         },
       },
     });
+
+    /* Autoplay videos when visible (Safari fix) */
+    var cardVideos = document.querySelectorAll('#shopify-section-' + sectionId + ' .ugc-card-video');
+    if (cardVideos.length > 0 && 'IntersectionObserver' in window) {
+      var videoObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          var video = entry.target;
+          if (entry.isIntersecting) {
+            video.play().catch(function() {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      cardVideos.forEach(function(video) {
+        videoObserver.observe(video);
+      });
+    }
 
     /* Video Popup */
     var modal = document.getElementById('ugc-video-modal-' + sectionId);
