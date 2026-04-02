@@ -436,7 +436,7 @@
   }
 {% endstyle %}
 
-<section class="maisoncode_Footer" x-data="{ shopOpen: false, helpOpen: false }">
+<section class="maisoncode_Footer">
   <div class="footer-inner">
 
     {%- comment -%} ===== DESKTOP: Top Content ===== {%- endcomment -%}
@@ -475,43 +475,21 @@
 
       {%- comment -%} Link Columns {%- endcomment -%}
       <div class="footer-columns">
-        {%- comment -%} Shop Column {%- endcomment -%}
-        <div class="footer-col">
-          {% if section.settings.shop_column_title != blank %}
-            <p class="footer-col-title">{{ section.settings.shop_column_title }}</p>
-          {% endif %}
-          {% assign shop_links = section.blocks | where: "type", "shop_link" %}
-          {% if shop_links.size > 0 %}
-            <ul class="footer-links">
-              {% for block in shop_links %}
-                <li {{ block.shopify_attributes }}>
-                  <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}>
-                    {{ block.settings.label }}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        </div>
-
-        {%- comment -%} Help Column {%- endcomment -%}
-        <div class="footer-col">
-          {% if section.settings.help_column_title != blank %}
-            <p class="footer-col-title">{{ section.settings.help_column_title }}</p>
-          {% endif %}
-          {% assign help_links = section.blocks | where: "type", "help_link" %}
-          {% if help_links.size > 0 %}
-            <ul class="footer-links">
-              {% for block in help_links %}
-                <li {{ block.shopify_attributes }}>
-                  <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}>
-                    {{ block.settings.label }}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        </div>
+        {%- comment -%} Menu Columns {%- endcomment -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'menu' and block.settings.menu != blank -%}
+            <div class="footer-col" {{ block.shopify_attributes }}>
+              <p class="footer-col-title">{{ block.settings.menu_title | default: block.settings.menu.title }}</p>
+              <ul class="footer-links">
+                {%- for link in block.settings.menu.links -%}
+                  <li>
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
 
         {%- comment -%} Our Community Column {%- endcomment -%}
         <div class="footer-col">
@@ -573,53 +551,29 @@
     <div class="footer-accordion">
       <div class="footer-divider" style="margin-bottom: 4px;"></div>
 
-      {%- comment -%} Shop Accordion {%- endcomment -%}
-      {% assign shop_links = section.blocks | where: "type", "shop_link" %}
-      {% if shop_links.size > 0 %}
-        <div class="footer-accordion-item">
-          <button class="footer-accordion-header" @click="shopOpen = !shopOpen">
-            <span>{{ section.settings.shop_column_title }}</span>
-            <svg class="accordion-icon" :class="{ 'open': shopOpen }" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="6" y1="0" x2="6" y2="12" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="0" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </button>
-          <div class="footer-accordion-content" x-show="shopOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-            <ul class="footer-links">
-              {% for block in shop_links %}
-                <li {{ block.shopify_attributes }}>
-                  <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}>
-                    {{ block.settings.label }}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
+      {%- comment -%} Menu Accordions {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'menu' and block.settings.menu != blank -%}
+          <div class="footer-accordion-item" x-data="{ menuOpen: false }" {{ block.shopify_attributes }}>
+            <button class="footer-accordion-header" @click="menuOpen = !menuOpen">
+              <span>{{ block.settings.menu_title | default: block.settings.menu.title }}</span>
+              <svg class="accordion-icon" :class="{ 'open': menuOpen }" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <line x1="6" y1="0" x2="6" y2="12" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="0" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </button>
+            <div class="footer-accordion-content" x-show="menuOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+              <ul class="footer-links">
+                {%- for link in block.settings.menu.links -%}
+                  <li>
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
           </div>
-        </div>
-      {% endif %}
-
-      {%- comment -%} Help Accordion {%- endcomment -%}
-      {% assign help_links = section.blocks | where: "type", "help_link" %}
-      {% if help_links.size > 0 %}
-        <div class="footer-accordion-item">
-          <button class="footer-accordion-header" @click="helpOpen = !helpOpen">
-            <span>{{ section.settings.help_column_title }}</span>
-            <svg class="accordion-icon" :class="{ 'open': helpOpen }" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <line x1="6" y1="0" x2="6" y2="12" stroke="currentColor" stroke-width="1.5"/>
-              <line x1="0" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.5"/>
-            </svg>
-          </button>
-          <div class="footer-accordion-content" x-show="helpOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-            <ul class="footer-links">
-              {% for block in help_links %}
-                <li {{ block.shopify_attributes }}>
-                  <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}>
-                    {{ block.settings.label }}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
+        {%- endif -%}
+      {%- endfor -%}
         </div>
       {% endif %}
 
@@ -715,18 +669,6 @@
       "id": "email_placeholder",
       "label": "Email placeholder text",
       "default": "Enter your email"
-    },
-    {
-      "type": "text",
-      "id": "shop_column_title",
-      "label": "Shop column title",
-      "default": "Shop"
-    },
-    {
-      "type": "text",
-      "id": "help_column_title",
-      "label": "Help column title",
-      "default": "Help"
     },
     {
       "type": "text",
@@ -996,38 +938,21 @@
   ],
   "blocks": [
     {
-      "type": "shop_link",
-      "name": "Shop link",
-      "limit": 10,
+      "type": "menu",
+      "name": "Menu column",
+      "limit": 4,
       "settings": [
         {
-          "type": "text",
-          "id": "label",
-          "label": "Label",
-          "default": "Link"
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "info": "This menu won't show dropdown items."
         },
         {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
-        }
-      ]
-    },
-    {
-      "type": "help_link",
-      "name": "Help link",
-      "limit": 10,
-      "settings": [
-        {
           "type": "text",
-          "id": "label",
-          "label": "Label",
-          "default": "Link"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
+          "id": "menu_title",
+          "label": "Custom title",
+          "info": "Overrides the default menu title"
         }
       ]
     },
