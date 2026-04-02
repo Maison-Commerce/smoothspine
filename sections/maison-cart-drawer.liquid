@@ -61,11 +61,15 @@
         <div class="cart-drawer__line-items">
           {%- for line_item in cart.items -%}
             {%- assign is_gift = false -%}
+            {%- assign is_insurance = false -%}
             {%- if line_item.properties._bundle_role == 'gift' -%}
               {%- assign is_gift = true -%}
             {%- endif -%}
+            {%- if section.settings.insurance_product != blank and line_item.product.id == section.settings.insurance_product.id -%}
+              {%- assign is_insurance = true -%}
+            {%- endif -%}
 
-            {%- unless is_gift -%}
+            {%- unless is_gift or is_insurance -%}
               <div class="mc-line-item">
                 <div class="mc-line-item__img">
                   {%- if line_item.image != blank -%}
