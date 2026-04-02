@@ -60,6 +60,27 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     <script type="module" src="{{ 'vendor.min.js' | asset_url }}"></script>
     <script type="module" src="{{ 'theme.js' | asset_url }}"></script>
 
+    <script>
+      /* Block SlideCart app */
+      Object.defineProperty(window, 'SlideCart', { value: null, writable: false, configurable: false });
+      (function() {
+        var origCreate = document.createElement;
+        document.createElement = function(tag) {
+          var el = origCreate.apply(this, arguments);
+          if (tag === 'script') {
+            var origSet = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src').set;
+            Object.defineProperty(el, 'src', {
+              set: function(v) {
+                if (v && v.indexOf('slidecarthq') !== -1) return;
+                origSet.call(this, v);
+              },
+              get: function() { return this.getAttribute('src'); }
+            });
+          }
+          return el;
+        };
+      })();
+    </script>
     {{ content_for_header }}
 
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
