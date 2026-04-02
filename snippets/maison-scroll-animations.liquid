@@ -49,6 +49,8 @@
 <script>
   (function() {
     function initMaisonAnimations() {
+      /* Skip animations entirely on legal pages */
+      {% if template.suffix == 'legal' %}return;{% endif %}
       /* Find all maison section wrappers */
       var selectors = [
         '.maisoncode_pdp-hero',
