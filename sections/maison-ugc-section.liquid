@@ -291,6 +291,59 @@
     width: 17.65%;
   }
 
+  /* Video Modal */
+  #ugc-video-modal-{{ section.id }} {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #ugc-video-modal-{{ section.id }} .ugc-video-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+  }
+
+  #ugc-video-modal-{{ section.id }} .ugc-video-modal__content {
+    position: relative;
+    z-index: 1;
+    width: 90vw;
+    max-width: 400px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #ugc-video-modal-{{ section.id }} .ugc-video-modal__close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 2;
+  }
+
+  #ugc-video-modal-{{ section.id }} .ugc-video-modal__player {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+  }
+
+  #ugc-video-modal-{{ section.id }} .ugc-video-modal__player video {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    display: block;
+  }
+
   /* Mobile responsive */
   @media (max-width: 767px) {
     #shopify-section-{{ section.id }} .maisoncode_ugc-section {
@@ -402,15 +455,9 @@
                       </div>
                     {% endif %}
                     {% if block.settings.show_play_button %}
-                      {% if block.settings.video_url != blank %}
-                        <a href="{{ block.settings.video_url }}" class="ugc-play-btn" aria-label="Play video" target="_blank" rel="noopener">
-                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8 5 20 12 8 19"/></svg>
-                        </a>
-                      {% else %}
-                        <button class="ugc-play-btn" aria-label="Play video">
-                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8 5 20 12 8 19"/></svg>
-                        </button>
-                      {% endif %}
+                      <button class="ugc-play-btn" aria-label="Play video" {% if block.settings.video != blank %}data-ugc-video="{{ block.id }}"{% endif %}>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8 5 20 12 8 19"/></svg>
+                      </button>
                     {% endif %}
                   </figure>
                   <div class="ugc-card-content">
@@ -449,6 +496,26 @@
   </div>
 </section>
 
+{%- comment -%} Video Popup Modal {%- endcomment -%}
+<div class="ugc-video-modal" id="ugc-video-modal-{{ section.id }}" style="display:none;">
+  <div class="ugc-video-modal__overlay"></div>
+  <div class="ugc-video-modal__content">
+    <button class="ugc-video-modal__close" aria-label="Close video">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="ugc-video-modal__player"></div>
+  </div>
+</div>
+
+{%- comment -%} Hidden video sources {%- endcomment -%}
+{%- for block in section.blocks -%}
+  {%- if block.type == 'ugc_slide' and block.settings.video != blank -%}
+    <template data-ugc-video-source="{{ block.id }}">
+      {{ block.settings.video | video_tag: autoplay: true, muted: false, loop: false, playsinline: true, controls: true }}
+    </template>
+  {%- endif -%}
+{%- endfor -%}
+
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     if (typeof Swiper === 'undefined') return;
@@ -480,6 +547,42 @@
         },
       },
     });
+
+    /* Video Popup */
+    var modal = document.getElementById('ugc-video-modal-' + sectionId);
+    if (modal) {
+      var overlay = modal.querySelector('.ugc-video-modal__overlay');
+      var closeBtn = modal.querySelector('.ugc-video-modal__close');
+      var playerWrap = modal.querySelector('.ugc-video-modal__player');
+
+      function openVideoModal(blockId) {
+        var template = document.querySelector('[data-ugc-video-source="' + blockId + '"]');
+        if (!template) return;
+        playerWrap.innerHTML = template.innerHTML;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeVideoModal() {
+        modal.style.display = 'none';
+        playerWrap.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('#shopify-section-' + sectionId + ' [data-ugc-video]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          openVideoModal(btn.getAttribute('data-ugc-video'));
+        });
+      });
+
+      if (overlay) overlay.addEventListener('click', closeVideoModal);
+      if (closeBtn) closeBtn.addEventListener('click', closeVideoModal);
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.style.display === 'flex') closeVideoModal();
+      });
+    }
   });
 </script>
 
@@ -788,9 +891,9 @@
           "default": true
         },
         {
-          "type": "url",
-          "id": "video_url",
-          "label": "Video URL"
+          "type": "video",
+          "id": "video",
+          "label": "Video (Shopify hosted)"
         },
         {
           "type": "textarea",
