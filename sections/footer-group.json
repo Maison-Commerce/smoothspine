@@ -14,11 +14,18 @@
     "maison_footer_PrXfKf": {
       "type": "maison-footer",
       "blocks": {
+        "menu_gfV6Yx": {
+          "type": "menu",
+          "settings": {
+            "menu": "main-menu",
+            "menu_title": "Shop"
+          }
+        },
         "menu_LGMpyY": {
           "type": "menu",
           "settings": {
             "menu": "footer",
-            "menu_title": "Shop"
+            "menu_title": "Help"
           }
         },
         "social_link_PWFdcr": {
@@ -109,6 +116,7 @@
         }
       },
       "block_order": [
+        "menu_gfV6Yx",
         "menu_LGMpyY",
         "social_link_PWFdcr",
         "social_link_JLQwQY",
