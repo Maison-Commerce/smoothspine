@@ -330,9 +330,17 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
 <script>
+  var _maisonCartSwiper = null;
+
   function initMaisonCartRecs() {
     var section = document.getElementById('cart-drawer');
     if (!section) return;
+
+    /* Destroy previous instance */
+    if (_maisonCartSwiper && _maisonCartSwiper.destroy) {
+      try { _maisonCartSwiper.destroy(true, true); } catch(e) {}
+      _maisonCartSwiper = null;
+    }
 
     var swiperEl = section.querySelector('[data-maison-cart-recs]');
     if (!swiperEl) return;
@@ -341,13 +349,13 @@
     var nextBtn = section.querySelector('.maison-cart-recs__next');
     var dotsEl = section.querySelector('[data-maison-cart-dots]');
 
-    new Swiper(swiperEl, {
+    _maisonCartSwiper = new Swiper(swiperEl, {
       slidesPerView: 'auto',
       spaceBetween: 0,
-      navigation: {
+      navigation: prevBtn && nextBtn ? {
         prevEl: prevBtn,
         nextEl: nextBtn
-      },
+      } : false,
       pagination: dotsEl ? {
         el: dotsEl,
         clickable: true
