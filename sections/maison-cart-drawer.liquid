@@ -99,11 +99,11 @@
                           </div>
                           <div class="maison-cart-gift-row__prices">
                             {%- if gift_item.original_line_price > gift_item.final_line_price -%}
-                              <span class="maison-cart-gift-row__compare">{{ gift_item.original_line_price | money }}</span>
+                              <span class="maison-cart-gift-row__compare">{{ gift_item.original_line_price | money_without_trailing_zeros }}</span>
                             {%- elsif gift_item.variant.compare_at_price > gift_item.variant.price -%}
-                              <span class="maison-cart-gift-row__compare">{{ gift_item.variant.compare_at_price | money }}</span>
+                              <span class="maison-cart-gift-row__compare">{{ gift_item.variant.compare_at_price | money_without_trailing_zeros }}</span>
                             {%- endif -%}
-                            <span class="maison-cart-gift-row__price">{{ gift_item.final_line_price | money }}</span>
+                            <span class="maison-cart-gift-row__price">{{ gift_item.final_line_price | money_without_trailing_zeros }}</span>
                           </div>
                         </div>
                       {%- endif -%}
@@ -240,7 +240,7 @@
         {% if section.settings.show_checkout_button %}
           <form action="{{ routes.cart_url }}" method="POST">
             <button type="submit" name="checkout" class="maison-cart-checkout-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 2h8a4 4 0 014 4v6a4 4 0 01-4 4H6a4 4 0 01-4-4V6a4 4 0 014-4z" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-width="1.5"/><path d="M14 7V5.5A4 4 0 006 5.5V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="12" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.17872 1.58301C7.19231 0.569427 8.56702 0 10.0005 0C11.4339 0 12.8086 0.569427 13.8222 1.58301C14.8357 2.5966 15.4052 3.97133 15.4052 5.40476V6.63774C17.0026 7.31177 18.1904 8.80733 18.4056 10.6032C18.5022 11.4089 18.5724 12.2426 18.5724 13.0952C18.5724 13.9478 18.5022 14.7814 18.4056 15.5871C18.1186 17.9829 16.1006 19.8441 13.6886 19.9337C12.5112 19.9773 11.3049 20 9.99958 20C8.6943 20 7.48794 19.9773 6.31054 19.9337C3.89857 19.8441 1.88052 17.9829 1.59357 15.5871C1.49705 14.7814 1.42676 13.9478 1.42676 13.0952C1.42676 12.2426 1.49705 11.4089 1.59357 10.6032C1.80875 8.80667 2.99744 7.31067 4.59571 6.63701V5.40476C4.59571 3.97133 5.16514 2.5966 6.17872 1.58301ZM13.2624 5.40476V6.2419C12.2196 6.20794 11.1479 6.19044 9.99958 6.19044C8.85195 6.19044 7.7808 6.20791 6.73857 6.24184V5.40476C6.73857 4.53964 7.08222 3.70997 7.69395 3.09824C8.30567 2.48651 9.13535 2.14286 10.0005 2.14286C10.8656 2.14286 11.6952 2.48651 12.307 3.09824C12.9187 3.70997 13.2624 4.53964 13.2624 5.40476ZM11.071 12.2287C11.071 11.6369 10.5913 11.1572 9.99958 11.1572C9.40785 11.1572 8.92815 11.6369 8.92815 12.2287V13.7143C8.92815 14.306 9.40785 14.7857 9.99958 14.7857C10.5913 14.7857 11.071 14.306 11.071 13.7143V12.2287Z" fill="#FFFCFB"/></svg>
               <span>{{ section.settings.checkout_button_label }}</span>
             </button>
           </form>
@@ -265,7 +265,7 @@
           <div class="maison-cart-trust">
             {% if section.settings.trust_badge_1 != blank %}
               <div class="maison-cart-trust__item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none"><g clip-path="url(#mc-shield)"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.29329 0.220621C3.42804 0.079705 3.61454 0 3.80953 0H16.1904C16.3854 0 16.572 0.079705 16.7067 0.220621C17.1117 0.644153 17.9469 1.5181 18.6727 3.03603C19.3979 4.55263 20 6.68146 20 9.61537C20 13.1154 18.3371 15.523 16.2926 17.1356C14.27 18.7306 11.8633 19.5613 10.274 19.9767C10.1556 20.0077 10.0312 20.0077 9.91271 19.9767C8.32674 19.5621 5.87549 18.7327 3.80739 17.1407C1.71803 15.5321 0 13.1241 0 9.61537C0 6.68146 0.60217 4.55263 1.32731 3.03603C2.0531 1.5181 2.88827 0.644153 3.29329 0.220621ZM14.5157 6.4578C14.954 6.06023 14.987 5.38264 14.5894 4.94437C14.1918 4.50609 13.5142 4.4731 13.076 4.87067C11.81 6.01911 10.8542 7.05559 10.0465 8.31616C9.48717 9.18921 9.01299 10.1478 8.55296 11.2919L6.97349 9.66307C6.56156 9.23826 5.88324 9.22783 5.45844 9.63976C5.03363 10.0517 5.0232 10.73 5.43513 11.1548L8.19569 14.0016C8.45447 14.2685 8.8331 14.3821 9.19607 14.302C9.55906 14.2217 9.85451 13.9591 9.97673 13.608C10.6133 11.7794 11.176 10.5254 11.8508 9.47214C12.5214 8.42549 13.3316 7.53196 14.5157 6.4578Z" fill="#102A43"/></g><defs><clipPath id="mc-shield"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#mc-shield)"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.63463 0.176497C2.74243 0.063764 2.89163 0 3.04762 0H12.9523C13.1083 0 13.2576 0.063764 13.3654 0.176497C13.6894 0.515322 14.3575 1.21448 14.9382 2.42882C15.5183 3.6421 16 5.34517 16 7.6923C16 10.4923 14.6697 12.4184 13.0341 13.7085C11.416 14.9845 9.49067 15.649 8.21923 15.9814C8.12447 16.0062 8.02493 16.0062 7.93017 15.9814C6.66139 15.6497 4.70039 14.9862 3.04591 13.7126C1.37442 12.4257 0 10.4993 0 7.6923C0 5.34517 0.481736 3.6421 1.06185 2.42882C1.64248 1.21448 2.31062 0.515322 2.63463 0.176497ZM11.6126 5.16624C11.9632 4.84818 11.9896 4.30611 11.6715 3.9555C11.3535 3.60487 10.8114 3.57848 10.4608 3.89654C9.44797 4.81529 8.68333 5.64447 8.03722 6.65293C7.58974 7.35137 7.21039 8.11826 6.84237 9.03351L5.57879 7.73046C5.24925 7.39061 4.70659 7.38226 4.36675 7.71181C4.0269 8.04135 4.01856 8.584 4.3481 8.92384L6.55655 11.2013C6.76358 11.4148 7.06648 11.5057 7.35686 11.4416C7.64725 11.3774 7.88361 11.1673 7.98138 10.8864C8.49064 9.42353 8.94082 8.42033 9.48067 7.57771C10.0171 6.74039 10.6653 6.02557 11.6126 5.16624Z" fill="#102A43"/></g><defs><clipPath id="mc-shield"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
                 <span>{{ section.settings.trust_badge_1 }}</span>
               </div>
             {% endif %}
@@ -274,7 +274,7 @@
             {% endif %}
             {% if section.settings.trust_badge_2 != blank %}
               <div class="maison-cart-trust__item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none"><g clip-path="url(#mc-check)"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.6235 2.6235C4.37209 0.874903 6.8971 0 10 0C13.1029 0 15.6279 0.874903 17.3766 2.6235C19.1251 4.37209 20 6.8971 20 10C20 13.1029 19.1251 15.6279 17.3766 17.3766C15.6279 19.1251 13.1029 20 10 20C6.8971 20 4.37209 19.1251 2.6235 17.3766C0.874903 15.6279 0 13.1029 0 10C0 6.8971 0.874903 4.37209 2.6235 2.6235ZM14.1713 7.08989C14.5366 6.75857 14.564 6.19391 14.2327 5.82869C13.9014 5.46346 13.3368 5.43596 12.9715 5.76727C11.7848 6.84384 10.8933 7.81137 10.1408 8.98594C9.59271 9.84133 9.13136 10.7863 8.67961 11.9317L7.06956 10.2713C6.72627 9.9173 6.16101 9.9086 5.80701 10.2519C5.45301 10.5952 5.44431 11.1604 5.78759 11.5144L8.38499 14.193C8.60064 14.4154 8.91617 14.5101 9.21866 14.4433C9.52113 14.3764 9.76736 14.1575 9.8692 13.865C10.4695 12.1405 11.0025 10.9511 11.6443 9.94926C12.2827 8.95296 13.0528 8.10454 14.1713 7.08989Z" fill="#065BDC"/></g><defs><clipPath id="mc-check"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#mc-check)"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.63463 0.176497C2.74243 0.063764 2.89163 0 3.04762 0H12.9523C13.1083 0 13.2576 0.063764 13.3654 0.176497C13.6894 0.515322 14.3575 1.21448 14.9382 2.42882C15.5183 3.6421 16 5.34517 16 7.6923C16 10.4923 14.6697 12.4184 13.0341 13.7085C11.416 14.9845 9.49067 15.649 8.21923 15.9814C8.12447 16.0062 8.02493 16.0062 7.93017 15.9814C6.66139 15.6497 4.70039 14.9862 3.04591 13.7126C1.37442 12.4257 0 10.4993 0 7.6923C0 5.34517 0.481736 3.6421 1.06185 2.42882C1.64248 1.21448 2.31062 0.515322 2.63463 0.176497ZM11.6126 5.16624C11.9632 4.84818 11.9896 4.30611 11.6715 3.9555C11.3535 3.60487 10.8114 3.57848 10.4608 3.89654C9.44797 4.81529 8.68333 5.64447 8.03722 6.65293C7.58974 7.35137 7.21039 8.11826 6.84237 9.03351L5.57879 7.73046C5.24925 7.39061 4.70659 7.38226 4.36675 7.71181C4.0269 8.04135 4.01856 8.584 4.3481 8.92384L6.55655 11.2013C6.76358 11.4148 7.06648 11.5057 7.35686 11.4416C7.64725 11.3774 7.88361 11.1673 7.98138 10.8864C8.49064 9.42353 8.94082 8.42033 9.48067 7.57771C10.0171 6.74039 10.6653 6.02557 11.6126 5.16624Z" fill="#102A43"/></g><defs><clipPath id="mc-check"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
                 <span>{{ section.settings.trust_badge_2 }}</span>
               </div>
             {% endif %}
@@ -400,6 +400,15 @@
 {% style %}
   /* ===== MAISON CART DRAWER ===== */
 
+  /* Reset drawer padding */
+  #shopify-section-{{ section.id }} .cart-drawer::part(body) {
+    padding: 0 !important;
+  }
+
+  #shopify-section-{{ section.id }} .cart-drawer::part(footer) {
+    padding: 0 !important;
+  }
+
   /* Header */
   #shopify-section-{{ section.id }} .maison-cart-header {
     background: #fff;
@@ -475,6 +484,120 @@
     opacity: 0.5;
   }
 
+  /* Line item overrides */
+  #shopify-section-{{ section.id }} .line-item {
+    padding: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .line-item__media-wrapper {
+    width: 80px !important;
+  }
+
+  #shopify-section-{{ section.id }} .line-item__media {
+    border-radius: 8px !important;
+  }
+
+  #shopify-section-{{ section.id }} .line-item__info .bold,
+  #shopify-section-{{ section.id }} .line-item__info .reversed-link {
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    color: #102A43 !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .line-item__info .text-subdued {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 12px !important;
+    color: rgba(16,42,67,0.75) !important;
+  }
+
+  /* Price list in line items */
+  #shopify-section-{{ section.id }} .line-item price-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .line-item sale-price {
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    color: #102A43 !important;
+  }
+
+  #shopify-section-{{ section.id }} .line-item compare-at-price {
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    color: #102A43 !important;
+    opacity: 0.5;
+  }
+
+  /* Quantity controls */
+  #shopify-section-{{ section.id }} .line-item .quantity-input {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 12px !important;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #102A43;
+    width: 40px;
+    height: 32px;
+    border: none !important;
+    background: transparent;
+  }
+
+  /* Remove link styling */
+  #shopify-section-{{ section.id }} .line-item a[href*="/cart/change"],
+  #shopify-section-{{ section.id }} .line-item .link[aria-label*="Remove"] {
+    opacity: 0.5;
+    font-size: 0;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cg opacity='0.5' clip-path='url(%23c)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.00018-0.0045166C6.93693-0.0045166 5.98523.297175 5.30017.982236 4.63796 1.64444 4.33397 2.5558 4.31443 3.57622 3.50895 3.64087 2.70075 3.72664 1.88804 3.83355 1.4187 3.89527 1.08826 4.3258 1.14999 4.79515 1.21173 5.26448 1.64226 5.59492 2.11159 5.53319L2.24778 5.51548C2.22409 7.67421 2.26948 10.7063 2.8449 13.2723 3.15837 14.6701 4.34059 15.6431 5.71089 15.8364 6.48455 15.9455 7.19457 16.0005 8.00053 16.0005 8.80652 16.0005 9.51663 15.9455 10.2904 15.8364 11.6607 15.6431 12.8429 14.6701 13.1564 13.2723 13.7318 10.7063 13.7772 7.67431 13.7535 5.51558L13.889 5.53319C14.3582 5.59492 14.7887 5.26448 14.8506 4.79515 14.9123 4.3258 14.5818 3.89527 14.1125 3.83355 13.2997 3.72664 12.4915 3.64086 11.6859 3.57621 11.6663 2.55579 11.3624 1.64444 10.7002.982236 10.0151.297175 9.06342-0.0045166 8.00018-0.0045166ZM9.96678 3.47014C9.93121 2.84539 9.73781 2.44423 9.48801 2.19442 9.21099 1.91741 8.74788 1.70976 8.00018 1.70976 7.25247 1.70976 6.78937 1.91741 6.51235 2.19442 6.26254 2.44423 6.06915 2.8454 6.03357 3.47014 7.34594 3.41366 8.65442 3.41366 9.96678 3.47014ZM6.45625 7.24487C6.17731 6.96593 5.72505 6.96593 5.4461 7.24487 5.16715 7.52382 5.16715 7.97607 5.4461 8.25502L6.99013 9.79906 5.44611 11.3431C5.16716 11.622 5.16716 12.0743 5.44611 12.3532 5.72506 12.6322 6.17732 12.6322 6.45626 12.3532L8.00029 10.8092 9.54417 12.3531C9.82311 12.6321 10.2754 12.6321 10.5543 12.3531 10.8333 12.0741 10.8333 11.6219 10.5543 11.3429L9.01044 9.79906 10.5543 8.25517C10.8333 7.97622 10.8333 7.52396 10.5543 7.24501 10.2754 6.96606 9.82313 6.96606 9.54418 7.24501L8.00029 8.78891 6.45625 7.24487Z' fill='%23102A43'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 1;
+  }
+
+  @media (max-width: 999px) {
+    #shopify-section-{{ section.id }} .line-item {
+      padding: 12px 20px;
+    }
+
+    #shopify-section-{{ section.id }} .line-item__media-wrapper {
+      width: 64px !important;
+    }
+
+    #shopify-section-{{ section.id }} .line-item__info .bold,
+    #shopify-section-{{ section.id }} .line-item__info .reversed-link {
+      font-size: 12px !important;
+      white-space: normal;
+    }
+
+    #shopify-section-{{ section.id }} .line-item__info .text-subdued {
+      font-size: 10px !important;
+    }
+
+    #shopify-section-{{ section.id }} .line-item sale-price {
+      font-size: 12px !important;
+    }
+
+    #shopify-section-{{ section.id }} .line-item compare-at-price {
+      font-size: 10px !important;
+    }
+
+    #shopify-section-{{ section.id }} .line-item .quantity-input {
+      height: 28px;
+    }
+  }
+
   /* Shipping Bar */
   #shopify-section-{{ section.id }} .maison-cart-shipping-bar {
     background: #E5EEFB;
@@ -546,6 +669,8 @@
     flex-direction: column;
     gap: 16px;
     align-items: center;
+    overflow: hidden;
+    max-width: 100%;
   }
 
   #shopify-section-{{ section.id }} .maison-cart-recs__header {
@@ -595,6 +720,11 @@
   #shopify-section-{{ section.id }} .maison-cart-recs__slider {
     width: 100%;
     overflow: hidden;
+    max-width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__slider .swiper-wrapper {
+    max-width: 100%;
   }
 
   #shopify-section-{{ section.id }} .maison-cart-rec-card {
