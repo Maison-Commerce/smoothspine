@@ -115,6 +115,70 @@
           {%- endfor -%}
         </div>
       </div>
+
+      {%- comment -%} RECOMMENDED PRODUCTS SLIDER {%- endcomment -%}
+      {%- if section.settings.recommended_products.count > 0 -%}
+        {%- assign rec_count = 0 -%}
+        {%- for rec_product in section.settings.recommended_products -%}
+          {%- assign in_cart = cart | line_items_for: rec_product -%}
+          {%- if in_cart.size == 0 and rec_product.available -%}
+            {%- assign rec_count = rec_count | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if rec_count > 0 -%}
+          <div class="maison-cart-recs">
+            <div class="maison-cart-recs__header">
+              {% if section.settings.recommendations_title != blank %}
+                <span class="maison-cart-recs__title">{{ section.settings.recommendations_title }}</span>
+              {% endif %}
+              {% if rec_count > 1 %}
+                <div class="maison-cart-recs__nav">
+                  <button type="button" class="maison-cart-recs__arrow maison-cart-recs__prev" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="#FAFCFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button type="button" class="maison-cart-recs__arrow maison-cart-recs__next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="#FAFCFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+              {% endif %}
+            </div>
+            <div class="maison-cart-recs__slider swiper" data-maison-cart-recs>
+              <div class="swiper-wrapper">
+                {%- for rec_product in section.settings.recommended_products -%}
+                  {%- assign in_cart = cart | line_items_for: rec_product -%}
+                  {%- if in_cart.size == 0 and rec_product.available -%}
+                    <div class="swiper-slide maison-cart-rec-card">
+                      <div class="maison-cart-rec-card__inner">
+                        <div class="maison-cart-rec-card__content">
+                          {%- if rec_product.featured_image != blank -%}
+                            <div class="maison-cart-rec-card__img">
+                              {{ rec_product.featured_image | image_url: width: 128 | image_tag: loading: 'lazy', widths: '64, 128', sizes: '64px' }}
+                            </div>
+                          {%- endif -%}
+                          <div class="maison-cart-rec-card__info">
+                            <p class="maison-cart-rec-card__name">{{ rec_product.title }}</p>
+                            <div class="maison-cart-rec-card__prices">
+                              {%- if rec_product.compare_at_price > rec_product.price -%}
+                                <span class="maison-cart-rec-card__compare">{{ rec_product.compare_at_price | money }}</span>
+                              {%- endif -%}
+                              <span class="maison-cart-rec-card__price">{{ rec_product.price | money }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <button type="button" class="maison-cart-rec-card__add" data-variant-id="{{ rec_product.first_available_variant.id }}">+ ADD</button>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+            {% if rec_count > 1 %}
+              <div class="maison-cart-recs__dots" data-maison-cart-dots></div>
+            {% endif %}
+          </div>
+        {%- endif -%}
+      {%- endif -%}
     </div>
 
     {%- comment -%} FOOTER {%- endcomment -%}
@@ -184,6 +248,74 @@
     </div>
   {%- endif -%}
 </cart-drawer>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+<script>
+  function initMaisonCartRecs() {
+    var section = document.getElementById('cart-drawer');
+    if (!section) return;
+
+    var swiperEl = section.querySelector('[data-maison-cart-recs]');
+    if (!swiperEl) return;
+
+    var prevBtn = section.querySelector('.maison-cart-recs__prev');
+    var nextBtn = section.querySelector('.maison-cart-recs__next');
+    var dotsEl = section.querySelector('[data-maison-cart-dots]');
+
+    new Swiper(swiperEl, {
+      slidesPerView: 'auto',
+      spaceBetween: 0,
+      navigation: {
+        prevEl: prevBtn,
+        nextEl: nextBtn
+      },
+      pagination: dotsEl ? {
+        el: dotsEl,
+        clickable: true
+      } : false
+    });
+
+    /* "+ ADD" button handler */
+    section.querySelectorAll('.maison-cart-rec-card__add').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (btn.classList.contains('is-loading')) return;
+        btn.classList.add('is-loading');
+        var variantId = btn.getAttribute('data-variant-id');
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function() {
+          btn.classList.remove('is-loading');
+          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+        })
+        .catch(function() {
+          btn.classList.remove('is-loading');
+        });
+      });
+    });
+  }
+
+  /* Init on DOMContentLoaded or when Swiper is ready */
+  if (typeof Swiper !== 'undefined') {
+    initMaisonCartRecs();
+  } else {
+    document.addEventListener('DOMContentLoaded', initMaisonCartRecs);
+  }
+
+  /* Re-init after cart updates (section rendering) */
+  document.documentElement.addEventListener('cart:refresh', function() {
+    setTimeout(initMaisonCartRecs, 500);
+  });
+  document.documentElement.addEventListener('cart:change', function() {
+    setTimeout(initMaisonCartRecs, 500);
+  });
+</script>
 
 {% style %}
   /* ===== MAISON CART DRAWER ===== */
@@ -325,6 +457,188 @@
   #shopify-section-{{ section.id }} .cart-drawer__line-items > * {
     background: #fff;
     border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* Recommendations */
+  #shopify-section-{{ section.id }} .maison-cart-recs {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__nav {
+    display: flex;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__arrow {
+    width: 32px;
+    height: 32px;
+    background: #102A43;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 8px;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__arrow[disabled] {
+    opacity: 0.1;
+    cursor: default;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card {
+    width: 390px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__inner {
+    background: #EEEAE5;
+    border: 1px solid #DCD9D3;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__img {
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__compare {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__price {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__add {
+    background: #102A43;
+    color: #FAFCFE;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    height: 36px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__add:hover { opacity: 0.85; }
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__add.is-loading { opacity: 0.5; pointer-events: none; }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__dots .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #102A43;
+    opacity: 0.1;
+    transition: all 0.3s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__dots .swiper-pagination-bullet-active {
+    width: 32px;
+    opacity: 1;
   }
 
   /* Gift Items */
@@ -637,6 +951,59 @@
       padding: 20px 20px 8px;
     }
 
+    #shopify-section-{{ section.id }} .maison-cart-recs {
+      padding: 12px 20px;
+      gap: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-recs__title {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-recs__arrow {
+      width: 28px;
+      height: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-recs__arrow svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card {
+      width: 320px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card__inner {
+      padding: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card__img {
+      width: 56px;
+      height: 56px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card__name {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card__compare {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card__price {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-recs__dots .swiper-pagination-bullet {
+      width: 4px;
+      height: 4px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-recs__dots .swiper-pagination-bullet-active {
+      width: 16px;
+    }
+
     #shopify-section-{{ section.id }} .maison-cart-gifts {
       padding: 0 20px 12px;
     }
@@ -755,6 +1122,23 @@
       "label": "Remaining text",
       "default": "Spend [amount] more for FREE Shipping!",
       "info": "[amount] will be replaced with the remaining amount"
+    },
+    {
+      "type": "header",
+      "content": "Recommended Products"
+    },
+    {
+      "type": "text",
+      "id": "recommendations_title",
+      "label": "Heading",
+      "default": "Achieve maximum results with"
+    },
+    {
+      "type": "product_list",
+      "id": "recommended_products",
+      "label": "Products",
+      "info": "Products already in cart are hidden automatically.",
+      "limit": 10
     },
     {
       "type": "header",
