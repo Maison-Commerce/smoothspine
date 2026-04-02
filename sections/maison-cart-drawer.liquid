@@ -183,6 +183,42 @@
 
     {%- comment -%} FOOTER {%- endcomment -%}
     <div class="maison-cart-footer" slot="footer">
+      {%- comment -%} Premium Shipping Insurance {%- endcomment -%}
+      {% if section.settings.show_insurance and section.settings.insurance_product != blank %}
+        {%- assign ins_product = section.settings.insurance_product -%}
+        {%- assign ins_variant = ins_product.first_available_variant -%}
+        {%- assign ins_in_cart = false -%}
+        {%- assign ins_line_key = '' -%}
+        {%- for item in cart.items -%}
+          {%- if item.product.id == ins_product.id -%}
+            {%- assign ins_in_cart = true -%}
+            {%- assign ins_line_key = item.key -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        <div class="maison-cart-insurance" data-maison-insurance data-variant-id="{{ ins_variant.id }}" data-line-key="{{ ins_line_key }}" data-in-cart="{{ ins_in_cart }}">
+          {% if section.settings.insurance_image != blank %}
+            <div class="maison-cart-insurance__icon">
+              {{ section.settings.insurance_image | image_url: width: 112 | image_tag: loading: 'lazy', widths: '56, 112', sizes: '56px' }}
+            </div>
+          {% endif %}
+          <div class="maison-cart-insurance__content">
+            <div class="maison-cart-insurance__header">
+              <span class="maison-cart-insurance__title">{{ section.settings.insurance_title }}</span>
+              <span class="maison-cart-insurance__price">{{ ins_variant.price | money }}</span>
+            </div>
+            <div class="maison-cart-insurance__body">
+              <p class="maison-cart-insurance__desc">{{ section.settings.insurance_description }}</p>
+              <label class="maison-cart-insurance__toggle">
+                <input type="checkbox" {% if ins_in_cart %}checked{% endif %} data-maison-insurance-checkbox>
+                <span class="maison-cart-insurance__switch"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
       {%- comment -%} Total Price Row {%- endcomment -%}
       <div class="maison-cart-total">
         <span class="maison-cart-total__label">Total Price</span>
@@ -308,12 +344,56 @@
     document.addEventListener('DOMContentLoaded', initMaisonCartRecs);
   }
 
+  /* Insurance toggle */
+  function initMaisonInsurance() {
+    var el = document.querySelector('[data-maison-insurance]');
+    if (!el) return;
+    var checkbox = el.querySelector('[data-maison-insurance-checkbox]');
+    if (!checkbox) return;
+
+    checkbox.addEventListener('change', function() {
+      var variantId = el.getAttribute('data-variant-id');
+      var lineKey = el.getAttribute('data-line-key');
+      var isChecked = checkbox.checked;
+
+      if (isChecked) {
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function() {
+          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+        });
+      } else {
+        if (lineKey) {
+          fetch('/cart/change.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: lineKey, quantity: 0 })
+          })
+          .then(function(res) { return res.json(); })
+          .then(function() {
+            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+          });
+        }
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMaisonInsurance);
+  } else {
+    initMaisonInsurance();
+  }
+
   /* Re-init after cart updates (section rendering) */
   document.documentElement.addEventListener('cart:refresh', function() {
-    setTimeout(initMaisonCartRecs, 500);
+    setTimeout(function() { initMaisonCartRecs(); initMaisonInsurance(); }, 500);
   });
   document.documentElement.addEventListener('cart:change', function() {
-    setTimeout(initMaisonCartRecs, 500);
+    setTimeout(function() { initMaisonCartRecs(); initMaisonInsurance(); }, 500);
   });
 </script>
 
@@ -754,6 +834,122 @@
     gap: 16px;
   }
 
+  /* Insurance */
+  #shopify-section-{{ section.id }} .maison-cart-insurance {
+    background: rgba(16,42,67,0.04);
+    border-radius: 8px;
+    padding: 8px 12px 8px 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__price {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__body {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__desc {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(16,42,67,0.75);
+    flex: 1;
+    margin: 0;
+  }
+
+  /* Toggle switch */
+  #shopify-section-{{ section.id }} .maison-cart-insurance__toggle {
+    position: relative;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__switch {
+    display: block;
+    width: 44px;
+    height: 24px;
+    background: #D0D5DD;
+    border-radius: 999px;
+    position: relative;
+    transition: background 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__toggle input:checked + .maison-cart-insurance__switch {
+    background: #065BDC;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__toggle input:checked + .maison-cart-insurance__switch::after {
+    transform: translateX(20px);
+  }
+
   /* Total */
   #shopify-section-{{ section.id }} .maison-cart-total {
     display: flex;
@@ -1037,6 +1233,41 @@
       font-size: 12px;
     }
 
+    #shopify-section-{{ section.id }} .maison-cart-insurance {
+      padding: 4px 8px 4px 4px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__title {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__price {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__desc {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__switch {
+      width: 36px;
+      height: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__switch::after {
+      width: 16px;
+      height: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__toggle input:checked + .maison-cart-insurance__switch::after {
+      transform: translateX(16px);
+    }
+
     #shopify-section-{{ section.id }} .maison-cart-footer {
       padding: 12px 20px;
       gap: 12px;
@@ -1139,6 +1370,39 @@
       "label": "Products",
       "info": "Products already in cart are hidden automatically.",
       "limit": 10
+    },
+    {
+      "type": "header",
+      "content": "Premium Shipping Insurance"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_insurance",
+      "label": "Show insurance toggle",
+      "default": true
+    },
+    {
+      "type": "product",
+      "id": "insurance_product",
+      "label": "Insurance product",
+      "info": "Price is taken from this product"
+    },
+    {
+      "type": "image_picker",
+      "id": "insurance_image",
+      "label": "Insurance icon/image"
+    },
+    {
+      "type": "text",
+      "id": "insurance_title",
+      "label": "Insurance title",
+      "default": "Premium Shipping Insurance"
+    },
+    {
+      "type": "text",
+      "id": "insurance_description",
+      "label": "Insurance description",
+      "default": "Our standard shipping is free, but with this option your order will be insured against: damage, loss, or theft."
     },
     {
       "type": "header",
