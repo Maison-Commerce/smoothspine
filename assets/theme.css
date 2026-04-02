@@ -10230,7 +10230,5 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
 }
 
 .maison-reviews-general .jdgm-all-reviews-page__load-more, .maisoncode_ugc-tabs .jdgm-all-reviews-page__load-more{
-    border-radius: var(--8, 8px)!important;
-  }{
   border-radius: var(--8, 8px)!important;
 }
