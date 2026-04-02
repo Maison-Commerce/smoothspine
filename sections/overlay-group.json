@@ -46,6 +46,7 @@
           "30-patches-nmes-massager"
         ],
         "show_insurance": true,
+        "auto_add_insurance": false,
         "insurance_product": "expedited-shipping",
         "insurance_image": "shopify://shop_images/0d0d1d0c8249be07881ec3992aac1a6c6613076b.png",
         "insurance_title": "Premium Shipping Insurance",
