@@ -79,7 +79,7 @@
                 <div class="mc-line-item__body">
                   <div class="mc-line-item__top">
                     <div class="mc-line-item__text">
-                      <a href="{{ line_item.url }}" class="mc-line-item__title">{{ line_item.product.title | truncate: 40 }}</a>
+                      <a href="{{ line_item.url }}" class="mc-line-item__title">{{ line_item.product.title }}</a>
                       {%- assign short_desc = line_item.product.metafields.custom.maison_short_product_card_description -%}
                       {%- if short_desc != blank -%}
                         <p class="mc-line-item__desc">{{ short_desc }}</p>
@@ -1098,6 +1098,10 @@
 
     #shopify-section-{{ section.id }} .mc-line-item__title {
       font-size: 12px;
+      max-width: 180px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     #shopify-section-{{ section.id }} .mc-line-item__desc {
@@ -1878,6 +1882,7 @@
 
     #shopify-section-{{ section.id }} .maison-cart-gift-row__name {
       font-size: 10px;
+      max-width: 120px;
     }
 
     #shopify-section-{{ section.id }} .maison-cart-gift-row__compare {
