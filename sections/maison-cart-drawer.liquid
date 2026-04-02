@@ -70,7 +70,7 @@
             {%- endif -%}
 
             {%- unless is_gift or is_insurance -%}
-              <div class="mc-line-item">
+              <div class="mc-line-item" {% if line_item.properties._bundle_id %}data-bundle-id="{{ line_item.properties._bundle_id }}"{% endif %}>
                 <div class="mc-line-item__img">
                   {%- if line_item.image != blank -%}
                     {{ line_item.image | image_url: width: 160 | image_tag: loading: 'lazy', widths: '80, 160', sizes: '80px' }}
@@ -443,6 +443,48 @@
   } else {
     initMaisonInsurance();
   }
+
+  /* Sync gift quantities when main product quantity changes */
+  document.documentElement.addEventListener('cart:change', function(e) {
+    var cart = e.detail && e.detail.cart;
+    if (!cart || !cart.items) return;
+
+    /* Build map of bundles: main qty vs gift qtys */
+    var bundles = {};
+    cart.items.forEach(function(item) {
+      if (!item.properties || !item.properties._bundle_id) return;
+      var bid = item.properties._bundle_id;
+      if (!bundles[bid]) bundles[bid] = { mainQty: 0, gifts: [] };
+      if (item.properties._bundle_role === 'main') {
+        bundles[bid].mainQty = item.quantity;
+      } else if (item.properties._bundle_role === 'gift') {
+        bundles[bid].gifts.push({ key: item.key, qty: item.quantity });
+      }
+    });
+
+    /* Find gifts that need qty update */
+    var updates = {};
+    Object.keys(bundles).forEach(function(bid) {
+      var b = bundles[bid];
+      if (b.mainQty === 0) return; /* main removed — handled by bundle removal logic */
+      b.gifts.forEach(function(gift) {
+        if (gift.qty !== b.mainQty) {
+          updates[gift.key] = b.mainQty;
+        }
+      });
+    });
+
+    if (Object.keys(updates).length > 0) {
+      fetch('/cart/update.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ updates: updates })
+      })
+      .then(function() {
+        document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+      });
+    }
+  });
 
   /* Re-init after cart updates — simple debounced approach */
   var _reinitTimer = null;
