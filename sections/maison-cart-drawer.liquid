@@ -66,7 +66,46 @@
             {%- endif -%}
 
             {%- unless is_gift -%}
-              {%- render 'line-item', line_item: line_item, show_desktop_quantity: true -%}
+              <div class="mc-line-item">
+                <div class="mc-line-item__img">
+                  {%- if line_item.image != blank -%}
+                    {{ line_item.image | image_url: width: 160 | image_tag: loading: 'lazy', widths: '80, 160', sizes: '80px' }}
+                  {%- endif -%}
+                </div>
+                <div class="mc-line-item__body">
+                  <div class="mc-line-item__top">
+                    <div class="mc-line-item__text">
+                      <a href="{{ line_item.url }}" class="mc-line-item__title">{{ line_item.product.title }}</a>
+                      {%- assign short_desc = line_item.product.metafields.custom.maison_short_product_card_description -%}
+                      {%- if short_desc != blank -%}
+                        <p class="mc-line-item__desc">{{ short_desc }}</p>
+                      {%- endif -%}
+                    </div>
+                    <a href="{{ line_item.url_to_remove }}" class="mc-line-item__delete" aria-label="Remove {{ line_item.title }}">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g opacity="0.5" clip-path="url(#del-{{ line_item.key }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.00018-0.0045166C6.93693-0.0045166 5.98523.297175 5.30017.982236 4.63796 1.64444 4.33397 2.5558 4.31443 3.57622 3.50895 3.64087 2.70075 3.72664 1.88804 3.83355 1.4187 3.89527 1.08826 4.3258 1.14999 4.79515 1.21173 5.26448 1.64226 5.59492 2.11159 5.53319L2.24778 5.51548C2.22409 7.67421 2.26948 10.7063 2.8449 13.2723 3.15837 14.6701 4.34059 15.6431 5.71089 15.8364 6.48455 15.9455 7.19457 16.0005 8.00053 16.0005 8.80652 16.0005 9.51663 15.9455 10.2904 15.8364 11.6607 15.6431 12.8429 14.6701 13.1564 13.2723 13.7318 10.7063 13.7772 7.67431 13.7535 5.51558L13.889 5.53319C14.3582 5.59492 14.7887 5.26448 14.8506 4.79515 14.9123 4.3258 14.5818 3.89527 14.1125 3.83355 13.2997 3.72664 12.4915 3.64086 11.6859 3.57621 11.6663 2.55579 11.3624 1.64444 10.7002.982236 10.0151.297175 9.06342-0.0045166 8.00018-0.0045166ZM9.96678 3.47014C9.93121 2.84539 9.73781 2.44423 9.48801 2.19442 9.21099 1.91741 8.74788 1.70976 8.00018 1.70976 7.25247 1.70976 6.78937 1.91741 6.51235 2.19442 6.26254 2.44423 6.06915 2.8454 6.03357 3.47014 7.34594 3.41366 8.65442 3.41366 9.96678 3.47014ZM6.45625 7.24487C6.17731 6.96593 5.72505 6.96593 5.4461 7.24487 5.16715 7.52382 5.16715 7.97607 5.4461 8.25502L6.99013 9.79906 5.44611 11.3431C5.16716 11.622 5.16716 12.0743 5.44611 12.3532 5.72506 12.6322 6.17732 12.6322 6.45626 12.3532L8.00029 10.8092 9.54417 12.3531C9.82311 12.6321 10.2754 12.6321 10.5543 12.3531 10.8333 12.0741 10.8333 11.6219 10.5543 11.3429L9.01044 9.79906 10.5543 8.25517C10.8333 7.97622 10.8333 7.52396 10.5543 7.24501 10.2754 6.96606 9.82313 6.96606 9.54418 7.24501L8.00029 8.78891 6.45625 7.24487Z" fill="#102A43"/></g><defs><clipPath id="del-{{ line_item.key }}"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
+                    </a>
+                  </div>
+                  <div class="mc-line-item__bottom">
+                    <line-item-quantity class="mc-line-item__qty">
+                      <button type="button" class="mc-line-item__qty-btn" aria-label="Decrease quantity" onclick="this.parentElement.querySelector('input').stepDown(); this.parentElement.querySelector('input').dispatchEvent(new Event('change', {bubbles: true}));">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6H9.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      </button>
+                      <input class="quantity-input mc-line-item__qty-input" type="number" is="quantity-input" inputmode="numeric" min="{{ line_item.variant.quantity_rule.min }}" step="{{ line_item.variant.quantity_rule.increment }}" data-line-key="{{ line_item.key }}" aria-label="Quantity" value="{{ line_item.quantity }}">
+                      <button type="button" class="mc-line-item__qty-btn" aria-label="Increase quantity" onclick="this.parentElement.querySelector('input').stepUp(); this.parentElement.querySelector('input').dispatchEvent(new Event('change', {bubbles: true}));">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 2.5V9.5M2.5 6H9.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      </button>
+                    </line-item-quantity>
+                    <div class="mc-line-item__prices">
+                      {%- if line_item.original_line_price > line_item.final_line_price -%}
+                        <span class="mc-line-item__compare">{{ line_item.original_line_price | money }}</span>
+                      {%- elsif line_item.variant.compare_at_price > line_item.variant.price -%}
+                        <span class="mc-line-item__compare">{{ line_item.variant.compare_at_price | times: line_item.quantity | money }}</span>
+                      {%- endif -%}
+                      <span class="mc-line-item__price">{{ line_item.final_line_price | money }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               {%- comment -%} Show gift items that belong to this bundle {%- endcomment -%}
               {%- if line_item.properties._bundle_id != blank -%}
@@ -136,10 +175,10 @@
                 {% if rec_count > 1 %}
                   <div class="maison-cart-recs__nav">
                     <button type="button" class="maison-cart-recs__arrow maison-cart-recs__prev" disabled>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="#FAFCFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.92232 6.85709H14.295C14.9262 6.85709 15.4379 7.36877 15.4379 7.99995C15.4379 8.63114 14.9262 9.1428 14.295 9.1428H3.92256C4.50592 9.75495 5.18921 10.2849 5.86018 10.6204C6.42473 10.9026 6.65355 11.5891 6.37128 12.1537C6.089 12.7183 5.40252 12.9471 4.83797 12.6648C3.1597 11.8257 1.52325 10.1892 0.684124 8.51086C0.523255 8.18911 0.523261 7.8104 0.684139 7.48867C1.52328 5.81046 3.15971 4.17403 4.83797 3.3349C5.40252 3.05262 6.089 3.28144 6.37128 3.84599C6.65355 4.41054 6.42473 5.09702 5.86018 5.3793C5.18912 5.71483 4.50573 6.24486 3.92232 6.85709Z" fill="#FAFCFE"/></svg>
                     </button>
                     <button type="button" class="maison-cart-recs__arrow maison-cart-recs__next">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="#FAFCFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.079 6.85709H1.70634C1.07515 6.85709 0.563477 7.36877 0.563477 7.99995C0.563477 8.63114 1.07515 9.1428 1.70634 9.1428H12.0788C11.4955 9.75495 10.8122 10.2849 10.1412 10.6204C9.57667 10.9026 9.34785 11.5891 9.63012 12.1537C9.9124 12.7183 10.5989 12.9471 11.1634 12.6648C12.8417 11.8257 14.4781 10.1892 15.3172 8.51086C15.4781 8.18911 15.4781 7.8104 15.3172 7.48867C14.4781 5.81046 12.8417 4.17403 11.1634 3.3349C10.5989 3.05262 9.9124 3.28144 9.63012 3.84599C9.34785 4.41054 9.57667 5.09702 10.1412 5.3793C10.8123 5.71483 11.4956 6.24486 12.079 6.85709Z" fill="#FAFCFE"/></svg>
                     </button>
                   </div>
                 {% endif %}
@@ -486,117 +525,206 @@
     opacity: 0.5;
   }
 
-  /* Line item overrides */
-  #shopify-section-{{ section.id }} .line-item {
+  /* Custom Line Item */
+  #shopify-section-{{ section.id }} .mc-line-item {
+    background: #fff;
     padding: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
   }
 
-  #shopify-section-{{ section.id }} .line-item__media-wrapper {
-    width: 80px !important;
+  #shopify-section-{{ section.id }} .mc-line-item__img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
   }
 
-  #shopify-section-{{ section.id }} .line-item__media {
-    border-radius: 8px !important;
+  #shopify-section-{{ section.id }} .mc-line-item__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
-  #shopify-section-{{ section.id }} .line-item__info .bold,
-  #shopify-section-{{ section.id }} .line-item__info .reversed-link {
-    font-family: 'Open Sans', sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 16px !important;
-    line-height: 1.5 !important;
-    color: #102A43 !important;
+  #shopify-section-{{ section.id }} .mc-line-item__body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-self: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__top {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+    text-decoration: none;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
-  #shopify-section-{{ section.id }} .line-item__info .text-subdued {
-    font-family: 'Open Sans', sans-serif !important;
-    font-size: 12px !important;
-    color: rgba(16,42,67,0.75) !important;
+  #shopify-section-{{ section.id }} .mc-line-item__desc {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(16,42,67,0.75);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
   }
 
-  /* Price list in line items */
-  #shopify-section-{{ section.id }} .line-item price-list {
+  #shopify-section-{{ section.id }} .mc-line-item__delete {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__delete svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Quantity picker */
+  #shopify-section-{{ section.id }} .mc-line-item__qty {
+    display: flex;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__qty-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(44,41,38,0.08);
+    border-radius: 4px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__qty-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__qty-input {
+    width: 40px;
+    height: 32px;
+    text-align: center;
+    border: none !important;
+    background: transparent;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #102A43;
+    -moz-appearance: textfield;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__qty-input::-webkit-outer-spin-button,
+  #shopify-section-{{ section.id }} .mc-line-item__qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Prices */
+  #shopify-section-{{ section.id }} .mc-line-item__prices {
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
   }
 
-  #shopify-section-{{ section.id }} .line-item sale-price {
-    font-family: 'Open Sans', sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 16px !important;
-    color: #102A43 !important;
-  }
-
-  #shopify-section-{{ section.id }} .line-item compare-at-price {
-    font-family: 'Open Sans', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: 14px !important;
-    color: #102A43 !important;
-    opacity: 0.5;
-  }
-
-  /* Quantity controls */
-  #shopify-section-{{ section.id }} .line-item .quantity-input {
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-weight: 800 !important;
-    font-size: 12px !important;
-    letter-spacing: 1px;
-    text-align: center;
+  #shopify-section-{{ section.id }} .mc-line-item__compare {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
     color: #102A43;
-    width: 40px;
-    height: 32px;
-    border: none !important;
-    background: transparent;
+    opacity: 0.5;
+    text-decoration: line-through;
   }
 
-  /* Remove link styling */
-  #shopify-section-{{ section.id }} .line-item a[href*="/cart/change"],
-  #shopify-section-{{ section.id }} .line-item .link[aria-label*="Remove"] {
-    opacity: 0.5;
-    font-size: 0;
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cg opacity='0.5' clip-path='url(%23c)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.00018-0.0045166C6.93693-0.0045166 5.98523.297175 5.30017.982236 4.63796 1.64444 4.33397 2.5558 4.31443 3.57622 3.50895 3.64087 2.70075 3.72664 1.88804 3.83355 1.4187 3.89527 1.08826 4.3258 1.14999 4.79515 1.21173 5.26448 1.64226 5.59492 2.11159 5.53319L2.24778 5.51548C2.22409 7.67421 2.26948 10.7063 2.8449 13.2723 3.15837 14.6701 4.34059 15.6431 5.71089 15.8364 6.48455 15.9455 7.19457 16.0005 8.00053 16.0005 8.80652 16.0005 9.51663 15.9455 10.2904 15.8364 11.6607 15.6431 12.8429 14.6701 13.1564 13.2723 13.7318 10.7063 13.7772 7.67431 13.7535 5.51558L13.889 5.53319C14.3582 5.59492 14.7887 5.26448 14.8506 4.79515 14.9123 4.3258 14.5818 3.89527 14.1125 3.83355 13.2997 3.72664 12.4915 3.64086 11.6859 3.57621 11.6663 2.55579 11.3624 1.64444 10.7002.982236 10.0151.297175 9.06342-0.0045166 8.00018-0.0045166ZM9.96678 3.47014C9.93121 2.84539 9.73781 2.44423 9.48801 2.19442 9.21099 1.91741 8.74788 1.70976 8.00018 1.70976 7.25247 1.70976 6.78937 1.91741 6.51235 2.19442 6.26254 2.44423 6.06915 2.8454 6.03357 3.47014 7.34594 3.41366 8.65442 3.41366 9.96678 3.47014ZM6.45625 7.24487C6.17731 6.96593 5.72505 6.96593 5.4461 7.24487 5.16715 7.52382 5.16715 7.97607 5.4461 8.25502L6.99013 9.79906 5.44611 11.3431C5.16716 11.622 5.16716 12.0743 5.44611 12.3532 5.72506 12.6322 6.17732 12.6322 6.45626 12.3532L8.00029 10.8092 9.54417 12.3531C9.82311 12.6321 10.2754 12.6321 10.5543 12.3531 10.8333 12.0741 10.8333 11.6219 10.5543 11.3429L9.01044 9.79906 10.5543 8.25517C10.8333 7.97622 10.8333 7.52396 10.5543 7.24501 10.2754 6.96606 9.82313 6.96606 9.54418 7.24501L8.00029 8.78891 6.45625 7.24487Z' fill='%23102A43'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Crect width='16' height='16' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    opacity: 1;
+  #shopify-section-{{ section.id }} .mc-line-item__price {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
   }
 
   @media (max-width: 999px) {
-    #shopify-section-{{ section.id }} .line-item {
+    #shopify-section-{{ section.id }} .mc-line-item {
       padding: 12px 20px;
+      gap: 12px;
     }
 
-    #shopify-section-{{ section.id }} .line-item__media-wrapper {
-      width: 64px !important;
+    #shopify-section-{{ section.id }} .mc-line-item__img {
+      width: 64px;
+      height: 64px;
     }
 
-    #shopify-section-{{ section.id }} .line-item__info .bold,
-    #shopify-section-{{ section.id }} .line-item__info .reversed-link {
-      font-size: 12px !important;
-      white-space: normal;
+    #shopify-section-{{ section.id }} .mc-line-item__body {
+      gap: 8px;
     }
 
-    #shopify-section-{{ section.id }} .line-item__info .text-subdued {
-      font-size: 10px !important;
+    #shopify-section-{{ section.id }} .mc-line-item__title {
+      font-size: 12px;
     }
 
-    #shopify-section-{{ section.id }} .line-item sale-price {
-      font-size: 12px !important;
+    #shopify-section-{{ section.id }} .mc-line-item__desc {
+      font-size: 10px;
     }
 
-    #shopify-section-{{ section.id }} .line-item compare-at-price {
-      font-size: 10px !important;
-    }
-
-    #shopify-section-{{ section.id }} .line-item .quantity-input {
+    #shopify-section-{{ section.id }} .mc-line-item__qty-btn {
+      width: 28px;
       height: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .mc-line-item__qty-input {
+      height: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .mc-line-item__compare {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .mc-line-item__price {
+      font-size: 12px;
     }
   }
 
@@ -659,9 +787,8 @@
     background: #F8F4EE;
   }
 
-  #shopify-section-{{ section.id }} .cart-drawer__line-items > * {
-    background: #fff;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
+  #shopify-section-{{ section.id }} .cart-drawer__line-items > * + * {
+    border-top: none;
   }
 
   #shopify-section-{{ section.id }} .maison-recs-wrapper-grid{
@@ -735,12 +862,13 @@
 
   #shopify-section-{{ section.id }} .maison-cart-rec-card {
     width: 390px;
+    display: flex;
   }
 
   #shopify-section-{{ section.id }} .maison-cart-rec-card__inner {
     background: #EEEAE5;
     border: 1px solid #DCD9D3;
-    border-radius: 8px;
+    border-radius: 0px;
     padding: 20px;
     display: flex;
     align-items: center;
