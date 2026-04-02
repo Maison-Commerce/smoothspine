@@ -24,7 +24,16 @@
           <div class="maison-cart-header__left">
             <h2 class="maison-cart-title">My Cart</h2>
             <span class="maison-cart-dot"></span>
-            <cart-count class="maison-cart-count">{{ cart.item_count }}</cart-count>
+            {%- assign visible_count = 0 -%}
+            {%- for item in cart.items -%}
+              {%- assign skip = false -%}
+              {%- if item.properties._bundle_role == 'gift' -%}{%- assign skip = true -%}{%- endif -%}
+              {%- if section.settings.insurance_product != blank and item.product.id == section.settings.insurance_product.id -%}{%- assign skip = true -%}{%- endif -%}
+              {%- unless skip -%}
+                {%- assign visible_count = visible_count | plus: item.quantity -%}
+              {%- endunless -%}
+            {%- endfor -%}
+            <cart-count class="maison-cart-count">{{ visible_count }}</cart-count>
           </div>
           <button type="button" is="close-button" class="maison-cart-close" aria-label="{{ 'general.accessibility.close' | t }}">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#mc-close)"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.88198 15.7158C1.40984 16.1338 0.693241 16.0841 0.281443 15.6049C-0.130356 15.1258 -0.081424 14.3985 0.390735 13.9805C2.45373 12.1546 4.45256 10.2782 6.39349 8.34502C4.37353 6.26623 2.41541 4.12304 0.512143 1.90836C0.100345 1.42918 0.149276 0.701933 0.621435 0.284011C1.09359 -0.13391 1.81018 -0.0842504 2.22198 0.394928C4.0919 2.57083 6.01546 4.67639 7.99966 6.71876C9.98386 4.67639 11.9074 2.57083 13.7773 0.394928C14.1891 -0.0842504 14.9058 -0.13391 15.3779 0.284011C15.85 0.701933 15.8989 1.42918 15.4872 1.90836C13.584 4.12304 11.6258 6.26623 9.60582 8.34502C11.5468 10.2782 13.5456 12.1546 15.6086 13.9805C16.0808 14.3985 16.1297 15.1258 15.7179 15.6049C15.3061 16.0841 14.5894 16.1338 14.1173 15.7158C12.0148 13.8548 9.97765 11.9421 7.99966 9.9714C6.02166 11.9421 3.98453 13.8548 1.88198 15.7158Z" fill="#102A43"/></g><defs><clipPath id="mc-close"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
