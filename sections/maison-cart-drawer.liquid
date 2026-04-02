@@ -134,7 +134,7 @@
                                 {{ gift_item.image | image_url: width: 96 | image_tag: loading: 'lazy', widths: '48, 96', sizes: '48px', class: 'maison-cart-gift-row__img-el' }}
                               </div>
                             {%- endif -%}
-                            <span class="maison-cart-gift-row__name">{{ gift_item.product.title | truncate: 50 }}</span>
+                            <span class="maison-cart-gift-row__name">{{ gift_item.product.title | truncate: 40 }}</span>
                           </div>
                           <div class="maison-cart-gift-row__prices">
                             {%- if gift_item.original_line_price > gift_item.final_line_price -%}
@@ -448,7 +448,16 @@
 
   #shopify-section-{{ section.id }} .drawer::part(content){
     background: #F8F4EE;
-    border-radius: var(--rounded-sm) 0 0 var(--rounded-sm);
+  }
+
+  #shopify-section-{{ section.id }} .cart-drawer {
+    --rounded-sm: 16px 0 0 16px;
+  }
+
+  @media (max-width: 999px) {
+    #shopify-section-{{ section.id }} .cart-drawer {
+      --rounded-sm: 0px;
+    }
   }
 
   #shopify-section-{{ section.id }} .cart-drawer::part(footer) {
