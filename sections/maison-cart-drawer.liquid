@@ -1,4 +1,4 @@
-<cart-drawer {% if request.design_mode %}handle-section-events{% endif %} class="cart-drawer drawer drawer--lg" id="cart-drawer">
+<cart-drawer {% if request.design_mode %}handle-section-events{% endif %} class="cart-drawer drawer" id="cart-drawer">
   {%- if cart.item_count == 0 -%}
     <button is="close-button" aria-label="{{ 'general.accessibility.close' | t | escape }}">
       {%- render 'icon' with 'close' -%}
@@ -446,6 +446,10 @@
     padding: 0 !important;
   }
 
+  #shopify-section-{{ section.id }} .drawer::part(content){
+    background: #F8F4EE;
+  }
+
   #shopify-section-{{ section.id }} .cart-drawer::part(footer) {
     padding: 0 !important;
   }
@@ -532,7 +536,6 @@
     display: flex;
     gap: 16px;
     align-items: flex-start;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
   }
 
   #shopify-section-{{ section.id }} .mc-line-item__img {
@@ -775,11 +778,8 @@
     position: relative;
     z-index: 1;
     transition: width 0.4s ease;
-  }
-
-  /* Drawer bg */
-  #shopify-section-{{ section.id }} .cart-drawer__inner {
-    background: #F8F4EE;
+    position: relative;
+    top: -1px;
   }
 
   /* Line items area */
@@ -873,6 +873,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    width: 100%;
   }
 
   #shopify-section-{{ section.id }} .maison-cart-rec-card__content {
@@ -1377,7 +1378,6 @@
     height: 16px;
     background: #102A43;
     opacity: 0.15;
-    transform: rotate(90deg);
     flex-shrink: 0;
   }
 

@@ -1324,9 +1324,8 @@ scroll-carousel {
     --drawer-header-padding: var(--spacing-8) var(--spacing-10);
     --drawer-body-padding: var(--spacing-8) var(--spacing-10);
     --drawer-footer-padding: var(--spacing-8) var(--spacing-10);
-    width: 510px;
+    width: 520px;
     height: 100%;
-    padding: var(--spacing-4);
   }
 
   .drawer::part(header) {
