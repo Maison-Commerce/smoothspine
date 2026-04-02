@@ -574,8 +574,6 @@
           </div>
         {%- endif -%}
       {%- endfor -%}
-        </div>
-      {% endif %}
 
       {%- comment -%} Our Community (not accordion) {%- endcomment -%}
       {% assign social_links = section.blocks | where: "type", "social_link" %}
@@ -1003,57 +1001,15 @@
       "name": "Footer",
       "blocks": [
         {
-          "type": "shop_link",
+          "type": "menu",
           "settings": {
-            "label": "About us"
+            "menu_title": "Shop"
           }
         },
         {
-          "type": "shop_link",
+          "type": "menu",
           "settings": {
-            "label": "Contact Us"
-          }
-        },
-        {
-          "type": "shop_link",
-          "settings": {
-            "label": "Best Sellers"
-          }
-        },
-        {
-          "type": "shop_link",
-          "settings": {
-            "label": "Shipping"
-          }
-        },
-        {
-          "type": "shop_link",
-          "settings": {
-            "label": "Refund Policy"
-          }
-        },
-        {
-          "type": "help_link",
-          "settings": {
-            "label": "Privacy Policy"
-          }
-        },
-        {
-          "type": "help_link",
-          "settings": {
-            "label": "Terms of Service"
-          }
-        },
-        {
-          "type": "help_link",
-          "settings": {
-            "label": "Your Privacy Choices"
-          }
-        },
-        {
-          "type": "help_link",
-          "settings": {
-            "label": "Accessibility Statement"
+            "menu_title": "Help"
           }
         },
         {
