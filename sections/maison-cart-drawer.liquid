@@ -79,7 +79,7 @@
                 <div class="mc-line-item__body">
                   <div class="mc-line-item__top">
                     <div class="mc-line-item__text">
-                      <a href="{{ line_item.url }}" class="mc-line-item__title">{{ line_item.product.title }}</a>
+                      <a href="{{ line_item.url }}" class="mc-line-item__title">{{ line_item.product.title | truncate: 40 }}</a>
                       {%- assign short_desc = line_item.product.metafields.custom.maison_short_product_card_description -%}
                       {%- if short_desc != blank -%}
                         <p class="mc-line-item__desc">{{ short_desc }}</p>
