@@ -14,67 +14,11 @@
     "maison_footer_PrXfKf": {
       "type": "maison-footer",
       "blocks": {
-        "shop_link_VqWbwN": {
-          "type": "shop_link",
+        "menu_LGMpyY": {
+          "type": "menu",
           "settings": {
-            "label": "About us",
-            "link": ""
-          }
-        },
-        "shop_link_rp7Frx": {
-          "type": "shop_link",
-          "settings": {
-            "label": "Contact Us",
-            "link": ""
-          }
-        },
-        "shop_link_TDafPf": {
-          "type": "shop_link",
-          "settings": {
-            "label": "Best Sellers",
-            "link": ""
-          }
-        },
-        "shop_link_Ti4wjX": {
-          "type": "shop_link",
-          "settings": {
-            "label": "Shipping",
-            "link": ""
-          }
-        },
-        "shop_link_dPCDWC": {
-          "type": "shop_link",
-          "settings": {
-            "label": "Refund Policy",
-            "link": ""
-          }
-        },
-        "help_link_GQG3Gg": {
-          "type": "help_link",
-          "settings": {
-            "label": "Privacy Policy",
-            "link": ""
-          }
-        },
-        "help_link_UGMdJB": {
-          "type": "help_link",
-          "settings": {
-            "label": "Terms of Service",
-            "link": ""
-          }
-        },
-        "help_link_hMTfFq": {
-          "type": "help_link",
-          "settings": {
-            "label": "Your Privacy Choices",
-            "link": ""
-          }
-        },
-        "help_link_mDTGhG": {
-          "type": "help_link",
-          "settings": {
-            "label": "Accessibility Statement",
-            "link": ""
+            "menu": "footer",
+            "menu_title": "Shop"
           }
         },
         "social_link_PWFdcr": {
@@ -165,15 +109,7 @@
         }
       },
       "block_order": [
-        "shop_link_VqWbwN",
-        "shop_link_rp7Frx",
-        "shop_link_TDafPf",
-        "shop_link_Ti4wjX",
-        "shop_link_dPCDWC",
-        "help_link_GQG3Gg",
-        "help_link_UGMdJB",
-        "help_link_hMTfFq",
-        "help_link_mDTGhG",
+        "menu_LGMpyY",
         "social_link_PWFdcr",
         "social_link_JLQwQY",
         "payment_icon_eBhYPn",
@@ -194,8 +130,6 @@
         "newsletter_text": "<p>Join the SmoothSpine Family and be the first to hear about new ways to relief pain and get access to <strong>exclusive mystery sales!</strong></p>",
         "show_newsletter": true,
         "email_placeholder": "Enter your email",
-        "shop_column_title": "Shop",
-        "help_column_title": "Help",
         "community_column_title": "Our Community",
         "copyright_text": "© 2026 SmoothSpine. All Rights Reserved.",
         "logo": "shopify://shop_images/smoothspine-logo.png",
