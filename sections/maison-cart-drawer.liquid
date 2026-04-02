@@ -391,41 +391,47 @@
   }
 
   /* Insurance toggle */
+  function _insuranceChangeHandler(e) {
+    var el = e.target.closest('[data-maison-insurance]');
+    if (!el) return;
+    var variantId = el.getAttribute('data-variant-id');
+    var lineKey = el.getAttribute('data-line-key');
+    var isChecked = e.target.checked;
+
+    if (isChecked) {
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function() {
+        document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+      });
+    } else {
+      if (lineKey) {
+        fetch('/cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: lineKey, quantity: 0 })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function() {
+          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+        });
+      }
+    }
+  }
+
   function initMaisonInsurance() {
     var el = document.querySelector('[data-maison-insurance]');
     if (!el) return;
     var checkbox = el.querySelector('[data-maison-insurance-checkbox]');
     if (!checkbox) return;
 
-    checkbox.addEventListener('change', function() {
-      var variantId = el.getAttribute('data-variant-id');
-      var lineKey = el.getAttribute('data-line-key');
-      var isChecked = checkbox.checked;
-
-      if (isChecked) {
-        fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
-        })
-        .then(function(res) { return res.json(); })
-        .then(function() {
-          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
-        });
-      } else {
-        if (lineKey) {
-          fetch('/cart/change.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id: lineKey, quantity: 0 })
-          })
-          .then(function(res) { return res.json(); })
-          .then(function() {
-            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
-          });
-        }
-      }
-    });
+    /* Remove old listener before adding new one */
+    checkbox.removeEventListener('change', _insuranceChangeHandler);
+    checkbox.addEventListener('change', _insuranceChangeHandler);
   }
 
   if (document.readyState === 'loading') {
