@@ -81,7 +81,7 @@
           "type": "social_link",
           "settings": {
             "label": "Instagram",
-            "link": "",
+            "link": "https://www.instagram.com/smoothspine_/",
             "icon": "shopify://shop_images/inst-blue-logo.svg"
           }
         },
@@ -89,7 +89,7 @@
           "type": "social_link",
           "settings": {
             "label": "Facebook",
-            "link": "",
+            "link": "https://www.facebook.com/SmoothSpine-106013564124992/",
             "icon": "shopify://shop_images/face-blue-logo.svg"
           }
         },
