@@ -439,32 +439,41 @@
 
   /* Re-init after cart updates */
   var _reinitTimer = null;
+  var _reinitLock = false;
+
   function reinitMaisonCart() {
     clearTimeout(_reinitTimer);
+    if (_reinitLock) return;
+    _reinitLock = true;
     _reinitTimer = setTimeout(function() {
       initMaisonCartRecs();
       initMaisonInsurance();
-    }, 400);
+      _reinitLock = false;
+    }, 600);
   }
 
-  document.documentElement.addEventListener('cart:refresh', reinitMaisonCart);
-  document.documentElement.addEventListener('cart:change', reinitMaisonCart);
-
-  /* Init when drawer opens (attribute observer) */
+  /* Watch for drawer open + content changes */
   (function() {
     var cartDrawer = document.getElementById('cart-drawer');
     if (!cartDrawer) return;
 
-    var attrObserver = new MutationObserver(function(mutations) {
+    /* Reinit when drawer opens */
+    new MutationObserver(function(mutations) {
       for (var i = 0; i < mutations.length; i++) {
         if (mutations[i].attributeName === 'open' && cartDrawer.hasAttribute('open')) {
           reinitMaisonCart();
           break;
         }
       }
-    });
+    }).observe(cartDrawer, { attributes: true, attributeFilter: ['open'] });
 
-    attrObserver.observe(cartDrawer, { attributes: true, attributeFilter: ['open'] });
+    /* Reinit when theme replaces .cart-drawer__inner innerHTML */
+    new MutationObserver(function() {
+      /* Only reinit if drawer is open */
+      if (cartDrawer.hasAttribute('open')) {
+        reinitMaisonCart();
+      }
+    }).observe(cartDrawer, { childList: true, subtree: true });
   })();
 </script>
 
