@@ -474,13 +474,49 @@
     });
 
     if (Object.keys(updates).length > 0) {
-      fetch('/cart/update.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ updates: updates })
-      })
-      .then(function() {
-        document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+      /* Update gift quantities, then use /cart/change.js on last gift to get section HTML */
+      var giftKeys = Object.keys(updates);
+      var lastKey = giftKeys[giftKeys.length - 1];
+      var lastQty = updates[lastKey];
+
+      /* First update all except last via /cart/update.js */
+      var bulkUpdates = {};
+      giftKeys.forEach(function(key) {
+        if (key !== lastKey) bulkUpdates[key] = updates[key];
+      });
+
+      var chain = Promise.resolve();
+      if (Object.keys(bulkUpdates).length > 0) {
+        chain = fetch('/cart/update.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ updates: bulkUpdates })
+        });
+      }
+
+      /* Then change last gift via /cart/change.js with sections param for drawer re-render */
+      chain.then(function() {
+        var cartDrawer = document.querySelector('cart-drawer');
+        var sectionId = '';
+        if (cartDrawer) {
+          var shopifySection = cartDrawer.closest('.shopify-section');
+          if (shopifySection) sectionId = shopifySection.id.replace('shopify-section-', '');
+        }
+        var body = { id: lastKey, quantity: lastQty };
+        if (sectionId) body.sections = sectionId;
+
+        return fetch('/cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        }).then(function(res) { return res.json(); });
+      }).then(function(data) {
+        if (data) {
+          document.documentElement.dispatchEvent(new CustomEvent('cart:change', {
+            bubbles: true,
+            detail: { baseEvent: 'line-item:change', cart: data }
+          }));
+        }
       });
     }
   });
