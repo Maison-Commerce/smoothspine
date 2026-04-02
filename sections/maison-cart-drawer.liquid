@@ -141,10 +141,9 @@
                             <span class="maison-cart-gift-row__name">{{ gift_item.product.title | truncate: 40 }}</span>
                           </div>
                           <div class="maison-cart-gift-row__prices">
-                            {%- if gift_item.original_line_price > gift_item.final_line_price -%}
-                              <span class="maison-cart-gift-row__compare">{{ gift_item.original_line_price | money_without_trailing_zeros }}</span>
-                            {%- elsif gift_item.variant.compare_at_price > gift_item.variant.price -%}
-                              <span class="maison-cart-gift-row__compare">{{ gift_item.variant.compare_at_price | money_without_trailing_zeros }}</span>
+                            {%- if gift_item.variant.compare_at_price > 0 -%}
+                              {%- assign gift_compare_total = gift_item.variant.compare_at_price | times: gift_item.quantity -%}
+                              <span class="maison-cart-gift-row__compare">{{ gift_compare_total | money_without_trailing_zeros }}</span>
                             {%- endif -%}
                             <span class="maison-cart-gift-row__price">{{ gift_item.final_line_price | money_without_trailing_zeros }}</span>
                           </div>
