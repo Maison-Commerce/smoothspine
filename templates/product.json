@@ -139,40 +139,13 @@
           "settings": {
             "text": "Feel The Difference In Just 15 Minutes Per Day"
           }
-        },
-        "gift_item_UEQDWi": {
-          "type": "gift_item",
-          "settings": {
-            "gift_product": "smoothspine™-30-day-sciatica-relief-plan-coc",
-            "image": "shopify://shop_images/dc43829b1674bae58a96a2b9dbbd09fbe430dfc2.png",
-            "name": "Back pain & Sciatica Guide"
-          }
-        },
-        "gift_item_wh6nam": {
-          "type": "gift_item",
-          "settings": {
-            "gift_product": "sciatica-back-pain-relief-patches",
-            "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
-            "name": "12x Back Pain Relief Patches"
-          }
-        },
-        "gift_item_tRjWC7": {
-          "type": "gift_item",
-          "settings": {
-            "gift_product": "smoothspine™-zip-lock-travel-bag-coc",
-            "image": "shopify://shop_images/gsejnjn3gn4knf_egegh.png",
-            "name": "Zip Lock Travel Bag"
-          }
         }
       },
       "block_order": [
         "check_item_AtN6R7",
         "check_item_DLQCxf",
         "check_item_Gat3yA",
-        "check_item_JTW6TX",
-        "gift_item_UEQDWi",
-        "gift_item_wh6nam",
-        "gift_item_tRjWC7"
+        "check_item_JTW6TX"
       ],
       "name": "PDP Hero",
       "settings": {
