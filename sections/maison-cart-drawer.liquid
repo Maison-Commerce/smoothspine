@@ -493,15 +493,14 @@
 
   /* Auto-add insurance when first item added (if not manually opted out) */
   {% if section.settings.auto_add_insurance and section.settings.insurance_product != blank %}
-    document.documentElement.addEventListener('cart:change', function(e) {
-      var cart = e.detail && e.detail.cart;
-      if (!cart || !cart.items) return;
+    var _autoInsLock = false;
+
+    function _checkAutoAddInsurance(cart) {
+      if (_autoInsLock) return;
 
       var insProductId = {{ section.settings.insurance_product.id | default: 0 }};
       var insVariantId = {{ section.settings.insurance_product.first_available_variant.id | default: 0 }};
       if (!insProductId || !insVariantId) return;
-
-      /* Check if user manually opted out */
       if (sessionStorage.getItem('maison_insurance_opted_out') === 'true') return;
 
       var hasInsurance = false;
@@ -512,17 +511,34 @@
         else hasRealItems = true;
       });
 
-      /* Auto-add if: real items exist, no insurance yet, user hasn't opted out */
       if (hasRealItems && !hasInsurance) {
+        _autoInsLock = true;
         fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ items: [{ id: insVariantId, quantity: 1 }] })
         })
         .then(function() {
+          _autoInsLock = false;
           document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
-        });
+        })
+        .catch(function() { _autoInsLock = false; });
       }
+    }
+
+    /* Listen to cart:change (quantity changes inside drawer) */
+    document.documentElement.addEventListener('cart:change', function(e) {
+      var cart = e.detail && e.detail.cart;
+      if (cart && cart.items) _checkAutoAddInsurance(cart);
+    });
+
+    /* Listen to cart:refresh (add to cart from PDP) — need to fetch cart */
+    document.documentElement.addEventListener('cart:refresh', function() {
+      setTimeout(function() {
+        fetch('/cart.js')
+          .then(function(res) { return res.json(); })
+          .then(function(cart) { _checkAutoAddInsurance(cart); });
+      }, 300);
     });
   {% endif %}
 
