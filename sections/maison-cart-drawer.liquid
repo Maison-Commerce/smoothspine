@@ -263,35 +263,26 @@
         </div>
       {% endif %}
 
-      {%- comment -%} Total Price Row — include gift compare_at_price, exclude insurance {%- endcomment -%}
+      {%- comment -%} Total Price Row — include all items in compare {%- endcomment -%}
       {%- assign total_compare = 0 -%}
-      {%- assign total_actual = 0 -%}
       {%- for item in cart.items -%}
-        {%- assign is_ins = false -%}
-        {%- if section.settings.insurance_product != blank and item.product.id == section.settings.insurance_product.id -%}
-          {%- assign is_ins = true -%}
+        {%- if item.variant.compare_at_price > item.variant.price -%}
+          {%- assign item_compare = item.variant.compare_at_price | times: item.quantity -%}
+        {%- else -%}
+          {%- assign item_compare = item.variant.price | times: item.quantity -%}
         {%- endif -%}
-
-        {%- unless is_ins -%}
-          {%- if item.variant.compare_at_price > item.variant.price -%}
-            {%- assign item_compare = item.variant.compare_at_price | times: item.quantity -%}
-          {%- else -%}
-            {%- assign item_compare = item.variant.price | times: item.quantity -%}
-          {%- endif -%}
-          {%- assign total_compare = total_compare | plus: item_compare -%}
-          {%- assign total_actual = total_actual | plus: item.final_line_price -%}
-        {%- endunless -%}
+        {%- assign total_compare = total_compare | plus: item_compare -%}
       {%- endfor -%}
 
       <div class="maison-cart-total">
         <span class="maison-cart-total__label">Total Price</span>
         <div class="maison-cart-total__values">
-          {%- if total_compare > total_actual -%}
+          {%- if total_compare > cart.total_price -%}
             <span class="maison-cart-total__compare">{{ total_compare | money }}</span>
           {%- endif -%}
           <span class="maison-cart-total__price">{{ cart.total_price | money }}</span>
-          {%- if total_compare > total_actual -%}
-            {%- assign save_amount = total_compare | minus: total_actual -%}
+          {%- if total_compare > cart.total_price -%}
+            {%- assign save_amount = total_compare | minus: cart.total_price -%}
             {%- assign save_percent = save_amount | times: 100 | divided_by: total_compare -%}
             <span class="maison-cart-total__badge">Save {{ save_percent }}%</span>
           {%- endif -%}
@@ -413,34 +404,69 @@
   }
 
   /* Insurance toggle */
+  function _getCartSectionId() {
+    var cartDrawer = document.querySelector('cart-drawer');
+    if (!cartDrawer) return '';
+    var shopifySection = cartDrawer.closest('.shopify-section');
+    return shopifySection ? shopifySection.id.replace('shopify-section-', '') : '';
+  }
+
+  function _dispatchCartChange(data) {
+    if (data) {
+      document.documentElement.dispatchEvent(new CustomEvent('cart:change', {
+        bubbles: true,
+        detail: { baseEvent: 'line-item:change', cart: data }
+      }));
+    }
+  }
+
   function _insuranceChangeHandler(e) {
     var el = e.target.closest('[data-maison-insurance]');
     if (!el) return;
     var variantId = el.getAttribute('data-variant-id');
     var lineKey = el.getAttribute('data-line-key');
     var isChecked = e.target.checked;
+    var sectionId = _getCartSectionId();
 
     if (isChecked) {
+      /* Add insurance, then fetch fresh section via /cart/change.js trick */
       fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
       })
       .then(function(res) { return res.json(); })
-      .then(function() {
-        document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+      .then(function(addData) {
+        /* Now do a no-op change to get section HTML */
+        var addedItem = addData.items ? addData.items[0] : null;
+        if (addedItem && sectionId) {
+          return fetch('/cart/change.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: addedItem.key, quantity: addedItem.quantity, sections: sectionId })
+          }).then(function(res) { return res.json(); });
+        }
+        return null;
+      })
+      .then(function(data) {
+        if (data) {
+          _dispatchCartChange(data);
+        } else {
+          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+        }
       });
     } else {
       if (lineKey) {
+        var body = { id: lineKey, quantity: 0 };
+        if (sectionId) body.sections = sectionId;
+
         fetch('/cart/change.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id: lineKey, quantity: 0 })
+          body: JSON.stringify(body)
         })
         .then(function(res) { return res.json(); })
-        .then(function() {
-          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
-        });
+        .then(function(data) { _dispatchCartChange(data); });
       }
     }
   }
