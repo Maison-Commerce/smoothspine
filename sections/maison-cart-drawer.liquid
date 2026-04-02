@@ -1,0 +1,557 @@
+<cart-drawer {% if request.design_mode %}handle-section-events{% endif %} class="cart-drawer drawer drawer--lg" id="cart-drawer">
+  {%- if cart.item_count == 0 -%}
+    <button is="close-button" aria-label="{{ 'general.accessibility.close' | t | escape }}">
+      {%- render 'icon' with 'close' -%}
+    </button>
+
+    <div class="empty-state align-self-center">
+      <div class="empty-state__icon-wrapper">
+        {%- render 'icon' with 'cart', width: 32, height: 32, stroke_width: 1 -%}
+        <span class="count-bubble count-bubble--lg">0</span>
+      </div>
+
+      <div class="prose">
+        <p class="h5">{{ 'cart.general.empty' | t }}</p>
+        {%- assign button_content = 'cart.general.continue_shopping' | t -%}
+        {%- render 'button', href: settings.cart_empty_button_link, size: 'xl', content: button_content -%}
+      </div>
+    </div>
+  {%- else -%}
+    <div class="cart-drawer__inner">
+      {%- comment -%} HEADER {%- endcomment -%}
+      <div class="cart-drawer__top maison-cart-header">
+        <div class="maison-cart-header__row">
+          <div class="maison-cart-header__left">
+            <h2 class="maison-cart-title">My Cart</h2>
+            <span class="maison-cart-dot"></span>
+            <cart-count class="maison-cart-count">{{ cart.item_count }}</cart-count>
+          </div>
+          <button type="button" is="close-button" class="maison-cart-close" aria-label="{{ 'general.accessibility.close' | t }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.79791 15.5845C2.07865 16.199 1.00491 16.1057 0.399681 15.3762C-0.205558 14.6468 -0.11311 13.5572 0.606165 12.9427C3.74888 10.2581 6.79664 7.49612 9.75905 4.64753C6.78312 1.47672 3.90166 -1.78902 1.10435 -5.16057C0.499117 -5.89005 0.591563 -6.97954 1.31084 -7.594C2.03011 -8.20845 3.10383 -8.11521 3.70908 -7.38573C6.45737 -4.07322 9.28796 -0.864813 12.2112 2.25041C15.2414 -0.760893 18.1822 -3.86857 21.0444 -7.08314C21.6747 -7.79105 22.7512 -7.84677 23.4485 -7.20758C24.1458 -6.5684 24.2002 -5.47635 23.5699 -4.76843C20.6567 -1.49656 17.663 1.66663 14.5782 4.73163C17.4394 7.68186 20.3888 10.5486 23.4361 13.3412C24.1334 13.9805 24.1877 15.0726 23.5575 15.7804C22.9272 16.4883 21.8507 16.5441 21.1534 15.9049C18.0479 13.0586 15.0418 10.1365 12.126 7.12891C9.10706 10.0329 6.00088 12.8483 2.79791 15.5845Z" fill="#102A43"/></svg>
+          </button>
+        </div>
+      </div>
+
+      {%- comment -%} LINE ITEMS {%- endcomment -%}
+      <div class="maison-cart-items">
+        <div class="cart-drawer__line-items">
+          {%- for line_item in cart.items -%}
+            {%- render 'line-item', line_item: line_item, show_desktop_quantity: true -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} FOOTER {%- endcomment -%}
+    <div class="maison-cart-footer" slot="footer">
+      {%- comment -%} Total Price Row {%- endcomment -%}
+      <div class="maison-cart-total">
+        <span class="maison-cart-total__label">Total Price</span>
+        <div class="maison-cart-total__values">
+          {%- if cart.original_total_price > cart.total_price -%}
+            <span class="maison-cart-total__compare">{{ cart.original_total_price | money }}</span>
+          {%- endif -%}
+          <span class="maison-cart-total__price">{{ cart.total_price | money }}</span>
+          {%- if cart.original_total_price > cart.total_price -%}
+            {%- assign save_amount = cart.original_total_price | minus: cart.total_price -%}
+            {%- assign save_percent = save_amount | times: 100 | divided_by: cart.original_total_price -%}
+            <span class="maison-cart-total__badge">Save {{ save_percent }}%</span>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%} Checkout Button {%- endcomment -%}
+      <div class="maison-cart-actions">
+        {% if section.settings.show_checkout_button %}
+          <form action="{{ routes.cart_url }}" method="POST">
+            <button type="submit" name="checkout" class="maison-cart-checkout-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6 2h8a4 4 0 014 4v6a4 4 0 01-4 4H6a4 4 0 01-4-4V6a4 4 0 014-4z" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-width="1.5"/><path d="M14 7V5.5A4 4 0 006 5.5V7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="10" cy="12" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+              <span>{{ section.settings.checkout_button_label }}</span>
+            </button>
+          </form>
+        {% endif %}
+
+        {%- comment -%} Payment Icons {%- endcomment -%}
+        {% if section.settings.show_payment_icons %}
+          <div class="maison-cart-payments">
+            {%- for i in (1..10) -%}
+              {%- capture payment_setting -%}payment_icon_{{ i }}{%- endcapture -%}
+              {%- if section.settings[payment_setting] != blank -%}
+                <div class="maison-cart-payment-icon">
+                  {{ section.settings[payment_setting] | image_url: width: 46 | image_tag: loading: 'lazy', widths: '23, 46', sizes: '23px' }}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {% endif %}
+
+        {%- comment -%} Trust Badges {%- endcomment -%}
+        {% if section.settings.show_trust_badges %}
+          <div class="maison-cart-trust">
+            {% if section.settings.trust_badge_1 != blank %}
+              <div class="maison-cart-trust__item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none"><g clip-path="url(#mc-shield)"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.29329 0.220621C3.42804 0.079705 3.61454 0 3.80953 0H16.1904C16.3854 0 16.572 0.079705 16.7067 0.220621C17.1117 0.644153 17.9469 1.5181 18.6727 3.03603C19.3979 4.55263 20 6.68146 20 9.61537C20 13.1154 18.3371 15.523 16.2926 17.1356C14.27 18.7306 11.8633 19.5613 10.274 19.9767C10.1556 20.0077 10.0312 20.0077 9.91271 19.9767C8.32674 19.5621 5.87549 18.7327 3.80739 17.1407C1.71803 15.5321 0 13.1241 0 9.61537C0 6.68146 0.60217 4.55263 1.32731 3.03603C2.0531 1.5181 2.88827 0.644153 3.29329 0.220621ZM14.5157 6.4578C14.954 6.06023 14.987 5.38264 14.5894 4.94437C14.1918 4.50609 13.5142 4.4731 13.076 4.87067C11.81 6.01911 10.8542 7.05559 10.0465 8.31616C9.48717 9.18921 9.01299 10.1478 8.55296 11.2919L6.97349 9.66307C6.56156 9.23826 5.88324 9.22783 5.45844 9.63976C5.03363 10.0517 5.0232 10.73 5.43513 11.1548L8.19569 14.0016C8.45447 14.2685 8.8331 14.3821 9.19607 14.302C9.55906 14.2217 9.85451 13.9591 9.97673 13.608C10.6133 11.7794 11.176 10.5254 11.8508 9.47214C12.5214 8.42549 13.3316 7.53196 14.5157 6.4578Z" fill="#102A43"/></g><defs><clipPath id="mc-shield"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                <span>{{ section.settings.trust_badge_1 }}</span>
+              </div>
+            {% endif %}
+            {% if section.settings.trust_badge_1 != blank and section.settings.trust_badge_2 != blank %}
+              <span class="maison-cart-trust__separator"></span>
+            {% endif %}
+            {% if section.settings.trust_badge_2 != blank %}
+              <div class="maison-cart-trust__item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="none"><g clip-path="url(#mc-check)"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.6235 2.6235C4.37209 0.874903 6.8971 0 10 0C13.1029 0 15.6279 0.874903 17.3766 2.6235C19.1251 4.37209 20 6.8971 20 10C20 13.1029 19.1251 15.6279 17.3766 17.3766C15.6279 19.1251 13.1029 20 10 20C6.8971 20 4.37209 19.1251 2.6235 17.3766C0.874903 15.6279 0 13.1029 0 10C0 6.8971 0.874903 4.37209 2.6235 2.6235ZM14.1713 7.08989C14.5366 6.75857 14.564 6.19391 14.2327 5.82869C13.9014 5.46346 13.3368 5.43596 12.9715 5.76727C11.7848 6.84384 10.8933 7.81137 10.1408 8.98594C9.59271 9.84133 9.13136 10.7863 8.67961 11.9317L7.06956 10.2713C6.72627 9.9173 6.16101 9.9086 5.80701 10.2519C5.45301 10.5952 5.44431 11.1604 5.78759 11.5144L8.38499 14.193C8.60064 14.4154 8.91617 14.5101 9.21866 14.4433C9.52113 14.3764 9.76736 14.1575 9.8692 13.865C10.4695 12.1405 11.0025 10.9511 11.6443 9.94926C12.2827 8.95296 13.0528 8.10454 14.1713 7.08989Z" fill="#065BDC"/></g><defs><clipPath id="mc-check"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                <span>{{ section.settings.trust_badge_2 }}</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {%- endif -%}
+</cart-drawer>
+
+{% style %}
+  /* ===== MAISON CART DRAWER ===== */
+
+  /* Header */
+  #shopify-section-{{ section.id }} .maison-cart-header {
+    background: #fff;
+    padding: 0;
+    border-bottom: none;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-header__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-header__left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.4;
+    color: #102A43;
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #102A43;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-count {
+    background: #065BDC !important;
+    color: #FAFCFE !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 16px !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    min-width: 32px;
+    height: 24px;
+    padding: 0 12px;
+    border-radius: 4px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-close {
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-close svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+  }
+
+  /* Drawer bg */
+  #shopify-section-{{ section.id }} .cart-drawer__inner {
+    background: #F8F4EE;
+  }
+
+  /* Line items area */
+  #shopify-section-{{ section.id }} .maison-cart-items {
+    background: #F8F4EE;
+  }
+
+  #shopify-section-{{ section.id }} .cart-drawer__line-items > * {
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* Footer */
+  #shopify-section-{{ section.id }} .maison-cart-footer {
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 -8px 30px rgba(45,38,34,0.07);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Total */
+  #shopify-section-{{ section.id }} .maison-cart-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-total__label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-total__values {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-total__compare {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-total__price {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-total__badge {
+    background: #12B76A;
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* Actions */
+  #shopify-section-{{ section.id }} .maison-cart-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-actions form {
+    width: 100%;
+  }
+
+  /* Checkout button */
+  #shopify-section-{{ section.id }} .maison-cart-checkout-btn {
+    width: 100%;
+    height: 56px;
+    background: #F07E3B;
+    border: none;
+    border-bottom: 4px solid #BF642F;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-checkout-btn:hover {
+    opacity: 0.92;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-checkout-btn svg {
+    width: 20px;
+    height: 20px;
+    color: #FFFCFB;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-checkout-btn span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFCFB;
+    white-space: nowrap;
+  }
+
+  /* Payment icons */
+  #shopify-section-{{ section.id }} .maison-cart-payments {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-payment-icon {
+    width: 23px;
+    height: 16px;
+    border-radius: 2.5px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-payment-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Trust badges */
+  #shopify-section-{{ section.id }} .maison-cart-trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-trust__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-trust__item svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-trust__item span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #102A43;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-trust__separator {
+    width: 1px;
+    height: 16px;
+    background: #102A43;
+    opacity: 0.15;
+    transform: rotate(90deg);
+    flex-shrink: 0;
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 999px) {
+    #shopify-section-{{ section.id }} .maison-cart-title {
+      font-size: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-count {
+      font-size: 12px !important;
+      height: 20px;
+      padding: 0 10px;
+      border-radius: 999px !important;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-header__left {
+      gap: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-header__row {
+      padding: 20px 20px 8px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-footer {
+      padding: 12px 20px;
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-total__label {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-total__compare {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-total__price {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-total__badge {
+      font-size: 10px;
+      padding: 4px 8px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-checkout-btn {
+      height: 44px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-checkout-btn span {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-trust__item span {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-trust {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-trust__separator {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Maison Cart Drawer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Checkout"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_checkout_button",
+      "label": "Show checkout button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "checkout_button_label",
+      "label": "Checkout button label",
+      "default": "GO TO CHECKOUT"
+    },
+    {
+      "type": "header",
+      "content": "Payment Icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_1",
+      "label": "Payment icon 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_2",
+      "label": "Payment icon 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_3",
+      "label": "Payment icon 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_4",
+      "label": "Payment icon 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_5",
+      "label": "Payment icon 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_6",
+      "label": "Payment icon 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_7",
+      "label": "Payment icon 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_8",
+      "label": "Payment icon 8"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_9",
+      "label": "Payment icon 9"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_10",
+      "label": "Payment icon 10"
+    },
+    {
+      "type": "header",
+      "content": "Trust Badges"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_badges",
+      "label": "Show trust badges",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_badge_1",
+      "label": "Trust badge 1",
+      "default": "90-Day Risk-Free Trial"
+    },
+    {
+      "type": "text",
+      "id": "trust_badge_2",
+      "label": "Trust badge 2",
+      "default": "4.4★ on Trustpilot"
+    }
+  ]
+}
+{% endschema %}
