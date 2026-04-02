@@ -127,55 +127,57 @@
         {%- endfor -%}
 
         {%- if rec_count > 0 -%}
-          <div class="maison-cart-recs">
-            <div class="maison-cart-recs__header">
-              {% if section.settings.recommendations_title != blank %}
-                <span class="maison-cart-recs__title">{{ section.settings.recommendations_title }}</span>
-              {% endif %}
-              {% if rec_count > 1 %}
-                <div class="maison-cart-recs__nav">
-                  <button type="button" class="maison-cart-recs__arrow maison-cart-recs__prev" disabled>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="#FAFCFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </button>
-                  <button type="button" class="maison-cart-recs__arrow maison-cart-recs__next">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="#FAFCFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </button>
-                </div>
-              {% endif %}
-            </div>
-            <div class="maison-cart-recs__slider swiper" data-maison-cart-recs>
-              <div class="swiper-wrapper">
-                {%- for rec_product in section.settings.recommended_products -%}
-                  {%- assign in_cart = cart | line_items_for: rec_product -%}
-                  {%- if in_cart.size == 0 and rec_product.available -%}
-                    <div class="swiper-slide maison-cart-rec-card">
-                      <div class="maison-cart-rec-card__inner">
-                        <div class="maison-cart-rec-card__content">
-                          {%- if rec_product.featured_image != blank -%}
-                            <div class="maison-cart-rec-card__img">
-                              {{ rec_product.featured_image | image_url: width: 128 | image_tag: loading: 'lazy', widths: '64, 128', sizes: '64px' }}
-                            </div>
-                          {%- endif -%}
-                          <div class="maison-cart-rec-card__info">
-                            <p class="maison-cart-rec-card__name">{{ rec_product.title }}</p>
-                            <div class="maison-cart-rec-card__prices">
-                              {%- if rec_product.compare_at_price > rec_product.price -%}
-                                <span class="maison-cart-rec-card__compare">{{ rec_product.compare_at_price | money }}</span>
-                              {%- endif -%}
-                              <span class="maison-cart-rec-card__price">{{ rec_product.price | money }}</span>
+          <div class="maison-recs-wrapper-grid">
+            <div class="maison-cart-recs">
+              <div class="maison-cart-recs__header">
+                {% if section.settings.recommendations_title != blank %}
+                  <span class="maison-cart-recs__title">{{ section.settings.recommendations_title }}</span>
+                {% endif %}
+                {% if rec_count > 1 %}
+                  <div class="maison-cart-recs__nav">
+                    <button type="button" class="maison-cart-recs__arrow maison-cart-recs__prev" disabled>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8L10 12" stroke="#FAFCFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <button type="button" class="maison-cart-recs__arrow maison-cart-recs__next">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="#FAFCFE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="maison-cart-recs__slider swiper" data-maison-cart-recs>
+                <div class="swiper-wrapper">
+                  {%- for rec_product in section.settings.recommended_products -%}
+                    {%- assign in_cart = cart | line_items_for: rec_product -%}
+                    {%- if in_cart.size == 0 and rec_product.available -%}
+                      <div class="swiper-slide maison-cart-rec-card">
+                        <div class="maison-cart-rec-card__inner">
+                          <div class="maison-cart-rec-card__content">
+                            {%- if rec_product.featured_image != blank -%}
+                              <div class="maison-cart-rec-card__img">
+                                {{ rec_product.featured_image | image_url: width: 128 | image_tag: loading: 'lazy', widths: '64, 128', sizes: '64px' }}
+                              </div>
+                            {%- endif -%}
+                            <div class="maison-cart-rec-card__info">
+                              <p class="maison-cart-rec-card__name">{{ rec_product.title }}</p>
+                              <div class="maison-cart-rec-card__prices">
+                                {%- if rec_product.compare_at_price > rec_product.price -%}
+                                  <span class="maison-cart-rec-card__compare">{{ rec_product.compare_at_price | money }}</span>
+                                {%- endif -%}
+                                <span class="maison-cart-rec-card__price">{{ rec_product.price | money }}</span>
+                              </div>
                             </div>
                           </div>
+                          <button type="button" class="maison-cart-rec-card__add" data-variant-id="{{ rec_product.first_available_variant.id }}">+ ADD</button>
                         </div>
-                        <button type="button" class="maison-cart-rec-card__add" data-variant-id="{{ rec_product.first_available_variant.id }}">+ ADD</button>
                       </div>
-                    </div>
-                  {%- endif -%}
-                {%- endfor -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
               </div>
+              {% if rec_count > 1 %}
+                <div class="maison-cart-recs__dots" data-maison-cart-dots></div>
+              {% endif %}
             </div>
-            {% if rec_count > 1 %}
-              <div class="maison-cart-recs__dots" data-maison-cart-dots></div>
-            {% endif %}
           </div>
         {%- endif -%}
       {%- endif -%}
@@ -660,6 +662,10 @@
   #shopify-section-{{ section.id }} .cart-drawer__line-items > * {
     background: #fff;
     border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  #shopify-section-{{ section.id }} .maison-recs-wrapper-grid{
+    display: grid;
   }
 
   /* Recommendations */
