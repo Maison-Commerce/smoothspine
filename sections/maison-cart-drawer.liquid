@@ -85,9 +85,9 @@
                         <p class="mc-line-item__desc">{{ short_desc }}</p>
                       {%- endif -%}
                     </div>
-                    <a href="{{ line_item.url_to_remove }}" class="mc-line-item__delete" aria-label="Remove {{ line_item.title }}">
+                    <button type="button" class="mc-line-item__delete" aria-label="Remove {{ line_item.title }}" data-remove-key="{{ line_item.key }}" {% if line_item.properties._bundle_id %}data-remove-bundle="{{ line_item.properties._bundle_id }}"{% endif %}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g opacity="0.5" clip-path="url(#del-{{ line_item.key }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.00018-0.0045166C6.93693-0.0045166 5.98523.297175 5.30017.982236 4.63796 1.64444 4.33397 2.5558 4.31443 3.57622 3.50895 3.64087 2.70075 3.72664 1.88804 3.83355 1.4187 3.89527 1.08826 4.3258 1.14999 4.79515 1.21173 5.26448 1.64226 5.59492 2.11159 5.53319L2.24778 5.51548C2.22409 7.67421 2.26948 10.7063 2.8449 13.2723 3.15837 14.6701 4.34059 15.6431 5.71089 15.8364 6.48455 15.9455 7.19457 16.0005 8.00053 16.0005 8.80652 16.0005 9.51663 15.9455 10.2904 15.8364 11.6607 15.6431 12.8429 14.6701 13.1564 13.2723 13.7318 10.7063 13.7772 7.67431 13.7535 5.51558L13.889 5.53319C14.3582 5.59492 14.7887 5.26448 14.8506 4.79515 14.9123 4.3258 14.5818 3.89527 14.1125 3.83355 13.2997 3.72664 12.4915 3.64086 11.6859 3.57621 11.6663 2.55579 11.3624 1.64444 10.7002.982236 10.0151.297175 9.06342-0.0045166 8.00018-0.0045166ZM9.96678 3.47014C9.93121 2.84539 9.73781 2.44423 9.48801 2.19442 9.21099 1.91741 8.74788 1.70976 8.00018 1.70976 7.25247 1.70976 6.78937 1.91741 6.51235 2.19442 6.26254 2.44423 6.06915 2.8454 6.03357 3.47014 7.34594 3.41366 8.65442 3.41366 9.96678 3.47014ZM6.45625 7.24487C6.17731 6.96593 5.72505 6.96593 5.4461 7.24487 5.16715 7.52382 5.16715 7.97607 5.4461 8.25502L6.99013 9.79906 5.44611 11.3431C5.16716 11.622 5.16716 12.0743 5.44611 12.3532 5.72506 12.6322 6.17732 12.6322 6.45626 12.3532L8.00029 10.8092 9.54417 12.3531C9.82311 12.6321 10.2754 12.6321 10.5543 12.3531 10.8333 12.0741 10.8333 11.6219 10.5543 11.3429L9.01044 9.79906 10.5543 8.25517C10.8333 7.97622 10.8333 7.52396 10.5543 7.24501 10.2754 6.96606 9.82313 6.96606 9.54418 7.24501L8.00029 8.78891 6.45625 7.24487Z" fill="#102A43"/></g><defs><clipPath id="del-{{ line_item.key }}"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
-                    </a>
+                    </button>
                   </div>
                   <div class="mc-line-item__bottom">
                     <line-item-quantity class="mc-line-item__qty">
@@ -402,6 +402,77 @@
   } else {
     document.addEventListener('DOMContentLoaded', initMaisonCartRecs);
   }
+
+  /* Delete item button — remove main + bundle gifts via AJAX */
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.mc-line-item__delete');
+    if (!btn) return;
+    e.preventDefault();
+
+    var lineKey = btn.getAttribute('data-remove-key');
+    var bundleId = btn.getAttribute('data-remove-bundle');
+    if (!lineKey) return;
+
+    var sectionId = _getCartSectionId();
+
+    /* First: collect all keys to remove (main + its gifts) */
+    if (bundleId) {
+      fetch('/cart.js')
+        .then(function(res) { return res.json(); })
+        .then(function(cart) {
+          var keysToRemove = {};
+          cart.items.forEach(function(item) {
+            if (item.key === lineKey) {
+              keysToRemove[item.key] = 0;
+            } else if (item.properties && item.properties._bundle_id === bundleId) {
+              keysToRemove[item.key] = 0;
+            }
+          });
+
+          var keys = Object.keys(keysToRemove);
+          if (keys.length === 0) return;
+
+          /* Remove all except last via update, last via change with sections */
+          var lastKey = keys[keys.length - 1];
+          var bulkUpdates = {};
+          keys.forEach(function(k) {
+            if (k !== lastKey) bulkUpdates[k] = 0;
+          });
+
+          var chain = Promise.resolve();
+          if (Object.keys(bulkUpdates).length > 0) {
+            chain = fetch('/cart/update.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ updates: bulkUpdates })
+            });
+          }
+
+          chain.then(function() {
+            var body = { id: lastKey, quantity: 0 };
+            if (sectionId) body.sections = sectionId;
+            return fetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(body)
+            }).then(function(res) { return res.json(); });
+          }).then(function(data) {
+            _dispatchCartChange(data);
+          });
+        });
+    } else {
+      /* No bundle — just remove the single item */
+      var body = { id: lineKey, quantity: 0 };
+      if (sectionId) body.sections = sectionId;
+      fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) { _dispatchCartChange(data); });
+    }
+  });
 
   /* Insurance toggle */
   function _getCartSectionId() {
@@ -776,6 +847,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
   }
 
   #shopify-section-{{ section.id }} .mc-line-item__delete svg {
