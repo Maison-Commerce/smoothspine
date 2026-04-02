@@ -429,13 +429,33 @@
     initMaisonInsurance();
   }
 
-  /* Re-init after cart updates (section rendering) */
-  document.documentElement.addEventListener('cart:refresh', function() {
-    setTimeout(function() { initMaisonCartRecs(); initMaisonInsurance(); }, 500);
-  });
-  document.documentElement.addEventListener('cart:change', function() {
-    setTimeout(function() { initMaisonCartRecs(); initMaisonInsurance(); }, 500);
-  });
+  /* Re-init after cart updates (section rendering replaces innerHTML) */
+  function reinitMaisonCart() {
+    setTimeout(function() {
+      initMaisonCartRecs();
+      initMaisonInsurance();
+    }, 300);
+  }
+
+  document.documentElement.addEventListener('cart:refresh', reinitMaisonCart);
+  document.documentElement.addEventListener('cart:change', reinitMaisonCart);
+
+  /* MutationObserver: catch when theme replaces .cart-drawer__inner content */
+  (function() {
+    var cartDrawer = document.getElementById('cart-drawer');
+    if (!cartDrawer) return;
+
+    var observer = new MutationObserver(function(mutations) {
+      for (var i = 0; i < mutations.length; i++) {
+        if (mutations[i].type === 'childList' && mutations[i].addedNodes.length > 0) {
+          reinitMaisonCart();
+          break;
+        }
+      }
+    });
+
+    observer.observe(cartDrawer, { childList: true, subtree: true });
+  })();
 </script>
 
 {% style %}
