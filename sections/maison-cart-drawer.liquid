@@ -379,15 +379,32 @@
         btn.classList.add('is-loading');
         var variantId = btn.getAttribute('data-variant-id');
 
+        var sectionId = _getCartSectionId();
+
         fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
         })
         .then(function(res) { return res.json(); })
-        .then(function() {
+        .then(function(addData) {
           btn.classList.remove('is-loading');
-          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+          var addedItem = addData.items ? addData.items[0] : null;
+          if (addedItem && sectionId) {
+            return fetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: addedItem.key, quantity: addedItem.quantity, sections: sectionId })
+            }).then(function(res) { return res.json(); });
+          }
+          return null;
+        })
+        .then(function(data) {
+          if (data) {
+            _dispatchCartChange(data);
+          } else {
+            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+          }
         })
         .catch(function() {
           btn.classList.remove('is-loading');
