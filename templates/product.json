@@ -1,1 +1,1187 @@
-{"sections":{"main":{"type":"main-product","blocks":{"vendor":{"type":"vendor","settings":{}},"title":{"type":"title","settings":{}},"badges":{"type":"badges","settings":{}},"price":{"type":"price","settings":{}},"rating":{"type":"rating","settings":{}},"payment_terms":{"type":"payment_terms","settings":{}},"separator":{"type":"separator","settings":{}},"description":{"type":"description","settings":{}},"variant_picker":{"type":"variant_picker","settings":{}},"quantity_selector":{"type":"quantity_selector","settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{}},"pickup_availability":{"type":"pickup_availability","settings":{}}},"block_order":["vendor","title","badges","price","rating","payment_terms","separator","description","variant_picker","quantity_selector","buy_buttons"],"settings":{}},"related-products":{"type":"related-products","settings":{}}},"order":["main","related-products"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "collapse_content": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": true,
+            "selector_style": "block",
+            "swatch_selector_style": "swatch",
+            "variant_image_options": "",
+            "size_chart_page": ""
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": true,
+            "show_gift_card_recipient": true,
+            "atc_button_background": "",
+            "atc_button_text_color": "",
+            "payment_button_background": "",
+            "payment_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "badges",
+        "price",
+        "rating",
+        "payment_terms",
+        "separator",
+        "description",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "carousel_thumbnails_left",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "floating_dots",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "maison_pd_hero_JHyDcq": {
+      "type": "maison-pd-hero",
+      "blocks": {
+        "check_item_AtN6R7": {
+          "type": "check_item",
+          "settings": {
+            "text": "Provides Fast Relief From Sciatica And Herniated Discs"
+          }
+        },
+        "check_item_DLQCxf": {
+          "type": "check_item",
+          "settings": {
+            "text": "Rehydrates and Restores Your Spinal Discs"
+          }
+        },
+        "check_item_Gat3yA": {
+          "type": "check_item",
+          "settings": {
+            "text": "Relieves Back Pain, Stiffness, and Discomfort"
+          }
+        },
+        "check_item_JTW6TX": {
+          "type": "check_item",
+          "settings": {
+            "text": "Feel The Difference In Just 15 Minutes Per Day"
+          }
+        },
+        "gift_item_UEQDWi": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "smoothspine™-30-day-sciatica-relief-plan-coc",
+            "image": "shopify://shop_images/dc43829b1674bae58a96a2b9dbbd09fbe430dfc2.png",
+            "name": "Back pain & Sciatica Guide"
+          }
+        },
+        "gift_item_wh6nam": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "sciatica-back-pain-relief-patches",
+            "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
+            "name": "12x Back Pain Relief Patches"
+          }
+        },
+        "gift_item_tRjWC7": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "smoothspine™-zip-lock-travel-bag-coc",
+            "image": "shopify://shop_images/gsejnjn3gn4knf_egegh.png",
+            "name": "Zip Lock Travel Bag"
+          }
+        }
+      },
+      "block_order": [
+        "check_item_AtN6R7",
+        "check_item_DLQCxf",
+        "check_item_Gat3yA",
+        "check_item_JTW6TX",
+        "gift_item_UEQDWi",
+        "gift_item_wh6nam",
+        "gift_item_tRjWC7"
+      ],
+      "name": "PDP Hero",
+      "settings": {
+        "show_trustpilot": true,
+        "trustpilot_full_stars": 4,
+        "trustpilot_has_half_star": true,
+        "trustpilot_rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_logo": true,
+        "button_label": "Add to cart",
+        "show_cart_icon": true,
+        "show_guarantee": true,
+        "guarantee_text": "90-Day Risk-Free Trial",
+        "show_gifts": true,
+        "show_review": true,
+        "review_avatar": "shopify://shop_images/Rectangle_4896.png",
+        "review_text": "\"I've struggled with crippling back pain and Sciatica for years. Sitting, standing up, lying down, it all hurt. I was skeptical but after using this massager for just 1 week, I noticed a HUGE difference. The stabbing pain in my low back is finally gone, and I can move without wincing again. I still use it daily, it's so well-made. If you're on the fence, trust me, it's worth it!\"",
+        "review_author": "Maggie S.",
+        "review_rating": 5,
+        "show_verified_badge": true,
+        "verified_text": "Verified Purchase",
+        "show_payment_icons": true,
+        "payment_icon_1": "shopify://shop_images/Amex_ac5b244e-b578-46a5-b017-56c3bea73a04.svg",
+        "payment_icon_2": "shopify://shop_images/ApPay_4a04317a-aa3f-4c33-ac4f-b82d160596c7.svg",
+        "payment_icon_3": "shopify://shop_images/Bank.svg",
+        "payment_icon_4": "shopify://shop_images/GPay_1e0d5e97-4593-4b10-a5e5-06af7eb7607e.svg",
+        "payment_icon_5": "shopify://shop_images/Pay_a5f4d8e6-1cff-4851-a540-639d1b7018c9.svg",
+        "payment_icon_6": "shopify://shop_images/Master_bcf1595a-f117-4842-a6d2-1e49eef351ac.svg",
+        "payment_icon_7": "shopify://shop_images/Paypal_8ab86b47-5ab9-4a4e-a96d-3967a685281d.png",
+        "payment_icon_8": "shopify://shop_images/ShopPay_121dc802-a559-4b24-8521-d845258aa0c1.png",
+        "payment_icon_9": "shopify://shop_images/UnionPay_99f1b524-4ef6-4014-b49f-2c8df081909a.png",
+        "payment_icon_10": "shopify://shop_images/Visa_18f5ce50-9723-4d1d-b9c9-84c1327c0ee7.svg",
+        "show_divider": true,
+        "color_primary": "#102a43",
+        "color_secondary": "#102a43",
+        "color_bg_start": "#fbf9f6",
+        "color_bg_end": "#fefefd",
+        "color_white": "#ffffff",
+        "color_success": "#12b76a",
+        "color_cta": "#f07e3b",
+        "color_cta_border": "#bf642f",
+        "color_cta_text": "#fffcfb",
+        "color_cream": "#f8f4ee",
+        "color_border_light": "#c5c2bd",
+        "color_divider": "#424140",
+        "color_off_white": "#fffcfb",
+        "color_stars": "#f07e3b",
+        "title_font_size": 32,
+        "title_font_size_mobile": 24,
+        "description_font_size": 18,
+        "description_font_size_mobile": 14,
+        "check_font_size": 16,
+        "check_font_size_mobile": 14,
+        "price_old_font_size": 18,
+        "price_old_font_size_mobile": 14,
+        "price_new_font_size": 24,
+        "price_new_font_size_mobile": 20,
+        "review_font_size": 14,
+        "button_font_size": 16,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "column_gap": 80,
+        "max_width": 1280,
+        "radius_sm": 8,
+        "radius_md": 12,
+        "radius_lg": 16,
+        "thumb_size": 80,
+        "button_height": 56
+      }
+    },
+    "maison_about_usps_dn6ghV": {
+      "type": "maison-about-usps",
+      "blocks": {
+        "usp_item_8qjUcG": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/ag2g23g3vrgb.svg",
+            "title": "Relief You Can Feel",
+            "description": "We offer a daily routine with traction, heat, and massage to decompress your spine."
+          }
+        },
+        "usp_item_8Vbz4q": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/bwfjkabwjaw.svg",
+            "title": "On Your Time, At Home",
+            "description": "No appointments or waiting. Just 15 minutes a day in your living room."
+          }
+        },
+        "usp_item_pfyEtU": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/jabwfabwfjkg3g.svg",
+            "title": "No Risk, Real Support",
+            "description": "90 days to see if it works. If not, get your money back. A real person is here to help."
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_8qjUcG",
+        "usp_item_8Vbz4q",
+        "usp_item_pfyEtU"
+      ],
+      "name": "About Page USPs",
+      "settings": {
+        "heading": "",
+        "subtitle": "",
+        "show_dividers": true,
+        "divider_style": "dashed",
+        "color_background": "#e5eefb",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43",
+        "color_icon_border": "#065bdc",
+        "color_icon_bg": "#fafcfe",
+        "color_divider": "#102a43",
+        "title_font_size": 32,
+        "title_font_size_mobile": 24,
+        "subtitle_font_size": 16,
+        "subtitle_font_size_mobile": 14,
+        "usp_title_font_size": 18,
+        "usp_desc_font_size": 14,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal": 80,
+        "sections_gap": 40,
+        "header_gap": 16,
+        "usps_gap": 32,
+        "icon_text_gap": 20,
+        "text_gap": 8,
+        "icon_border_radius": 8,
+        "icon_box_size": 56,
+        "icon_image_size": 32,
+        "divider_height": 64,
+        "max_width": 1440,
+        "header_max_width": 600
+      }
+    },
+    "maison_pdp_content_list_VNpB6J": {
+      "type": "maison-pdp-content-list",
+      "name": "Content Block List",
+      "settings": {
+        "heading": "If You Want To Relieve Sciatica And Back Pain… You Must Start With Your Spinal Discs",
+        "body_text": "<p>Your spinal discs act as the shock absorbers between your vertebrae, cushioning your spine and protecting your nerves.</p><p>When at full height, you should be able to move and bend without any issues, and your discs should be able to absorb any impact with ease.</p><p>But imagine, as we sit for prolonged periods, work long hours, and grow older…</p><p>Our discs dry out and shrink, forcing the vertebrae closer together and putting pressure on the nerves.</p><p>This is the root cause of Sciatica and the leading reason why back pain and stiffness feel never ending.</p><p>And until you rehydrate your spinal discs, the pain will never truly go away.</p>",
+        "video": "shopify://files/videos/560e1b00e09a4822b3dd9099f72c91b8.mp4",
+        "image_placeholder_text": "Product lifestyle image",
+        "image_aspect_ratio": "1 / 1",
+        "desktop_media_position": "left",
+        "mobile_media_position": "top",
+        "show_trust_badge": true,
+        "rating_stars": "4.5",
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "rating_text_before_link": "4.4/5 (",
+        "rating_link_text": "2,295 + reviews)",
+        "rating_link": "",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "color_background": "#fdfcfa",
+        "color_card_background": "#f8f4ee",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#102a43",
+        "color_text_dark": "#111111",
+        "color_stars": "#00b67a",
+        "color_check_bg": "#00b67a",
+        "color_check_icon": "#ffffff",
+        "color_link": "#065bdc",
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "check_font_size": 16,
+        "check_font_size_mobile": 14,
+        "rating_font_size": 12,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "column_gap": 40,
+        "body_gap": 16,
+        "checklist_gap": 8,
+        "border_radius_md": 12,
+        "border_radius_lg": 16,
+        "max_width": 1280
+      }
+    },
+    "maison_pdp_content_benefits_kEPYcj": {
+      "type": "maison-pdp-content-benefits",
+      "blocks": {
+        "benefit_item_KBDgjd": {
+          "type": "benefit_item",
+          "settings": {
+            "description": "<strong>Dynamic Traction:</strong> Gently stretches and separates your vertebrae, reducing nerve compression and creating space for discs to rehydrate."
+          }
+        },
+        "benefit_item_jbJWct": {
+          "type": "benefit_item",
+          "settings": {
+            "description": "<strong>Target Point Massage:</strong> Targets tight muscles and deep knots, easing tension and improving circulation for faster relief."
+          }
+        },
+        "benefit_item_JWQKaf": {
+          "type": "benefit_item",
+          "settings": {
+            "description": "<strong>Soothing Heat Therapy:</strong> Warms tissues and enhances fluid absorption, accelerating disc rehydration and healing."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_item_KBDgjd",
+        "benefit_item_jbJWct",
+        "benefit_item_JWQKaf"
+      ],
+      "name": "Content Block Benefits",
+      "settings": {
+        "heading": "SmoothSpine \"Triple Fusion\" Massager Restores Spinal Disc Hydration and Relieves Pressure on Your Sciatic Nerve",
+        "body_text_above": "<p>The <a href=\"#\">SmoothSpine \"Triple Fusion\" Massager</a> fully harnesses the power of three advanced therapies to relieve nerve compression, stiffness, and pain in your back and legs.</p><p>The moment you lay back on the <strong>SmoothSpine \"Triple Fusion\" Massager</strong>, you'll immediately feel the powerful combination of <strong>dynamic traction, target point massage, and soothing heat therapy</strong> working together.</p>",
+        "body_text_below": "<p>These three therapies work in perfect harmony to rehydrate your discs and bring lasting relief.</p><p>The best part?</p><p>You can use it from the comfort of your own home, even in your bed.</p>",
+        "video": "shopify://files/videos/d6b555b3f24e4fd2b87985bb36f0c056.mp4",
+        "image_placeholder_text": "Product lifestyle image",
+        "image_aspect_ratio": "1 / 1",
+        "desktop_media_position": "right",
+        "mobile_media_position": "top",
+        "show_trust_badge": true,
+        "star_rating": 4.5,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot": true,
+        "trustpilot_label": "Trustpilot",
+        "color_background": "#fdfcfa",
+        "color_card_background": "#f8f4ee",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#102a43",
+        "color_link": "#065bdc",
+        "color_text_dark": "#111111",
+        "color_stars": "#00b67a",
+        "color_check_bg": "#2d6a4f",
+        "color_check_icon": "#ffffff",
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "benefit_font_size": 16,
+        "benefit_font_size_mobile": 14,
+        "rating_font_size": 12,
+        "padding_section": 20,
+        "padding_section_mobile": 20,
+        "padding_inner_vertical": 20,
+        "padding_inner_horizontal": 60,
+        "padding_content_top": 48,
+        "padding_content_bottom": 32,
+        "padding_content_sides": 32,
+        "column_gap": 40,
+        "text_block_gap": 16,
+        "benefits_gap": 12,
+        "card_padding": 20,
+        "border_radius": 16,
+        "border_radius_mobile": 12,
+        "icon_size": 32,
+        "icon_size_mobile": 24,
+        "max_width": 1280
+      }
+    },
+    "maison_pdp_content_list_VyRjjH": {
+      "type": "maison-pdp-content-list",
+      "name": "Content Block List",
+      "settings": {
+        "heading": "Professionally Designed & Recommended",
+        "body_text": "<p>Physical therapists and spine specialists aren't always within reach and can be very expensive.</p><p>The <a href=\"#\" title=\"#\">SmoothSpine \"Triple Fusion\" Massager</a> has been designed alongside leading spine specialists as an effective way to get relief from back pain and Sciatica.</p><p>For less than 1/3 of the cost of a single therapy session, you can get results that last a lifetime.</p>",
+        "video": "shopify://files/videos/0c82734003f546349dd4f4973892f5d3.mp4",
+        "image_placeholder_text": "Product lifestyle image",
+        "image_aspect_ratio": "1 / 1",
+        "desktop_media_position": "left",
+        "mobile_media_position": "top",
+        "show_trust_badge": true,
+        "rating_stars": "4.5",
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "rating_text_before_link": "4.4/5 (",
+        "rating_link_text": "2,295 + reviews)",
+        "rating_link": "",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "color_background": "#fdfcfa",
+        "color_card_background": "#f8f4ee",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#102a43",
+        "color_text_dark": "#111111",
+        "color_stars": "#00b67a",
+        "color_check_bg": "#00b67a",
+        "color_check_icon": "#ffffff",
+        "color_link": "#065bdc",
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "check_font_size": 16,
+        "check_font_size_mobile": 14,
+        "rating_font_size": 12,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "column_gap": 40,
+        "body_gap": 16,
+        "checklist_gap": 8,
+        "border_radius_md": 12,
+        "border_radius_lg": 16,
+        "max_width": 1280
+      }
+    },
+    "maison_pdp_content_list_tNqpGx": {
+      "type": "maison-pdp-content-list",
+      "blocks": {
+        "check_item_HhN7G3": {
+          "type": "check_item",
+          "settings": {
+            "text": "Freedom from discomfort in your back and legs"
+          }
+        },
+        "check_item_nWrM4f": {
+          "type": "check_item",
+          "settings": {
+            "text": "Improved mobility and less pain"
+          }
+        },
+        "check_item_4FCY94": {
+          "type": "check_item",
+          "settings": {
+            "text": "Better nights of sleep feeling more rested"
+          }
+        },
+        "check_item_tptGmy": {
+          "type": "check_item",
+          "settings": {
+            "text": "Boosted confidence while walking and standing"
+          }
+        }
+      },
+      "block_order": [
+        "check_item_HhN7G3",
+        "check_item_nWrM4f",
+        "check_item_4FCY94",
+        "check_item_tptGmy"
+      ],
+      "name": "Content Block List",
+      "settings": {
+        "heading": "The Perfect Therapy Every Time",
+        "body_text": "<p>The Entire Country Is Raving About the SmoothSpine™ “Triple Fusion” Massager!</p><p>Users are reporting significant improvements after just a few sessions! And almost everyone continues using it daily.</p><p>This means that within a few days of using the SmoothSpine™ “Triple Fusion” Massager, you can expect to start noticing:</p>",
+        "video": "shopify://files/videos/b7221154784149ef88a1a4ed183ca2bf (2).mp4",
+        "image_placeholder_text": "Product lifestyle image",
+        "image_aspect_ratio": "1 / 1",
+        "desktop_media_position": "right",
+        "mobile_media_position": "top",
+        "show_trust_badge": true,
+        "rating_stars": "4.5",
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "rating_text_before_link": "4.4/5 (",
+        "rating_link_text": "2,295 + reviews)",
+        "rating_link": "",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "color_background": "#fdfcfa",
+        "color_card_background": "#f8f4ee",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#102a43",
+        "color_text_dark": "#111111",
+        "color_stars": "#00b67a",
+        "color_check_bg": "#00b67a",
+        "color_check_icon": "#ffffff",
+        "color_link": "#065bdc",
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "check_font_size": 16,
+        "check_font_size_mobile": 14,
+        "rating_font_size": 12,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "column_gap": 40,
+        "body_gap": 16,
+        "checklist_gap": 8,
+        "border_radius_md": 12,
+        "border_radius_lg": 16,
+        "max_width": 1280
+      }
+    },
+    "maison_pdp_content_list_hcMWE3": {
+      "type": "maison-pdp-content-list",
+      "name": "Content Block List",
+      "settings": {
+        "heading": "How SmoothSpine “Triple Fusion” Massager Works",
+        "body_text": "<p>The best part about the SmoothSpine™ Massager is that it’s <strong>so simple to use.</strong></p><ol><li>The first step, <strong>no short-lived batteries</strong> - You just plug it in using the cable that arrives together with your order.</li><li>The second step is to <strong>position SmoothSpine under your lower back</strong> and then use the button controls to start the program of traction, heat, and massage. Lay back and relax while SmoothSpine does its magic.</li><li>With consistent use, the <strong>damage to your spine can be reversed</strong>, providing long-lasting relief and allowing you to get back to living your life to the fullest without being held back by back pain or Sciatica.</li></ol>",
+        "video": "shopify://files/videos/4b62cf66768542578f49af24488d3063.mp4",
+        "image_placeholder_text": "Product lifestyle image",
+        "image_aspect_ratio": "1 / 1",
+        "desktop_media_position": "left",
+        "mobile_media_position": "top",
+        "show_trust_badge": true,
+        "rating_stars": "4.5",
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "rating_text_before_link": "4.4/5 (",
+        "rating_link_text": "2,295 + reviews)",
+        "rating_link": "",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "color_background": "#fdfcfa",
+        "color_card_background": "#f8f4ee",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#102a43",
+        "color_text_dark": "#111111",
+        "color_stars": "#00b67a",
+        "color_check_bg": "#00b67a",
+        "color_check_icon": "#ffffff",
+        "color_link": "#065bdc",
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "check_font_size": 16,
+        "check_font_size_mobile": 14,
+        "rating_font_size": 12,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "column_gap": 40,
+        "body_gap": 16,
+        "checklist_gap": 8,
+        "border_radius_md": 12,
+        "border_radius_lg": 16,
+        "max_width": 1280
+      }
+    },
+    "maison_before_after_U8xfYJ": {
+      "type": "maison-before-after",
+      "name": "Before After Pain Points",
+      "settings": {
+        "subheading": "",
+        "heading": "Try It For 90 Days, 100% Risk-Free",
+        "body_text": "<p>Here’s the deal: We believe in this product so much that <strong>we don’t want you to spend a dime until you are 100% certain that it works for you.</strong></p><p>That’s why we are offering a <strong>90-day “Results or Refund” guarantee.</strong></p><p>Simply get yourself a <a href=\"#\" title=\"#\">SmoothSpine Triple Fusion Massager</a> today, use it for 90 days, and then make your decision based on the results.<strong> If you are not absolutely thrilled with the relief, we will issue you an immediate refund.</strong></p><p>In other words, you are only paying if it truly works and helps you reclaim a pain-free life.</p>",
+        "show_trust_badge": true,
+        "trust_stars": 4.5,
+        "trust_rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_logo": true,
+        "button_label": "GET 60% OFF TODAY ONLY!",
+        "button_link": "",
+        "desktop_media_position": "right",
+        "mobile_media_position": "bottom",
+        "video": "shopify://files/videos/home-before-after.mp4",
+        "image_placeholder_text": "Before and After image",
+        "image_aspect_ratio": "1 / 1",
+        "color_background": "#fdfcfa",
+        "color_subheading": "#065bdc",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43",
+        "color_icon_fallback": "#f04438",
+        "color_link": "#065bdc",
+        "color_button_bg": "#f07e3b",
+        "color_button_border": "#bf642f",
+        "color_button_text": "#fffcfb",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "subheading_font_size": 12,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "button_font_size": 16,
+        "button_font_size_mobile": 14,
+        "padding_top": 20,
+        "padding_bottom": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "column_gap": 40,
+        "list_gap": 16,
+        "text_inner_gap": 24,
+        "text_inner_padding_v": 48,
+        "text_inner_padding_h": 32,
+        "image_border_radius": 16,
+        "button_border_radius": 8,
+        "button_height": 56,
+        "container_padding": 80,
+        "max_width": 1280
+      }
+    },
+    "maison_pdp_comparison_cGe9fV": {
+      "type": "maison-pdp-comparison",
+      "blocks": {
+        "good_item_iMXrEk": {
+          "type": "good_item",
+          "settings": {
+            "title": "DRUG-FREE PAIN RELIEF",
+            "description": "It's natural and non-habit-forming."
+          }
+        },
+        "good_item_YE4Jk9": {
+          "type": "good_item",
+          "settings": {
+            "title": "FAST-ACTING & EFFECTIVE",
+            "description": "Works in as little as 15 minutes!"
+          }
+        },
+        "good_item_Q9Nb7k": {
+          "type": "good_item",
+          "settings": {
+            "title": "BACKED BY EXPERTS",
+            "description": "\"Highly recommended to anyone dealing with Sciatica, herniated discs, and back pain.\""
+          }
+        },
+        "good_item_jhp6Rr": {
+          "type": "good_item",
+          "settings": {
+            "title": "LONG-LASTING RELIEF",
+            "description": "Daily use can even completely realign your spine and rehydrate your discs"
+          }
+        },
+        "good_item_cyjtmy": {
+          "type": "good_item",
+          "settings": {
+            "title": "EASY TO USE AT HOME",
+            "description": "No need for expensive doctor visits"
+          }
+        },
+        "bad_item_cPiNNi": {
+          "type": "bad_item",
+          "settings": {
+            "title": "RELY ON DRUGS & CHEMICALS",
+            "description": "It's natural and non-habit-forming."
+          }
+        },
+        "bad_item_MbheKe": {
+          "type": "bad_item",
+          "settings": {
+            "title": "TAKE HOURS TO WORK",
+            "description": "Painkillers and other methods take hours or even days to show results."
+          }
+        },
+        "bad_item_FPWFty": {
+          "type": "bad_item",
+          "settings": {
+            "title": "QUESTIONED BY DOCTORS",
+            "description": "Medical professionals are increasingly skeptical of long-term painkiller use."
+          }
+        },
+        "bad_item_iEwJVr": {
+          "type": "bad_item",
+          "settings": {
+            "title": "SHORT-ACTING, REQUIRES CONSTANT USE",
+            "description": "Painkillers wear off quickly, forcing you to take more doses."
+          }
+        },
+        "bad_item_MeaaTQ": {
+          "type": "bad_item",
+          "settings": {
+            "title": "HARMFUL TO YOUR BODY",
+            "description": "Painkillers also don't help your mood, your stress or your anxiety."
+          }
+        }
+      },
+      "block_order": [
+        "good_item_iMXrEk",
+        "good_item_YE4Jk9",
+        "good_item_Q9Nb7k",
+        "good_item_jhp6Rr",
+        "good_item_cyjtmy",
+        "bad_item_cPiNNi",
+        "bad_item_MbheKe",
+        "bad_item_FPWFty",
+        "bad_item_iEwJVr",
+        "bad_item_MeaaTQ"
+      ],
+      "name": "Product Comparison",
+      "settings": {
+        "heading_highlight": "The SmoothSpine Massager",
+        "heading_main": "Is The Safer Healthier Choice",
+        "subtitle": "It's non-addictive, works fast, and actually does GOOD things for your body.",
+        "good_card_title": "SmoothSpine Massager",
+        "bad_card_title": "Other Pain Relief Methods",
+        "color_primary": "#102a43",
+        "color_brand_blue": "#065bdc",
+        "color_text_secondary": "#102a43",
+        "color_white": "#ffffff",
+        "color_success": "#12b76a",
+        "color_error": "#f04438",
+        "color_card_header_text": "#fafcfe",
+        "color_gradient": "linear-gradient(180deg, #E5EEFB 0%, #FDFCFA 100%)",
+        "title_font_size": 32,
+        "title_font_size_mobile": 24,
+        "subtitle_font_size": 16,
+        "subtitle_font_size_mobile": 14,
+        "card_header_font_size": 20,
+        "item_title_font_size": 16,
+        "item_desc_font_size": 16,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal": 80,
+        "section_gap": 48,
+        "header_gap": 24,
+        "cards_gap": 64,
+        "items_gap": 24,
+        "card_border_radius": 16,
+        "card_body_padding": 32,
+        "card_width": 420,
+        "icon_size": 32,
+        "max_width": 1400,
+        "good_card_rotation": 1,
+        "bad_card_rotation": 1
+      }
+    },
+    "maison_pdp_reviews_LNgKVr": {
+      "type": "maison-pdp-reviews",
+      "blocks": {
+        "review_card_qeifta": {
+          "type": "review_card",
+          "settings": {
+            "image": "shopify://shop_images/SM-Collection-Banner.png",
+            "rating": 5,
+            "title": "Finally, Real Relief After Years of Pain!",
+            "quote": "\"I've been struggling with back pain for years, and nothing seemed to work. The first time I used the SmoothSpine Massager, I felt instant relief. After a week, I could sit and stand without that sharp pain shooting down my leg. It's like my spine finally got the support it needed. I recommended anybody that asked me about it. Thank you again\"",
+            "author": "Maggie S.",
+            "show_verified": true
+          }
+        },
+        "review_card_mBbNxJ": {
+          "type": "review_card",
+          "settings": {
+            "image": "shopify://shop_images/1d472716c6ffa87196ca7f9ccfdce880c5abccf3.jpg",
+            "rating": 5,
+            "title": "Didn't Expect It to Work THIS Well!",
+            "quote": "\"I was not expecting this! When I laid down on the smoothspine massager, I could feel my back start to decompress in a good way. The heat and massage combined made a huge difference, and I could actually relax for the first time in months. My wife said I'm walking more upright. Definitely worth it trying!!\"",
+            "author": "John D.",
+            "show_verified": true
+          }
+        },
+        "review_card_7RU674": {
+          "type": "review_card",
+          "settings": {
+            "image": "shopify://shop_images/faeb5ca68eb985659295a2b8bf9c19fb00e86042.jpg",
+            "rating": 5,
+            "title": "I Can Move Freely Again!",
+            "quote": "\"Ok, mine got here last week. I was skeptical at first, but after just a few sessions, my stiffness and sciatica pain improved drastically. I used to dread getting out of bed in the morning because of the pain, but now I can move freely again. So easy to use, and the heat feels amazing on my lower back.\"",
+            "author": "Linda R.",
+            "show_verified": true
+          }
+        }
+      },
+      "block_order": [
+        "review_card_qeifta",
+        "review_card_mBbNxJ",
+        "review_card_7RU674"
+      ],
+      "name": "Customer Reviews",
+      "settings": {
+        "heading_accent": "Real Users",
+        "heading_dark": "Real Life-Changing Results",
+        "verified_text": "Verified Purchase",
+        "color_bg_start": "#fdfcfa",
+        "color_bg_end": "#e5eefb",
+        "color_brand": "#065bdc",
+        "color_primary": "#102a43",
+        "color_secondary": "#102a43",
+        "color_card_bg": "#fffffc",
+        "color_card_content_bg": "#ffffff",
+        "color_stars": "#f4b740",
+        "color_verified": "#065bdc",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "review_title_font_size": 16,
+        "body_font_size": 14,
+        "meta_font_size": 12,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "section_gap": 40,
+        "section_gap_mobile": 32,
+        "cards_gap": 40,
+        "card_border_radius": 16,
+        "card_padding": 20,
+        "card_image_height": 400,
+        "card_max_width": 420,
+        "mobile_card_width": 280,
+        "mobile_swiper_gap": 20,
+        "max_width": 1280
+      }
+    },
+    "maison_how_it_work_gng7ta": {
+      "type": "maison-how-it-work",
+      "blocks": {
+        "step_card_CGxDdD": {
+          "type": "step_card",
+          "settings": {
+            "image": "shopify://shop_images/67e9ab94c2eb4c879f0f9c0cd77be3717385fdc6.png",
+            "image_alt": "Step 1 - Plug in the USB cable to the device",
+            "badge_label": "STEP 1",
+            "description": "<p><strong>Plug in the USB cable to the device.</strong> The button controls will light up, confirming it's ready to use. Place the massager on a flat surface like your floor or bed.</p>"
+          }
+        },
+        "step_card_bYAMK9": {
+          "type": "step_card",
+          "settings": {
+            "image": "shopify://shop_images/c689f526162a5f3a0fec30db5c9ccfd35011816c.png",
+            "image_alt": "Step 2 - Hold the power button to turn it on",
+            "badge_label": "STEP 2",
+            "description": "<p><strong>Hold the power button to turn it on.</strong> The device will automatically cycle through massage, traction, and heat therapy for a full session.</p>"
+          }
+        },
+        "step_card_CQK3qC": {
+          "type": "step_card",
+          "settings": {
+            "image": "shopify://shop_images/90fdd075107aef8cb3b6b912e29b401892cc7d3e.png",
+            "image_alt": "Step 3 - Lay back and relax",
+            "badge_label": "STEP 3",
+            "description": "<p><strong>Lay back, relax, and enjoy the soothing relief for 15-30 minutes</strong> while SmoothSpine works its magic on your back.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "step_card_CGxDdD",
+        "step_card_bYAMK9",
+        "step_card_CQK3qC"
+      ],
+      "name": "How It Works",
+      "settings": {
+        "heading": "<p>3 Simple Steps To Relieve </p><p><em>Sciatica And Back Pain</em></p>",
+        "button_label": "",
+        "button_link": "",
+        "color_button_bg": "#f07e3b",
+        "color_button_border": "#bf642f",
+        "color_button_text": "#fffcfb",
+        "color_bg_top": "#e5eefb",
+        "color_bg_bottom": "#fdfcfa",
+        "color_brand": "#065bdc",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_card_bg": "#fffffc",
+        "color_card_text_bg": "#ffffff",
+        "color_badge_text": "#fafcfe",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "badge_font_size": 16,
+        "body_font_size": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_horizontal_mobile": 20,
+        "cards_gap": 40,
+        "inner_gap": 40,
+        "card_border_radius": 16,
+        "image_height": 400,
+        "badge_width": 96,
+        "badge_height": 48,
+        "heading_max_width": 600,
+        "max_width": 1280
+      }
+    },
+    "maison_pdp_offer_guarantee_V7EfKR": {
+      "type": "maison-pdp-offer-guarantee",
+      "blocks": {
+        "check_item_pktdCR": {
+          "type": "check_item",
+          "settings": {
+            "text": "Provides Fast Relief From Sciatica And Herniated Discs"
+          }
+        },
+        "check_item_fHyq7x": {
+          "type": "check_item",
+          "settings": {
+            "text": "Rehydrates and Restores Your Spinal Discs"
+          }
+        },
+        "check_item_Db6zmY": {
+          "type": "check_item",
+          "settings": {
+            "text": "Relieves Back Pain, Stiffness, and Discomfort"
+          }
+        },
+        "check_item_agiMKh": {
+          "type": "check_item",
+          "settings": {
+            "text": "Feel The Difference In Just 15 Minutes Per Day"
+          }
+        },
+        "gift_item_tWMj4K": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "smoothspine™-30-day-sciatica-relief-plan-coc",
+            "image": "shopify://shop_images/dc43829b1674bae58a96a2b9dbbd09fbe430dfc2.png",
+            "name": "Back pain & Sciatica Guide"
+          }
+        },
+        "gift_item_P6DjMz": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "sciatica-back-pain-relief-patches",
+            "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
+            "name": "12x Back Pain Relief Patches"
+          }
+        },
+        "gift_item_eh9AQd": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "smoothspine™-zip-lock-travel-bag-coc",
+            "image": "shopify://shop_images/gsejnjn3gn4knf_egegh.png",
+            "name": "Zip Lock Travel Bag"
+          }
+        }
+      },
+      "block_order": [
+        "check_item_pktdCR",
+        "check_item_fHyq7x",
+        "check_item_Db6zmY",
+        "check_item_agiMKh",
+        "gift_item_tWMj4K",
+        "gift_item_P6DjMz",
+        "gift_item_eh9AQd"
+      ],
+      "name": "PDP Offer + Guarantee",
+      "settings": {
+        "show_trustpilot": true,
+        "star_full_count": 4,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_logo": true,
+        "offer_heading": "<em>Special Offer</em> On Now!",
+        "offer_description": "Try Your SmoothSpine Massager NOW <span style=\"text-decoration:underline\">Risk-Free</span> at an All Time Low Price! Act Now and You'll Get:",
+        "offer_image": "shopify://shop_images/e145c8657a0ce71caabd4bdcd69218a3f7cd9ff7.png",
+        "show_gifts": true,
+        "cta_label": "GET 60% OFF TODAY ONLY!",
+        "cta_link": "",
+        "show_note": true,
+        "note_text": "Note: Not Available on Amazon or eBay",
+        "wave_offer_bottom": "shopify://shop_images/banner-wave-top.svg",
+        "wave_guarantee_top": "shopify://shop_images/banner-wave-bottom.svg",
+        "guarantee_image": "shopify://shop_images/Home-Info-Guar-IMG.png",
+        "guarantee_heading": "100% Satisfaction 90-Day <em>Money Back Guarantee</em>",
+        "guarantee_body": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee.</strong> If you don't experience the remarkable <strong>relief from back pain and Sciatica</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days</strong>, let us know and we will refund every single penny of your investment.</p><p><strong>No questions asked.</strong> We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>",
+        "color_bg_outer": "#fdfcfa",
+        "color_bg_offer": "#f8f4ee",
+        "color_bg_guarantee": "#e5eefb",
+        "color_text_primary": "#102a43",
+        "color_accent_orange": "#f07e3b",
+        "color_accent_blue": "#065bdc",
+        "color_divider": "#424140",
+        "color_btn_bg": "#f07e3b",
+        "color_btn_border": "#bf642f",
+        "color_accent_orange_dark": "#bf642f",
+        "color_btn_text": "#fffcfb",
+        "color_gift_bg": "#eeeae5",
+        "color_gift_border": "#065bdc",
+        "color_gift_badge_strike": "#85afee",
+        "color_gift_badge_bg": "#065bdc",
+        "color_gift_badge_text": "#fafcfe",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "description_font_size": 18,
+        "description_font_size_mobile": 14,
+        "checklist_font_size": 16,
+        "checklist_font_size_mobile": 14,
+        "btn_font_size": 16,
+        "rating_font_size": 12,
+        "guarantee_title_font_size": 32,
+        "guarantee_title_font_size_mobile": 24,
+        "guarantee_body_font_size": 16,
+        "guarantee_body_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_x": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_x_mobile": 20,
+        "max_width": 1280,
+        "block_padding_x": 64,
+        "block_padding_y": 48,
+        "column_gap": 40,
+        "image_border_radius": 8,
+        "btn_border_radius": 8,
+        "gift_border_radius": 8,
+        "guarantee_image_size": 290
+      }
+    },
+    "maison_pdp_faq_NHzG9D": {
+      "type": "maison-pdp-faq",
+      "blocks": {
+        "faq_item_8Q77DK": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will SmoothSpine™ Triple Fusion Massager Provide Relief From My Sciatica and Back Pain?",
+            "answer": "<p>Yes! The SmoothSpine™ Triple Fusion Massager is specifically designed to target sciatica and back pain through its unique triple fusion technology combining heat therapy, vibration massage, and acupressure point stimulation for effective relief.</p>"
+          }
+        },
+        "faq_item_n3znAa": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How Soon Will I Notice Results with SmoothSpine™ Triple Fusion Massager?",
+            "answer": "<p>Many users report feeling relief after their very first session. For lasting results, we recommend consistent use over 2-4 weeks as part of your daily wellness routine.</p>"
+          }
+        },
+        "faq_item_yG8XBd": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What's the Ideal Duration for Each SmoothSpine™ Triple Fusion Massager Therapy Session?",
+            "answer": "<p>We recommend 15-20 minute sessions for optimal results. You can use it up to 2-3 times per day depending on your comfort level and needs.</p>"
+          }
+        },
+        "faq_item_8QwAaW": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do I need to buy batteries?",
+            "answer": "<p>No, the SmoothSpine™ Triple Fusion Massager comes with a built-in rechargeable battery and a USB charging cable. No need to purchase batteries separately.</p>"
+          }
+        },
+        "faq_item_NExGR8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What are the dimensions of the SmoothSpine™ Triple Fusion Back Massager?",
+            "answer": "<p>The SmoothSpine™ Triple Fusion Back Massager is designed to be compact and portable, making it easy to use at home, in the office, or while traveling.</p>"
+          }
+        },
+        "faq_item_EmU9Cb": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We offer a hassle-free return policy. If you're not completely satisfied with your SmoothSpine™ Triple Fusion Massager, you can return it within 30 days for a full refund.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_8Q77DK",
+        "faq_item_n3znAa",
+        "faq_item_yG8XBd",
+        "faq_item_8QwAaW",
+        "faq_item_NExGR8",
+        "faq_item_EmU9Cb"
+      ],
+      "name": "FAQ PDP",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subtitle": "We want you to know exactly what to expect. That's why we've answerd the most common questions here.",
+        "color_background": "#fdfcfa",
+        "color_card_bg": "#f8f4ee",
+        "color_heading": "#102a43",
+        "color_text_secondary": "#102a43",
+        "color_icon": "#102a43",
+        "title_font_size": 24,
+        "title_font_size_desktop": 32,
+        "subtitle_font_size": 14,
+        "subtitle_font_size_desktop": 16,
+        "question_font_size": 14,
+        "question_font_size_desktop": 16,
+        "answer_font_size": 14,
+        "answer_font_size_desktop": 15,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_inline": 20,
+        "padding_inline_desktop": 80,
+        "header_gap": 32,
+        "header_gap_desktop": 40,
+        "columns_gap": 20,
+        "items_gap": 12,
+        "card_border_radius": 8,
+        "max_width": 1280
+      }
+    },
+    "custom_liquid_MGtXtD": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "Custom Liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<div class=\"maison-reviews-general\">\n<!-- Start of Judge.me code -->{% assign has_legacy = false %}{% if shop.metafields.judgeme.all_reviews_header.size > 20 %}{% assign has_legacy = true %}{% endif %}<div class='jdgm-widget jdgm-all-reviews-widget-v2025' data-widget='all-reviews-v2025' data-auto-install='false' data-entry-point='all_reviews_widget_v2025.js' data-entry-key='all-reviews-widget-v2025/main.js'>{% if has_legacy %}<div class='jdgm-legacy-widget-content' style='display: none;'><article class='jdgm-widget jdgm-all-reviews-widget'><style class='jdgm-temp-hiding-style'>.jdgm-all-reviews-widget{ display: none }</style>{{ shop.metafields.judgeme.all_reviews_header }}<div class='jdgm-all-reviews__body'>{% assign prefix = 'all_reviews_' %}{% for count in (0..65535) %}{% assign metafield_key = prefix | append: count %}{% assign current_metafield = shop.metafields.judgeme[metafield_key] %}{% unless current_metafield %}{% break %}{% endunless %}{{ current_metafield }}{% endfor %}</div></article></div>{% endif %}</div>{% if shop.metafields.judgeme.all_reviews_widget_v2025_data %}<script>jdgm.data ||= {}; jdgm.data.allReviewsWidgetV2025 = {{ shop.metafields.judgeme.all_reviews_widget_v2025_data }};</script>{% endif %}<!-- End of Judge.me code -->\n</div>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "maison_pd_hero_JHyDcq",
+    "maison_about_usps_dn6ghV",
+    "maison_pdp_content_list_VNpB6J",
+    "maison_pdp_content_benefits_kEPYcj",
+    "maison_pdp_content_list_VyRjjH",
+    "maison_pdp_content_list_tNqpGx",
+    "maison_pdp_content_list_hcMWE3",
+    "maison_before_after_U8xfYJ",
+    "maison_pdp_comparison_cGe9fV",
+    "maison_pdp_reviews_LNgKVr",
+    "maison_how_it_work_gng7ta",
+    "maison_pdp_offer_guarantee_V7EfKR",
+    "maison_pdp_faq_NHzG9D",
+    "custom_liquid_MGtXtD"
+  ]
+}
