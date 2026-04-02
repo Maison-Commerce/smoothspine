@@ -151,6 +151,15 @@
     background-color: #e0e0e0;
   }
 
+  #shopify-section-{{ section.id }} .ugc-card-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
   #shopify-section-{{ section.id }} .ugc-card-image img {
     position: absolute;
     inset: 0;
@@ -421,10 +430,10 @@
       {% if section.settings.show_nav_buttons %}
         <nav class="ugc-nav-buttons" aria-label="Carousel navigation">
           <button class="ugc-nav-btn ugc-prev-{{ section.id }}" aria-label="Previous slide">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M4.90216 8.57145H17.8681C18.6571 8.57145 19.2966 9.21105 19.2966 10C19.2966 10.789 18.6571 11.4286 17.8681 11.4286H4.90246C5.63166 12.1938 6.48578 12.8562 7.32449 13.2756C8.03018 13.6284 8.31621 14.4865 7.96336 15.1922C7.61052 15.8979 6.75242 16.1839 6.04673 15.8311C3.94889 14.7822 1.90333 12.7366 0.854423 10.6387C0.653337 10.2365 0.653344 9.7631 0.854441 9.36093C1.90336 7.26317 3.94891 5.21763 6.04673 4.16871C6.75242 3.81587 7.61052 4.1019 7.96336 4.80758C8.31621 5.51327 8.03018 6.37137 7.32449 6.72421C6.48566 7.14363 5.63143 7.80617 4.90216 8.57145Z" fill="#FAFCFE"/></svg>
           </button>
           <button class="ugc-nav-btn ugc-next-{{ section.id }}" aria-label="Next slide">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="12" viewBox="0 0 19 12" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.3945 4.55388H1.42858C0.639593 4.55388 0 5.19348 0 5.98245C0 6.77143 0.639593 7.41102 1.42858 7.41102H14.3942C13.665 8.1762 12.8109 8.83863 11.9722 9.25798C11.2665 9.61082 10.9805 10.4689 11.3333 11.1746C11.6861 11.8803 12.5442 12.1663 13.2499 11.8135C15.3477 10.7646 17.3933 8.71902 18.4422 6.62109C18.6433 6.2189 18.6433 5.74552 18.4422 5.34335C17.3933 3.24559 15.3477 1.20005 13.2499 0.151133C12.5442 -0.20171 11.6861 0.084319 11.3333 0.790005C10.9805 1.49569 11.2665 2.35379 11.9722 2.70663C12.811 3.12605 13.6652 3.78859 14.3945 4.55388Z" fill="#FAFCFE"/></svg>
           </button>
         </nav>
       {% endif %}
@@ -438,13 +447,19 @@
             {% if block.type == 'ugc_slide' %}
               <div class="swiper-slide" {{ block.shopify_attributes }}>
                 <article class="ugc-card">
-                  <figure class="ugc-card-image">
+                  <figure class="ugc-card-image" {% if block.settings.video != blank %}data-ugc-video="{{ block.id }}"{% endif %} style="cursor: {% if block.settings.video != blank %}pointer{% else %}default{% endif %};">
                     {% if block.settings.image != blank %}
                       {{ block.settings.image | image_url: width: 600 | image_tag:
                         loading: 'lazy',
                         widths: '200, 300, 400, 600',
                         sizes: '(max-width: 767px) 200px, 240px'
                       }}
+                    {% elsif block.settings.video != blank %}
+                      <video class="ugc-card-video" autoplay muted loop playsinline preload="metadata">
+                        {%- for source in block.settings.video.sources -%}
+                          <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                        {%- endfor -%}
+                      </video>
                     {% else %}
                       <div class="ugc-placeholder-svg">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -454,8 +469,8 @@
                         </svg>
                       </div>
                     {% endif %}
-                    {% if block.settings.show_play_button %}
-                      <button class="ugc-play-btn" aria-label="Play video" {% if block.settings.video != blank %}data-ugc-video="{{ block.id }}"{% endif %}>
+                    {% if block.settings.show_play_button and block.settings.video != blank %}
+                      <button class="ugc-play-btn" aria-label="Play video">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8 5 20 12 8 19"/></svg>
                       </button>
                     {% endif %}
@@ -569,10 +584,11 @@
         document.body.style.overflow = '';
       }
 
-      document.querySelectorAll('#shopify-section-' + sectionId + ' [data-ugc-video]').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
+      document.querySelectorAll('#shopify-section-' + sectionId + ' [data-ugc-video]').forEach(function(el) {
+        el.addEventListener('click', function(e) {
           e.preventDefault();
-          openVideoModal(btn.getAttribute('data-ugc-video'));
+          e.stopPropagation();
+          openVideoModal(el.getAttribute('data-ugc-video'));
         });
       });
 
