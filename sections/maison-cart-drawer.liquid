@@ -474,6 +474,40 @@
     }
   });
 
+  /* Auto-remove insurance when no real items left */
+  document.documentElement.addEventListener('cart:change', function(e) {
+    var cart = e.detail && e.detail.cart;
+    if (!cart || !cart.items) return;
+
+    var insProductId = {{ section.settings.insurance_product.id | default: 0 }};
+    if (!insProductId) return;
+
+    var hasRealItems = false;
+    var insKey = null;
+
+    cart.items.forEach(function(item) {
+      if (item.product_id === insProductId) {
+        insKey = item.key;
+      } else {
+        hasRealItems = true;
+      }
+    });
+
+    if (!hasRealItems && insKey) {
+      var sectionId = _getCartSectionId();
+      var body = { id: insKey, quantity: 0 };
+      if (sectionId) body.sections = sectionId;
+
+      fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) { _dispatchCartChange(data); });
+    }
+  });
+
   /* Insurance toggle */
   function _getCartSectionId() {
     var cartDrawer = document.querySelector('cart-drawer');
