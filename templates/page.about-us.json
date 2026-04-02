@@ -187,6 +187,7 @@
         "heading": "What We Stand For",
         "subtitle": "Our mission is to provide those with chronic back pain options beyond surgery and costly treatments.",
         "show_dividers": true,
+        "divider_style": "dashed",
         "color_background": "#e5eefb",
         "color_heading": "#102a43",
         "color_body_text": "#102a43",
@@ -319,11 +320,70 @@
       "settings": {
         "heading": "What Keeps Us Going",
         "image": "shopify://shop_images/5bd512d73970be097b56c4e3bf0af5ccf1af2084.png",
-        "color_bg": "#FDFCFA",
-        "color_text": "#102A43",
+        "color_bg": "#fdfcfa",
+        "color_text": "#102a43",
         "padding_top": 20,
         "padding_bottom": 40,
         "padding_horizontal": 80,
+        "max_width": 1400
+      }
+    },
+    "maison_about_stats_PxmMwQ": {
+      "type": "maison-about-stats",
+      "blocks": {
+        "stat_item_VtJz6G": {
+          "type": "stat_item",
+          "settings": {
+            "value": "200,000+",
+            "label": "Customers Helped"
+          }
+        },
+        "stat_item_yJXtkJ": {
+          "type": "stat_item",
+          "settings": {
+            "value": "4.4★",
+            "label": "Average Rating"
+          }
+        },
+        "stat_item_HAr7y6": {
+          "type": "stat_item",
+          "settings": {
+            "value": "90-Day",
+            "label": "Money-Back Guarantee"
+          }
+        },
+        "stat_item_KaqE3Q": {
+          "type": "stat_item",
+          "settings": {
+            "value": "15 Min",
+            "label": "Daily Use Time"
+          }
+        }
+      },
+      "block_order": [
+        "stat_item_VtJz6G",
+        "stat_item_yJXtkJ",
+        "stat_item_HAr7y6",
+        "stat_item_KaqE3Q"
+      ],
+      "name": "About Page Stats",
+      "settings": {
+        "color_background": "#e5eefb",
+        "color_brand": "#065bdc",
+        "color_label_text": "#102a43",
+        "value_font_size": 32,
+        "value_font_size_mobile": 24,
+        "label_font_size": 12,
+        "label_letter_spacing": 1,
+        "padding_top": 40,
+        "padding_bottom": 48,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "items_gap": 32,
+        "items_gap_mobile": 16,
+        "item_border_radius": 18,
         "max_width": 1400
       }
     },
@@ -564,7 +624,7 @@
         "offer_subtext": "Try Your SmoothSpine Massager NOW <span style=\"text-decoration:underline\">Risk-Free</span> at an All Time Low Price! Act Now and You'll Get:",
         "gifts_heading": "Exclusive Offer! Order today for free gifts (valued at $64)!",
         "cta_label": "GET 60% OFF TODAY ONLY!",
-        "cta_link": "",
+        "cta_link": "shopify://products/triple-fusion-back-massager",
         "show_cta_note": true,
         "cta_note": "Note: Not Available on Amazon or eBay",
         "offer_image": "shopify://shop_images/e145c8657a0ce71caabd4bdcd69218a3f7cd9ff7.png",
@@ -646,6 +706,7 @@
     "maison_about_usps_w3A3Jm",
     "maison_about_endorsement_PcNL4T",
     "maison_about_story_ffbFkg",
+    "maison_about_stats_PxmMwQ",
     "maison_trustpilot_reviews_YLgDfx",
     "maison_offer_auth_UAd3WU"
   ]
