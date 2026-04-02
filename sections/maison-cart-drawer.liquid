@@ -496,10 +496,12 @@
     var _autoInsLock = false;
 
     function _checkAutoAddInsurance(cart) {
+      console.log('[Auto-Insurance] Check:', { lock: _autoInsLock, items: cart.items.length, optedOut: sessionStorage.getItem('maison_insurance_opted_out') });
       if (_autoInsLock) return;
 
       var insProductId = {{ section.settings.insurance_product.id | default: 0 }};
       var insVariantId = {{ section.settings.insurance_product.first_available_variant.id | default: 0 }};
+      console.log('[Auto-Insurance] IDs:', { productId: insProductId, variantId: insVariantId });
       if (!insProductId || !insVariantId) return;
       if (sessionStorage.getItem('maison_insurance_opted_out') === 'true') return;
 
@@ -511,7 +513,9 @@
         else hasRealItems = true;
       });
 
+      console.log('[Auto-Insurance] State:', { hasRealItems: hasRealItems, hasInsurance: hasInsurance });
       if (hasRealItems && !hasInsurance) {
+        console.log('[Auto-Insurance] Adding insurance!');
         _autoInsLock = true;
         fetch('/cart/add.js', {
           method: 'POST',
@@ -528,18 +532,38 @@
 
     /* Listen to cart:change (quantity changes inside drawer) */
     document.documentElement.addEventListener('cart:change', function(e) {
+      console.log('[Auto-Insurance] cart:change fired');
       var cart = e.detail && e.detail.cart;
       if (cart && cart.items) _checkAutoAddInsurance(cart);
     });
 
     /* Listen to cart:refresh (add to cart from PDP) — need to fetch cart */
     document.documentElement.addEventListener('cart:refresh', function() {
+      console.log('[Auto-Insurance] cart:refresh fired');
       setTimeout(function() {
         fetch('/cart.js')
           .then(function(res) { return res.json(); })
           .then(function(cart) { _checkAutoAddInsurance(cart); });
       }, 300);
     });
+
+    /* Listen to cart:add (intercept fetch to /cart/add.js) */
+    var _origFetch = window.fetch;
+    window.fetch = function() {
+      var url = typeof arguments[0] === 'string' ? arguments[0] : '';
+      var result = _origFetch.apply(this, arguments);
+      if (url.indexOf('/cart/add.js') !== -1) {
+        console.log('[Auto-Insurance] /cart/add.js intercepted');
+        result.then(function() {
+          setTimeout(function() {
+            fetch('/cart.js')
+              .then(function(res) { return res.json(); })
+              .then(function(cart) { _checkAutoAddInsurance(cart); });
+          }, 500);
+        });
+      }
+      return result;
+    };
   {% endif %}
 
   /* Auto-remove insurance when no real items left */
