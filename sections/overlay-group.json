@@ -1,1 +1,86 @@
-{"type":"custom.overlay","name":"Overlay group","sections":{"newsletter-popup":{"type":"newsletter-popup","settings":{}},"privacy-banner":{"type":"privacy-banner","disabled":true,"settings":{}},"cart-drawer":{"type":"maison-cart-drawer","settings":{"show_checkout_button":true}},"search-drawer":{"type":"search-drawer","settings":{"full_width":false,"show_article_category":true}}},"order":["newsletter-popup","privacy-banner","cart-drawer","search-drawer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "custom.overlay",
+  "name": "Overlay group",
+  "sections": {
+    "newsletter-popup": {
+      "type": "newsletter-popup",
+      "settings": {
+        "apparition_delay": 5,
+        "show_only_on_index": true,
+        "show_only_for_visitors": true,
+        "show_only_once": true,
+        "title": "Signup for our newsletter",
+        "button_text": "Subscribe",
+        "subtext": "Describe what your customers will receive when subscribing to your newsletter."
+      }
+    },
+    "privacy-banner": {
+      "type": "privacy-banner",
+      "disabled": true,
+      "settings": {
+        "privacy_bar_title": "Cookie policy",
+        "privacy_bar_content": "<p>We use cookies and similar technologies to provide the best experience on our website. Refer to our Privacy Policy for more information.</p>"
+      }
+    },
+    "cart-drawer": {
+      "type": "maison-cart-drawer",
+      "settings": {
+        "show_shipping_bar": true,
+        "free_shipping_threshold": 100,
+        "shipping_unlocked_text": "FREE Shipping Unlocked!",
+        "shipping_remaining_text": "Spend [amount] more for FREE Shipping!",
+        "recommendations_title": "Achieve maximum results with",
+        "recommended_products": [
+          "30-patches-belt",
+          "30-patches-hip-stabilizer",
+          "30-patches-mystery-gift",
+          "30-patches-nmes-massager"
+        ],
+        "show_insurance": true,
+        "insurance_product": "expedited-shipping",
+        "insurance_image": "shopify://shop_images/0d0d1d0c8249be07881ec3992aac1a6c6613076b.png",
+        "insurance_title": "Premium Shipping Insurance",
+        "insurance_description": "Our standard shipping is free, but with this option your order will be insured against: damage, loss, or theft.",
+        "show_checkout_button": true,
+        "checkout_button_label": "GO TO CHECKOUT",
+        "show_payment_icons": true,
+        "payment_icon_1": "shopify://shop_images/Amex_ac5b244e-b578-46a5-b017-56c3bea73a04.svg",
+        "payment_icon_2": "shopify://shop_images/ApPay_4a04317a-aa3f-4c33-ac4f-b82d160596c7.svg",
+        "payment_icon_3": "shopify://shop_images/GPay_1e0d5e97-4593-4b10-a5e5-06af7eb7607e.svg",
+        "payment_icon_4": "shopify://shop_images/Visa_18f5ce50-9723-4d1d-b9c9-84c1327c0ee7.svg",
+        "payment_icon_5": "shopify://shop_images/Master_bcf1595a-f117-4842-a6d2-1e49eef351ac.svg",
+        "payment_icon_6": "shopify://shop_images/Paypal_8ab86b47-5ab9-4a4e-a96d-3967a685281d.png",
+        "payment_icon_7": "shopify://shop_images/ShopPay_121dc802-a559-4b24-8521-d845258aa0c1.png",
+        "payment_icon_8": "shopify://shop_images/UnionPay_99f1b524-4ef6-4014-b49f-2c8df081909a.png",
+        "payment_icon_9": "shopify://shop_images/AmazonPay.svg",
+        "show_trust_badges": true,
+        "trust_badge_1": "90-Day Risk-Free Trial",
+        "trust_badge_2": "4.4★ on Trustpilot"
+      }
+    },
+    "search-drawer": {
+      "type": "search-drawer",
+      "settings": {
+        "full_width": false,
+        "show_article_category": true,
+        "search_menu": "",
+        "search_menu_show_title": true
+      }
+    }
+  },
+  "order": [
+    "newsletter-popup",
+    "privacy-banner",
+    "cart-drawer",
+    "search-drawer"
+  ]
+}
