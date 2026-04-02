@@ -491,7 +491,7 @@
           "type": "ugc_slide",
           "settings": {
             "show_play_button": true,
-            "video_url": "",
+            "video": "shopify://files/videos/GIF 2 (1).mp4",
             "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
             "author_name": "Mikki",
             "show_verified": true
@@ -501,7 +501,7 @@
           "type": "ugc_slide",
           "settings": {
             "show_play_button": true,
-            "video_url": "",
+            "video": "shopify://files/videos/vid8.mp4",
             "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
             "author_name": "Mikki",
             "show_verified": true
@@ -511,7 +511,7 @@
           "type": "ugc_slide",
           "settings": {
             "show_play_button": true,
-            "video_url": "",
+            "video": "shopify://files/videos/1_2.mp4",
             "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
             "author_name": "Mikki",
             "show_verified": true
@@ -521,7 +521,7 @@
           "type": "ugc_slide",
           "settings": {
             "show_play_button": true,
-            "video_url": "",
+            "video": "shopify://files/videos/complete.mp4",
             "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
             "author_name": "Mikki",
             "show_verified": true
@@ -531,7 +531,7 @@
           "type": "ugc_slide",
           "settings": {
             "show_play_button": true,
-            "video_url": "",
+            "video": "shopify://files/videos/6 (1)_7bdf1f2e-c898-45e8-a780-3d557bb2c0d5.mp4",
             "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
             "author_name": "Mikki",
             "show_verified": true
@@ -541,7 +541,7 @@
           "type": "ugc_slide",
           "settings": {
             "show_play_button": true,
-            "video_url": "",
+            "video": "shopify://files/videos/v 2.mp4",
             "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
             "author_name": "Mikki",
             "show_verified": true
