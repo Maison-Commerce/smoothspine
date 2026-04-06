@@ -244,7 +244,7 @@
       "name": "Maison Header",
       "settings": {
         "logo": "shopify://shop_images/Logo-Black.png",
-        "menu": "main-menu",
+        "menu": "maison-header-menu",
         "featured_image": "shopify://shop_images/header-menu-img.png",
         "featured_image_mobile": "shopify://shop_images/drawer-mobile-img.png",
         "featured_title": "<p>Our Bestseller</p><p>Triple Fusion Massager</p>",
