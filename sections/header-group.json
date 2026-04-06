@@ -93,79 +93,39 @@
     "maison_header_h9REXH": {
       "type": "maison-header",
       "blocks": {
-        "nav_link_qEh3pU": {
-          "type": "nav_link",
-          "settings": {
-            "label": "Home",
-            "link": "/",
-            "has_dropdown": false
-          }
-        },
-        "nav_link_pxfKUw": {
-          "type": "nav_link",
-          "settings": {
-            "label": "Shop",
-            "link": "shopify://collections",
-            "has_dropdown": true
-          }
-        },
-        "nav_link_mh3MG6": {
-          "type": "nav_link",
-          "settings": {
-            "label": "About Us",
-            "link": "shopify://pages/about-us",
-            "has_dropdown": false
-          }
-        },
-        "nav_link_XeX8qp": {
-          "type": "nav_link",
-          "settings": {
-            "label": "Contact",
-            "link": "shopify://pages/contact",
-            "has_dropdown": false
-          }
-        },
-        "nav_link_jkjmQa": {
-          "type": "nav_link",
-          "settings": {
-            "label": "Our Happy Customers",
-            "link": "shopify://pages/ugc",
-            "has_dropdown": false
-          }
-        },
         "dropdown_link_HfNVwj": {
           "type": "dropdown_link",
           "settings": {
             "label": "All Products",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         },
         "dropdown_link_zt9DJ3": {
           "type": "dropdown_link",
           "settings": {
             "label": "Back Pain",
-            "link": ""
+            "link": "shopify://collections/back-pain"
           }
         },
         "dropdown_link_hiRdC6": {
           "type": "dropdown_link",
           "settings": {
             "label": "Neck Pain",
-            "link": ""
+            "link": "shopify://collections/neck-pain"
           }
         },
         "dropdown_link_JiknJR": {
           "type": "dropdown_link",
           "settings": {
             "label": "Foot Pain",
-            "link": ""
+            "link": "shopify://collections/foot-pain"
           }
         },
         "dropdown_link_VBbpNE": {
           "type": "dropdown_link",
           "settings": {
             "label": "Bundles",
-            "link": ""
+            "link": "shopify://collections/bundles"
           }
         },
         "drawer_primary_link_YqeqcP": {
@@ -223,11 +183,6 @@
         }
       },
       "block_order": [
-        "nav_link_qEh3pU",
-        "nav_link_pxfKUw",
-        "nav_link_mh3MG6",
-        "nav_link_XeX8qp",
-        "nav_link_jkjmQa",
         "dropdown_link_HfNVwj",
         "dropdown_link_zt9DJ3",
         "dropdown_link_hiRdC6",
