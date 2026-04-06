@@ -448,7 +448,7 @@
         "button_label": "GET 60% OFF TODAY ONLY!",
         "button_link": "shopify://products/triple-fusion-back-massager",
         "desktop_media_position": "left",
-        "mobile_media_position": "top",
+        "mobile_media_position": "bottom",
         "video": "shopify://files/videos/home-before-after.mp4",
         "image_placeholder_text": "Before and After image",
         "image_aspect_ratio": "1 / 1",
