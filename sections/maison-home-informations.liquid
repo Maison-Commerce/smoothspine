@@ -180,7 +180,7 @@
     font-weight: 400;
     font-size: var(--s-font-size-description);
     line-height: 1.5;
-    color: var(--s-color-text-secondary);
+    color: rgba(16, 42, 67, 0.75);
   }
 
   #shopify-section-{{ section.id }} .pi-divider {
@@ -357,6 +357,7 @@
     gap: var(--s-card-gap);
     align-items: center;
     overflow: hidden;
+    text-align: center;
   }
 
   #shopify-section-{{ section.id }} .pi-guarantee-badge {
@@ -370,6 +371,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    border-radius: 8px;
   }
 
   #shopify-section-{{ section.id }} .pi-guarantee-badge .pi-placeholder {
@@ -424,7 +426,7 @@
     font-weight: 400;
     font-size: var(--s-font-size-card2-body);
     line-height: 1.5;
-    color: var(--s-color-text-secondary);
+    color: rgba(16, 42, 67, 0.75);
   }
 
   #shopify-section-{{ section.id }} .pi-card2-body strong {
@@ -437,7 +439,7 @@
     #shopify-section-{{ section.id }} .maisoncode_product-informations {
       --s-padding-top: {{ section.settings.padding_top_mobile }}px;
       --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
-      --s-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+      --s-padding-horizontal: 8px;
       --s-font-size-title: {{ section.settings.title_font_size_mobile }}px;
       --s-font-size-description: {{ section.settings.description_font_size_mobile }}px;
       --s-font-size-checklist: {{ section.settings.checklist_font_size_mobile }}px;
@@ -468,6 +470,7 @@
 
     #shopify-section-{{ section.id }} .pi-badge-row {
       justify-content: center;
+      flex-wrap: nowrap;
     }
 
     #shopify-section-{{ section.id }} .pi-cta-btn {
@@ -480,6 +483,8 @@
 
     #shopify-section-{{ section.id }} .pi-trust-badges {
       gap: 12px;
+      flex-wrap: nowrap;
+      font-size: 9px;
     }
 
     #shopify-section-{{ section.id }} .pi-trust-badge svg {
