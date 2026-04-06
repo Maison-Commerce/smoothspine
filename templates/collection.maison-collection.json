@@ -114,28 +114,28 @@
           "type": "category_tab",
           "settings": {
             "label": "Back Pain",
-            "collection": ""
+            "collection": "back-pain"
           }
         },
         "category_tab_cmYWfy": {
           "type": "category_tab",
           "settings": {
             "label": "Neck Pain",
-            "collection": ""
+            "collection": "neck-pain"
           }
         },
         "category_tab_BNe4AV": {
           "type": "category_tab",
           "settings": {
             "label": "Foot Pain",
-            "collection": ""
+            "collection": "foot-pain"
           }
         },
         "category_tab_wzt77A": {
           "type": "category_tab",
           "settings": {
             "label": "Bundles",
-            "collection": ""
+            "collection": "bundles"
           }
         }
       },
