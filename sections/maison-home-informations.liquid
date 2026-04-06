@@ -169,6 +169,12 @@
     max-width: 500px;
   }
 
+  #shopify-section-{{ section.id }} .pi-title p {
+    font: inherit;
+    color: inherit;
+    margin: 0;
+  }
+
   #shopify-section-{{ section.id }} .pi-title em {
     color: var(--s-color-accent-orange);
     text-decoration: underline;
@@ -721,10 +727,10 @@
       "content": "Card 1 — Content"
     },
     {
-      "type": "inline_richtext",
+      "type": "richtext",
       "id": "title",
       "label": "Title (italic = accent)",
-      "default": "The Triple Fusion Massager – A <em>15-Minute At-Home</em> Routine For Melting Away Your Back Pain"
+      "default": "<p>The Triple Fusion Massager – <br>A <em>15-Minute At-Home</em> Routine For Melting Away Your Back Pain</p>"
     },
     {
       "type": "textarea",
