@@ -298,7 +298,7 @@
     font-weight: 400;
     font-size: var(--s-font-size-benefit);
     line-height: 1.5;
-    color: var(--s-color-text-primary);
+    color: #102A43;
     flex: 1;
   }
 
@@ -314,6 +314,16 @@
       --s-font-size-body: {{ section.settings.body_font_size_mobile }}px;
       --s-font-size-benefit: {{ section.settings.benefit_font_size_mobile }}px;
       --s-icon-size: {{ section.settings.icon_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .cb-benefit-item .cb-benefit-icon {
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+    }
+
+    #shopify-section-{{ section.id }} .cb-benefit-item {
+      align-items: flex-start;
     }
 
     #shopify-section-{{ section.id }} .cb-inner {
