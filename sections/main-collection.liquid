@@ -75,7 +75,7 @@
     -webkit-overflow-scrolling: touch;
     padding: 0 0 8px;
     max-width: 1440px;
-    margin: 0 auto 0;
+    margin: 0 auto 40px;
   }
 
   #shopify-section-{{ section.id }} .maison-category-tabs::-webkit-scrollbar {
@@ -92,7 +92,7 @@
     border-radius: 8px;
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 800;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -935,6 +935,11 @@
 
         {%- if section.settings.filter_layout == 'maison' and paginate.pages > 1 -%}
           <nav class="maison-pagination" role="navigation" aria-label="Pagination">
+            {%- if paginate.previous.is_link -%}
+              <a href="{{ paginate.previous.url }}" class="maison-pagination__btn maison-pagination__btn--arrow" aria-label="Previous page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M7.97919 0.84375L3.06585 5.75708C3.03392 5.78897 3.00859 5.82683 2.99131 5.86852C2.97403 5.9102 2.96513 5.95488 2.96513 6C2.96513 6.04512 2.97403 6.0898 2.99131 6.13148C3.00859 6.17317 3.03392 6.21103 3.06585 6.24292L7.97919 11.1562" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            {%- endif -%}
             {%- for part in paginate.parts -%}
               {%- if part.is_link -%}
                 <a href="{{ part.url }}" class="maison-pagination__btn {% if part.title == paginate.current_page %}maison-pagination__btn--active{% endif %}">
