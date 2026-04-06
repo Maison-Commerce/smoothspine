@@ -17,14 +17,14 @@
         "menu_gfV6Yx": {
           "type": "menu",
           "settings": {
-            "menu": "main-menu",
+            "menu": "maison-footer-shop",
             "menu_title": "Shop"
           }
         },
         "menu_LGMpyY": {
           "type": "menu",
           "settings": {
-            "menu": "footer",
+            "menu": "maison-footer-help",
             "menu_title": "Help"
           }
         },
