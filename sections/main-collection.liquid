@@ -711,8 +711,8 @@
                   <div class="maison-desktop-only">
                     {%- for filter in collection.filters -%}
                       {%- if filter.type == 'list' and filter.values.size > 0 -%}
-                        <div class="maison-pill" x-data="{ open: false }">
-                          <button type="button" class="maison-pill__trigger" @click="open = !open" @click.outside="open = false">
+                        <div class="maison-pill" x-data="{ open: false }" @click.outside="open = false">
+                          <button type="button" class="maison-pill__trigger" @click="open = !open">
                             <span>{{ filter.label }}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                           </button>
@@ -730,8 +730,8 @@
                         {%- if filter.min_value.value or filter.max_value.value -%}
                           {%- assign price_label = 'From ' | append: filter.min_value.value | default: 0 | money_without_trailing_zeros | append: ' to ' | append: filter.max_value.value | default: filter.range_max | money_without_trailing_zeros -%}
                         {%- endif -%}
-                        <div class="maison-pill" x-data="{ open: false }">
-                          <button type="button" class="maison-pill__trigger" @click="open = !open" @click.outside="open = false">
+                        <div class="maison-pill" x-data="{ open: false }" @click.outside="open = false">
+                          <button type="button" class="maison-pill__trigger" @click="open = !open">
                             <span>{{ price_label }}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                           </button>
@@ -760,8 +760,8 @@
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.66699 2.66675V13.3334M4.66699 13.3334L2.00033 10.6668M4.66699 13.3334L7.33366 10.6668M11.3337 13.3334V2.66675M11.3337 2.66675L8.66699 5.33341M11.3337 2.66675L14.0003 5.33341" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                       Sort by:
                     </span>
-                    <div class="maison-pill maison-pill--sort" x-data="{ open: false }">
-                      <button type="button" class="maison-pill__trigger" @click="open = !open" @click.outside="open = false">
+                    <div class="maison-pill maison-pill--sort" x-data="{ open: false }" @click.outside="open = false">
+                      <button type="button" class="maison-pill__trigger" @click="open = !open">
                         <span>{{ collection.sort_by | default: collection.default_sort_by | replace: 'best-selling', 'Best selling' | replace: 'price-ascending', 'Price: low to high' | replace: 'price-descending', 'Price: high to low' | replace: 'title-ascending', 'A-Z' | replace: 'title-descending', 'Z-A' | replace: 'created-ascending', 'Oldest' | replace: 'created-descending', 'Newest' }}</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                       </button>
