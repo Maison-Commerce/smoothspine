@@ -188,7 +188,7 @@
         "show_gifts": true,
         "show_review": true,
         "review_avatar": "shopify://shop_images/Rectangle_4896.png",
-        "review_text": "\"I've struggled with crippling back pain and Sciatica for years. Sitting, standing up, lying down, it all hurt. I was skeptical but after using this massager for just 1 week, I noticed a HUGE difference. The stabbing pain in my low back is finally gone, and I can move without wincing again. I still use it daily, it's so well-made. If you're on the fence, trust me, it's worth it!\"",
+        "review_text": "<p>\"I've struggled with crippling back pain and Sciatica for years. Sitting, standing up, lying down, <strong>it all hurt</strong>. I was skeptical but after using this massager for just 1 week, I noticed a HUGE difference. The stabbing pain in my low back is finally gone, and <strong>I can move without wincing again</strong>. I still use it daily, it's so well-made. If you're on the fence, trust me, it's worth it!\"</p>",
         "review_author": "Maggie S.",
         "review_rating": 5,
         "show_verified_badge": true,
