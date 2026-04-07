@@ -137,6 +137,52 @@
 
   #shopify-section-{{ section.id }} .header-nav-item svg {
     flex-shrink: 0;
+    transition: transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .header-nav-dropdown {
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .header-nav-dropdown:hover .header-nav-item svg {
+    transform: rotate(180deg);
+  }
+
+  #shopify-section-{{ section.id }} .header-nav-dropdown__panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    z-index: 100;
+  }
+
+  #shopify-section-{{ section.id }} .header-nav-dropdown:hover .header-nav-dropdown__panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  #shopify-section-{{ section.id }} .header-nav-dropdown__link {
+    display: block;
+    padding: 8px 16px;
+    font-family: var(--s-font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--s-color-primary);
+    white-space: nowrap;
+    transition: background 0.15s ease;
+  }
+
+  #shopify-section-{{ section.id }} .header-nav-dropdown__link:hover {
+    background: rgba(16, 42, 67, 0.05);
   }
 
   #shopify-section-{{ section.id }} .header-right {
@@ -647,12 +693,23 @@
     <nav class="header-nav">
       {%- if section.settings.menu != blank -%}
         {%- for link in section.settings.menu.links -%}
-          <a href="{{ link.url }}" class="header-nav-item" {% if link.current %}aria-current="page"{% endif %}>
-            {{ link.title }}
-            {%- if link.links.size > 0 -%}
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            {%- endif -%}
-          </a>
+          {%- if link.links.size > 0 -%}
+            <div class="header-nav-dropdown">
+              <a href="{{ link.url }}" class="header-nav-item" {% if link.current %}aria-current="page"{% endif %}>
+                {{ link.title }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <div class="header-nav-dropdown__panel">
+                {%- for sub_link in link.links -%}
+                  <a href="{{ sub_link.url }}" class="header-nav-dropdown__link">{{ sub_link.title }}</a>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- else -%}
+            <a href="{{ link.url }}" class="header-nav-item" {% if link.current %}aria-current="page"{% endif %}>
+              {{ link.title }}
+            </a>
+          {%- endif -%}
         {%- endfor -%}
       {%- else -%}
         {%- for block in section.blocks -%}
