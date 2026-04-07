@@ -46,7 +46,8 @@
     position: {% if section.settings.enable_sticky %}sticky{% else %}relative{% endif %};
     top: 0;
     z-index: 10;
-    overflow: hidden;
+    overflow-x: clip;
+    overflow-y: visible;
   }
 
   #shopify-section-{{ section.id }} .header-slide-wrapper {
