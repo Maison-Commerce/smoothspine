@@ -208,6 +208,12 @@
     color: var(--s-color-secondary);
   }
 
+  #shopify-section-{{ section.id }} .pdp-review-text p {
+    font: inherit;
+    color: inherit;
+    margin: 0;
+  }
+
   #shopify-section-{{ section.id }} .pdp-review-text strong {
     font-weight: 700;
   }
@@ -752,7 +758,7 @@
           {% endif %}
           <div class="pdp-review-body">
             {% if section.settings.review_text != blank %}
-              <p class="pdp-review-text">{{ section.settings.review_text }}</p>
+              <div class="pdp-review-text">{{ section.settings.review_text }}</div>
             {% endif %}
             <div class="pdp-review-meta">
               <div class="pdp-review-author-row">
@@ -1023,7 +1029,7 @@
               {%- endfor -%}
             </div>
             {% if section.settings.review_text != blank %}
-              <p class="pdp-review-text">{{ section.settings.review_text }}</p>
+              <div class="pdp-review-text">{{ section.settings.review_text }}</div>
             {% endif %}
             <div class="pdp-review-author-row">
               {% if section.settings.review_author != blank %}
@@ -1348,10 +1354,9 @@
       "label": "Reviewer photo"
     },
     {
-      "type": "textarea",
+      "type": "richtext",
       "id": "review_text",
-      "label": "Review text",
-      "default": "\"I've struggled with crippling back pain and Sciatica for years. Sitting, standing up, lying down, it all hurt. I was skeptical but after using this massager for just 1 week, I noticed a HUGE difference. The stabbing pain in my low back is finally gone, and I can move without wincing again. I still use it daily, it's so well-made. If you're on the fence, trust me, it's worth it!\""
+      "label": "Review text"
     },
     {
       "type": "text",
