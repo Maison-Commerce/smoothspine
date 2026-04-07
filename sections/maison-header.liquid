@@ -503,6 +503,13 @@
     color: var(--s-color-primary);
   }
 
+  #shopify-section-{{ section.id }} .drawer-primary-link--simple .drawer-primary-label {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--s-color-secondary);
+  }
+
   #shopify-section-{{ section.id }} .drawer-arrow-btn {
     width: 28px;
     height: 28px;
@@ -650,6 +657,10 @@
 
     #shopify-section-{{ section.id }} .drawer-primary-label {
       font-size: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .drawer-primary-link--simple .drawer-primary-label {
+      font-size: 14px;
     }
 
     /* Secondary links mobile */
@@ -921,7 +932,7 @@
                   </div>
                 {%- endunless -%}
               {%- else -%}
-                <a href="{{ link.url }}" class="drawer-primary-link">
+                <a href="{{ link.url }}" class="drawer-primary-link drawer-primary-link--simple">
                   <span class="drawer-primary-label">{{ link.title }}</span>
                 </a>
               {%- endif -%}
