@@ -224,7 +224,7 @@
         "endorsement_ibkjxH": {
           "type": "endorsement",
           "settings": {
-            "tab_label": "Dr. Jane Smith",
+            "tab_label": "Dr. Blane Schilling",
             "title": "Endorsed by Dr. Blane Schilling",
             "description": "<p>We didn't build this alone. We worked with physical therapists and spine specialists to create something that actually makes sense for chronic pain.</p>",
             "image": "shopify://shop_images/5c0b920f0ebab86769e2a7b32aa4f3b4b82fe02b.png"
@@ -233,7 +233,7 @@
         "endorsement_cAHEp3": {
           "type": "endorsement",
           "settings": {
-            "tab_label": "Dr. John Doe",
+            "tab_label": "Dr. Adam Story",
             "title": "Clinically proven results",
             "description": "",
             "image": "shopify://shop_images/5c0b920f0ebab86769e2a7b32aa4f3b4b82fe02b.png"
