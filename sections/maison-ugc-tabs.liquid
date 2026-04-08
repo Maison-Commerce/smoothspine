@@ -134,11 +134,6 @@
   /* Tab content */
   #shopify-section-{{ section.id }} .ugc-tab-content {
     width: 100%;
-    display: none;
-  }
-
-  #shopify-section-{{ section.id }} .ugc-tab-content.is-active {
-    display: block;
   }
 
   /* Mobile */
@@ -222,12 +217,12 @@
   {% endif %}
 
   {%- comment -%} Tab 1 Content {%- endcomment -%}
-  <div class="ugc-tab-content" :class="{ 'is-active': activeTab === 0 }" x-show="activeTab === 0">
+  <div class="ugc-tab-content" x-show="activeTab === 0" x-effect="if (activeTab === 0) setTimeout(() => window.dispatchEvent(new Event('resize')), 100)">
     {{ section.settings.tab_1_content }}
   </div>
 
   {%- comment -%} Tab 2 Content {%- endcomment -%}
-  <div class="ugc-tab-content" :class="{ 'is-active': activeTab === 1 }" x-show="activeTab === 1">
+  <div class="ugc-tab-content" x-show="activeTab === 1" x-effect="if (activeTab === 1) setTimeout(() => window.dispatchEvent(new Event('resize')), 100)">
     {{ section.settings.tab_2_content }}
   </div>
 
