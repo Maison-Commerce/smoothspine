@@ -630,7 +630,7 @@
         "trust_rating_text": "4.4/5 (2,295 + reviews)",
         "show_trustpilot_logo": true,
         "button_label": "GET 60% OFF TODAY ONLY!",
-        "button_link": "shopify://products/triple-fusion-back-massager",
+        "button_link": "#maison-pdp",
         "desktop_media_position": "right",
         "mobile_media_position": "bottom",
         "video": "shopify://files/videos/home-before-after.mp4",
