@@ -120,7 +120,8 @@
     flex-shrink: 0;
   }
 
-  #shopify-section-{{ section.id }} .hiw-card-image img {
+  #shopify-section-{{ section.id }} .hiw-card-image img,
+  #shopify-section-{{ section.id }} .hiw-card-image video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -296,7 +297,19 @@
           {% if block.type == 'step_card' %}
             <article class="hiw-card" {{ block.shopify_attributes }}>
               <div class="hiw-card-image">
-                {% if block.settings.image != blank %}
+                {% if block.settings.video != blank %}
+                  <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    class="hiw-video"
+                  >
+                    {%- for source in block.settings.video.sources -%}
+                      <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                    {%- endfor -%}
+                  </video>
+                {% elsif block.settings.image != blank %}
                   {{ block.settings.image | image_url: width: 800 | image_tag:
                     loading: 'lazy',
                     widths: '375, 550, 750, 800',
@@ -639,6 +652,12 @@
       "name": "Step",
       "limit": 6,
       "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Step video",
+          "info": "Video takes priority over image if both are set"
+        },
         {
           "type": "image_picker",
           "id": "image",
