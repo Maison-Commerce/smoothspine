@@ -204,7 +204,7 @@
         "featured_image_mobile": "shopify://shop_images/drawer-mobile-img.png",
         "featured_title": "<p>Our Bestseller</p><p>Triple Fusion Massager</p>",
         "featured_button_label": "SEE #1 BACK PAIN BESTSELLER",
-        "featured_button_link": "shopify://products/triple-fusion-back-massager",
+        "featured_button_link": "shopify://products/tfm-pres",
         "shop_accordion_title": "Shop by your pain",
         "enable_sticky": true,
         "hide_on_scroll": true
