@@ -359,51 +359,75 @@
     </div>
   {% endif %}
 
-  {%- comment -%} Tabs {%- endcomment -%}
-  {% if section.settings.tab_1_label != blank or section.settings.tab_2_label != blank %}
-    <div class="ugc-tabs-row">
-      {% if section.settings.tab_1_label != blank %}
-        <button
-          type="button"
-          class="ugc-tab-btn"
-          :class="{ 'is-active': activeTab === 0 }"
-          @click="activeTab = 0"
-        >{{ section.settings.tab_1_label }}</button>
-      {% endif %}
-      {% if section.settings.tab_2_label != blank %}
-        <button
-          type="button"
-          class="ugc-tab-btn"
-          :class="{ 'is-active': activeTab === 1 }"
-          @click="activeTab = 1"
-        >{{ section.settings.tab_2_label }}</button>
-      {% endif %}
-    </div>
-  {% endif %}
-
-  {%- comment -%} Tab 1 Content {%- endcomment -%}
-  <div class="ugc-tab-content" x-show="activeTab === 0" x-effect="if (activeTab === 0) setTimeout(() => window.dispatchEvent(new Event('resize')), 100)">
-    {{ section.settings.tab_1_content }}
-  </div>
-
-  {%- comment -%} Tab 2 Content {%- endcomment -%}
-  <div class="ugc-tab-content" x-show="activeTab === 1" x-effect="if (activeTab === 1) setTimeout(() => window.dispatchEvent(new Event('resize')), 100)">
-    {%- if section.settings.tab_2_use_videoask -%}
-      <div
-        class="ugc-videoask"
-        data-videoask-url="{{ section.settings.tab_2_videoask_url }}"
-      >
-        <div class="ugc-videoask__loading">Loading testimonials…</div>
-        <div class="ugc-videoask__grid" hidden></div>
-        <div class="ugc-videoask__error" hidden>Could not load testimonials.</div>
-      </div>
-    {%- else -%}
-      {{ section.settings.tab_2_content }}
+  {%- comment -%} Build tabs array — only include tabs with a label {%- endcomment -%}
+  {%- assign tab_labels = '' -%}
+  {%- assign tab_uses_va = '' -%}
+  {%- assign tab_tags = '' -%}
+  {%- assign tab_contents_keys = '' -%}
+  {%- for i in (1..4) -%}
+    {%- assign label_key = 'tab_' | append: i | append: '_label' -%}
+    {%- assign label = section.settings[label_key] -%}
+    {%- if label != blank -%}
+      {%- assign tab_labels = tab_labels | append: label | append: '|||' -%}
+      {%- assign use_va_key = 'tab_' | append: i | append: '_use_videoask' -%}
+      {%- if section.settings[use_va_key] -%}
+        {%- assign tab_uses_va = tab_uses_va | append: '1|||' -%}
+      {%- else -%}
+        {%- assign tab_uses_va = tab_uses_va | append: '0|||' -%}
+      {%- endif -%}
+      {%- assign tag_key = 'tab_' | append: i | append: '_videoask_tag' -%}
+      {%- assign tab_tags = tab_tags | append: section.settings[tag_key] | append: '|||' -%}
+      {%- assign tab_contents_keys = tab_contents_keys | append: i | append: '|||' -%}
     {%- endif -%}
-  </div>
+  {%- endfor -%}
+  {%- assign labels_arr = tab_labels | split: '|||' -%}
+  {%- assign uses_va_arr = tab_uses_va | split: '|||' -%}
+  {%- assign tags_arr = tab_tags | split: '|||' -%}
+  {%- assign content_keys_arr = tab_contents_keys | split: '|||' -%}
 
-  {%- if section.settings.tab_2_use_videoask -%}
-    {%- comment -%} Fullscreen video modal {%- endcomment -%}
+  {%- comment -%} Tabs row {%- endcomment -%}
+  {%- if labels_arr.size > 0 -%}
+    <div class="ugc-tabs-row">
+      {%- for label in labels_arr -%}
+        <button
+          type="button"
+          class="ugc-tab-btn"
+          :class="{ 'is-active': activeTab === {{ forloop.index0 }} }"
+          @click="activeTab = {{ forloop.index0 }}"
+        >{{ label }}</button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Tab contents {%- endcomment -%}
+  {%- assign has_any_videoask = false -%}
+  {%- for label in labels_arr -%}
+    {%- assign idx = forloop.index0 -%}
+    {%- assign uses_va = uses_va_arr[idx] -%}
+    {%- assign tag_filter = tags_arr[idx] -%}
+    {%- assign content_idx = content_keys_arr[idx] -%}
+    {%- assign content_key = 'tab_' | append: content_idx | append: '_content' -%}
+
+    <div class="ugc-tab-content" x-show="activeTab === {{ idx }}" x-effect="if (activeTab === {{ idx }}) setTimeout(() => window.dispatchEvent(new Event('resize')), 100)">
+      {%- if uses_va == '1' -%}
+        {%- assign has_any_videoask = true -%}
+        <div
+          class="ugc-videoask"
+          data-videoask-url="{{ section.settings.videoask_worker_url }}"
+          data-videoask-tag="{{ tag_filter }}"
+        >
+          <div class="ugc-videoask__loading">Loading testimonials…</div>
+          <div class="ugc-videoask__grid" hidden></div>
+          <div class="ugc-videoask__error" hidden>Could not load testimonials.</div>
+        </div>
+      {%- else -%}
+        {{ section.settings[content_key] }}
+      {%- endif -%}
+    </div>
+  {%- endfor -%}
+
+  {%- if has_any_videoask -%}
+    {%- comment -%} Fullscreen video modal (single, shared) {%- endcomment -%}
     <div class="ugc-videoask-modal" hidden role="dialog" aria-modal="true" aria-label="Video testimonial">
       <button type="button" class="ugc-videoask-modal__close" aria-label="Close">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M6 18L18 6" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
@@ -414,95 +438,27 @@
 
 </section>
 
-{%- if section.settings.tab_2_use_videoask -%}
 <script>
   (function() {
     var section = document.getElementById('shopify-section-{{ section.id }}');
     if (!section) return;
 
-    var container = section.querySelector('.ugc-videoask');
+    var containers = section.querySelectorAll('.ugc-videoask');
     var modal = section.querySelector('.ugc-videoask-modal');
-    if (!container || !modal) return;
+    if (containers.length === 0 || !modal) return;
 
-    var loadingEl = container.querySelector('.ugc-videoask__loading');
-    var gridEl = container.querySelector('.ugc-videoask__grid');
-    var errorEl = container.querySelector('.ugc-videoask__error');
     var modalVideo = modal.querySelector('.ugc-videoask-modal__video');
     var modalClose = modal.querySelector('.ugc-videoask-modal__close');
-
-    var workerUrl = container.dataset.videoaskUrl;
-    var loaded = false;
 
     // Move modal to body to escape any transform/contain stacking context
     if (modal.parentNode !== document.body) {
       document.body.appendChild(modal);
     }
 
-    // Lazy-load when Tab 2 becomes visible
-    function tryLoad() {
-      if (loaded) return;
-      var alpine = section.querySelector('.maisoncode_ugc-tabs');
-      // Only load when tab 2 is active or when user clicks tab 2
-      var tabContent = container.closest('.ugc-tab-content');
-      if (tabContent && tabContent.offsetParent !== null) {
-        loadReviews();
-      }
-    }
-
-    function loadReviews() {
-      if (loaded) return;
-      loaded = true;
-      fetch(workerUrl, { cache: 'default' })
-        .then(function(r) {
-          if (!r.ok) throw new Error('HTTP ' + r.status);
-          return r.json();
-        })
-        .then(function(data) {
-          var reviews = (data && data.reviews) || [];
-          if (reviews.length === 0) {
-            loadingEl.hidden = true;
-            errorEl.hidden = false;
-            errorEl.textContent = 'No testimonials yet.';
-            return;
-          }
-          renderGrid(reviews);
-          loadingEl.hidden = true;
-          gridEl.hidden = false;
-        })
-        .catch(function(err) {
-          console.error('[VideoAsk]', err);
-          loadingEl.hidden = true;
-          errorEl.hidden = false;
-        });
-    }
-
     function escapeHtml(s) {
       var d = document.createElement('div');
       d.textContent = s || '';
       return d.innerHTML;
-    }
-
-    function renderGrid(reviews) {
-      var html = reviews.map(function(r) {
-        var thumb = r.gif || r.thumbnail || '';
-        return '<div class="ugc-videoask-card" data-video="' + escapeHtml(r.video_url) + '">'
-          + '<img class="ugc-videoask-card__media" src="' + escapeHtml(thumb) + '" alt="' + escapeHtml(r.name) + '" loading="lazy">'
-          + '<div class="ugc-videoask-card__play">'
-          +   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>'
-          + '</div>'
-          + '<div class="ugc-videoask-card__overlay">'
-          +   '<div class="ugc-videoask-card__name">' + escapeHtml(r.name) + '</div>'
-          + '</div>'
-          + '</div>';
-      }).join('');
-      gridEl.innerHTML = html;
-
-      // Wire up click handlers
-      gridEl.querySelectorAll('.ugc-videoask-card').forEach(function(card) {
-        card.addEventListener('click', function() {
-          openModal(card.dataset.video);
-        });
-      });
     }
 
     function openModal(videoUrl) {
@@ -528,20 +484,102 @@
       if (e.key === 'Escape' && !modal.hidden) closeModal();
     });
 
-    // Try loading immediately (if Tab 2 is default) and on tab change
-    tryLoad();
-    // Watch for tab change via Alpine
-    var alpineRoot = section.querySelector('[x-data]');
-    if (alpineRoot) {
-      var observer = new MutationObserver(tryLoad);
-      observer.observe(container.closest('.ugc-tab-content'), {
-        attributes: true,
-        attributeFilter: ['style', 'hidden']
-      });
+    // Shared cache: fetch reviews once, share across all containers
+    var reviewsPromise = null;
+    function getReviews(workerUrl) {
+      if (!reviewsPromise) {
+        reviewsPromise = fetch(workerUrl, { cache: 'default' })
+          .then(function(r) {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.json();
+          })
+          .then(function(d) { return (d && d.reviews) || []; });
+      }
+      return reviewsPromise;
     }
+
+    function initContainer(container) {
+      var loadingEl = container.querySelector('.ugc-videoask__loading');
+      var gridEl = container.querySelector('.ugc-videoask__grid');
+      var errorEl = container.querySelector('.ugc-videoask__error');
+      var workerUrl = container.dataset.videoaskUrl;
+      var tagFilter = (container.dataset.videoaskTag || '').trim().toLowerCase();
+      var loaded = false;
+
+      function renderGrid(reviews) {
+        var html = reviews.map(function(r) {
+          var thumb = r.gif || r.thumbnail || '';
+          return '<div class="ugc-videoask-card" data-video="' + escapeHtml(r.video_url) + '">'
+            + '<img class="ugc-videoask-card__media" src="' + escapeHtml(thumb) + '" alt="' + escapeHtml(r.name) + '" loading="lazy">'
+            + '<div class="ugc-videoask-card__play">'
+            +   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>'
+            + '</div>'
+            + '<div class="ugc-videoask-card__overlay">'
+            +   '<div class="ugc-videoask-card__name">' + escapeHtml(r.name) + '</div>'
+            + '</div>'
+            + '</div>';
+        }).join('');
+        gridEl.innerHTML = html;
+
+        gridEl.querySelectorAll('.ugc-videoask-card').forEach(function(card) {
+          card.addEventListener('click', function() {
+            openModal(card.dataset.video);
+          });
+        });
+      }
+
+      function load() {
+        if (loaded) return;
+        loaded = true;
+        getReviews(workerUrl)
+          .then(function(reviews) {
+            // Filter by tag if set
+            var filtered = reviews;
+            if (tagFilter) {
+              filtered = reviews.filter(function(r) {
+                return (r.tags || []).some(function(t) { return (t || '').toLowerCase() === tagFilter; });
+              });
+            }
+            if (filtered.length === 0) {
+              loadingEl.hidden = true;
+              errorEl.hidden = false;
+              errorEl.textContent = 'No testimonials yet.';
+              return;
+            }
+            renderGrid(filtered);
+            loadingEl.hidden = true;
+            gridEl.hidden = false;
+          })
+          .catch(function(err) {
+            console.error('[VideoAsk]', err);
+            loadingEl.hidden = true;
+            errorEl.hidden = false;
+          });
+      }
+
+      function tryLoad() {
+        if (loaded) return;
+        var tabContent = container.closest('.ugc-tab-content');
+        if (tabContent && tabContent.offsetParent !== null) {
+          load();
+        }
+      }
+
+      tryLoad();
+
+      var tabContent = container.closest('.ugc-tab-content');
+      if (tabContent) {
+        var observer = new MutationObserver(tryLoad);
+        observer.observe(tabContent, {
+          attributes: true,
+          attributeFilter: ['style', 'hidden']
+        });
+      }
+    }
+
+    containers.forEach(initContainer);
   })();
 </script>
-{%- endif -%}
 
 {% schema %}
 {
@@ -584,6 +622,17 @@
     },
     {
       "type": "header",
+      "content": "VideoAsk (global)"
+    },
+    {
+      "type": "text",
+      "id": "videoask_worker_url",
+      "label": "VideoAsk Worker URL",
+      "info": "Shared by all VideoAsk-enabled tabs",
+      "default": "https://smoothspine-videoask.choojiie.workers.dev/reviews"
+    },
+    {
+      "type": "header",
       "content": "Tab 1"
     },
     {
@@ -593,9 +642,21 @@
       "default": "All Products"
     },
     {
+      "type": "checkbox",
+      "id": "tab_1_use_videoask",
+      "label": "Use VideoAsk for Tab 1",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "tab_1_videoask_tag",
+      "label": "Filter by tag (leave empty for all)",
+      "info": "e.g. Foot Pain, Neck Pain, Back Pain"
+    },
+    {
       "type": "liquid",
       "id": "tab_1_content",
-      "label": "Tab 1 content (Liquid)"
+      "label": "Tab 1 content (Liquid) — used when VideoAsk disabled"
     },
     {
       "type": "header",
@@ -610,20 +671,68 @@
     {
       "type": "checkbox",
       "id": "tab_2_use_videoask",
-      "label": "Use VideoAsk Worker for Tab 2",
-      "info": "When enabled, fetches reviews from VideoAsk Worker instead of using the Liquid content below",
+      "label": "Use VideoAsk for Tab 2",
       "default": false
     },
     {
       "type": "text",
-      "id": "tab_2_videoask_url",
-      "label": "VideoAsk Worker URL",
-      "default": "https://smoothspine-videoask.choojiie.workers.dev/reviews"
+      "id": "tab_2_videoask_tag",
+      "label": "Filter by tag (leave empty for all)"
     },
     {
       "type": "liquid",
       "id": "tab_2_content",
-      "label": "Tab 2 content (Liquid) — used when VideoAsk Worker is disabled"
+      "label": "Tab 2 content (Liquid) — used when VideoAsk disabled"
+    },
+    {
+      "type": "header",
+      "content": "Tab 3"
+    },
+    {
+      "type": "text",
+      "id": "tab_3_label",
+      "label": "Tab 3 label"
+    },
+    {
+      "type": "checkbox",
+      "id": "tab_3_use_videoask",
+      "label": "Use VideoAsk for Tab 3",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "tab_3_videoask_tag",
+      "label": "Filter by tag (leave empty for all)"
+    },
+    {
+      "type": "liquid",
+      "id": "tab_3_content",
+      "label": "Tab 3 content (Liquid) — used when VideoAsk disabled"
+    },
+    {
+      "type": "header",
+      "content": "Tab 4"
+    },
+    {
+      "type": "text",
+      "id": "tab_4_label",
+      "label": "Tab 4 label"
+    },
+    {
+      "type": "checkbox",
+      "id": "tab_4_use_videoask",
+      "label": "Use VideoAsk for Tab 4",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "tab_4_videoask_tag",
+      "label": "Filter by tag (leave empty for all)"
+    },
+    {
+      "type": "liquid",
+      "id": "tab_4_content",
+      "label": "Tab 4 content (Liquid) — used when VideoAsk disabled"
     },
     {
       "type": "header",

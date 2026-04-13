@@ -49,7 +49,7 @@ export default {
 
 // ─── Reviews fetch with Cache API ───
 async function getCachedReviews(request, env, ctx) {
-  const cacheKey = new Request('https://cache.smoothspine.videoask/reviews', { method: 'GET' });
+  const cacheKey = new Request('https://cache.smoothspine.videoask/reviews/v2', { method: 'GET' });
   const cache = caches.default;
 
   const cached = await cache.match(cacheKey);
@@ -174,7 +174,8 @@ async function fetchContactAnswer(contact, accessToken, env) {
     duration: videoAnswer.media_duration || 0,
     transcription: videoAnswer.transcription || '',
     share_url: videoAnswer.share_url || null,
-    created_at: contact.created_at
+    created_at: contact.created_at,
+    tags: (contact.tags || []).map(function(t) { return t.title; }).filter(Boolean)
   };
 }
 
