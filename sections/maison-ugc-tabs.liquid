@@ -396,7 +396,7 @@
   }
 {% endstyle %}
 
-<section class="maisoncode_ugc-tabs" x-data="{ activeTab: 0 }">
+<section class="maisoncode_ugc-tabs" x-data="{ activeTab: {{ section.settings.default_tab | default: 0 }} }">
 
   {%- comment -%} CTA Banner {%- endcomment -%}
   {% if section.settings.show_cta %}
@@ -747,6 +747,20 @@
       "label": "VideoAsk Worker URL",
       "info": "Shared by all VideoAsk-enabled tabs",
       "default": "https://smoothspine-videoask.choojiie.workers.dev/reviews"
+    },
+    {
+      "type": "header",
+      "content": "Tabs behavior"
+    },
+    {
+      "type": "select",
+      "id": "default_tab",
+      "label": "Default active tab",
+      "options": [
+        { "value": "0", "label": "Tab 1" },
+        { "value": "1", "label": "Tab 2" }
+      ],
+      "default": "0"
     },
     {
       "type": "header",
