@@ -363,6 +363,11 @@
       ],
       "name": "Trustpilot Reviews",
       "settings": {
+        "use_live_reviews": true,
+        "trustpilot_domain": "smoothspine.com",
+        "reviews_worker_url": "https://smoothspine-videoask.choojiie.workers.dev/trustpilot/reviews",
+        "min_stars": 5,
+        "reviews_limit": 8,
         "heading": "<p>Loved By People <br/>Who've Tried <em>Everything</em></p>",
         "description": "Our community of 2,400+ people trust SmoothSpine. Let real results inspire your confidence.",
         "show_badge": true,
