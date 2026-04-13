@@ -272,41 +272,13 @@
     gap: 32px;
   }
 
-  /* Trustpilot */
-  #shopify-section-{{ section.id }} .pdp-trustpilot {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
+  /* Trustpilot widget */
+  #shopify-section-{{ section.id }} .pdp-trustpilot-widget {
+    min-height: 20px;
   }
-
-  #shopify-section-{{ section.id }} .pdp-trustpilot-rating {
-    font-family: var(--s-font-body);
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 1.5;
-    color: #111;
-  }
-
-  #shopify-section-{{ section.id }} .pdp-trustpilot-rating a {
-    color: #111;
-    text-decoration: underline;
-  }
-
-  #shopify-section-{{ section.id }} .pdp-trustpilot-logo {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  #shopify-section-{{ section.id }} .pdp-trustpilot-logo svg { width: 14px; height: 14px; }
-
-  #shopify-section-{{ section.id }} .pdp-trustpilot-logo span {
-    font-family: var(--s-font-body);
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 1.5;
-    color: #111;
+  #shopify-section-{{ section.id }} .pdp-trustpilot-widget a {
+    color: inherit;
+    text-decoration: none;
   }
 
   /* Title */
@@ -795,30 +767,18 @@
     <div class="pdp-content">
       <div class="pdp-info-header">
 
-        {%- comment -%} Trustpilot {%- endcomment -%}
+        {%- comment -%} Trustpilot TrustBox (Micro Combo) {%- endcomment -%}
         {% if section.settings.show_trustpilot %}
-          <div class="pdp-trustpilot">
-            <div class="pdp-stars">
-              {%- assign tp_half_index = section.settings.trustpilot_full_stars | plus: 1 -%}
-              {%- for i in (1..5) -%}
-                {%- if i <= section.settings.trustpilot_full_stars -%}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
-                {%- elsif i == tp_half_index and section.settings.trustpilot_has_half_star -%}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><rect x="8" width="8" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
-                {%- else -%}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
-            {% if section.settings.trustpilot_rating_text != blank %}
-              <span class="pdp-trustpilot-rating">{{ section.settings.trustpilot_rating_text }}</span>
-            {% endif %}
-            {% if section.settings.show_trustpilot_logo %}
-              <div class="pdp-trustpilot-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 10.6761L10.0417 9.86164L11.3125 14L7 10.6761ZM14 5.32704H8.64583L7 0L5.35417 5.32704H0L4.33334 8.62893L2.6875 13.956L7.02083 10.6541L9.6875 8.62893L14 5.32704Z" fill="#00B67A"/></svg>
-                <span>Trustpilot</span>
-              </div>
-            {% endif %}
+          <div
+            class="trustpilot-widget pdp-trustpilot-widget"
+            data-locale="en-US"
+            data-template-id="{{ section.settings.trustpilot_template_id | default: '5419b6ffb0d04a076446a9af' }}"
+            data-businessunit-id="{{ section.settings.trustpilot_business_unit_id | default: '65ca8fb41ab9f95071487503' }}"
+            data-style-height="20px"
+            data-style-width="100%"
+            data-theme="light"
+          >
+            <a href="https://www.trustpilot.com/review/smoothspine.com" target="_blank" rel="noopener">Trustpilot</a>
           </div>
         {% endif %}
 
@@ -1257,6 +1217,10 @@
   }
 </script>
 
+{%- if section.settings.show_trustpilot -%}
+  <script src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "PDP Hero",
@@ -1274,31 +1238,23 @@
       "default": true
     },
     {
-      "type": "range",
-      "id": "trustpilot_full_stars",
-      "label": "Full stars",
-      "min": 0,
-      "max": 5,
-      "step": 1,
-      "default": 4
-    },
-    {
-      "type": "checkbox",
-      "id": "trustpilot_has_half_star",
-      "label": "Show half star after full stars",
-      "default": true
-    },
-    {
       "type": "text",
-      "id": "trustpilot_rating_text",
-      "label": "Rating text",
-      "default": "4.4/5 (2,295 + reviews)"
+      "id": "trustpilot_business_unit_id",
+      "label": "Business Unit ID",
+      "default": "65ca8fb41ab9f95071487503"
     },
     {
-      "type": "checkbox",
-      "id": "show_trustpilot_logo",
-      "label": "Show Trustpilot logo",
-      "default": true
+      "type": "select",
+      "id": "trustpilot_template_id",
+      "label": "Widget template",
+      "options": [
+        { "value": "5419b6ffb0d04a076446a9af", "label": "Micro Combo (stars + score + count)" },
+        { "value": "5419b732fbfb950b10de65e5", "label": "Micro Star (stars only)" },
+        { "value": "5419b6a8b0d04a076446a9ad", "label": "Micro Review Count" },
+        { "value": "5406e65db0d04a09e042d5fc", "label": "Horizontal" },
+        { "value": "53aa8807dec7e10d38f59f32", "label": "Mini" }
+      ],
+      "default": "5419b6ffb0d04a076446a9af"
     },
     {
       "type": "header",
