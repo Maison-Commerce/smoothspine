@@ -220,6 +220,27 @@
     display: block;
   }
 
+  #shopify-section-{{ section.id }} .ugc-videoask-card__hover-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+    animation: ugcFadeIn-{{ section.id }} 0.25s ease forwards;
+  }
+
+  @keyframes ugcFadeIn-{{ section.id }} {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card:hover .ugc-videoask-card__play,
+  #shopify-section-{{ section.id }} .ugc-videoask-card:hover .ugc-videoask-card__overlay {
+    z-index: 2;
+  }
+
   #shopify-section-{{ section.id }} .ugc-videoask-card__overlay {
     position: absolute;
     inset: 0;
@@ -558,9 +579,10 @@
           return;
         }
         errorEl.hidden = true;
+        var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
         var html = reviews.map(function(r) {
-          var thumb = r.gif || r.thumbnail || '';
-          return '<div class="ugc-videoask-card" data-video="' + escapeHtml(r.video_url) + '">'
+          var thumb = r.thumbnail || '';
+          return '<div class="ugc-videoask-card" data-video="' + escapeHtml(r.video_url) + '" data-thumb="' + escapeHtml(thumb) + '">'
             + '<img class="ugc-videoask-card__media" src="' + escapeHtml(thumb) + '" alt="' + escapeHtml(r.name) + '" loading="lazy">'
             + '<div class="ugc-videoask-card__play">'
             +   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>'
@@ -577,6 +599,36 @@
           card.addEventListener('click', function() {
             openModal(card.dataset.video);
           });
+
+          // Hover-to-play preview (desktop only)
+          if (canHover) {
+            var hoverVideo = null;
+            var hoverTimer = null;
+
+            card.addEventListener('mouseenter', function() {
+              hoverTimer = setTimeout(function() {
+                if (hoverVideo) return;
+                hoverVideo = document.createElement('video');
+                hoverVideo.src = card.dataset.video;
+                hoverVideo.muted = true;
+                hoverVideo.loop = true;
+                hoverVideo.playsInline = true;
+                hoverVideo.preload = 'auto';
+                hoverVideo.className = 'ugc-videoask-card__hover-video';
+                card.appendChild(hoverVideo);
+                hoverVideo.play().catch(function() {});
+              }, 200);
+            });
+
+            card.addEventListener('mouseleave', function() {
+              clearTimeout(hoverTimer);
+              if (hoverVideo) {
+                hoverVideo.pause();
+                hoverVideo.remove();
+                hoverVideo = null;
+              }
+            });
+          }
         });
       }
 
