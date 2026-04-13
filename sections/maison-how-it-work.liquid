@@ -298,17 +298,13 @@
             <article class="hiw-card" {{ block.shopify_attributes }}>
               <div class="hiw-card-image">
                 {% if block.settings.video != blank %}
-                  <video
-                    autoplay
-                    muted
-                    loop
-                    playsinline
-                    class="hiw-video"
-                  >
-                    {%- for source in block.settings.video.sources -%}
-                      <source src="{{ source.url }}" type="{{ source.mime_type }}">
-                    {%- endfor -%}
-                  </video>
+                  {{ block.settings.video | video_tag: 
+                    autoplay: true, 
+                    loop: true, 
+                    muted: true, 
+                    playsinline: true, 
+                    class: 'hiw-video' 
+                  }}
                 {% elsif block.settings.image != blank %}
                   {{ block.settings.image | image_url: width: 800 | image_tag:
                     loading: 'lazy',
