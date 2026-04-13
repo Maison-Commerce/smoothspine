@@ -136,6 +136,46 @@
     width: 100%;
   }
 
+  /* VideoAsk wrapper */
+  #shopify-section-{{ section.id }} .ugc-videoask-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Sub-tabs */
+  #shopify-section-{{ section.id }} .ugc-subtabs-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-subtab-btn {
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(16, 42, 67, 0.15);
+    background: transparent;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: rgba(16, 42, 67, 0.75);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-subtab-btn:hover {
+    border-color: rgba(16, 42, 67, 0.4);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-subtab-btn[data-active="true"] {
+    background: #102A43;
+    border-color: #102A43;
+    color: #fff;
+  }
+
   /* VideoAsk grid */
   #shopify-section-{{ section.id }} .ugc-videoask {
     width: 100%;
@@ -359,72 +399,72 @@
     </div>
   {% endif %}
 
-  {%- comment -%} Build tabs array — only include tabs with a label {%- endcomment -%}
-  {%- assign tab_labels = '' -%}
-  {%- assign tab_uses_va = '' -%}
-  {%- assign tab_tags = '' -%}
-  {%- assign tab_contents_keys = '' -%}
-  {%- for i in (1..4) -%}
-    {%- assign label_key = 'tab_' | append: i | append: '_label' -%}
-    {%- assign label = section.settings[label_key] -%}
-    {%- if label != blank -%}
-      {%- assign tab_labels = tab_labels | append: label | append: '|||' -%}
-      {%- assign use_va_key = 'tab_' | append: i | append: '_use_videoask' -%}
-      {%- if section.settings[use_va_key] -%}
-        {%- assign tab_uses_va = tab_uses_va | append: '1|||' -%}
-      {%- else -%}
-        {%- assign tab_uses_va = tab_uses_va | append: '0|||' -%}
-      {%- endif -%}
-      {%- assign tag_key = 'tab_' | append: i | append: '_videoask_tag' -%}
-      {%- assign tab_tags = tab_tags | append: section.settings[tag_key] | append: '|||' -%}
-      {%- assign tab_contents_keys = tab_contents_keys | append: i | append: '|||' -%}
-    {%- endif -%}
-  {%- endfor -%}
-  {%- assign labels_arr = tab_labels | split: '|||' -%}
-  {%- assign uses_va_arr = tab_uses_va | split: '|||' -%}
-  {%- assign tags_arr = tab_tags | split: '|||' -%}
-  {%- assign content_keys_arr = tab_contents_keys | split: '|||' -%}
-
   {%- comment -%} Tabs row {%- endcomment -%}
-  {%- if labels_arr.size > 0 -%}
+  {%- if section.settings.tab_1_label != blank or section.settings.tab_2_label != blank -%}
     <div class="ugc-tabs-row">
-      {%- for label in labels_arr -%}
-        <button
-          type="button"
-          class="ugc-tab-btn"
-          :class="{ 'is-active': activeTab === {{ forloop.index0 }} }"
-          @click="activeTab = {{ forloop.index0 }}"
-        >{{ label }}</button>
-      {%- endfor -%}
+      {%- if section.settings.tab_1_label != blank -%}
+        <button type="button" class="ugc-tab-btn" :class="{ 'is-active': activeTab === 0 }" @click="activeTab = 0">{{ section.settings.tab_1_label }}</button>
+      {%- endif -%}
+      {%- if section.settings.tab_2_label != blank -%}
+        <button type="button" class="ugc-tab-btn" :class="{ 'is-active': activeTab === 1 }" @click="activeTab = 1">{{ section.settings.tab_2_label }}</button>
+      {%- endif -%}
     </div>
   {%- endif -%}
 
-  {%- comment -%} Tab contents {%- endcomment -%}
-  {%- assign has_any_videoask = false -%}
-  {%- for label in labels_arr -%}
-    {%- assign idx = forloop.index0 -%}
-    {%- assign uses_va = uses_va_arr[idx] -%}
-    {%- assign tag_filter = tags_arr[idx] -%}
-    {%- assign content_idx = content_keys_arr[idx] -%}
-    {%- assign content_key = 'tab_' | append: content_idx | append: '_content' -%}
+  {%- comment -%} Tab 1 Content (Liquid only) {%- endcomment -%}
+  <div class="ugc-tab-content" x-show="activeTab === 0" x-effect="if (activeTab === 0) setTimeout(() => window.dispatchEvent(new Event('resize')), 100)">
+    {{ section.settings.tab_1_content }}
+  </div>
 
-    <div class="ugc-tab-content" x-show="activeTab === {{ idx }}" x-effect="if (activeTab === {{ idx }}) setTimeout(() => window.dispatchEvent(new Event('resize')), 100)">
-      {%- if uses_va == '1' -%}
-        {%- assign has_any_videoask = true -%}
+  {%- comment -%} Tab 2 Content (VideoAsk with sub-tabs OR Liquid fallback) {%- endcomment -%}
+  {%- assign has_any_videoask = false -%}
+  <div class="ugc-tab-content" x-show="activeTab === 1" x-effect="if (activeTab === 1) setTimeout(() => window.dispatchEvent(new Event('resize')), 100)">
+    {%- if section.settings.tab_2_use_videoask -%}
+      {%- assign has_any_videoask = true -%}
+      <div class="ugc-videoask-wrap">
+        {%- comment -%} Sub-tabs {%- endcomment -%}
+        {%- assign sub_labels_str = '' -%}
+        {%- assign sub_tags_str = '' -%}
+        {%- for i in (1..4) -%}
+          {%- assign sub_label_key = 'sub_tab_' | append: i | append: '_label' -%}
+          {%- assign sub_label = section.settings[sub_label_key] -%}
+          {%- if sub_label != blank -%}
+            {%- assign sub_tag_key = 'sub_tab_' | append: i | append: '_tag' -%}
+            {%- assign sub_tag = section.settings[sub_tag_key] -%}
+            {%- assign sub_labels_str = sub_labels_str | append: sub_label | append: '|||' -%}
+            {%- assign sub_tags_str = sub_tags_str | append: sub_tag | append: '|||' -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- assign sub_labels = sub_labels_str | split: '|||' -%}
+        {%- assign sub_tags = sub_tags_str | split: '|||' -%}
+
+        {%- if sub_labels.size > 0 -%}
+          <div class="ugc-subtabs-row">
+            {%- for sub_label in sub_labels -%}
+              <button
+                type="button"
+                class="ugc-subtab-btn"
+                data-subtab-tag="{{ sub_tags[forloop.index0] }}"
+                {% if forloop.first %}data-active="true"{% endif %}
+              >{{ sub_label }}</button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
         <div
           class="ugc-videoask"
           data-videoask-url="{{ section.settings.videoask_worker_url }}"
-          data-videoask-tag="{{ tag_filter }}"
+          data-videoask-tag="{{ sub_tags[0] | default: '' }}"
         >
           <div class="ugc-videoask__loading">Loading testimonials…</div>
           <div class="ugc-videoask__grid" hidden></div>
           <div class="ugc-videoask__error" hidden>Could not load testimonials.</div>
         </div>
-      {%- else -%}
-        {{ section.settings[content_key] }}
-      {%- endif -%}
-    </div>
-  {%- endfor -%}
+      </div>
+    {%- else -%}
+      {{ section.settings.tab_2_content }}
+    {%- endif -%}
+  </div>
 
   {%- if has_any_videoask -%}
     {%- comment -%} Fullscreen video modal (single, shared) {%- endcomment -%}
@@ -503,10 +543,21 @@
       var gridEl = container.querySelector('.ugc-videoask__grid');
       var errorEl = container.querySelector('.ugc-videoask__error');
       var workerUrl = container.dataset.videoaskUrl;
-      var tagFilter = (container.dataset.videoaskTag || '').trim().toLowerCase();
+      var allReviews = [];
       var loaded = false;
 
+      // Find sub-tabs (sibling, in the same .ugc-videoask-wrap)
+      var wrap = container.closest('.ugc-videoask-wrap');
+      var subTabBtns = wrap ? wrap.querySelectorAll('.ugc-subtab-btn') : [];
+
       function renderGrid(reviews) {
+        if (reviews.length === 0) {
+          gridEl.hidden = true;
+          errorEl.hidden = false;
+          errorEl.textContent = 'No testimonials yet.';
+          return;
+        }
+        errorEl.hidden = true;
         var html = reviews.map(function(r) {
           var thumb = r.gif || r.thumbnail || '';
           return '<div class="ugc-videoask-card" data-video="' + escapeHtml(r.video_url) + '">'
@@ -520,6 +571,7 @@
             + '</div>';
         }).join('');
         gridEl.innerHTML = html;
+        gridEl.hidden = false;
 
         gridEl.querySelectorAll('.ugc-videoask-card').forEach(function(card) {
           card.addEventListener('click', function() {
@@ -528,27 +580,25 @@
         });
       }
 
+      function applyTagFilter(tag) {
+        var t = (tag || '').trim().toLowerCase();
+        var filtered = allReviews;
+        if (t) {
+          filtered = allReviews.filter(function(r) {
+            return (r.tags || []).some(function(rt) { return (rt || '').toLowerCase() === t; });
+          });
+        }
+        renderGrid(filtered);
+      }
+
       function load() {
         if (loaded) return;
         loaded = true;
         getReviews(workerUrl)
           .then(function(reviews) {
-            // Filter by tag if set
-            var filtered = reviews;
-            if (tagFilter) {
-              filtered = reviews.filter(function(r) {
-                return (r.tags || []).some(function(t) { return (t || '').toLowerCase() === tagFilter; });
-              });
-            }
-            if (filtered.length === 0) {
-              loadingEl.hidden = true;
-              errorEl.hidden = false;
-              errorEl.textContent = 'No testimonials yet.';
-              return;
-            }
-            renderGrid(filtered);
+            allReviews = reviews;
             loadingEl.hidden = true;
-            gridEl.hidden = false;
+            applyTagFilter(container.dataset.videoaskTag || '');
           })
           .catch(function(err) {
             console.error('[VideoAsk]', err);
@@ -556,6 +606,21 @@
             errorEl.hidden = false;
           });
       }
+
+      // Sub-tab click handlers
+      subTabBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          subTabBtns.forEach(function(b) { b.removeAttribute('data-active'); });
+          btn.setAttribute('data-active', 'true');
+          var tag = btn.dataset.subtabTag || '';
+          container.dataset.videoaskTag = tag;
+          if (loaded) {
+            applyTagFilter(tag);
+          } else {
+            load();
+          }
+        });
+      });
 
       function tryLoad() {
         if (loaded) return;
@@ -642,21 +707,9 @@
       "default": "All Products"
     },
     {
-      "type": "checkbox",
-      "id": "tab_1_use_videoask",
-      "label": "Use VideoAsk for Tab 1",
-      "default": false
-    },
-    {
-      "type": "text",
-      "id": "tab_1_videoask_tag",
-      "label": "Filter by tag (leave empty for all)",
-      "info": "e.g. Foot Pain, Neck Pain, Back Pain"
-    },
-    {
       "type": "liquid",
       "id": "tab_1_content",
-      "label": "Tab 1 content (Liquid) — used when VideoAsk disabled"
+      "label": "Tab 1 content (Liquid)"
     },
     {
       "type": "header",
@@ -666,18 +719,14 @@
       "type": "text",
       "id": "tab_2_label",
       "label": "Tab 2 label",
-      "default": "Back Pain"
+      "default": "Customer Stories"
     },
     {
       "type": "checkbox",
       "id": "tab_2_use_videoask",
       "label": "Use VideoAsk for Tab 2",
+      "info": "When enabled, fetches reviews from Worker. Sub-tabs below will appear above the grid.",
       "default": false
-    },
-    {
-      "type": "text",
-      "id": "tab_2_videoask_tag",
-      "label": "Filter by tag (leave empty for all)"
     },
     {
       "type": "liquid",
@@ -686,53 +735,58 @@
     },
     {
       "type": "header",
-      "content": "Tab 3"
+      "content": "Tab 2 — Sub-tabs (filter by tag)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Each sub-tab filters videos by VideoAsk tag. Leave 'tag' empty to show all videos."
     },
     {
       "type": "text",
-      "id": "tab_3_label",
-      "label": "Tab 3 label"
-    },
-    {
-      "type": "checkbox",
-      "id": "tab_3_use_videoask",
-      "label": "Use VideoAsk for Tab 3",
-      "default": false
+      "id": "sub_tab_1_label",
+      "label": "Sub-tab 1 label",
+      "default": "All Products"
     },
     {
       "type": "text",
-      "id": "tab_3_videoask_tag",
-      "label": "Filter by tag (leave empty for all)"
-    },
-    {
-      "type": "liquid",
-      "id": "tab_3_content",
-      "label": "Tab 3 content (Liquid) — used when VideoAsk disabled"
-    },
-    {
-      "type": "header",
-      "content": "Tab 4"
+      "id": "sub_tab_1_tag",
+      "label": "Sub-tab 1 tag filter"
     },
     {
       "type": "text",
-      "id": "tab_4_label",
-      "label": "Tab 4 label"
-    },
-    {
-      "type": "checkbox",
-      "id": "tab_4_use_videoask",
-      "label": "Use VideoAsk for Tab 4",
-      "default": false
+      "id": "sub_tab_2_label",
+      "label": "Sub-tab 2 label",
+      "default": "Foot Pain"
     },
     {
       "type": "text",
-      "id": "tab_4_videoask_tag",
-      "label": "Filter by tag (leave empty for all)"
+      "id": "sub_tab_2_tag",
+      "label": "Sub-tab 2 tag filter",
+      "default": "Foot Pain"
     },
     {
-      "type": "liquid",
-      "id": "tab_4_content",
-      "label": "Tab 4 content (Liquid) — used when VideoAsk disabled"
+      "type": "text",
+      "id": "sub_tab_3_label",
+      "label": "Sub-tab 3 label",
+      "default": "Neck Pain"
+    },
+    {
+      "type": "text",
+      "id": "sub_tab_3_tag",
+      "label": "Sub-tab 3 tag filter",
+      "default": "Neck Pain"
+    },
+    {
+      "type": "text",
+      "id": "sub_tab_4_label",
+      "label": "Sub-tab 4 label",
+      "default": "Back Pain"
+    },
+    {
+      "type": "text",
+      "id": "sub_tab_4_tag",
+      "label": "Sub-tab 4 tag filter",
+      "default": "Back Pain"
     },
     {
       "type": "header",
