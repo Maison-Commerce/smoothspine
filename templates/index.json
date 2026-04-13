@@ -606,6 +606,7 @@
         "step_card_p6iNHa": {
           "type": "step_card",
           "settings": {
+            "video": "shopify://files/videos/49833f3979774432b1c49b1fc584564b_resized.mp4",
             "image": "shopify://shop_images/c689f526162a5f3a0fec30db5c9ccfd35011816c.png",
             "image_alt": "Step 2 - Hold the power button to turn it on",
             "badge_label": "STEP 2",
@@ -615,6 +616,7 @@
         "step_card_qBz7UF": {
           "type": "step_card",
           "settings": {
+            "video": "shopify://files/videos/036e8f40d8e346b59980926d8c505ac0.mp4",
             "image": "shopify://shop_images/90fdd075107aef8cb3b6b912e29b401892cc7d3e.png",
             "image_alt": "Step 3 - Lay back and relax",
             "badge_label": "STEP 3",
