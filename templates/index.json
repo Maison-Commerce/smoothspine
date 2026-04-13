@@ -41,7 +41,7 @@
         "heading": "The Smoothest Way To <em>Pain Relief</em>",
         "subtext": "Used by thousands of adults 45+ to manage sciatica and back pain at home, backed by a 90-day results-or-refund guarantee.",
         "button_label": "Shop Now & SAVE 60% Today",
-        "button_link": "shopify://products/triple-fusion-back-massager",
+        "button_link": "shopify://products/tfm-pres",
         "show_trustpilot_badge": true,
         "rating_full_stars": 4,
         "rating_show_half_star": true,
@@ -596,6 +596,7 @@
         "step_card_wLcnF4": {
           "type": "step_card",
           "settings": {
+            "video": "shopify://files/videos/ed5a7e4bff5349539d9ae5ffde3f1b30 (1) (1).mp4",
             "image": "shopify://shop_images/67e9ab94c2eb4c879f0f9c0cd77be3717385fdc6.png",
             "image_alt": "Step 1 - Plug in the USB cable to the device",
             "badge_label": "STEP 1",
