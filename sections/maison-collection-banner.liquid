@@ -356,37 +356,14 @@
 
           {%- comment -%} Trustpilot Badge {%- endcomment -%}
           {% if section.settings.show_trustpilot %}
-            <div class="ch-badge">
-              <div class="ch-stars">
-                {% assign full_stars = section.settings.rating_value | floor %}
-                {% assign has_half = section.settings.rating_value | modulo: 1 %}
-                {% assign half_star_index = full_stars | plus: 1 %}
-                {% for i in (1..5) %}
-                  {% if i <= full_stars %}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
-                  {% elsif i == half_star_index and has_half > 0 %}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><rect x="8" width="8" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
-                  {% else %}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
-                  {% endif %}
-                {% endfor %}
-              </div>
-              {% if section.settings.rating_text != blank %}
-                <span class="ch-rating-text">
-                  {% if section.settings.rating_link != blank %}
-                    <a href="{{ section.settings.rating_link }}">{{ section.settings.rating_text }}</a>
-                  {% else %}
-                    {{ section.settings.rating_text }}
-                  {% endif %}
-                </span>
-              {% endif %}
-              {% if section.settings.show_trustpilot_logo %}
-                <div class="ch-trustpilot">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 10.6761L10.0417 9.86164L11.3125 14L7 10.6761ZM14 5.32704H8.64583L7 0L5.35417 5.32704H0L4.33334 8.62893L2.6875 13.956L7.02083 10.6541L9.6875 8.62893L14 5.32704Z" fill="#00B67A"/></svg>
-                  <span>{{ section.settings.trustpilot_label }}</span>
-                </div>
-              {% endif %}
-            </div>
+            {% render 'maison-trustpilot-badge',
+              wrapper_class: 'ch-badge',
+              stars_class: 'ch-stars',
+              rating_class: 'ch-rating-text',
+              logo_class: 'ch-trustpilot',
+              show_logo: section.settings.show_trustpilot_logo,
+              logo_label: section.settings.trustpilot_label
+            %}
           {% endif %}
 
           {%- comment -%} Heading {%- endcomment -%}

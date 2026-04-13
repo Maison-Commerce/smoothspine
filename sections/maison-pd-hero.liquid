@@ -792,29 +792,18 @@
     <div class="pdp-content">
       <div class="pdp-info-header">
 
-        {%- comment -%} Trustpilot (custom design, live data from Worker) {%- endcomment -%}
+        {%- comment -%} Trustpilot (live data via snippet + global script) {%- endcomment -%}
         {% if section.settings.show_trustpilot %}
-          <a
-            class="pdp-trustpilot"
-            href="https://www.trustpilot.com/review/{{ section.settings.trustpilot_domain | default: 'smoothspine.com' }}"
-            target="_blank"
-            rel="noopener"
-            data-tp-worker="{{ section.settings.trustpilot_worker_url | default: 'https://smoothspine-videoask.choojiie.workers.dev/trustpilot' }}"
-            data-tp-domain="{{ section.settings.trustpilot_domain | default: 'smoothspine.com' }}"
-          >
-            <div class="pdp-stars" data-tp-stars>
-              {%- for i in (1..5) -%}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
-              {%- endfor -%}
-            </div>
-            <span class="pdp-trustpilot-rating" data-tp-rating>&nbsp;</span>
-            {% if section.settings.show_trustpilot_logo %}
-              <div class="pdp-trustpilot-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 10.6761L10.0417 9.86164L11.3125 14L7 10.6761ZM14 5.32704H8.64583L7 0L5.35417 5.32704H0L4.33334 8.62893L2.6875 13.956L7.02083 10.6541L9.6875 8.62893L14 5.32704Z" fill="#00B67A"/></svg>
-                <span>Trustpilot</span>
-              </div>
-            {% endif %}
-          </a>
+          {% render 'maison-trustpilot-badge',
+            wrapper_class: 'pdp-trustpilot',
+            stars_class: 'pdp-stars',
+            rating_class: 'pdp-trustpilot-rating',
+            logo_class: 'pdp-trustpilot-logo',
+            show_logo: section.settings.show_trustpilot_logo,
+            domain: section.settings.trustpilot_domain,
+            worker_url: section.settings.trustpilot_worker_url,
+            href: 'https://www.trustpilot.com/review/smoothspine.com'
+          %}
         {% endif %}
 
         <div style="display:flex;flex-direction:column;gap:20px;">
@@ -1251,62 +1240,6 @@
     });
   }
 </script>
-
-{%- if section.settings.show_trustpilot -%}
-<script>
-  (function() {
-    var section = document.getElementById('shopify-section-{{ section.id }}');
-    if (!section) return;
-    var tpEl = section.querySelector('.pdp-trustpilot');
-    if (!tpEl) return;
-
-    var workerUrl = tpEl.dataset.tpWorker;
-    var domain = tpEl.dataset.tpDomain;
-    if (!workerUrl) return;
-
-    var starsWrap = tpEl.querySelector('[data-tp-stars]');
-    var ratingEl = tpEl.querySelector('[data-tp-rating]');
-
-    function starFullSvg() {
-      return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>';
-    }
-    function starHalfSvg() {
-      return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><rect x="8" width="8" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>';
-    }
-    function starEmptySvg() {
-      return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>';
-    }
-
-    function renderStars(stars) {
-      var full = Math.floor(stars);
-      var hasHalf = (stars - full) >= 0.5;
-      var html = '';
-      for (var i = 0; i < 5; i++) {
-        if (i < full) html += starFullSvg();
-        else if (i === full && hasHalf) html += starHalfSvg();
-        else html += starEmptySvg();
-      }
-      starsWrap.innerHTML = html;
-    }
-
-    function formatCount(n) {
-      if (n >= 1000) return n.toLocaleString('en-US');
-      return String(n);
-    }
-
-    fetch(workerUrl + (domain && workerUrl.indexOf('?') === -1 ? '?domain=' + encodeURIComponent(domain) : ''), { cache: 'default' })
-      .then(function(r) { return r.ok ? r.json() : null; })
-      .then(function(d) {
-        if (!d) return;
-        if (typeof d.stars === 'number') renderStars(d.stars);
-        if (d.score != null && d.reviews_count != null) {
-          ratingEl.textContent = d.score + '/5 (' + formatCount(d.reviews_count) + '+ reviews)';
-        }
-      })
-      .catch(function(err) { console.warn('[Trustpilot]', err); });
-  })();
-</script>
-{%- endif -%}
 
 {% schema %}
 {
