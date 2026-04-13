@@ -433,6 +433,11 @@
     var workerUrl = container.dataset.videoaskUrl;
     var loaded = false;
 
+    // Move modal to body to escape any transform/contain stacking context
+    if (modal.parentNode !== document.body) {
+      document.body.appendChild(modal);
+    }
+
     // Lazy-load when Tab 2 becomes visible
     function tryLoad() {
       if (loaded) return;
