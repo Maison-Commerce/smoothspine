@@ -43,9 +43,70 @@ export default {
       }
     }
 
+    // Trustpilot public scrape
+    if (url.pathname === '/trustpilot') {
+      try {
+        const domain = url.searchParams.get('domain') || 'smoothspine.com';
+        const data = await getCachedTrustpilot(domain, ctx);
+        return jsonResponse(data, request, env, 200, true);
+      } catch (err) {
+        console.error('Trustpilot error:', err.message);
+        return jsonResponse({ error: err.message }, request, env, 500);
+      }
+    }
+
     return new Response('Not Found', { status: 404 });
   }
 };
+
+// ─── Trustpilot scrape ───
+async function getCachedTrustpilot(domain, ctx) {
+  const cacheKey = new Request(`https://cache.smoothspine.tp/${encodeURIComponent(domain)}/v1`, { method: 'GET' });
+  const cache = caches.default;
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached.json();
+
+  const data = await fetchTrustpilot(domain);
+  const resp = new Response(JSON.stringify(data), {
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=3600' }
+  });
+  ctx.waitUntil(cache.put(cacheKey, resp));
+  return data;
+}
+
+async function fetchTrustpilot(domain) {
+  const res = await fetch(`https://www.trustpilot.com/review/${domain}`, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+      'Accept-Language': 'en-US,en;q=0.9'
+    }
+  });
+  if (!res.ok) throw new Error(`Trustpilot HTTP ${res.status}`);
+  const html = await res.text();
+
+  const pick = (re, type = 'string') => {
+    const m = html.match(re);
+    if (!m) return null;
+    return type === 'number' ? parseFloat(m[1]) : m[1];
+  };
+
+  const score = pick(/"trustScore":([0-9.]+)/, 'number');
+  const stars = pick(/"stars":([0-9.]+)/, 'number');
+  const reviewsCount = pick(/"numberOfReviews":([0-9]+)/, 'number');
+  const displayName = pick(/"displayName":"([^"]+)"/);
+  const identifyingName = pick(/"identifyingName":"([^"]+)"/);
+
+  return {
+    domain,
+    score,
+    stars,
+    reviews_count: reviewsCount,
+    display_name: displayName,
+    identifying_name: identifyingName,
+    profile_url: `https://www.trustpilot.com/review/${domain}`,
+    updated_at: new Date().toISOString()
+  };
+}
 
 // ─── Reviews fetch with Cache API ───
 async function getCachedReviews(request, env, ctx) {
