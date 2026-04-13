@@ -384,11 +384,19 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
-<section class="maisoncode_reviews">
+<section
+  class="maisoncode_reviews"
+  data-tp-reviews-url="{{ section.settings.reviews_worker_url | default: 'https://smoothspine-videoask.choojiie.workers.dev/trustpilot/reviews' }}"
+  data-tp-domain="{{ section.settings.trustpilot_domain | default: 'smoothspine.com' }}"
+  data-tp-stars="{{ section.settings.min_stars | default: 5 }}"
+  data-tp-limit="{{ section.settings.reviews_limit | default: 8 }}"
+  data-tp-use-live="{% if section.settings.use_live_reviews %}1{% else %}0{% endif %}"
+>
   <!-- Cards Area -->
   <div class="reviews-cards-area">
     <div class="swiper reviews-swiper" id="reviews-swiper-{{ section.id }}">
-      <div class="swiper-wrapper">
+      <div class="swiper-wrapper" data-tp-reviews-wrapper>
+        {% comment %} Fallback reviews (shown if live fetch fails or is disabled) {% endcomment %}
         {% for block in section.blocks %}
           {% if block.type == 'review' %}
             <div class="swiper-slide" {{ block.shopify_attributes }}>
@@ -484,37 +492,103 @@
 <script>
   (function() {
     var sectionId = '{{ section.id }}';
+    var section = document.getElementById('shopify-section-' + sectionId);
+    if (!section) return;
 
-    new Swiper('#reviews-swiper-' + sectionId, {
-      slidesPerView: 'auto',
-      spaceBetween: 20,
-      pagination: {
-        el: '#reviews-pagination-' + sectionId,
-        clickable: true,
-      },
-      scrollbar: {
-        el: '#reviews-scrollbar-' + sectionId,
-        draggable: true,
-      },
-      navigation: {
-        prevEl: '#reviews-prev-' + sectionId,
-        nextEl: '#reviews-next-' + sectionId,
-      },
-      breakpoints: {
-        0: {
-          slidesPerView: 'auto',
-          slidesPerGroup: 1,
+    var rootEl = section.querySelector('.maisoncode_reviews');
+    var useLive = rootEl && rootEl.dataset.tpUseLive === '1';
+
+    var starFull = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>';
+
+    function escapeHtml(s) {
+      var d = document.createElement('div');
+      d.textContent = s == null ? '' : s;
+      return d.innerHTML;
+    }
+
+    function formatDate(iso) {
+      if (!iso) return '';
+      var d = new Date(iso);
+      if (isNaN(d)) return '';
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+    }
+
+    function renderCard(r) {
+      var stars = '';
+      for (var i = 0; i < (r.rating || 5); i++) stars += starFull;
+      return '<div class="swiper-slide">'
+        + '<div class="review-card">'
+        +   '<div class="review-card__top">'
+        +     '<div class="review-card__header">'
+        +       '<div class="review-card__stars">' + stars + '</div>'
+        +       '<span class="review-card__date">' + escapeHtml(formatDate(r.date)) + '</span>'
+        +     '</div>'
+        +     '<div class="review-card__text">'
+        +       '<p class="review-card__title">' + escapeHtml(r.title) + '</p>'
+        +       '<p class="review-card__body">' + escapeHtml(r.body) + '</p>'
+        +     '</div>'
+        +   '</div>'
+        +   '<span class="review-card__author">' + escapeHtml(r.author) + '</span>'
+        + '</div>'
+        + '</div>';
+    }
+
+    function initSwiper() {
+      new Swiper('#reviews-swiper-' + sectionId, {
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        pagination: {
+          el: '#reviews-pagination-' + sectionId,
+          clickable: true,
         },
-        1200: {
-          slidesPerView: 2,
-          slidesPerGroup: 2,
-          grid: {
-            rows: 2,
-            fill: 'row'
+        scrollbar: {
+          el: '#reviews-scrollbar-' + sectionId,
+          draggable: true,
+        },
+        navigation: {
+          prevEl: '#reviews-prev-' + sectionId,
+          nextEl: '#reviews-next-' + sectionId,
+        },
+        breakpoints: {
+          0: {
+            slidesPerView: 'auto',
+            slidesPerGroup: 1,
+          },
+          1200: {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            grid: {
+              rows: 2,
+              fill: 'row'
+            }
           }
         }
-      }
-    });
+      });
+    }
+
+    function loadLiveReviews() {
+      var url = rootEl.dataset.tpReviewsUrl;
+      var domain = rootEl.dataset.tpDomain;
+      var stars = rootEl.dataset.tpStars;
+      var limit = rootEl.dataset.tpLimit;
+      var fullUrl = url + '?domain=' + encodeURIComponent(domain) + '&stars=' + encodeURIComponent(stars) + '&limit=' + encodeURIComponent(limit);
+      return fetch(fullUrl, { cache: 'default' })
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(d) {
+          if (!d || !Array.isArray(d.reviews) || d.reviews.length === 0) return false;
+          var wrapper = rootEl.querySelector('[data-tp-reviews-wrapper]');
+          wrapper.innerHTML = d.reviews.map(renderCard).join('');
+          return true;
+        })
+        .catch(function() { return false; });
+    }
+
+    if (useLive) {
+      loadLiveReviews().then(initSwiper);
+    } else {
+      initSwiper();
+    }
   })();
 </script>
 
@@ -524,6 +598,47 @@
   "tag": "section",
   "class": "trustpilot-reviews-wrapper",
   "settings": [
+    {
+      "type": "header",
+      "content": "Live reviews (from Trustpilot)"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_live_reviews",
+      "label": "Fetch live reviews from Trustpilot",
+      "info": "Overrides the review blocks below with actual Trustpilot reviews via Worker",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_domain",
+      "label": "Trustpilot domain",
+      "default": "smoothspine.com"
+    },
+    {
+      "type": "text",
+      "id": "reviews_worker_url",
+      "label": "Worker URL",
+      "default": "https://smoothspine-videoask.choojiie.workers.dev/trustpilot/reviews"
+    },
+    {
+      "type": "range",
+      "id": "min_stars",
+      "label": "Minimum stars",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "reviews_limit",
+      "label": "Reviews to show",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
     {
       "type": "header",
       "content": "Content"

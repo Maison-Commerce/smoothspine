@@ -55,6 +55,20 @@ export default {
       }
     }
 
+    // Trustpilot reviews scrape
+    if (url.pathname === '/trustpilot/reviews') {
+      try {
+        const domain = url.searchParams.get('domain') || 'smoothspine.com';
+        const stars = url.searchParams.get('stars') || '5';
+        const limit = parseInt(url.searchParams.get('limit') || '20', 10);
+        const data = await getCachedTrustpilotReviews(domain, stars, limit, ctx);
+        return jsonResponse(data, request, env, 200, true);
+      } catch (err) {
+        console.error('Trustpilot reviews error:', err.message);
+        return jsonResponse({ error: err.message }, request, env, 500);
+      }
+    }
+
     return new Response('Not Found', { status: 404 });
   }
 };
@@ -72,6 +86,69 @@ async function getCachedTrustpilot(domain, ctx) {
   });
   ctx.waitUntil(cache.put(cacheKey, resp));
   return data;
+}
+
+// ─── Trustpilot reviews ───
+async function getCachedTrustpilotReviews(domain, stars, limit, ctx) {
+  const cacheKey = new Request(`https://cache.smoothspine.tp-reviews/${encodeURIComponent(domain)}/${stars}/${limit}/v1`, { method: 'GET' });
+  const cache = caches.default;
+  const cached = await cache.match(cacheKey);
+  if (cached) return cached.json();
+
+  const data = await fetchTrustpilotReviews(domain, stars, limit);
+  const resp = new Response(JSON.stringify(data), {
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=3600' }
+  });
+  ctx.waitUntil(cache.put(cacheKey, resp));
+  return data;
+}
+
+async function fetchTrustpilotReviews(domain, stars, limit) {
+  // Fetch up to 3 pages to have enough 5-star reviews
+  const pages = 3;
+  const reviewsByPage = [];
+  for (let p = 1; p <= pages; p++) {
+    const q = p === 1 ? `?stars=${encodeURIComponent(stars)}` : `?stars=${encodeURIComponent(stars)}&page=${p}`;
+    const res = await fetch(`https://www.trustpilot.com/review/${domain}${q}`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'Accept-Language': 'en-US,en;q=0.9'
+      }
+    });
+    if (!res.ok) break;
+    const html = await res.text();
+    const m = html.match(/<script id="__NEXT_DATA__"[^>]*>([\s\S]+?)<\/script>/);
+    if (!m) break;
+    let json;
+    try { json = JSON.parse(m[1]); } catch (e) { break; }
+    const arr = json && json.props && json.props.pageProps && json.props.pageProps.reviews;
+    if (!Array.isArray(arr) || arr.length === 0) break;
+    reviewsByPage.push(arr);
+    if (reviewsByPage.flat().length >= limit) break;
+  }
+
+  const flat = reviewsByPage.flat();
+  const minStars = parseInt(stars, 10) || 0;
+  const filtered = flat.filter(r => r && typeof r.rating === 'number' && r.rating >= minStars);
+
+  const reviews = filtered.slice(0, limit).map(r => ({
+    id: r.id,
+    rating: r.rating,
+    title: r.title || '',
+    body: r.text || '',
+    author: (r.consumer && r.consumer.displayName) || 'Anonymous',
+    date: (r.dates && (r.dates.experiencedDate || r.dates.publishedDate)) || null,
+    verified: !!(r.labels && r.labels.verification && r.labels.verification.isVerified),
+    country: (r.consumer && r.consumer.countryCode) || null
+  }));
+
+  return {
+    domain,
+    stars_filter: minStars,
+    count: reviews.length,
+    updated_at: new Date().toISOString(),
+    reviews
+  };
 }
 
 async function fetchTrustpilot(domain) {
