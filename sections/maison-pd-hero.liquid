@@ -920,6 +920,9 @@
                   {%- if gift_product != blank and gift_product.compare_at_price > 0 -%}
                     {%- assign gift_badge_price = gift_product.compare_at_price | money -%}
                   {%- endif -%}
+                  <script>
+                    console.log('gift_badge_price', '{{ gift_badge_price }}')
+                  </script>
 
                   <div class="pdp-gift-card" {{ block.shopify_attributes }}>
                     {%- if gift_badge_price != nil -%}
