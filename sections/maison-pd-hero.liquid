@@ -921,7 +921,7 @@
                     {%- assign gift_badge_price = gift_product.compare_at_price | money -%}
                   {%- endif -%}
                   <script>
-                    console.log('gift_product', {{ gift_product | json }})
+                    console.log('gift_product', {{ gift_product.price }})
                     console.log('gift_badge_price', '{{ gift_badge_price }}')
                   </script>
 
