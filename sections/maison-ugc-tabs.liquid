@@ -136,6 +136,156 @@
     width: 100%;
   }
 
+  /* VideoAsk grid */
+  #shopify-section-{{ section.id }} .ugc-videoask {
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask__loading,
+  #shopify-section-{{ section.id }} .ugc-videoask__error {
+    text-align: center;
+    padding: 40px 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: rgba(16, 42, 67, 0.6);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #1a1a1a;
+    transition: transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card:hover {
+    transform: scale(1.02);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 50%);
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card__name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #fff;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    transition: background 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card:hover .ugc-videoask-card__play {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card__play svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 2px;
+  }
+
+  /* Fullscreen modal */
+  .ugc-videoask-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .ugc-videoask-modal[hidden] { display: none; }
+
+  .ugc-videoask-modal__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: background 0.2s;
+  }
+
+  .ugc-videoask-modal__close:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .ugc-videoask-modal__video {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: 90vh;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    background: #000;
+  }
+
+  /* Tablet */
+  @media (max-width: 1199px) {
+    #shopify-section-{{ section.id }} .ugc-videoask__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 949px) {
+    #shopify-section-{{ section.id }} .ugc-videoask__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+  }
+
   /* Mobile */
   @media (max-width: 949px) {
     #shopify-section-{{ section.id }} .maisoncode_ugc-tabs {
@@ -166,6 +316,21 @@
     #shopify-section-{{ section.id }} .ugc-tab-btn {
       flex: 0 0 auto;
       font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-videoask__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-videoask-card__name {
+      font-size: 12px;
+    }
+
+    .ugc-videoask-modal__video {
+      height: auto;
+      max-height: 85vh;
+      width: 100%;
     }
   }
 {% endstyle %}
@@ -223,10 +388,155 @@
 
   {%- comment -%} Tab 2 Content {%- endcomment -%}
   <div class="ugc-tab-content" x-show="activeTab === 1" x-effect="if (activeTab === 1) setTimeout(() => window.dispatchEvent(new Event('resize')), 100)">
-    {{ section.settings.tab_2_content }}
+    {%- if section.settings.tab_2_use_videoask -%}
+      <div
+        class="ugc-videoask"
+        data-videoask-url="{{ section.settings.tab_2_videoask_url }}"
+      >
+        <div class="ugc-videoask__loading">Loading testimonials…</div>
+        <div class="ugc-videoask__grid" hidden></div>
+        <div class="ugc-videoask__error" hidden>Could not load testimonials.</div>
+      </div>
+    {%- else -%}
+      {{ section.settings.tab_2_content }}
+    {%- endif -%}
   </div>
 
+  {%- if section.settings.tab_2_use_videoask -%}
+    {%- comment -%} Fullscreen video modal {%- endcomment -%}
+    <div class="ugc-videoask-modal" hidden role="dialog" aria-modal="true" aria-label="Video testimonial">
+      <button type="button" class="ugc-videoask-modal__close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M6 18L18 6" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <video class="ugc-videoask-modal__video" controls playsinline></video>
+    </div>
+  {%- endif -%}
+
 </section>
+
+{%- if section.settings.tab_2_use_videoask -%}
+<script>
+  (function() {
+    var section = document.getElementById('shopify-section-{{ section.id }}');
+    if (!section) return;
+
+    var container = section.querySelector('.ugc-videoask');
+    var modal = section.querySelector('.ugc-videoask-modal');
+    if (!container || !modal) return;
+
+    var loadingEl = container.querySelector('.ugc-videoask__loading');
+    var gridEl = container.querySelector('.ugc-videoask__grid');
+    var errorEl = container.querySelector('.ugc-videoask__error');
+    var modalVideo = modal.querySelector('.ugc-videoask-modal__video');
+    var modalClose = modal.querySelector('.ugc-videoask-modal__close');
+
+    var workerUrl = container.dataset.videoaskUrl;
+    var loaded = false;
+
+    // Lazy-load when Tab 2 becomes visible
+    function tryLoad() {
+      if (loaded) return;
+      var alpine = section.querySelector('.maisoncode_ugc-tabs');
+      // Only load when tab 2 is active or when user clicks tab 2
+      var tabContent = container.closest('.ugc-tab-content');
+      if (tabContent && tabContent.offsetParent !== null) {
+        loadReviews();
+      }
+    }
+
+    function loadReviews() {
+      if (loaded) return;
+      loaded = true;
+      fetch(workerUrl, { cache: 'default' })
+        .then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .then(function(data) {
+          var reviews = (data && data.reviews) || [];
+          if (reviews.length === 0) {
+            loadingEl.hidden = true;
+            errorEl.hidden = false;
+            errorEl.textContent = 'No testimonials yet.';
+            return;
+          }
+          renderGrid(reviews);
+          loadingEl.hidden = true;
+          gridEl.hidden = false;
+        })
+        .catch(function(err) {
+          console.error('[VideoAsk]', err);
+          loadingEl.hidden = true;
+          errorEl.hidden = false;
+        });
+    }
+
+    function escapeHtml(s) {
+      var d = document.createElement('div');
+      d.textContent = s || '';
+      return d.innerHTML;
+    }
+
+    function renderGrid(reviews) {
+      var html = reviews.map(function(r) {
+        var thumb = r.gif || r.thumbnail || '';
+        return '<div class="ugc-videoask-card" data-video="' + escapeHtml(r.video_url) + '">'
+          + '<img class="ugc-videoask-card__media" src="' + escapeHtml(thumb) + '" alt="' + escapeHtml(r.name) + '" loading="lazy">'
+          + '<div class="ugc-videoask-card__play">'
+          +   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>'
+          + '</div>'
+          + '<div class="ugc-videoask-card__overlay">'
+          +   '<div class="ugc-videoask-card__name">' + escapeHtml(r.name) + '</div>'
+          + '</div>'
+          + '</div>';
+      }).join('');
+      gridEl.innerHTML = html;
+
+      // Wire up click handlers
+      gridEl.querySelectorAll('.ugc-videoask-card').forEach(function(card) {
+        card.addEventListener('click', function() {
+          openModal(card.dataset.video);
+        });
+      });
+    }
+
+    function openModal(videoUrl) {
+      modalVideo.src = videoUrl;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      modalVideo.play().catch(function() {});
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      modalVideo.pause();
+      modalVideo.removeAttribute('src');
+      modalVideo.load();
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    // Try loading immediately (if Tab 2 is default) and on tab change
+    tryLoad();
+    // Watch for tab change via Alpine
+    var alpineRoot = section.querySelector('[x-data]');
+    if (alpineRoot) {
+      var observer = new MutationObserver(tryLoad);
+      observer.observe(container.closest('.ugc-tab-content'), {
+        attributes: true,
+        attributeFilter: ['style', 'hidden']
+      });
+    }
+  })();
+</script>
+{%- endif -%}
 
 {% schema %}
 {
@@ -293,9 +603,22 @@
       "default": "Back Pain"
     },
     {
+      "type": "checkbox",
+      "id": "tab_2_use_videoask",
+      "label": "Use VideoAsk Worker for Tab 2",
+      "info": "When enabled, fetches reviews from VideoAsk Worker instead of using the Liquid content below",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "tab_2_videoask_url",
+      "label": "VideoAsk Worker URL",
+      "default": "https://smoothspine-videoask.choojiie.workers.dev/reviews"
+    },
+    {
       "type": "liquid",
       "id": "tab_2_content",
-      "label": "Tab 2 content (Liquid)"
+      "label": "Tab 2 content (Liquid) — used when VideoAsk Worker is disabled"
     },
     {
       "type": "header",
