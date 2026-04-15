@@ -721,16 +721,28 @@
                         {%- assign mp_other_params = '' -%}
                         {%- for af in collection.filters -%}
                           {%- if af.param_name != filter.param_name -%}
-                            {%- for av in af.active_values -%}
-                              {%- assign mp_other_params = mp_other_params | append: '&' | append: af.param_name | append: '=' | append: av.value -%}
-                            {%- endfor -%}
                             {%- if af.type == 'price_range' -%}
                               {%- if af.min_value.value != blank -%}
-                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.min_value.param_name | append: '=' | append: af.min_value.value -%}
+                                {%- assign mp_min_dollars = af.min_value.value | divided_by: 100.0 -%}
+                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.min_value.param_name | append: '=' | append: mp_min_dollars -%}
                               {%- endif -%}
                               {%- if af.max_value.value != blank -%}
-                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.max_value.param_name | append: '=' | append: af.max_value.value -%}
+                                {%- assign mp_max_dollars = af.max_value.value | divided_by: 100.0 -%}
+                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.max_value.param_name | append: '=' | append: mp_max_dollars -%}
                               {%- endif -%}
+                            {%- elsif af.type == 'boolean' -%}
+                              {%- if af.true_value.active -%}
+                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.param_name | append: '=' | append: af.true_value.value -%}
+                              {%- endif -%}
+                              {%- if af.false_value.active -%}
+                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.param_name | append: '=' | append: af.false_value.value -%}
+                              {%- endif -%}
+                            {%- else -%}
+                              {%- for v in af.values -%}
+                                {%- if v.active -%}
+                                  {%- assign mp_other_params = mp_other_params | append: '&' | append: af.param_name | append: '=' | append: v.value -%}
+                                {%- endif -%}
+                              {%- endfor -%}
                             {%- endif -%}
                           {%- endif -%}
                         {%- endfor -%}
@@ -850,16 +862,28 @@
                     {%- comment -%} Build query string of all active filters to preserve when changing sort {%- endcomment -%}
                     {%- assign mp_sort_filter_params = '' -%}
                     {%- for af in collection.filters -%}
-                      {%- for av in af.active_values -%}
-                        {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.param_name | append: '=' | append: av.value -%}
-                      {%- endfor -%}
                       {%- if af.type == 'price_range' -%}
                         {%- if af.min_value.value != blank -%}
-                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.min_value.param_name | append: '=' | append: af.min_value.value -%}
+                          {%- assign mp_min_dollars = af.min_value.value | divided_by: 100.0 -%}
+                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.min_value.param_name | append: '=' | append: mp_min_dollars -%}
                         {%- endif -%}
                         {%- if af.max_value.value != blank -%}
-                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.max_value.param_name | append: '=' | append: af.max_value.value -%}
+                          {%- assign mp_max_dollars = af.max_value.value | divided_by: 100.0 -%}
+                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.max_value.param_name | append: '=' | append: mp_max_dollars -%}
                         {%- endif -%}
+                      {%- elsif af.type == 'boolean' -%}
+                        {%- if af.true_value.active -%}
+                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.param_name | append: '=' | append: af.true_value.value -%}
+                        {%- endif -%}
+                        {%- if af.false_value.active -%}
+                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.param_name | append: '=' | append: af.false_value.value -%}
+                        {%- endif -%}
+                      {%- else -%}
+                        {%- for v in af.values -%}
+                          {%- if v.active -%}
+                            {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.param_name | append: '=' | append: v.value -%}
+                          {%- endif -%}
+                        {%- endfor -%}
                       {%- endif -%}
                     {%- endfor -%}
                     <div class="maison-pill maison-pill--sort" x-data="{ open: false }" @click.outside="open = false">
