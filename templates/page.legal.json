@@ -13,7 +13,7 @@
       "type": "maison-legal-banner",
       "name": "About Page Header",
       "settings": {
-        "heading": "<p>Terms of service</p>",
+        "heading": "<p>{{ page.title }}</p>",
         "description": "This page contains important legal information governing the use of our website, privacy policy, return policy, and other aspects of cooperation.",
         "color_background": "#f8f4ee",
         "color_heading": "#102a43",
