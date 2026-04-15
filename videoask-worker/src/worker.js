@@ -17,6 +17,7 @@
 const VIDEOASK_API = 'https://api.videoask.com';
 const VIDEOASK_AUTH = 'https://auth.videoask.com/oauth/token';
 const ACCESS_TOKEN_KV_KEY = 'videoask_access_token';
+const REFRESH_TOKEN_KV_KEY = 'videoask_refresh_token';
 
 export default {
   async fetch(request, env, ctx) {
@@ -30,6 +31,36 @@ export default {
     // Health check
     if (url.pathname === '/health') {
       return jsonResponse({ status: 'ok', time: new Date().toISOString() }, request, env);
+    }
+
+    // Manual token refresh (for testing / proactive refresh)
+    if (url.pathname === '/refresh-token') {
+      try {
+        await env.TOKEN_KV.delete(ACCESS_TOKEN_KV_KEY);
+        const refreshTokenBefore = await getRefreshToken(env);
+        const tokenData = await refreshAccessToken(env, refreshTokenBefore);
+        const rotated = tokenData.refresh_token && tokenData.refresh_token !== refreshTokenBefore;
+        if (rotated) {
+          await saveRefreshToken(env, tokenData.refresh_token);
+        }
+        const expiresAt = Date.now() + (tokenData.expires_in - 60) * 1000;
+        await env.TOKEN_KV.put(
+          ACCESS_TOKEN_KV_KEY,
+          JSON.stringify({ access_token: tokenData.access_token, expires_at: expiresAt }),
+          { expirationTtl: tokenData.expires_in - 60 }
+        );
+        const stored = await env.TOKEN_KV.get(REFRESH_TOKEN_KV_KEY, { type: 'json' });
+        return jsonResponse({
+          ok: true,
+          rotated: !!rotated,
+          access_token_expires_in: tokenData.expires_in,
+          refresh_token_source: stored ? 'kv' : 'env',
+          refresh_token_kv_updated_at: stored ? stored.updated_at : null
+        }, request, env);
+      } catch (err) {
+        console.error('Refresh error:', err.message);
+        return jsonResponse({ ok: false, error: err.message }, request, env, 500);
+      }
     }
 
     // Reviews endpoint
@@ -70,6 +101,18 @@ export default {
     }
 
     return new Response('Not Found', { status: 404 });
+  },
+
+  // Cron trigger: proactively refresh VideoAsk token every day.
+  // Keeps refresh_token alive (if Auth0 uses sliding expiry) and captures rotations.
+  async scheduled(event, env, ctx) {
+    try {
+      await env.TOKEN_KV.delete(ACCESS_TOKEN_KV_KEY);
+      await getAccessToken(env);
+      console.log('[videoask cron] Token refresh successful at', new Date().toISOString());
+    } catch (err) {
+      console.error('[videoask cron] Token refresh failed:', err.message);
+    }
   }
 };
 
@@ -319,16 +362,17 @@ async function fetchContactAnswer(contact, accessToken, env) {
 
 // ─── Token management ───
 async function getAccessToken(env) {
-  // Try cached token from KV
+  // Try cached access token from KV
   const cached = await env.TOKEN_KV.get(ACCESS_TOKEN_KV_KEY, { type: 'json' });
   if (cached && cached.expires_at > Date.now() + 60_000) {
     return cached.access_token;
   }
 
-  // Refresh
-  const tokenData = await refreshAccessToken(env);
+  // Refresh: get current refresh_token (KV first, env as bootstrap fallback)
+  const refreshToken = await getRefreshToken(env);
+  const tokenData = await refreshAccessToken(env, refreshToken);
 
-  // Store in KV with TTL slightly less than expires_in
+  // Persist new access token
   const expiresAt = Date.now() + (tokenData.expires_in - 60) * 1000;
   await env.TOKEN_KV.put(
     ACCESS_TOKEN_KV_KEY,
@@ -336,15 +380,31 @@ async function getAccessToken(env) {
     { expirationTtl: tokenData.expires_in - 60 }
   );
 
-  // If a new refresh_token was returned, store it too (rotation)
-  if (tokenData.refresh_token && tokenData.refresh_token !== env.VIDEOASK_REFRESH_TOKEN) {
-    console.warn('VideoAsk returned new refresh_token. Update VIDEOASK_REFRESH_TOKEN secret manually:', tokenData.refresh_token.substring(0, 10) + '...');
+  // If VideoAsk rotated the refresh_token, persist the new one in KV
+  if (tokenData.refresh_token && tokenData.refresh_token !== refreshToken) {
+    await saveRefreshToken(env, tokenData.refresh_token);
+    console.log('[videoask] Rotated refresh_token, stored in KV (updated_at:', new Date().toISOString(), ')');
   }
 
   return tokenData.access_token;
 }
 
-async function refreshAccessToken(env) {
+async function getRefreshToken(env) {
+  // KV is source of truth once bootstrapped
+  const stored = await env.TOKEN_KV.get(REFRESH_TOKEN_KV_KEY, { type: 'json' });
+  if (stored && stored.token) return stored.token;
+  // Bootstrap from env secret (first time only)
+  return env.VIDEOASK_REFRESH_TOKEN;
+}
+
+async function saveRefreshToken(env, token) {
+  await env.TOKEN_KV.put(
+    REFRESH_TOKEN_KV_KEY,
+    JSON.stringify({ token, updated_at: new Date().toISOString() })
+  );
+}
+
+async function refreshAccessToken(env, refreshToken) {
   const res = await fetch(VIDEOASK_AUTH, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -352,7 +412,7 @@ async function refreshAccessToken(env) {
       grant_type: 'refresh_token',
       client_id: env.VIDEOASK_CLIENT_ID,
       client_secret: env.VIDEOASK_CLIENT_SECRET,
-      refresh_token: env.VIDEOASK_REFRESH_TOKEN
+      refresh_token: refreshToken
     })
   });
 

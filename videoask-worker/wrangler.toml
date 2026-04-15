@@ -2,6 +2,10 @@ name = "smoothspine-videoask"
 main = "src/worker.js"
 compatibility_date = "2026-04-01"
 
+# Cron: refresh VideoAsk token every day at 03:00 UTC
+[triggers]
+crons = ["0 3 * * *"]
+
 # KV namespace for storing the access token between requests
 # Run `wrangler kv:namespace create TOKEN_KV` to create and put the id below
 [[kv_namespaces]]
