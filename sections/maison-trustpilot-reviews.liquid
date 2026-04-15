@@ -560,7 +560,7 @@
       var stars = rootEl.dataset.tpStars;
       var limit = rootEl.dataset.tpLimit;
       var fullUrl = url + '?domain=' + encodeURIComponent(domain) + '&stars=' + encodeURIComponent(stars) + '&limit=' + encodeURIComponent(limit);
-      return fetch(fullUrl, { cache: 'default' })
+      var fetchPromise = fetch(fullUrl, { cache: 'default' })
         .then(function(r) { return r.ok ? r.json() : null; })
         .then(function(d) {
           if (!d || !Array.isArray(d.reviews) || d.reviews.length === 0) return false;
@@ -569,6 +569,9 @@
           return true;
         })
         .catch(function() { return false; });
+      // Race against 4s timeout — if Worker hangs (rare), still init Swiper on fallback blocks
+      var timeoutPromise = new Promise(function(resolve) { setTimeout(function() { resolve(false); }, 4000); });
+      return Promise.race([fetchPromise, timeoutPromise]);
     }
 
     if (useLive) {
