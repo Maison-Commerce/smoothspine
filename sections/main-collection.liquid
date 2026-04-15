@@ -716,13 +716,13 @@
                     {%- for filter in collection.filters -%}
                       {%- if filter.type == 'list' and filter.values.size > 0 -%}
                         <div class="maison-pill" x-data="{ open: false }" @click.outside="open = false">
-                          <button type="button" class="maison-pill__trigger" @click="open = !open">
+                          <button type="button" class="maison-pill__trigger" @click="open = !open" data-tp-debug="type={{ filter.type }} | label={{ filter.label }} | param={{ filter.param_name }}">
                             <span>{{ filter.label }}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                           </button>
                           <div class="maison-pill__panel" x-show="open" style="display:none;">
                             {%- for value in filter.values -%}
-                              <a href="{{ value.url }}" class="maison-pill__option {% if value.active %}maison-pill__option--active{% endif %}">
+                              <a href="{{ value.url }}" class="maison-pill__option {% if value.active %}maison-pill__option--active{% endif %}" data-tp-debug="value={{ value.value }} | label={{ value.label }} | url={{ value.url }} | count={{ value.count }} | active={{ value.active }}">
                                 <span>{{ value.label }}</span>
                                 <span class="maison-pill__option-count">({{ value.count }})</span>
                               </a>
