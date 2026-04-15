@@ -72,7 +72,7 @@
           "type": "tab_item",
           "settings": {
             "label": "Shipping & Delivery",
-            "link": "shopify://policies/shipping-policy"
+            "link": "shopify://pages/shipping-policy"
           }
         }
       },
