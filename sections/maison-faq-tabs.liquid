@@ -189,7 +189,7 @@
         {% for block in section.blocks %}
           {% if block.type == 'tab_item' %}
             <a
-              class="faq-tabs__tab"
+              class="faq-tabs__tab {% if page.url == block.settings.link %}is-active{% endif %}"
               {% if block.settings.link != blank %}
                 href="{{ block.settings.link }}"
               {% endif %}
