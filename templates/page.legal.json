@@ -65,7 +65,7 @@
           "type": "tab_item",
           "settings": {
             "label": "Return Policy",
-            "link": "shopify://policies/refund-policy"
+            "link": "shopify://pages/refund-policy"
           }
         },
         "tab_item_jG8Qh7": {
