@@ -716,13 +716,21 @@
                     {%- for filter in collection.filters -%}
                       {%- if filter.type == 'list' and filter.values.size > 0 -%}
                         <div class="maison-pill" x-data="{ open: false }" @click.outside="open = false">
-                          <button type="button" class="maison-pill__trigger" @click="open = !open" data-tp-debug="type={{ filter.type }} | label={{ filter.label }} | param={{ filter.param_name }}">
+                          <button type="button" class="maison-pill__trigger" @click="open = !open">
                             <span>{{ filter.label }}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                           </button>
                           <div class="maison-pill__panel" x-show="open" style="display:none;">
                             {%- for value in filter.values -%}
-                              <a href="{{ value.url }}" class="maison-pill__option {% if value.active %}maison-pill__option--active{% endif %}" data-tp-debug="value={{ value.value }} | label={{ value.label }} | url={{ value.url }} | count={{ value.count }} | active={{ value.active }}">
+                              {%- if value.active -%}
+                                {%- assign mp_value_url = value.url_to_remove -%}
+                              {%- else -%}
+                                {%- assign mp_value_url = value.url_to_add -%}
+                              {%- endif -%}
+                              {%- if mp_value_url == blank -%}
+                                {%- assign mp_value_url = collection.url | append: '?' | append: value.param_name | append: '=' | append: value.value -%}
+                              {%- endif -%}
+                              <a href="{{ mp_value_url }}" class="maison-pill__option {% if value.active %}maison-pill__option--active{% endif %}">
                                 <span>{{ value.label }}</span>
                                 <span class="maison-pill__option-count">({{ value.count }})</span>
                               </a>
@@ -755,17 +763,33 @@
                         {%- if filter.false_value.active or filter.true_value.active -%}
                           {%- assign bool_active = true -%}
                         {%- endif -%}
+                        {%- if filter.true_value.active -%}
+                          {%- assign mp_true_url = filter.true_value.url_to_remove -%}
+                        {%- else -%}
+                          {%- assign mp_true_url = filter.true_value.url_to_add -%}
+                        {%- endif -%}
+                        {%- if mp_true_url == blank -%}
+                          {%- assign mp_true_url = collection.url | append: '?' | append: filter.param_name | append: '=' | append: filter.true_value.value -%}
+                        {%- endif -%}
+                        {%- if filter.false_value.active -%}
+                          {%- assign mp_false_url = filter.false_value.url_to_remove -%}
+                        {%- else -%}
+                          {%- assign mp_false_url = filter.false_value.url_to_add -%}
+                        {%- endif -%}
+                        {%- if mp_false_url == blank -%}
+                          {%- assign mp_false_url = collection.url | append: '?' | append: filter.param_name | append: '=' | append: filter.false_value.value -%}
+                        {%- endif -%}
                         <div class="maison-pill" x-data="{ open: false }" @click.outside="open = false">
                           <button type="button" class="maison-pill__trigger{% if bool_active %} is-active{% endif %}" @click="open = !open">
                             <span>{{ filter.label }}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                           </button>
                           <div class="maison-pill__panel" x-show="open" style="display:none;">
-                            <a href="{{ filter.true_value.url }}" class="maison-pill__option {% if filter.true_value.active %}maison-pill__option--active{% endif %}">
+                            <a href="{{ mp_true_url }}" class="maison-pill__option {% if filter.true_value.active %}maison-pill__option--active{% endif %}">
                               <span>{{ filter.true_value.label }}</span>
                               <span class="maison-pill__option-count">({{ filter.true_value.count }})</span>
                             </a>
-                            <a href="{{ filter.false_value.url }}" class="maison-pill__option {% if filter.false_value.active %}maison-pill__option--active{% endif %}">
+                            <a href="{{ mp_false_url }}" class="maison-pill__option {% if filter.false_value.active %}maison-pill__option--active{% endif %}">
                               <span>{{ filter.false_value.label }}</span>
                               <span class="maison-pill__option-count">({{ filter.false_value.count }})</span>
                             </a>
