@@ -847,6 +847,21 @@
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.66699 2.66675V13.3334M4.66699 13.3334L2.00033 10.6668M4.66699 13.3334L7.33366 10.6668M11.3337 13.3334V2.66675M11.3337 2.66675L8.66699 5.33341M11.3337 2.66675L14.0003 5.33341" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                       Sort by:
                     </span>
+                    {%- comment -%} Build query string of all active filters to preserve when changing sort {%- endcomment -%}
+                    {%- assign mp_sort_filter_params = '' -%}
+                    {%- for af in collection.filters -%}
+                      {%- for av in af.active_values -%}
+                        {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.param_name | append: '=' | append: av.value -%}
+                      {%- endfor -%}
+                      {%- if af.type == 'price_range' -%}
+                        {%- if af.min_value.value != blank -%}
+                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.min_value.param_name | append: '=' | append: af.min_value.value -%}
+                        {%- endif -%}
+                        {%- if af.max_value.value != blank -%}
+                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.max_value.param_name | append: '=' | append: af.max_value.value -%}
+                        {%- endif -%}
+                      {%- endif -%}
+                    {%- endfor -%}
                     <div class="maison-pill maison-pill--sort" x-data="{ open: false }" @click.outside="open = false">
                       <button type="button" class="maison-pill__trigger" @click="open = !open">
                         <span>{{ collection.sort_by | default: collection.default_sort_by | replace: 'best-selling', 'Best selling' | replace: 'price-ascending', 'Price: low to high' | replace: 'price-descending', 'Price: high to low' | replace: 'title-ascending', 'A-Z' | replace: 'title-descending', 'Z-A' | replace: 'created-ascending', 'Oldest' | replace: 'created-descending', 'Newest' }}</span>
@@ -854,7 +869,7 @@
                       </button>
                       <div class="maison-pill__panel" x-show="open" style="display:none;">
                         {%- for option in collection.sort_options -%}
-                          <a href="{{ collection.url }}?sort_by={{ option.value }}" class="maison-pill__option {% if collection.sort_by == option.value or collection.default_sort_by == option.value and collection.sort_by == blank %}maison-pill__option--active{% endif %}">
+                          <a href="{{ collection.url }}?sort_by={{ option.value }}{{ mp_sort_filter_params }}" class="maison-pill__option {% if collection.sort_by == option.value or collection.default_sort_by == option.value and collection.sort_by == blank %}maison-pill__option--active{% endif %}">
                             {{ option.name }}
                           </a>
                         {%- endfor -%}
