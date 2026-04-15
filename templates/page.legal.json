@@ -51,7 +51,7 @@
           "type": "tab_item",
           "settings": {
             "label": "Terms of service",
-            "link": "shopify://pages/legal"
+            "link": "shopify://pages/terms-of-service"
           }
         },
         "tab_item_w4pNR3": {
