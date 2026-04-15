@@ -715,20 +715,58 @@
                   <div class="maison-desktop-only">
                     {%- for filter in collection.filters -%}
                       {%- if filter.type == 'list' and filter.values.size > 0 -%}
+                        {%- comment -%}
+                          Build "other filters" query string (preserve all active filters except this one)
+                        {%- endcomment -%}
+                        {%- assign mp_other_params = '' -%}
+                        {%- for af in collection.filters -%}
+                          {%- if af.param_name != filter.param_name -%}
+                            {%- for av in af.active_values -%}
+                              {%- assign mp_other_params = mp_other_params | append: '&' | append: af.param_name | append: '=' | append: av.value -%}
+                            {%- endfor -%}
+                            {%- if af.type == 'price_range' -%}
+                              {%- if af.min_value.value != blank -%}
+                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.min_value.param_name | append: '=' | append: af.min_value.value -%}
+                              {%- endif -%}
+                              {%- if af.max_value.value != blank -%}
+                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.max_value.param_name | append: '=' | append: af.max_value.value -%}
+                              {%- endif -%}
+                            {%- endif -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+
                         <div class="maison-pill" x-data="{ open: false }" @click.outside="open = false">
                           <button type="button" class="maison-pill__trigger" @click="open = !open">
                             <span>{{ filter.label }}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                           </button>
                           <div class="maison-pill__panel" x-show="open" style="display:none;">
+                            {%- comment -%} Single-select for Availability; multi-select for everything else {%- endcomment -%}
+                            {%- assign mp_is_single_select = false -%}
+                            {%- if filter.param_name contains 'availability' -%}
+                              {%- assign mp_is_single_select = true -%}
+                            {%- endif -%}
+
                             {%- for value in filter.values -%}
-                              {%- if value.active -%}
-                                {%- assign mp_value_url = value.url_to_remove -%}
+                              {%- if mp_is_single_select -%}
+                                {%- if value.active -%}
+                                  {%- if mp_other_params != '' -%}
+                                    {%- assign mp_value_url = collection.url | append: '?' | append: mp_other_params | replace_first: '?&', '?' -%}
+                                  {%- else -%}
+                                    {%- assign mp_value_url = collection.url -%}
+                                  {%- endif -%}
+                                {%- else -%}
+                                  {%- assign mp_value_url = collection.url | append: '?' | append: filter.param_name | append: '=' | append: value.value | append: mp_other_params -%}
+                                {%- endif -%}
                               {%- else -%}
-                                {%- assign mp_value_url = value.url_to_add -%}
-                              {%- endif -%}
-                              {%- if mp_value_url == blank -%}
-                                {%- assign mp_value_url = collection.url | append: '?' | append: value.param_name | append: '=' | append: value.value -%}
+                                {%- if value.active -%}
+                                  {%- assign mp_value_url = value.url_to_remove -%}
+                                {%- else -%}
+                                  {%- assign mp_value_url = value.url_to_add -%}
+                                {%- endif -%}
+                                {%- if mp_value_url == blank -%}
+                                  {%- assign mp_value_url = collection.url | append: '?' | append: value.param_name | append: '=' | append: value.value -%}
+                                {%- endif -%}
                               {%- endif -%}
                               <a href="{{ mp_value_url }}" class="maison-pill__option {% if value.active %}maison-pill__option--active{% endif %}">
                                 <span>{{ value.label }}</span>
