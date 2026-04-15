@@ -674,24 +674,9 @@
         });
       });
 
-      function tryLoad() {
-        if (loaded) return;
-        var tabContent = container.closest('.ugc-tab-content');
-        if (tabContent && tabContent.offsetParent !== null) {
-          load();
-        }
-      }
-
-      tryLoad();
-
-      var tabContent = container.closest('.ugc-tab-content');
-      if (tabContent) {
-        var observer = new MutationObserver(tryLoad);
-        observer.observe(tabContent, {
-          attributes: true,
-          attributeFilter: ['style', 'hidden']
-        });
-      }
+      // Prefetch reviews immediately on page load (don't wait for tab visibility).
+      // Multiple containers share one fetch via getReviews() promise cache.
+      load();
     }
 
     containers.forEach(initContainer);
