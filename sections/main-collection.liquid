@@ -750,6 +750,27 @@
                             </form>
                           </div>
                         </div>
+                      {%- elsif filter.type == 'boolean' -%}
+                        {%- assign bool_active = false -%}
+                        {%- if filter.false_value.active or filter.true_value.active -%}
+                          {%- assign bool_active = true -%}
+                        {%- endif -%}
+                        <div class="maison-pill" x-data="{ open: false }" @click.outside="open = false">
+                          <button type="button" class="maison-pill__trigger{% if bool_active %} is-active{% endif %}" @click="open = !open">
+                            <span>{{ filter.label }}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </button>
+                          <div class="maison-pill__panel" x-show="open" style="display:none;">
+                            <a href="{{ filter.true_value.url }}" class="maison-pill__option {% if filter.true_value.active %}maison-pill__option--active{% endif %}">
+                              <span>{{ filter.true_value.label }}</span>
+                              <span class="maison-pill__option-count">({{ filter.true_value.count }})</span>
+                            </a>
+                            <a href="{{ filter.false_value.url }}" class="maison-pill__option {% if filter.false_value.active %}maison-pill__option--active{% endif %}">
+                              <span>{{ filter.false_value.label }}</span>
+                              <span class="maison-pill__option-count">({{ filter.false_value.count }})</span>
+                            </a>
+                          </div>
+                        </div>
                       {%- endif -%}
                     {%- endfor -%}
                   </div>
