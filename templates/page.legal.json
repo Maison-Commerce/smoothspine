@@ -58,7 +58,7 @@
           "type": "tab_item",
           "settings": {
             "label": "Privacy Policy",
-            "link": "shopify://policies/privacy-policy"
+            "link": "shopify://pages/privacy-policy"
           }
         },
         "tab_item_6aB7xr": {
@@ -116,6 +116,7 @@
         "tab_padding_horizontal": 16,
         "tab_padding_vertical_mobile": 10,
         "tab_padding_horizontal_mobile": 12,
+        "mobile_columns": 2,
         "max_width": 1400
       }
     },
@@ -123,8 +124,8 @@
       "type": "maison-legal-content",
       "name": "Legal Content",
       "settings": {
-        "color_background": "#FDFCFA",
-        "color_text": "#1B1F1D",
+        "color_background": "#fdfcfa",
+        "color_text": "#1b1f1d",
         "body_font_size": 16,
         "body_font_size_mobile": 16,
         "padding_top": 60,
