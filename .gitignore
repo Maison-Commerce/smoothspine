@@ -1,3 +1,7 @@
 .DS_Store
 **/.DS_Store
 .claude/
+
+# Shopify auto-generated assets (from apps)
+assets/checkmark.svg
+assets/country-flags.css
