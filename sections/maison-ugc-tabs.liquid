@@ -9,8 +9,11 @@
 {% endcomment %}
 
 {% style %}
-  #shopify-section-{{ section.id }} .maisoncode_ugc-tabs {
+  #shopify-section-{{ section.id }}{
     background-color: {{ section.settings.color_background }};
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_ugc-tabs {
     padding: {{ section.settings.padding_top }}px {{ section.settings.padding_horizontal }}px {{ section.settings.padding_bottom }}px;
     width: 100%;
     box-sizing: border-box;
