@@ -150,9 +150,6 @@
       "name": "PDP Hero",
       "settings": {
         "show_trustpilot": true,
-        "trustpilot_full_stars": 4,
-        "trustpilot_has_half_star": true,
-        "trustpilot_rating_text": "4.4/5 (2,295 + reviews)",
         "show_trustpilot_logo": true,
         "button_label": "Add to cart",
         "show_cart_icon": true,
