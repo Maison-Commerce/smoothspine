@@ -1,1 +1,165 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{}},"contact":{"type":"contact","settings":{}}},"order":["main","contact"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "maison_contact_banner_MMc7cC": {
+      "type": "maison-contact-banner",
+      "blocks": {
+        "contact_card_VqLmz8": {
+          "type": "contact_card",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_1484582661.png",
+            "title": "Chat With Us",
+            "description": "Speak with a real person who can answer your questions.",
+            "contact_text": "1-800-SMOOTH-1",
+            "contact_link": "",
+            "underline_contact": false,
+            "hours_text": "Mon-Fri: 8am-6pm CT"
+          }
+        },
+        "contact_card_ppad8K": {
+          "type": "contact_card",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_148458262461.png",
+            "title": "Email Support",
+            "description": "Send us a detailed message and we'll get back to you quickly.",
+            "contact_text": "support@smoothspine.com",
+            "contact_link": "mailto:support@smoothspine.com",
+            "underline_contact": true,
+            "hours_text": "Response within 24 hours"
+          }
+        },
+        "contact_card_crVRmp": {
+          "type": "contact_card",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_148451241582661.png",
+            "title": "Call Us",
+            "description": "Get instant help while you're browsing our products.",
+            "contact_text": "+12295445875",
+            "contact_link": "tel:+12295445875",
+            "underline_contact": false,
+            "hours_text": "Mon-Fri: 9am-5pm CT"
+          }
+        }
+      },
+      "block_order": [
+        "contact_card_VqLmz8",
+        "contact_card_ppad8K",
+        "contact_card_crVRmp"
+      ],
+      "name": "Contact Options",
+      "settings": {
+        "heading": "We're Here To Help",
+        "subheading": "Real people. Real answers. Whether you have a question before buying or need help with your order, we'll get back to you within 24 hours.",
+        "show_mobile_form": true,
+        "mobile_heading": "Still Have Questions?Get In Touch",
+        "form_name_placeholder": "Name",
+        "form_email_placeholder": "Email",
+        "form_message_placeholder": "Type your message...",
+        "show_privacy_checkbox": true,
+        "privacy_label": "I accept the Privacy Policy",
+        "submit_button_text": "Send Message",
+        "color_primary": "#102a43",
+        "color_secondary": "#102a43",
+        "color_brand_blue": "#065bdc",
+        "color_brand_blue_light": "#e5eefb",
+        "color_white": "#ffffff",
+        "color_card_bg": "#fdfcfa",
+        "color_bg_from": "#f8f4ee",
+        "color_bg_to": "#fdfcfa",
+        "color_orange": "#f07e3b",
+        "color_orange_dark": "#bf642f",
+        "color_input_bg": "#f8f4ee",
+        "color_input_border": "#dcd9d3",
+        "color_btn_text": "#fffcfb",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "subheading_font_size": 18,
+        "card_title_font_size": 20,
+        "card_desc_font_size": 16,
+        "contact_font_size": 16,
+        "hours_font_size": 14,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_horizontal": 80,
+        "section_gap": 44,
+        "cards_gap": 20,
+        "radius_sm": 8,
+        "radius_md": 16,
+        "max_width": 1400
+      }
+    },
+    "maison_contact_form_D4xP8r": {
+      "type": "maison-contact-form",
+      "name": "Contact Form",
+      "settings": {
+        "heading": "Still Have Questions? Get In Touch",
+        "name_placeholder": "Name",
+        "email_placeholder": "Email",
+        "message_placeholder": "Type your message...",
+        "checkbox_label": "I accept the Privacy Policy",
+        "button_label": "Send Message",
+        "show_name_field": true,
+        "show_email_field": true,
+        "show_message_field": true,
+        "show_checkbox": true,
+        "show_image": true,
+        "image": "shopify://shop_images/c43b1330d47be9bb1bf2d3a0e94410aba4fb538d.jpg",
+        "image_placeholder_text": "Contact image",
+        "color_background": "#FDFCFA",
+        "color_background_mobile": "#FFFFFF",
+        "color_text_primary": "#102A43",
+        "color_text_placeholder": "#4A5D6E",
+        "color_input_bg": "#F8F4EE",
+        "color_input_border": "#DCD9D3",
+        "color_button_bg": "#F07E3B",
+        "color_button_border": "#BF642F",
+        "color_button_text": "#FFFCFB",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "input_font_size": 16,
+        "input_font_size_mobile": 14,
+        "checkbox_font_size": 14,
+        "button_font_size": 16,
+        "button_font_size_mobile": 14,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_horizontal": 80,
+        "column_gap": 80,
+        "field_gap": 16,
+        "form_gap": 40,
+        "input_padding": 20,
+        "textarea_height": 120,
+        "button_height": 56,
+        "button_height_mobile": 44,
+        "radius_small": 4,
+        "radius_medium": 8,
+        "radius_large": 16,
+        "max_width": 1400
+      }
+    }
+  },
+  "order": [
+    "main",
+    "maison_contact_banner_MMc7cC",
+    "maison_contact_form_D4xP8r"
+  ]
+}

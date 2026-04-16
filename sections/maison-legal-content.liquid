@@ -1,0 +1,215 @@
+{% comment %}
+  Section: Legal Content
+  Description: Centered content section for legal/policy pages.
+    Renders the page body content with styled typography.
+    Background #FDFCFA, max-width 600px text container.
+
+  Dependencies:
+  - Font: 'Open Sans' (body) — must be loaded by theme
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_legal-content {
+    background-color: {{ section.settings.color_background }};
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_legal-content *,
+  #shopify-section-{{ section.id }} .maisoncode_legal-content *::before,
+  #shopify-section-{{ section.id }} .maisoncode_legal-content *::after {
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .legal-inner {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_horizontal }}px {{ section.settings.padding_bottom }}px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .legal-body {
+    max-width: {{ section.settings.content_max_width }}px;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: {{ section.settings.body_font_size }}px;
+    line-height: 1.5;
+    color: {{ section.settings.color_text | color_modify: 'alpha', 0.75 }};
+  }
+
+  #shopify-section-{{ section.id }} .legal-body p {
+    margin: 0 0 0.5em;
+  }
+
+  #shopify-section-{{ section.id }} .legal-body a {
+    color: #065BDC;
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .legal-body strong,
+  #shopify-section-{{ section.id }} .legal-body b {
+    font-weight: 700;
+  }
+
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .legal-inner {
+      padding: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_horizontal_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .legal-body {
+      max-width: 100%;
+      font-size: {{ section.settings.body_font_size_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_legal-content">
+  <div class="legal-inner">
+    <div class="legal-body">
+      {{ page.content }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Legal Content",
+  "tag": "section",
+  "class": "legal-content-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text color",
+      "default": "#1B1F1D"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "body_font_size",
+      "label": "Body font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "label": "Body font size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max section width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 600
+    }
+  ],
+  "presets": [
+    {
+      "name": "Legal Content"
+    }
+  ]
+}
+{% endschema %}

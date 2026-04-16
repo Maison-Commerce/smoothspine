@@ -1,664 +1,865 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "section-1": {
-      "type": "slideshow",
+    "maison_home_hero_64CB4L": {
+      "type": "maison-home-hero",
       "blocks": {
-        "block-1": {
-          "type": "image",
+        "trust_badge_HBBmTT": {
+          "type": "trust_badge",
           "settings": {
-            "content_max_width": 640,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "subheading": "Tell your story",
-            "title": "Slide 1",
-            "heading_tag": "h1",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "label": "Doctor Endorsed"
           }
         },
-        "block-2": {
-          "type": "image",
+        "trust_badge_AdDKwr": {
+          "type": "trust_badge",
           "settings": {
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "subheading": "Tell your story",
-            "title": "Slide 2",
-            "heading_tag": "h1",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "label": "Rapid Pain Relief"
           }
         },
-        "block-3": {
-          "type": "image",
+        "trust_badge_UYxncm": {
+          "type": "trust_badge",
           "settings": {
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_text_position": "sm:place-self-center sm:text-center",
-            "subheading": "Tell your story",
-            "title": "Slide 3",
-            "heading_tag": "h1",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 30
+            "label": "Easy Returns"
           }
         }
       },
       "block_order": [
-        "block-1",
-        "block-2",
-        "block-3"
+        "trust_badge_HBBmTT",
+        "trust_badge_AdDKwr",
+        "trust_badge_UYxncm"
       ],
-      "name": "Slideshow",
+      "name": "Home Hero",
       "settings": {
-        "full_width": false,
-        "allow_transparent_header": true,
-        "show_initial_transition": false,
-        "image_size": "auto",
-        "controls_type": "numbers",
-        "transition_type": "fade_with_text",
-        "autoplay": true,
-        "cycle_speed": 6,
-        "background": "rgba(0,0,0,0)",
-        "background_gradient": "linear-gradient(127deg, rgba(66, 74, 48, 1) 11%, rgba(138, 157, 123, 1) 100%)"
+        "heading": "The Smoothest Way To <em>Pain Relief</em>",
+        "subtext": "Used by thousands of adults 45+ to manage sciatica and back pain at home, backed by a 90-day results-or-refund guarantee.",
+        "button_label": "Shop Now & SAVE 60% Today",
+        "button_link": "shopify://products/tfm-pres",
+        "show_trustpilot_badge": true,
+        "rating_full_stars": 4,
+        "rating_show_half_star": true,
+        "badge_text": "<p>4.4/5 (<a href=\"#\" title=\"#\">2,295 + reviews</a>)</p>",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "show_testimonial": true,
+        "testimonial_avatar": "shopify://shop_images/Home-Hero-Review-IMG_4a635837-2f03-4c5a-ae95-725d45f9318c.png",
+        "testimonial_text": "\"I've struggled with crippling back pain and Sciatica for years. Sitting, standing up, lying down, <strong>it all hurt</strong>. I was skeptical but after using this massager for just 1 week, I noticed a HUGE difference. The stabbing pain in my low back is finally gone, and <strong>I can move without wincing again</strong>. I still use it daily, it's so well-made. If you're on the fence, trust me, it's worth it!\"",
+        "testimonial_author": "Maggie S.",
+        "show_verified_badge": true,
+        "verified_text": "Verified Purchase",
+        "testimonial_rating": 5,
+        "hero_image": "shopify://shop_images/Home-Hero-Banner.png",
+        "color_bg": "#f8f4ee",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_accent": "#f07e3b",
+        "color_accent_border": "#bf642f",
+        "color_white": "#ffffff",
+        "color_light": "#fffcfb",
+        "color_badge_text": "#111111",
+        "color_testimonial_bg": "#ffffff",
+        "color_verified_text": "#4a5d6e",
+        "color_trust_icon": "#065bdc",
+        "color_divider": "#c4d0d6",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "subtext_font_size": 18,
+        "subtext_font_size_mobile": 14,
+        "badge_font_size": 12,
+        "button_font_size": 16,
+        "testimonial_font_size": 14,
+        "author_font_size": 12,
+        "trust_label_font_size": 12,
+        "content_padding": 80,
+        "content_padding_tablet": 40,
+        "content_padding_mobile": 20,
+        "content_gap": 40,
+        "button_height": 56,
+        "button_border_radius": 8,
+        "testimonial_border_radius": 16,
+        "avatar_border_radius": 8,
+        "max_width": 1440,
+        "image_min_height": 500
       }
     },
-    "section-2": {
-      "type": "image-link-blocks",
+    "maison_logo_list_WiqtyW": {
+      "type": "maison-logo-list",
       "blocks": {
-        "block-1": {
-          "type": "item",
+        "logo_TkemED": {
+          "type": "logo",
           "settings": {
-            "stretch_image": true,
-            "link_text": "Title 1",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "image": "shopify://shop_images/logo-1.png"
           }
         },
-        "block-2": {
-          "type": "item",
+        "logo_V3rLrt": {
+          "type": "logo",
           "settings": {
-            "stretch_image": true,
-            "link_text": "Title 2",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "image": "shopify://shop_images/logo-2.png"
           }
         },
-        "block-3": {
-          "type": "item",
+        "logo_BHHNKH": {
+          "type": "logo",
           "settings": {
-            "stretch_image": true,
-            "link_text": "Title 3",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "image": "shopify://shop_images/logo3.png"
           }
         },
-        "block-4": {
-          "type": "item",
+        "logo_PW9A4h": {
+          "type": "logo",
           "settings": {
-            "stretch_image": true,
-            "link_text": "Title 4",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "image": "shopify://shop_images/logo-4.png"
           }
         },
-        "block-5": {
-          "type": "item",
+        "logo_DRfX9C": {
+          "type": "logo",
           "settings": {
-            "stretch_image": true,
-            "link_text": "Title 5",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "image": "shopify://shop_images/logo-5.png"
+          }
+        },
+        "logo_Be7ehP": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/logo-6.png"
           }
         }
       },
       "block_order": [
-        "block-1",
-        "block-2",
-        "block-3",
-        "block-4",
-        "block-5"
+        "logo_TkemED",
+        "logo_V3rLrt",
+        "logo_BHHNKH",
+        "logo_PW9A4h",
+        "logo_DRfX9C",
+        "logo_Be7ehP"
       ],
-      "name": "Image link blocks",
+      "name": "Logo List",
       "settings": {
-        "full_width": false,
-        "block_size": "large",
-        "text_color": "#1a1a1a"
+        "heading": "As Advertised In",
+        "color_bg": "#fdfcfa",
+        "color_heading": "#102a43",
+        "heading_font_size": 20,
+        "heading_font_size_mobile": 18,
+        "logo_height": 96,
+        "logo_height_mobile": 72,
+        "gap": 20,
+        "logo_gap_mobile": 24,
+        "padding_top": 32,
+        "padding_bottom": 0,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 8
       }
     },
-    "section-3": {
-      "type": "scrolling-text",
-      "settings": {
-        "full_width": true,
-        "text": "Scrolling text",
-        "text_size": "large",
-        "text_style": "fill",
-        "scrolling_mode": "auto",
-        "scrolling_speed": 5,
-        "text_gradient": "linear-gradient(90deg, rgba(77, 82, 60, 1), rgba(133, 141, 103, 1) 100%)"
-      }
-    },
-    "section-4": {
-      "type": "collection-list",
+    "maison_home_informations_LEM7ar": {
+      "type": "maison-home-informations",
       "blocks": {
-        "block-1": {
-          "type": "collection",
+        "checklist_item_naMfk4": {
+          "type": "checklist_item",
           "settings": {
-            "heading_tag": "h3",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "text": "Gentle traction decompression"
           }
         },
-        "block-2": {
-          "type": "collection",
+        "checklist_item_6ATkqF": {
+          "type": "checklist_item",
           "settings": {
-            "heading_tag": "h3",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "text": "Soothing heat therapy"
           }
         },
-        "block-3": {
-          "type": "collection",
+        "checklist_item_VX4qye": {
+          "type": "checklist_item",
           "settings": {
-            "heading_tag": "h3",
-            "text_position": "place-self-end-start text-start",
-            "text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "text": "Targeted massage"
+          }
+        },
+        "trust_badge_iJtjw8": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Doctor Developed"
+          }
+        },
+        "trust_badge_dM3PG3": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Rapid Pain Relief"
+          }
+        },
+        "trust_badge_Trj6gH": {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Easy Returns"
           }
         }
       },
       "block_order": [
-        "block-1",
-        "block-2",
-        "block-3"
+        "checklist_item_naMfk4",
+        "checklist_item_6ATkqF",
+        "checklist_item_VX4qye",
+        "trust_badge_iJtjw8",
+        "trust_badge_dM3PG3",
+        "trust_badge_Trj6gH"
       ],
+      "name": "Product Informations",
       "settings": {
-        "full_width": true,
-        "stack_collections": false,
-        "collections_per_row_mobile": "1",
-        "collections_per_row": 3,
-        "show_progress_bar": false
+        "title": "<p>The Triple Fusion Massager – A <em>15-Minute At-Home</em> Routine For Melting Away Your Back Pain</p>",
+        "description": "Combines three therapies in one guided session: gentle traction to decompress your spine, soothing heat to relax surrounding muscles, and targeted massage to reduce tension. Plug in, lie down, press start. Within 15 minutes, the tension & pain melts away. No need for appointments.",
+        "show_divider": true,
+        "show_rating_badge": true,
+        "star_full_count": 4,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot": true,
+        "trustpilot_label": "Trustpilot",
+        "cta_label": "SEE HOW IT HELPS",
+        "cta_link": "shopify://products/tfm-pres",
+        "product_image": "shopify://shop_images/Home-Inform-Guar.png",
+        "show_wave_connectors": true,
+        "wave_top_image": "shopify://shop_images/banner-wave-top.svg",
+        "wave_bottom_image": "shopify://shop_images/banner-wave-bottom.svg",
+        "show_guarantee_card": true,
+        "guarantee_badge_image": "shopify://shop_images/Home-Info-Guar-IMG.png",
+        "guarantee_title": "<em>100% Satisfaction 90-Day</em> Money Back Guarantee",
+        "guarantee_body": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee.</strong> If you don't experience the remarkable <strong>relief from back pain and Sciatica</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days</strong>, let us know and we will refund every single penny of your investment.</p><p><strong>No questions asked.</strong> We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>",
+        "color_bg_page": "#fdfcfa",
+        "color_bg_card1": "#f8f4ee",
+        "color_bg_card2": "#e5eefb",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_accent_orange": "#f07e3b",
+        "color_accent_orange_dark": "#bf642f",
+        "color_accent_blue": "#065bdc",
+        "color_white": "#fffcfb",
+        "color_divider": "#424140",
+        "color_rating_text": "#111111",
+        "title_font_size": 24,
+        "title_font_size_mobile": 24,
+        "description_font_size": 18,
+        "description_font_size_mobile": 14,
+        "checklist_font_size": 16,
+        "checklist_font_size_mobile": 14,
+        "cta_font_size": 16,
+        "trust_badge_font_size": 12,
+        "rating_font_size": 12,
+        "card2_title_font_size": 32,
+        "card2_title_font_size_mobile": 24,
+        "card2_body_font_size": 16,
+        "card2_body_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "padding_horizontal": 80,
+        "padding_horizontal_mobile": 16,
+        "card_padding_vertical": 48,
+        "card_padding_horizontal": 64,
+        "card_inner_gap": 64,
+        "card1_border_radius": 16,
+        "card2_border_radius": 16,
+        "product_image_border_radius": 8,
+        "cta_border_radius": 8,
+        "cta_height": 56,
+        "guarantee_badge_size": 290,
+        "guarantee_badge_size_mobile": 180,
+        "max_width": 1280
       }
     },
-    "section-5": {
-      "type": "featured-collection",
-      "settings": {
-        "full_width": true,
-        "stack_products": false,
-        "show_progress_bar": false,
-        "products_count": 6,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "title": "Best sellers",
-        "link_url": "shopify://collections/all",
-        "link_text": "View all"
-      }
-    },
-    "section-6": {
-      "type": "impact-text",
+    "maison_trustpilot_reviews_RdTkqQ": {
+      "type": "maison-trustpilot-reviews",
       "blocks": {
-        "block-1": {
-          "type": "item",
+        "review_nWbd6p": {
+          "type": "review",
           "settings": {
-            "title": "Text",
-            "subheading": "Share content",
-            "content": "<p>Use this section to share helpful information with your customers. Tell a story, explain a detail, or highlight a unique feature. This is your space to connect and add personality to your store.</p>",
-            "button_text": "Shop all",
-            "button_url": "shopify://collections/all",
-            "animate_impact_text": false,
-            "animate_impact_text_duration": 2
+            "stars": 5,
+            "date": "Mar 12, 2026",
+            "title": "Finally sleeping through the night!",
+            "body": "After years of waking up every few hours from back pain, I can honestly say this massager changed my life. Within a week I noticed the difference. My wife says I don't toss and turn anymore!",
+            "author": "Robert M."
+          }
+        },
+        "review_AfckzY": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Wish I found this sooner",
+            "body": "I've spent thousands on chiropractors over the years. This little device does more in 15 minutes than an hour-long session ever did. The heat combined with the traction is incredible.",
+            "author": "Beverly S."
+          }
+        },
+        "review_9WLMb8": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Feb 28, 2026",
+            "title": "Walking my dog again!",
+            "body": "Sciatica had me stuck on the couch for months. I was skeptical but desperate. After 2 weeks of daily use, I walked my dog around the block without stopping. Tears of joy!",
+            "author": "Richard P."
+          }
+        },
+        "review_iFDLDT": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Feb 22, 2026",
+            "title": "Better than expected",
+            "body": "I ordered this for my husband who has herniated discs. He was very skeptical but now he uses it every single day. He says the pain went from an 8 to a 3. Worth every penny.",
+            "author": "Carol T."
+          }
+        },
+        "review_gPJgPj": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Feb 15, 2026",
+            "title": "Game changer for desk workers",
+            "body": "I sit at a computer 10 hours a day and my lower back was killing me. This massager is now part of my daily routine. 15 minutes after work and I feel like a new person.",
+            "author": "James K."
+          }
+        },
+        "review_Ct3gK9": {
+          "type": "review",
+          "settings": {
+            "stars": 4,
+            "date": "Feb 10, 2026",
+            "title": "Real relief after physical therapy failed",
+            "body": "PT helped a little but the pain always came back. With SmoothSpine I get consistent relief every day. The combination of heat and decompression really works.",
+            "author": "Margaret L."
+          }
+        },
+        "review_WKT8aL": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Jan 30, 2026",
+            "title": "Can tie my shoes again",
+            "body": "Something as simple as bending down to tie my shoes was agonizing. After 3 weeks with SmoothSpine, I can do it without thinking twice. Thank you for giving me that back.",
+            "author": "Patricia W."
+          }
+        },
+        "review_NRBjtL": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Jan 25, 2026",
+            "title": "Great customer support too",
+            "body": "Not only does the product work amazingly well, but the support team is fantastic. They answered all my questions on a Sunday evening. Very impressed with the whole experience.",
+            "author": "David H."
           }
         }
       },
       "block_order": [
-        "block-1"
+        "review_nWbd6p",
+        "review_AfckzY",
+        "review_9WLMb8",
+        "review_iFDLDT",
+        "review_gPJgPj",
+        "review_Ct3gK9",
+        "review_WKT8aL",
+        "review_NRBjtL"
       ],
+      "name": "Trustpilot Reviews",
       "settings": {
-        "full_width": true,
-        "stack_mobile": true,
-        "text_alignment": "center",
-        "impact_text_style": "fill",
-        "text_divider": "none",
-        "impact_text_size_ratio": 1,
-        "heading_gradient": "linear-gradient(180deg, rgba(26, 26, 26, 0.2), rgba(26, 26, 26, 0) 100%)"
+        "use_live_reviews": true,
+        "trustpilot_domain": "smoothspine.com",
+        "reviews_worker_url": "https://smoothspine-videoask.choojiie.workers.dev/trustpilot/reviews",
+        "min_stars": 5,
+        "reviews_limit": 8,
+        "heading": "<p>Loved By People <br/>Who've Tried <em>Everything</em></p>",
+        "description": "Our community of 2,400+ people trust SmoothSpine. Let real results inspire your confidence.",
+        "show_badge": true,
+        "rating_full_stars": 4,
+        "rating_show_half_star": true,
+        "badge_text": "<p>4.4/5 (<a href=\"#\">2,295 + reviews</a>)</p>",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "color_bg": "#fdfcfa",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_card_bg": "#ffffff",
+        "color_card_shadow": "#e9e8e6",
+        "color_badge_text": "#111111",
+        "color_nav_bg": "#102a43",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "description_font_size": 18,
+        "description_font_size_mobile": 14,
+        "padding_vertical": 40,
+        "padding_horizontal": 80,
+        "padding_vertical_mobile": 40,
+        "padding_horizontal_mobile": 20
       }
     },
-    "section-7": {
-      "type": "image-with-text-overlay",
+    "maison_before_after_JNUeiP": {
+      "type": "maison-before-after",
       "blocks": {
-        "block-1": {
-          "type": "subheading",
+        "pain_point_rHReAt": {
+          "type": "pain_point",
           "settings": {
-            "text": "Subheading"
+            "text": "You’ve done chiro, PT, injections, and woke up in the same pain the next morning"
           }
         },
-        "block-2": {
-          "type": "heading",
+        "pain_point_AgiUgp": {
+          "type": "pain_point",
           "settings": {
-            "text": "Image with text overlay",
-            "heading_tag": "h1"
+            "text": "You’ve spent $3,000+ and your spine still feels like it’s being crushed"
           }
         },
-        "block-3": {
-          "type": "richtext",
+        "pain_point_rEeUUj": {
+          "type": "pain_point",
           "settings": {
-            "content": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            "text": "You cancel plans because you can’t predict how bad it’ll be that day"
+          }
+        },
+        "pain_point_pa4CrJ": {
+          "type": "pain_point",
+          "settings": {
+            "text": "You map every trip around where you can sit down within 10 minutes"
+          }
+        },
+        "pain_point_7hdT4z": {
+          "type": "pain_point",
+          "settings": {
+            "text": "Surgery terrifies you, but you’re starting to think it’s the only option left"
+          }
+        },
+        "pain_point_3xzCH7": {
+          "type": "pain_point",
+          "settings": {
+            "text": "You just want to feel normal again. Not fixed. Just normal."
           }
         }
       },
       "block_order": [
-        "block-1",
-        "block-2",
-        "block-3"
+        "pain_point_rHReAt",
+        "pain_point_AgiUgp",
+        "pain_point_rEeUUj",
+        "pain_point_pa4CrJ",
+        "pain_point_7hdT4z",
+        "pain_point_3xzCH7"
       ],
+      "name": "Before After Pain Points",
       "settings": {
-        "full_width": true,
-        "allow_transparent_header": false,
-        "enable_parallax": false,
-        "image_size": "auto",
-        "mobile_text_position": "place-self-center text-center",
-        "desktop_text_position": "sm:place-self-center sm:text-center",
-        "text_color": "#ffffff",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0
+        "subheading": "You're in the right place if…",
+        "heading": "Sound Familiar?",
+        "body_text": "",
+        "show_trust_badge": false,
+        "trust_stars": 4.5,
+        "trust_rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_logo": true,
+        "button_label": "GET 60% OFF TODAY ONLY!",
+        "button_link": "shopify://products/tfm-pres",
+        "desktop_media_position": "left",
+        "mobile_media_position": "bottom",
+        "video": "shopify://files/videos/home-before-after.mp4",
+        "image_placeholder_text": "Before and After image",
+        "image_aspect_ratio": "1 / 1",
+        "color_background": "#fdfcfa",
+        "color_subheading": "#065bdc",
+        "color_heading": "#102a43",
+        "color_body_text": "#4a5d6e",
+        "color_icon_fallback": "#f04438",
+        "color_link": "#065bdc",
+        "color_button_bg": "#f07e3b",
+        "color_button_border": "#bf642f",
+        "color_button_text": "#fffcfb",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "subheading_font_size": 12,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "button_font_size": 16,
+        "button_font_size_mobile": 14,
+        "padding_top": 20,
+        "padding_bottom": 40,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "column_gap": 40,
+        "list_gap": 16,
+        "text_inner_gap": 24,
+        "text_inner_padding_v": 48,
+        "text_inner_padding_h": 32,
+        "image_border_radius": 16,
+        "button_border_radius": 8,
+        "button_height": 56,
+        "container_padding": 80,
+        "max_width": 1440
       }
     },
-    "section-8": {
-      "type": "media-grid",
+    "maison_ugc_section_qiCzY3": {
+      "type": "maison-ugc-section",
       "blocks": {
-        "block-1": {
-          "type": "video",
+        "ugc_slide_qYanEM": {
+          "type": "ugc_slide",
           "settings": {
-            "external_video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "show_video_controls": false,
-            "title": "Video",
-            "heading_tag": "h3",
-            "mobile_text_position": "place-self-center text-center",
-            "desktop_column_span": 2,
-            "desktop_row_span": 2,
-            "desktop_text_position": "sm:place-self-end-start sm:text-start",
-            "background": "#000000",
-            "text_color": "#ffffff",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "show_play_button": true,
+            "video": "shopify://files/videos/GIF 2 (1).mp4",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
           }
         },
-        "block-2": {
-          "type": "image",
+        "ugc_slide_GUqY3e": {
+          "type": "ugc_slide",
           "settings": {
-            "title": "Image 1",
-            "heading_tag": "h5",
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-end-start sm:text-start",
-            "background": "#000000",
-            "text_color": "#ffffff",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "show_play_button": true,
+            "video": "shopify://files/videos/vid8.mp4",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
           }
         },
-        "block-3": {
-          "type": "image",
+        "ugc_slide_VRt7Jk": {
+          "type": "ugc_slide",
           "settings": {
-            "title": "Image 2",
-            "heading_tag": "h5",
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_column_span": 1,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-end-start sm:text-start",
-            "background": "#000000",
-            "text_color": "#ffffff",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "show_play_button": true,
+            "video": "shopify://files/videos/1_2.mp4",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
           }
         },
-        "block-4": {
-          "type": "image",
+        "ugc_slide_qdJFBr": {
+          "type": "ugc_slide",
           "settings": {
-            "title": "Image 3",
-            "heading_tag": "h3",
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_column_span": 2,
-            "desktop_row_span": 1,
-            "desktop_text_position": "sm:place-self-end-start sm:text-start",
-            "background": "#000000",
-            "text_color": "#ffffff",
-            "button_background": "#000000",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0
+            "show_play_button": true,
+            "video": "shopify://files/videos/complete.mp4",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
+          }
+        },
+        "ugc_slide_HHPcQd": {
+          "type": "ugc_slide",
+          "settings": {
+            "show_play_button": true,
+            "video": "shopify://files/videos/6 (1)_7bdf1f2e-c898-45e8-a780-3d557bb2c0d5.mp4",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
+          }
+        },
+        "ugc_slide_Kywjd6": {
+          "type": "ugc_slide",
+          "settings": {
+            "show_play_button": true,
+            "video": "shopify://files/videos/v 2.mp4",
+            "quote": "Very easy to use. I look forward to those 15 min each day because it feels so good.",
+            "author_name": "Mikki",
+            "show_verified": true
           }
         }
       },
       "block_order": [
-        "block-1",
-        "block-2",
-        "block-3",
-        "block-4"
+        "ugc_slide_qYanEM",
+        "ugc_slide_GUqY3e",
+        "ugc_slide_VRt7Jk",
+        "ugc_slide_qdJFBr",
+        "ugc_slide_HHPcQd",
+        "ugc_slide_Kywjd6"
       ],
+      "name": "UGC Video Carousel",
       "settings": {
-        "full_width": true,
-        "reduce_width": false,
-        "desktop_row_height": 290,
-        "mobile_row_height": 150
+        "heading": "Real People. Real Results.",
+        "verified_text": "Verified Buyer",
+        "show_nav_buttons": true,
+        "show_progress_bar": true,
+        "color_background": "#fdfcfa",
+        "color_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_white": "#ffffff",
+        "color_nav_bg": "#102a43",
+        "color_progress_bar": "#102a43",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "body_font_size": 14,
+        "author_font_size": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "container_padding": 80,
+        "section_gap": 40,
+        "slide_gap": 20,
+        "card_width": 240,
+        "card_height": 380,
+        "card_width_mobile": 180,
+        "card_height_mobile": 280,
+        "border_radius_sm": 8,
+        "border_radius_md": 16,
+        "nav_button_size": 56,
+        "play_button_size": 56,
+        "max_width": 1440
       }
     },
-    "section-9": {
-      "type": "before-after-image",
-      "settings": {
-        "full_width": false,
-        "subheading": "Before/after",
-        "title": "Compare images",
-        "content": "<p>Show how your product transforms experiences with a powerful before-and-after.</p>",
-        "expand_image": false,
-        "text_position": "center",
-        "before_after_text_position": "bottom",
-        "before_text": "Before",
-        "after_text": "After",
-        "drag_initial_position": 39,
-        "background": "rgba(0,0,0,0)",
-        "before_text_color": "#ffffff",
-        "after_text_color": "#ffffff",
-        "drag_cursor_background": "#ffffff",
-        "drag_cursor_color": "#000000"
-      }
-    },
-    "section-10": {
-      "type": "press",
+    "maison_how_it_work_njJCj8": {
+      "type": "maison-how-it-work",
       "blocks": {
-        "block-1": {
-          "type": "quote",
+        "step_card_wLcnF4": {
+          "type": "step_card",
           "settings": {
-            "logo_width": 120,
-            "content": "Absolutely love it! It exceeded all my expectations. The quality is top-notch, and I\u2019ve already recommended it to several friends.",
-            "show_rating": false,
-            "rating": 4
+            "video": "shopify://files/videos/ed5a7e4bff5349539d9ae5ffde3f1b30 (1) (1).mp4",
+            "image": "shopify://shop_images/67e9ab94c2eb4c879f0f9c0cd77be3717385fdc6.png",
+            "image_alt": "Step 1 - Plug in the USB cable to the device",
+            "badge_label": "STEP 1",
+            "description": "<p><strong>Plug in the USB cable to the device.</strong> The button controls will light up, confirming it's ready to use. Place the massager on a flat surface like your floor or bed.</p>"
           }
         },
-        "block-2": {
-          "type": "quote",
+        "step_card_p6iNHa": {
+          "type": "step_card",
           "settings": {
-            "logo_width": 100,
-            "content": "A game-changer \u2014 I noticed the difference right away. It\u2019s rare to find something that delivers exactly what it promises, but this does.",
-            "show_rating": false,
-            "rating": 4
+            "video": "shopify://files/videos/vid7.mp4",
+            "image": "shopify://shop_images/c689f526162a5f3a0fec30db5c9ccfd35011816c.png",
+            "image_alt": "Step 2 - Hold the power button to turn it on",
+            "badge_label": "STEP 2",
+            "description": "<p><strong>Hold the power button to turn it on.</strong> The device will automatically cycle through massage, traction, and heat therapy for a full session.</p>"
           }
         },
-        "block-3": {
-          "type": "quote",
+        "step_card_qBz7UF": {
+          "type": "step_card",
           "settings": {
-            "logo_width": 100,
-            "content": "Fast delivery, great quality, and amazing support! I had a few questions and the team was incredibly helpful and friendly throughout.",
-            "show_rating": false,
-            "rating": 4
+            "video": "shopify://files/videos/036e8f40d8e346b59980926d8c505ac0.mp4",
+            "image": "shopify://shop_images/90fdd075107aef8cb3b6b912e29b401892cc7d3e.png",
+            "image_alt": "Step 3 - Lay back and relax",
+            "badge_label": "STEP 3",
+            "description": "<p><strong>Lay back, relax, and enjoy the soothing relief for 15-30 minutes</strong> while SmoothSpine works its magic on your back.</p>"
           }
         }
       },
       "block_order": [
-        "block-1",
-        "block-2",
-        "block-3"
+        "step_card_wLcnF4",
+        "step_card_p6iNHa",
+        "step_card_qBz7UF"
       ],
+      "name": "How It Works",
       "settings": {
-        "full_width": true,
-        "content_size": "medium"
+        "heading": "<p>3 Simple Steps To Relieve </p><p><em>Sciatica And Back Pain</em></p>",
+        "button_label": "Get Started, Shop Now",
+        "button_link": "shopify://products/tfm-pres",
+        "color_button_bg": "#f07e3b",
+        "color_button_border": "#bf642f",
+        "color_button_text": "#fffcfb",
+        "color_bg_top": "#e5eefb",
+        "color_bg_bottom": "#fdfcfa",
+        "color_brand": "#065bdc",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_card_bg": "#fffffc",
+        "color_card_text_bg": "#ffffff",
+        "color_badge_text": "#fafcfe",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "badge_font_size": 16,
+        "body_font_size": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_horizontal_mobile": 20,
+        "cards_gap": 40,
+        "inner_gap": 40,
+        "card_border_radius": 16,
+        "image_height": 400,
+        "badge_width": 96,
+        "badge_height": 48,
+        "heading_max_width": 600,
+        "max_width": 1280
       }
     },
-    "section-11": {
-      "type": "hot-spots",
+    "maison_offer_auth_x8yHUt": {
+      "type": "maison-offer-auth",
       "blocks": {
-        "block-1": {
-          "type": "item",
+        "checklist_item_GTW3Vr": {
+          "type": "checklist_item",
           "settings": {
-            "horizontal_position": 83,
-            "vertical_position": 74,
-            "horizontal_position_mobile": 83,
-            "vertical_position_mobile": 74,
-            "icon_width": 32,
-            "title": "Premium materials",
-            "content": "<p>Built to last with carefully selected, high-quality components.</p>"
+            "text": "90-Day Results or Refund Guarantee"
           }
         },
-        "block-2": {
-          "type": "item",
+        "checklist_item_dahxQm": {
+          "type": "checklist_item",
           "settings": {
-            "horizontal_position": 61,
-            "vertical_position": 16,
-            "horizontal_position_mobile": 43,
-            "vertical_position_mobile": 24,
-            "icon_width": 32,
-            "title": "Thoughtful design",
-            "content": "<p>Every detail is crafted to enhance usability and style.<br/></p>"
+            "text": "60% OFF - SmoothSpine Massager (All-Inclusive treatment kit)"
           }
         },
-        "block-3": {
-          "type": "item",
+        "checklist_item_868qn7": {
+          "type": "checklist_item",
           "settings": {
-            "horizontal_position": 45,
-            "vertical_position": 66,
-            "horizontal_position_mobile": 47,
-            "vertical_position_mobile": 56,
-            "icon_width": 32,
-            "title": "Seamless integration",
-            "content": "<p>Works effortlessly with your lifestyle or existing setup.</p>"
+            "text": "Fast & FREE Shipping"
+          }
+        },
+        "gift_item_gMYUyR": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $29",
+            "image": "shopify://shop_images/dc43829b1674bae58a96a2b9dbbd09fbe430dfc2.png",
+            "label": "Back pain & Sciatica Guide"
+          }
+        },
+        "gift_item_GaMkAy": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $20",
+            "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
+            "label": "12x Back Pain Relief Patches"
+          }
+        },
+        "gift_item_VRyaqH": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $15",
+            "image": "shopify://shop_images/gsejnjn3gn4knf_egegh.png",
+            "label": "Zip Lock Travel Bag"
+          }
+        },
+        "endorsement_WNRKPL": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Blane Schilling",
+            "title": "Endorsed by Dr. Blane Schilling",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "\"After 18 years treating patients with chronic back pain and sciatica, I know one thing for certain: recovery happens at home, not in a clinic.\n\nThe SmoothSpine Triple Fusion Massager is the first at-home device I recommend with confidence — it combines decompression, massage, and heat in a single 15-minute session, and for patients dealing with nerve compression, disc stiffness, or that locked-up morning feeling, it genuinely fills the gap between clinical visits and daily relief.\"",
+            "author_name": "Dr. Blane Schilling",
+            "author_role": "Licensed Physical Therapist",
+            "image": "shopify://shop_images/5c0b920f0ebab86769e2a7b32aa4f3b4b82fe02b.png"
+          }
+        },
+        "endorsement_PrdgAb": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Adam Story",
+            "title": "Endorsed by Dr. Adam Story",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "As a chiropractor, I've seen how daily spinal decompression and targeted heat therapy can accelerate recovery. The SmoothSpine Massager delivers exactly that — conveniently at home.",
+            "author_name": "Dr. Adam Story",
+            "author_role": "Licensed Chiropractor",
+            "image": "shopify://shop_images/image_2.png"
+          }
+        },
+        "trust_item_Tbeqiw": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Shipment-Return--Streamline-Flex.svg",
+            "heading": "90-DAY MONEY BACK GUARANTEE",
+            "description": "If you're not thrilled, we will refund your investment. No hassle."
+          }
+        },
+        "trust_item_KDKD9F": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Transfer-Van--Streamline-Flex.svg",
+            "heading": "FREE SHIPPING",
+            "description": "We provide fast shipping on all orders. Enjoy free shipping on orders over $60."
+          }
+        },
+        "trust_item_piyLNm": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Warranty-Badge-Highlight--Streamline-Flex.svg",
+            "heading": "GUARANTEED HIGH QUALITY",
+            "description": "Made of high quality materials. Enjoy consistent, trouble-free performance for a long time."
           }
         }
       },
       "block_order": [
-        "block-1",
-        "block-2",
-        "block-3"
+        "checklist_item_GTW3Vr",
+        "checklist_item_dahxQm",
+        "checklist_item_868qn7",
+        "gift_item_gMYUyR",
+        "gift_item_GaMkAy",
+        "gift_item_VRyaqH",
+        "endorsement_WNRKPL",
+        "endorsement_PrdgAb",
+        "trust_item_Tbeqiw",
+        "trust_item_KDKD9F",
+        "trust_item_piyLNm"
       ],
+      "name": "Offer Authority Trust",
       "settings": {
-        "full_width": true,
-        "title": "Discover the details",
-        "content": "<p>Highlight key features of your product or service by placing hotspots over an image. Use this section to guide your customers and draw attention to what matters most.</p>",
-        "button_text": "Learn more",
-        "desktop_text_position": "place-self-start text-start",
-        "image_background_gradient": "linear-gradient(90deg, rgba(77, 82, 60, 1), rgba(133, 141, 103, 1) 100%)",
-        "overlay_color": "#000000",
-        "overlay_opacity": 0,
-        "overlay_text_color": "#ffffff",
-        "overlay_button_background": "#ffffff",
-        "overlay_button_text_color": "#4d523c",
-        "hot_spot_dot_background": "#ffffff",
-        "hot_spot_dot_text_color": "#000000",
-        "hot_spot_content_background": "#ffffff",
-        "hot_spot_content_text_color": "#000000",
-        "hot_spot_content_opacity": 90,
-        "hot_spot_content_blur_radius": 3
-      }
-    },
-    "section-12": {
-      "type": "impact-text",
-      "blocks": {
-        "block-1": {
-          "type": "item",
-          "settings": {
-            "title": "6",
-            "subheading": "Hours of battery",
-            "content": "<p>Share some key points about your products.</p>",
-            "animate_impact_text": true,
-            "animate_impact_text_duration": 1.6
-          }
-        },
-        "block-2": {
-          "type": "item",
-          "settings": {
-            "title": "12",
-            "subheading": "Meters deep",
-            "content": "<p>Share some key points about your products.</p>",
-            "animate_impact_text": true,
-            "animate_impact_text_duration": 1.6
-          }
-        }
-      },
-      "block_order": [
-        "block-1",
-        "block-2"
-      ],
-      "settings": {
-        "full_width": true,
-        "stack_mobile": true,
-        "text_alignment": "center",
-        "impact_text_style": "fill",
-        "text_divider": "line",
-        "impact_text_size_ratio": 1.5,
-        "background_gradient": "linear-gradient(90deg, rgba(77, 82, 60, 1), rgba(133, 141, 103, 1) 100%)",
-        "heading_text_color": "#ffffff",
-        "text_color": "#ffffff"
-      }
-    },
-    "section-13": {
-      "type": "multiple-images-with-text",
-      "blocks": {
-        "block-1": {
-          "type": "item",
-          "settings": {
-            "image_rotation_degrees": 2,
-            "subheading": "About us",
-            "title": "Designed in New York",
-            "content": "<p>Share some content about the founders, your team and your values. Pair this text with one or multiple images to create impactful visual effect.</p>"
-          }
-        },
-        "block-2": {
-          "type": "item",
-          "settings": {
-            "image_rotation_degrees": -2,
-            "subheading": "Our products",
-            "title": "Superior design",
-            "content": "<p>Share some content abour your products and what make them unique. Pair this text with one or multiple images to create impactful visual effect.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "block-1",
-        "block-2"
-      ],
-      "settings": {
-        "full_width": true,
-        "images_layout": "scattered",
-        "collage_images_alignment": "middle"
-      }
-    },
-    "section-14": {
-      "type": "featured-product",
-      "blocks": {
-        "block-1": {
-          "type": "vendor",
-          "settings": {}
-        },
-        "block-2": {
-          "type": "title",
-          "settings": {
-            "heading_tag": "h2"
-          }
-        },
-        "block-3": {
-          "type": "badges",
-          "settings": {}
-        },
-        "block-4": {
-          "type": "price",
-          "settings": {
-            "show_taxes_notice": false
-          }
-        },
-        "block-5": {
-          "type": "rating",
-          "settings": {
-            "show_empty": false
-          }
-        },
-        "block-6": {
-          "type": "separator",
-          "settings": {}
-        },
-        "block-7": {
-          "type": "description",
-          "settings": {
-            "icon": "none",
-            "icon_width": 20,
-            "collapse_content": false
-          }
-        },
-        "block-8": {
-          "type": "variant_picker",
-          "settings": {
-            "hide_sold_out_variants": false,
-            "stack_blocks": true,
-            "selector_style": "block",
-            "swatch_selector_style": "swatch"
-          }
-        },
-        "block-9": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_payment_button": true,
-            "show_gift_card_recipient": true
-          }
-        },
-        "block-10": {
-          "type": "pickup_availability",
-          "settings": {}
-        },
-        "block-11": {
-          "type": "share_buttons",
-          "settings": {
-            "alignment": "start"
-          }
-        }
-      },
-      "block_order": [
-        "block-1",
-        "block-2",
-        "block-3",
-        "block-4",
-        "block-5",
-        "block-6",
-        "block-7",
-        "block-8",
-        "block-9",
-        "block-10",
-        "block-11"
-      ],
-      "settings": {
-        "full_width": false,
-        "desktop_media_width": 55,
-        "desktop_media_layout": "carousel_thumbnails_left",
-        "mobile_media_size": "expanded",
-        "mobile_carousel_control": "floating_dots",
-        "enable_video_autoplay": true,
-        "enable_video_looping": false,
-        "enable_image_zoom": true,
-        "max_image_zoom_level": 3,
-        "background": "#ffffff",
-        "input_background": "rgba(0,0,0,0)"
+        "show_offer_block": true,
+        "show_rating_badge": true,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_badge": true,
+        "offer_heading": "<span style=\"text-decoration:underline\"><em>Special Offer</em></span> On Now!",
+        "offer_subtext": "Try Your SmoothSpine Massager NOW <span style=\"text-decoration:underline\">Risk-Free</span> at an All Time Low Price! Act Now and You'll Get:",
+        "gifts_heading": "Exclusive Offer! Order today for free gifts (valued at $64)!",
+        "cta_label": "GET 60% OFF TODAY ONLY!",
+        "cta_link": "shopify://products/tfm-pres",
+        "show_cta_note": true,
+        "cta_note": "Note: Not Available on Amazon or eBay",
+        "offer_image": "shopify://shop_images/e145c8657a0ce71caabd4bdcd69218a3f7cd9ff7.png",
+        "show_authority_block": true,
+        "show_trust_block": true,
+        "wave_offer_to_authority": "shopify://shop_images/banner-wave-top.svg",
+        "wave_top_authority": "shopify://shop_images/banner-wave-bottom.svg",
+        "wave_authority_to_trust": "shopify://shop_images/mc-home-wave-rt-bottom.svg",
+        "wave_top_trust": "shopify://shop_images/mc-home-wave-rt-top.svg",
+        "color_bg_outer": "#fdfcfa",
+        "color_bg_offer": "#f8f4ee",
+        "color_bg_authority": "#e5eefb",
+        "color_bg_trust": "#f8f4ee",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_highlight": "#f07e3b",
+        "color_accent": "#065bdc",
+        "color_divider": "#424140",
+        "color_btn_bg": "#f07e3b",
+        "color_btn_border": "#bf642f",
+        "color_btn_text": "#fffcfb",
+        "color_gift_bg": "#eeeae5",
+        "color_gift_border": "#065bdc",
+        "color_gift_badge_bg": "#065bdc",
+        "color_gift_badge_text": "#fafcfe",
+        "color_trust_icon_bg": "#fafcfe",
+        "color_trust_icon_border": "#065bdc",
+        "color_trust_divider": "#c5c2bd",
+        "color_tab_active": "#065bdc",
+        "color_expert_badge": "#065bdc",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 26,
+        "subtext_font_size": 18,
+        "subtext_font_size_mobile": 16,
+        "checklist_font_size": 16,
+        "endorsement_title_font_size": 24,
+        "endorsement_title_font_size_mobile": 20,
+        "quote_font_size": 18,
+        "quote_font_size_mobile": 14,
+        "trust_heading_font_size": 18,
+        "trust_body_font_size": 14,
+        "btn_font_size": 16,
+        "badge_font_size": 10,
+        "tab_font_size": 14,
+        "tab_font_size_mobile": 12,
+        "rating_font_size": 12,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "padding_x": 80,
+        "padding_x_mobile": 8,
+        "max_width": 1280,
+        "block_padding_x": 64,
+        "block_padding_y": 48,
+        "column_gap": 64,
+        "offer_radius_tl": 16,
+        "offer_radius_tr": 16,
+        "offer_radius_br": 0,
+        "offer_radius_bl": 16,
+        "auth_radius_tl": 0,
+        "auth_radius_tr": 16,
+        "auth_radius_br": 0,
+        "auth_radius_bl": 16,
+        "trust_radius_tl": 0,
+        "trust_radius_tr": 16,
+        "trust_radius_br": 16,
+        "trust_radius_bl": 16,
+        "image_border_radius": 8,
+        "btn_border_radius": 8,
+        "gift_border_radius": 8,
+        "trust_icon_border_radius": 8
       }
     },
     "section-15": {
@@ -670,25 +871,79 @@
             "heading_1": "Driver",
             "heading_2": "Weight",
             "heading_3": "Dimensions",
-            "heading_4": "Battery"
+            "heading_4": "Battery",
+            "heading_5": "",
+            "heading_6": "",
+            "heading_7": "",
+            "heading_8": "",
+            "heading_9": "",
+            "heading_10": "",
+            "heading_11": "",
+            "heading_12": "",
+            "heading_13": "",
+            "heading_14": "",
+            "heading_15": "",
+            "heading_16": "",
+            "heading_17": "",
+            "heading_18": "",
+            "heading_19": "",
+            "heading_20": ""
           }
         },
         "block-2": {
           "type": "values",
           "settings": {
+            "product": "",
             "value_1": "<p>40mm Beryllium</p>",
             "value_2": "<p>245g</p>",
             "value_3": "<p>165mm x 190mm x 66mm</p>",
-            "value_4": "<p>24 hours</p>"
+            "value_4": "<p>24 hours</p>",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": "",
+            "view_button_background": "",
+            "view_button_text_color": ""
           }
         },
         "block-3": {
           "type": "values",
           "settings": {
+            "product": "",
             "value_1": "<p>40mm Beryllium</p>",
             "value_2": "<p>205g (On-Ear), 239g (Over-Ear)</p>",
             "value_3": "<p>190mm x 155mm x 34mm (On-Ear), 200mm x 165mm x 40mm (Over-Ear)</p>",
-            "value_4": "<p>16 hours</p>"
+            "value_4": "<p>16 hours</p>",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": "",
+            "view_button_background": "",
+            "view_button_text_color": ""
           }
         }
       },
@@ -697,176 +952,43 @@
         "block-2",
         "block-3"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "subheading": "Compare",
         "title": "Highlight key differences at a glance",
         "content": "<p>This section is perfect for showcasing product comparisons side-by-side. Use it to display key features, specifications, and pricing so customers can quickly decide which item fits their needs.</p>",
         "button_text": "Learn more",
+        "button_url": "",
         "text_position": "start",
         "max_rows": 5,
         "view_all_text": "View all",
         "view_less_text": "View less",
         "view_product": "View",
-        "show_product_swatch": true
-      }
-    },
-    "section-16": {
-      "type": "revealed-image-on-scroll",
-      "settings": {
-        "title": "Outstanding products with exceptional brands",
-        "text_color_inside": "#ffffff",
-        "text_color_outside": "#000000"
-      }
-    },
-    "section-17": {
-      "type": "timeline",
-      "blocks": {
-        "block-1": {
-          "type": "slide",
-          "settings": {
-            "navigation_label": "2014",
-            "subheading": "The beginning",
-            "title": "Our journey starts with a simple idea"
-          }
-        },
-        "block-2": {
-          "type": "slide",
-          "settings": {
-            "navigation_label": "2017",
-            "subheading": "First Launch",
-            "title": "Introducing our very first product to the world"
-          }
-        },
-        "block-3": {
-          "type": "slide",
-          "settings": {
-            "navigation_label": "2018",
-            "subheading": "Early growth",
-            "title": "Building momentum and expanding the team"
-          }
-        },
-        "block-4": {
-          "type": "slide",
-          "settings": {
-            "navigation_label": "2019",
-            "subheading": "Going global",
-            "title": "Reaching customers across continents"
-          }
-        },
-        "block-5": {
-          "type": "slide",
-          "settings": {
-            "navigation_label": "2020",
-            "subheading": "Milestone achieved",
-            "title": "Celebrating 100,000 happy customers"
-          }
-        },
-        "block-6": {
-          "type": "slide",
-          "settings": {
-            "navigation_label": "2021",
-            "subheading": "Stronger than ever",
-            "title": "Scaling new heights and looking ahead"
-          }
-        }
-      },
-      "block_order": [
-        "block-1",
-        "block-2",
-        "block-3",
-        "block-4",
-        "block-5",
-        "block-6"
-      ],
-      "settings": {
-        "full_width": true
-      }
-    },
-    "section-18": {
-      "type": "faq",
-      "blocks": {
-        "block-1": {
-          "type": "item",
-          "settings": {
-            "title": "Do you ship overseas?",
-            "content": "<p>Yes, we ship all over the world. Shipping costs will apply, and will be added at checkout. We run discounts and promotions all year, so stay tuned for exclusive deals.</p>"
-          }
-        },
-        "block-2": {
-          "type": "item",
-          "settings": {
-            "title": "Do I need to setup an account to place an order?",
-            "content": "<p>You do not need to set up an account to place an order. However creating an account allows you to store your shipping information, see order history, and view your product\u2019s warranty information. Additional features will be added to the account page in the near future.</p>"
-          }
-        },
-        "block-3": {
-          "type": "item",
-          "settings": {
-            "title": "Do you offer gift wrapping",
-            "content": "<p>Yes, we can wrap your item in our signature box with tissue paper, and include a card with your personal message. The option is available during checkout for an additional $5. Please note this service is not available for wireless speaker purchases.</p>"
-          }
-        },
-        "block-4": {
-          "type": "item",
-          "settings": {
-            "title": "How long will it take to get my orders?",
-            "content": "<p>It depends on where you are. Orders processed here will take 5-7 business days to arrive. Overseas deliveries can take anywhere from 7-16 days. Delivery details will be provided in your confirmation email.</p>"
-          }
-        },
-        "block-5": {
-          "type": "item",
-          "settings": {
-            "title": "What is your return policy?",
-            "content": "<p>All products purchased from our website may be returned within 14 days of purchase for a full refund less shipping costs, no questions asked. International return orders may be subject to return shipping fees.\u00a0To initiate such a return please <a href=\"/pages/contact\" title=\"Contact\">contact us</a>.</p>"
-          }
-        },
-        "block-6": {
-          "type": "item",
-          "settings": {
-            "title": "Any question?",
-            "content": "<p>You can contact us through our <a href=\"/pages/contact\" title=\"Contact\">contact page</a>! We will be happy to assist you.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "block-1",
-        "block-2",
-        "block-3",
-        "block-4",
-        "block-5",
-        "block-6"
-      ],
-      "settings": {
-        "full_width": false,
-        "title": "Have a question ? We are here to help.",
-        "content": "<p>Check out the most common questions our customers asked. Still have questions ?\u2028Contact our customer support.</p>",
-        "team_avatar_width": 160,
-        "support_hours": "Our customer support is available monday to friday: 8am-8:30pm.",
-        "answer_time": "Average answer time: 24h",
-        "text_position": "start",
-        "background": "#ffffff"
+        "viewing_product": "",
+        "show_product_swatch": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "",
+        "chart_text_color": "",
+        "chart_true_false_color": ""
       }
     }
   },
   "order": [
-    "section-1",
-    "section-2",
-    "section-3",
-    "section-4",
-    "section-5",
-    "section-6",
-    "section-7",
-    "section-8",
-    "section-9",
-    "section-10",
-    "section-11",
-    "section-12",
-    "section-13",
-    "section-14",
-    "section-15",
-    "section-16",
-    "section-17",
-    "section-18"
+    "maison_home_hero_64CB4L",
+    "maison_logo_list_WiqtyW",
+    "maison_home_informations_LEM7ar",
+    "maison_trustpilot_reviews_RdTkqQ",
+    "maison_before_after_JNUeiP",
+    "maison_ugc_section_qiCzY3",
+    "maison_how_it_work_njJCj8",
+    "maison_offer_auth_x8yHUt",
+    "section-15"
   ]
 }

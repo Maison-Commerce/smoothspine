@@ -1,0 +1,1094 @@
+{% comment %}
+  Section: Shipping Trust
+  Description: Two-block section addressing shipping/delivery concerns through
+    Trustpilot reviews (top) and guarantee badges (bottom), connected by a wave divider.
+    Reviews use SwiperJS carousel. Guarantees displayed as icon cards.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings) — loaded by theme
+  - Font: 'Open Sans' (body) — loaded by theme
+  - SwiperJS 11 CDN (loaded conditionally)
+
+  Blocks:
+  - review: Individual shipping/delivery review (limit: 12)
+  - guarantee: Guarantee badge with icon and text (limit: 6)
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_shipping-trust {
+    --st-color-bg-reviews: {{ section.settings.color_bg_reviews }};
+    --st-color-bg-guarantees: {{ section.settings.color_bg_guarantees }};
+    --st-color-text-primary: {{ section.settings.color_text_primary }};
+    {%- assign secondary_color = section.settings.color_text_primary | color_modify: 'alpha', 0.75 -%}
+    --st-color-text-secondary: {{ secondary_color }};
+    --st-color-accent-blue: {{ section.settings.color_accent_blue }};
+    --st-color-card-bg: {{ section.settings.color_card_bg }};
+    --st-color-card-shadow: {{ section.settings.color_card_shadow }};
+    --st-color-nav-bg: {{ section.settings.color_nav_bg }};
+    --st-color-btn-bg: {{ section.settings.color_btn_bg }};
+    --st-color-btn-border: {{ section.settings.color_btn_border }};
+    --st-color-btn-text: {{ section.settings.color_btn_text }};
+    --st-color-guarantee-icon-bg: {{ section.settings.color_guarantee_icon_bg }};
+    --st-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --st-font-body: 'Open Sans', sans-serif;
+
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_shipping-trust *,
+  #shopify-section-{{ section.id }} .maisoncode_shipping-trust *::before,
+  #shopify-section-{{ section.id }} .maisoncode_shipping-trust *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* ── Reviews Block ── */
+  #shopify-section-{{ section.id }} .st-reviews {
+    background: var(--st-color-bg-reviews);
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_x }}px 0;
+    border-radius: 16px 16px 0 0;
+  }
+
+  #shopify-section-{{ section.id }} .st-reviews-inner {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .st-reviews-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Trustpilot badge */
+  #shopify-section-{{ section.id }} .st-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .st-badge-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .st-badge-stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .st-badge-text {
+    font-family: var(--st-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #111;
+  }
+
+  #shopify-section-{{ section.id }} .st-badge-tp {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .st-badge-tp svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .st-badge-tp span {
+    font-family: var(--st-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #111;
+  }
+
+  /* Heading */
+  #shopify-section-{{ section.id }} .st-heading {
+    font-family: var(--st-font-heading);
+    font-weight: 800;
+    font-size: {{ section.settings.heading_font_size }}px;
+    line-height: 1.4;
+    color: var(--st-color-text-primary);
+    text-transform: capitalize;
+    max-width: 700px;
+  }
+
+  #shopify-section-{{ section.id }} .st-heading p {
+    font: inherit;
+    color: inherit;
+  }
+
+  #shopify-section-{{ section.id }} .st-heading em {
+    color: var(--st-color-accent-blue);
+    font-style: normal;
+    text-decoration: underline;
+  }
+
+  /* Swiper */
+  #shopify-section-{{ section.id }} .st-swiper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .st-swiper .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .st-swiper .swiper-slide {
+    height: auto;
+  }
+
+  /* Review card */
+  #shopify-section-{{ section.id }} .st-review-card {
+    background: var(--st-color-card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    box-shadow: 0px 1px 0px var(--st-color-card-shadow);
+  }
+
+  #shopify-section-{{ section.id }} .st-review-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .st-review-card__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .st-review-card__stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .st-review-card__date {
+    font-family: var(--st-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--st-color-text-secondary);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .st-review-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .st-review-card__title {
+    font-family: var(--st-font-body);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--st-color-text-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .st-review-card__body {
+    font-family: var(--st-font-body);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--st-color-text-secondary);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .st-review-card__author {
+    font-family: var(--st-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--st-color-text-primary);
+  }
+
+  /* Nav buttons */
+  #shopify-section-{{ section.id }} .st-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .st-nav__btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: var(--st-color-nav-bg);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .st-nav__btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .st-nav__btn.swiper-button-disabled {
+    opacity: 0.15;
+    cursor: default;
+  }
+
+  /* Pagination */
+  #shopify-section-{{ section.id }} .st-pagination {
+    display: flex;
+    gap: 20px;
+    height: 2px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  #shopify-section-{{ section.id }} .st-pagination .swiper-pagination-bullet {
+    flex: 1;
+    height: 100%;
+    border-radius: 100px;
+    background: var(--st-color-text-primary);
+    opacity: 0.1;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .st-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+
+  /* ── Wave Divider ── */
+  #shopify-section-{{ section.id }} .st-wave {
+    width: 100%;
+    display: block;
+    line-height: 0;
+  }
+
+  #shopify-section-{{ section.id }} .st-wave img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 510/14;
+  }
+
+  /* ── Guarantees Block ── */
+  #shopify-section-{{ section.id }} .st-guarantees {
+    background: var(--st-color-bg-guarantees);
+    padding: 0 {{ section.settings.padding_x }}px {{ section.settings.padding_bottom }}px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  #shopify-section-{{ section.id }} .st-guarantees-inner {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .st-guarantees-heading {
+    font-family: var(--st-font-heading);
+    font-weight: 800;
+    font-size: {{ section.settings.guarantee_heading_font_size }}px;
+    line-height: 1.4;
+    color: var(--st-color-accent-blue);
+    text-align: center;
+    text-transform: capitalize;
+    max-width: 600px;
+  }
+
+  #shopify-section-{{ section.id }} .st-guarantees-heading p {
+    font: inherit;
+    color: inherit;
+  }
+
+  #shopify-section-{{ section.id }} .st-guarantees-heading em {
+    color: var(--st-color-text-primary);
+    font-style: normal;
+  }
+
+  #shopify-section-{{ section.id }} .st-guarantees-grid {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Guarantee card */
+  #shopify-section-{{ section.id }} .st-guarantee-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .st-guarantee-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--st-color-guarantee-icon-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .st-guarantee-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .st-guarantee-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  #shopify-section-{{ section.id }} .st-guarantee-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .st-guarantee-title {
+    font-family: var(--st-font-heading);
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--st-color-text-primary);
+  }
+
+  #shopify-section-{{ section.id }} .st-guarantee-desc {
+    font-family: var(--st-font-body);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--st-color-text-secondary);
+  }
+
+  /* CTA */
+  #shopify-section-{{ section.id }} .st-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 420px;
+    max-width: 100%;
+    height: 56px;
+    background: var(--st-color-btn-bg);
+    border: none;
+    border-bottom: 4px solid var(--st-color-btn-border);
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .st-cta-btn:hover {
+    opacity: 0.9;
+  }
+
+  #shopify-section-{{ section.id }} .st-cta-btn span {
+    font-family: var(--st-font-heading);
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--st-color-btn-text);
+    white-space: nowrap;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .st-reviews {
+      padding: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_x_mobile }}px 0;
+    }
+
+    #shopify-section-{{ section.id }} .st-reviews-inner {
+      gap: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .st-heading {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .st-nav {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .st-guarantees {
+      padding: 0 {{ section.settings.padding_x_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .st-guarantees-inner {
+      gap: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .st-guarantees-heading {
+      font-size: {{ section.settings.guarantee_heading_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .st-guarantees-grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .st-guarantee-card {
+      flex-direction: row;
+      text-align: left;
+      max-width: 100%;
+      gap: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .st-guarantee-icon {
+      width: 56px;
+      height: 56px;
+    }
+
+    #shopify-section-{{ section.id }} .st-guarantee-icon img,
+    #shopify-section-{{ section.id }} .st-guarantee-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .st-cta-btn {
+      width: 100%;
+      height: 48px;
+    }
+
+    #shopify-section-{{ section.id }} .st-cta-btn span {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_shipping-trust">
+
+  {%- comment -%} ── Reviews Block ── {%- endcomment -%}
+  <div class="st-reviews">
+    <div class="st-reviews-inner">
+
+      <div class="st-reviews-header">
+        {%- if section.settings.show_badge -%}
+          {% render 'maison-trustpilot-badge',
+            wrapper_class: 'st-badge',
+            stars_class: 'st-badge-stars',
+            rating_class: 'st-badge-text',
+            logo_class: 'st-badge-tp',
+            show_logo: section.settings.show_trustpilot_logo
+          %}
+        {%- endif -%}
+
+        {%- if section.settings.heading != blank -%}
+          <h2 class="st-heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+
+      {%- assign review_blocks = section.blocks | where: "type", "review" -%}
+      {%- if review_blocks.size > 0 -%}
+        <div class="st-swiper swiper" id="st-swiper-{{ section.id }}">
+          <div class="swiper-wrapper">
+            {%- for block in review_blocks -%}
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                <div class="st-review-card">
+                  <div class="st-review-card__header">
+                    <div class="st-review-card__stars">
+                      {%- for i in (1..5) -%}
+                        {%- if i <= block.settings.stars -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                        {%- else -%}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                    {%- if block.settings.date != blank -%}
+                      <span class="st-review-card__date">{{ block.settings.date }}</span>
+                    {%- endif -%}
+                  </div>
+                  <div class="st-review-card__text">
+                    {%- if block.settings.title != blank -%}
+                      <p class="st-review-card__title">{{ block.settings.title }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.body != blank -%}
+                      <p class="st-review-card__body">{{ block.settings.body }}</p>
+                    {%- endif -%}
+                  </div>
+                  {%- if block.settings.author != blank -%}
+                    <span class="st-review-card__author">{{ block.settings.author }}</span>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <div class="st-nav">
+          <button type="button" class="st-nav__btn st-prev-{{ section.id }}" aria-label="Previous">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15.8334 10H4.16669M4.16669 10L10 15.8334M4.16669 10L10 4.16669" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="st-pagination st-pagination-{{ section.id }}"></div>
+          <button type="button" class="st-nav__btn st-next-{{ section.id }}" aria-label="Next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16669 10H15.8334M15.8334 10L10 4.16669M15.8334 10L10 15.8334" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+
+  {%- comment -%} ── Wave Divider ── {%- endcomment -%}
+  {%- if section.settings.wave_image != blank -%}
+    <div class="st-wave">
+      {{ section.settings.wave_image | image_url: width: 1920 | image_tag: loading: 'lazy' }}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ── Guarantees Block ── {%- endcomment -%}
+  <div class="st-guarantees">
+    <div class="st-guarantees-inner">
+
+      {%- if section.settings.guarantee_heading != blank -%}
+        <h2 class="st-guarantees-heading">{{ section.settings.guarantee_heading }}</h2>
+      {%- endif -%}
+
+      {%- assign guarantee_blocks = section.blocks | where: "type", "guarantee" -%}
+      {%- if guarantee_blocks.size > 0 -%}
+        <div class="st-guarantees-grid">
+          {%- for block in guarantee_blocks -%}
+            <div class="st-guarantee-card" {{ block.shopify_attributes }}>
+              <div class="st-guarantee-icon">
+                {%- if block.settings.icon != blank -%}
+                  {{ block.settings.icon | image_url: width: 64 | image_tag: loading: 'lazy' }}
+                {%- else -%}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 2.66669C8.63622 2.66669 2.66669 8.63622 2.66669 16C2.66669 23.3638 8.63622 29.3334 16 29.3334C23.3638 29.3334 29.3334 23.3638 29.3334 16C29.3334 8.63622 23.3638 2.66669 16 2.66669ZM21.7071 13.7071C22.0977 13.3166 22.0977 12.6834 21.7071 12.2929C21.3166 11.9024 20.6834 11.9024 20.2929 12.2929L14 18.5858L11.7071 16.2929C11.3166 15.9024 10.6834 15.9024 10.2929 16.2929C9.90239 16.6834 9.90239 17.3166 10.2929 17.7071L13.2929 20.7071C13.6834 21.0977 14.3166 21.0977 14.7071 20.7071L21.7071 13.7071Z" fill="{{ section.settings.color_accent_blue }}"/></svg>
+                {%- endif -%}
+              </div>
+              <div class="st-guarantee-text">
+                {%- if block.settings.title != blank -%}
+                  <p class="st-guarantee-title">{{ block.settings.title }}</p>
+                {%- endif -%}
+                {%- if block.settings.description != blank -%}
+                  <p class="st-guarantee-desc">{{ block.settings.description }}</p>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.cta_label != blank -%}
+        <a
+          {% if section.settings.cta_link != blank %}href="{{ section.settings.cta_link }}"{% endif %}
+          class="st-cta-btn"
+        >
+          <span>{{ section.settings.cta_label }}</span>
+        </a>
+      {%- endif -%}
+
+    </div>
+  </div>
+
+</section>
+
+{%- assign review_blocks = section.blocks | where: "type", "review" -%}
+{%- if review_blocks.size > 0 -%}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script>
+    (function() {
+      function initSwiper() {
+        if (typeof Swiper === 'undefined') {
+          setTimeout(initSwiper, 100);
+          return;
+        }
+        new Swiper('#st-swiper-{{ section.id }}', {
+          slidesPerView: 1.15,
+          spaceBetween: 12,
+          grabCursor: true,
+          navigation: {
+            prevEl: '.st-prev-{{ section.id }}',
+            nextEl: '.st-next-{{ section.id }}'
+          },
+          pagination: {
+            el: '.st-pagination-{{ section.id }}',
+            clickable: true
+          },
+          breakpoints: {
+            750: { slidesPerView: 2.5, spaceBetween: 16 },
+            990: { slidesPerView: 3.5, spaceBetween: 20 }
+          }
+        });
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initSwiper);
+      } else {
+        initSwiper();
+      }
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Shipping Trust",
+  "tag": "section",
+  "class": "shipping-trust-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Trustpilot Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show Trustpilot badge",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "badge_full_stars",
+      "label": "Full stars",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "badge_has_half_star",
+      "label": "Show half star",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Rating text",
+      "default": "4.4/5 (2,295 + reviews)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot_logo",
+      "label": "Show Trustpilot logo",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Reviews Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Use italic (em) for blue accent text",
+      "default": "<p>Customers Love Their <em>Delivery Experience</em></p>"
+    },
+    {
+      "type": "header",
+      "content": "Wave Divider"
+    },
+    {
+      "type": "image_picker",
+      "id": "wave_image",
+      "label": "Wave divider image"
+    },
+    {
+      "type": "header",
+      "content": "Guarantees"
+    },
+    {
+      "type": "richtext",
+      "id": "guarantee_heading",
+      "label": "Guarantees heading",
+      "info": "Use italic (em) for dark text",
+      "default": "<p>You Have 90 Days To Try, <em>No Rush — It's Worth The Wait</em></p>"
+    },
+    {
+      "type": "header",
+      "content": "CTA Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop Now — Risk Free"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_reviews",
+      "label": "Reviews background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_guarantees",
+      "label": "Guarantees background",
+      "default": "#E5EEFB"
+    },
+    {
+      "type": "color",
+      "id": "color_text_primary",
+      "label": "Primary text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_blue",
+      "label": "Accent blue",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_card_bg",
+      "label": "Review card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_card_shadow",
+      "label": "Review card shadow",
+      "default": "#E9E8E6"
+    },
+    {
+      "type": "color",
+      "id": "color_nav_bg",
+      "label": "Navigation button background",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_guarantee_icon_bg",
+      "label": "Guarantee icon background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_bg",
+      "label": "Button background",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_border",
+      "label": "Button border",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_text",
+      "label": "Button text",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Reviews heading (desktop)",
+      "min": 20,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Reviews heading (mobile)",
+      "min": 18,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "guarantee_heading_font_size",
+      "label": "Guarantee heading (desktop)",
+      "min": 20,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "guarantee_heading_font_size_mobile",
+      "label": "Guarantee heading (mobile)",
+      "min": 18,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_x_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1200
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "limit": 12,
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Star rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "Mar 8, 2026"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Well Worth The Wait!"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Review text",
+          "default": "Shipping took a bit longer than expected, but the product quality made up for it. Customer support kept me updated the whole time. Absolutely worth the wait!"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Sarah M."
+        }
+      ]
+    },
+    {
+      "type": "guarantee",
+      "name": "Guarantee",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "90-Day Trial"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Try your order risk-free for 90 days. No rush, take your time."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shipping Trust",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 15, 2026",
+            "title": "Worth Every Day of Waiting!",
+            "body": "I was a little anxious about the shipping time, but oh my goodness — this product is INCREDIBLE. The quality is top-notch and it started helping my back pain from day one. Customer support even sent me tracking updates proactively. 10/10 would order again.",
+            "author": "Sarah M."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Feb 28, 2026",
+            "title": "Customer Support Was Amazing",
+            "body": "I had a question about my delivery and their support team responded within hours. They were so helpful and friendly. The product arrived well-packaged and works exactly as described. Great experience all around!",
+            "author": "James R."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 2, 2026",
+            "title": "Patience Paid Off Big Time",
+            "body": "Took about 10 days to arrive but honestly? Best purchase I've made all year. The relief I felt after the first use was unreal. If you're on the fence about the wait — trust me, it's so worth it.",
+            "author": "Michelle K."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Fast Response, Great Product",
+            "body": "Emailed support about changing my shipping address and they handled it instantly. Product quality is exceptional — you can tell it's not some cheap knockoff. Well worth the wait for something that actually works.",
+            "author": "David L."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 4,
+            "date": "Feb 20, 2026",
+            "title": "Shipping Was Faster Than Expected",
+            "body": "I was prepared to wait based on what I read, but mine actually arrived in just over a week! Already using it daily and my sciatica pain has noticeably decreased. Very happy with this purchase.",
+            "author": "Linda T."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 12, 2026",
+            "title": "Don't Hesitate — Just Order It",
+            "body": "I almost didn't order because of shipping concerns but I'm SO glad I did. The wait was nothing compared to the relief I'm getting now. My back hasn't felt this good in years. Support team was lovely too when I asked about tracking.",
+            "author": "Robert P."
+          }
+        },
+        {
+          "type": "guarantee",
+          "settings": {
+            "title": "90-Day Risk-Free Trial",
+            "description": "Take your time to try it. If you're not completely satisfied, we'll make it right."
+          }
+        },
+        {
+          "type": "guarantee",
+          "settings": {
+            "title": "Free Returns & Exchanges",
+            "description": "Changed your mind? No problem. Returns are free and hassle-free."
+          }
+        },
+        {
+          "type": "guarantee",
+          "settings": {
+            "title": "Dedicated Support Team",
+            "description": "Real humans ready to help. We respond within 24 hours, every time."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

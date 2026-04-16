@@ -1,0 +1,911 @@
+{% comment %}
+  Section: Content Block Benefits
+  Description: Two-column layout with body content, a benefits card, and a
+    product image. Content column includes a trust badge row (stars, rating,
+    Trustpilot), heading, rich-text paragraphs, and a highlighted benefits
+    card with icon items. Image column on the right (stacks below on mobile
+    in reverse order). Ideal for product landing pages and long-form sales copy.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings), 'Open Sans' (body) — must be loaded by theme
+
+  Blocks:
+  - benefit_item: Individual benefit with icon, bold title prefix, and description (limit: 8)
+
+  Notes:
+  - Trust badge row (stars + Trustpilot) is toggleable via show_trust_badge setting
+  - Image uses aspect-ratio 1:1; gracefully degrades in older browsers
+  - Rich-text settings allow merchants to include links and bold text in body copy
+  - On mobile, layout reverses so image appears above content
+  - Original source class prefix: maisoncode_Content_Block_Benefits
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_Content_Block_Benefits {
+    --s-color-bg: {{ section.settings.color_background }};
+    --s-color-bg-card: {{ section.settings.color_card_background }};
+    --s-color-text-primary: {{ section.settings.color_text_primary }};
+    --s-color-text-secondary: {{ section.settings.color_text_secondary | color_modify: 'alpha', 0.75 }};
+    --s-color-link: {{ section.settings.color_link }};
+    --s-color-text-dark: {{ section.settings.color_text_dark }};
+    --s-color-stars: {{ section.settings.color_stars }};
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+    --s-radius-md: {{ section.settings.border_radius }}px;
+    --s-radius-sm: {{ section.settings.border_radius_mobile }}px;
+    --s-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --s-font-size-body: {{ section.settings.body_font_size }}px;
+    --s-font-size-rating: {{ section.settings.rating_font_size }}px;
+    --s-font-size-benefit: {{ section.settings.benefit_font_size }}px;
+    --s-padding-section: {{ section.settings.padding_section }}px;
+    --s-padding-inner-vertical: {{ section.settings.padding_inner_vertical }}px;
+    --s-padding-inner-horizontal: {{ section.settings.padding_inner_horizontal }}px;
+    --s-padding-content-top: {{ section.settings.padding_content_top }}px;
+    --s-padding-content-sides: {{ section.settings.padding_content_sides }}px;
+    --s-padding-content-bottom: {{ section.settings.padding_content_bottom }}px;
+    --s-gap-columns: {{ section.settings.column_gap }}px;
+    --s-gap-text-block: {{ section.settings.text_block_gap }}px;
+    --s-gap-benefits: {{ section.settings.benefits_gap }}px;
+    --s-padding-card: {{ section.settings.card_padding }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+    --s-icon-size: {{ section.settings.icon_size }}px;
+
+    background-color: var(--s-color-bg);
+    width: 100%;
+    box-sizing: border-box;
+    padding: var(--s-padding-section);
+    font-family: var(--s-font-body);
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_Content_Block_Benefits *,
+  #shopify-section-{{ section.id }} .maisoncode_Content_Block_Benefits *::before,
+  #shopify-section-{{ section.id }} .maisoncode_Content_Block_Benefits *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .cb-inner {
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+    display: flex;
+    gap: var(--s-gap-columns);
+    align-items: flex-start;
+    padding: var(--s-padding-inner-vertical) var(--s-padding-inner-horizontal);
+    {% if section.settings.desktop_media_position == 'left' %}
+      flex-direction: row-reverse;
+    {% endif %}
+  }
+
+  #shopify-section-{{ section.id }} .cb-image-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--s-radius-md);
+  }
+
+  #shopify-section-{{ section.id }} .cb-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--s-padding-content-top);
+    padding-bottom: var(--s-padding-content-bottom);
+    padding-left: var(--s-padding-content-sides);
+    padding-right: var(--s-padding-content-sides);
+  }
+
+  #shopify-section-{{ section.id }} .cb-image-wrap {
+    flex: 1;
+    min-width: 0;
+    aspect-ratio: {{ section.settings.image_aspect_ratio }};
+    border-radius: var(--s-radius-md);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .cb-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: var(--s-radius-md);
+  }
+
+  #shopify-section-{{ section.id }} .cb-image-wrap .cb-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8d5c4 0%, #f0e6da 50%, #d4bfae 100%);
+    color: #999;
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .cb-image-wrap .cb-image-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+  }
+
+  /* Badge / Stars row */
+  #shopify-section-{{ section.id }} .cb-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 20px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .cb-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .cb-stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .cb-rating {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-rating);
+    line-height: 1.5;
+    color: var(--s-color-text-dark);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .cb-rating a {
+    color: var(--s-color-text-dark);
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .cb-trustpilot {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .cb-trustpilot svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .cb-trustpilot span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-rating);
+    line-height: 1.5;
+    color: var(--s-color-text-dark);
+    white-space: nowrap;
+  }
+
+  /* Heading */
+  #shopify-section-{{ section.id }} .cb-heading {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-heading);
+    line-height: 1.4;
+    color: var(--s-color-text-primary);
+    text-transform: capitalize;
+    margin-bottom: 24px;
+  }
+
+  /* Body text */
+  #shopify-section-{{ section.id }} .cb-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-gap-text-block);
+  }
+
+  #shopify-section-{{ section.id }} .cb-richtext {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .cb-text-block p,
+  #shopify-section-{{ section.id }} .cb-richtext p {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-body);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .cb-text-block p a,
+  #shopify-section-{{ section.id }} .cb-richtext p a {
+    color: var(--s-color-link);
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .cb-text-block p strong,
+  #shopify-section-{{ section.id }} .cb-richtext p strong {
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .cb-text-block ol,
+  #shopify-section-{{ section.id }} .cb-text-block ul,
+  #shopify-section-{{ section.id }} .cb-richtext ol,
+  #shopify-section-{{ section.id }} .cb-richtext ul {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-body);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+    padding-left: 1.2em;
+  }
+
+  #shopify-section-{{ section.id }} .cb-text-block ol,
+  #shopify-section-{{ section.id }} .cb-richtext ol { list-style-type: decimal; }
+
+  #shopify-section-{{ section.id }} .cb-text-block ul,
+  #shopify-section-{{ section.id }} .cb-richtext ul { list-style-type: disc; }
+
+  #shopify-section-{{ section.id }} .cb-text-block li,
+  #shopify-section-{{ section.id }} .cb-richtext li { margin-bottom: 16px; }
+
+  #shopify-section-{{ section.id }} .cb-text-block li:last-child,
+  #shopify-section-{{ section.id }} .cb-richtext li:last-child { margin-bottom: 0; }
+
+  /* Benefits card */
+  #shopify-section-{{ section.id }} .cb-benefits-card {
+    background-color: var(--s-color-bg-card);
+    border-radius: var(--s-radius-md);
+    padding: var(--s-padding-card);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-gap-benefits);
+  }
+
+  #shopify-section-{{ section.id }} .cb-benefit-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .cb-benefit-item .cb-benefit-icon {
+    width: var(--s-icon-size);
+    height: var(--s-icon-size);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .cb-benefit-item .cb-benefit-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .cb-benefit-item .cb-benefit-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .cb-benefit-item p {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-benefit);
+    line-height: 1.5;
+    color: #102A43;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .cb-benefit-item p strong {
+    font-weight: 700;
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 949px) {
+    #shopify-section-{{ section.id }} .maisoncode_Content_Block_Benefits {
+      --s-padding-section: {{ section.settings.padding_section_mobile }}px;
+      --s-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
+      --s-font-size-body: {{ section.settings.body_font_size_mobile }}px;
+      --s-font-size-benefit: {{ section.settings.benefit_font_size_mobile }}px;
+      --s-icon-size: {{ section.settings.icon_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .cb-benefit-item .cb-benefit-icon {
+      align-items: center;
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .cb-benefit-item {
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .cb-inner {
+      flex-direction: {% if section.settings.mobile_media_position == 'top' %}column-reverse{% else %}column{% endif %};
+      gap: 32px;
+      padding: 0;
+    }
+
+    #shopify-section-{{ section.id }} .cb-content {
+      padding: 0;
+    }
+
+    #shopify-section-{{ section.id }} .cb-image-wrap {
+      width: 100%;
+      aspect-ratio: {{ section.settings.image_aspect_ratio }};
+      border-radius: var(--s-radius-sm);
+    }
+
+    #shopify-section-{{ section.id }} .cb-image-wrap img {
+      border-radius: var(--s-radius-sm);
+    }
+
+    #shopify-section-{{ section.id }} .cb-benefits-card {
+      border-radius: 10px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_Content_Block_Benefits">
+  <div class="cb-inner">
+    {%- comment -%} Content side {%- endcomment -%}
+    <div class="cb-content">
+
+      {%- comment -%} Trust Badge Row {%- endcomment -%}
+      {% if section.settings.show_trust_badge %}
+        {% render 'maison-trustpilot-badge',
+          wrapper_class: 'cb-badge',
+          stars_class: 'cb-stars',
+          rating_class: 'cb-rating',
+          logo_class: 'cb-trustpilot',
+          show_logo: section.settings.show_trustpilot,
+          logo_label: section.settings.trustpilot_label
+        %}
+      {% endif %}
+
+      {%- comment -%} Heading {%- endcomment -%}
+      {% if section.settings.heading != blank %}
+        <h2 class="cb-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {%- comment -%} Text Block with Benefits Card {%- endcomment -%}
+      <div class="cb-text-block">
+        {% if section.settings.body_text_above != blank %}
+          <div class="cb-richtext">{{ section.settings.body_text_above }}</div>
+        {% endif %}
+
+        {%- comment -%} Benefits Card (Blocks) {%- endcomment -%}
+        {% if section.blocks.size > 0 %}
+          <div class="cb-benefits-card">
+            {% for block in section.blocks %}
+              {% if block.type == 'benefit_item' %}
+                <div class="cb-benefit-item" {{ block.shopify_attributes }}>
+                  <div class="cb-benefit-icon">
+                    {% if block.settings.icon != blank %}
+                      {{ block.settings.icon | image_url: width: 64 | image_tag:
+                        loading: 'lazy',
+                        widths: '32, 48, 64'
+                      }}
+                    {% else %}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#cb-check-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.6235 2.6235C4.37209 0.874903 6.8971 0 10 0C13.1029 0 15.6279 0.874903 17.3766 2.6235C19.1251 4.37209 20 6.8971 20 10C20 13.1029 19.1251 15.6279 17.3766 17.3766C15.6279 19.1251 13.1029 20 10 20C6.8971 20 4.37209 19.1251 2.6235 17.3766C0.874903 15.6279 0 13.1029 0 10C0 6.8971 0.874903 4.37209 2.6235 2.6235ZM14.1713 7.08989C14.5366 6.75857 14.564 6.19391 14.2327 5.82869C13.9014 5.46346 13.3368 5.43596 12.9715 5.76727C11.7848 6.84384 10.8933 7.81137 10.1408 8.98594C9.59271 9.84133 9.13136 10.7863 8.67961 11.9317L7.06956 10.2713C6.72627 9.9173 6.16101 9.9086 5.80701 10.2519C5.45301 10.5952 5.44431 11.1604 5.78759 11.5144L8.38499 14.193C8.60064 14.4154 8.91617 14.5101 9.21866 14.4433C9.52113 14.3764 9.76736 14.1575 9.8692 13.865C10.4695 12.1405 11.0025 10.9511 11.6443 9.94926C12.2827 8.95296 13.0528 8.10454 14.1713 7.08989Z" fill="#065BDC"/></g><defs><clipPath id="cb-check-{{ block.id }}"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                    {% endif %}
+                  </div>
+                  {% if block.settings.description != blank %}
+                    <p>{{ block.settings.description }}</p>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.body_text_below != blank %}
+          <div class="cb-richtext">{{ section.settings.body_text_below }}</div>
+        {% endif %}
+      </div>
+    </div>
+
+    {%- comment -%} Media side (Video or Image) {%- endcomment -%}
+    {% if section.settings.video != blank %}
+      <figure class="cb-image-wrap">
+        {{ section.settings.video | video_tag:
+          autoplay: true,
+          muted: true,
+          loop: true,
+          playsinline: true,
+          controls: false
+        }}
+      </figure>
+    {% elsif section.settings.image != blank %}
+      <figure class="cb-image-wrap">
+        {{ section.settings.image | image_url: width: 1200 | image_tag:
+          loading: 'lazy',
+          widths: '375, 550, 750, 1000, 1200',
+          sizes: '(max-width: 767px) 100vw, 50vw'
+        }}
+      </figure>
+    {% else %}
+      <figure class="cb-image-wrap">
+        <div class="cb-image-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>{{ section.settings.image_placeholder_text }}</span>
+        </div>
+      </figure>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Content Block Benefits",
+  "tag": "section",
+  "class": "content-block-benefits-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SmoothSpine \"Triple Fusion\" Massager Restores Spinal Disc Hydration and Relieves Pressure on Your Sciatic Nerve"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text_above",
+      "label": "Body text (above benefits card)",
+      "default": "<p>The <a href=\"#\">SmoothSpine \"Triple Fusion\" Massager</a> fully harnesses the power of three advanced therapies to relieve nerve compression, stiffness, and pain in your back and legs.</p><p>The moment you lay back on the <strong>SmoothSpine \"Triple Fusion\" Massager</strong>, you'll immediately feel the powerful combination of <strong>dynamic traction, target point massage, and soothing heat therapy</strong> working together.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text_below",
+      "label": "Body text (below benefits card)",
+      "default": "<p>These three therapies work in perfect harmony to rehydrate your discs and bring lasting relief.</p><p>The best part?</p><p>You can use it from the comfort of your own home, even in your bed.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video (overrides image)",
+      "info": "Upload via Shopify Files. Autoplays muted."
+    },
+    {
+      "type": "text",
+      "id": "image_placeholder_text",
+      "label": "Image placeholder text",
+      "default": "Product lifestyle image"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image aspect ratio",
+      "options": [
+        { "value": "1 / 1", "label": "1:1 (Square)" },
+        { "value": "3 / 4", "label": "3:4 (Portrait)" },
+        { "value": "4 / 5", "label": "4:5 (Tall)" },
+        { "value": "16 / 9", "label": "16:9 (Wide)" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "desktop_media_position",
+      "label": "Media position (desktop)",
+      "options": [
+        { "value": "right", "label": "Right" },
+        { "value": "left", "label": "Left" }
+      ],
+      "default": "right"
+    },
+    {
+      "type": "select",
+      "id": "mobile_media_position",
+      "label": "Media position (mobile)",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "header",
+      "content": "Trust badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_badge",
+      "label": "Show trust badge",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "star_rating",
+      "label": "Star rating",
+      "min": 1,
+      "max": 5,
+      "step": 0.5,
+      "default": 4.5
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "4.4/5 (2,295 + reviews)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot",
+      "label": "Show Trustpilot badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_label",
+      "label": "Trustpilot label",
+      "default": "Trustpilot"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_card_background",
+      "label": "Benefits card background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_text_primary",
+      "label": "Heading / primary text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_text_secondary",
+      "label": "Body text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_link",
+      "label": "Link color",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_text_dark",
+      "label": "Rating text color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "color_stars",
+      "label": "Star color",
+      "default": "#00b67a"
+    },
+    {
+      "type": "color",
+      "id": "color_check_bg",
+      "label": "Default check icon background",
+      "default": "#2D6A4F"
+    },
+    {
+      "type": "color",
+      "id": "color_check_icon",
+      "label": "Default check icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading font size (desktop)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 14,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "body_font_size",
+      "label": "Body font size (desktop)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "label": "Body font size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "benefit_font_size",
+      "label": "Benefit text font size (desktop)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "benefit_font_size_mobile",
+      "label": "Benefit text font size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "rating_font_size",
+      "label": "Rating text font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_section",
+      "label": "Section padding (desktop)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_section_mobile",
+      "label": "Section padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_inner_vertical",
+      "label": "Inner vertical padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_inner_horizontal",
+      "label": "Inner horizontal padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_content_top",
+      "label": "Content top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_content_bottom",
+      "label": "Content bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_content_sides",
+      "label": "Content side padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "text_block_gap",
+      "label": "Text block paragraph gap",
+      "min": 8,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "benefits_gap",
+      "label": "Benefits item gap",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_padding",
+      "label": "Benefits card padding",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius (desktop)",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "border_radius_mobile",
+      "label": "Border radius (mobile)",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Benefit icon size (desktop)",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "icon_size_mobile",
+      "label": "Benefit icon size (mobile)",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit_item",
+      "name": "Benefit",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Custom icon"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<strong>Benefit Title:</strong> Description of the benefit goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Content Block Benefits",
+      "blocks": [
+        {
+          "type": "benefit_item",
+          "settings": {
+            "description": "<strong>Dynamic Traction:</strong> Gently stretches and separates your vertebrae, reducing nerve compression and creating space for discs to rehydrate."
+          }
+        },
+        {
+          "type": "benefit_item",
+          "settings": {
+            "description": "<strong>Target Point Massage:</strong> Targets tight muscles and deep knots, easing tension and improving circulation for faster relief."
+          }
+        },
+        {
+          "type": "benefit_item",
+          "settings": {
+            "description": "<strong>Soothing Heat Therapy:</strong> Warms tissues and enhances fluid absorption, accelerating disc rehydration and healing."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

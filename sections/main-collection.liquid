@@ -20,6 +20,7 @@
     --product-list-promo-grid-column: span {{ section.settings.products_per_row_mobile }};
 
     --content-over-media-gap: var(--spacing-8);
+    padding: 32px 16px;
   }
 
   @media screen and (min-width: 700px) {
@@ -32,14 +33,15 @@
 
   @media screen and (min-width: 1000px) {
     #shopify-section-{{ section.id }} {
-      --product-list-items-per-row: {% if section.settings.filter_layout == 'sidebar' %}2{% else %}{{ section.settings.products_per_row_desktop | at_most: 3 }}{% endif %};
+      --product-list-items-per-row: {% if section.settings.filter_layout == 'sidebar' %}2{% elsif section.settings.filter_layout == 'maison' %}{{ section.settings.products_per_row_desktop | at_most: 4 }}{% else %}{{ section.settings.products_per_row_desktop | at_most: 3 }}{% endif %};
       --product-list-promo-grid-column: span 2;
+      padding: 40px 80px;
     }
   }
 
   @media screen and (min-width: 1200px) {
     #shopify-section-{{ section.id }} {
-      --product-list-items-per-row: {% if section.settings.filter_layout == 'sidebar' %}{{ section.settings.products_per_row_desktop | at_most: 3 }}{% else %}{{ section.settings.products_per_row_desktop }}{% endif %};
+      --product-list-items-per-row: {% if section.settings.filter_layout == 'sidebar' %}{{ section.settings.products_per_row_desktop | at_most: 3 }}{% elsif section.settings.filter_layout == 'maison' %}{{ section.settings.products_per_row_desktop }}{% else %}{{ section.settings.products_per_row_desktop }}{% endif %};
     }
   }
 
@@ -58,7 +60,611 @@
       }
     {%- endfor -%}
   }
+
+  /* ── Maison: Category tabs ── */
+  #shopify-section-{{ section.id }} {
+    background-color: #FDFCFA;
+  }
+
+  #shopify-section-{{ section.id }} .maison-category-tabs {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 0 0 8px;
+    max-width: 1440px;
+    margin: 0 auto 40px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-category-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .maison-category-tab {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background-color 0.2s, color 0.2s;
+    background-color: #F8F4EE;
+    border: 1px solid #FEFEFD;
+    color: #34393D;
+  }
+
+  #shopify-section-{{ section.id }} .maison-category-tab:hover {
+    opacity: 0.85;
+  }
+
+  #shopify-section-{{ section.id }} .maison-category-tab--active {
+    background-color: #424140;
+    border-color: #424140;
+    color: #FFFFFF;
+  }
+
+  #shopify-section-{{ section.id }} .container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* ── Maison: Custom filter bar ── */
+  /* ── Maison: Filter bar layout ── */
+  #shopify-section-{{ section.id }} .maison-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    margin-bottom: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-bar__left,
+  #shopify-section-{{ section.id }} .maison-filter-bar__right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* Filter label (desktop: "Filter:", mobile: "Filter and sort") */
+  #shopify-section-{{ section.id }} .maison-filter-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-label svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-label--desktop {
+    display: flex;
+  }
+
+  #shopify-section-{{ section.id }} .maison-filter-label--mobile {
+    display: none;
+  }
+
+  /* Sort label */
+  #shopify-section-{{ section.id }} .maison-sort-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-sort-label svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  /* Product count */
+  #shopify-section-{{ section.id }} .maison-product-count {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    opacity: 0.5;
+    white-space: nowrap;
+  }
+
+  /* ── Filter/Sort pills ── */
+  #shopify-section-{{ section.id }} .maison-pill {
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill__trigger {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 36px;
+    padding: 0 16px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(16, 42, 67, 0.75);
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill__trigger:hover {
+    border-color: rgba(0, 0, 0, 0.16);
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill__trigger svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill--sort .maison-pill__trigger {
+    min-width: 160px;
+    justify-content: space-between;
+  }
+
+  /* Pill dropdown panel */
+  #shopify-section-{{ section.id }} .maison-pill__panel {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    min-width: 200px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 10;
+    padding: 8px 0;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill--sort .maison-pill__panel {
+    left: auto;
+    right: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill__option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #102A43;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill__option:hover {
+    background: #F8F4EE;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill__option--active {
+    font-weight: 700;
+    color: #065BDC;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pill__option-count {
+    color: rgba(16, 42, 67, 0.5);
+    font-size: 12px;
+  }
+
+  /* Desktop-only elements */
+  #shopify-section-{{ section.id }} .maison-desktop-only {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Mobile filter button (opens drawer) */
+  #shopify-section-{{ section.id }} .maison-filter-mobile-btn {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maison-desktop-only {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .maison-filter-label--desktop {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .maison-filter-label--mobile {
+      display: flex;
+    }
+
+    #shopify-section-{{ section.id }} .maison-filter-mobile-btn {
+      display: flex;
+    }
+
+    #shopify-section-{{ section.id }} .maison-sort-label {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .maison-filter-bar__right .maison-pill {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .maison-category-tab {
+      font-size: 12px;
+    }
+  }
+
+
+  /* ── Maison: Pagination ── */
+  #shopify-section-{{ section.id }} .maison-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 32px 0 16px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pagination__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #F8F4EE;
+    color: #102A43;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pagination__btn:hover {
+    opacity: 0.85;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pagination__btn--active {
+    background-color: #424140;
+    color: #FFFFFF;
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pagination__btn--gap {
+    background: none;
+    cursor: default;
+    width: auto;
+  }
+
+  #shopify-section-{{ section.id }} .maison-pagination__btn--arrow {
+    background-color: #F8F4EE;
+  }
+
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maison-pagination__btn {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  /* Hide default top bar in Maison mode */
+  {% if section.settings.filter_layout == 'maison' %}
+    #shopify-section-{{ section.id }} .collection-top-bar {
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .facets__floating-filter {
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .collection__facets {
+      display: none;
+    }
+  {% endif %}
+
+  /* ── Maison: Filter bar overrides (legacy) ── */
+  #shopify-section-{{ section.id }} .collection-top-bar {
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  #shopify-section-{{ section.id }} .collection-top-bar__filter-button,
+  #shopify-section-{{ section.id }} .collection-top-bar__sort-by-label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .collection-top-bar__product-count {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #102A43;
+    opacity: 0.5;
+  }
+
+  /* Filter dropdowns */
+  #shopify-section-{{ section.id }} select,
+  #shopify-section-{{ section.id }} .select select {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #102A43;
+    border-radius: 8px;
+    border-color: #E8E6E3;
+    background-color: #FFFFFF;
+  }
+
+  /* Facets sidebar */
+  #shopify-section-{{ section.id }} .facets-vertical .accordion__title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #102A43;
+  }
+
+  /* ── Maison: Pagination overrides ── */
+  #shopify-section-{{ section.id }} .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .pagination a,
+  #shopify-section-{{ section.id }} .pagination span.current {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .pagination a {
+    background-color: #F8F4EE;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .pagination a:hover {
+    opacity: 0.85;
+  }
+
+  #shopify-section-{{ section.id }} .pagination span.current {
+    background-color: #424140;
+    color: #FFFFFF;
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .pagination a,
+    #shopify-section-{{ section.id }} .pagination span.current {
+      width: 32px;
+      height: 32px;
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .pagination {
+      gap: 16px;
+    }
+  }
+
+  /* ── Maison: Product grid gap adjustment ── */
+  #shopify-section-{{ section.id }} .product-list {
+    row-gap: 20px;
+    column-gap: 20px;
+  }
+
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .product-list {
+      row-gap: 12px;
+      column-gap: 16px;
+    }
+  }
+
+  /* ── Maison: Product card overrides ── */
+  #shopify-section-{{ section.id }} product-card {
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  /* Image */
+  #shopify-section-{{ section.id }} .product-card__figure {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .product-card__image {
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+  }
+
+  /* Card info */
+  #shopify-section-{{ section.id }} .product-card__info {
+    padding: 12px;
+    gap: 20px;
+  }
+
+  /* Title */
+  #shopify-section-{{ section.id }} .product-card__title a {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* Price */
+  #shopify-section-{{ section.id }} .price-list {
+    font-family: 'Open Sans', sans-serif;
+    gap: 8px;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .price--compare {
+    font-weight: 600;
+    font-size: 12px;
+    color: #102A43;
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .price {
+    font-weight: 700;
+    font-size: 16px;
+    color: #102A43;
+  }
+
+  /* Rating */
+  #shopify-section-{{ section.id }} .product-card .rating-with-text {
+    gap: 8px;
+  }
+
+  /* Vendor */
+  #shopify-section-{{ section.id }} .product-card .text-xs {
+    font-family: 'Open Sans', sans-serif;
+    color: rgba(16, 42, 67, 0.75);
+  }
+
+  /* Badges (sale/discount) */
+  #shopify-section-{{ section.id }} .product-card__badge-list .badge--sale,
+  #shopify-section-{{ section.id }} .product-card__badge-list .badge--on-sale {
+    background-color: #12B76A;
+    color: #FFFFFF;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 4px 8px;
+  }
+
+  /* Quick buy button override */
+  #shopify-section-{{ section.id }} .product-card__quick-buy .button,
+  #shopify-section-{{ section.id }} .product-card__quick-buy button[type="submit"] {
+    background-color: #F07E3B;
+    border: none;
+    border-bottom: 4px solid #BF642F;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFCFB;
+    height: 44px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .product-card__quick-buy .button:hover,
+  #shopify-section-{{ section.id }} .product-card__quick-buy button[type="submit"]:hover {
+    opacity: 0.9;
+  }
+
+  /* Mobile card overrides */
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }} .product-card__info {
+      padding: 4px 4px 4px;
+      padding-top: 8px;
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .product-card__title a {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .price--compare {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .price {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .product-card__quick-buy .button,
+    #shopify-section-{{ section.id }} .product-card__quick-buy button[type="submit"] {
+      height: 32px;
+      font-size: 12px;
+    }
+  }
 </style>
+
+{%- comment -%} ── Maison: Category tabs ── {%- endcomment -%}
+{%- assign category_blocks = section.blocks | where: "type", "category_tab" -%}
+{%- if category_blocks.size > 0 -%}
+  <div class="maison-category-tabs">
+    {%- for block in category_blocks -%}
+      {%- assign is_active = false -%}
+      {%- if block.settings.collection != blank -%}
+        {%- if block.settings.collection == collection.handle or block.settings.collection.handle == collection.handle -%}
+          {%- assign is_active = true -%}
+        {%- endif -%}
+        <a
+          href="{{ block.settings.collection.url | default: collections[block.settings.collection].url }}"
+          class="maison-category-tab {% if is_active %}maison-category-tab--active{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          {{ block.settings.label | default: block.settings.collection.title }}
+        </a>
+      {%- else -%}
+        <span class="maison-category-tab" {{ block.shopify_attributes }}>
+          {{ block.settings.label | default: 'Category' }}
+        </span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
 
 <div class="container">
   {%- if collection.all_products_count == 0 -%}
@@ -88,7 +694,217 @@
             {%- render 'facets-vertical', results: collection, show_filters: show_filters, show_sort_by: section.settings.show_sort_by, update_on_change: false -%}
           </facet-drawer>
 
-          {%- if section.settings.filter_layout == 'horizontal' -%}
+          {%- if section.settings.filter_layout == 'maison' -%}
+            {%- comment -%} Maison custom filter bar {%- endcomment -%}
+            <div class="maison-filter-bar" x-data="{}">
+              <div class="maison-filter-bar__left">
+                {%- comment -%} Desktop: "Filter:" label + filter pills {%- endcomment -%}
+                <span class="maison-filter-label maison-filter-label--desktop">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.33301 2.66675H14.6663M3.99967 8.00008H11.9997M6.66634 13.3334H9.33301" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Filter:
+                </span>
+
+                {%- comment -%} Mobile: "Filter and sort" button (opens drawer) {%- endcomment -%}
+                <button type="button" class="maison-filter-label maison-filter-label--mobile" aria-controls="facets-drawer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.33301 2.66675H14.6663M3.99967 8.00008H11.9997M6.66634 13.3334H9.33301" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Filter and sort
+                </button>
+
+                {%- comment -%} Desktop: filter pills {%- endcomment -%}
+                {%- if show_filters -%}
+                  <div class="maison-desktop-only">
+                    {%- for filter in collection.filters -%}
+                      {%- if filter.type == 'list' and filter.values.size > 0 -%}
+                        {%- comment -%}
+                          Build "other filters" query string (preserve all active filters except this one)
+                        {%- endcomment -%}
+                        {%- assign mp_other_params = '' -%}
+                        {%- for af in collection.filters -%}
+                          {%- if af.param_name != filter.param_name -%}
+                            {%- if af.type == 'price_range' -%}
+                              {%- if af.min_value.value != blank -%}
+                                {%- assign mp_min_dollars = af.min_value.value | divided_by: 100.0 -%}
+                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.min_value.param_name | append: '=' | append: mp_min_dollars -%}
+                              {%- endif -%}
+                              {%- if af.max_value.value != blank -%}
+                                {%- assign mp_max_dollars = af.max_value.value | divided_by: 100.0 -%}
+                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.max_value.param_name | append: '=' | append: mp_max_dollars -%}
+                              {%- endif -%}
+                            {%- elsif af.type == 'boolean' -%}
+                              {%- if af.true_value.active -%}
+                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.param_name | append: '=' | append: af.true_value.value -%}
+                              {%- endif -%}
+                              {%- if af.false_value.active -%}
+                                {%- assign mp_other_params = mp_other_params | append: '&' | append: af.param_name | append: '=' | append: af.false_value.value -%}
+                              {%- endif -%}
+                            {%- else -%}
+                              {%- for v in af.values -%}
+                                {%- if v.active -%}
+                                  {%- assign mp_other_params = mp_other_params | append: '&' | append: af.param_name | append: '=' | append: v.value -%}
+                                {%- endif -%}
+                              {%- endfor -%}
+                            {%- endif -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+
+                        <div class="maison-pill" x-data="{ open: false }" @click.outside="open = false">
+                          <button type="button" class="maison-pill__trigger" @click="open = !open">
+                            <span>{{ filter.label }}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </button>
+                          <div class="maison-pill__panel" x-show="open" style="display:none;">
+                            {%- comment -%} Single-select for Availability; multi-select for everything else {%- endcomment -%}
+                            {%- assign mp_is_single_select = false -%}
+                            {%- if filter.param_name contains 'availability' -%}
+                              {%- assign mp_is_single_select = true -%}
+                            {%- endif -%}
+
+                            {%- for value in filter.values -%}
+                              {%- if mp_is_single_select -%}
+                                {%- if value.active -%}
+                                  {%- if mp_other_params != '' -%}
+                                    {%- assign mp_value_url = collection.url | append: '?' | append: mp_other_params | replace_first: '?&', '?' -%}
+                                  {%- else -%}
+                                    {%- assign mp_value_url = collection.url -%}
+                                  {%- endif -%}
+                                {%- else -%}
+                                  {%- assign mp_value_url = collection.url | append: '?' | append: filter.param_name | append: '=' | append: value.value | append: mp_other_params -%}
+                                {%- endif -%}
+                              {%- else -%}
+                                {%- if value.active -%}
+                                  {%- assign mp_value_url = value.url_to_remove -%}
+                                {%- else -%}
+                                  {%- assign mp_value_url = value.url_to_add -%}
+                                {%- endif -%}
+                                {%- if mp_value_url == blank -%}
+                                  {%- assign mp_value_url = collection.url | append: '?' | append: value.param_name | append: '=' | append: value.value -%}
+                                {%- endif -%}
+                              {%- endif -%}
+                              <a href="{{ mp_value_url }}" class="maison-pill__option {% if value.active %}maison-pill__option--active{% endif %}">
+                                <span>{{ value.label }}</span>
+                                <span class="maison-pill__option-count">({{ value.count }})</span>
+                              </a>
+                            {%- endfor -%}
+                          </div>
+                        </div>
+                      {%- elsif filter.type == 'price_range' -%}
+                        {%- assign price_label = 'Price' -%}
+                        {%- if filter.min_value.value or filter.max_value.value -%}
+                          {%- assign price_label = 'From ' | append: filter.min_value.value | default: 0 | money_without_trailing_zeros | append: ' to ' | append: filter.max_value.value | default: filter.range_max | money_without_trailing_zeros -%}
+                        {%- endif -%}
+                        <div class="maison-pill" x-data="{ open: false }" @click.outside="open = false">
+                          <button type="button" class="maison-pill__trigger" @click="open = !open">
+                            <span>{{ price_label }}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </button>
+                          <div class="maison-pill__panel" x-show="open" style="display:none; padding: 16px;">
+                            <form method="get" action="{{ collection.url }}" style="display:flex;flex-direction:column;gap:12px;">
+                              <div style="display:flex;align-items:center;gap:8px;">
+                                <input type="number" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value | money_without_currency }}" min="0" placeholder="Min" style="width:80px;padding:8px;border:1px solid rgba(0,0,0,0.08);border-radius:6px;font-size:13px;">
+                                <span style="color:rgba(16,42,67,0.5);">—</span>
+                                <input type="number" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value | money_without_currency }}" min="0" placeholder="Max" style="width:80px;padding:8px;border:1px solid rgba(0,0,0,0.08);border-radius:6px;font-size:13px;">
+                              </div>
+                              <button type="submit" style="padding:8px 16px;background:#102A43;color:white;border:none;border-radius:6px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;">Apply</button>
+                            </form>
+                          </div>
+                        </div>
+                      {%- elsif filter.type == 'boolean' -%}
+                        {%- assign bool_active = false -%}
+                        {%- if filter.false_value.active or filter.true_value.active -%}
+                          {%- assign bool_active = true -%}
+                        {%- endif -%}
+                        {%- if filter.true_value.active -%}
+                          {%- assign mp_true_url = filter.true_value.url_to_remove -%}
+                        {%- else -%}
+                          {%- assign mp_true_url = filter.true_value.url_to_add -%}
+                        {%- endif -%}
+                        {%- if mp_true_url == blank -%}
+                          {%- assign mp_true_url = collection.url | append: '?' | append: filter.param_name | append: '=' | append: filter.true_value.value -%}
+                        {%- endif -%}
+                        {%- if filter.false_value.active -%}
+                          {%- assign mp_false_url = filter.false_value.url_to_remove -%}
+                        {%- else -%}
+                          {%- assign mp_false_url = filter.false_value.url_to_add -%}
+                        {%- endif -%}
+                        {%- if mp_false_url == blank -%}
+                          {%- assign mp_false_url = collection.url | append: '?' | append: filter.param_name | append: '=' | append: filter.false_value.value -%}
+                        {%- endif -%}
+                        <div class="maison-pill" x-data="{ open: false }" @click.outside="open = false">
+                          <button type="button" class="maison-pill__trigger{% if bool_active %} is-active{% endif %}" @click="open = !open">
+                            <span>{{ filter.label }}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </button>
+                          <div class="maison-pill__panel" x-show="open" style="display:none;">
+                            <a href="{{ mp_true_url }}" class="maison-pill__option {% if filter.true_value.active %}maison-pill__option--active{% endif %}">
+                              <span>{{ filter.true_value.label }}</span>
+                              <span class="maison-pill__option-count">({{ filter.true_value.count }})</span>
+                            </a>
+                            <a href="{{ mp_false_url }}" class="maison-pill__option {% if filter.false_value.active %}maison-pill__option--active{% endif %}">
+                              <span>{{ filter.false_value.label }}</span>
+                              <span class="maison-pill__option-count">({{ filter.false_value.count }})</span>
+                            </a>
+                          </div>
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+              </div>
+
+              <div class="maison-filter-bar__right">
+                {%- comment -%} Desktop: Sort by + pill + product count {%- endcomment -%}
+                <div class="maison-desktop-only" style="gap:16px;">
+                  {%- if section.settings.show_sort_by -%}
+                    <span class="maison-sort-label">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4.66699 2.66675V13.3334M4.66699 13.3334L2.00033 10.6668M4.66699 13.3334L7.33366 10.6668M11.3337 13.3334V2.66675M11.3337 2.66675L8.66699 5.33341M11.3337 2.66675L14.0003 5.33341" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      Sort by:
+                    </span>
+                    {%- comment -%} Build query string of all active filters to preserve when changing sort {%- endcomment -%}
+                    {%- assign mp_sort_filter_params = '' -%}
+                    {%- for af in collection.filters -%}
+                      {%- if af.type == 'price_range' -%}
+                        {%- if af.min_value.value != blank -%}
+                          {%- assign mp_min_dollars = af.min_value.value | divided_by: 100.0 -%}
+                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.min_value.param_name | append: '=' | append: mp_min_dollars -%}
+                        {%- endif -%}
+                        {%- if af.max_value.value != blank -%}
+                          {%- assign mp_max_dollars = af.max_value.value | divided_by: 100.0 -%}
+                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.max_value.param_name | append: '=' | append: mp_max_dollars -%}
+                        {%- endif -%}
+                      {%- elsif af.type == 'boolean' -%}
+                        {%- if af.true_value.active -%}
+                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.param_name | append: '=' | append: af.true_value.value -%}
+                        {%- endif -%}
+                        {%- if af.false_value.active -%}
+                          {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.param_name | append: '=' | append: af.false_value.value -%}
+                        {%- endif -%}
+                      {%- else -%}
+                        {%- for v in af.values -%}
+                          {%- if v.active -%}
+                            {%- assign mp_sort_filter_params = mp_sort_filter_params | append: '&' | append: af.param_name | append: '=' | append: v.value -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+                    <div class="maison-pill maison-pill--sort" x-data="{ open: false }" @click.outside="open = false">
+                      <button type="button" class="maison-pill__trigger" @click="open = !open">
+                        <span>{{ collection.sort_by | default: collection.default_sort_by | replace: 'best-selling', 'Best selling' | replace: 'price-ascending', 'Price: low to high' | replace: 'price-descending', 'Price: high to low' | replace: 'title-ascending', 'A-Z' | replace: 'title-descending', 'Z-A' | replace: 'created-ascending', 'Oldest' | replace: 'created-descending', 'Newest' }}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none" :style="open ? 'transform:rotate(180deg)' : ''"><path d="M3 4.5L6 7.5L9 4.5" stroke="rgba(16,42,67,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                      <div class="maison-pill__panel" x-show="open" style="display:none;">
+                        {%- for option in collection.sort_options -%}
+                          <a href="{{ collection.url }}?sort_by={{ option.value }}{{ mp_sort_filter_params }}" class="maison-pill__option {% if collection.sort_by == option.value or collection.default_sort_by == option.value and collection.sort_by == blank %}maison-pill__option--active{% endif %}">
+                            {{ option.name }}
+                          </a>
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </div>
+                <span class="maison-product-count">{{ collection.products_count }} products</span>
+              </div>
+            </div>
+          {%- elsif section.settings.filter_layout == 'horizontal' -%}
             {%- render 'collection-top-bar', results: collection, show_filters: show_filters, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by -%}
           {%- else -%}
             {%- render 'collection-top-bar', results: collection, show_filters: false, show_active_filters: show_filters, show_sort_by: section.settings.show_sort_by -%}
@@ -96,20 +912,22 @@
 
           {%- comment -%}We also need to render the button, that is floating on mobile{%- endcomment -%}
           {%- if show_filters or section.settings.show_sort_by -%}
-            {%- capture content_key -%}
-              {%- if show_filters and section.settings.show_sort_by -%}
-                collection.faceting.filter_and_sort
-              {%- elsif show_filters and section.settings.show_sort_by == false -%}
-                collection.faceting.filter_button
-              {%- elsif show_filters == false and section.settings.show_sort_by -%}
-                collection.faceting.sort_by
-              {%- endif -%}
-            {%- endcapture -%}
+            {%- unless section.settings.filter_layout == 'maison' -%}
+              {%- capture content_key -%}
+                {%- if show_filters and section.settings.show_sort_by -%}
+                  collection.faceting.filter_and_sort
+                {%- elsif show_filters and section.settings.show_sort_by == false -%}
+                  collection.faceting.filter_button
+                {%- elsif show_filters == false and section.settings.show_sort_by -%}
+                  collection.faceting.sort_by
+                {%- endif -%}
+              {%- endcapture -%}
 
-            <facet-floating-filter class="facets__floating-filter md:hidden">
-              {%- assign filter_label = content_key | t -%}
-              {%- render 'button', size: 'xl', content: filter_label, icon: 'filter', style: 'fill', background: settings.text_color, text_color: settings.background, aria_controls: 'facets-drawer' -%}
-            </facet-floating-filter>
+              <facet-floating-filter class="facets__floating-filter md:hidden">
+                {%- assign filter_label = content_key | t -%}
+                {%- render 'button', size: 'xl', content: filter_label, icon: 'filter', style: 'fill', background: settings.text_color, text_color: settings.background, aria_controls: 'facets-drawer' -%}
+              </facet-floating-filter>
+            {%- endunless -%}
           {%- endif -%}
         {%- endif -%}
 
@@ -138,11 +956,13 @@
             </div>
           {%- else -%}
             <div class="v-stack gap-6">
-              <div class="v-stack gap-4 md:hidden">
-                {%- comment -%}We have to duplicate some information on mobile and tablet here{%- endcomment -%}
-                <p class="text-center">{{ 'collection.products_count' | t: count: collection.products_count }}</p>
-                {%- render 'active-facets', results: collection -%}
-              </div>
+              {% if section.settings.filter_layout != 'maison' %}
+                <div class="v-stack gap-4 md:hidden">
+                  {%- comment -%}We have to duplicate some information on mobile and tablet here{%- endcomment -%}
+                  <p class="text-center">{{ 'collection.products_count' | t: count: collection.products_count }}</p>
+                  {%- render 'active-facets', results: collection -%}
+                </div>
+              {% endif %}
 
               <reveal-items selector=".product-list > *">
                 <product-list class="product-list" role="region" aria-live="polite">
@@ -227,7 +1047,11 @@
                       </div>
                     {%- endfor -%}
 
-                    {%- render 'product-card', product: product, stacked: true, position: forloop.index, show_badges: true -%}
+                    {%- if section.settings.filter_layout == 'maison' -%}
+                      {%- render 'maison-product-card', product: product, position: forloop.index -%}
+                    {%- else -%}
+                      {%- render 'product-card', product: product, stacked: true, position: forloop.index, show_badges: true -%}
+                    {%- endif -%}
                   {%- endfor -%}
                 </product-list>
               </reveal-items>
@@ -235,7 +1059,33 @@
           {%- endif -%}
         </div>
 
-        {%- render 'pagination', paginate: paginate, facet: true, class: 'collection__pagination' -%}
+        {%- if section.settings.filter_layout == 'maison' and paginate.pages > 1 -%}
+          <nav class="maison-pagination" role="navigation" aria-label="Pagination">
+            {%- if paginate.previous.is_link -%}
+              <a href="{{ paginate.previous.url }}" class="maison-pagination__btn maison-pagination__btn--arrow" aria-label="Previous page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M7.97919 0.84375L3.06585 5.75708C3.03392 5.78897 3.00859 5.82683 2.99131 5.86852C2.97403 5.9102 2.96513 5.95488 2.96513 6C2.96513 6.04512 2.97403 6.0898 2.99131 6.13148C3.00859 6.17317 3.03392 6.21103 3.06585 6.24292L7.97919 11.1562" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            {%- endif -%}
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}" class="maison-pagination__btn {% if part.title == paginate.current_page %}maison-pagination__btn--active{% endif %}">
+                  {{ part.title }}
+                </a>
+              {%- elsif part.title == paginate.current_page -%}
+                <span class="maison-pagination__btn maison-pagination__btn--active">{{ part.title }}</span>
+              {%- else -%}
+                <span class="maison-pagination__btn maison-pagination__btn--gap">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if paginate.next.is_link -%}
+              <a href="{{ paginate.next.url }}" class="maison-pagination__btn maison-pagination__btn--arrow" aria-label="Next page">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.02081 0.84375L8.93415 5.75708C8.96608 5.78897 8.99141 5.82683 9.00869 5.86852C9.02597 5.9102 9.03487 5.95488 9.03487 6C9.03487 6.04512 9.02597 6.0898 9.00869 6.13148C8.99141 6.17317 8.96608 6.21103 8.93415 6.24292L4.02081 11.1562" stroke="#102A43" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            {%- endif -%}
+          </nav>
+        {%- else -%}
+          {%- render 'pagination', paginate: paginate, facet: true, class: 'collection__pagination' -%}
+        {%- endif -%}
       </div>
     {%- endpaginate -%}
   {%- endif -%}
@@ -246,8 +1096,26 @@
   "name": "Collection page",
   "class": "shopify-section--main-collection",
   "tag": "section",
-  "max_blocks": 5,
+  "max_blocks": 20,
   "blocks": [
+    {
+      "type": "category_tab",
+      "name": "Category tab",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label (override)",
+          "info": "Leave blank to use collection title"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    },
     {
       "type": "promotion_image",
       "name": "Promotion image",
@@ -647,9 +1515,13 @@
         {
           "value": "drawer",
           "label": "Drawer"
+        },
+        {
+          "value": "maison",
+          "label": "Maison"
         }
       ],
-      "default": "sidebar"
+      "default": "maison"
     },
     {
       "type": "checkbox",

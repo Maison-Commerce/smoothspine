@@ -1,1 +1,223 @@
-{"type":"footer","name":"Footer group","sections":{"text-with-icons":{"type":"text-with-icons","blocks":{"free-shipping":{"type":"item","settings":{"icon":"picto-box","mobile_icon_width":24,"icon_width":24,"icon_background_type":"none","title":"Free shipping","content":"<p>Tell your customers about your shipping offer.<\/p>"}},"customer-support":{"type":"item","settings":{"icon":"picto-customer-support","mobile_icon_width":24,"icon_width":24,"icon_background_type":"none","title":"Customer service","content":"<p>Tell your customers how they can reach you.<\/p>"}},"discount":{"type":"item","settings":{"icon":"picto-coupon","mobile_icon_width":24,"icon_width":24,"icon_background_type":"none","title":"Refer a friend","content":"<p>Tell your customers about your promotional offers.<\/p>"}},"payment":{"type":"item","settings":{"icon":"picto-lock","mobile_icon_width":24,"icon_width":24,"icon_background_type":"none","title":"Secure payment","content":"<p>Tel your customers about your payment methods.<\/p>"}}},"block_order":["free-shipping","customer-support","discount","payment"],"settings":{"full_width":true,"heading_tag":"h6","text_alignment":"center","icon_spacing":"small"}},"footer":{"type":"footer","blocks":{"newsletter":{"type":"newsletter","settings":{"image_width":150,"heading_size":"h3","title":"Sign up for new stories and personal offers"}},"links":{"type":"links","settings":{"menu":"footer","show_menu_title":true}},"text":{"type":"text","settings":{"title":"About","content":"<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme editor.<\/p>"}}},"block_order":["newsletter","links","text"],"settings":{"show_social_media":true,"show_payment_icons":true,"show_country_selector":true,"show_country_flag":true,"show_country_name":true,"show_locale_selector":true}}},"order":["text-with-icons","footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "maison_footer_PrXfKf": {
+      "type": "maison-footer",
+      "blocks": {
+        "menu_gfV6Yx": {
+          "type": "menu",
+          "settings": {
+            "menu": "maison-footer-shop",
+            "menu_title": "Shop"
+          }
+        },
+        "menu_LGMpyY": {
+          "type": "menu",
+          "settings": {
+            "menu": "maison-footer-help",
+            "menu_title": "Help"
+          }
+        },
+        "social_link_PWFdcr": {
+          "type": "social_link",
+          "settings": {
+            "label": "Instagram",
+            "link": "https://www.instagram.com/smoothspine_/",
+            "icon": "shopify://shop_images/inst-blue-logo.svg"
+          }
+        },
+        "social_link_JLQwQY": {
+          "type": "social_link",
+          "settings": {
+            "label": "Facebook",
+            "link": "https://www.facebook.com/SmoothSpine-106013564124992/",
+            "icon": "shopify://shop_images/face-blue-logo.svg"
+          }
+        },
+        "payment_icon_eBhYPn": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/Amex.svg"
+          }
+        },
+        "payment_icon_KtirLw": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/ApPay.svg"
+          }
+        },
+        "payment_icon_AAjbYE": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/bancontact.png"
+          }
+        },
+        "payment_icon_LzxDEA": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/GPay.svg"
+          }
+        },
+        "payment_icon_QAXkUj": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/Pay.svg"
+          }
+        },
+        "payment_icon_jXJCVG": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/Master.svg"
+          }
+        },
+        "payment_icon_hrDxkc": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/Paypal.png"
+          }
+        },
+        "payment_icon_TmKwj6": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/ShopPay.png"
+          }
+        },
+        "payment_icon_rQANDM": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/UnionPay.png"
+          }
+        },
+        "payment_icon_KyYMcq": {
+          "type": "payment_icon",
+          "settings": {
+            "label": "Payment",
+            "icon": "shopify://shop_images/Visa.svg"
+          }
+        }
+      },
+      "block_order": [
+        "menu_gfV6Yx",
+        "menu_LGMpyY",
+        "social_link_PWFdcr",
+        "social_link_JLQwQY",
+        "payment_icon_eBhYPn",
+        "payment_icon_KtirLw",
+        "payment_icon_AAjbYE",
+        "payment_icon_LzxDEA",
+        "payment_icon_QAXkUj",
+        "payment_icon_jXJCVG",
+        "payment_icon_hrDxkc",
+        "payment_icon_TmKwj6",
+        "payment_icon_rQANDM",
+        "payment_icon_KyYMcq"
+      ],
+      "name": "Footer",
+      "settings": {
+        "brand_name": "SmoothSpine",
+        "newsletter_title": "Join The Family!",
+        "newsletter_text": "<p>Join the SmoothSpine Family and be the first to hear about new ways to relief pain and get access to <strong>exclusive mystery sales!</strong></p>",
+        "show_newsletter": true,
+        "email_placeholder": "Enter your email",
+        "community_column_title": "Our Community",
+        "copyright_text": "© 2026 SmoothSpine. All Rights Reserved.",
+        "logo": "shopify://shop_images/smoothspine-logo.png",
+        "color_bg": "#02183b",
+        "color_white": "#fafcfe",
+        "color_light_blue": "#bcd3f6",
+        "color_input_bg": "rgba(250, 252, 254, 0.08)",
+        "color_divider": "rgba(250, 252, 251, 0.1)",
+        "color_subscribe_btn_bg": "#bcd3f6",
+        "color_social_bg": "rgba(250, 252, 254, 0.08)",
+        "column_title_font_size": 16,
+        "body_font_size": 14,
+        "copyright_font_size": 14,
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "padding_horizontal": 48,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "column_gap": 64,
+        "sections_gap": 40,
+        "border_radius_section": 24,
+        "border_radius_section_mobile": 16,
+        "border_radius_input": 8,
+        "border_radius_button": 4,
+        "newsletter_max_width": 325,
+        "social_icon_size": 48,
+        "payment_icon_width": 35,
+        "payment_icon_height": 24,
+        "max_width": 1440
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "image_width": 150,
+            "heading_size": "h3",
+            "title": "Sign up for new stories and personal offers",
+            "content": ""
+          }
+        },
+        "links": {
+          "type": "links",
+          "settings": {
+            "menu": "footer",
+            "show_menu_title": true,
+            "menu_title": ""
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "title": "About",
+            "content": "<p>Use this text area to tell your customers about your brand and vision. You can change it in the theme editor.</p>",
+            "enable_follow_on_shop": true
+          }
+        }
+      },
+      "block_order": [
+        "newsletter",
+        "links",
+        "text"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_social_media": true,
+        "show_payment_icons": true,
+        "show_powered_by_shopify": true,
+        "show_policy_links": false,
+        "show_country_selector": true,
+        "show_country_flag": true,
+        "show_country_name": true,
+        "show_locale_selector": true
+      }
+    }
+  },
+  "order": [
+    "maison_footer_PrXfKf",
+    "footer"
+  ]
+}

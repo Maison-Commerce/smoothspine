@@ -1,0 +1,386 @@
+{% comment %}
+  Section: UGC Page Banner
+  Description: Centered page header with Trustpilot rating badge, heading,
+    and description. Ideal for UGC/success-stories pages.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (heading), 'Open Sans' (body) — must be loaded by theme
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_ugc-banner {
+    background-color: {{ section.settings.color_background }};
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_horizontal }}px {{ section.settings.padding_bottom }}px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_ugc-banner *,
+  #shopify-section-{{ section.id }} .maisoncode_ugc-banner *::before,
+  #shopify-section-{{ section.id }} .maisoncode_ugc-banner *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-banner-inner {
+    max-width: {{ section.settings.content_max_width }}px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: {{ section.settings.content_gap }}px;
+  }
+
+  /* Trustpilot badge */
+  #shopify-section-{{ section.id }} .ugc-banner-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-banner-stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-banner-stars svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-banner-rating {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #111;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-banner-rating-reviews {
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-banner-tp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-banner-tp svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-banner-tp span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #111;
+    white-space: nowrap;
+  }
+
+  /* Heading + description group */
+  #shopify-section-{{ section.id }} .ugc-banner-title-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-banner-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: {{ section.settings.heading_font_size }}px;
+    line-height: 1.5;
+    color: {{ section.settings.color_heading }};
+    text-transform: capitalize;
+    text-align: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-banner-description {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: {{ section.settings.body_font_size }}px;
+    line-height: 1.5;
+    color: {{ section.settings.color_body_text | color_modify: 'alpha', 0.75 }};
+    text-align: center;
+    width: 100%;
+  }
+
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_ugc-banner {
+      padding: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_horizontal_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-banner-inner {
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-banner-heading {
+      font-size: {{ section.settings.heading_font_size_mobile }}px;
+      line-height: 1.4;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-banner-description {
+      font-size: {{ section.settings.body_font_size_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_ugc-banner">
+  <div class="ugc-banner-inner">
+    {% if section.settings.show_trustpilot_badge %}
+      {% render 'maison-trustpilot-badge',
+        wrapper_class: 'ugc-banner-badge',
+        stars_class: 'ugc-banner-stars',
+        rating_class: 'ugc-banner-rating',
+        logo_class: 'ugc-banner-tp',
+        show_logo: true
+      %}
+    {% endif %}
+
+    <div class="ugc-banner-title-group">
+      {% if section.settings.heading != blank %}
+        <h1 class="ugc-banner-heading">{{ section.settings.heading }}</h1>
+      {% endif %}
+    </div>
+
+    {% if section.settings.description != blank %}
+      <p class="ugc-banner-description">{{ section.settings.description }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "UGC Page Banner",
+  "tag": "section",
+  "class": "ugc-banner-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SmoothSpine success stories"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Hear real stories from customers about how SmoothSpine has helped them relieve back pain, move more freely, and get back to daily life."
+    },
+    {
+      "type": "header",
+      "content": "Trustpilot Badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot_badge",
+      "label": "Show Trustpilot badge",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating_value",
+      "label": "Star rating value",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "rating_text_before",
+      "label": "Rating text (before reviews)",
+      "default": "4.4/5 ("
+    },
+    {
+      "type": "text",
+      "id": "rating_text_reviews",
+      "label": "Rating text (reviews — underlined)",
+      "default": "2,295 + reviews"
+    },
+    {
+      "type": "text",
+      "id": "rating_text_after",
+      "label": "Rating text (after reviews)",
+      "default": ")"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading color",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_body_text",
+      "label": "Body text color",
+      "default": "#102A43"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "body_font_size",
+      "label": "Body font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "label": "Body font size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Content gap (desktop)",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 600
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGC Page Banner"
+    }
+  ]
+}
+{% endschema %}

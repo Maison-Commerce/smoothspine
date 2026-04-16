@@ -1,0 +1,25 @@
+name = "smoothspine-videoask"
+main = "src/worker.js"
+compatibility_date = "2026-04-01"
+
+# Cron: refresh VideoAsk token every day at 03:00 UTC
+[triggers]
+crons = ["0 3 * * *"]
+
+# KV namespace for storing the access token between requests
+# Run `wrangler kv:namespace create TOKEN_KV` to create and put the id below
+[[kv_namespaces]]
+binding = "TOKEN_KV"
+id = "02341939feb844179c66e3ae9134bba8"
+
+[vars]
+VIDEOASK_FORM_ID = "ab496a65-6ba3-4470-acc4-2de28cb09cb5"
+VIDEOASK_ORG_ID = "efc1c491-976c-428e-a4ee-5ba38be916eb"
+ALLOWED_ORIGINS = "https://smoothspine.com,https://www.smoothspine.com"
+REQUIRED_TAG = "Reviewed by CS"
+CACHE_TTL_SECONDS = "3600"
+
+# Secrets (set via: wrangler secret put NAME)
+# - VIDEOASK_CLIENT_ID
+# - VIDEOASK_CLIENT_SECRET
+# - VIDEOASK_REFRESH_TOKEN

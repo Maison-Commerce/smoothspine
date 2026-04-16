@@ -1,0 +1,713 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "maison_legal_banner_xftUHf": {
+      "type": "maison-legal-banner",
+      "name": "About Page Header",
+      "settings": {
+        "heading": "<p>Get Ready For Lasting Relief!</p>",
+        "description": "We're here because we know what it's like to live with chronic pain. And we know how many \"solutions\" have let you down before.",
+        "color_background": "#f8f4ee",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43",
+        "body_text_opacity": 75,
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "body_font_size": 18,
+        "body_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "content_gap": 32,
+        "title_gap": 16,
+        "title_gap_mobile": 12,
+        "max_width": 1400,
+        "max_width_text": 600,
+        "max_width_description": 545
+      }
+    },
+    "maison_about_content_X84pWw": {
+      "type": "maison-about-content",
+      "blocks": {
+        "grid_image_pm9XaH": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/0a4404729c600d3380bea7f64f588fb8d639aec5.png",
+            "image_alt": "Woman in kitchen preparing food"
+          }
+        },
+        "grid_image_WYwnnw": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/309b7dfc64c8f1da594ddac55fc01aee4b3f2aa8.png",
+            "image_alt": "Man driving experiencing back discomfort"
+          }
+        },
+        "grid_image_gPmaPt": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/872f4e04a6ec365dd563318786a6056794fd2f15.png",
+            "image_alt": "Man working at desk with back pain"
+          }
+        },
+        "grid_image_y6XxyT": {
+          "type": "grid_image",
+          "settings": {
+            "image": "shopify://shop_images/d2936fe515172c0d3bdd8ef3d1d9b5532cc50c5b.png",
+            "image_alt": "Man walking outdoors with back pain"
+          }
+        },
+        "paragraph_xNUPcD": {
+          "type": "paragraph",
+          "settings": {
+            "text": "\"Why is relief so hard to find?\"",
+            "italic": true
+          }
+        },
+        "paragraph_VGX3WJ": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Our founder asked that question after watching his father, a man who'd worked hard his entire life, spend years cycling through treatments that never lasted. Chiropractors. Medications. Injections. Physical therapy appointments that cost a fortune and required time he didn't have.",
+            "italic": false
+          }
+        },
+        "paragraph_J6hGYP": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Nothing stuck. The pain always came back.",
+            "italic": false
+          }
+        },
+        "paragraph_gY4far": {
+          "type": "paragraph",
+          "settings": {
+            "text": "He started asking doctors a different question: \"What if someone could do this at home? What if relief didn't have to mean endless appointments or pills?\"",
+            "italic": false
+          }
+        },
+        "paragraph_PGQF77": {
+          "type": "paragraph",
+          "settings": {
+            "text": "That question became SmoothSpine.",
+            "italic": false
+          }
+        }
+      },
+      "block_order": [
+        "grid_image_pm9XaH",
+        "grid_image_WYwnnw",
+        "grid_image_gPmaPt",
+        "grid_image_y6XxyT",
+        "paragraph_xNUPcD",
+        "paragraph_VGX3WJ",
+        "paragraph_J6hGYP",
+        "paragraph_gY4far",
+        "paragraph_PGQF77"
+      ],
+      "name": "About Page Content",
+      "settings": {
+        "heading": "It Started with One Question",
+        "color_background": "#fdfcfa",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43bf",
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
+        "body_font_size": 16,
+        "body_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "column_gap": 40,
+        "column_gap_mobile": 32,
+        "text_content_gap": 24,
+        "paragraphs_gap": 16,
+        "text_padding_top": 48,
+        "text_padding_bottom": 32,
+        "text_padding_horizontal": 32,
+        "image_border_radius": 16,
+        "max_width": 1400
+      }
+    },
+    "maison_about_usps_w3A3Jm": {
+      "type": "maison-about-usps",
+      "blocks": {
+        "usp_item_qRmPk6": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/ag2g23g3vrgb.svg",
+            "title": "Relief You Can Feel",
+            "description": "We offer a daily routine with traction, heat, and massage to decompress your spine."
+          }
+        },
+        "usp_item_JQE77G": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/bwfjkabwjaw.svg",
+            "title": "On Your Time, At Home",
+            "description": "No appointments or waiting. Just 15 minutes a day in your living room."
+          }
+        },
+        "usp_item_h6Vewb": {
+          "type": "usp_item",
+          "settings": {
+            "icon": "shopify://shop_images/jabwfabwfjkg3g.svg",
+            "title": "No Risk, Real Support",
+            "description": "90 days to see if it works. If not, get your money back. A real person is here to help."
+          }
+        }
+      },
+      "block_order": [
+        "usp_item_qRmPk6",
+        "usp_item_JQE77G",
+        "usp_item_h6Vewb"
+      ],
+      "name": "About Page USPs",
+      "settings": {
+        "heading": "What We Stand For",
+        "subtitle": "Our mission is to provide those with chronic back pain options beyond surgery and costly treatments.",
+        "show_dividers": true,
+        "divider_style": "dashed",
+        "color_background": "#e5eefb",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43",
+        "color_icon_border": "#065bdc",
+        "color_icon_bg": "#fafcfe",
+        "color_divider": "#102a43",
+        "title_font_size": 32,
+        "title_font_size_mobile": 24,
+        "subtitle_font_size": 16,
+        "subtitle_font_size_mobile": 14,
+        "usp_title_font_size": 18,
+        "usp_desc_font_size": 14,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal": 80,
+        "sections_gap": 40,
+        "header_gap": 16,
+        "usps_gap": 32,
+        "icon_text_gap": 20,
+        "text_gap": 8,
+        "icon_border_radius": 8,
+        "icon_box_size": 56,
+        "icon_image_size": 32,
+        "divider_height": 64,
+        "max_width": 1400,
+        "header_max_width": 600
+      }
+    },
+    "maison_about_endorsement_PcNL4T": {
+      "type": "maison-about-endorsement",
+      "blocks": {
+        "endorsement_ibkjxH": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Blane Schilling",
+            "title": "Endorsed by Dr. Blane Schilling",
+            "description": "<p>We didn't build this alone. We worked with physical therapists and spine specialists to create something that actually makes sense for chronic pain.</p>",
+            "image": "shopify://shop_images/5c0b920f0ebab86769e2a7b32aa4f3b4b82fe02b.png"
+          }
+        },
+        "endorsement_cAHEp3": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Adam Story",
+            "title": "Clinically proven results",
+            "description": "",
+            "image": "shopify://shop_images/image_2.png"
+          }
+        },
+        "checklist_item_VwkkVk": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "<p><strong>Real Clinical Input:</strong> Every feature in our devices was reviewed by licensed physical therapists who treat chronic back pain every day. They told us what actually works, and what doesn't.</p>"
+          }
+        },
+        "checklist_item_W4iFTV": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "<p><strong>Tested on Real People:</strong> Before we sold a single unit, we had real patients, people with herniated discs, sciatica, and spinal stenosis, test our products for weeks. Their feedback shaped everything.</p>"
+          }
+        },
+        "checklist_item_R39zbA": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "<p><strong>No Shortcuts:</strong> We could have launched faster. We could have cut corners. But we didn't. Because people living with pain deserve better than another cheap gimmick.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "endorsement_ibkjxH",
+        "endorsement_cAHEp3",
+        "checklist_item_VwkkVk",
+        "checklist_item_W4iFTV",
+        "checklist_item_R39zbA"
+      ],
+      "name": "About Endorsement",
+      "settings": {
+        "color_bg": "#fdfcfa",
+        "color_checklist_bg": "#f8f4ee",
+        "padding_top": 40,
+        "padding_bottom": 20,
+        "padding_horizontal": 80,
+        "max_width": 1200
+      }
+    },
+    "maison_about_story_ffbFkg": {
+      "type": "maison-about-story",
+      "blocks": {
+        "paragraph_pWNCj9": {
+          "type": "paragraph",
+          "settings": {
+            "text": "It's the messages we get from customers like Margaret, who told us she slept through the night for the first time in months."
+          }
+        },
+        "paragraph_ftaaYG": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Or Richard, who said he almost didn't buy it because he'd been burned before, but now he can walk his dog without stopping every few minutes."
+          }
+        },
+        "paragraph_DyCmVb": {
+          "type": "paragraph",
+          "settings": {
+            "text": "Or Carol, who wrote, \"I thought bending down to tie my shoes was gone for good. Thank you for giving me that back.\""
+          }
+        },
+        "paragraph_7bpBjX": {
+          "type": "paragraph",
+          "settings": {
+            "text": "That's why we do this. Not every product works for every person, we're honest about that. But when it does work, it changes lives."
+          }
+        },
+        "paragraph_DbpJTa": {
+          "type": "paragraph",
+          "settings": {
+            "text": "That question became SmoothSpine."
+          }
+        }
+      },
+      "block_order": [
+        "paragraph_pWNCj9",
+        "paragraph_ftaaYG",
+        "paragraph_DyCmVb",
+        "paragraph_7bpBjX",
+        "paragraph_DbpJTa"
+      ],
+      "name": "About Story Block",
+      "settings": {
+        "heading": "What Keeps Us Going",
+        "image": "shopify://shop_images/5bd512d73970be097b56c4e3bf0af5ccf1af2084.png",
+        "color_bg": "#fdfcfa",
+        "color_text": "#102a43",
+        "padding_top": 20,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "max_width": 1400
+      }
+    },
+    "maison_about_stats_PxmMwQ": {
+      "type": "maison-about-stats",
+      "blocks": {
+        "stat_item_VtJz6G": {
+          "type": "stat_item",
+          "settings": {
+            "value": "200,000+",
+            "label": "Customers Helped"
+          }
+        },
+        "stat_item_yJXtkJ": {
+          "type": "stat_item",
+          "settings": {
+            "value": "4.4★",
+            "label": "Average Rating"
+          }
+        },
+        "stat_item_HAr7y6": {
+          "type": "stat_item",
+          "settings": {
+            "value": "90-Day",
+            "label": "Money-Back Guarantee"
+          }
+        },
+        "stat_item_KaqE3Q": {
+          "type": "stat_item",
+          "settings": {
+            "value": "15 Min",
+            "label": "Daily Use Time"
+          }
+        }
+      },
+      "block_order": [
+        "stat_item_VtJz6G",
+        "stat_item_yJXtkJ",
+        "stat_item_HAr7y6",
+        "stat_item_KaqE3Q"
+      ],
+      "name": "About Page Stats",
+      "settings": {
+        "color_background": "#e5eefb",
+        "color_brand": "#065bdc",
+        "color_label_text": "#102a43",
+        "value_font_size": 32,
+        "value_font_size_mobile": 24,
+        "label_font_size": 12,
+        "label_letter_spacing": 1,
+        "padding_top": 40,
+        "padding_bottom": 48,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "items_gap": 32,
+        "items_gap_mobile": 16,
+        "item_border_radius": 18,
+        "max_width": 1400
+      }
+    },
+    "maison_trustpilot_reviews_YLgDfx": {
+      "type": "maison-trustpilot-reviews",
+      "blocks": {
+        "review_jckJiY": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_99qkGg": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_rkGWf7": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_mrUBBc": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_WtLa9F": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_mciy7Y": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_9YCitx": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        },
+        "review_Gp97Lk": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "date": "Mar 8, 2026",
+            "title": "Stress Eliminator",
+            "body": "I was so relieved that a Support person was available on a Sunday evening. She straightened out my order with a very pleasant and helpful attitude. I was so relieved and i'm looking forward to receiving my order. Thank you again!",
+            "author": "Beverly"
+          }
+        }
+      },
+      "block_order": [
+        "review_jckJiY",
+        "review_99qkGg",
+        "review_rkGWf7",
+        "review_mrUBBc",
+        "review_WtLa9F",
+        "review_mciy7Y",
+        "review_9YCitx",
+        "review_Gp97Lk"
+      ],
+      "name": "Trustpilot Reviews",
+      "settings": {
+        "heading": "<p>Loved By People <br/>Who've Tried <em>Everything</em></p>",
+        "description": "Our community of 2,400+ people trust SmoothSpine. Let real results inspire your confidence.",
+        "show_badge": true,
+        "rating_full_stars": 4,
+        "rating_show_half_star": true,
+        "badge_text": "<p>4.4/5 (<a href=\"#\">2,295 + reviews</a>)</p>",
+        "show_trustpilot_logo": true,
+        "trustpilot_label": "Trustpilot",
+        "color_bg": "#fdfcfa",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_card_bg": "#ffffff",
+        "color_card_shadow": "#e9e8e6",
+        "color_badge_text": "#111111",
+        "color_nav_bg": "#102a43",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "description_font_size": 18,
+        "description_font_size_mobile": 14,
+        "padding_vertical": 40,
+        "padding_horizontal": 80,
+        "padding_vertical_mobile": 40,
+        "padding_horizontal_mobile": 20
+      }
+    },
+    "maison_offer_auth_UAd3WU": {
+      "type": "maison-offer-auth",
+      "blocks": {
+        "checklist_item_enQPNV": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "90-Day Results or Refund Guarantee"
+          }
+        },
+        "checklist_item_Y3pJpr": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "60% OFF - SmoothSpine Massager (All-Inclusive treatment kit)"
+          }
+        },
+        "checklist_item_BxardQ": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Fast & FREE Shipping"
+          }
+        },
+        "gift_item_GQtEzK": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $29",
+            "image": "shopify://shop_images/dc43829b1674bae58a96a2b9dbbd09fbe430dfc2.png",
+            "label": "Back pain & Sciatica Guide"
+          }
+        },
+        "gift_item_wJHJBD": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $20",
+            "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
+            "label": "12x Back Pain Relief Patches"
+          }
+        },
+        "gift_item_YgfAzG": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $15",
+            "image": "shopify://shop_images/gsejnjn3gn4knf_egegh.png",
+            "label": "Zip Lock Travel Bag"
+          }
+        },
+        "endorsement_kknKza": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Blane Schilling",
+            "title": "Endorsed by Dr. Blane Schilling",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "After 18 years treating patients with chronic back pain and sciatica, I know one thing for certain: recovery happens at home, not in a clinic.\n\nThe SmoothSpine Triple Fusion Massager is the first at-home device I recommend with confidence — it combines decompression, massage, and heat in a single 15-minute session, and for patients dealing with nerve compression, disc stiffness, or that locked-up morning feeling, it genuinely fills the gap between clinical visits and daily relief.",
+            "author_name": "Dr. Blane Schilling",
+            "author_role": "Licensed Physical Therapist",
+            "image": "shopify://shop_images/5c0b920f0ebab86769e2a7b32aa4f3b4b82fe02b.png"
+          }
+        },
+        "endorsement_jc8H3a": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Adam Story",
+            "title": "Endorsed by Dr. Adam Story",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "As a chiropractor, I've seen how daily spinal decompression and targeted heat therapy can accelerate recovery. The SmoothSpine Massager delivers exactly that — conveniently at home.",
+            "author_name": "Dr. Adam Story",
+            "author_role": "Licensed Chiropractor"
+          }
+        },
+        "trust_item_JMCAQr": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Shipment-Return--Streamline-Flex.svg",
+            "heading": "90-DAY MONEY BACK GUARANTEE",
+            "description": "If you're not thrilled, we will refund your investment. No hassle."
+          }
+        },
+        "trust_item_C4cncY": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Transfer-Van--Streamline-Flex.svg",
+            "heading": "FREE SHIPPING",
+            "description": "We provide fast shipping on all orders. Enjoy free shipping on orders over $60."
+          }
+        },
+        "trust_item_UyGN6L": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Warranty-Badge-Highlight--Streamline-Flex.svg",
+            "heading": "GUARANTEED HIGH QUALITY",
+            "description": "Made of high quality materials. Enjoy consistent, trouble-free performance for a long time."
+          }
+        }
+      },
+      "block_order": [
+        "checklist_item_enQPNV",
+        "checklist_item_Y3pJpr",
+        "checklist_item_BxardQ",
+        "gift_item_GQtEzK",
+        "gift_item_wJHJBD",
+        "gift_item_YgfAzG",
+        "endorsement_kknKza",
+        "endorsement_jc8H3a",
+        "trust_item_JMCAQr",
+        "trust_item_C4cncY",
+        "trust_item_UyGN6L"
+      ],
+      "name": "Offer Authority Trust",
+      "settings": {
+        "show_offer_block": true,
+        "show_rating_badge": true,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_badge": true,
+        "offer_heading": "<span style=\"text-decoration:underline\"><em>Special Offer</em></span> On Now!",
+        "offer_subtext": "Try Your SmoothSpine Massager NOW <span style=\"text-decoration:underline\">Risk-Free</span> at an All Time Low Price! Act Now and You'll Get:",
+        "gifts_heading": "Exclusive Offer! Order today for free gifts (valued at $64)!",
+        "cta_label": "GET 60% OFF TODAY ONLY!",
+        "cta_link": "shopify://products/triple-fusion-back-massager",
+        "show_cta_note": true,
+        "cta_note": "Note: Not Available on Amazon or eBay",
+        "offer_image": "shopify://shop_images/e145c8657a0ce71caabd4bdcd69218a3f7cd9ff7.png",
+        "show_authority_block": false,
+        "show_trust_block": true,
+        "wave_offer_to_authority": "shopify://shop_images/banner-wave-top.svg",
+        "wave_authority_to_trust": "shopify://shop_images/banner-wave-top.svg",
+        "wave_top_trust": "shopify://shop_images/banner-wave-bottom.svg",
+        "color_bg_outer": "#fdfcfa",
+        "color_bg_offer": "#f8f4ee",
+        "color_bg_authority": "#f8f4ee",
+        "color_bg_trust": "#e5eefb",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_highlight": "#f07e3b",
+        "color_accent": "#065bdc",
+        "color_divider": "#424140",
+        "color_btn_bg": "#f07e3b",
+        "color_btn_border": "#bf642f",
+        "color_btn_text": "#fffcfb",
+        "color_gift_bg": "#eeeae5",
+        "color_gift_border": "#065bdc",
+        "color_gift_badge_bg": "#065bdc",
+        "color_gift_badge_text": "#fafcfe",
+        "color_trust_icon_bg": "#fafcfe",
+        "color_trust_icon_border": "#065bdc",
+        "color_trust_divider": "#c5c2bd",
+        "color_tab_active": "#065bdc",
+        "color_expert_badge": "#065bdc",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 26,
+        "subtext_font_size": 18,
+        "subtext_font_size_mobile": 16,
+        "checklist_font_size": 16,
+        "endorsement_title_font_size": 24,
+        "endorsement_title_font_size_mobile": 20,
+        "quote_font_size": 18,
+        "quote_font_size_mobile": 16,
+        "trust_heading_font_size": 18,
+        "trust_body_font_size": 14,
+        "btn_font_size": 16,
+        "badge_font_size": 10,
+        "tab_font_size": 14,
+        "tab_font_size_mobile": 12,
+        "rating_font_size": 12,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "padding_x": 80,
+        "padding_x_mobile": 16,
+        "max_width": 1280,
+        "block_padding_x": 64,
+        "block_padding_y": 48,
+        "column_gap": 64,
+        "offer_radius_tl": 16,
+        "offer_radius_tr": 16,
+        "offer_radius_br": 0,
+        "offer_radius_bl": 16,
+        "auth_radius_tl": 16,
+        "auth_radius_tr": 16,
+        "auth_radius_br": 0,
+        "auth_radius_bl": 16,
+        "trust_radius_tl": 0,
+        "trust_radius_tr": 16,
+        "trust_radius_br": 16,
+        "trust_radius_bl": 16,
+        "image_border_radius": 8,
+        "btn_border_radius": 8,
+        "gift_border_radius": 8,
+        "trust_icon_border_radius": 8
+      }
+    }
+  },
+  "order": [
+    "main",
+    "maison_legal_banner_xftUHf",
+    "maison_about_content_X84pWw",
+    "maison_about_usps_w3A3Jm",
+    "maison_about_endorsement_PcNL4T",
+    "maison_about_story_ffbFkg",
+    "maison_about_stats_PxmMwQ",
+    "maison_trustpilot_reviews_YLgDfx",
+    "maison_offer_auth_UAd3WU"
+  ]
+}

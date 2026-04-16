@@ -139,13 +139,40 @@
           "settings": {
             "text": "Feel The Difference In Just 15 Minutes Per Day"
           }
+        },
+        "gift_item_UEQDWi": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "smoothspine™-30-day-sciatica-relief-plan-coc",
+            "image": "shopify://shop_images/dc43829b1674bae58a96a2b9dbbd09fbe430dfc2.png",
+            "name": "Back pain & Sciatica Guide"
+          }
+        },
+        "gift_item_wh6nam": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "sciatica-back-pain-relief-patches",
+            "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
+            "name": "12x Back Pain Relief Patches"
+          }
+        },
+        "gift_item_tRjWC7": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "charging-kit-travel-bag",
+            "image": "shopify://shop_images/1769789622998_TFBM_18_1__2.png",
+            "name": "Charging Kit + Travel Bag"
+          }
         }
       },
       "block_order": [
         "check_item_AtN6R7",
         "check_item_DLQCxf",
         "check_item_Gat3yA",
-        "check_item_JTW6TX"
+        "check_item_JTW6TX",
+        "gift_item_UEQDWi",
+        "gift_item_wh6nam",
+        "gift_item_tRjWC7"
       ],
       "name": "PDP Hero",
       "settings": {
@@ -161,7 +188,7 @@
         "show_gifts": true,
         "show_review": true,
         "review_avatar": "shopify://shop_images/Rectangle_4896.png",
-        "review_text": "\"I've struggled with crippling back pain and Sciatica for years. Sitting, standing up, lying down, it all hurt. I was skeptical but after using this massager for just 1 week, I noticed a HUGE difference. The stabbing pain in my low back is finally gone, and I can move without wincing again. I still use it daily, it's so well-made. If you're on the fence, trust me, it's worth it!\"",
+        "review_text": "<p>\"I've struggled with crippling back pain and Sciatica for years. Sitting, standing up, lying down, <strong>it all hurt</strong>. I was skeptical but after using this massager for just 1 week, I noticed a HUGE difference. The stabbing pain in my low back is finally gone, and <strong>I can move without wincing again</strong>. I still use it daily, it's so well-made. If you're on the fence, trust me, it's worth it!\"</p>",
         "review_author": "Maggie S.",
         "review_rating": 5,
         "show_verified_badge": true,
@@ -209,7 +236,7 @@
         "padding_horizontal": 80,
         "padding_top_mobile": 20,
         "padding_bottom_mobile": 20,
-        "column_gap": 80,
+        "column_gap": 40,
         "max_width": 1280,
         "radius_sm": 8,
         "radius_md": 12,
@@ -224,25 +251,25 @@
         "usp_item_8qjUcG": {
           "type": "usp_item",
           "settings": {
-            "icon": "shopify://shop_images/ag2g23g3vrgb.svg",
-            "title": "Relief You Can Feel",
-            "description": "We offer a daily routine with traction, heat, and massage to decompress your spine."
+            "icon": "shopify://shop_images/sefef23geg.svg",
+            "title": "90-DAY MONEY BACK GUARANTEE",
+            "description": "If you’re not thrilled, we will refund your investment. No hassle."
           }
         },
         "usp_item_8Vbz4q": {
           "type": "usp_item",
           "settings": {
-            "icon": "shopify://shop_images/bwfjkabwjaw.svg",
-            "title": "On Your Time, At Home",
-            "description": "No appointments or waiting. Just 15 minutes a day in your living room."
+            "icon": "shopify://shop_images/jbawfjbawf3gr.svg",
+            "title": "FREE SHIPPING",
+            "description": "We provide fast shipping on all orders. Enjoy free shipping on orders over $60."
           }
         },
         "usp_item_pfyEtU": {
           "type": "usp_item",
           "settings": {
             "icon": "shopify://shop_images/jabwfabwfjkg3g.svg",
-            "title": "No Risk, Real Support",
-            "description": "90 days to see if it works. If not, get your money back. A real person is here to help."
+            "title": "GUARANTEED HIGH QUALITY",
+            "description": "High quality materials. Enjoy consistent, trouble-free performance for a long time. "
           }
         }
       },
@@ -409,7 +436,7 @@
         "border_radius_mobile": 12,
         "icon_size": 32,
         "icon_size_mobile": 24,
-        "max_width": 1280
+        "max_width": 1400
       }
     },
     "maison_pdp_content_list_VyRjjH": {
@@ -603,7 +630,7 @@
         "trust_rating_text": "4.4/5 (2,295 + reviews)",
         "show_trustpilot_logo": true,
         "button_label": "GET 60% OFF TODAY ONLY!",
-        "button_link": "shopify://products/triple-fusion-back-massager",
+        "button_link": "#maison-pdp",
         "desktop_media_position": "right",
         "mobile_media_position": "bottom",
         "video": "shopify://files/videos/home-before-after.mp4",
@@ -618,8 +645,8 @@
         "color_button_bg": "#f07e3b",
         "color_button_border": "#bf642f",
         "color_button_text": "#fffcfb",
-        "heading_font_size": 32,
-        "heading_font_size_mobile": 24,
+        "heading_font_size": 24,
+        "heading_font_size_mobile": 20,
         "subheading_font_size": 12,
         "body_font_size": 16,
         "body_font_size_mobile": 14,
@@ -638,7 +665,7 @@
         "button_border_radius": 8,
         "button_height": 56,
         "container_padding": 80,
-        "max_width": 1280
+        "max_width": 1440
       }
     },
     "maison_pdp_comparison_cGe9fV": {
@@ -1131,9 +1158,9 @@
       "name": "Custom Liquid",
       "settings": {
         "full_width": true,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "liquid": "<div class=\"maison-reviews-general\">\n<!-- Start of Judge.me code -->{% assign has_legacy = false %}{% if shop.metafields.judgeme.all_reviews_header.size > 20 %}{% assign has_legacy = true %}{% endif %}<div class='jdgm-widget jdgm-all-reviews-widget-v2025' data-widget='all-reviews-v2025' data-auto-install='false' data-entry-point='all_reviews_widget_v2025.js' data-entry-key='all-reviews-widget-v2025/main.js'>{% if has_legacy %}<div class='jdgm-legacy-widget-content' style='display: none;'><article class='jdgm-widget jdgm-all-reviews-widget'><style class='jdgm-temp-hiding-style'>.jdgm-all-reviews-widget{ display: none }</style>{{ shop.metafields.judgeme.all_reviews_header }}<div class='jdgm-all-reviews__body'>{% assign prefix = 'all_reviews_' %}{% for count in (0..65535) %}{% assign metafield_key = prefix | append: count %}{% assign current_metafield = shop.metafields.judgeme[metafield_key] %}{% unless current_metafield %}{% break %}{% endunless %}{{ current_metafield }}{% endfor %}</div></article></div>{% endif %}</div>{% if shop.metafields.judgeme.all_reviews_widget_v2025_data %}<script>jdgm.data ||= {}; jdgm.data.allReviewsWidgetV2025 = {{ shop.metafields.judgeme.all_reviews_widget_v2025_data }};</script>{% endif %}<!-- End of Judge.me code -->\n</div>",
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "liquid": "<div class=\"maison-reviews-general\">\n<!-- Start of Judge.me code -->{% assign has_legacy = false %}{% if product.metafields.judgeme.widget.size > 20 %}{% assign has_legacy = true %}{% endif %}<div style='clear:both'></div><div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-product-id='{{ product.id }}' data-widget='review' data-auto-install='false' data-shop-reviews-count='{{ shop.metafields.judgeme.shop_reviews_count | default: 0 | escape }}' data-entry-point='review_widget.js' data-entry-key='review-widget/main.js'>{% if has_legacy %}<div class='jdgm-legacy-widget-content' style='display: none;'>{{ product.metafields.judgeme.widget }}</div>{% endif %}</div>{% if product.metafields.judgeme.review_widget_data %}<script>jdgm.data ||= {}; jdgm.data.reviewWidget ||= {}; jdgm.data.reviewWidget[{{ product.id }}] = {{ product.metafields.judgeme.review_widget_data }}</script>{% endif %}<!-- End of Judge.me code -->\n</div>",
         "background": "",
         "background_gradient": "",
         "text_color": ""

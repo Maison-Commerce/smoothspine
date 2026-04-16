@@ -1,0 +1,2175 @@
+<cart-drawer {% if request.design_mode %}handle-section-events{% endif %} class="cart-drawer drawer" id="cart-drawer">
+  {%- if cart.item_count == 0 -%}
+    <button is="close-button" aria-label="{{ 'general.accessibility.close' | t | escape }}">
+      {%- render 'icon' with 'close' -%}
+    </button>
+
+    <div class="empty-state align-self-center">
+      <div class="empty-state__icon-wrapper">
+        {%- render 'icon' with 'cart', width: 32, height: 32, stroke_width: 1 -%}
+        <span class="count-bubble count-bubble--lg">0</span>
+      </div>
+
+      <div class="prose">
+        <p class="h5">{{ 'cart.general.empty' | t }}</p>
+        {%- assign button_content = 'cart.general.continue_shopping' | t -%}
+        {%- render 'button', href: settings.cart_empty_button_link, size: 'xl', content: button_content -%}
+      </div>
+    </div>
+  {%- else -%}
+    <div class="cart-drawer__inner">
+      {%- comment -%} HEADER {%- endcomment -%}
+      <div class="cart-drawer__top maison-cart-header">
+        <div class="maison-cart-header__row">
+          <div class="maison-cart-header__left">
+            <h2 class="maison-cart-title">My Cart</h2>
+            <span class="maison-cart-dot"></span>
+            <cart-count class="maison-cart-count">{{ cart.item_count }}</cart-count>
+          </div>
+          <button type="button" is="close-button" class="maison-cart-close" aria-label="{{ 'general.accessibility.close' | t }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#mc-close)"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.88198 15.7158C1.40984 16.1338 0.693241 16.0841 0.281443 15.6049C-0.130356 15.1258 -0.081424 14.3985 0.390735 13.9805C2.45373 12.1546 4.45256 10.2782 6.39349 8.34502C4.37353 6.26623 2.41541 4.12304 0.512143 1.90836C0.100345 1.42918 0.149276 0.701933 0.621435 0.284011C1.09359 -0.13391 1.81018 -0.0842504 2.22198 0.394928C4.0919 2.57083 6.01546 4.67639 7.99966 6.71876C9.98386 4.67639 11.9074 2.57083 13.7773 0.394928C14.1891 -0.0842504 14.9058 -0.13391 15.3779 0.284011C15.85 0.701933 15.8989 1.42918 15.4872 1.90836C13.584 4.12304 11.6258 6.26623 9.60582 8.34502C11.5468 10.2782 13.5456 12.1546 15.6086 13.9805C16.0808 14.3985 16.1297 15.1258 15.7179 15.6049C15.3061 16.0841 14.5894 16.1338 14.1173 15.7158C12.0148 13.8548 9.97765 11.9421 7.99966 9.9714C6.02166 11.9421 3.98453 13.8548 1.88198 15.7158Z" fill="#102A43"/></g><defs><clipPath id="mc-close"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
+          </button>
+        </div>
+      </div>
+
+      {%- comment -%} FREE SHIPPING BAR {%- endcomment -%}
+      {% if section.settings.show_shipping_bar %}
+        {%- assign shipping_threshold = section.settings.free_shipping_threshold | times: 100 -%}
+        {%- assign cart_total = cart.total_price -%}
+        {%- assign remaining = shipping_threshold | minus: cart_total -%}
+        {%- if remaining < 0 -%}{%- assign remaining = 0 -%}{%- endif -%}
+        {%- assign progress = cart_total | times: 100 | divided_by: shipping_threshold -%}
+        {%- if progress > 100 -%}{%- assign progress = 100 -%}{%- endif -%}
+
+        <div class="maison-cart-shipping-bar">
+          <p class="maison-cart-shipping-bar__text">
+            {%- if remaining <= 0 -%}
+              {{ section.settings.shipping_unlocked_text }}
+            {%- else -%}
+              {%- assign remaining_formatted = remaining | money -%}
+              {{ section.settings.shipping_remaining_text | replace: '[amount]', remaining_formatted }}
+            {%- endif -%}
+          </p>
+          <div class="maison-cart-shipping-bar__track">
+            <div class="maison-cart-shipping-bar__fill" style="width: {{ progress }}%;"></div>
+          </div>
+        </div>
+      {% endif %}
+
+      {%- comment -%} LINE ITEMS {%- endcomment -%}
+      <div class="maison-cart-items">
+        <div class="cart-drawer__line-items">
+          {%- for line_item in cart.items -%}
+            {%- assign is_gift = false -%}
+            {%- assign is_insurance = false -%}
+            {%- if line_item.properties._bundle_role == 'gift' -%}
+              {%- assign is_gift = true -%}
+            {%- endif -%}
+            {%- if section.settings.insurance_product != blank and line_item.product.id == section.settings.insurance_product.id -%}
+              {%- assign is_insurance = true -%}
+            {%- endif -%}
+
+            {%- unless is_gift or is_insurance -%}
+              <div class="mc-line-item" {% if line_item.properties._bundle_id %}data-bundle-id="{{ line_item.properties._bundle_id }}"{% endif %}>
+                <div class="mc-line-item__img">
+                  {%- if line_item.image != blank -%}
+                    {{ line_item.image | image_url: width: 160 | image_tag: loading: 'lazy', widths: '80, 160', sizes: '80px' }}
+                  {%- endif -%}
+                </div>
+                <div class="mc-line-item__body">
+                  <div class="mc-line-item__top">
+                    <div class="mc-line-item__text">
+                      <a href="{{ line_item.url }}" class="mc-line-item__title">{{ line_item.product.title }}</a>
+                      {%- assign short_desc = line_item.product.metafields.custom.maison_short_product_card_description -%}
+                      {%- if short_desc != blank -%}
+                        <p class="mc-line-item__desc">{{ short_desc }}</p>
+                      {%- elsif line_item.product.description != blank -%}
+                        <p class="mc-line-item__desc">{{ line_item.product.description | strip_html | truncate: 80 }}</p>
+                      {%- endif -%}
+                    </div>
+                    <button type="button" class="mc-line-item__delete" aria-label="Remove {{ line_item.title }}" data-remove-key="{{ line_item.key }}" {% if line_item.properties._bundle_id %}data-remove-bundle="{{ line_item.properties._bundle_id }}"{% endif %}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g opacity="0.5" clip-path="url(#del-{{ line_item.key }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.00018-0.0045166C6.93693-0.0045166 5.98523.297175 5.30017.982236 4.63796 1.64444 4.33397 2.5558 4.31443 3.57622 3.50895 3.64087 2.70075 3.72664 1.88804 3.83355 1.4187 3.89527 1.08826 4.3258 1.14999 4.79515 1.21173 5.26448 1.64226 5.59492 2.11159 5.53319L2.24778 5.51548C2.22409 7.67421 2.26948 10.7063 2.8449 13.2723 3.15837 14.6701 4.34059 15.6431 5.71089 15.8364 6.48455 15.9455 7.19457 16.0005 8.00053 16.0005 8.80652 16.0005 9.51663 15.9455 10.2904 15.8364 11.6607 15.6431 12.8429 14.6701 13.1564 13.2723 13.7318 10.7063 13.7772 7.67431 13.7535 5.51558L13.889 5.53319C14.3582 5.59492 14.7887 5.26448 14.8506 4.79515 14.9123 4.3258 14.5818 3.89527 14.1125 3.83355 13.2997 3.72664 12.4915 3.64086 11.6859 3.57621 11.6663 2.55579 11.3624 1.64444 10.7002.982236 10.0151.297175 9.06342-0.0045166 8.00018-0.0045166ZM9.96678 3.47014C9.93121 2.84539 9.73781 2.44423 9.48801 2.19442 9.21099 1.91741 8.74788 1.70976 8.00018 1.70976 7.25247 1.70976 6.78937 1.91741 6.51235 2.19442 6.26254 2.44423 6.06915 2.8454 6.03357 3.47014 7.34594 3.41366 8.65442 3.41366 9.96678 3.47014ZM6.45625 7.24487C6.17731 6.96593 5.72505 6.96593 5.4461 7.24487 5.16715 7.52382 5.16715 7.97607 5.4461 8.25502L6.99013 9.79906 5.44611 11.3431C5.16716 11.622 5.16716 12.0743 5.44611 12.3532 5.72506 12.6322 6.17732 12.6322 6.45626 12.3532L8.00029 10.8092 9.54417 12.3531C9.82311 12.6321 10.2754 12.6321 10.5543 12.3531 10.8333 12.0741 10.8333 11.6219 10.5543 11.3429L9.01044 9.79906 10.5543 8.25517C10.8333 7.97622 10.8333 7.52396 10.5543 7.24501 10.2754 6.96606 9.82313 6.96606 9.54418 7.24501L8.00029 8.78891 6.45625 7.24487Z" fill="#102A43"/></g><defs><clipPath id="del-{{ line_item.key }}"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
+                    </button>
+                  </div>
+                  <div class="mc-line-item__bottom">
+                    <line-item-quantity class="mc-line-item__qty">
+                      <button type="button" class="mc-line-item__qty-btn" aria-label="Decrease quantity" onclick="this.parentElement.querySelector('input').stepDown(); this.parentElement.querySelector('input').dispatchEvent(new Event('change', {bubbles: true}));">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6H9.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      </button>
+                      <input class="quantity-input mc-line-item__qty-input" type="number" is="quantity-input" inputmode="numeric" min="{{ line_item.variant.quantity_rule.min }}" step="{{ line_item.variant.quantity_rule.increment }}" data-line-key="{{ line_item.key }}" aria-label="Quantity" value="{{ line_item.quantity }}">
+                      <button type="button" class="mc-line-item__qty-btn" aria-label="Increase quantity" onclick="this.parentElement.querySelector('input').stepUp(); this.parentElement.querySelector('input').dispatchEvent(new Event('change', {bubbles: true}));">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 2.5V9.5M2.5 6H9.5" stroke="#102A43" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      </button>
+                    </line-item-quantity>
+                    <div class="mc-line-item__prices">
+                      {%- if line_item.original_line_price > line_item.final_line_price -%}
+                        <span class="mc-line-item__compare">{{ line_item.original_line_price | money }}</span>
+                      {%- elsif line_item.variant.compare_at_price > line_item.variant.price -%}
+                        <span class="mc-line-item__compare">{{ line_item.variant.compare_at_price | times: line_item.quantity | money }}</span>
+                      {%- endif -%}
+                      <span class="mc-line-item__price">{{ line_item.final_line_price | money }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {%- comment -%} Show gift items that belong to this bundle {%- endcomment -%}
+              {%- if line_item.properties._bundle_id != blank -%}
+                {%- assign current_bundle_id = line_item.properties._bundle_id -%}
+                {%- assign has_gifts = false -%}
+                {%- for gift_item in cart.items -%}
+                  {%- if gift_item.properties._bundle_id == current_bundle_id and gift_item.properties._bundle_role == 'gift' -%}
+                    {%- assign has_gifts = true -%}
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+
+                {%- if has_gifts -%}
+                  <div class="maison-cart-gifts">
+                    <div class="maison-cart-gifts__divider"></div>
+                    {%- for gift_item in cart.items -%}
+                      {%- if gift_item.properties._bundle_id == current_bundle_id and gift_item.properties._bundle_role == 'gift' -%}
+                        <div class="maison-cart-gift-row">
+                          <div class="maison-cart-gift-row__left">
+                            <span class="maison-cart-gift-badge">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none"><g clip-path="url(#gc-{{ gift_item.key }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.43307 1.91747C9.13342 1.38593 8.28778 1.35269 7.94454 1.87462L7.08891 3.17576C7.51708 3.18028 7.99172 3.18717 8.47008 3.19654C8.48242 3.1899 8.49507 3.18361 8.508 3.1777L9.06159 2.9246C9.49984 2.72426 9.62859 2.26442 9.43307 1.91747ZM4.91221 3.17576L4.05658 1.87462C3.71334 1.35269 2.86767 1.38593 2.56806 1.91747C2.3725 2.26442 2.50131 2.72426 2.9395 2.9246L3.49312 3.1777C3.50605 3.18361 3.51869 3.1899 3.53104 3.19654C4.0094 3.18717 4.48404 3.18028 4.91221 3.17576ZM6.00056 2.49076L6.87029 1.16819C7.73677 -0.149421 9.77576 -0.0929568 10.5531 1.28615C10.9223 1.94116 10.8761 2.68219 10.5271 3.26583C11.1752 3.36285 11.6973 3.85529 11.7571 4.52053C11.7759 4.72947 11.7863 4.9414 11.7863 5.15671C11.7863 5.37201 11.7759 5.58396 11.7571 5.79291C11.6922 6.51574 11.0813 7.03457 10.3561 7.06378C9.20147 7.1103 7.60415 7.13561 6.53627 7.14242V4.48882C6.53627 4.19296 6.29643 3.95311 6.00056 3.95311C5.70469 3.95311 5.46484 4.19296 5.46484 4.48882V7.14242C4.39696 7.13561 2.79967 7.1103 1.64496 7.06378C0.919801 7.03457 0.308992 6.51574 0.243971 5.79291C0.225175 5.58396 0.214844 5.37201 0.214844 5.15671C0.214844 4.9414 0.225174 4.72947 0.243969 4.52053C0.303809 3.85529 0.825933 3.36285 1.47402 3.26582C1.12507 2.68219 1.07882 1.94116 1.44802 1.28615C2.22537 -0.0929568 4.26435 -0.149421 5.13082 1.16819L6.00056 2.49076ZM1.71386 8.17234C2.87672 8.21667 4.42197 8.24076 5.46484 8.24733V11.7851C4.60525 11.7767 3.83381 11.7474 3.13046 11.6949C2.03062 11.6128 1.16237 10.7497 1.06498 9.65112C1.01866 9.12861 0.990541 8.59675 0.986324 8.05398C1.2205 8.12247 1.4652 8.16286 1.71386 8.17234ZM8.8683 11.6949C8.16558 11.7474 7.39492 11.7767 6.53627 11.7851V8.24732C7.57913 8.24073 9.12339 8.21666 10.2856 8.17234C10.534 8.16287 10.7784 8.12255 11.0124 8.05419C11.0082 8.59684 10.98 9.12861 10.9338 9.65112C10.8364 10.7497 9.9681 11.6128 8.8683 11.6949Z" fill="#FAFCFE"/></g><defs><clipPath id="gc-{{ gift_item.key }}"><rect width="12" height="12" fill="white"/></clipPath></defs></svg>
+                              FREE
+                            </span>
+                            {%- if gift_item.image != blank -%}
+                              <div class="maison-cart-gift-row__img">
+                                {{ gift_item.image | image_url: width: 96 | image_tag: loading: 'lazy', widths: '48, 96', sizes: '48px', class: 'maison-cart-gift-row__img-el' }}
+                              </div>
+                            {%- endif -%}
+                            <span class="maison-cart-gift-row__name">{{ gift_item.product.title | truncate: 40 }}</span>
+                          </div>
+                          <div class="maison-cart-gift-row__prices">
+                            {%- if gift_item.variant.compare_at_price > 0 -%}
+                              {%- assign gift_compare_total = gift_item.variant.compare_at_price | times: gift_item.quantity -%}
+                              <span class="maison-cart-gift-row__compare">{{ gift_compare_total | money_without_trailing_zeros }}</span>
+                            {%- endif -%}
+                            <span class="maison-cart-gift-row__price">{{ gift_item.final_line_price | money_without_trailing_zeros }}</span>
+                          </div>
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endunless -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- comment -%} RECOMMENDED PRODUCTS SLIDER {%- endcomment -%}
+      {%- if section.settings.recommended_products.count > 0 -%}
+        {%- assign rec_count = 0 -%}
+        {%- for rec_product in section.settings.recommended_products -%}
+          {%- assign in_cart = cart | line_items_for: rec_product -%}
+          {%- if in_cart.size == 0 and rec_product.available -%}
+            {%- assign rec_count = rec_count | plus: 1 -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if rec_count > 0 -%}
+          <div class="maison-recs-wrapper-grid">
+            <div class="maison-cart-recs">
+              <div class="maison-cart-recs__header">
+                {% if section.settings.recommendations_title != blank %}
+                  <span class="maison-cart-recs__title">{{ section.settings.recommendations_title }}</span>
+                {% endif %}
+                {% if rec_count > 1 %}
+                  <div class="maison-cart-recs__nav">
+                    <button type="button" class="maison-cart-recs__arrow maison-cart-recs__prev" disabled>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.92232 6.85709H14.295C14.9262 6.85709 15.4379 7.36877 15.4379 7.99995C15.4379 8.63114 14.9262 9.1428 14.295 9.1428H3.92256C4.50592 9.75495 5.18921 10.2849 5.86018 10.6204C6.42473 10.9026 6.65355 11.5891 6.37128 12.1537C6.089 12.7183 5.40252 12.9471 4.83797 12.6648C3.1597 11.8257 1.52325 10.1892 0.684124 8.51086C0.523255 8.18911 0.523261 7.8104 0.684139 7.48867C1.52328 5.81046 3.15971 4.17403 4.83797 3.3349C5.40252 3.05262 6.089 3.28144 6.37128 3.84599C6.65355 4.41054 6.42473 5.09702 5.86018 5.3793C5.18912 5.71483 4.50573 6.24486 3.92232 6.85709Z" fill="#FAFCFE"/></svg>
+                    </button>
+                    <button type="button" class="maison-cart-recs__arrow maison-cart-recs__next">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.079 6.85709H1.70634C1.07515 6.85709 0.563477 7.36877 0.563477 7.99995C0.563477 8.63114 1.07515 9.1428 1.70634 9.1428H12.0788C11.4955 9.75495 10.8122 10.2849 10.1412 10.6204C9.57667 10.9026 9.34785 11.5891 9.63012 12.1537C9.9124 12.7183 10.5989 12.9471 11.1634 12.6648C12.8417 11.8257 14.4781 10.1892 15.3172 8.51086C15.4781 8.18911 15.4781 7.8104 15.3172 7.48867C14.4781 5.81046 12.8417 4.17403 11.1634 3.3349C10.5989 3.05262 9.9124 3.28144 9.63012 3.84599C9.34785 4.41054 9.57667 5.09702 10.1412 5.3793C10.8123 5.71483 11.4956 6.24486 12.079 6.85709Z" fill="#FAFCFE"/></svg>
+                    </button>
+                  </div>
+                {% endif %}
+              </div>
+              <div class="maison-cart-recs__slider swiper" data-maison-cart-recs>
+                <div class="swiper-wrapper">
+                  {%- for rec_product in section.settings.recommended_products -%}
+                    {%- assign in_cart = cart | line_items_for: rec_product -%}
+                    {%- if in_cart.size == 0 and rec_product.available -%}
+                      <div class="swiper-slide maison-cart-rec-card">
+                        <div class="maison-cart-rec-card__inner">
+                          <div class="maison-cart-rec-card__content">
+                            {%- if rec_product.featured_image != blank -%}
+                              <div class="maison-cart-rec-card__img">
+                                {{ rec_product.featured_image | image_url: width: 128 | image_tag: loading: 'lazy', widths: '64, 128', sizes: '64px' }}
+                              </div>
+                            {%- endif -%}
+                            <div class="maison-cart-rec-card__info">
+                              <p class="maison-cart-rec-card__name">{{ rec_product.title }}</p>
+                              <div class="maison-cart-rec-card__prices">
+                                {%- if rec_product.compare_at_price > rec_product.price -%}
+                                  <span class="maison-cart-rec-card__compare">{{ rec_product.compare_at_price | money }}</span>
+                                {%- endif -%}
+                                <span class="maison-cart-rec-card__price">{{ rec_product.price | money }}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <button type="button" class="maison-cart-rec-card__add" data-variant-id="{{ rec_product.first_available_variant.id }}">+ ADD</button>
+                        </div>
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+              {% if rec_count > 1 %}
+                <div class="maison-cart-recs__dots" data-maison-cart-dots></div>
+              {% endif %}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} FOOTER {%- endcomment -%}
+    <div class="maison-cart-footer" slot="footer">
+      {%- comment -%} Premium Shipping Insurance {%- endcomment -%}
+      {% if section.settings.show_insurance and section.settings.insurance_product != blank %}
+        {%- assign ins_product = section.settings.insurance_product -%}
+        {%- assign ins_variant = ins_product.first_available_variant -%}
+        {%- assign ins_in_cart = false -%}
+        {%- assign ins_line_key = '' -%}
+        {%- for item in cart.items -%}
+          {%- if item.product.id == ins_product.id -%}
+            {%- assign ins_in_cart = true -%}
+            {%- assign ins_line_key = item.key -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        <div class="maison-cart-insurance" data-maison-insurance data-variant-id="{{ ins_variant.id }}" data-line-key="{{ ins_line_key }}" data-in-cart="{{ ins_in_cart }}">
+          {% if section.settings.insurance_image != blank %}
+            <div class="maison-cart-insurance__icon">
+              {{ section.settings.insurance_image | image_url: width: 112 | image_tag: loading: 'lazy', widths: '56, 112', sizes: '56px' }}
+            </div>
+          {% endif %}
+          <div class="maison-cart-insurance__content">
+            <div class="maison-cart-insurance__header">
+              <span class="maison-cart-insurance__title">{{ section.settings.insurance_title }}</span>
+              <span class="maison-cart-insurance__price">{{ ins_variant.price | money }}</span>
+            </div>
+            <div class="maison-cart-insurance__body">
+              <p class="maison-cart-insurance__desc">{{ section.settings.insurance_description }}</p>
+              <label class="maison-cart-insurance__toggle">
+                <input type="checkbox" {% if ins_in_cart %}checked{% endif %} data-maison-insurance-checkbox>
+                <span class="maison-cart-insurance__switch"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {%- comment -%} Total Price Row — include all items in compare {%- endcomment -%}
+      {%- assign total_compare = 0 -%}
+      {%- for item in cart.items -%}
+        {%- if item.variant.compare_at_price > item.variant.price -%}
+          {%- assign item_compare = item.variant.compare_at_price | times: item.quantity -%}
+        {%- else -%}
+          {%- assign item_compare = item.variant.price | times: item.quantity -%}
+        {%- endif -%}
+        {%- assign total_compare = total_compare | plus: item_compare -%}
+      {%- endfor -%}
+
+      <div class="maison-cart-total">
+        <span class="maison-cart-total__label">Total Price</span>
+        <div class="maison-cart-total__values">
+          {%- if total_compare > cart.total_price -%}
+            <span class="maison-cart-total__compare">{{ total_compare | money }}</span>
+          {%- endif -%}
+          <span class="maison-cart-total__price">{{ cart.total_price | money }}</span>
+          {%- if total_compare > cart.total_price -%}
+            {%- assign save_amount = total_compare | minus: cart.total_price -%}
+            {%- assign save_percent = save_amount | times: 100 | divided_by: total_compare -%}
+            <span class="maison-cart-total__badge">Save {{ save_percent }}%</span>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- comment -%} Checkout Button {%- endcomment -%}
+      <div class="maison-cart-actions">
+        {% if section.settings.show_checkout_button %}
+          <form action="{{ routes.cart_url }}" method="POST">
+            <button type="submit" name="checkout" class="maison-cart-checkout-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.17872 1.58301C7.19231 0.569427 8.56702 0 10.0005 0C11.4339 0 12.8086 0.569427 13.8222 1.58301C14.8357 2.5966 15.4052 3.97133 15.4052 5.40476V6.63774C17.0026 7.31177 18.1904 8.80733 18.4056 10.6032C18.5022 11.4089 18.5724 12.2426 18.5724 13.0952C18.5724 13.9478 18.5022 14.7814 18.4056 15.5871C18.1186 17.9829 16.1006 19.8441 13.6886 19.9337C12.5112 19.9773 11.3049 20 9.99958 20C8.6943 20 7.48794 19.9773 6.31054 19.9337C3.89857 19.8441 1.88052 17.9829 1.59357 15.5871C1.49705 14.7814 1.42676 13.9478 1.42676 13.0952C1.42676 12.2426 1.49705 11.4089 1.59357 10.6032C1.80875 8.80667 2.99744 7.31067 4.59571 6.63701V5.40476C4.59571 3.97133 5.16514 2.5966 6.17872 1.58301ZM13.2624 5.40476V6.2419C12.2196 6.20794 11.1479 6.19044 9.99958 6.19044C8.85195 6.19044 7.7808 6.20791 6.73857 6.24184V5.40476C6.73857 4.53964 7.08222 3.70997 7.69395 3.09824C8.30567 2.48651 9.13535 2.14286 10.0005 2.14286C10.8656 2.14286 11.6952 2.48651 12.307 3.09824C12.9187 3.70997 13.2624 4.53964 13.2624 5.40476ZM11.071 12.2287C11.071 11.6369 10.5913 11.1572 9.99958 11.1572C9.40785 11.1572 8.92815 11.6369 8.92815 12.2287V13.7143C8.92815 14.306 9.40785 14.7857 9.99958 14.7857C10.5913 14.7857 11.071 14.306 11.071 13.7143V12.2287Z" fill="#FFFCFB"/></svg>
+              <span>{{ section.settings.checkout_button_label }}</span>
+            </button>
+          </form>
+        {% endif %}
+
+        {%- comment -%} Payment Icons {%- endcomment -%}
+        {% if section.settings.show_payment_icons %}
+          <div class="maison-cart-payments">
+            {%- for i in (1..10) -%}
+              {%- capture payment_setting -%}payment_icon_{{ i }}{%- endcapture -%}
+              {%- if section.settings[payment_setting] != blank -%}
+                <div class="maison-cart-payment-icon">
+                  {{ section.settings[payment_setting] | image_url: width: 46 | image_tag: loading: 'lazy', widths: '23, 46', sizes: '23px' }}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {% endif %}
+
+        {%- comment -%} Trust Badges {%- endcomment -%}
+        {% if section.settings.show_trust_badges %}
+          <div class="maison-cart-trust">
+            {% if section.settings.trust_badge_1 != blank %}
+              <div class="maison-cart-trust__item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#mc-shield)"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.63463 0.176497C2.74243 0.063764 2.89163 0 3.04762 0H12.9523C13.1083 0 13.2576 0.063764 13.3654 0.176497C13.6894 0.515322 14.3575 1.21448 14.9382 2.42882C15.5183 3.6421 16 5.34517 16 7.6923C16 10.4923 14.6697 12.4184 13.0341 13.7085C11.416 14.9845 9.49067 15.649 8.21923 15.9814C8.12447 16.0062 8.02493 16.0062 7.93017 15.9814C6.66139 15.6497 4.70039 14.9862 3.04591 13.7126C1.37442 12.4257 0 10.4993 0 7.6923C0 5.34517 0.481736 3.6421 1.06185 2.42882C1.64248 1.21448 2.31062 0.515322 2.63463 0.176497ZM11.6126 5.16624C11.9632 4.84818 11.9896 4.30611 11.6715 3.9555C11.3535 3.60487 10.8114 3.57848 10.4608 3.89654C9.44797 4.81529 8.68333 5.64447 8.03722 6.65293C7.58974 7.35137 7.21039 8.11826 6.84237 9.03351L5.57879 7.73046C5.24925 7.39061 4.70659 7.38226 4.36675 7.71181C4.0269 8.04135 4.01856 8.584 4.3481 8.92384L6.55655 11.2013C6.76358 11.4148 7.06648 11.5057 7.35686 11.4416C7.64725 11.3774 7.88361 11.1673 7.98138 10.8864C8.49064 9.42353 8.94082 8.42033 9.48067 7.57771C10.0171 6.74039 10.6653 6.02557 11.6126 5.16624Z" fill="#102A43"/></g><defs><clipPath id="mc-shield"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
+                <span>{{ section.settings.trust_badge_1 }}</span>
+              </div>
+            {% endif %}
+            {% if section.settings.trust_badge_1 != blank and section.settings.trust_badge_2 != blank %}
+              <span class="maison-cart-trust__separator"></span>
+            {% endif %}
+            {% if section.settings.trust_badge_2 != blank %}
+              <div class="maison-cart-trust__item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#mc-check)"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.63463 0.176497C2.74243 0.063764 2.89163 0 3.04762 0H12.9523C13.1083 0 13.2576 0.063764 13.3654 0.176497C13.6894 0.515322 14.3575 1.21448 14.9382 2.42882C15.5183 3.6421 16 5.34517 16 7.6923C16 10.4923 14.6697 12.4184 13.0341 13.7085C11.416 14.9845 9.49067 15.649 8.21923 15.9814C8.12447 16.0062 8.02493 16.0062 7.93017 15.9814C6.66139 15.6497 4.70039 14.9862 3.04591 13.7126C1.37442 12.4257 0 10.4993 0 7.6923C0 5.34517 0.481736 3.6421 1.06185 2.42882C1.64248 1.21448 2.31062 0.515322 2.63463 0.176497ZM11.6126 5.16624C11.9632 4.84818 11.9896 4.30611 11.6715 3.9555C11.3535 3.60487 10.8114 3.57848 10.4608 3.89654C9.44797 4.81529 8.68333 5.64447 8.03722 6.65293C7.58974 7.35137 7.21039 8.11826 6.84237 9.03351L5.57879 7.73046C5.24925 7.39061 4.70659 7.38226 4.36675 7.71181C4.0269 8.04135 4.01856 8.584 4.3481 8.92384L6.55655 11.2013C6.76358 11.4148 7.06648 11.5057 7.35686 11.4416C7.64725 11.3774 7.88361 11.1673 7.98138 10.8864C8.49064 9.42353 8.94082 8.42033 9.48067 7.57771C10.0171 6.74039 10.6653 6.02557 11.6126 5.16624Z" fill="#102A43"/></g><defs><clipPath id="mc-check"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
+                <span>{{ section.settings.trust_badge_2 }}</span>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {%- endif -%}
+</cart-drawer>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+<script>
+  function initMaisonCartRecs() {
+    var section = document.getElementById('cart-drawer');
+    if (!section) return;
+
+    var swiperEl = section.querySelector('[data-maison-cart-recs]');
+    if (!swiperEl) return;
+
+    /* Destroy any existing swiper on this element */
+    if (swiperEl.swiper) {
+      try { swiperEl.swiper.destroy(true, true); } catch(e) {}
+    }
+
+    var prevBtn = section.querySelector('.maison-cart-recs__prev');
+    var nextBtn = section.querySelector('.maison-cart-recs__next');
+    var dotsEl = section.querySelector('[data-maison-cart-dots]');
+
+    new Swiper(swiperEl, {
+      slidesPerView: 'auto',
+      spaceBetween: 0,
+      navigation: prevBtn && nextBtn ? {
+        prevEl: prevBtn,
+        nextEl: nextBtn
+      } : false,
+      pagination: dotsEl ? {
+        el: dotsEl,
+        clickable: true
+      } : false
+    });
+
+    /* "+ ADD" button handler */
+    section.querySelectorAll('.maison-cart-rec-card__add').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (btn.classList.contains('is-loading')) return;
+        btn.classList.add('is-loading');
+        var variantId = btn.getAttribute('data-variant-id');
+
+        var sectionId = _getCartSectionId();
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(addData) {
+          btn.classList.remove('is-loading');
+          var addedItem = addData.items ? addData.items[0] : null;
+          if (addedItem && sectionId) {
+            return fetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: addedItem.key, quantity: addedItem.quantity, sections: sectionId })
+            }).then(function(res) { return res.json(); });
+          }
+          return null;
+        })
+        .then(function(data) {
+          if (data) {
+            _dispatchCartChange(data);
+          } else {
+            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+          }
+        })
+        .catch(function() {
+          btn.classList.remove('is-loading');
+        });
+      });
+    });
+  }
+
+  /* Init on DOMContentLoaded or when Swiper is ready */
+  if (typeof Swiper !== 'undefined') {
+    initMaisonCartRecs();
+  } else {
+    document.addEventListener('DOMContentLoaded', initMaisonCartRecs);
+  }
+
+  /* Delete item button — remove main + bundle gifts via AJAX */
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.mc-line-item__delete');
+    if (!btn) return;
+    e.preventDefault();
+
+    var lineKey = btn.getAttribute('data-remove-key');
+    var bundleId = btn.getAttribute('data-remove-bundle');
+    if (!lineKey) return;
+
+    var sectionId = _getCartSectionId();
+
+    /* First: collect all keys to remove (main + its gifts) */
+    if (bundleId) {
+      fetch('/cart.js')
+        .then(function(res) { return res.json(); })
+        .then(function(cart) {
+          var keysToRemove = {};
+          cart.items.forEach(function(item) {
+            if (item.key === lineKey) {
+              keysToRemove[item.key] = 0;
+            } else if (item.properties && item.properties._bundle_id === bundleId) {
+              keysToRemove[item.key] = 0;
+            }
+          });
+
+          var keys = Object.keys(keysToRemove);
+          if (keys.length === 0) return;
+
+          /* Remove all except last via update, last via change with sections */
+          var lastKey = keys[keys.length - 1];
+          var bulkUpdates = {};
+          keys.forEach(function(k) {
+            if (k !== lastKey) bulkUpdates[k] = 0;
+          });
+
+          var chain = Promise.resolve();
+          if (Object.keys(bulkUpdates).length > 0) {
+            chain = fetch('/cart/update.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ updates: bulkUpdates })
+            });
+          }
+
+          chain.then(function() {
+            var body = { id: lastKey, quantity: 0 };
+            if (sectionId) body.sections = sectionId;
+            return fetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(body)
+            }).then(function(res) { return res.json(); });
+          }).then(function(data) {
+            _dispatchCartChange(data);
+          });
+        });
+    } else {
+      /* No bundle — just remove the single item */
+      var body = { id: lineKey, quantity: 0 };
+      if (sectionId) body.sections = sectionId;
+      fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) { _dispatchCartChange(data); });
+    }
+  });
+
+  /* Auto-add insurance when first item added (if not manually opted out) */
+  {% if section.settings.auto_add_insurance and section.settings.insurance_product != blank %}
+    var _autoInsLock = false;
+
+    function _checkAutoAddInsurance(cart) {
+      if (_autoInsLock) return;
+
+      var insProductId = {{ section.settings.insurance_product.id | default: 0 }};
+      var insVariantId = {{ section.settings.insurance_product.first_available_variant.id | default: 0 }};
+      if (!insProductId || !insVariantId) return;
+      if (sessionStorage.getItem('maison_insurance_opted_out') === 'true') return;
+
+      var hasInsurance = false;
+      var hasRealItems = false;
+
+      cart.items.forEach(function(item) {
+        if (item.product_id === insProductId) hasInsurance = true;
+        else hasRealItems = true;
+      });
+
+      if (hasRealItems && !hasInsurance) {
+        _autoInsLock = true;
+        var sectionId = _getCartSectionId();
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items: [{ id: insVariantId, quantity: 1 }] })
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(addData) {
+          _autoInsLock = false;
+          var addedItem = addData.items ? addData.items[0] : null;
+          if (addedItem && sectionId) {
+            return fetch('/cart/change.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: addedItem.key, quantity: addedItem.quantity, sections: sectionId })
+            }).then(function(res) { return res.json(); });
+          }
+          return null;
+        })
+        .then(function(data) {
+          if (data) {
+            _dispatchCartChange(data);
+          } else {
+            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+          }
+        })
+        .catch(function() { _autoInsLock = false; });
+      }
+    }
+
+    /* Listen to cart:change (quantity changes inside drawer) */
+    document.documentElement.addEventListener('cart:change', function(e) {
+      var cart = e.detail && e.detail.cart;
+      if (cart && cart.items) _checkAutoAddInsurance(cart);
+    });
+
+    /* Listen to cart:refresh (add to cart from PDP) — need to fetch cart */
+    document.documentElement.addEventListener('cart:refresh', function() {
+      setTimeout(function() {
+        fetch('/cart.js')
+          .then(function(res) { return res.json(); })
+          .then(function(cart) { _checkAutoAddInsurance(cart); });
+      }, 300);
+    });
+
+    /* Listen to cart:add (intercept fetch to /cart/add.js) */
+    var _origFetch = window.fetch;
+    window.fetch = function() {
+      var url = typeof arguments[0] === 'string' ? arguments[0] : '';
+      var result = _origFetch.apply(this, arguments);
+      if (url.indexOf('/cart/add.js') !== -1) {
+        result.then(function() {
+          setTimeout(function() {
+            fetch('/cart.js')
+              .then(function(res) { return res.json(); })
+              .then(function(cart) { _checkAutoAddInsurance(cart); });
+          }, 500);
+        });
+      }
+      return result;
+    };
+  {% endif %}
+
+  /* Auto-remove insurance when no real items left */
+  document.documentElement.addEventListener('cart:change', function(e) {
+    var cart = e.detail && e.detail.cart;
+    if (!cart || !cart.items) return;
+
+    var insProductId = {{ section.settings.insurance_product.id | default: 0 }};
+    if (!insProductId) return;
+
+    var hasRealItems = false;
+    var insKey = null;
+
+    cart.items.forEach(function(item) {
+      if (item.product_id === insProductId) {
+        insKey = item.key;
+      } else {
+        hasRealItems = true;
+      }
+    });
+
+    /* Reset opt-out when cart is empty */
+    if (!hasRealItems && !insKey) {
+      sessionStorage.removeItem('maison_insurance_opted_out');
+    }
+
+    if (!hasRealItems && insKey) {
+      var sectionId = _getCartSectionId();
+      var body = { id: insKey, quantity: 0 };
+      if (sectionId) body.sections = sectionId;
+
+      fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) { _dispatchCartChange(data); });
+    }
+  });
+
+  /* Insurance toggle */
+  function _getCartSectionId() {
+    var cartDrawer = document.querySelector('cart-drawer');
+    if (!cartDrawer) return '';
+    var shopifySection = cartDrawer.closest('.shopify-section');
+    return shopifySection ? shopifySection.id.replace('shopify-section-', '') : '';
+  }
+
+  function _dispatchCartChange(data) {
+    if (data) {
+      document.documentElement.dispatchEvent(new CustomEvent('cart:change', {
+        bubbles: true,
+        detail: { baseEvent: 'line-item:change', cart: data }
+      }));
+    }
+  }
+
+  function _insuranceChangeHandler(e) {
+    var el = e.target.closest('[data-maison-insurance]');
+    if (!el) return;
+    var variantId = el.getAttribute('data-variant-id');
+    var lineKey = el.getAttribute('data-line-key');
+    var isChecked = e.target.checked;
+    var sectionId = _getCartSectionId();
+
+    /* Track manual opt-out in sessionStorage */
+    if (!isChecked) {
+      sessionStorage.setItem('maison_insurance_opted_out', 'true');
+    } else {
+      sessionStorage.removeItem('maison_insurance_opted_out');
+    }
+
+    if (isChecked) {
+      /* Add insurance, then fetch fresh section via /cart/change.js trick */
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(addData) {
+        /* Now do a no-op change to get section HTML */
+        var addedItem = addData.items ? addData.items[0] : null;
+        if (addedItem && sectionId) {
+          return fetch('/cart/change.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: addedItem.key, quantity: addedItem.quantity, sections: sectionId })
+          }).then(function(res) { return res.json(); });
+        }
+        return null;
+      })
+      .then(function(data) {
+        if (data) {
+          _dispatchCartChange(data);
+        } else {
+          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+        }
+      });
+    } else {
+      if (lineKey) {
+        var body = { id: lineKey, quantity: 0 };
+        if (sectionId) body.sections = sectionId;
+
+        fetch('/cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) { _dispatchCartChange(data); });
+      }
+    }
+  }
+
+  function initMaisonInsurance() {
+    var el = document.querySelector('[data-maison-insurance]');
+    if (!el) return;
+    var checkbox = el.querySelector('[data-maison-insurance-checkbox]');
+    if (!checkbox) return;
+
+    /* Remove old listener before adding new one */
+    checkbox.removeEventListener('change', _insuranceChangeHandler);
+    checkbox.addEventListener('change', _insuranceChangeHandler);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMaisonInsurance);
+  } else {
+    initMaisonInsurance();
+  }
+
+  /* Sync gift quantities when main product quantity changes */
+  document.documentElement.addEventListener('cart:change', function(e) {
+    var cart = e.detail && e.detail.cart;
+    if (!cart || !cart.items) return;
+
+    /* Build map of bundles: main qty vs gift qtys */
+    var bundles = {};
+    cart.items.forEach(function(item) {
+      if (!item.properties || !item.properties._bundle_id) return;
+      var bid = item.properties._bundle_id;
+      if (!bundles[bid]) bundles[bid] = { mainQty: 0, gifts: [] };
+      if (item.properties._bundle_role === 'main') {
+        bundles[bid].mainQty = item.quantity;
+      } else if (item.properties._bundle_role === 'gift') {
+        bundles[bid].gifts.push({ key: item.key, qty: item.quantity });
+      }
+    });
+
+    /* Find gifts that need qty update */
+    var updates = {};
+    Object.keys(bundles).forEach(function(bid) {
+      var b = bundles[bid];
+      if (b.mainQty === 0) return; /* main removed — handled by bundle removal logic */
+      b.gifts.forEach(function(gift) {
+        if (gift.qty !== b.mainQty) {
+          updates[gift.key] = b.mainQty;
+        }
+      });
+    });
+
+    if (Object.keys(updates).length > 0) {
+      /* Update gift quantities, then use /cart/change.js on last gift to get section HTML */
+      var giftKeys = Object.keys(updates);
+      var lastKey = giftKeys[giftKeys.length - 1];
+      var lastQty = updates[lastKey];
+
+      /* First update all except last via /cart/update.js */
+      var bulkUpdates = {};
+      giftKeys.forEach(function(key) {
+        if (key !== lastKey) bulkUpdates[key] = updates[key];
+      });
+
+      var chain = Promise.resolve();
+      if (Object.keys(bulkUpdates).length > 0) {
+        chain = fetch('/cart/update.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ updates: bulkUpdates })
+        });
+      }
+
+      /* Then change last gift via /cart/change.js with sections param for drawer re-render */
+      chain.then(function() {
+        var cartDrawer = document.querySelector('cart-drawer');
+        var sectionId = '';
+        if (cartDrawer) {
+          var shopifySection = cartDrawer.closest('.shopify-section');
+          if (shopifySection) sectionId = shopifySection.id.replace('shopify-section-', '');
+        }
+        var body = { id: lastKey, quantity: lastQty };
+        if (sectionId) body.sections = sectionId;
+
+        return fetch('/cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        }).then(function(res) { return res.json(); });
+      }).then(function(data) {
+        if (data) {
+          document.documentElement.dispatchEvent(new CustomEvent('cart:change', {
+            bubbles: true,
+            detail: { baseEvent: 'line-item:change', cart: data }
+          }));
+        }
+      });
+    }
+  });
+
+  /* Re-init after cart updates — simple debounced approach */
+  var _reinitTimer = null;
+
+  function reinitMaisonCart() {
+    clearTimeout(_reinitTimer);
+    _reinitTimer = setTimeout(function() {
+      if (typeof Swiper === 'undefined') return;
+      initMaisonCartRecs();
+      initMaisonInsurance();
+    }, 500);
+  }
+
+  /* Watch for drawer open attribute */
+  var _cartDrawer = document.getElementById('cart-drawer');
+  if (_cartDrawer) {
+    new MutationObserver(function() {
+      if (_cartDrawer.hasAttribute('open')) {
+        reinitMaisonCart();
+      }
+    }).observe(_cartDrawer, { attributes: true, attributeFilter: ['open'] });
+  }
+
+  /* Listen to theme cart events */
+  document.documentElement.addEventListener('cart:change', function() {
+    setTimeout(reinitMaisonCart, 800);
+  });
+  document.documentElement.addEventListener('cart:refresh', function() {
+    setTimeout(reinitMaisonCart, 800);
+  });
+</script>
+
+{% style %}
+  /* ===== MAISON CART DRAWER ===== */
+
+  /* Reset drawer padding */
+  #shopify-section-{{ section.id }} .cart-drawer::part(body) {
+    padding: 0 !important;
+  }
+
+  #shopify-section-{{ section.id }} .drawer::part(content){
+    background: #F8F4EE;
+  }
+
+  #shopify-section-{{ section.id }} .cart-drawer {
+    --rounded-sm: 16px 0 0 16px;
+  }
+
+  @media (max-width: 999px) {
+    #shopify-section-{{ section.id }} .cart-drawer {
+      --rounded-sm: 0px;
+    }
+  }
+
+  #shopify-section-{{ section.id }} .cart-drawer::part(footer) {
+    padding: 0 !important;
+  }
+
+  /* Header */
+  #shopify-section-{{ section.id }} .maison-cart-header {
+    background: #fff;
+    padding: 0;
+    border-bottom: none;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-header__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-header__left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.4;
+    color: #102A43;
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #102A43;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-count {
+    background: #065BDC !important;
+    color: #FAFCFE !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 16px !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    min-width: 32px;
+    height: 24px;
+    padding: 0 12px;
+    border-radius: 4px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-close {
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-close svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+  }
+
+  /* Custom Line Item */
+  #shopify-section-{{ section.id }} .mc-line-item {
+    background: #fff;
+    padding: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-self: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__top {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__desc {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(16,42,67,0.75);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__delete {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__delete svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Quantity picker */
+  #shopify-section-{{ section.id }} .mc-line-item__qty {
+    display: flex;
+    align-items: center;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__qty-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(44,41,38,0.08);
+    border-radius: 4px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__qty-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__qty-input {
+    width: 40px;
+    height: 32px;
+    text-align: center;
+    border: none !important;
+    background: transparent;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #102A43;
+    -moz-appearance: textfield;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__qty-input::-webkit-outer-spin-button,
+  #shopify-section-{{ section.id }} .mc-line-item__qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Prices */
+  #shopify-section-{{ section.id }} .mc-line-item__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__compare {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .mc-line-item__price {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  @media (max-width: 999px) {
+    #shopify-section-{{ section.id }} .mc-line-item {
+      padding: 12px 20px;
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .mc-line-item__img {
+      width: 64px;
+      height: 64px;
+    }
+
+    #shopify-section-{{ section.id }} .mc-line-item__body {
+      gap: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .mc-line-item__title {
+      font-size: 12px;
+      max-width: 180px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    #shopify-section-{{ section.id }} .mc-line-item__desc {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .mc-line-item__qty-btn {
+      width: 28px;
+      height: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .mc-line-item__qty-input {
+      height: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .mc-line-item__compare {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .mc-line-item__price {
+      font-size: 12px;
+    }
+  }
+
+  /* Shipping Bar */
+  #shopify-section-{{ section.id }} .maison-cart-shipping-bar {
+    background: #E5EEFB;
+    padding: 12px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-shipping-bar__text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-shipping-bar__track {
+    width: 100%;
+    height: 10px;
+    border: 1px solid rgba(44,41,38,0.12);
+    border-radius: 999px;
+    padding: 2px;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-shipping-bar__track::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #EAECF0;
+    border-radius: 999px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-shipping-bar__fill {
+    height: 6px;
+    background: #065BDC;
+    border-radius: 999px;
+    position: relative;
+    z-index: 1;
+    transition: width 0.4s ease;
+    position: relative;
+    top: -1px;
+  }
+
+  /* Line items area */
+  #shopify-section-{{ section.id }} .maison-cart-items {
+    background: #F8F4EE;
+  }
+
+  #shopify-section-{{ section.id }} .cart-drawer__line-items > * + * {
+    border-top: none;
+  }
+
+  #shopify-section-{{ section.id }} .maison-recs-wrapper-grid{
+    display: grid;
+    overflow: hidden;
+  }
+
+  /* Recommendations */
+  #shopify-section-{{ section.id }} .maison-cart-recs {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__nav {
+    display: flex;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__arrow {
+    width: 32px;
+    height: 32px;
+    background: #102A43;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 8px;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__arrow[disabled] {
+    opacity: 0.1;
+    cursor: default;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__slider {
+    width: 100%;
+    overflow: visible;
+    max-width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__slider .swiper-wrapper {
+    max-width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card {
+    width: 390px;
+    display: flex;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__inner {
+    background: #EEEAE5;
+    border: 1px solid #DCD9D3;
+    border-radius: 0px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__img {
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__compare {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__price {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__add {
+    background: #102A43;
+    color: #FAFCFE;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    height: 36px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__add:hover { opacity: 0.85; }
+  #shopify-section-{{ section.id }} .maison-cart-rec-card__add.is-loading { opacity: 0.5; pointer-events: none; }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__dots .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #102A43;
+    opacity: 0.1;
+    transition: all 0.3s;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-recs__dots .swiper-pagination-bullet-active {
+    width: 32px;
+    opacity: 1;
+  }
+
+  /* Gift Items */
+  #shopify-section-{{ section.id }} .maison-cart-gifts {
+    background: #fff;
+    padding: 0 20px 20px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-gifts__divider {
+    height: 1px;
+    background: rgba(16,42,67,0.08);
+    margin-bottom: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-gift-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-gift-row__left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-gift-badge {
+    background: #065BDC;
+    color: #FAFCFE;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 1.5;
+    text-align: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-gift-badge svg {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-gift-row__img {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-gift-row__img-el {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-gift-row__name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #102A43;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-gift-row__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-gift-row__compare {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-gift-row__price {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  /* Footer */
+  #shopify-section-{{ section.id }} .maison-cart-footer {
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 -8px 30px rgba(45,38,34,0.07);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* Insurance */
+  #shopify-section-{{ section.id }} .maison-cart-insurance {
+    background: rgba(16,42,67,0.04);
+    border-radius: 8px;
+    padding: 8px 12px 8px 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__price {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__body {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__desc {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(16,42,67,0.75);
+    flex: 1;
+    margin: 0;
+  }
+
+  /* Toggle switch */
+  #shopify-section-{{ section.id }} .maison-cart-insurance__toggle {
+    position: relative;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__switch {
+    display: block;
+    width: 44px;
+    height: 24px;
+    background: #D0D5DD;
+    border-radius: 999px;
+    position: relative;
+    transition: background 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__toggle input:checked + .maison-cart-insurance__switch {
+    background: #065BDC;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance__toggle input:checked + .maison-cart-insurance__switch::after {
+    transform: translateX(20px);
+  }
+
+  /* Total */
+  #shopify-section-{{ section.id }} .maison-cart-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-total__label {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-total__values {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-total__compare {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #102A43;
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-total__price {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-total__badge {
+    background: #12B76A;
+    color: #fff;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* Actions */
+  #shopify-section-{{ section.id }} .maison-cart-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-actions form {
+    width: 100%;
+  }
+
+  /* Checkout button */
+  #shopify-section-{{ section.id }} .maison-cart-checkout-btn {
+    width: 100%;
+    height: 56px;
+    background: #F07E3B;
+    border: none;
+    border-bottom: 4px solid #BF642F;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-checkout-btn:hover {
+    opacity: 0.92;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-checkout-btn svg {
+    width: 20px;
+    height: 20px;
+    color: #FFFCFB;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-checkout-btn span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFCFB;
+    white-space: nowrap;
+  }
+
+  /* Payment icons */
+  #shopify-section-{{ section.id }} .maison-cart-payments {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-payment-icon {
+    width: 23px;
+    height: 16px;
+    border-radius: 2.5px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-payment-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Trust badges */
+  #shopify-section-{{ section.id }} .maison-cart-trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-trust__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-trust__item svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-trust__item span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #102A43;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-trust__separator {
+    width: 1px;
+    height: 16px;
+    background: #102A43;
+    opacity: 0.15;
+    flex-shrink: 0;
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 999px) {
+    #shopify-section-{{ section.id }} .maison-cart-title {
+      font-size: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-count {
+      font-size: 12px !important;
+      height: 20px;
+      padding: 0 10px;
+      border-radius: 999px !important;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-header__left {
+      gap: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-shipping-bar {
+      padding: 8px 40px;
+      gap: 4px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-shipping-bar__text {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-header__row {
+      padding: 20px 20px 8px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-recs {
+      padding: 12px 20px;
+      gap: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-recs__title {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-recs__arrow {
+      width: 28px;
+      height: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-recs__arrow svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card {
+      width: 320px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card__inner {
+      padding: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card__img {
+      width: 56px;
+      height: 56px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card__name {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card__compare {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-rec-card__price {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-recs__dots .swiper-pagination-bullet {
+      width: 4px;
+      height: 4px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-recs__dots .swiper-pagination-bullet-active {
+      width: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-gifts {
+      padding: 0 20px 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-gifts__divider {
+      margin-bottom: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-gift-row {
+      padding: 4px 0;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-gift-row__left {
+      gap: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-gift-badge {
+      font-size: 8px;
+      height: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-gift-row__name {
+      font-size: 10px;
+      max-width: 120px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-gift-row__compare {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-gift-row__price {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance {
+      padding: 4px 8px 4px 4px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__icon {
+      width: 40px;
+      height: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__title {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__price {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__desc {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__switch {
+      width: 36px;
+      height: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__switch::after {
+      width: 16px;
+      height: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-insurance__toggle input:checked + .maison-cart-insurance__switch::after {
+      transform: translateX(16px);
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-footer {
+      padding: 12px 20px;
+      gap: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-total__label {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-total__compare {
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-total__price {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-total__badge {
+      font-size: 10px;
+      padding: 4px 8px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-checkout-btn {
+      height: 44px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-checkout-btn span {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-trust__item span {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-trust__item:last-child {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .maison-cart-trust__separator {
+      display: none;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Maison Cart Drawer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Free Shipping Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping_bar",
+      "label": "Show free shipping bar",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "free_shipping_threshold",
+      "label": "Free shipping threshold",
+      "min": 0,
+      "max": 500,
+      "step": 5,
+      "unit": "$",
+      "default": 100,
+      "info": "Cart total needed for free shipping"
+    },
+    {
+      "type": "text",
+      "id": "shipping_unlocked_text",
+      "label": "Shipping unlocked text",
+      "default": "FREE Shipping Unlocked!"
+    },
+    {
+      "type": "text",
+      "id": "shipping_remaining_text",
+      "label": "Remaining text",
+      "default": "Spend [amount] more for FREE Shipping!",
+      "info": "[amount] will be replaced with the remaining amount"
+    },
+    {
+      "type": "header",
+      "content": "Recommended Products"
+    },
+    {
+      "type": "text",
+      "id": "recommendations_title",
+      "label": "Heading",
+      "default": "Achieve maximum results with"
+    },
+    {
+      "type": "product_list",
+      "id": "recommended_products",
+      "label": "Products",
+      "info": "Products already in cart are hidden automatically.",
+      "limit": 10
+    },
+    {
+      "type": "header",
+      "content": "Premium Shipping Insurance"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_insurance",
+      "label": "Show insurance toggle",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_add_insurance",
+      "label": "Auto-add insurance on first item",
+      "default": true,
+      "info": "Automatically adds insurance when first product is added. Stays off if customer manually disables it."
+    },
+    {
+      "type": "product",
+      "id": "insurance_product",
+      "label": "Insurance product",
+      "info": "Price is taken from this product"
+    },
+    {
+      "type": "image_picker",
+      "id": "insurance_image",
+      "label": "Insurance icon/image"
+    },
+    {
+      "type": "text",
+      "id": "insurance_title",
+      "label": "Insurance title",
+      "default": "Premium Shipping Insurance"
+    },
+    {
+      "type": "text",
+      "id": "insurance_description",
+      "label": "Insurance description",
+      "default": "Our standard shipping is free, but with this option your order will be insured against: damage, loss, or theft."
+    },
+    {
+      "type": "header",
+      "content": "Checkout"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_checkout_button",
+      "label": "Show checkout button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "checkout_button_label",
+      "label": "Checkout button label",
+      "default": "GO TO CHECKOUT"
+    },
+    {
+      "type": "header",
+      "content": "Payment Icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_1",
+      "label": "Payment icon 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_2",
+      "label": "Payment icon 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_3",
+      "label": "Payment icon 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_4",
+      "label": "Payment icon 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_5",
+      "label": "Payment icon 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_6",
+      "label": "Payment icon 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_7",
+      "label": "Payment icon 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_8",
+      "label": "Payment icon 8"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_9",
+      "label": "Payment icon 9"
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_icon_10",
+      "label": "Payment icon 10"
+    },
+    {
+      "type": "header",
+      "content": "Trust Badges"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trust_badges",
+      "label": "Show trust badges",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trust_badge_1",
+      "label": "Trust badge 1",
+      "default": "90-Day Risk-Free Trial"
+    },
+    {
+      "type": "text",
+      "id": "trust_badge_2",
+      "label": "Trust badge 2",
+      "default": "4.4★ on Trustpilot"
+    }
+  ]
+}
+{% endschema %}

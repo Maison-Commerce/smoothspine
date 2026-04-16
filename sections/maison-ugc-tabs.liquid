@@ -1,0 +1,993 @@
+{% comment %}
+  Section: UGC Tabs
+  Description: CTA banner with heading, description, and button on top.
+    Two tabs below, each containing custom Liquid content.
+    Tabs switch content via Alpine.js.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans', 'Open Sans' — must be loaded by theme
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_ugc-tabs {
+    background-color: {{ section.settings.color_background }};
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_horizontal }}px {{ section.settings.padding_bottom }}px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: {{ section.settings.section_gap }}px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_ugc-tabs *,
+  #shopify-section-{{ section.id }} .maisoncode_ugc-tabs *::before,
+  #shopify-section-{{ section.id }} .maisoncode_ugc-tabs *::after {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  /* CTA Banner */
+  #shopify-section-{{ section.id }} .ugc-tabs-cta {
+    background-color: {{ section.settings.color_cta_bg }};
+    border-radius: 16px;
+    padding: 48px 64px;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 1.4;
+    color: {{ section.settings.color_heading }};
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-desc {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: {{ section.settings.color_heading | color_modify: 'alpha', 0.75 }};
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-btn {
+    flex-shrink: 0;
+    width: 320px;
+    height: 44px;
+    background: {{ section.settings.color_btn_bg }};
+    border: none;
+    border-bottom: 4px solid {{ section.settings.color_btn_border }};
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-btn:hover { opacity: 0.92; }
+
+  #shopify-section-{{ section.id }} .ugc-tabs-cta-btn span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: {{ section.settings.color_btn_text }};
+    white-space: nowrap;
+  }
+
+  /* Tabs row */
+  #shopify-section-{{ section.id }} .ugc-tabs-row {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tab-btn {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid {{ section.settings.color_tab_inactive_border }};
+    background: {{ section.settings.color_tab_inactive_bg }};
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: {{ section.settings.color_tab_inactive_text }};
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-tab-btn.is-active {
+    background: {{ section.settings.color_tab_active_bg }};
+    color: {{ section.settings.color_tab_active_text }};
+    border-color: {{ section.settings.color_tab_active_bg }};
+  }
+
+  /* Tab content */
+  #shopify-section-{{ section.id }} .ugc-tab-content {
+    width: 100%;
+  }
+
+  /* VideoAsk wrapper */
+  #shopify-section-{{ section.id }} .ugc-videoask-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Sub-tabs */
+  #shopify-section-{{ section.id }} .ugc-subtabs-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-subtab-btn {
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(16, 42, 67, 0.15);
+    background: transparent;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: rgba(16, 42, 67, 0.75);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-subtab-btn:hover {
+    border-color: rgba(16, 42, 67, 0.4);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-subtab-btn[data-active="true"] {
+    background: #e5eefb;
+    border-color: #e5eefb;
+    color: #102A43;
+  }
+
+  /* VideoAsk grid */
+  #shopify-section-{{ section.id }} .ugc-videoask {
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask__loading,
+  #shopify-section-{{ section.id }} .ugc-videoask__error {
+    text-align: center;
+    padding: 40px 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: rgba(16, 42, 67, 0.6);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #1a1a1a;
+    transition: transform 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card:hover {
+    transform: scale(1.02);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card__hover-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+    animation: ugcFadeIn-{{ section.id }} 0.25s ease forwards;
+  }
+
+  @keyframes ugcFadeIn-{{ section.id }} {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card:hover .ugc-videoask-card__play,
+  #shopify-section-{{ section.id }} .ugc-videoask-card:hover .ugc-videoask-card__overlay {
+    z-index: 2;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 50%);
+    display: flex;
+    align-items: flex-end;
+    padding: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card__name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #fff;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    transition: background 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card:hover .ugc-videoask-card__play {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  #shopify-section-{{ section.id }} .ugc-videoask-card__play svg {
+    width: 20px;
+    height: 20px;
+    margin-left: 2px;
+  }
+
+  /* Fullscreen modal */
+  .ugc-videoask-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .ugc-videoask-modal[hidden] { display: none; }
+
+  .ugc-videoask-modal__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: background 0.2s;
+  }
+
+  .ugc-videoask-modal__close:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .ugc-videoask-modal__video {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: 90vh;
+    aspect-ratio: 9 / 16;
+    border-radius: 12px;
+    background: #000;
+  }
+
+  /* Tablet */
+  @media (max-width: 1199px) {
+    #shopify-section-{{ section.id }} .ugc-videoask__grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (max-width: 949px) {
+    #shopify-section-{{ section.id }} .ugc-videoask__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+  }
+
+  /* Mobile */
+  @media (max-width: 949px) {
+    #shopify-section-{{ section.id }} .maisoncode_ugc-tabs {
+      padding: {{ section.settings.padding_top_mobile }}px {{ section.settings.padding_horizontal_mobile }}px {{ section.settings.padding_bottom_mobile }}px;
+      gap: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-tabs-cta {
+      flex-direction: column;
+      padding: 20px;
+      gap: 24px;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-tabs-cta-btn {
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-tabs-row {
+      gap: 16px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-tabs-row::-webkit-scrollbar { display: none; }
+
+    #shopify-section-{{ section.id }} .ugc-tab-btn {
+      flex: 0 0 auto;
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-videoask__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .ugc-videoask-card__name {
+      font-size: 12px;
+    }
+
+    .ugc-videoask-modal__video {
+      height: auto;
+      max-height: 85vh;
+      width: 100%;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_ugc-tabs" x-data="{ activeTab: {{ section.settings.default_tab | default: 0 }} }">
+
+  {%- comment -%} CTA Banner {%- endcomment -%}
+  {% if section.settings.show_cta %}
+    <div class="ugc-tabs-cta">
+      <div class="ugc-tabs-cta-content">
+        {% if section.settings.cta_heading != blank %}
+          <h2 class="ugc-tabs-cta-heading">{{ section.settings.cta_heading }}</h2>
+        {% endif %}
+        {% if section.settings.cta_description != blank %}
+          <p class="ugc-tabs-cta-desc">{{ section.settings.cta_description }}</p>
+        {% endif %}
+      </div>
+      {% if section.settings.cta_button_label != blank %}
+        <a
+          {% if section.settings.cta_button_link != blank %}href="{{ section.settings.cta_button_link }}"{% endif %}
+          class="ugc-tabs-cta-btn"
+        >
+          <span>{{ section.settings.cta_button_label }}</span>
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {%- comment -%} Tabs row {%- endcomment -%}
+  {%- if section.settings.tab_1_label != blank or section.settings.tab_2_label != blank -%}
+    <div class="ugc-tabs-row">
+      {%- if section.settings.tab_1_label != blank -%}
+        <button type="button" class="ugc-tab-btn" :class="{ 'is-active': activeTab === 0 }" @click="activeTab = 0">{{ section.settings.tab_1_label }}</button>
+      {%- endif -%}
+      {%- if section.settings.tab_2_label != blank -%}
+        <button type="button" class="ugc-tab-btn" :class="{ 'is-active': activeTab === 1 }" @click="activeTab = 1">{{ section.settings.tab_2_label }}</button>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} Tab 1 Content (Liquid only) {%- endcomment -%}
+  <div class="ugc-tab-content" x-show="activeTab === 0" x-effect="if (activeTab === 0) setTimeout(() => window.dispatchEvent(new Event('resize')), 100)">
+    {{ section.settings.tab_1_content }}
+  </div>
+
+  {%- comment -%} Tab 2 Content (VideoAsk with sub-tabs OR Liquid fallback) {%- endcomment -%}
+  {%- assign has_any_videoask = false -%}
+  <div class="ugc-tab-content" x-show="activeTab === 1" x-effect="if (activeTab === 1) setTimeout(() => window.dispatchEvent(new Event('resize')), 100)">
+    {%- if section.settings.tab_2_use_videoask -%}
+      {%- assign has_any_videoask = true -%}
+      <div class="ugc-videoask-wrap">
+        {%- comment -%} Sub-tabs {%- endcomment -%}
+        {%- assign sub_labels_str = '' -%}
+        {%- assign sub_tags_str = '' -%}
+        {%- for i in (1..4) -%}
+          {%- assign sub_label_key = 'sub_tab_' | append: i | append: '_label' -%}
+          {%- assign sub_label = section.settings[sub_label_key] -%}
+          {%- if sub_label != blank -%}
+            {%- assign sub_tag_key = 'sub_tab_' | append: i | append: '_tag' -%}
+            {%- assign sub_tag = section.settings[sub_tag_key] -%}
+            {%- assign sub_labels_str = sub_labels_str | append: sub_label | append: '|||' -%}
+            {%- assign sub_tags_str = sub_tags_str | append: sub_tag | append: '|||' -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- assign sub_labels = sub_labels_str | split: '|||' -%}
+        {%- assign sub_tags = sub_tags_str | split: '|||' -%}
+
+        {%- if sub_labels.size > 0 -%}
+          <div class="ugc-subtabs-row">
+            {%- for sub_label in sub_labels -%}
+              <button
+                type="button"
+                class="ugc-subtab-btn"
+                data-subtab-tag="{{ sub_tags[forloop.index0] }}"
+                {% if forloop.first %}data-active="true"{% endif %}
+              >{{ sub_label }}</button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div
+          class="ugc-videoask"
+          data-videoask-url="{{ section.settings.videoask_worker_url }}"
+          data-videoask-tag="{{ sub_tags[0] | default: '' }}"
+        >
+          <div class="ugc-videoask__loading">Loading testimonials…</div>
+          <div class="ugc-videoask__grid" hidden></div>
+          <div class="ugc-videoask__error" hidden>Could not load testimonials.</div>
+        </div>
+      </div>
+    {%- else -%}
+      {{ section.settings.tab_2_content }}
+    {%- endif -%}
+  </div>
+
+  {%- if has_any_videoask -%}
+    {%- comment -%} Fullscreen video modal (single, shared) {%- endcomment -%}
+    <div class="ugc-videoask-modal" hidden role="dialog" aria-modal="true" aria-label="Video testimonial">
+      <button type="button" class="ugc-videoask-modal__close" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 6L18 18M6 18L18 6" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <video class="ugc-videoask-modal__video" controls playsinline></video>
+    </div>
+  {%- endif -%}
+
+</section>
+
+<script>
+  (function() {
+    var section = document.getElementById('shopify-section-{{ section.id }}');
+    if (!section) return;
+
+    var containers = section.querySelectorAll('.ugc-videoask');
+    var modal = section.querySelector('.ugc-videoask-modal');
+    if (containers.length === 0 || !modal) return;
+
+    var modalVideo = modal.querySelector('.ugc-videoask-modal__video');
+    var modalClose = modal.querySelector('.ugc-videoask-modal__close');
+
+    // Move modal to body to escape any transform/contain stacking context
+    if (modal.parentNode !== document.body) {
+      document.body.appendChild(modal);
+    }
+
+    function escapeHtml(s) {
+      var d = document.createElement('div');
+      d.textContent = s || '';
+      return d.innerHTML;
+    }
+
+    function openModal(videoUrl) {
+      modalVideo.src = videoUrl;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      modalVideo.play().catch(function() {});
+    }
+
+    function closeModal() {
+      modal.hidden = true;
+      modalVideo.pause();
+      modalVideo.removeAttribute('src');
+      modalVideo.load();
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    // Shared cache: fetch reviews once, share across all containers
+    var reviewsPromise = null;
+    function getReviews(workerUrl) {
+      if (!reviewsPromise) {
+        reviewsPromise = fetch(workerUrl, { cache: 'default' })
+          .then(function(r) {
+            if (!r.ok) throw new Error('HTTP ' + r.status);
+            return r.json();
+          })
+          .then(function(d) { return (d && d.reviews) || []; });
+      }
+      return reviewsPromise;
+    }
+
+    function initContainer(container) {
+      var loadingEl = container.querySelector('.ugc-videoask__loading');
+      var gridEl = container.querySelector('.ugc-videoask__grid');
+      var errorEl = container.querySelector('.ugc-videoask__error');
+      var workerUrl = container.dataset.videoaskUrl;
+      var allReviews = [];
+      var loaded = false;
+
+      // Find sub-tabs (sibling, in the same .ugc-videoask-wrap)
+      var wrap = container.closest('.ugc-videoask-wrap');
+      var subTabBtns = wrap ? wrap.querySelectorAll('.ugc-subtab-btn') : [];
+
+      function renderGrid(reviews) {
+        if (reviews.length === 0) {
+          gridEl.hidden = true;
+          errorEl.hidden = false;
+          errorEl.textContent = 'No testimonials yet.';
+          return;
+        }
+        errorEl.hidden = true;
+        var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        var html = reviews.map(function(r) {
+          var thumb = r.thumbnail || '';
+          return '<div class="ugc-videoask-card" data-video="' + escapeHtml(r.video_url) + '" data-thumb="' + escapeHtml(thumb) + '">'
+            + '<img class="ugc-videoask-card__media" src="' + escapeHtml(thumb) + '" alt="' + escapeHtml(r.name) + '" loading="lazy">'
+            + '<div class="ugc-videoask-card__play">'
+            +   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>'
+            + '</div>'
+            + '<div class="ugc-videoask-card__overlay">'
+            +   '<div class="ugc-videoask-card__name">' + escapeHtml(r.name) + '</div>'
+            + '</div>'
+            + '</div>';
+        }).join('');
+        gridEl.innerHTML = html;
+        gridEl.hidden = false;
+
+        gridEl.querySelectorAll('.ugc-videoask-card').forEach(function(card) {
+          card.addEventListener('click', function() {
+            openModal(card.dataset.video);
+          });
+
+          // Hover-to-play preview (desktop only)
+          if (canHover) {
+            var hoverVideo = null;
+            var hoverTimer = null;
+
+            card.addEventListener('mouseenter', function() {
+              hoverTimer = setTimeout(function() {
+                if (hoverVideo) return;
+                hoverVideo = document.createElement('video');
+                hoverVideo.src = card.dataset.video;
+                hoverVideo.muted = true;
+                hoverVideo.loop = true;
+                hoverVideo.playsInline = true;
+                hoverVideo.preload = 'auto';
+                hoverVideo.className = 'ugc-videoask-card__hover-video';
+                card.appendChild(hoverVideo);
+                hoverVideo.play().catch(function() {});
+              }, 200);
+            });
+
+            card.addEventListener('mouseleave', function() {
+              clearTimeout(hoverTimer);
+              if (hoverVideo) {
+                hoverVideo.pause();
+                hoverVideo.remove();
+                hoverVideo = null;
+              }
+            });
+          }
+        });
+      }
+
+      function applyTagFilter(tag) {
+        var t = (tag || '').trim().toLowerCase();
+        var filtered = allReviews;
+        if (t) {
+          filtered = allReviews.filter(function(r) {
+            return (r.tags || []).some(function(rt) { return (rt || '').toLowerCase() === t; });
+          });
+        }
+        renderGrid(filtered);
+      }
+
+      function load() {
+        if (loaded) return;
+        loaded = true;
+        getReviews(workerUrl)
+          .then(function(reviews) {
+            allReviews = reviews;
+            loadingEl.hidden = true;
+            applyTagFilter(container.dataset.videoaskTag || '');
+          })
+          .catch(function(err) {
+            console.error('[VideoAsk]', err);
+            loadingEl.hidden = true;
+            errorEl.hidden = false;
+          });
+      }
+
+      // Sub-tab click handlers
+      subTabBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          subTabBtns.forEach(function(b) { b.removeAttribute('data-active'); });
+          btn.setAttribute('data-active', 'true');
+          var tag = btn.dataset.subtabTag || '';
+          container.dataset.videoaskTag = tag;
+          if (loaded) {
+            applyTagFilter(tag);
+          } else {
+            load();
+          }
+        });
+      });
+
+      // Prefetch reviews immediately on page load (don't wait for tab visibility).
+      // Multiple containers share one fetch via getReviews() promise cache.
+      load();
+    }
+
+    containers.forEach(initContainer);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "UGC Tabs",
+  "tag": "section",
+  "class": "ugc-tabs-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "CTA Banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA banner",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA heading",
+      "default": "Be an inspiration for others"
+    },
+    {
+      "type": "text",
+      "id": "cta_description",
+      "label": "CTA description",
+      "default": "Click the button below and share your story!"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_label",
+      "label": "CTA button label",
+      "default": "SHARE YOUR STORY"
+    },
+    {
+      "type": "url",
+      "id": "cta_button_link",
+      "label": "CTA button link"
+    },
+    {
+      "type": "header",
+      "content": "VideoAsk (global)"
+    },
+    {
+      "type": "text",
+      "id": "videoask_worker_url",
+      "label": "VideoAsk Worker URL",
+      "info": "Shared by all VideoAsk-enabled tabs",
+      "default": "https://smoothspine-videoask.choojiie.workers.dev/reviews"
+    },
+    {
+      "type": "header",
+      "content": "Tabs behavior"
+    },
+    {
+      "type": "select",
+      "id": "default_tab",
+      "label": "Default active tab",
+      "options": [
+        { "value": "0", "label": "Tab 1" },
+        { "value": "1", "label": "Tab 2" }
+      ],
+      "default": "0"
+    },
+    {
+      "type": "header",
+      "content": "Tab 1"
+    },
+    {
+      "type": "text",
+      "id": "tab_1_label",
+      "label": "Tab 1 label",
+      "default": "All Products"
+    },
+    {
+      "type": "liquid",
+      "id": "tab_1_content",
+      "label": "Tab 1 content (Liquid)"
+    },
+    {
+      "type": "header",
+      "content": "Tab 2"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_label",
+      "label": "Tab 2 label",
+      "default": "Customer Stories"
+    },
+    {
+      "type": "checkbox",
+      "id": "tab_2_use_videoask",
+      "label": "Use VideoAsk for Tab 2",
+      "info": "When enabled, fetches reviews from Worker. Sub-tabs below will appear above the grid.",
+      "default": false
+    },
+    {
+      "type": "liquid",
+      "id": "tab_2_content",
+      "label": "Tab 2 content (Liquid) — used when VideoAsk disabled"
+    },
+    {
+      "type": "header",
+      "content": "Tab 2 — Sub-tabs (filter by tag)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Each sub-tab filters videos by VideoAsk tag. Leave 'tag' empty to show all videos."
+    },
+    {
+      "type": "text",
+      "id": "sub_tab_1_label",
+      "label": "Sub-tab 1 label",
+      "default": "All Products"
+    },
+    {
+      "type": "text",
+      "id": "sub_tab_1_tag",
+      "label": "Sub-tab 1 tag filter"
+    },
+    {
+      "type": "text",
+      "id": "sub_tab_2_label",
+      "label": "Sub-tab 2 label",
+      "default": "Foot Pain"
+    },
+    {
+      "type": "text",
+      "id": "sub_tab_2_tag",
+      "label": "Sub-tab 2 tag filter",
+      "default": "Foot Pain"
+    },
+    {
+      "type": "text",
+      "id": "sub_tab_3_label",
+      "label": "Sub-tab 3 label",
+      "default": "Neck Pain"
+    },
+    {
+      "type": "text",
+      "id": "sub_tab_3_tag",
+      "label": "Sub-tab 3 tag filter",
+      "default": "Neck Pain"
+    },
+    {
+      "type": "text",
+      "id": "sub_tab_4_label",
+      "label": "Sub-tab 4 label",
+      "default": "Back Pain"
+    },
+    {
+      "type": "text",
+      "id": "sub_tab_4_tag",
+      "label": "Sub-tab 4 tag filter",
+      "default": "Back Pain"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Section background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_cta_bg",
+      "label": "CTA banner background",
+      "default": "#E5EEFB"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading color",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_bg",
+      "label": "Button background",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_border",
+      "label": "Button border",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_text",
+      "label": "Button text",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_active_bg",
+      "label": "Active tab background",
+      "default": "#424140"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_active_text",
+      "label": "Active tab text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_inactive_bg",
+      "label": "Inactive tab background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_inactive_text",
+      "label": "Inactive tab text",
+      "default": "#34393D"
+    },
+    {
+      "type": "color",
+      "id": "color_tab_inactive_border",
+      "label": "Inactive tab border",
+      "default": "#FEFEFD"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "section_gap",
+      "label": "Section gap",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "UGC Tabs"
+    }
+  ]
+}
+{% endschema %}

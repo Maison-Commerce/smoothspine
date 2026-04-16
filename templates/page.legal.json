@@ -1,0 +1,338 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "maison_legal_banner_GWt8Xq": {
+      "type": "maison-legal-banner",
+      "name": "About Page Header",
+      "settings": {
+        "heading": "<p>{{ page.title }}</p>",
+        "description": "This page contains important legal information governing the use of our website, privacy policy, return policy, and other aspects of cooperation.",
+        "color_background": "#f8f4ee",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43",
+        "body_text_opacity": 75,
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "body_font_size": 18,
+        "body_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "content_gap": 32,
+        "title_gap": 16,
+        "title_gap_mobile": 12,
+        "max_width": 1400,
+        "max_width_text": 600,
+        "max_width_description": 545
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "maison_faq_tabs_HALcrR": {
+      "type": "maison-faq-tabs",
+      "blocks": {
+        "tab_item_Tim7Vp": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Terms of service",
+            "link": "shopify://pages/terms-of-service"
+          }
+        },
+        "tab_item_w4pNR3": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Privacy Policy",
+            "link": "shopify://pages/privacy-policy"
+          }
+        },
+        "tab_item_6aB7xr": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Return Policy",
+            "link": "shopify://pages/refund-policy"
+          }
+        },
+        "tab_item_jG8Qh7": {
+          "type": "tab_item",
+          "settings": {
+            "label": "Shipping & Delivery",
+            "link": "shopify://pages/shipping-policy"
+          }
+        }
+      },
+      "block_order": [
+        "tab_item_Tim7Vp",
+        "tab_item_w4pNR3",
+        "tab_item_6aB7xr",
+        "tab_item_jG8Qh7"
+      ],
+      "settings": {
+        "subtitle": "",
+        "nav_aria_label": "FAQ categories",
+        "color_background": "#fdfcfa",
+        "color_tab_bg": "#f8f4ee",
+        "color_tab_border": "#fefefd",
+        "color_text_secondary": "#4a5d6e",
+        "color_tab_text": "#34393d",
+        "color_tab_hover_bg": "#f0e9df",
+        "color_tab_active_bg": "#ece4d6",
+        "color_tab_active_border": "#d5c9b5",
+        "subtitle_font_size": 18,
+        "subtitle_font_size_mobile": 16,
+        "tab_label_font_size": 12,
+        "tab_label_font_size_mobile": 11,
+        "tab_letter_spacing": 1,
+        "tab_letter_spacing_mobile": 1,
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 16,
+        "section_gap": 24,
+        "section_gap_mobile": 16,
+        "tab_gap": 16,
+        "tab_gap_mobile": 12,
+        "tab_border_radius": 8,
+        "tab_height": 44,
+        "tab_height_mobile": 40,
+        "tab_padding_vertical": 12,
+        "tab_padding_horizontal": 16,
+        "tab_padding_vertical_mobile": 10,
+        "tab_padding_horizontal_mobile": 12,
+        "mobile_columns": 2,
+        "max_width": 1400
+      }
+    },
+    "maison_legal_content_QyYU7L": {
+      "type": "maison-legal-content",
+      "name": "Legal Content",
+      "settings": {
+        "color_background": "#fdfcfa",
+        "color_text": "#1b1f1d",
+        "body_font_size": 16,
+        "body_font_size_mobile": 16,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "max_width": 1400,
+        "content_max_width": 600
+      }
+    },
+    "maison_offer_auth_KVBRzz": {
+      "type": "maison-offer-auth",
+      "blocks": {
+        "checklist_item_yRpE9W": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "90-Day Results or Refund Guarantee"
+          }
+        },
+        "checklist_item_76diF7": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "60% OFF - SmoothSpine Massager (All-Inclusive treatment kit)"
+          }
+        },
+        "checklist_item_CWV9i8": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Fast & FREE Shipping"
+          }
+        },
+        "gift_item_pNEceW": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $29",
+            "image": "shopify://shop_images/dc43829b1674bae58a96a2b9dbbd09fbe430dfc2.png",
+            "label": "Back pain & Sciatica Guide"
+          }
+        },
+        "gift_item_BCb7my": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $20",
+            "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
+            "label": "12x Back Pain Relief Patches"
+          }
+        },
+        "gift_item_GgJA64": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $15",
+            "image": "shopify://shop_images/gsejnjn3gn4knf_egegh.png",
+            "label": "Zip Lock Travel Bag"
+          }
+        },
+        "endorsement_WNwzXV": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Blane Schilling",
+            "title": "Endorsed by Dr. Blane Schilling",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "After 18 years treating patients with chronic back pain and sciatica, I know one thing for certain: recovery happens at home, not in a clinic.\n\nThe SmoothSpine Triple Fusion Massager is the first at-home device I recommend with confidence — it combines decompression, massage, and heat in a single 15-minute session, and for patients dealing with nerve compression, disc stiffness, or that locked-up morning feeling, it genuinely fills the gap between clinical visits and daily relief.",
+            "author_name": "Dr. Blane Schilling",
+            "author_role": "Licensed Physical Therapist",
+            "image": "shopify://shop_images/5c0b920f0ebab86769e2a7b32aa4f3b4b82fe02b.png"
+          }
+        },
+        "endorsement_7yE7ea": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Adam Story",
+            "title": "Endorsed by Dr. Adam Story",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "As a chiropractor, I've seen how daily spinal decompression and targeted heat therapy can accelerate recovery. The SmoothSpine Massager delivers exactly that — conveniently at home.",
+            "author_name": "Dr. Adam Story",
+            "author_role": "Licensed Chiropractor"
+          }
+        },
+        "trust_item_eApacG": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Shipment-Return--Streamline-Flex.svg",
+            "heading": "90-DAY MONEY BACK GUARANTEE",
+            "description": "If you're not thrilled, we will refund your investment. No hassle."
+          }
+        },
+        "trust_item_rhz84m": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Transfer-Van--Streamline-Flex.svg",
+            "heading": "FREE SHIPPING",
+            "description": "We provide fast shipping on all orders. Enjoy free shipping on orders over $60."
+          }
+        },
+        "trust_item_hm3Wce": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Warranty-Badge-Highlight--Streamline-Flex.svg",
+            "heading": "GUARANTEED HIGH QUALITY",
+            "description": "Made of high quality materials. Enjoy consistent, trouble-free performance for a long time."
+          }
+        }
+      },
+      "block_order": [
+        "checklist_item_yRpE9W",
+        "checklist_item_76diF7",
+        "checklist_item_CWV9i8",
+        "gift_item_pNEceW",
+        "gift_item_BCb7my",
+        "gift_item_GgJA64",
+        "endorsement_WNwzXV",
+        "endorsement_7yE7ea",
+        "trust_item_eApacG",
+        "trust_item_rhz84m",
+        "trust_item_hm3Wce"
+      ],
+      "name": "Offer Authority Trust",
+      "settings": {
+        "show_offer_block": false,
+        "show_rating_badge": true,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_badge": true,
+        "offer_heading": "<span style=\"text-decoration:underline\"><em>Special Offer</em></span> On Now!",
+        "offer_subtext": "Try Your SmoothSpine Massager NOW <span style=\"text-decoration:underline\">Risk-Free</span> at an All Time Low Price! Act Now and You'll Get:",
+        "gifts_heading": "Exclusive Offer! Order today for free gifts (valued at $64)!",
+        "cta_label": "GET 60% OFF TODAY ONLY!",
+        "cta_link": "",
+        "show_cta_note": true,
+        "cta_note": "Note: Not Available on Amazon or eBay",
+        "offer_image": "shopify://shop_images/e145c8657a0ce71caabd4bdcd69218a3f7cd9ff7.png",
+        "show_authority_block": false,
+        "show_trust_block": true,
+        "wave_authority_to_trust": "shopify://shop_images/banner-wave-top.svg",
+        "wave_top_trust": "shopify://shop_images/banner-wave-bottom.svg",
+        "color_bg_outer": "#fdfcfa",
+        "color_bg_offer": "#f8f4ee",
+        "color_bg_authority": "#f8f4ee",
+        "color_bg_trust": "#e5eefb",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_highlight": "#f07e3b",
+        "color_accent": "#065bdc",
+        "color_divider": "#424140",
+        "color_btn_bg": "#f07e3b",
+        "color_btn_border": "#bf642f",
+        "color_btn_text": "#fffcfb",
+        "color_gift_bg": "#eeeae5",
+        "color_gift_border": "#065bdc",
+        "color_gift_badge_bg": "#065bdc",
+        "color_gift_badge_text": "#fafcfe",
+        "color_trust_icon_bg": "#fafcfe",
+        "color_trust_icon_border": "#065bdc",
+        "color_trust_divider": "#c5c2bd",
+        "color_tab_active": "#065bdc",
+        "color_expert_badge": "#065bdc",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 26,
+        "subtext_font_size": 18,
+        "subtext_font_size_mobile": 16,
+        "checklist_font_size": 16,
+        "endorsement_title_font_size": 24,
+        "endorsement_title_font_size_mobile": 20,
+        "quote_font_size": 18,
+        "quote_font_size_mobile": 16,
+        "trust_heading_font_size": 18,
+        "trust_body_font_size": 14,
+        "btn_font_size": 16,
+        "badge_font_size": 10,
+        "tab_font_size": 14,
+        "tab_font_size_mobile": 12,
+        "rating_font_size": 12,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "padding_x": 80,
+        "padding_x_mobile": 16,
+        "max_width": 1280,
+        "block_padding_x": 64,
+        "block_padding_y": 48,
+        "column_gap": 64,
+        "offer_radius_tl": 16,
+        "offer_radius_tr": 16,
+        "offer_radius_br": 0,
+        "offer_radius_bl": 16,
+        "auth_radius_tl": 16,
+        "auth_radius_tr": 16,
+        "auth_radius_br": 0,
+        "auth_radius_bl": 16,
+        "trust_radius_tl": 0,
+        "trust_radius_tr": 16,
+        "trust_radius_br": 16,
+        "trust_radius_bl": 16,
+        "image_border_radius": 8,
+        "btn_border_radius": 8,
+        "gift_border_radius": 8,
+        "trust_icon_border_radius": 8
+      }
+    }
+  },
+  "order": [
+    "maison_legal_banner_GWt8Xq",
+    "main",
+    "maison_faq_tabs_HALcrR",
+    "maison_legal_content_QyYU7L",
+    "maison_offer_auth_KVBRzz"
+  ]
+}

@@ -60,9 +60,38 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     <script type="module" src="{{ 'vendor.min.js' | asset_url }}"></script>
     <script type="module" src="{{ 'theme.js' | asset_url }}"></script>
 
+    <script>
+      /* Block SlideCart app */
+      Object.defineProperty(window, 'SlideCart', { value: null, writable: false, configurable: false });
+      (function() {
+        var origCreate = document.createElement;
+        document.createElement = function(tag) {
+          var el = origCreate.apply(this, arguments);
+          if (tag === 'script') {
+            var origSet = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src').set;
+            Object.defineProperty(el, 'src', {
+              set: function(v) {
+                if (v && v.indexOf('slidecarthq') !== -1) return;
+                origSet.call(this, v);
+              },
+              get: function() { return this.getAttribute('src'); }
+            });
+          }
+          return el;
+        };
+      })();
+    </script>
     {{ content_for_header }}
 
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
+    <script src="https://qa.maison.dev/QA.js"></script> 
+
+    <script>
+        (function(w,d,s,r,n){w.TrustpilotObject=n;w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)};
+            a=d.createElement(s);a.async=1;a.src=r;a.type='text/java'+s;f=d.getElementsByTagName(s)[0];
+            f.parentNode.insertBefore(a,f)})(window,document,'script', 'https://invitejs.trustpilot.com/tp.min.js', 'tp');
+            tp('register', '2hZ7FmdOlHvANwEt');
+    </script>
   </head>
 
   <body class="{% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}">
@@ -105,5 +134,7 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         {%- sections 'footer-group' -%}
       {%- endif -%}
     </main>
+    {% render 'maison-scroll-animations' %}
+    {% render 'maison-trustpilot-script' %}
   </body>
 </html>

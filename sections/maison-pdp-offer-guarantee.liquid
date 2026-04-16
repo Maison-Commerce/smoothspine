@@ -1,0 +1,1478 @@
+{% comment %}
+  Section: PDP Offer + Guarantee
+  Description: Two-block section connected by wave dividers:
+    1. Offer Block — Two-column layout with Trustpilot badge, heading, description,
+       checklist, free gifts (product picker with compare_at_price badge), CTA button,
+       and note row alongside a product image.
+    2. Guarantee Block — Two-column layout with guarantee badge image, heading,
+       and body copy.
+    Sections are visually connected via decorative wave dividers.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings), 'Open Sans' (body) — must be loaded by theme
+
+  Blocks:
+  - check_item: Offer checklist item with checkmark icon and text (limit: 8)
+  - gift_item: Free gift card with product picker, custom image/name override (limit: 6)
+
+  Notes:
+  - Wave divider images between blocks use image_picker settings
+  - Gift badge shows compare_at_price from gift product; custom image/name override product data
+  - Gifts total value auto-calculated from sum of compare_at_price
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_pdp-offer-guarantee
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_pdp-offer-guarantee {
+    --s-color-bg-outer: {{ section.settings.color_bg_outer }};
+    --s-color-bg-offer: {{ section.settings.color_bg_offer }};
+    --s-color-bg-guarantee: {{ section.settings.color_bg_guarantee }};
+    --s-color-text-primary: {{ section.settings.color_text_primary }};
+    --s-color-text-secondary: {{ section.settings.color_text_primary | color_modify: 'alpha', 0.75 }};
+    --s-color-accent-orange: {{ section.settings.color_accent_orange }};
+    --s-color-accent-orange-dark: {{ section.settings.color_accent_orange_dark }};
+    --s-color-accent-blue: {{ section.settings.color_accent_blue }};
+    --s-color-btn-bg: {{ section.settings.color_btn_bg }};
+    --s-color-btn-border: {{ section.settings.color_btn_border }};
+    --s-color-btn-text: {{ section.settings.color_btn_text }};
+    --s-color-gift-bg: {{ section.settings.color_gift_bg }};
+    --s-color-gift-border: {{ section.settings.color_gift_border }};
+    --s-color-gift-badge-strike: {{ section.settings.color_gift_badge_strike }};
+    --s-color-gift-badge-bg: {{ section.settings.color_gift_badge_bg }};
+    --s-color-gift-badge-text: {{ section.settings.color_gift_badge_text }};
+    --s-color-divider: {{ section.settings.color_divider }};
+
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+
+    --s-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --s-font-size-description: {{ section.settings.description_font_size }}px;
+    --s-font-size-checklist: {{ section.settings.checklist_font_size }}px;
+    --s-font-size-btn: {{ section.settings.btn_font_size }}px;
+    --s-font-size-rating: {{ section.settings.rating_font_size }}px;
+    --s-font-size-guarantee-title: {{ section.settings.guarantee_title_font_size }}px;
+    --s-font-size-guarantee-body: {{ section.settings.guarantee_body_font_size }}px;
+
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-x: {{ section.settings.padding_x }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+    --s-block-padding-x: {{ section.settings.block_padding_x }}px;
+    --s-block-padding-y: {{ section.settings.block_padding_y }}px;
+    --s-column-gap: {{ section.settings.column_gap }}px;
+    --s-radius-image: {{ section.settings.image_border_radius }}px;
+    --s-radius-btn: {{ section.settings.btn_border_radius }}px;
+    --s-radius-gift: {{ section.settings.gift_border_radius }}px;
+    --s-guarantee-image-size: {{ section.settings.guarantee_image_size }}px;
+
+    box-sizing: border-box;
+    background: var(--s-color-bg-outer);
+    padding: var(--s-padding-top) var(--s-padding-x) var(--s-padding-bottom);
+    font-family: var(--s-font-body);
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_pdp-offer-guarantee *,
+  #shopify-section-{{ section.id }} .maisoncode_pdp-offer-guarantee *::before,
+  #shopify-section-{{ section.id }} .maisoncode_pdp-offer-guarantee *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .og-inner {
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* === OFFER BLOCK === */
+  #shopify-section-{{ section.id }} .og-offer-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .og-offer {
+    background: var(--s-color-bg-offer);
+    border-radius: 16px 16px 0 16px;
+    padding: var(--s-block-padding-y) var(--s-block-padding-x);
+    display: flex;
+    gap: var(--s-column-gap);
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .og-offer-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .og-offer-top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .og-offer-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Trustpilot badge row */
+  #shopify-section-{{ section.id }} .og-badge-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .og-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .og-stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .og-rating-text {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-rating);
+    line-height: 1.5;
+    color: #111;
+  }
+
+  #shopify-section-{{ section.id }} .og-rating-text a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .og-trustpilot {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .og-trustpilot svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  #shopify-section-{{ section.id }} .og-trustpilot span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-rating);
+    line-height: 1.5;
+    color: #111;
+  }
+
+  /* Heading */
+  #shopify-section-{{ section.id }} .og-heading {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-heading);
+    line-height: 1.4;
+    color: var(--s-color-text-primary);
+    text-transform: capitalize;
+    max-width: 500px;
+  }
+
+  #shopify-section-{{ section.id }} .og-heading em {
+    color: var(--s-color-accent-orange);
+    text-decoration: underline;
+    font-style: normal;
+  }
+
+  /* Description */
+  #shopify-section-{{ section.id }} .og-description {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-description);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .og-description u {
+    text-decoration: underline;
+  }
+
+  /* Divider */
+  #shopify-section-{{ section.id }} .og-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--s-color-divider);
+    opacity: 0.1;
+  }
+
+  /* Checklist */
+  #shopify-section-{{ section.id }} .og-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+  }
+
+  #shopify-section-{{ section.id }} .og-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .og-checklist li svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .og-checklist li span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-checklist);
+    line-height: 1.5;
+    color: var(--s-color-text-primary);
+  }
+
+  /* Gifts */
+  #shopify-section-{{ section.id }} .og-gifts-heading {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--s-color-text-primary);
+    text-align: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .og-gifts-row {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .og-gift-card {
+    flex: 1;
+    background: var(--s-color-gift-bg);
+    border: 1px dashed var(--s-color-gift-border);
+    border-radius: var(--s-radius-gift);
+    padding: 20px 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .og-gift-card img.og-gift-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .og-gift-card .og-gift-placeholder {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.3;
+  }
+
+  #shopify-section-{{ section.id }} .og-gift-card .og-gift-placeholder svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  #shopify-section-{{ section.id }} .og-gift-label {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--s-color-text-primary);
+    text-align: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .og-gift-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--s-color-gift-badge-bg);
+    border-radius: 4px;
+    padding: 2px 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .og-gift-badge svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .og-gift-badge span {
+    font-family: var(--s-font-body);
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--s-color-gift-badge-text);
+  }
+
+  #shopify-section-{{ section.id }} .og-gift-badge {
+    color: var(--s-color-gift-badge-strike);
+    font-family: var(--s-font-body);
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  /* CTA */
+  #shopify-section-{{ section.id }} .og-cta-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .og-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 56px;
+    background: var(--s-color-btn-bg);
+    border: none;
+    border-bottom: 4px solid var(--s-color-btn-border);
+    border-radius: var(--s-radius-btn);
+    padding: 16px 32px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .og-cta-btn span {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-btn);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--s-color-btn-text);
+  }
+
+  #shopify-section-{{ section.id }} .og-cta-btn:hover {
+    opacity: 0.92;
+  }
+
+  /* Note */
+  #shopify-section-{{ section.id }} .og-note {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .og-note svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .og-note span {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--s-color-text-primary);
+  }
+
+  /* Offer image */
+  #shopify-section-{{ section.id }} .og-offer-image {
+    flex: 1;
+    aspect-ratio: 1;
+    border-radius: var(--s-radius-image);
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .og-offer-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .og-offer-image .og-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8d5c4 0%, #f0e6da 50%, #d4bfae 100%);
+  }
+
+  #shopify-section-{{ section.id }} .og-offer-image .og-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+    color: var(--s-color-text-secondary);
+  }
+
+  /* === WAVE CONNECTOR === */
+  #shopify-section-{{ section.id }} .og-wave {
+    width: 100%;
+    display: block;
+    line-height: 0;
+  }
+
+  #shopify-section-{{ section.id }} .og-wave img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 510/14;
+  }
+
+  #shopify-section-{{ section.id }} .og-wave--bottom {
+    position: relative;
+    top: -2px;
+  }
+
+  #shopify-section-{{ section.id }} .og-wave--top {
+    position: relative;
+    top: 2px;
+  }
+
+  /* === GUARANTEE BLOCK === */
+  #shopify-section-{{ section.id }} .og-guarantee-wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #shopify-section-{{ section.id }} .og-guarantee {
+    background: var(--s-color-bg-guarantee);
+    border-radius: 0 16px 16px 16px;
+    padding: var(--s-block-padding-y) var(--s-block-padding-x);
+    display: flex;
+    gap: var(--s-column-gap);
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .og-guarantee-image {
+    width: var(--s-guarantee-image-size);
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .og-guarantee-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .og-guarantee-image .og-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #c4d5e8 0%, #dae6f0 50%, #aebfd4 100%);
+    border-radius: 50%;
+  }
+
+  #shopify-section-{{ section.id }} .og-guarantee-image .og-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .og-guarantee-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 600px;
+  }
+
+  #shopify-section-{{ section.id }} .og-guarantee-title {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-guarantee-title);
+    line-height: 1.4;
+    text-transform: capitalize;
+    color: var(--s-color-accent-blue);
+  }
+
+  #shopify-section-{{ section.id }} .og-guarantee-title em {
+    color: var(--s-color-text-primary);
+    font-style: normal;
+  }
+
+  #shopify-section-{{ section.id }} .og-guarantee-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .og-guarantee-body p {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-guarantee-body);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .og-guarantee-body strong {
+    font-weight: 700;
+    color: var(--s-color-text-secondary);
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 949px) {
+    #shopify-section-{{ section.id }} .maisoncode_pdp-offer-guarantee {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-padding-x: {{ section.settings.padding_x_mobile }}px;
+      --s-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
+      --s-font-size-description: {{ section.settings.description_font_size_mobile }}px;
+      --s-font-size-checklist: {{ section.settings.checklist_font_size_mobile }}px;
+      --s-font-size-guarantee-title: {{ section.settings.guarantee_title_font_size_mobile }}px;
+      --s-font-size-guarantee-body: {{ section.settings.guarantee_body_font_size_mobile }}px;
+      --s-block-padding-x: 20px;
+      --s-block-padding-y: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .og-offer {
+      flex-direction: column-reverse;
+      gap: 24px;
+      padding: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .og-offer-content {
+      text-align: center;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .og-offer-image {
+      width: 100%;
+      aspect-ratio: 1;
+    }
+
+    #shopify-section-{{ section.id }} .og-heading {
+      max-width: 100%;
+      line-height: 1.4;
+    }
+
+    #shopify-section-{{ section.id }} .og-badge-row {
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .og-gift-card img.og-gift-img {
+      width: 64px;
+      height: 64px;
+    }
+
+    #shopify-section-{{ section.id }} .og-gift-card .og-gift-placeholder {
+      width: 64px;
+      height: 64px;
+    }
+
+    #shopify-section-{{ section.id }} .og-cta-btn {
+      height: 44px;
+    }
+
+    #shopify-section-{{ section.id }} .og-cta-btn span {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .og-note svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .og-note span {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .og-checklist li {
+      text-align: left;
+    }
+
+    #shopify-section-{{ section.id }} .og-guarantee {
+      flex-direction: column;
+      gap: 24px;
+      padding: 20px;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .og-guarantee-image {
+      width: 200px;
+      order: -1;
+    }
+
+    #shopify-section-{{ section.id }} .og-guarantee-content {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .og-guarantee-title {
+      line-height: 1.4;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_pdp-offer-guarantee">
+  <div class="og-inner">
+
+    {%- comment -%} === OFFER BLOCK === {%- endcomment -%}
+    <div class="og-offer-wrap">
+      <div class="og-offer">
+        <div class="og-offer-content">
+
+          {%- comment -%} Top: badge + heading + description + divider {%- endcomment -%}
+          <div class="og-offer-top">
+            <div class="og-offer-header">
+
+              {%- comment -%} Trustpilot badge row {%- endcomment -%}
+              {% if section.settings.show_trustpilot %}
+                {% render 'maison-trustpilot-badge',
+                  wrapper_class: 'og-badge-row',
+                  stars_class: 'og-stars',
+                  rating_class: 'og-rating-text',
+                  logo_class: 'og-trustpilot',
+                  show_logo: section.settings.show_trustpilot_logo
+                %}
+              {% endif %}
+
+              {%- comment -%} Heading {%- endcomment -%}
+              {% if section.settings.offer_heading != blank %}
+                <h2 class="og-heading">{{ section.settings.offer_heading }}</h2>
+              {% endif %}
+            </div>
+
+            {%- comment -%} Description {%- endcomment -%}
+            {% if section.settings.offer_description != blank %}
+              <p class="og-description">{{ section.settings.offer_description }}</p>
+            {% endif %}
+
+            <div class="og-divider"></div>
+          </div>
+
+          {%- comment -%} Checklist + gifts {%- endcomment -%}
+          <div style="display:flex;flex-direction:column;gap:32px;">
+            {%- assign checklist_blocks = section.blocks | where: "type", "check_item" -%}
+            {% if checklist_blocks.size > 0 %}
+              <ul class="og-checklist">
+                {% for block in checklist_blocks %}
+                  <li {{ block.shopify_attributes }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#og-check-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.6235 2.6235C4.37209 0.874903 6.8971 0 10 0C13.1029 0 15.6279 0.874903 17.3766 2.6235C19.1251 4.37209 20 6.8971 20 10C20 13.1029 19.1251 15.6279 17.3766 17.3766C15.6279 19.1251 13.1029 20 10 20C6.8971 20 4.37209 19.1251 2.6235 17.3766C0.874903 15.6279 0 13.1029 0 10C0 6.8971 0.874903 4.37209 2.6235 2.6235ZM14.1713 7.08989C14.5366 6.75857 14.564 6.19391 14.2327 5.82869C13.9014 5.46346 13.3368 5.43596 12.9715 5.76727C11.7848 6.84384 10.8933 7.81137 10.1408 8.98594C9.59271 9.84133 9.13136 10.7863 8.67961 11.9317L7.06956 10.2713C6.72627 9.9173 6.16101 9.9086 5.80701 10.2519C5.45301 10.5952 5.44431 11.1604 5.78759 11.5144L8.38499 14.193C8.60064 14.4154 8.91617 14.5101 9.21866 14.4433C9.52113 14.3764 9.76736 14.1575 9.8692 13.865C10.4695 12.1405 11.0025 10.9511 11.6443 9.94926C12.2827 8.95296 13.0528 8.10454 14.1713 7.08989Z" fill="#065BDC"/></g><defs><clipPath id="og-check-{{ block.id }}"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                    {% if block.settings.text != blank %}
+                      <span>{{ block.settings.text }}</span>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            {%- comment -%} Gifts {%- endcomment -%}
+            {%- assign gift_blocks = section.blocks | where: "type", "gift_item" -%}
+            {%- assign gifts_total_value = 0 -%}
+            {%- assign gifts_count = 0 -%}
+            {%- for block in gift_blocks -%}
+              {%- if block.settings.gift_product != blank or block.settings.name != blank or block.settings.image != blank -%}
+                {%- assign gifts_count = gifts_count | plus: 1 -%}
+              {%- endif -%}
+              {%- if block.settings.gift_product != blank and block.settings.gift_product.compare_at_price > 0 -%}
+                {%- assign gifts_total_value = gifts_total_value | plus: block.settings.gift_product.compare_at_price -%}
+              {%- endif -%}
+            {%- endfor -%}
+
+            {% if gifts_count > 0 and section.settings.show_gifts %}
+              <div style="display:flex;flex-direction:column;gap:24px;">
+                {% if gifts_total_value > 0 %}
+                  <p class="og-gifts-heading">Exclusive Offer! Order today for free gifts (valued at {{ gifts_total_value | money }})!</p>
+                {% else %}
+                  <p class="og-gifts-heading">Exclusive Offer! Order today for free gifts!</p>
+                {% endif %}
+                <div class="og-gifts-row">
+                  {%- for block in gift_blocks -%}
+                    {%- assign gift_product = block.settings.gift_product -%}
+                    {%- comment -%} Image: custom override > product featured image > placeholder {%- endcomment -%}
+                    {%- assign gift_image = block.settings.image -%}
+                    {%- if gift_image == blank and gift_product != blank -%}
+                      {%- assign gift_image = gift_product.featured_image -%}
+                    {%- endif -%}
+                    {%- comment -%} Name: custom override > product title {%- endcomment -%}
+                    {%- assign gift_name = block.settings.name -%}
+                    {%- if gift_name == blank and gift_product != blank -%}
+                      {%- assign gift_name = gift_product.title -%}
+                    {%- endif -%}
+                    {%- comment -%} Badge price from compare_at_price {%- endcomment -%}
+                    {%- assign gift_badge_price = nil -%}
+                    {%- if gift_product != blank and gift_product.compare_at_price > 0 -%}
+                      {%- assign gift_badge_price = gift_product.compare_at_price | money -%}
+                    {%- endif -%}
+
+                    <div class="og-gift-card" {{ block.shopify_attributes }}>
+                      {%- if gift_badge_price != nil -%}
+                        <div class="og-gift-badge">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <g clip-path="url(#og-gift-clip-{{ block.id }})">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.43307 1.91747C9.13342 1.38593 8.28778 1.35269 7.94454 1.87462L7.08891 3.17576C7.51708 3.18028 7.99172 3.18717 8.47008 3.19654C8.48242 3.1899 8.49507 3.18361 8.508 3.1777L9.06159 2.9246C9.49984 2.72426 9.62859 2.26442 9.43307 1.91747ZM4.91221 3.17576L4.05658 1.87462C3.71334 1.35269 2.86767 1.38593 2.56806 1.91747C2.3725 2.26442 2.50131 2.72426 2.9395 2.9246L3.49312 3.1777C3.50605 3.18361 3.51869 3.1899 3.53104 3.19654C4.0094 3.18717 4.48404 3.18028 4.91221 3.17576ZM6.00056 2.49076L6.87029 1.16819C7.73677 -0.149421 9.77576 -0.0929568 10.5531 1.28615C10.9223 1.94116 10.8761 2.68219 10.5271 3.26583C11.1752 3.36285 11.6973 3.85529 11.7571 4.52053C11.7759 4.72947 11.7863 4.9414 11.7863 5.15671C11.7863 5.37201 11.7759 5.58396 11.7571 5.79291C11.6922 6.51574 11.0813 7.03457 10.3561 7.06378C9.20147 7.1103 7.60415 7.13561 6.53627 7.14242V4.48882C6.53627 4.19296 6.29643 3.95311 6.00056 3.95311C5.70469 3.95311 5.46484 4.19296 5.46484 4.48882V7.14242C4.39696 7.13561 2.79967 7.1103 1.64496 7.06378C0.919801 7.03457 0.308992 6.51574 0.243971 5.79291C0.225175 5.58396 0.214844 5.37201 0.214844 5.15671C0.214844 4.9414 0.225174 4.72947 0.243969 4.52053C0.303809 3.85529 0.825933 3.36285 1.47402 3.26582C1.12507 2.68219 1.07882 1.94116 1.44802 1.28615C2.22537 -0.0929568 4.26435 -0.149421 5.13082 1.16819L6.00056 2.49076ZM1.71386 8.17234C2.87672 8.21667 4.42197 8.24076 5.46484 8.24733V11.7851C4.60525 11.7767 3.83381 11.7474 3.13046 11.6949C2.03062 11.6128 1.16237 10.7497 1.06498 9.65112C1.01866 9.12861 0.990541 8.59675 0.986324 8.05398C1.2205 8.12247 1.4652 8.16286 1.71386 8.17234ZM8.8683 11.6949C8.16558 11.7474 7.39492 11.7767 6.53627 11.7851V8.24732C7.57913 8.24073 9.12339 8.21666 10.2856 8.17234C10.534 8.16287 10.7784 8.12255 11.0124 8.05419C11.0082 8.59684 10.98 9.12861 10.9338 9.65112C10.8364 10.7497 9.9681 11.6128 8.8683 11.6949Z" fill="#FAFCFE"/>
+                            </g>
+                            <defs>
+                              <clipPath id="og-gift-clip-{{ block.id }}">
+                                <rect width="12" height="12" fill="white"/>
+                              </clipPath>
+                            </defs>
+                          </svg>
+                          <span>FREE </span><s>{{ gift_badge_price }}</s>
+                        </div>
+                      {%- endif -%}
+                      {% if gift_image != blank %}
+                        {{ gift_image | image_url: width: 200 | image_tag:
+                          class: 'og-gift-img',
+                          loading: 'lazy',
+                          widths: '80, 128, 200',
+                          sizes: '80px',
+                          alt: gift_name
+                        }}
+                      {% else %}
+                        <div class="og-gift-placeholder">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        </div>
+                      {% endif %}
+                      {% if gift_name != blank %}
+                        <span class="og-gift-label">{{ gift_name }}</span>
+                      {% endif %}
+                    </div>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {% endif %}
+          </div>
+
+          {%- comment -%} CTA {%- endcomment -%}
+          <div class="og-cta-area">
+            {% if section.settings.cta_label != blank %}
+              <a
+                {% if section.settings.cta_link != blank %}href="{{ section.settings.cta_link }}"{% endif %}
+                class="og-cta-btn"
+              >
+                <span>{{ section.settings.cta_label }}</span>
+              </a>
+            {% endif %}
+            {% if section.settings.show_note and section.settings.note_text != blank %}
+              <div class="og-note">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="#F07E3B" stroke-width="2"/><line x1="10" y1="6" x2="10" y2="11" stroke="#F07E3B" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="14" r="1" fill="#F07E3B"/></svg>
+                <span>{{ section.settings.note_text }}</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+
+        {%- comment -%} Offer image {%- endcomment -%}
+        <div class="og-offer-image">
+          {% if section.settings.offer_image != blank %}
+            {{ section.settings.offer_image | image_url: width: 1200 | image_tag:
+              loading: 'lazy',
+              widths: '375, 550, 750, 1000, 1200',
+              sizes: '(max-width: 949px) 100vw, 50vw'
+            }}
+          {% else %}
+            <div class="og-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                <circle cx="8.5" cy="8.5" r="1.5"/>
+                <polyline points="21 15 16 10 5 21"/>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      {%- comment -%} Wave: bottom of offer block {%- endcomment -%}
+      {% if section.settings.wave_offer_bottom != blank %}
+        <div class="og-wave og-wave--bottom">
+          {{ section.settings.wave_offer_bottom | image_url: width: 1600 | image_tag:
+            loading: 'lazy',
+            widths: '800, 1200, 1600',
+            sizes: '100vw'
+          }}
+        </div>
+      {% endif %}
+    </div>
+
+    {%- comment -%} === GUARANTEE BLOCK === {%- endcomment -%}
+    <div class="og-guarantee-wrap">
+      {%- comment -%} Wave: top of guarantee block {%- endcomment -%}
+      {% if section.settings.wave_guarantee_top != blank %}
+        <div class="og-wave og-wave--top">
+          {{ section.settings.wave_guarantee_top | image_url: width: 1600 | image_tag:
+            loading: 'lazy',
+            widths: '800, 1200, 1600',
+            sizes: '100vw'
+          }}
+        </div>
+      {% endif %}
+
+      <div class="og-guarantee">
+        {%- comment -%} Guarantee image {%- endcomment -%}
+        <figure class="og-guarantee-image">
+          {% if section.settings.guarantee_image != blank %}
+            {{ section.settings.guarantee_image | image_url: width: 600 | image_tag:
+              loading: 'lazy',
+              widths: '200, 300, 400, 600',
+              sizes: '(max-width: 949px) 200px, 290px'
+            }}
+          {% else %}
+            <div class="og-placeholder">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="8 12 11 15 16 9"/>
+              </svg>
+            </div>
+          {% endif %}
+        </figure>
+
+        {%- comment -%} Guarantee content {%- endcomment -%}
+        <div class="og-guarantee-content">
+          {% if section.settings.guarantee_heading != blank %}
+            <h2 class="og-guarantee-title">{{ section.settings.guarantee_heading }}</h2>
+          {% endif %}
+
+          {% if section.settings.guarantee_body != blank %}
+            <div class="og-guarantee-body">{{ section.settings.guarantee_body }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PDP Offer + Guarantee",
+  "tag": "section",
+  "class": "pdp-offer-guarantee-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Trustpilot"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot",
+      "label": "Show Trustpilot stars",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "star_full_count",
+      "label": "Full stars",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "4.4/5 (2,295 + reviews)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot_logo",
+      "label": "Show Trustpilot logo",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Offer block — Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "offer_heading",
+      "label": "Heading (italic = orange accent)",
+      "default": "<em>Special Offer</em> On Now!"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "offer_description",
+      "label": "Description",
+      "default": "Try Your SmoothSpine Massager NOW <u>Risk-Free</u> at an All Time Low Price! Act Now and You'll Get:"
+    },
+    {
+      "type": "header",
+      "content": "Offer block — Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "offer_image",
+      "label": "Offer image"
+    },
+    {
+      "type": "header",
+      "content": "Free gifts"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gifts",
+      "label": "Show gifts section",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Call to action"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "GET 60% OFF TODAY ONLY!"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_note",
+      "label": "Show note below button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "note_text",
+      "label": "Note text",
+      "default": "Note: Not Available on Amazon or eBay"
+    },
+    {
+      "type": "header",
+      "content": "Wave dividers"
+    },
+    {
+      "type": "paragraph",
+      "content": "Upload SVG or PNG wave images to connect sections. Leave blank to hide."
+    },
+    {
+      "type": "image_picker",
+      "id": "wave_offer_bottom",
+      "label": "Wave: below offer block"
+    },
+    {
+      "type": "image_picker",
+      "id": "wave_guarantee_top",
+      "label": "Wave: above guarantee block"
+    },
+    {
+      "type": "header",
+      "content": "Guarantee block — Content"
+    },
+    {
+      "type": "image_picker",
+      "id": "guarantee_image",
+      "label": "Guarantee badge image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "guarantee_heading",
+      "label": "Heading (italic = dark primary)",
+      "default": "100% Satisfaction 90-Day <em>Money Back Guarantee</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "guarantee_body",
+      "label": "Body text",
+      "default": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee.</strong> If you don't experience the remarkable <strong>relief from back pain and Sciatica</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days</strong>, let us know and we will refund every single penny of your investment.</p><p><strong>No questions asked.</strong> We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Colors — Backgrounds"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_outer",
+      "label": "Page background",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_offer",
+      "label": "Offer block background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_guarantee",
+      "label": "Guarantee block background",
+      "default": "#E5EEFB"
+    },
+    {
+      "type": "header",
+      "content": "Colors — Text"
+    },
+    {
+      "type": "color",
+      "id": "color_text_primary",
+      "label": "Primary text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_orange",
+      "label": "Accent orange (headings, CTA)",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_blue",
+      "label": "Accent blue (checks, guarantee)",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_divider",
+      "label": "Divider color",
+      "default": "#424140"
+    },
+    {
+      "type": "header",
+      "content": "Colors — Button"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_bg",
+      "label": "Button background",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_border",
+      "label": "Button bottom border",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_orange_dark",
+      "label": "Button border accent",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_btn_text",
+      "label": "Button text",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "header",
+      "content": "Colors — Gifts"
+    },
+    {
+      "type": "color",
+      "id": "color_gift_bg",
+      "label": "Gift card background",
+      "default": "#EEEAE5"
+    },
+    {
+      "type": "color",
+      "id": "color_gift_border",
+      "label": "Gift card border",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_gift_badge_strike",
+      "label": "Gift badge strikethrough color",
+      "default": "#85AFEE"
+    },
+    {
+      "type": "color",
+      "id": "color_gift_badge_bg",
+      "label": "Gift badge background",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_gift_badge_text",
+      "label": "Gift badge text",
+      "default": "#FAFCFE"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Offer heading size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Offer heading size (mobile)",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Description font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "description_font_size_mobile",
+      "label": "Description font size (mobile)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "checklist_font_size",
+      "label": "Checklist font size (desktop)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "checklist_font_size_mobile",
+      "label": "Checklist font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "btn_font_size",
+      "label": "Button font size",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "rating_font_size",
+      "label": "Rating text font size",
+      "min": 8,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "guarantee_title_font_size",
+      "label": "Guarantee title size (desktop)",
+      "min": 20,
+      "max": 52,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "guarantee_title_font_size_mobile",
+      "label": "Guarantee title size (mobile)",
+      "min": 16,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "guarantee_body_font_size",
+      "label": "Guarantee body size (desktop)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "guarantee_body_font_size_mobile",
+      "label": "Guarantee body size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_x_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "block_padding_x",
+      "label": "Block horizontal padding",
+      "min": 16,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "block_padding_y",
+      "label": "Block vertical padding",
+      "min": 16,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "btn_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "gift_border_radius",
+      "label": "Gift card border radius",
+      "min": 0,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "guarantee_image_size",
+      "label": "Guarantee image width (desktop)",
+      "min": 120,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 290
+    }
+  ],
+  "blocks": [
+    {
+      "type": "check_item",
+      "name": "Check Item",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Benefit text goes here"
+        }
+      ]
+    },
+    {
+      "type": "gift_item",
+      "name": "Free Gift",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "product",
+          "id": "gift_product",
+          "label": "Gift product"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom image (overrides product image)"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Custom name (overrides product title)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP Offer + Guarantee",
+      "blocks": [
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Provides Fast Relief From Sciatica And Herniated Discs"
+          }
+        },
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Rehydrates and Restores Your Spinal Discs"
+          }
+        },
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Relieves Back Pain, Stiffness, and Discomfort"
+          }
+        },
+        {
+          "type": "check_item",
+          "settings": {
+            "text": "Feel The Difference In Just 15 Minutes Per Day"
+          }
+        },
+        {
+          "type": "gift_item",
+          "settings": {
+            "name": "Back pain & Sciatica Guide"
+          }
+        },
+        {
+          "type": "gift_item",
+          "settings": {
+            "name": "12x Back Pain Relief Patches"
+          }
+        },
+        {
+          "type": "gift_item",
+          "settings": {
+            "name": "Zip Lock Travel Bag"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

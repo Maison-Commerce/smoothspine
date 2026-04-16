@@ -1242,7 +1242,6 @@ scroll-carousel {
   --drawer-content-max-height: none;
   visibility: hidden;
   width: 100%;
-  padding: var(--spacing-2);
   z-index: 999;
   position: fixed;
   right: 0;
@@ -1265,7 +1264,6 @@ scroll-carousel {
 .drawer::part(content) {
   height: 100%;
   max-height: var(--drawer-content-max-height);
-  border-radius: var(--rounded-sm);
   background: rgb(var(--dialog-background));
   color: rgb(var(--text-color));
   flex-direction: column;
@@ -1324,9 +1322,8 @@ scroll-carousel {
     --drawer-header-padding: var(--spacing-8) var(--spacing-10);
     --drawer-body-padding: var(--spacing-8) var(--spacing-10);
     --drawer-footer-padding: var(--spacing-8) var(--spacing-10);
-    width: 510px;
+    width: 520px;
     height: 100%;
-    padding: var(--spacing-4);
   }
 
   .drawer::part(header) {
@@ -10225,4 +10222,13 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
   -webkit-box-orient: vertical;
   display: -webkit-box;
   overflow: hidden;
+}
+
+.maison-reviews-general {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.maison-reviews-general .jdgm-all-reviews-page__load-more, .maisoncode_ugc-tabs .jdgm-all-reviews-page__load-more{
+  border-radius: var(--8, 8px)!important;
 }

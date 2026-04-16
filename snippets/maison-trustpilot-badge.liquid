@@ -1,0 +1,78 @@
+{% comment %}
+  Reusable Trustpilot badge with live data and SSR fallback values.
+  Renders 4 full + 1 half star + "4.4/5 (3,448+ reviews)" by default.
+  JS in snippets/maison-trustpilot-script.liquid replaces these with live data
+  from the Worker if fetch succeeds. If fetch fails (ad blocker, CORS, slow
+  network), the SSR values stay visible.
+
+  Params:
+    wrapper_class    — CSS class for the outer <div> (REQUIRED)
+    stars_class      — CSS class for the stars <div>
+    rating_class     — CSS class for the rating <span>
+    logo_class       — CSS class for the Trustpilot logo <div> (only rendered if show_logo)
+    show_logo        — boolean, default false
+    logo_label       — text next to logo, default "Trustpilot"
+    domain           — trustpilot domain, default "smoothspine.com"
+    worker_url       — Cloudflare Worker URL returning live Trustpilot JSON
+    href             — if set, wraps the badge in <a href> (opens Trustpilot in new tab)
+    rating_format    — "score_count" (default), "count_only", "score_only"
+    fallback_stars   — float fallback star count (default 4.5)
+    fallback_score   — fallback score number (default 4.4)
+    fallback_count   — fallback review count (default 3448)
+{% endcomment %}
+
+{%- assign mt_domain = domain | default: 'smoothspine.com' -%}
+{%- assign mt_worker = worker_url | default: 'https://smoothspine-videoask.choojiie.workers.dev/trustpilot' -%}
+{%- assign mt_logo_label = logo_label | default: 'Trustpilot' -%}
+{%- assign mt_format = rating_format | default: 'score_count' -%}
+{%- assign mt_link = href | default: blank -%}
+{%- assign mt_fb_stars = fallback_stars | default: 4.5 -%}
+{%- assign mt_fb_score = fallback_score | default: 4.4 -%}
+{%- assign mt_fb_count = fallback_count | default: 3448 -%}
+
+{%- comment -%} Build SSR star markup based on fallback_stars {%- endcomment -%}
+{%- assign mt_full = mt_fb_stars | floor -%}
+{%- assign mt_remainder = mt_fb_stars | minus: mt_full -%}
+{%- assign mt_has_half = false -%}
+{%- if mt_remainder > 0 -%}{%- assign mt_has_half = true -%}{%- endif -%}
+{%- assign mt_half_index = mt_full | plus: 1 -%}
+
+{%- comment -%} Build SSR rating text {%- endcomment -%}
+{%- if mt_format == 'count_only' -%}
+  {%- assign mt_fb_text = mt_fb_count | append: '+ reviews' -%}
+{%- elsif mt_format == 'score_only' -%}
+  {%- assign mt_fb_text = mt_fb_score | append: '/5' -%}
+{%- else -%}
+  {%- assign mt_fb_text = mt_fb_score | append: '/5 (' | append: mt_fb_count | append: '+ reviews)' -%}
+{%- endif -%}
+
+{%- capture mt_badge_inner -%}
+  <div class="{{ stars_class }}" data-tp-stars>
+    {%- for i in (1..5) -%}
+      {%- if i <= mt_full -%}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+      {%- elsif i == mt_half_index and mt_has_half -%}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><rect x="8" width="8" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+      {%- else -%}
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <span class="{{ rating_class }}" data-tp-rating>{{ mt_fb_text }}</span>
+  {% if show_logo %}
+    <div class="{{ logo_class }}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 10.6761L10.0417 9.86164L11.3125 14L7 10.6761ZM14 5.32704H8.64583L7 0L5.35417 5.32704H0L4.33334 8.62893L2.6875 13.956L7.02083 10.6541L9.6875 8.62893L14 5.32704Z" fill="#00B67A"/></svg>
+      <span>{{ mt_logo_label }}</span>
+    </div>
+  {% endif %}
+{%- endcapture -%}
+
+{% if mt_link != blank %}
+  <a class="{{ wrapper_class }}" href="{{ mt_link }}" target="_blank" rel="noopener" data-tp-badge data-tp-domain="{{ mt_domain }}" data-tp-worker="{{ mt_worker }}" data-tp-format="{{ mt_format }}">
+    {{ mt_badge_inner }}
+  </a>
+{% else %}
+  <div class="{{ wrapper_class }}" data-tp-badge data-tp-domain="{{ mt_domain }}" data-tp-worker="{{ mt_worker }}" data-tp-format="{{ mt_format }}">
+    {{ mt_badge_inner }}
+  </div>
+{% endif %}

@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shipping Trust Section</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Open Sans', sans-serif; background: #FDFCFA; }
+
+  .maisoncode_shipping-trust{
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .st-wave-top{
+    position: relative;
+    top: -2px;
+  }
+
+  .st-wave-bottom{
+    position: relative;
+    top: 2px;
+  }
+
+  /* ── Reviews Block ── */
+  .st-reviews {
+    background: #F8F4EE;
+    padding: 48px 40px 0;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .st-reviews-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .st-reviews-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* Trustpilot badge */
+  .st-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .st-badge-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .st-badge-stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  .st-badge-text {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #111;
+  }
+
+  .st-badge-tp {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .st-badge-tp svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+
+  .st-badge-tp span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #111;
+  }
+
+  /* Heading */
+  .st-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1.4;
+    color: #102A43;
+    text-transform: capitalize;
+    max-width: 700px;
+  }
+
+  .st-heading em {
+    color: #065BDC;
+    font-style: normal;
+    text-decoration: underline;
+  }
+
+  /* Swiper */
+  .st-swiper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .st-swiper .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .st-swiper .swiper-slide {
+    height: auto;
+  }
+
+  /* Review card */
+  .st-review-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    box-shadow: 0px 1px 0px #E9E8E6;
+  }
+
+  .st-review-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .st-review-card__stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  .st-review-card__stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  .st-review-card__date {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(16, 42, 67, 0.75);
+    white-space: nowrap;
+  }
+
+  .st-review-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .st-review-card__title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .st-review-card__body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(16, 42, 67, 0.75);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .st-review-card__author {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  /* Nav */
+  .st-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 8px;
+  }
+
+  .st-nav__btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: #102A43;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .st-nav__btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  .st-nav__btn.swiper-button-disabled {
+    opacity: 0.15;
+    cursor: default;
+  }
+
+  /* Pagination */
+  .st-pagination {
+    display: flex;
+    gap: 20px;
+    height: 2px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .st-pagination .swiper-pagination-bullet {
+    flex: 1;
+    height: 100%;
+    border-radius: 100px;
+    background: #102A43;
+    opacity: 0.1;
+    cursor: pointer;
+  }
+
+  .st-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+  }
+
+  /* ── Wave Dividers ── */
+  .st-wave {
+    width: 100%;
+    display: block;
+    line-height: 0;
+  }
+
+  .st-wave img {
+    width: 100%;
+    display: block;
+  }
+
+  /* ── Guarantees Block ── */
+  .st-guarantees {
+    background: #E5EEFB;
+    padding: 0 40px 48px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .st-guarantees-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .st-guarantees-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    line-height: 1.4;
+    color: #065BDC;
+    text-align: center;
+    text-transform: capitalize;
+    max-width: 600px;
+  }
+
+  .st-guarantees-heading em {
+    color: #102A43;
+    font-style: normal;
+  }
+
+  .st-guarantees-grid {
+    display: flex;
+    gap: 24px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .st-guarantee-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    max-width: 280px;
+    text-align: center;
+  }
+
+  .st-guarantee-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .st-guarantee-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  .st-guarantee-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .st-guarantee-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #102A43;
+  }
+
+  .st-guarantee-desc {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(16, 42, 67, 0.75);
+  }
+
+  /* CTA */
+  .st-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 420px;
+    max-width: 100%;
+    height: 56px;
+    background: #F07E3B;
+    border: none;
+    border-bottom: 4px solid #BF642F;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .st-cta-btn:hover {
+    opacity: 0.9;
+  }
+
+  .st-cta-btn span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #FFFCFB;
+    white-space: nowrap;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 749px) {
+    .st-reviews {
+      padding: 32px 20px 0;
+    }
+
+    .st-reviews-inner {
+      gap: 24px;
+    }
+
+    .st-heading {
+      font-size: 24px;
+    }
+
+    .st-nav {
+      display: none;
+    }
+
+    .st-guarantees {
+      padding: 0 20px 32px;
+    }
+
+    .st-guarantees-inner {
+      gap: 24px;
+    }
+
+    .st-guarantees-heading {
+      font-size: 22px;
+    }
+
+    .st-guarantees-grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .st-guarantee-card {
+      flex-direction: row;
+      text-align: left;
+      max-width: 100%;
+      gap: 16px;
+    }
+
+    .st-guarantee-icon {
+      width: 56px;
+      height: 56px;
+    }
+
+    .st-guarantee-icon img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .st-cta-btn {
+      width: 100%;
+      height: 48px;
+    }
+
+    .st-cta-btn span {
+      font-size: 14px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<section class="maisoncode_shipping-trust">
+
+  <!-- ── Reviews Block ── -->
+  <div class="st-reviews">
+    <div class="st-reviews-inner">
+
+      <div class="st-reviews-header">
+        <!-- Trustpilot Badge -->
+        <div class="st-badge">
+          <div class="st-badge-stars">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="8" height="16" fill="#00B67A"/><rect x="8" width="8" height="16" fill="#DCE6DC"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+          </div>
+          <span class="st-badge-text">4.4/5 (2,295 + reviews)</span>
+          <div class="st-badge-tp">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><rect width="14" height="14" fill="#00B67A"/><path d="M7 9.75785L9.28125 9.14619L10.2344 12.25L7 9.75785ZM12.25 5.74528H8.23437L7 1.75L5.76562 5.74528H1.75L5.00001 8.22168L3.76562 12.217L7.01563 9.74057L9.01562 8.22168L12.25 5.74528Z" fill="white"/></svg>
+            <span>Trustpilot</span>
+          </div>
+        </div>
+
+        <h2 class="st-heading">Customers Love Their <em>Delivery Experience</em></h2>
+      </div>
+
+      <!-- Swiper -->
+      <div class="st-swiper swiper" id="st-swiper">
+        <div class="swiper-wrapper">
+
+          <!-- Review 1 -->
+          <div class="swiper-slide">
+            <div class="st-review-card">
+              <div class="st-review-card__header">
+                <div class="st-review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                </div>
+                <span class="st-review-card__date">Mar 15, 2026</span>
+              </div>
+              <div class="st-review-card__text">
+                <p class="st-review-card__title">Worth Every Day of Waiting!</p>
+                <p class="st-review-card__body">I was a little anxious about the shipping time, but oh my goodness — this product is INCREDIBLE. The quality is top-notch and it started helping my back pain from day one. Customer support even sent me tracking updates proactively. 10/10 would order again.</p>
+              </div>
+              <span class="st-review-card__author">Sarah M.</span>
+            </div>
+          </div>
+
+          <!-- Review 2 -->
+          <div class="swiper-slide">
+            <div class="st-review-card">
+              <div class="st-review-card__header">
+                <div class="st-review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                </div>
+                <span class="st-review-card__date">Feb 28, 2026</span>
+              </div>
+              <div class="st-review-card__text">
+                <p class="st-review-card__title">Customer Support Was Amazing</p>
+                <p class="st-review-card__body">I had a question about my delivery and their support team responded within hours. They were so helpful and friendly. The product arrived well-packaged and works exactly as described. Great experience all around!</p>
+              </div>
+              <span class="st-review-card__author">James R.</span>
+            </div>
+          </div>
+
+          <!-- Review 3 -->
+          <div class="swiper-slide">
+            <div class="st-review-card">
+              <div class="st-review-card__header">
+                <div class="st-review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                </div>
+                <span class="st-review-card__date">Mar 2, 2026</span>
+              </div>
+              <div class="st-review-card__text">
+                <p class="st-review-card__title">Patience Paid Off Big Time</p>
+                <p class="st-review-card__body">Took about 10 days to arrive but honestly? Best purchase I've made all year. The relief I felt after the first use was unreal. If you're on the fence about the wait — trust me, it's so worth it.</p>
+              </div>
+              <span class="st-review-card__author">Michelle K.</span>
+            </div>
+          </div>
+
+          <!-- Review 4 -->
+          <div class="swiper-slide">
+            <div class="st-review-card">
+              <div class="st-review-card__header">
+                <div class="st-review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                </div>
+                <span class="st-review-card__date">Mar 8, 2026</span>
+              </div>
+              <div class="st-review-card__text">
+                <p class="st-review-card__title">Fast Response, Great Product</p>
+                <p class="st-review-card__body">Emailed support about changing my shipping address and they handled it instantly. Product quality is exceptional — you can tell it's not some cheap knockoff. Well worth the wait for something that actually works.</p>
+              </div>
+              <span class="st-review-card__author">David L.</span>
+            </div>
+          </div>
+
+          <!-- Review 5 -->
+          <div class="swiper-slide">
+            <div class="st-review-card">
+              <div class="st-review-card__header">
+                <div class="st-review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#C5C2BD"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                </div>
+                <span class="st-review-card__date">Feb 20, 2026</span>
+              </div>
+              <div class="st-review-card__text">
+                <p class="st-review-card__title">Shipping Was Faster Than Expected</p>
+                <p class="st-review-card__body">I was prepared to wait based on what I read, but mine actually arrived in just over a week! Already using it daily and my sciatica pain has noticeably decreased. Very happy with this purchase.</p>
+              </div>
+              <span class="st-review-card__author">Linda T.</span>
+            </div>
+          </div>
+
+          <!-- Review 6 -->
+          <div class="swiper-slide">
+            <div class="st-review-card">
+              <div class="st-review-card__header">
+                <div class="st-review-card__stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                </div>
+                <span class="st-review-card__date">Mar 12, 2026</span>
+              </div>
+              <div class="st-review-card__text">
+                <p class="st-review-card__title">Don't Hesitate — Just Order It</p>
+                <p class="st-review-card__body">I almost didn't order because of shipping concerns but I'm SO glad I did. The wait was nothing compared to the relief I'm getting now. My back hasn't felt this good in years. Support team was lovely too when I asked about tracking.</p>
+              </div>
+              <span class="st-review-card__author">Robert P.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="st-nav">
+        <button type="button" class="st-nav__btn st-prev" aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15.8334 10H4.16669M4.16669 10L10 15.8334M4.16669 10L10 4.16669" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="st-pagination"></div>
+        <button type="button" class="st-nav__btn st-next" aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4.16669 10H15.8334M15.8334 10L10 4.16669M15.8334 10L10 15.8334" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Wave Dividers ── -->
+  <div class="st-wave st-wave-top">
+    <img src="https://cdn.shopify.com/s/files/1/0252/1261/6781/files/banner-wave-top.svg?v=1774444403" alt="">
+  </div>
+  <div class="st-wave st-wave-bottom">
+    <img src="https://cdn.shopify.com/s/files/1/0252/1261/6781/files/banner-wave-bottom.svg?v=1774444403" alt="">
+  </div>
+
+  <!-- ── Guarantees Block ── -->
+  <div class="st-guarantees">
+    <div class="st-guarantees-inner">
+
+      <h2 class="st-guarantees-heading">You Have 90 Days To Try, <em>No Rush — It's Worth The Wait</em></h2>
+
+      <div class="st-guarantees-grid">
+
+        <!-- Guarantee 1 -->
+        <div class="st-guarantee-card">
+          <div class="st-guarantee-icon">
+            <img src="https://cdn.shopify.com/s/files/1/0252/1261/6781/files/jabwfabwfjkg3g.svg?v=1774963286" alt="90-Day Trial">
+          </div>
+          <div class="st-guarantee-text">
+            <p class="st-guarantee-title">90-Day Risk-Free Trial</p>
+            <p class="st-guarantee-desc">Take your time to try it. If you're not completely satisfied, we'll make it right.</p>
+          </div>
+        </div>
+
+        <!-- Guarantee 2 -->
+        <div class="st-guarantee-card">
+          <div class="st-guarantee-icon">
+            <img src="https://cdn.shopify.com/s/files/1/0252/1261/6781/files/sefef23geg.svg?v=1775462543" alt="Free Returns">
+          </div>
+          <div class="st-guarantee-text">
+            <p class="st-guarantee-title">Free Returns & Exchanges</p>
+            <p class="st-guarantee-desc">Changed your mind? No problem. Returns are free and hassle-free.</p>
+          </div>
+        </div>
+
+        <!-- Guarantee 3 -->
+        <div class="st-guarantee-card">
+          <div class="st-guarantee-icon">
+            <img src="https://cdn.shopify.com/s/files/1/0252/1261/6781/files/jbawfjbawf3gr.svg?v=1775462543" alt="Fast Delivery">
+          </div>
+          <div class="st-guarantee-text">
+            <p class="st-guarantee-title">Tracked Shipping</p>
+            <p class="st-guarantee-desc">Every order comes with full tracking so you always know where your package is.</p>
+          </div>
+        </div>
+
+        <!-- Guarantee 4 -->
+        <div class="st-guarantee-card">
+          <div class="st-guarantee-icon">
+            <img src="https://cdn.shopify.com/s/files/1/0252/1261/6781/files/bwfjkabwjaw.svg?v=1774963286" alt="Dedicated Support">
+          </div>
+          <div class="st-guarantee-text">
+            <p class="st-guarantee-title">Dedicated Support Team</p>
+            <p class="st-guarantee-desc">Real humans ready to help. We respond within 24 hours, every time.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('#st-swiper', {
+      slidesPerView: 1.15,
+      spaceBetween: 12,
+      grabCursor: true,
+      navigation: {
+        prevEl: '.st-prev',
+        nextEl: '.st-next'
+      },
+      pagination: {
+        el: '.st-pagination',
+        clickable: true
+      },
+      breakpoints: {
+        750: { slidesPerView: 2.5, spaceBetween: 16 },
+        990: { slidesPerView: 3.5, spaceBetween: 20 }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

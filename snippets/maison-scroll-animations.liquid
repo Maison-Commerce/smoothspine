@@ -1,0 +1,124 @@
+{% comment %}
+  Snippet: Maison Scroll Animations
+  Description: Adds fade-in-up animation to all maison sections on scroll.
+  Include once in theme.liquid or layout file: {% render 'maison-scroll-animations' %}
+{% endcomment %}
+
+<style>
+  [data-maison-animate] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  [data-maison-animate].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger children if needed */
+  [data-maison-animate-children] > * {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  [data-maison-animate-children].is-visible > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  [data-maison-animate-children].is-visible > *:nth-child(1) { transition-delay: 0ms; }
+  [data-maison-animate-children].is-visible > *:nth-child(2) { transition-delay: 80ms; }
+  [data-maison-animate-children].is-visible > *:nth-child(3) { transition-delay: 160ms; }
+  [data-maison-animate-children].is-visible > *:nth-child(4) { transition-delay: 240ms; }
+  [data-maison-animate-children].is-visible > *:nth-child(5) { transition-delay: 320ms; }
+  [data-maison-animate-children].is-visible > *:nth-child(6) { transition-delay: 400ms; }
+
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    [data-maison-animate],
+    [data-maison-animate-children] > * {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    function initMaisonAnimations() {
+      /* Skip animations entirely on legal pages */
+      {% if template.suffix == 'legal' %}return;{% endif %}
+      /* Find all maison section wrappers */
+      var selectors = [
+        '.maisoncode_pdp-hero',
+        '.maisoncode_Content_Block_List',
+        '.maisoncode_Content_Block_Benefits',
+        '.maisoncode_before-after',
+        '.maisoncode_Comparison',
+        '.maisoncode_Reviews',
+        '.maisoncode_how-it-works',
+        '.maisoncode_faq-pdp',
+        '.maisoncode_ugc-banner',
+        '.maisoncode_about-page-usps',
+        '.maisoncode_pdp-offer-guarantee',
+        '[class*="maisoncode_"]'
+      ];
+
+      var elements = document.querySelectorAll(selectors.join(','));
+      var firstSection = true;
+      elements.forEach(function(el) {
+        /* Skip header */
+        if (el.closest('.maisoncode_Header') || el.classList.contains('maisoncode_Header')) return;
+        if (el.closest('header') || el.closest('[class*="header"]')) return;
+
+        /* Skip footer */
+        if (el.closest('.maisoncode_Footer') || el.classList.contains('maisoncode_Footer')) return;
+        if (el.closest('footer')) return;
+
+        /* Skip first visible section on the page */
+        if (firstSection) {
+          firstSection = false;
+          return;
+        }
+
+        if (!el.hasAttribute('data-maison-animate')) {
+          el.setAttribute('data-maison-animate', '');
+        }
+      });
+
+      /* Intersection Observer */
+      if (!('IntersectionObserver' in window)) {
+        /* Fallback: show everything */
+        document.querySelectorAll('[data-maison-animate]').forEach(function(el) {
+          el.classList.add('is-visible');
+        });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      document.querySelectorAll('[data-maison-animate]').forEach(function(el) {
+        observer.observe(el);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMaisonAnimations);
+    } else {
+      initMaisonAnimations();
+    }
+  })();
+</script>

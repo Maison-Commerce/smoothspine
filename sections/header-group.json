@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header group",
@@ -8,24 +17,31 @@
         "message": {
           "type": "message",
           "settings": {
-            "text": "Announce something here"
+            "text": "Announce something here",
+            "url": ""
           }
         }
       },
       "block_order": [
         "message"
       ],
+      "disabled": true,
       "settings": {
         "enable_sticky": false,
-        "text_size": "text-xs",
+        "show_on_homepage_only": false,
         "navigation_mode": "scrolling",
+        "autoplay": false,
+        "cycle_speed": 6,
         "scrolling_speed": 10,
+        "text_size": "text-xs",
         "background": "#1a1a1a",
+        "background_gradient": "",
         "text_color": "#ffffff"
       }
     },
     "header": {
       "type": "header",
+      "disabled": true,
       "settings": {
         "enable_sticky": true,
         "hide_on_scroll": false,
@@ -33,10 +49,15 @@
         "logo_max_width": 120,
         "logo_mobile_max_width": 100,
         "menu": "main-menu",
+        "sidebar_menu": "",
+        "secondary_menu": "",
+        "customer_account_menu": "customer-account-main-menu",
         "menu_open_trigger": "click",
         "opening_from": "bottom",
         "layout": "logo_left_navigation_center",
         "show_social_media": true,
+        "show_locale_selector": true,
+        "show_country_selector": true,
         "show_country_flag": true,
         "show_country_name": false,
         "transparent_header_text_color": "#ffffff",
@@ -44,10 +65,156 @@
         "background_opacity": 100,
         "background_blur_radius": 0
       }
+    },
+    "maison_announcement_yz9qTb": {
+      "type": "maison-announcement",
+      "name": "Announcement Bar",
+      "settings": {
+        "text": "Valentine Sale | 90-Day Guarantee",
+        "enable_link": false,
+        "bar_link": "",
+        "show_icon": true,
+        "icon_image": "shopify://shop_images/Discount-Percent-Circle--Streamline-Flex.svg",
+        "color_background": "#065bdc",
+        "color_text": "#fafcfe",
+        "font_size": 12,
+        "font_size_mobile": 12,
+        "letter_spacing": 1,
+        "padding_vertical": 8,
+        "padding_horizontal": 80,
+        "padding_vertical_mobile": 8,
+        "padding_horizontal_mobile": 16,
+        "icon_size": 20,
+        "icon_size_mobile": 16,
+        "icon_gap": 8,
+        "max_width": 1400
+      }
+    },
+    "maison_header_h9REXH": {
+      "type": "maison-header",
+      "blocks": {
+        "dropdown_link_HfNVwj": {
+          "type": "dropdown_link",
+          "settings": {
+            "label": "All Products",
+            "link": "shopify://collections/all"
+          }
+        },
+        "dropdown_link_zt9DJ3": {
+          "type": "dropdown_link",
+          "settings": {
+            "label": "Back Pain",
+            "link": "shopify://collections/back-pain"
+          }
+        },
+        "dropdown_link_hiRdC6": {
+          "type": "dropdown_link",
+          "settings": {
+            "label": "Neck Pain",
+            "link": "shopify://collections/neck-pain"
+          }
+        },
+        "dropdown_link_JiknJR": {
+          "type": "dropdown_link",
+          "settings": {
+            "label": "Foot Pain",
+            "link": "shopify://collections/foot-pain"
+          }
+        },
+        "dropdown_link_VBbpNE": {
+          "type": "dropdown_link",
+          "settings": {
+            "label": "Bundles",
+            "link": "shopify://collections/bundles"
+          }
+        },
+        "drawer_primary_link_YqeqcP": {
+          "type": "drawer_primary_link",
+          "settings": {
+            "label": "Home",
+            "link": "",
+            "show_arrow": true
+          }
+        },
+        "drawer_primary_link_pxd8wd": {
+          "type": "drawer_primary_link",
+          "settings": {
+            "label": "Best Sellers",
+            "link": "",
+            "show_arrow": true
+          }
+        },
+        "drawer_secondary_link_FzdzQB": {
+          "type": "drawer_secondary_link",
+          "settings": {
+            "label": "Track Your Order",
+            "link": ""
+          }
+        },
+        "drawer_secondary_link_imakmQ": {
+          "type": "drawer_secondary_link",
+          "settings": {
+            "label": "About Us",
+            "link": ""
+          }
+        },
+        "drawer_secondary_link_QQxVxG": {
+          "type": "drawer_secondary_link",
+          "settings": {
+            "label": "Contact Us",
+            "link": ""
+          }
+        },
+        "social_link_kQG8bd": {
+          "type": "social_link",
+          "settings": {
+            "label": "Instagram",
+            "link": "",
+            "platform": "instagram"
+          }
+        },
+        "social_link_A8G9KD": {
+          "type": "social_link",
+          "settings": {
+            "label": "Facebook",
+            "link": "",
+            "platform": "facebook"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_link_HfNVwj",
+        "dropdown_link_zt9DJ3",
+        "dropdown_link_hiRdC6",
+        "dropdown_link_JiknJR",
+        "dropdown_link_VBbpNE",
+        "drawer_primary_link_YqeqcP",
+        "drawer_primary_link_pxd8wd",
+        "drawer_secondary_link_FzdzQB",
+        "drawer_secondary_link_imakmQ",
+        "drawer_secondary_link_QQxVxG",
+        "social_link_kQG8bd",
+        "social_link_A8G9KD"
+      ],
+      "name": "Maison Header",
+      "settings": {
+        "logo": "shopify://shop_images/Logo-Black.png",
+        "menu": "maison-header-menu",
+        "featured_image": "shopify://shop_images/header-menu-img.png",
+        "featured_image_mobile": "shopify://shop_images/drawer-mobile-img.png",
+        "featured_title": "<p>Our Bestseller</p><p>Triple Fusion Massager</p>",
+        "featured_button_label": "SEE #1 BACK PAIN BESTSELLER",
+        "featured_button_link": "shopify://products/tfm-pres",
+        "shop_accordion_title": "Shop by your pain",
+        "enable_sticky": true,
+        "hide_on_scroll": true
+      }
     }
   },
   "order": [
     "announcement-bar",
-    "header"
+    "header",
+    "maison_announcement_yz9qTb",
+    "maison_header_h9REXH"
   ]
 }

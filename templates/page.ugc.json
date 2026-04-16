@@ -1,0 +1,291 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "maison_ugc_banner_aeifh4": {
+      "type": "maison-ugc-banner",
+      "name": "UGC Page Banner",
+      "settings": {
+        "heading": "SmoothSpine success stories",
+        "description": "Hear real stories from customers about how SmoothSpine has helped them relieve back pain, move more freely, and get back to daily life.",
+        "show_trustpilot_badge": true,
+        "rating_value": 4,
+        "rating_text_before": "4.4/5 (",
+        "rating_text_reviews": "2,295 + reviews",
+        "rating_text_after": ")",
+        "color_background": "#f8f4ee",
+        "color_heading": "#102a43",
+        "color_body_text": "#102a43",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 24,
+        "body_font_size": 18,
+        "body_font_size_mobile": 14,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "content_gap": 20,
+        "content_max_width": 600
+      }
+    },
+    "maison_ugc_tabs_pgGqLJ": {
+      "type": "maison-ugc-tabs",
+      "custom_css": [
+        ".maisoncode_ugc-tabs {max-width: 1440px;}"
+      ],
+      "name": "UGC Tabs",
+      "settings": {
+        "show_cta": true,
+        "cta_heading": "Be an inspiration for others",
+        "cta_description": "Click the button below and share your story!",
+        "cta_button_label": "SHARE YOUR STORY",
+        "cta_button_link": "https://www.videoask.com/foc408fv9",
+        "videoask_worker_url": "https://smoothspine-videoask.choojiie.workers.dev/reviews",
+        "default_tab": "1",
+        "tab_1_label": "Reviews",
+        "tab_1_content": "<div class=\"maison-reviews-general\">\n<!-- Start of Judge.me code -->{% assign has_legacy = false %}{% if shop.metafields.judgeme.all_reviews_header.size > 20 %}{% assign has_legacy = true %}{% endif %}<div class='jdgm-widget jdgm-all-reviews-widget-v2025' data-widget='all-reviews-v2025' data-auto-install='false' data-entry-point='all_reviews_widget_v2025.js' data-entry-key='all-reviews-widget-v2025/main.js'>{% if has_legacy %}<div class='jdgm-legacy-widget-content' style='display: none;'><article class='jdgm-widget jdgm-all-reviews-widget'><style class='jdgm-temp-hiding-style'>.jdgm-all-reviews-widget{ display: none }</style>{{ shop.metafields.judgeme.all_reviews_header }}<div class='jdgm-all-reviews__body'>{% assign prefix = 'all_reviews_' %}{% for count in (0..65535) %}{% assign metafield_key = prefix | append: count %}{% assign current_metafield = shop.metafields.judgeme[metafield_key] %}{% unless current_metafield %}{% break %}{% endunless %}{{ current_metafield }}{% endfor %}</div></article></div>{% endif %}</div>{% if shop.metafields.judgeme.all_reviews_widget_v2025_data %}<script>jdgm.data ||= {}; jdgm.data.allReviewsWidgetV2025 = {{ shop.metafields.judgeme.all_reviews_widget_v2025_data }};</script>{% endif %}<!-- End of Judge.me code -->\n</div>",
+        "tab_2_label": "Videos",
+        "tab_2_use_videoask": true,
+        "tab_2_content": "<tolstoy-widget data-tolstoy-widget-id=\"01KN7A0M5XP10VDXX41DRVPBPZ\"></tolstoy-widget>\n<script src=\"{{ 'widget.iife.js' | asset_url }}\"></script>",
+        "sub_tab_1_label": "All Products",
+        "sub_tab_1_tag": "",
+        "sub_tab_2_label": "Foot Pain",
+        "sub_tab_2_tag": "Foot Pain",
+        "sub_tab_3_label": "Neck Pain",
+        "sub_tab_3_tag": "Neck Pain",
+        "sub_tab_4_label": "Back Pain",
+        "sub_tab_4_tag": "Back Pain",
+        "color_background": "#fdfcfa",
+        "color_cta_bg": "#e5eefb",
+        "color_heading": "#102a43",
+        "color_btn_bg": "#f07e3b",
+        "color_btn_border": "#bf642f",
+        "color_btn_text": "#fffcfb",
+        "color_tab_active_bg": "#424140",
+        "color_tab_active_text": "#ffffff",
+        "color_tab_inactive_bg": "#f8f4ee",
+        "color_tab_inactive_text": "#34393d",
+        "color_tab_inactive_border": "#fefefd",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_horizontal": 80,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "padding_horizontal_mobile": 20,
+        "section_gap": 40
+      }
+    },
+    "maison_offer_auth_KkrXfj": {
+      "type": "maison-offer-auth",
+      "blocks": {
+        "checklist_item_aeJqXj": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "90-Day Results or Refund Guarantee"
+          }
+        },
+        "checklist_item_ckjTPP": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "60% OFF - SmoothSpine Massager (All-Inclusive treatment kit)"
+          }
+        },
+        "checklist_item_zfzHpW": {
+          "type": "checklist_item",
+          "settings": {
+            "text": "Fast & FREE Shipping"
+          }
+        },
+        "gift_item_jXLVne": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $29",
+            "image": "shopify://shop_images/dc43829b1674bae58a96a2b9dbbd09fbe430dfc2.png",
+            "label": "Back pain & Sciatica Guide"
+          }
+        },
+        "gift_item_ndHLxg": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $20",
+            "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
+            "label": "12x Back Pain Relief Patches"
+          }
+        },
+        "gift_item_pt7Wjd": {
+          "type": "gift_item",
+          "settings": {
+            "badge_text": "FREE $15",
+            "image": "shopify://shop_images/gsejnjn3gn4knf_egegh.png",
+            "label": "Zip Lock Travel Bag"
+          }
+        },
+        "endorsement_bYpxqj": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Blane Schilling",
+            "title": "Endorsed by Dr. Blane Schilling",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "After 18 years treating patients with chronic back pain and sciatica, I know one thing for certain: recovery happens at home, not in a clinic.\n\nThe SmoothSpine Triple Fusion Massager is the first at-home device I recommend with confidence — it combines decompression, massage, and heat in a single 15-minute session, and for patients dealing with nerve compression, disc stiffness, or that locked-up morning feeling, it genuinely fills the gap between clinical visits and daily relief.",
+            "author_name": "Dr. Blane Schilling",
+            "author_role": "Licensed Physical Therapist",
+            "image": "shopify://shop_images/5c0b920f0ebab86769e2a7b32aa4f3b4b82fe02b.png"
+          }
+        },
+        "endorsement_RqarGn": {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Adam Story",
+            "title": "Endorsed by Dr. Adam Story",
+            "badge_label": "EXPERT ENDORSED",
+            "quote": "As a chiropractor, I've seen how daily spinal decompression and targeted heat therapy can accelerate recovery. The SmoothSpine Massager delivers exactly that — conveniently at home.",
+            "author_name": "Dr. Adam Story",
+            "author_role": "Licensed Chiropractor"
+          }
+        },
+        "trust_item_TW76fJ": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Shipment-Return--Streamline-Flex.svg",
+            "heading": "90-DAY MONEY BACK GUARANTEE",
+            "description": "If you're not thrilled, we will refund your investment. No hassle."
+          }
+        },
+        "trust_item_EpJVJe": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Transfer-Van--Streamline-Flex.svg",
+            "heading": "FREE SHIPPING",
+            "description": "We provide fast shipping on all orders. Enjoy free shipping on orders over $60."
+          }
+        },
+        "trust_item_Uk7JE3": {
+          "type": "trust_item",
+          "settings": {
+            "icon": "shopify://shop_images/Warranty-Badge-Highlight--Streamline-Flex.svg",
+            "heading": "GUARANTEED HIGH QUALITY",
+            "description": "Made of high quality materials. Enjoy consistent, trouble-free performance for a long time."
+          }
+        }
+      },
+      "block_order": [
+        "checklist_item_aeJqXj",
+        "checklist_item_ckjTPP",
+        "checklist_item_zfzHpW",
+        "gift_item_jXLVne",
+        "gift_item_ndHLxg",
+        "gift_item_pt7Wjd",
+        "endorsement_bYpxqj",
+        "endorsement_RqarGn",
+        "trust_item_TW76fJ",
+        "trust_item_EpJVJe",
+        "trust_item_Uk7JE3"
+      ],
+      "name": "Offer Authority Trust",
+      "settings": {
+        "show_offer_block": true,
+        "show_rating_badge": true,
+        "rating_text": "4.4/5 (2,295 + reviews)",
+        "show_trustpilot_badge": true,
+        "offer_heading": "<span style=\"text-decoration:underline\"><em>Special Offer</em></span> On Now!",
+        "offer_subtext": "Try Your SmoothSpine Massager NOW <span style=\"text-decoration:underline\">Risk-Free</span> at an All Time Low Price! Act Now and You'll Get:",
+        "gifts_heading": "Exclusive Offer! Order today for free gifts (valued at $64)!",
+        "cta_label": "GET 60% OFF TODAY ONLY!",
+        "cta_link": "shopify://products/triple-fusion-back-massager",
+        "show_cta_note": true,
+        "cta_note": "Note: Not Available on Amazon or eBay",
+        "offer_image": "shopify://shop_images/e145c8657a0ce71caabd4bdcd69218a3f7cd9ff7.png",
+        "show_authority_block": false,
+        "show_trust_block": true,
+        "wave_offer_to_authority": "shopify://shop_images/banner-wave-top.svg",
+        "wave_authority_to_trust": "shopify://shop_images/banner-wave-top.svg",
+        "wave_top_trust": "shopify://shop_images/banner-wave-bottom.svg",
+        "color_bg_outer": "#fdfcfa",
+        "color_bg_offer": "#f8f4ee",
+        "color_bg_authority": "#f8f4ee",
+        "color_bg_trust": "#e5eefb",
+        "color_text_primary": "#102a43",
+        "color_text_secondary": "#4a5d6e",
+        "color_highlight": "#f07e3b",
+        "color_accent": "#065bdc",
+        "color_divider": "#424140",
+        "color_btn_bg": "#f07e3b",
+        "color_btn_border": "#bf642f",
+        "color_btn_text": "#fffcfb",
+        "color_gift_bg": "#eeeae5",
+        "color_gift_border": "#065bdc",
+        "color_gift_badge_bg": "#065bdc",
+        "color_gift_badge_text": "#fafcfe",
+        "color_trust_icon_bg": "#fafcfe",
+        "color_trust_icon_border": "#065bdc",
+        "color_trust_divider": "#02183b",
+        "color_tab_active": "#065bdc",
+        "color_expert_badge": "#065bdc",
+        "heading_font_size": 32,
+        "heading_font_size_mobile": 26,
+        "subtext_font_size": 18,
+        "subtext_font_size_mobile": 16,
+        "checklist_font_size": 16,
+        "endorsement_title_font_size": 24,
+        "endorsement_title_font_size_mobile": 20,
+        "quote_font_size": 18,
+        "quote_font_size_mobile": 16,
+        "trust_heading_font_size": 18,
+        "trust_body_font_size": 14,
+        "btn_font_size": 16,
+        "badge_font_size": 10,
+        "tab_font_size": 14,
+        "tab_font_size_mobile": 12,
+        "rating_font_size": 12,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
+        "padding_x": 80,
+        "padding_x_mobile": 16,
+        "max_width": 1280,
+        "block_padding_x": 64,
+        "block_padding_y": 48,
+        "column_gap": 64,
+        "offer_radius_tl": 16,
+        "offer_radius_tr": 16,
+        "offer_radius_br": 0,
+        "offer_radius_bl": 16,
+        "auth_radius_tl": 16,
+        "auth_radius_tr": 16,
+        "auth_radius_br": 0,
+        "auth_radius_bl": 16,
+        "trust_radius_tl": 0,
+        "trust_radius_tr": 16,
+        "trust_radius_br": 16,
+        "trust_radius_bl": 16,
+        "image_border_radius": 8,
+        "btn_border_radius": 8,
+        "gift_border_radius": 8,
+        "trust_icon_border_radius": 8
+      }
+    }
+  },
+  "order": [
+    "main",
+    "maison_ugc_banner_aeifh4",
+    "maison_ugc_tabs_pgGqLJ",
+    "maison_offer_auth_KkrXfj"
+  ]
+}

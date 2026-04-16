@@ -1,0 +1,828 @@
+{% comment %}
+  Section: Collection Header
+  Description: Two-column collection header with content/CTA on the left and
+    a full-height product image on the right. Includes a Trustpilot rating badge,
+    heading with accent-colored text, description, CTA button, and trust badges.
+    Responsive: stacks vertically on mobile with centered text.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings), 'Open Sans' (body) — must be loaded by theme
+
+  Blocks:
+  - trust_badge_item: Individual trust badge with icon and label (limit: 6)
+
+  Notes:
+  - Trustpilot rating row is toggleable via show_trustpilot setting
+  - CTA button is toggleable via button_label (hidden when blank)
+  - Trust badges below button use blocks for merchant flexibility
+  - Heading supports an accent-colored portion via heading_accent setting
+  - On mobile, the "Easy Returns" badge and its divider are hidden by default via CSS
+  - All colors, typography, spacing are merchant-configurable
+  - Original source class prefix: maisoncode_collection-header
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_collection-header {
+    --s-color-bg: {{ section.settings.color_background }};
+    --s-color-primary: {{ section.settings.color_primary }};
+    --s-color-primary-75: {{ section.settings.color_primary_muted }};
+    --s-color-accent: {{ section.settings.color_accent }};
+    --s-color-accent-dark: {{ section.settings.color_accent_dark }};
+    --s-color-white: {{ section.settings.color_button_text }};
+    --s-color-text-dark: {{ section.settings.color_text_dark }};
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+    --s-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --s-font-size-description: {{ section.settings.description_font_size }}px;
+    --s-font-size-button: {{ section.settings.button_font_size }}px;
+    --s-font-size-rating: {{ section.settings.rating_font_size }}px;
+    --s-font-size-trust-label: {{ section.settings.trust_label_font_size }}px;
+    --s-padding-content: {{ section.settings.content_padding }}px;
+    --s-border-radius-button: {{ section.settings.button_border_radius }}px;
+    --s-button-height: {{ section.settings.button_height }}px;
+    --s-inner-max-width: {{ section.settings.inner_max_width }}px;
+    --s-inner-gap: {{ section.settings.inner_gap }}px;
+    --s-text-block-gap: {{ section.settings.text_block_gap }}px;
+    --s-cta-block-gap: {{ section.settings.cta_block_gap }}px;
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_collection-header *,
+  #shopify-section-{{ section.id }} .maisoncode_collection-header *::before,
+  #shopify-section-{{ section.id }} .maisoncode_collection-header *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_collection-header {
+    display: flex;
+    width: 100%;
+    background-color: var(--s-color-bg);
+  }
+
+  #shopify-section-{{ section.id }} .ch-content-side {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--s-padding-content);
+  }
+
+  #shopify-section-{{ section.id }} .ch-inner {
+    max-width: var(--s-inner-max-width);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-inner-gap);
+  }
+
+  #shopify-section-{{ section.id }} .ch-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-text-block-gap);
+  }
+
+  #shopify-section-{{ section.id }} .ch-header-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Badge / Trustpilot row */
+  #shopify-section-{{ section.id }} .ch-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .ch-stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .ch-stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ch-rating-text {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-rating);
+    line-height: 1.5;
+    color: var(--s-color-text-dark);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .ch-rating-text a {
+    color: inherit;
+  }
+
+  #shopify-section-{{ section.id }} .ch-trustpilot {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .ch-trustpilot svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ch-trustpilot span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-rating);
+    line-height: 1.5;
+    color: var(--s-color-text-dark);
+  }
+
+  /* Heading */
+  #shopify-section-{{ section.id }} .ch-heading {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-heading);
+    line-height: 1.5;
+    color: var(--s-color-primary);
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .ch-heading .ch-accent {
+    color: var(--s-color-accent);
+    text-decoration: underline;
+  }
+
+  /* Description */
+  #shopify-section-{{ section.id }} .ch-description {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-description);
+    line-height: 1.5;
+    color: var(--s-color-primary-75);
+  }
+
+  /* CTA block */
+  #shopify-section-{{ section.id }} .ch-cta-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-cta-block-gap);
+    align-items: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ch-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: var(--s-button-height);
+    background-color: var(--s-color-accent);
+    border: none;
+    border-bottom: 4px solid var(--s-color-accent-dark);
+    border-radius: var(--s-border-radius-button);
+    padding: 16px 32px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  #shopify-section-{{ section.id }} .ch-button span {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-button);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--s-color-white);
+    white-space: nowrap;
+  }
+
+  /* Trust badges */
+  #shopify-section-{{ section.id }} .ch-trust-badges {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .ch-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ch-trust-item svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ch-trust-item span {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-trust-label);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--s-color-primary);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .ch-trust-divider {
+    width: 0;
+    height: 16px;
+    border-left: 1px solid var(--s-color-primary-75);
+  }
+
+  /* Image side */
+  #shopify-section-{{ section.id }} .ch-image-side {
+    flex: 1 1 50%;
+    position: relative;
+    min-height: 400px;
+  }
+
+  #shopify-section-{{ section.id }} .ch-image-side img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ch-image-side .ch-image-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8d5c4 0%, #f0e6da 50%, #d4bfae 100%);
+    color: var(--s-color-primary-75);
+    font-family: var(--s-font-body);
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .ch-image-side .ch-image-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_collection-header {
+      flex-direction: column;
+      --s-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
+      --s-font-size-description: {{ section.settings.description_font_size_mobile }}px;
+      --s-font-size-button: {{ section.settings.button_font_size_mobile }}px;
+      --s-padding-content: {{ section.settings.content_padding_mobile }}px;
+      --s-button-height: {{ section.settings.button_height_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .ch-content-side {
+      padding: var(--s-padding-content) var(--s-padding-content) var(--s-padding-content);
+      flex: none;
+    }
+
+    #shopify-section-{{ section.id }} .ch-inner {
+      gap: 32px;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .ch-text-block {
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .ch-header-group {
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .ch-heading {
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    #shopify-section-{{ section.id }} .ch-description {
+      text-align: center;
+    }
+
+    #shopify-section-{{ section.id }} .ch-trust-item svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .ch-trust-item span {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .ch-trust-divider {
+      height: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .ch-image-side {
+      flex: none;
+      min-height: 280px;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 375 / 281;
+    }
+
+    .ch-trust-item-last, .ch-trust-divider-last{
+      display: none !important;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_collection-header">
+  {%- comment -%} Text / Content Side {%- endcomment -%}
+  <div class="ch-content-side">
+    <div class="ch-inner">
+      <div class="ch-text-block">
+        <div class="ch-header-group">
+
+          {%- comment -%} Trustpilot Badge {%- endcomment -%}
+          {% if section.settings.show_trustpilot %}
+            {% render 'maison-trustpilot-badge',
+              wrapper_class: 'ch-badge',
+              stars_class: 'ch-stars',
+              rating_class: 'ch-rating-text',
+              logo_class: 'ch-trustpilot',
+              show_logo: section.settings.show_trustpilot_logo,
+              logo_label: section.settings.trustpilot_label
+            %}
+          {% endif %}
+
+          {%- comment -%} Heading {%- endcomment -%}
+          {% if section.settings.heading != blank %}
+            <h2 class="ch-heading">
+              {{ section.settings.heading }}
+              {% if section.settings.heading_accent != blank %}
+                <span class="ch-accent">{{ section.settings.heading_accent }}</span>
+              {% endif %}
+            </h2>
+          {% endif %}
+        </div>
+
+        {%- comment -%} Description {%- endcomment -%}
+        {% if section.settings.description != blank %}
+          <p class="ch-description">{{ section.settings.description }}</p>
+        {% endif %}
+      </div>
+
+      {%- comment -%} CTA Block {%- endcomment -%}
+      {% if section.settings.button_label != blank or section.blocks.size > 0 %}
+        <div class="ch-cta-block">
+          {% if section.settings.button_label != blank %}
+            <a
+              {% if section.settings.button_link != blank %}
+                href="{{ section.settings.button_link }}"
+              {% endif %}
+              class="ch-button"
+            >
+              <span>{{ section.settings.button_label }}</span>
+            </a>
+          {% endif %}
+
+          {%- comment -%} Trust Badges (Blocks) {%- endcomment -%}
+          {% if section.blocks.size > 0 %}
+            <div class="ch-trust-badges">
+              {% for block in section.blocks %}
+                {% if block.type == 'trust_badge_item' %}
+                  {% unless forloop.first %}
+                    <div class="ch-trust-divider {% if section.settings.hide_last_badge_mobile and forloop.last %}ch-trust-divider-last{% endif %}"></div>
+                  {% endunless %}
+                  <div class="ch-trust-item {% if section.settings.hide_last_badge_mobile and forloop.last %}ch-trust-item-last{% endif %}" {{ block.shopify_attributes }}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#cb-trust-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.6235 2.6235C4.37209 0.874903 6.8971 0 10 0C13.1029 0 15.6279 0.874903 17.3766 2.6235C19.1251 4.37209 20 6.8971 20 10C20 13.1029 19.1251 15.6279 17.3766 17.3766C15.6279 19.1251 13.1029 20 10 20C6.8971 20 4.37209 19.1251 2.6235 17.3766C0.874903 15.6279 0 13.1029 0 10C0 6.8971 0.874903 4.37209 2.6235 2.6235ZM14.1713 7.08989C14.5366 6.75857 14.564 6.19391 14.2327 5.82869C13.9014 5.46346 13.3368 5.43596 12.9715 5.76727C11.7848 6.84384 10.8933 7.81137 10.1408 8.98594C9.59271 9.84133 9.13136 10.7863 8.67961 11.9317L7.06956 10.2713C6.72627 9.9173 6.16101 9.9086 5.80701 10.2519C5.45301 10.5952 5.44431 11.1604 5.78759 11.5144L8.38499 14.193C8.60064 14.4154 8.91617 14.5101 9.21866 14.4433C9.52113 14.3764 9.76736 14.1575 9.8692 13.865C10.4695 12.1405 11.0025 10.9511 11.6443 9.94926C12.2827 8.95296 13.0528 8.10454 14.1713 7.08989Z" fill="#065BDC"/></g><defs><clipPath id="cb-trust-{{ block.id }}"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                    {% if block.settings.label != blank %}
+                      <span>{{ block.settings.label }}</span>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {%- comment -%} Image Side {%- endcomment -%}
+  <div class="ch-image-side">
+    {% if section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 1200 | image_tag:
+        loading: 'lazy',
+        widths: '375, 550, 750, 1000, 1200',
+        sizes: '(max-width: 767px) 100vw, 50vw',
+        alt: section.settings.image_alt
+      }}
+    {% else %}
+      <div class="ch-image-placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>{{ section.settings.image_placeholder_text }}</span>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Header",
+  "tag": "section",
+  "class": "collection-header-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SmoothSpine"
+    },
+    {
+      "type": "text",
+      "id": "heading_accent",
+      "label": "Heading accent text (underlined)",
+      "default": "Helped Thousands Become Pain Free"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Are you next? Browse SmoothSpine's solutions by your condition and find what's right for your body."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "SEE #1 BACK PAIN BESTSELLER"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Trustpilot rating"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot",
+      "label": "Show Trustpilot rating",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating_value",
+      "label": "Star rating value",
+      "min": 1,
+      "max": 5,
+      "step": 0.5,
+      "default": 4.5
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "4.4/5 (2,295 + reviews)"
+    },
+    {
+      "type": "url",
+      "id": "rating_link",
+      "label": "Rating link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot_logo",
+      "label": "Show Trustpilot logo",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_label",
+      "label": "Trustpilot label",
+      "default": "Trustpilot"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Happy customer holding SmoothSpine product"
+    },
+    {
+      "type": "text",
+      "id": "image_placeholder_text",
+      "label": "Image placeholder text",
+      "default": "Collection image"
+    },
+    {
+      "type": "header",
+      "content": "Trust badges"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_last_badge_mobile",
+      "label": "Hide last badge on mobile",
+      "default": true,
+      "info": "Hides the last trust badge and its divider on mobile screens"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_primary",
+      "label": "Primary / heading text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_primary_muted",
+      "label": "Muted text",
+      "default": "#4A5D6E"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent color",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_dark",
+      "label": "Button border / accent dark",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_button_text",
+      "label": "Button text",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "color",
+      "id": "color_text_dark",
+      "label": "Rating text color",
+      "default": "#111111"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Description font size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "description_font_size_mobile",
+      "label": "Description font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button font size (desktop)",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_font_size_mobile",
+      "label": "Button font size (mobile)",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "rating_font_size",
+      "label": "Rating text font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "trust_label_font_size",
+      "label": "Trust badge label font size",
+      "min": 8,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "label": "Content padding (desktop)",
+      "min": 20,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "content_padding_mobile",
+      "label": "Content padding (mobile)",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "inner_max_width",
+      "label": "Content max width",
+      "min": 400,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "inner_gap",
+      "label": "Inner content gap",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "text_block_gap",
+      "label": "Text block gap",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "cta_block_gap",
+      "label": "CTA block gap",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_height",
+      "label": "Button height (desktop)",
+      "min": 36,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "button_height_mobile",
+      "label": "Button height (mobile)",
+      "min": 36,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 44
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_badge_item",
+      "name": "Trust Badge",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Trust badge"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Header",
+      "blocks": [
+        {
+          "type": "trust_badge_item",
+          "settings": {
+            "label": "Doctor Developed"
+          }
+        },
+        {
+          "type": "trust_badge_item",
+          "settings": {
+            "label": "Rapid Pain Relief"
+          }
+        },
+        {
+          "type": "trust_badge_item",
+          "settings": {
+            "label": "Easy Returns"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

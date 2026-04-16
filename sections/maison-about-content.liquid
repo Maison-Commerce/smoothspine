@@ -1,0 +1,580 @@
+{% comment %}
+  Section: About Page Content
+  Description: Two-column layout with a 2x2 image grid on the left and a
+    heading with multiple story paragraphs on the right. Ideal for About Us
+    or brand origin story pages. Stacks vertically on mobile.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings), 'Open Sans' (body) — must be loaded by the theme
+
+  Blocks:
+  - grid_image: Image tile in the 2x2 grid (limit: 4)
+  - paragraph: Text paragraph with optional italic styling (limit: 10)
+
+  Notes:
+  - Image grid uses CSS Grid with 2x2 layout and shared border-radius on container
+  - Paragraphs support an italic toggle for pull-quotes
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_about-page-content
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_about-page-content {
+    --s-color-bg: {{ section.settings.color_background }};
+    --s-color-text-primary: {{ section.settings.color_heading }};
+    --s-color-text-secondary: {{ section.settings.color_body_text }};
+    --s-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --s-font-size-body: {{ section.settings.body_font_size }}px;
+    --s-radius: {{ section.settings.image_border_radius }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-gap-columns: {{ section.settings.column_gap }}px;
+    --s-gap-text-content: {{ section.settings.text_content_gap }}px;
+    --s-gap-paragraphs: {{ section.settings.paragraphs_gap }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--s-color-bg);
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_about-page-content *,
+  #shopify-section-{{ section.id }} .maisoncode_about-page-content *::before,
+  #shopify-section-{{ section.id }} .maisoncode_about-page-content *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .about-inner {
+    max-width: var(--s-max-width);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: var(--s-gap-columns);
+  }
+
+  /* Image Grid */
+  #shopify-section-{{ section.id }} .about-image-grid {
+    flex: 1 1 0;
+    aspect-ratio: 1 / 1;
+    border-radius: var(--s-radius);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+  }
+
+  #shopify-section-{{ section.id }} .about-image-grid .about-grid-cell {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .about-image-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .about-image-grid .about-grid-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e8d5c4 0%, #f0e6da 50%, #d4bfae 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .about-image-grid .about-grid-placeholder svg {
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    color: {{ section.settings.color_heading }};
+  }
+
+  /* Text Column */
+  #shopify-section-{{ section.id }} .about-text {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    padding: {{ section.settings.text_padding_top }}px {{ section.settings.text_padding_horizontal }}px {{ section.settings.text_padding_bottom }}px;
+  }
+
+  #shopify-section-{{ section.id }} .about-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-gap-text-content);
+  }
+
+  #shopify-section-{{ section.id }} .about-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: var(--s-font-size-heading);
+    line-height: 1.4;
+    color: var(--s-color-text-primary);
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .about-paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-gap-paragraphs);
+  }
+
+  #shopify-section-{{ section.id }} .about-paragraphs p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: var(--s-font-size-body);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .about-paragraphs p.italic-quote {
+    font-style: italic;
+  }
+
+  /* Mobile styles */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_about-page-content {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+      --s-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
+      --s-font-size-body: {{ section.settings.body_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .about-inner {
+      flex-direction: column;
+      gap: {{ section.settings.column_gap_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .about-image-grid {
+      flex: none;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .about-text {
+      flex: none;
+      width: 100%;
+      padding: 0;
+    }
+
+    #shopify-section-{{ section.id }} .about-text-content {
+      gap: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .about-paragraphs {
+      gap: 12px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_about-page-content">
+  <div class="about-inner">
+
+    {%- comment -%} Left Column: 2x2 Image Grid {%- endcomment -%}
+    <div class="about-image-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'grid_image' %}
+          <div class="about-grid-cell" {{ block.shopify_attributes }}>
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 700 | image_tag:
+                loading: 'lazy',
+                widths: '350, 500, 700',
+                sizes: '(max-width: 767px) 50vw, 25vw',
+                alt: block.settings.image_alt
+              }}
+            {% else %}
+              <div class="about-grid-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {%- comment -%} Right Column: Text Content {%- endcomment -%}
+    <div class="about-text">
+      <div class="about-text-content">
+
+        {% if section.settings.heading != blank %}
+          <h2 class="about-heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+
+        {% assign paragraphs = section.blocks | where: 'type', 'paragraph' %}
+        {% if paragraphs.size > 0 %}
+          <div class="about-paragraphs">
+            {% for block in section.blocks %}
+              {% if block.type == 'paragraph' %}
+                {% if block.settings.text != blank %}
+                  <p class="{% if block.settings.italic %}italic-quote{% endif %}" {{ block.shopify_attributes }}>
+                    {{ block.settings.text }}
+                  </p>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Page Content",
+  "tag": "section",
+  "class": "about-page-content-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "It Started with One Question"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_background",
+      "label": "Background color",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_heading",
+      "label": "Heading text color",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_body_text",
+      "label": "Body text color",
+      "default": "#102A43BF"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading font size (desktop)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 14,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "body_font_size",
+      "label": "Body font size (desktop)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "label": "Body font size (mobile)",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Column gap (desktop)",
+      "min": 16,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "column_gap_mobile",
+      "label": "Column gap (mobile)",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "text_content_gap",
+      "label": "Gap between heading and paragraphs",
+      "min": 8,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "paragraphs_gap",
+      "label": "Gap between paragraphs",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_padding_top",
+      "label": "Text column top padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "text_padding_bottom",
+      "label": "Text column bottom padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "text_padding_horizontal",
+      "label": "Text column horizontal padding",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image grid border radius",
+      "min": 0,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "grid_image",
+      "name": "Grid Image",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text",
+          "default": "About us image"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "Paragraph",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Paragraph text goes here."
+        },
+        {
+          "type": "checkbox",
+          "id": "italic",
+          "label": "Italic style",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Page Content",
+      "blocks": [
+        {
+          "type": "grid_image",
+          "settings": {
+            "image_alt": "Woman in kitchen preparing food"
+          }
+        },
+        {
+          "type": "grid_image",
+          "settings": {
+            "image_alt": "Man driving experiencing back discomfort"
+          }
+        },
+        {
+          "type": "grid_image",
+          "settings": {
+            "image_alt": "Man working at desk with back pain"
+          }
+        },
+        {
+          "type": "grid_image",
+          "settings": {
+            "image_alt": "Man walking outdoors with back pain"
+          }
+        },
+        {
+          "type": "paragraph",
+          "settings": {
+            "text": "\"Why is relief so hard to find?\"",
+            "italic": true
+          }
+        },
+        {
+          "type": "paragraph",
+          "settings": {
+            "text": "Our founder asked that question after watching his father, a man who'd worked hard his entire life, spend years cycling through treatments that never lasted. Chiropractors. Medications. Injections. Physical therapy appointments that cost a fortune and required time he didn't have.",
+            "italic": false
+          }
+        },
+        {
+          "type": "paragraph",
+          "settings": {
+            "text": "Nothing stuck. The pain always came back.",
+            "italic": false
+          }
+        },
+        {
+          "type": "paragraph",
+          "settings": {
+            "text": "He started asking doctors a different question: \"What if someone could do this at home? What if relief didn't have to mean endless appointments or pills?\"",
+            "italic": false
+          }
+        },
+        {
+          "type": "paragraph",
+          "settings": {
+            "text": "That question became SmoothSpine.",
+            "italic": false
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

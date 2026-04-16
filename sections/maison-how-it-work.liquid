@@ -1,0 +1,715 @@
+{% comment %}
+  Section: How It Works
+  Description: A 3-step process section with numbered step cards featuring images
+    and descriptions. Cards display vertically on desktop (side by side) and switch
+    to horizontal layout on mobile. Ideal for product onboarding or usage instructions.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings, badges) — must be loaded by theme
+  - Font: 'Open Sans' (body text) — must be loaded by theme
+
+  Blocks:
+  - step_card: Individual step with image, step label, and description (limit: 6)
+
+  Notes:
+  - Background uses a linear gradient from top to bottom; both colors are merchant-configurable
+  - Step badge uses absolute positioning over the card image
+  - Card image height is configurable; on mobile cards switch to horizontal layout
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_how-it-works
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_how-it-works {
+    --s-color-brand: {{ section.settings.color_brand }};
+    --s-color-text-primary: {{ section.settings.color_text_primary }};
+    --s-color-text-secondary: {{ section.settings.color_text_secondary }};
+    --s-color-white: {{ section.settings.color_card_text_bg }};
+    --s-color-off-white: {{ section.settings.color_card_bg }};
+    --s-color-badge-text: {{ section.settings.color_badge_text }};
+    --s-color-bg-top: {{ section.settings.color_bg_top }};
+    --s-color-bg-bottom: {{ section.settings.color_bg_bottom }};
+    --s-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --s-font-size-badge: {{ section.settings.badge_font_size }}px;
+    --s-font-size-body: {{ section.settings.body_font_size }}px;
+    --s-radius-card: {{ section.settings.card_border_radius }}px;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-gap-cards: {{ section.settings.cards_gap }}px;
+    --s-gap-inner: {{ section.settings.inner_gap }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+    --s-image-height: {{ section.settings.image_height }}px;
+    --s-badge-width: {{ section.settings.badge_width }}px;
+    --s-badge-height: {{ section.settings.badge_height }}px;
+    --s-heading-max-width: {{ section.settings.heading_max_width }}px;
+
+    background: linear-gradient(to bottom, var(--s-color-bg-top), var(--s-color-bg-bottom));
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_how-it-works *,
+  #shopify-section-{{ section.id }} .maisoncode_how-it-works *::before,
+  #shopify-section-{{ section.id }} .maisoncode_how-it-works *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-inner {
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s-gap-inner);
+  }
+
+  #shopify-section-{{ section.id }} .hiw-heading {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: var(--s-font-size-heading);
+    line-height: 1.5;
+    text-align: center;
+    text-transform: capitalize;
+    max-width: var(--s-heading-max-width);
+  }
+
+  #shopify-section-{{ section.id }} .hiw-heading {
+    color: var(--s-color-brand);
+  }
+
+  #shopify-section-{{ section.id }} .hiw-heading p {
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-heading em {
+    color: var(--s-color-text-primary);
+    font-style: normal;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-cards {
+    display: flex;
+    gap: var(--s-gap-cards);
+    width: 100%;
+    align-items: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-card {
+    flex: 1;
+    background: var(--s-color-off-white);
+    border-radius: var(--s-radius-card);
+    box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-card-image {
+    width: 100%;
+    height: var(--s-image-height);
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-card-image img,
+  #shopify-section-{{ section.id }} .hiw-card-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-card-image .hiw-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d0dff5 0%, #e5eefb 50%, #c4d6f0 100%);
+    color: var(--s-color-text-secondary);
+    font-size: 14px;
+    text-align: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-card-image .hiw-placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-step-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--s-color-brand);
+    border-radius: 0 0 var(--s-radius-card) 0;
+    height: var(--s-badge-height);
+    width: var(--s-badge-width);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: var(--s-font-size-badge);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--s-color-badge-text);
+    z-index: 2;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-card-text {
+    background: var(--s-color-white);
+    padding: 20px;
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-card-text p {
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--s-font-size-body);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+    text-align: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-card-text p strong {
+    font-weight: 700;
+  }
+
+  /* CTA Button */
+  #shopify-section-{{ section.id }} .hiw-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 420px;
+    height: 56px;
+    background-color: {{ section.settings.color_button_bg }};
+    border: none;
+    border-bottom: 4px solid {{ section.settings.color_button_border }};
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-cta-btn:hover {
+    opacity: 0.9;
+  }
+
+  #shopify-section-{{ section.id }} .hiw-cta-btn span {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: {{ section.settings.color_button_text }};
+    white-space: nowrap;
+  }
+
+  /* Mobile */
+  @media (max-width: 949px) {
+    #shopify-section-{{ section.id }} .maisoncode_how-it-works {
+      --s-padding-top: {{ section.settings.padding_top_mobile }}px;
+      --s-padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      --s-padding-horizontal: {{ section.settings.padding_horizontal_mobile }}px;
+      --s-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .hiw-inner {
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .hiw-heading {
+      line-height: 1.4;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .hiw-cards {
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .hiw-card {
+      flex-direction: row;
+      height: 180px;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .hiw-card-image {
+      width: 168px;
+      min-width: 168px;
+      height: 100%;
+      flex-shrink: 0;
+    }
+
+    #shopify-section-{{ section.id }} .hiw-step-badge {
+      height: 24px;
+      width: 72px;
+      font-size: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .hiw-card-text {
+      padding: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .hiw-card-text p {
+      font-size: 12px;
+      text-align: left;
+    }
+
+    #shopify-section-{{ section.id }} .hiw-cta-btn {
+      width: 100%;
+      height: 44px;
+    }
+
+    #shopify-section-{{ section.id }} .hiw-cta-btn span {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_how-it-works">
+  <div class="hiw-inner">
+
+    {%- comment -%} Heading {%- endcomment -%}
+    {% if section.settings.heading != blank %}
+      <h2 class="hiw-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {%- comment -%} Step Cards (Blocks) {%- endcomment -%}
+    {% if section.blocks.size > 0 %}
+      <div class="hiw-cards">
+        {% for block in section.blocks %}
+          {% if block.type == 'step_card' %}
+            <article class="hiw-card" {{ block.shopify_attributes }}>
+              <div class="hiw-card-image">
+                {% if block.settings.video != blank %}
+                  {{ block.settings.video | video_tag: 
+                    autoplay: true, 
+                    loop: true, 
+                    muted: true, 
+                    playsinline: true, 
+                    class: 'hiw-video' 
+                  }}
+                {% elsif block.settings.image != blank %}
+                  {{ block.settings.image | image_url: width: 800 | image_tag:
+                    loading: 'lazy',
+                    widths: '375, 550, 750, 800',
+                    sizes: '(max-width: 767px) 168px, 33vw'
+                  }}
+                {% else %}
+                  <div class="hiw-placeholder">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                    <span>Step image</span>
+                  </div>
+                {% endif %}
+                {% if block.settings.badge_label != blank %}
+                  <div class="hiw-step-badge">{{ block.settings.badge_label }}</div>
+                {% endif %}
+              </div>
+              <div class="hiw-card-text">
+                {% if block.settings.description != blank %}
+                  <p>{{ block.settings.description }}</p>
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {%- comment -%} CTA Button {%- endcomment -%}
+    {% if section.settings.button_label != blank %}
+      <a
+        {% if section.settings.button_link != blank %}
+          href="{{ section.settings.button_link }}"
+        {% endif %}
+        class="hiw-cta-btn"
+      >
+        <span>{{ section.settings.button_label }}</span>
+      </a>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How It Works",
+  "tag": "section",
+  "class": "how-it-works-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Use italic (em) for dark color text",
+      "default": "<p>3 Simple Steps To Relieve <em>Sciatica And Back Pain</em></p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Get Started, Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "color_button_bg",
+      "label": "Button background",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_button_border",
+      "label": "Button border",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_button_text",
+      "label": "Button text",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_top",
+      "label": "Background gradient (top)",
+      "default": "#e5eefb"
+    },
+    {
+      "type": "color",
+      "id": "color_bg_bottom",
+      "label": "Background gradient (bottom)",
+      "default": "#fdfcfa"
+    },
+    {
+      "type": "color",
+      "id": "color_brand",
+      "label": "Accent / badge color",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_text_primary",
+      "label": "Heading text (dark)",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_text_secondary",
+      "label": "Body text",
+      "default": "#4A5D6E"
+    },
+    {
+      "type": "color",
+      "id": "color_card_bg",
+      "label": "Card background",
+      "default": "#FFFFFC"
+    },
+    {
+      "type": "color",
+      "id": "color_card_text_bg",
+      "label": "Card text area background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_badge_text",
+      "label": "Badge text color",
+      "default": "#FAFCFE"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size (mobile)",
+      "min": 16,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "label": "Badge font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size",
+      "label": "Body font size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (desktop)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding (desktop)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Top padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Bottom padding (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "label": "Horizontal padding (mobile)",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "cards_gap",
+      "label": "Gap between cards",
+      "min": 8,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "inner_gap",
+      "label": "Gap between heading and cards",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Card border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Card image height (desktop)",
+      "min": 200,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "badge_width",
+      "label": "Badge width",
+      "min": 60,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 96
+    },
+    {
+      "type": "range",
+      "id": "badge_height",
+      "label": "Badge height",
+      "min": 24,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_max_width",
+      "label": "Heading max width",
+      "min": 300,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step_card",
+      "name": "Step",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Step video",
+          "info": "Video takes priority over image if both are set"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Step image"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Image alt text",
+          "default": "Step image"
+        },
+        {
+          "type": "text",
+          "id": "badge_label",
+          "label": "Badge label",
+          "default": "STEP 1"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p><strong>Step description title.</strong> Supporting description text goes here explaining this step.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How It Works",
+      "blocks": [
+        {
+          "type": "step_card",
+          "settings": {
+            "badge_label": "STEP 1",
+            "image_alt": "Step 1 - Plug in the USB cable to the device",
+            "description": "<p><strong>Plug in the USB cable to the device.</strong> The button controls will light up, confirming it's ready to use. Place the massager on a flat surface like your floor or bed.</p>"
+          }
+        },
+        {
+          "type": "step_card",
+          "settings": {
+            "badge_label": "STEP 2",
+            "image_alt": "Step 2 - Hold the power button to turn it on",
+            "description": "<p><strong>Hold the power button to turn it on.</strong> The device will automatically cycle through massage, traction, and heat therapy for a full session.</p>"
+          }
+        },
+        {
+          "type": "step_card",
+          "settings": {
+            "badge_label": "STEP 3",
+            "image_alt": "Step 3 - Lay back and relax",
+            "description": "<p><strong>Lay back, relax, and enjoy the soothing relief for 15-30 minutes</strong> while SmoothSpine works its magic on your back.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

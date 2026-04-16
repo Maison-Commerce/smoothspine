@@ -1,0 +1,1097 @@
+{% comment %}
+  Section: Home Hero
+  Description: Full-width hero section with a two-column layout — content on the left
+    (Trustpilot badge, heading, subtext, CTA button, trust badges, and a testimonial card)
+    and a cover image on the right. Stacks vertically (image on top) on mobile.
+    Ideal for homepage or landing page above-the-fold placement.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings), 'Open Sans' (body) — must be loaded by theme or via @import
+
+  Blocks:
+  - trust_badge: Individual trust badge with icon and label below the CTA button (limit: 6)
+
+  Notes:
+  - Trustpilot badge row is toggleable via show_trustpilot_badge setting
+  - Testimonial card is toggleable via show_testimonial setting
+  - Star images use inline SVGs for self-containment (no external asset dependency)
+  - All colors, typography, spacing, and border radius values are merchant-configurable
+  - Original source class prefix: maisoncode_home-hero
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_home-hero {
+    --s-color-bg: {{ section.settings.color_bg }};
+    --s-color-text-primary: {{ section.settings.color_text_primary }};
+    --s-color-text-secondary: {{ section.settings.color_text_secondary }};
+    --s-color-accent: {{ section.settings.color_accent }};
+    --s-color-accent-border: {{ section.settings.color_accent_border }};
+    --s-color-white: {{ section.settings.color_white }};
+    --s-color-light: {{ section.settings.color_light }};
+    --s-color-badge-text: {{ section.settings.color_badge_text }};
+    --s-color-testimonial-bg: {{ section.settings.color_testimonial_bg }};
+    --s-color-verified: {{ section.settings.color_verified_text }};
+    --s-color-trust-icon: {{ section.settings.color_trust_icon }};
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+    --s-font-size-heading: {{ section.settings.heading_font_size }}px;
+    --s-font-size-subtext: {{ section.settings.subtext_font_size }}px;
+    --s-font-size-badge: {{ section.settings.badge_font_size }}px;
+    --s-font-size-button: {{ section.settings.button_font_size }}px;
+    --s-font-size-testimonial: {{ section.settings.testimonial_font_size }}px;
+    --s-font-size-author: {{ section.settings.author_font_size }}px;
+    --s-font-size-trust-label: {{ section.settings.trust_label_font_size }}px;
+    --s-padding-content: {{ section.settings.content_padding }}px;
+    --s-gap-content: {{ section.settings.content_gap }}px;
+    --s-radius-button: {{ section.settings.button_border_radius }}px;
+    --s-radius-testimonial: {{ section.settings.testimonial_border_radius }}px;
+    --s-radius-avatar: {{ section.settings.avatar_border_radius }}px;
+    --s-button-height: {{ section.settings.button_height }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+    --s-image-min-height: {{ section.settings.image_min_height }}px;
+
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    font-family: var(--s-font-body);
+    background-color: var(--s-color-bg);
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_home-hero *,
+  #shopify-section-{{ section.id }} .maisoncode_home-hero *::before,
+  #shopify-section-{{ section.id }} .maisoncode_home-hero *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .hero-inner {
+    display: flex;
+    width: 100%;
+    max-width: var(--s-max-width);
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .hero-content {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-gap-content);
+    justify-content: center;
+    padding: var(--s-padding-content);
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .hero-image {
+    flex: 1 1 50%;
+    min-height: var(--s-image-min-height);
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .hero-image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .hero-image .hero-image__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8d5c4 0%, #f0e6da 50%, #d4bfae 100%);
+    color: var(--s-color-text-secondary);
+    font-size: 14px;
+    text-align: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .hero-image .hero-image__placeholder svg {
+    width: 48px;
+    height: 48px;
+    opacity: 0.4;
+  }
+
+  /* Badge / Trustpilot row */
+  #shopify-section-{{ section.id }} .badge-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .stars {
+    display: flex;
+    gap: 2px;
+  }
+
+  #shopify-section-{{ section.id }} .stars svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .badge-text {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-badge);
+    line-height: 1.5;
+    color: var(--s-color-badge-text);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .badge-text a {
+    color: var(--s-color-badge-text);
+    text-decoration: underline;
+  }
+
+  #shopify-section-{{ section.id }} .trustpilot {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  #shopify-section-{{ section.id }} .trustpilot svg {
+    width: 14px;
+    height: 14px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .trustpilot span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-badge);
+    line-height: 1.5;
+    color: var(--s-color-badge-text);
+    white-space: nowrap;
+  }
+
+  /* Heading */
+  #shopify-section-{{ section.id }} .hero-heading {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-heading);
+    line-height: 1.5;
+    color: var(--s-color-text-primary);
+    text-transform: capitalize;
+  }
+
+  #shopify-section-{{ section.id }} .hero-heading em {
+    color: var(--s-color-accent);
+    text-decoration: underline;
+    font-style: normal;
+  }
+
+  /* Subtext */
+  #shopify-section-{{ section.id }} .hero-subtext {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-subtext);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+  }
+
+  /* Top content group */
+  #shopify-section-{{ section.id }} .content-top {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-gap-content);
+  }
+
+  #shopify-section-{{ section.id }} .text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .heading-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* CTA area */
+  #shopify-section-{{ section.id }} .cta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: var(--s-button-height);
+    background-color: var(--s-color-accent);
+    border: none;
+    border-bottom: 4px solid var(--s-color-accent-border);
+    border-radius: var(--s-radius-button);
+    padding: 16px 32px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  #shopify-section-{{ section.id }} .cta-button:hover {
+    opacity: 0.9;
+  }
+
+  #shopify-section-{{ section.id }} .cta-button span {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-button);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--s-color-light);
+    white-space: nowrap;
+  }
+
+  /* Trust badges */
+  #shopify-section-{{ section.id }} .trust-badges {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .trust-badge svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .trust-badge span {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: var(--s-font-size-trust-label);
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--s-color-text-primary);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .trust-divider {
+    width: 1px;
+    height: 16px;
+    background-color: {{ section.settings.color_divider }};
+  }
+
+  /* Testimonial card */
+  #shopify-section-{{ section.id }} .testimonial-card {
+    display: flex;
+    gap: 20px;
+    background: var(--s-color-testimonial-bg);
+    border-radius: var(--s-radius-testimonial);
+    padding: 12px 20px 12px 12px;
+    box-shadow: 0px 1px 3px 0px rgba(16, 24, 40, 0.1), 0px 1px 2px 0px rgba(16, 24, 40, 0.06);
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: var(--s-radius-avatar);
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-avatar img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--s-radius-avatar);
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-text {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: var(--s-font-size-testimonial);
+    line-height: 1.5;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-text strong {
+    font-weight: 700;
+    color: var(--s-color-text-secondary);
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .author-name {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-author);
+    line-height: 1.5;
+    color: var(--s-color-text-primary);
+    white-space: nowrap;
+  }
+
+  #shopify-section-{{ section.id }} .verified {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .verified svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .verified span {
+    font-family: var(--s-font-body);
+    font-weight: 600;
+    font-size: var(--s-font-size-author);
+    line-height: 1.5;
+    color: var(--s-color-verified);
+    white-space: nowrap;
+  }
+
+  /* Testimonial stars: mobile/desktop visibility */
+  #shopify-section-{{ section.id }} .testimonial-stars--mobile {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .testimonial-stars--desktop {
+    display: flex;
+    gap: 2px;
+  }
+
+  /* Responsive — Tablet */
+  @media (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .hero-content {
+      padding: {{ section.settings.content_padding_tablet }}px;
+    }
+  }
+
+  /* Responsive — Mobile */
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .maisoncode_home-hero {
+      --s-font-size-heading: {{ section.settings.heading_font_size_mobile }}px;
+      --s-font-size-subtext: {{ section.settings.subtext_font_size_mobile }}px;
+    }
+
+    #shopify-section-{{ section.id }} .hero-inner {
+      flex-direction: column;
+    }
+
+    #shopify-section-{{ section.id }} .hero-content {
+      padding: {{ section.settings.content_padding_mobile }}px;
+      padding-bottom: 24px;
+      flex: none;
+      gap: 24px;
+      text-align: center;
+      align-items: center;
+    }
+
+    #shopify-section-{{ section.id }} .content-top {
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .hero-heading {
+      line-height: 1.4;
+      max-width: 318px;
+      margin: 0 auto;
+    }
+
+    #shopify-section-{{ section.id }} .hero-image {
+      flex: none;
+      min-height: 300px;
+      height: 50vw;
+      max-height: 400px;
+    }
+
+    #shopify-section-{{ section.id }} .badge-row {
+      justify-content: center;
+    }
+
+    #shopify-section-{{ section.id }} .cta-button {
+      height: 44px;
+    }
+
+    #shopify-section-{{ section.id }} .cta-button span {
+      font-size: 14px;
+    }
+
+    #shopify-section-{{ section.id }} .trust-badges {
+      gap: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .trust-badge:nth-child(n+5) {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .trust-divider:nth-child(n+4) {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .trust-badge svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .trust-badge span {
+      font-size: 10px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-card {
+      gap: 12px;
+      padding: 12px;
+      border-radius: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-avatar {
+      width: 64px;
+      height: 64px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-body {
+      gap: 8px;
+      text-align: left;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-stars--mobile {
+      display: flex;
+      gap: 2px;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-stars--desktop {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .testimonial-footer {
+      justify-content: flex-start;
+    }
+  }
+{% endstyle %}
+
+<section class="maisoncode_home-hero">
+  <div class="hero-inner">
+    <!-- Left: Content -->
+    <div class="hero-content">
+      <div class="content-top">
+        <div class="text-group">
+          <div class="heading-group">
+            <!-- Trustpilot Badge (live data) -->
+            {% if section.settings.show_trustpilot_badge %}
+              {% render 'maison-trustpilot-badge',
+                wrapper_class: 'badge-row',
+                stars_class: 'stars',
+                rating_class: 'badge-text',
+                logo_class: 'trustpilot',
+                show_logo: section.settings.show_trustpilot_logo,
+                logo_label: section.settings.trustpilot_label
+              %}
+            {% endif %}
+
+            <!-- Heading -->
+            {% if section.settings.heading != blank %}
+              <h1 class="hero-heading">{{ section.settings.heading }}</h1>
+            {% endif %}
+          </div>
+
+          <!-- Subtext -->
+          {% if section.settings.subtext != blank %}
+            <p class="hero-subtext">{{ section.settings.subtext }}</p>
+          {% endif %}
+        </div>
+
+        <!-- CTA -->
+        {% if section.settings.button_label != blank %}
+          <div class="cta-group">
+            <a
+              {% if section.settings.button_link != blank %}
+                href="{{ section.settings.button_link }}"
+              {% endif %}
+              class="cta-button"
+            >
+              <span>{{ section.settings.button_label }}</span>
+            </a>
+            {% if section.blocks.size > 0 %}
+              <div class="trust-badges">
+                {% for block in section.blocks %}
+                  {% if block.type == 'trust_badge' %}
+                    {% unless forloop.first %}
+                      <div class="trust-divider"></div>
+                    {% endunless %}
+                    <div class="trust-badge" {{ block.shopify_attributes }}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><g clip-path="url(#trust-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.6235 2.6235C4.37209 0.874903 6.8971 0 10 0C13.1029 0 15.6279 0.874903 17.3766 2.6235C19.1251 4.37209 20 6.8971 20 10C20 13.1029 19.1251 15.6279 17.3766 17.3766C15.6279 19.1251 13.1029 20 10 20C6.8971 20 4.37209 19.1251 2.6235 17.3766C0.874903 15.6279 0 13.1029 0 10C0 6.8971 0.874903 4.37209 2.6235 2.6235ZM14.1713 7.08989C14.5366 6.75857 14.564 6.19391 14.2327 5.82869C13.9014 5.46346 13.3368 5.43596 12.9715 5.76727C11.7848 6.84384 10.8933 7.81137 10.1408 8.98594C9.59271 9.84133 9.13136 10.7863 8.67961 11.9317L7.06956 10.2713C6.72627 9.9173 6.16101 9.9086 5.80701 10.2519C5.45301 10.5952 5.44431 11.1604 5.78759 11.5144L8.38499 14.193C8.60064 14.4154 8.91617 14.5101 9.21866 14.4433C9.52113 14.3764 9.76736 14.1575 9.8692 13.865C10.4695 12.1405 11.0025 10.9511 11.6443 9.94926C12.2827 8.95296 13.0528 8.10454 14.1713 7.08989Z" fill="var(--s-color-trust-icon)"/></g><defs><clipPath id="trust-{{ block.id }}"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                      {% if block.settings.label != blank %}
+                        <span>{{ block.settings.label }}</span>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Testimonial Card -->
+      {% if section.settings.show_testimonial %}
+        <div class="testimonial-card">
+          <div class="testimonial-avatar">
+            {% if section.settings.testimonial_avatar != blank %}
+              {{ section.settings.testimonial_avatar | image_url: width: 400 | image_tag:
+                loading: 'lazy',
+                widths: '96, 192, 400',
+                sizes: '(max-width: 767px) 100vw, 96px'
+              }}
+            {% endif %}
+          </div>
+          <div class="testimonial-body">
+            <!-- Stars: mobile only (above text) -->
+            <div class="stars testimonial-stars--mobile">
+              {% assign testimonial_stars = section.settings.testimonial_rating %}
+              {% for i in (1..testimonial_stars) %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+              {% endfor %}
+            </div>
+            {% if section.settings.testimonial_text != blank %}
+              <p class="testimonial-text">{{ section.settings.testimonial_text }}</p>
+            {% endif %}
+            <div class="testimonial-footer">
+              <div class="testimonial-author">
+                {% if section.settings.testimonial_author != blank %}
+                  <span class="author-name">{{ section.settings.testimonial_author }}</span>
+                {% endif %}
+                {% if section.settings.show_verified_badge %}
+                  <div class="verified">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><g clip-path="url(#verified-{{ section.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.84687 0.422743C7.50338 -0.141185 8.47232 -0.140794 9.12851 0.423196C9.37005 0.630789 9.6083 0.838566 9.8436 1.04685C10.1567 0.983031 10.472 0.921248 10.7899 0.861387C11.6405 0.70127 12.4794 1.18608 12.7657 2.00261C12.8711 2.30314 12.9735 2.60222 13.0731 2.90025C13.3761 3.0015 13.6801 3.10563 13.9854 3.21278C14.8019 3.49937 15.2862 4.3387 15.1258 5.18897C15.0655 5.50886 15.0033 5.82587 14.9391 6.1405C15.1521 6.38097 15.3646 6.62451 15.5768 6.87149C16.1408 7.52768 16.1411 8.49662 15.5773 9.15313C15.3664 9.39862 15.1552 9.64083 14.9433 9.88008C15.0061 10.188 15.0669 10.4982 15.1259 10.8111C15.2863 11.6614 14.8021 12.5007 13.9855 12.7873C13.6801 12.8945 13.3761 12.9986 13.073 13.0999C12.9734 13.3979 12.871 13.697 12.7656 13.9975C12.4793 14.8141 11.6403 15.2989 10.7898 15.1387C10.4788 15.0801 10.1704 15.0198 9.86415 14.9575C9.63008 15.1646 9.39318 15.3711 9.15313 15.5773C8.49662 16.1411 7.52767 16.1408 6.87149 15.5768C6.62998 15.3693 6.39175 15.1615 6.15647 14.9533C5.84335 15.017 5.52799 15.0789 5.20995 15.1387C4.35943 15.2989 3.52049 14.8141 3.23422 13.9975C3.12885 13.697 3.02641 13.3979 2.92679 13.0999C2.62369 12.9986 2.31968 12.8945 2.0143 12.7873C1.19767 12.5007 0.713537 11.6614 0.873872 10.8111C0.934217 10.4911 0.996441 10.174 1.06067 9.85921C0.847755 9.61883 0.635379 9.37538 0.423195 9.12851C-0.140793 8.47232 -0.141185 7.50338 0.422742 6.84687C0.63357 6.60143 0.844727 6.35926 1.05653 6.12006C0.993801 5.81215 0.932989 5.50193 0.873976 5.18897C0.713643 4.3387 1.19777 3.49937 2.01441 3.21278C2.3197 3.10563 2.62363 3.0015 2.92665 2.90025C3.02629 2.60222 3.12873 2.30314 3.23411 2.00261C3.52039 1.18608 4.35933 0.701269 5.20985 0.861387C5.52089 0.919943 5.82937 0.980338 6.13569 1.04268C6.36982 0.835525 6.60678 0.628976 6.84687 0.422743ZM10.8616 6.34914C11.2122 6.03109 11.2386 5.48902 10.9206 5.1384C10.6025 4.78777 10.0604 4.76138 9.70982 5.07944C8.86921 5.84199 8.22869 6.53552 7.68647 7.38183C7.34702 7.91166 7.05533 8.48701 6.77625 9.1553L5.89491 8.24644C5.56537 7.90658 5.02272 7.89824 4.68288 8.22778C4.34304 8.55734 4.33469 9.09998 4.66423 9.43983L6.48465 11.3171C6.69168 11.5306 6.99457 11.6216 7.28496 11.5574C7.57535 11.4933 7.81171 11.2831 7.90949 11.0022C8.32745 9.80161 8.69395 8.98709 9.12992 8.30662C9.56249 7.63144 10.0865 7.05226 10.8616 6.34914Z" fill="#065BDC"/></g><defs><clipPath id="verified-{{ section.id }}"><rect width="16" height="16" fill="white"/></clipPath></defs></svg>
+                    <span>{{ section.settings.verified_text }}</span>
+                  </div>
+                {% endif %}
+              </div>
+              <!-- Stars: desktop only (in footer) -->
+              <div class="stars testimonial-stars--desktop">
+                {% assign testimonial_stars = section.settings.testimonial_rating %}
+                {% for i in (1..testimonial_stars) %}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Right: Image -->
+    <div class="hero-image">
+      {% if section.settings.hero_image != blank %}
+        {{ section.settings.hero_image | image_url: width: 1400 | image_tag:
+          loading: 'eager',
+          widths: '375, 550, 750, 1000, 1400',
+          sizes: '(max-width: 767px) 100vw, 50vw'
+        }}
+      {% else %}
+        <div class="hero-image__placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>Hero image</span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Hero",
+  "tag": "section",
+  "class": "home-hero-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading (italic = accent)",
+      "default": "The Smoothest Way To <em>Pain Relief</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Used by thousands of adults 45+ to manage sciatica and back pain at home, backed by a 90-day results-or-refund guarantee."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Now & SAVE 60% Today"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Trustpilot badge"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot_badge",
+      "label": "Show Trustpilot badge row",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rating_full_stars",
+      "label": "Full stars",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "rating_show_half_star",
+      "label": "Show half star",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "<p>4.4/5 (<a href=\"#\">2,295 + reviews</a>)</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_trustpilot_logo",
+      "label": "Show Trustpilot logo",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "trustpilot_label",
+      "label": "Trustpilot label",
+      "default": "Trustpilot"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_testimonial",
+      "label": "Show testimonial card",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "testimonial_avatar",
+      "label": "Author avatar"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_text",
+      "label": "Testimonial quote",
+      "default": "\"I've struggled with crippling back pain and Sciatica for years. Sitting, standing up, lying down, <strong>it all hurt</strong>. I was skeptical but after using this massager for just 1 week, I noticed a HUGE difference. The stabbing pain in my low back is finally gone, and <strong>I can move without wincing again</strong>. I still use it daily, it's so well-made. If you're on the fence, trust me, it's worth it!\""
+    },
+    {
+      "type": "text",
+      "id": "testimonial_author",
+      "label": "Author name",
+      "default": "Maggie S."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_verified_badge",
+      "label": "Show verified badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "verified_text",
+      "label": "Verified text",
+      "default": "Verified Purchase"
+    },
+    {
+      "type": "range",
+      "id": "testimonial_rating",
+      "label": "Testimonial star rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Content background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "color",
+      "id": "color_text_primary",
+      "label": "Primary text",
+      "default": "#102A43"
+    },
+    {
+      "type": "color",
+      "id": "color_text_secondary",
+      "label": "Secondary text",
+      "default": "#4A5D6E"
+    },
+    {
+      "type": "color",
+      "id": "color_accent",
+      "label": "Accent / button",
+      "default": "#F07E3B"
+    },
+    {
+      "type": "color",
+      "id": "color_accent_border",
+      "label": "Button border",
+      "default": "#BF642F"
+    },
+    {
+      "type": "color",
+      "id": "color_white",
+      "label": "White",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_light",
+      "label": "Button text",
+      "default": "#FFFCFB"
+    },
+    {
+      "type": "color",
+      "id": "color_badge_text",
+      "label": "Badge text",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "color_testimonial_bg",
+      "label": "Testimonial card background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "color_verified_text",
+      "label": "Verified text color",
+      "default": "#4A5D6E"
+    },
+    {
+      "type": "color",
+      "id": "color_trust_icon",
+      "label": "Trust badge icon",
+      "default": "#065BDC"
+    },
+    {
+      "type": "color",
+      "id": "color_divider",
+      "label": "Trust badge divider",
+      "default": "#c4d0d6"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "label": "Heading size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading size (mobile)",
+      "min": 18,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "subtext_font_size",
+      "label": "Subtext size (desktop)",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "subtext_font_size_mobile",
+      "label": "Subtext size (mobile)",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "label": "Badge text size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button text size",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "testimonial_font_size",
+      "label": "Testimonial text size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "author_font_size",
+      "label": "Author name size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "trust_label_font_size",
+      "label": "Trust badge label size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "label": "Content padding (desktop)",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "content_padding_tablet",
+      "label": "Content padding (tablet)",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "content_padding_mobile",
+      "label": "Content padding (mobile)",
+      "min": 12,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Content gap",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "button_height",
+      "label": "Button height",
+      "min": 40,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Button border radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "testimonial_border_radius",
+      "label": "Testimonial card radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "avatar_border_radius",
+      "label": "Avatar border radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max content width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "image_min_height",
+      "label": "Image min height (desktop)",
+      "min": 300,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 500
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_badge",
+      "name": "Trust Badge",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Trust badge"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Hero",
+      "blocks": [
+        {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Doctor Endorsed"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Rapid Pain Relief"
+          }
+        },
+        {
+          "type": "trust_badge",
+          "settings": {
+            "label": "Easy Returns"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

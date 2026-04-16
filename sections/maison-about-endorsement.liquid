@@ -1,0 +1,484 @@
+{% comment %}
+  Section: About Page Endorsement
+  Description: Tabbed endorsement section for the About page featuring doctor
+    endorsements with tab switching, heading, description, a checklist card,
+    and a doctor image/video. Two-column on desktop, stacked on mobile.
+
+  Dependencies:
+  - Font: 'Plus Jakarta Sans' (headings/tabs), 'Open Sans' (body) — must be loaded by theme
+  - Alpine.js — required for tab switching functionality
+
+  Blocks:
+  - endorsement: Doctor tab with label, title, description, image, and video (limit: 6)
+  - checklist_item: Checklist item with richtext for bold title + body (limit: 10)
+
+  Notes:
+  - Endorsement tabs require Alpine.js (x-data, x-show, @click directives)
+  - Checklist items are shared across all tabs
+  - All colors, typography, spacing values are merchant-configurable
+  - Original source class prefix: maisoncode_about-endorsement
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .maisoncode_about-endorsement {
+    --s-color-bg: {{ section.settings.color_bg }};
+    --s-color-text-primary: #102A43;
+    --s-color-text-secondary: rgba(16, 42, 67, 0.75);
+    --s-color-tab-active: #065BDC;
+    --s-color-tab-inactive-border: rgba(16, 16, 16, 0.1);
+    --s-color-checklist-bg: {{ section.settings.color_checklist_bg }};
+    --s-font-heading: 'Plus Jakarta Sans', sans-serif;
+    --s-font-body: 'Open Sans', sans-serif;
+    --s-padding-top: {{ section.settings.padding_top }}px;
+    --s-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --s-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --s-max-width: {{ section.settings.max_width }}px;
+
+    font-family: var(--s-font-body);
+    background-color: var(--s-color-bg);
+    padding: var(--s-padding-top) var(--s-padding-horizontal) var(--s-padding-bottom);
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  #shopify-section-{{ section.id }} .maisoncode_about-endorsement *,
+  #shopify-section-{{ section.id }} .maisoncode_about-endorsement *::before,
+  #shopify-section-{{ section.id }} .maisoncode_about-endorsement *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ae-inner {
+    width: 100%;
+    max-width: var(--s-max-width);
+  }
+
+  #shopify-section-{{ section.id }} .ae-layout {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+  }
+
+  #shopify-section-{{ section.id }} .ae-content {
+    width: 544px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  /* --- Tabs --- */
+  #shopify-section-{{ section.id }} .ae-tabs {
+    display: flex;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ae-tab {
+    flex: 1;
+    padding: 0 20px 12px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--s-color-tab-inactive-border);
+    cursor: pointer;
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--s-color-text-secondary);
+    text-align: center;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ae-tab.active {
+    color: var(--s-color-tab-active);
+    border-bottom: 2px solid var(--s-color-tab-active);
+  }
+
+  /* --- Heading --- */
+  #shopify-section-{{ section.id }} .ae-heading {
+    font-family: var(--s-font-heading);
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.4;
+    color: var(--s-color-text-primary);
+    text-transform: capitalize;
+  }
+
+  /* --- Description --- */
+  #shopify-section-{{ section.id }} .ae-description {
+    font-family: var(--s-font-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-top: 40px;
+    color: var(--s-color-text-secondary);
+  }
+
+  /* --- Checklist card --- */
+  #shopify-section-{{ section.id }} .ae-checklist {
+    background: var(--s-color-checklist-bg);
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ae-checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ae-checklist-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ae-checklist-icon svg {
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .ae-checklist-text {
+    font-family: var(--s-font-body);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--s-color-text-primary);
+    flex: 1;
+  }
+
+  #shopify-section-{{ section.id }} .ae-checklist-text p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ae-checklist-text b,
+  #shopify-section-{{ section.id }} .ae-checklist-text strong {
+    font-weight: 700;
+  }
+
+  /* --- Image column --- */
+  #shopify-section-{{ section.id }} .ae-media {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .ae-media-wrap {
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #shopify-section-{{ section.id }} .ae-media-wrap img,
+  #shopify-section-{{ section.id }} .ae-media-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* --- Mobile --- */
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .maisoncode_about-endorsement {
+      padding: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .ae-layout {
+      flex-direction: column-reverse;
+      gap: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .ae-content {
+      width: 100%;
+      gap: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .ae-media-wrap {
+      border-radius: 12px;
+    }
+
+    #shopify-section-{{ section.id }} .ae-tab {
+      font-size: 12px;
+      padding: 0 8px 8px;
+    }
+
+    #shopify-section-{{ section.id }} .ae-heading {
+      font-size: 20px;
+    }
+
+    #shopify-section-{{ section.id }} .ae-description {
+      font-size: 14px;
+      margin-top: 18px;
+    }
+
+    #shopify-section-{{ section.id }} .ae-checklist-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .ae-checklist-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    #shopify-section-{{ section.id }} .ae-checklist-text {
+      font-size: 14px;
+    }
+  }
+{% endstyle %}
+
+{%- assign endorsement_blocks = section.blocks | where: "type", "endorsement" -%}
+{%- assign checklist_blocks = section.blocks | where: "type", "checklist_item" -%}
+
+<div class="maisoncode_about-endorsement">
+  <div class="ae-inner" x-data="{ activeTab: 0 }">
+    <div class="ae-layout">
+      {%- comment -%} Content column {%- endcomment -%}
+      <div class="ae-content">
+        {%- comment -%} Tabs {%- endcomment -%}
+        {% if endorsement_blocks.size > 1 %}
+          <div class="ae-tabs">
+            {% for block in endorsement_blocks %}
+              <button
+                class="ae-tab"
+                :class="activeTab === {{ forloop.index0 }} ? 'active' : ''"
+                @click="activeTab = {{ forloop.index0 }}"
+              >
+                {{ block.settings.tab_label }}
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {%- comment -%} Tab content: heading + description {%- endcomment -%}
+        {% for block in endorsement_blocks %}
+          <div
+            x-show="activeTab === {{ forloop.index0 }}"
+            {% if forloop.index0 != 0 %}style="display:none;"{% endif %}
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.title != blank %}
+              <h3 class="ae-heading">{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.description != blank %}
+              <div class="ae-description">{{ block.settings.description }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+        {%- comment -%} Checklist card (shared across all tabs) {%- endcomment -%}
+        {% if checklist_blocks.size > 0 %}
+          <div class="ae-checklist">
+            {% for block in checklist_blocks %}
+              <div class="ae-checklist-item" {{ block.shopify_attributes }}>
+                <div class="ae-checklist-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 20 20" fill="none"><g clip-path="url(#about-check-{{ block.id }})"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.6235 2.6235C4.37209 0.874903 6.8971 0 10 0C13.1029 0 15.6279 0.874903 17.3766 2.6235C19.1251 4.37209 20 6.8971 20 10C20 13.1029 19.1251 15.6279 17.3766 17.3766C15.6279 19.1251 13.1029 20 10 20C6.8971 20 4.37209 19.1251 2.6235 17.3766C0.874903 15.6279 0 13.1029 0 10C0 6.8971 0.874903 4.37209 2.6235 2.6235ZM14.1713 7.08989C14.5366 6.75857 14.564 6.19391 14.2327 5.82869C13.9014 5.46346 13.3368 5.43596 12.9715 5.76727C11.7848 6.84384 10.8933 7.81137 10.1408 8.98594C9.59271 9.84133 9.13136 10.7863 8.67961 11.9317L7.06956 10.2713C6.72627 9.9173 6.16101 9.9086 5.80701 10.2519C5.45301 10.5952 5.44431 11.1604 5.78759 11.5144L8.38499 14.193C8.60064 14.4154 8.91617 14.5101 9.21866 14.4433C9.52113 14.3764 9.76736 14.1575 9.8692 13.865C10.4695 12.1405 11.0025 10.9511 11.6443 9.94926C12.2827 8.95296 13.0528 8.10454 14.1713 7.08989Z" fill="#065BDC"/></g><defs><clipPath id="about-check-{{ block.id }}"><rect width="20" height="20" fill="white"/></clipPath></defs></svg>
+                </div>
+                <div class="ae-checklist-text">
+                  {{ block.settings.text }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      {%- comment -%} Media column {%- endcomment -%}
+      <div class="ae-media">
+        {% for block in endorsement_blocks %}
+          <div
+            x-show="activeTab === {{ forloop.index0 }}"
+            {% if forloop.index0 != 0 %}style="display:none;"{% endif %}
+          >
+            {% if block.settings.video != blank %}
+              <div class="ae-media-wrap">
+                {{ block.settings.video | video_tag:
+                  autoplay: true,
+                  loop: true,
+                  muted: true,
+                  playsinline: true,
+                  controls: false
+                }}
+              </div>
+            {% elsif block.settings.image != blank %}
+              <div class="ae-media-wrap">
+                {{ block.settings.image | image_url: width: 800 | image_tag:
+                  loading: 'lazy',
+                  widths: '400, 600, 800',
+                  sizes: '(max-width: 768px) 100vw, 50vw'
+                }}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Endorsement",
+  "tag": "section",
+  "class": "maison-about-endorsement",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background color",
+      "default": "#FDFCFA"
+    },
+    {
+      "type": "color",
+      "id": "color_checklist_bg",
+      "label": "Checklist card background",
+      "default": "#F8F4EE"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 800,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "label": "Max width",
+      "default": 1200
+    }
+  ],
+  "blocks": [
+    {
+      "type": "endorsement",
+      "name": "Endorsement",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab label",
+          "default": "Dr. Name"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Doctor recommended for pain relief"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Doctor image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Doctor video (overrides image)"
+        }
+      ]
+    },
+    {
+      "type": "checklist_item",
+      "name": "Checklist item",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text (use bold for emphasis)",
+          "default": "<p><b>Key benefit</b> description goes here</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Endorsement",
+      "blocks": [
+        {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. Jane Smith",
+            "title": "Doctor recommended for pain relief"
+          }
+        },
+        {
+          "type": "endorsement",
+          "settings": {
+            "tab_label": "Dr. John Doe",
+            "title": "Clinically proven results"
+          }
+        },
+        {
+          "type": "checklist_item",
+          "settings": {
+            "text": "<p><b>Ergonomic design</b> supports natural spine alignment</p>"
+          }
+        },
+        {
+          "type": "checklist_item",
+          "settings": {
+            "text": "<p><b>Medical-grade materials</b> for lasting comfort</p>"
+          }
+        },
+        {
+          "type": "checklist_item",
+          "settings": {
+            "text": "<p><b>Recommended by doctors</b> for daily use</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
