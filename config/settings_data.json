@@ -15,7 +15,7 @@
     "block_border_radius": 24,
     "block_shadow_opacity": 10,
     "block_shadow_vertical_offset": 18,
-    "background": "#fdfcfa",
+    "background": "#f0f0f0",
     "text_color": "#1a1a1a",
     "header_background": "#f0f0f0",
     "header_text_color": "#1a1a1a",
@@ -27,15 +27,14 @@
     "secondary_button_text_color": "#1a1a1a",
     "product_card_text_color": "#1a1a1a",
     "product_primary_badge_background": "#803cee",
-    "heading_font": "plus_jakarta_sans_n8",
+    "heading_font": "barlow_n7",
     "heading_font_size": "large",
     "heading_letter_spacing": -2,
-    "text_font": "open_sans_n4",
+    "text_font": "barlow_n4",
     "heading_apparition": "split_fade",
     "product_color_display": "swatch",
     "product_info_alignment": "start",
     "cart_icon": "shopping_basket",
-    "favicon": "shopify://shop_images/Copy_of_FB_PF_lgoo_1.png",
     "checkout_accent_color": "#f0c417",
     "checkout_button_color": "#1a1a1a",
     "content_for_index": [],
@@ -44,18 +43,6 @@
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
         "settings": {}
-      },
-      "15181020662106344915": {
-        "type": "shopify://apps/judge-me-reviews/blocks/popup_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": true,
-        "settings": {}
-      },
-      "12120936241911852800": {
-        "type": "shopify://apps/judge-me-reviews/blocks/reviews_tab/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": true,
-        "settings": {
-          "position": "right"
-        }
       }
     }
   },
