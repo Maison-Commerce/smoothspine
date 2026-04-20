@@ -1,0 +1,303 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "gp_section_572012432579363992": {
+      "settings": {
+        "checksum": "342645e5f95b7e49eac1c5e80600fa4396de67509d742872f58ef5b5e8cf152a_1_1_0_0__1",
+        "gg5779-Q2LD_text": "<p>Keep the bottle in a cool, dry place away from direct sunlight. Do not refrigerate. Always store out of reach of children.</p>",
+        "gg5QWW06sGv_text": "<p>SciatiCalm is designed for adults. If you are pregnant, nursing, or under 18, consult a healthcare provider before use. It is generally safe for seniors when taken as directed.</p>",
+        "ggBJa8Yn5GB_text": "Frequently Asked Questions",
+        "ggGBgdMGN1b_text": "<p>While SciatiCalm contains natural, well-tolerated ingredients, we always recommend consulting your doctor if you are currently taking prescription medications or have a medical condition.</p>",
+        "ggJ59b-ywE__text": "<p>No, SciatiCalm is only available online through our official website. This allows us to keep prices low and ensure product authenticity.</p>",
+        "ggOF78_pLax_text": "<p>Each serving contains:</p><ul><li>Organic Turmeric Root Powder – 900mg</li><li>Turmeric Root Extract (95% Standardized Curcuminoids) – 100mg</li><li>BioPerine® (Black Pepper Fruit Extract) – 7mg</li><li>All ingredients are encapsulated in a gelatin capsule.</li></ul>",
+        "ggRWVQP7xyG_text": "<p>Each bottle contains 90 capsules — enough for 30 days when taken as directed.</p>",
+        "ggT40bKuK75_text": "<p>Take 3 capsules per day, ideally with food. Most users take all 3 in the morning or split the dose between breakfast and dinner.</p>",
+        "ggZ3I5t3Bhg_text": "<p>Some users begin to notice reduced discomfort within 5–7 days. Most report significant improvement within 2–4 weeks, with continued benefits over 45–90 days of consistent use.</p>",
+        "gg_vblMSRbJ_childItem_0": "<p>Can I buy SmoothSpine™ SciatiCalm in stores?</p>",
+        "gg_vblMSRbJ_childItem_1": "<p>What ingredients are in SmoothSpine™ SciatiCalm?</p>",
+        "gg_vblMSRbJ_childItem_10": "<p>What is your return policy?</p>",
+        "gg_vblMSRbJ_childItem_2": "<p>Is SciatiCalm safe to take with my current medications?</p>",
+        "gg_vblMSRbJ_childItem_3": "<p>How should I store SciatiCalm?</p>",
+        "gg_vblMSRbJ_childItem_4": "<p>Will the SciatiCalm supplement help with my nerve pain?</p>",
+        "gg_vblMSRbJ_childItem_5": "<p>How long until I feel relief from my nerve pain?</p>",
+        "gg_vblMSRbJ_childItem_6": "<p>How often should I take the supplement?</p>",
+        "gg_vblMSRbJ_childItem_7": "<p>How many capsules are in each bottle?</p>",
+        "gg_vblMSRbJ_childItem_8": "<p>Are there any age or health restrictions?</p>",
+        "gg_vblMSRbJ_childItem_9": "<p>What if the supplement doesn’t work for me?</p>",
+        "gghn7pMgHJ7_text": "<p>We stand behind SciatiCalm with a 90-day money-back guarantee. If you’re not satisfied for any reason, simply contact us and we’ll refund your order — no hassle, no questions asked.</p>",
+        "ggrcqOh_tmz_text": "<p>SciatiCalm is formulated to support nerve health, reduce inflammation, and promote myelin repair — all of which are important in managing sciatica and nerve-related discomfort. Many users report a noticeable reduction in pain, tingling, and burning sensations within weeks.</p>",
+        "ggzmHVH4LpH_text": "<p>Every order is backed by our 90-day risk-free guarantee. If you’re not happy with your results, return the product (even empty bottles) within 90 days for a full refund.</p>"
+      },
+      "type": "gp-section-572012432579363992"
+    },
+    "gp_section_572012432579429528": {
+      "settings": {
+        "checksum": "4bd77d6e0acd07b964e99ab5071c36711808a882479c928dcc42317c9f379f7d_1_1_0_0__1",
+        "gg-6uMF1_Nj_text": "<p>It’s natural support that fits into your life. Not the other way around.</p>",
+        "gg0znNmAU8T_text": "<p><strong>More comfortable movement during the day</strong></p>",
+        "gg3GwCpV-GT_text": "<p><strong>Less nerve pressure and burning</strong></p>",
+        "gg5A_s7vPft_text": "<p>With daily use, people notice:</p>",
+        "gg6lqX8ncBw_text": "Built On Science. Trusted By Experts.",
+        "gg9L3EDUCMV_text": "SciatiCalm Helped Over 57,000+ Customers Naturally Relieve Nerve Pain",
+        "ggB_uZ99e5h_text": "<p>These aren’t trendy buzzwords. They’re <strong>science-based facts</strong> supported by peer-reviewed research and the insights of doctors, neuropathy specialists, and functional medicine professionals.</p>",
+        "ggBo6yCs99D_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-47327e19-300c-4816-8fdb-db6ead19acde.webp",
+        "ggFsSgIrq63_text": "<p><strong>Synergistic formula amplifies effectiveness:</strong></p><p>Combining curcumin with piperine (black pepper extract) has been shown to work more powerfully — enhancing curcumin’s anti-pain effects by up to 76% in preclinical models<strong><sup>3</sup></strong>.</p>",
+        "ggGQXnMY5zT_text": "SciatiCalm Helped Over 57,000+ Customers Naturally Relieve Nerve Pain",
+        "ggOLny2Lf9H_text": "<p><strong>Fewer flare-ups when sitting, walking, or sleeping</strong></p>",
+        "ggOtS3jO5zX_text": "<p><strong>Enhanced absorption for real results:</strong></p><p>BioPerine® dramatically increases curcumin’s bioavailability — making it 20 times more available in the body compared to when curcumin is taken alone<strong><sup>4</sup></strong>.</p>",
+        "ggSvIZrM2QP_text": "<p><strong>A better sense of energy and calm in the body</strong></p>",
+        "ggTX3oVSncW_text": "<p><strong>Clinically shown to support nerve repair:</strong></p><p>Curcumin has been found to help restore the protective myelin sheath around nerves and counteract peripheral neuropathy, reducing pain and improving function in clinical models<strong><sup>1</sup></strong>.</p>",
+        "ggUHGJ1A2mE_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-636c78dd-688d-41e5-b3cd-987459f0114f.png",
+        "ggYhZQDCRPW_text": "<p>No more guesswork. No more taking painkillers that just mask symptoms. Just two capsules a day of clean, high-potency ingredients your body actually recognizes — and uses.</p>",
+        "ggcllM8jPEK_text": "<p><strong>SciatiCalm </strong>doesn’t just say it works — it’s designed to work, with proven ingredients in proven doses trusted by experts.</p>",
+        "ggiVlsgDWSA_text": "<p>When you choose SciatiCalm, you’re relying on more than clever marketing — you’re aligning with real science and expert endorsements:</p>",
+        "ggihBBrHnWy_text": "<p><strong>SciatiCalm has quietly become one of the most trusted daily supplements for people dealing with sciatic nerve pain, inflammation, and chronic discomfort.</strong></p>",
+        "ggihisY810h_text": "Built On Science. Trusted By Experts.",
+        "gglp0HJCFVA_text": "<p><strong>Proven anti-inflammatory action:</strong></p><p>Curcumin reduces inflammation by suppressing glial cell activation — helping calm spinal neuroinflammation, a key driver of chronic nerve pain<strong><sup>2</sup></strong>.</p>",
+        "ggo2I27ACrO_text": "<p>And because it’s made with enhanced turmeric extract, black pepper for absorption, and real, research-backed dosing, <strong>SciatiCalm actually helps your body fight inflammation at the source.</strong></p>"
+      },
+      "type": "gp-section-572012432579429528"
+    },
+    "gp_section_572012432579495064": {
+      "settings": {
+        "checksum": "9da0bda984dd5b5ace699543ae26cb07e70cf52e7bbd078b02e7a24feedff4e3_1_1_0_0__1",
+        "gg2skFYSnGC_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-51bd7b08-f4ec-461e-bc36-e7734dd26e06.jpg",
+        "ggBZyLN-waC_text": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee. </strong>If you don't experience the remarkable <strong>relief from sciatica and nerve pain</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days,</strong> let us know and we will refund every single penny of your investment. <strong>No questions asked.</strong></p>",
+        "ggY5Kp_-GFD_text": "100% SATISFACTION<br>90-DAY MONEY BACK GUARANTEE",
+        "ggufORTUxtU_text": "<p>We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>"
+      },
+      "type": "gp-section-572012432579495064"
+    },
+    "gp_section_572012432579560600": {
+      "settings": {
+        "checksum": "be8ee17409a8056d5d9c7a36765a0c7584670850c861b6fb06b5261ed7eeb06e_1_1_0_0__1",
+        "ggTB9UV4fg5_text": "We're Getting Noticed!",
+        "ggqBiWApY31_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-2ef784eb-b38e-40bd-b5a1-a3771bcf0e2d.png"
+      },
+      "type": "gp-section-572012432579560600"
+    },
+    "gp_section_572012432579626136": {
+      "settings": {
+        "checksum": "23b71138587de2d093df1a3cc51be201effd1b94a0fd10eac1400275074a82c3_1_1_0_0__1",
+        "gg1WJODqwGE_text": "<p>Costs Hundreds of Dollars a Month</p>",
+        "gg1l9ZsD4ZL_text": "Other Pain Relief Methods",
+        "gg35L5tHWLl_text": "<p>Most drugs and treatments offer short-term relief without fixing the underlying inflammation damaging your sciatic nerve or myelin sheath.</p>",
+        "gg6YHdZykSx_text": "SmoothSpine SciatiCalm",
+        "gg8B9W6Nh6g_text": "<p>Traditional meds can negatively impact your stomach, liver, and mood — trading one problem for another.</p>",
+        "ggAE6F26brb_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggFlaRsfX_r_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggGTEluwLZX_text": "<p>Clinically Studied Natural Ingredients</p>",
+        "ggOZidTxPrt_text": "<p>Costs Less Than a Coffee a Day</p>",
+        "ggS6aIr0DXf_text": "<p>Can Disrupt Other Areas of Health</p>",
+        "ggU6Cofrkcy_text": "<p>Risk of Unpleasant Side Effects</p>",
+        "ggZWYjcI0Sj_text": "<p>It’s non-addictive, works fast, and actually does GOOD things for your body.</p>",
+        "gg_uUJJZYot_text": "<p>Targets the Root Cause, Not Just the Pain</p>",
+        "ggabMzZulc1_text": "<p>Only Masks Symptoms Temporarily</p>",
+        "ggcFzCiQ6WE_text": "<p>Curcumin isn’t just good for your nerves — it also supports joints, digestion, and immune health, making it a smart long-term wellness choice.</p>",
+        "ggcIYxRgigt_text": "<p>Improves Overall Inflammation and Joint Health</p>",
+        "ggchiUpfJH2_text": "SmoothSpine SciatiCalm Is the Safer, Healthier, More Effective Choice",
+        "ggd0hjAxMgS_text": "<p>Backed by research, our turmeric-curcumin blend is bio-enhanced for maximum absorption and effect — with no synthetic fillers, no addictive compounds, and no crash.</p>",
+        "gggZo7nOlQf_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggiY6BubJDN_text": "<p>Many prescription meds come with nausea, dizziness, drowsiness, or dependency — and still don’t resolve the actual nerve pain over time.</p>",
+        "ggnUORZ6q9u_text": "<p>Unlike painkillers that just mask the symptoms, SciatiCalm helps calm nerve inflammation and supports healthy nerve repair — so relief keeps improving over time, not wearing off.</p>",
+        "ggopNT52XXD_text": "<p>At under $1.50 per serving, SciatiCalm is affordable, especially compared to costly therapies, injections, or visits that can run hundreds per month.</p>",
+        "ggplNJpBZcA_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggqa-TsithJ_text": "<p>PT sessions, prescriptions, and repeated doctor visits can stack up fast. One user told us their nerve injection bill hit &nbsp;$320 in a single month — with no lasting results.</p>"
+      },
+      "type": "gp-section-572012432579626136"
+    },
+    "gp_section_572012432579691672": {
+      "settings": {
+        "checksum": "d7f3e7447bede0dd6d3509811f72085ebebe6b8929395a0d182525b0f7d4ea49_1_1_0_0__1",
+        "gg8OBT-mwiy_text": "<p><strong>Fast &amp; FREE Shipping</strong>&nbsp;</p>",
+        "ggL4MnTf9K1_text": "<p><strong>90-Day Results or Refund Guarantee</strong></p>",
+        "ggRmjDjdLC5_text": "<p>Special Offer On Now!</p>",
+        "ggZo95s7bUZ_label": "<p>GET 60% OFF TODAY ONLY!</p>",
+        "ggk2dVAurva_text": "<p><strong>FREE Travel Bag: Reusable SmoothSpine Ziplock Travel Bag ($29.00 Value)</strong></p>",
+        "ggqcynYj7rR_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-56bce0a1-669f-4778-b6f1-f95d2fc6e203.png",
+        "ggr4TOUfTIs_text": "<p><u>Act Now and You'll Get:</u></p>",
+        "ggt6Awj6Ycu_text": "<p><strong>60% OFF -</strong> SmoothSpine - SciatiCalm Nerve Support</p>",
+        "ggtCYt5fUxn_text": "<p><u>Note:&nbsp;</u> <span style=\"color:#0ABA4C;\"><strong>Not Available on Amazon or eBay</strong></span></p>",
+        "ggx79_2DNRs_text": "<p>Try Your SmoothSpine - SciatiCalm Nerve Support NOW <u>Risk-Free</u> at an All Time Low Price!</p>"
+      },
+      "type": "gp-section-572012432579691672"
+    },
+    "gp_section_572012432579757208": {
+      "settings": {
+        "checksum": "9d777d2d4d957254c2f46d4c56f317364b64d0843ac9d46d6502191d09491c4f_1_1_0_0__1",
+        "gg-RifOCijk_text": "<p>Each capsule combines <strong>bio-enhanced turmeric</strong> (curcumin extract) with <strong>black pepper fruit extract</strong> for maximum absorption. Together, they help reduce swelling around the sciatic nerve, relieve pressure, and support the regeneration of the <strong>myelin sheath</strong> — the barrier your body needs to protect itself from those sharp, shooting pains.</p>",
+        "gg5gEyQLqLG_text": "<p>That’s exactly why we created <strong>SciatiCalm </strong>— a supplement designed to do what stretches and painkillers can’t: <strong>calm nerve inflammation at the source</strong> and support your body’s ability to heal the protective layer around your nerves.</p>",
+        "ggQsjbwtdZb_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-2aeefdce-44d6-4a49-b001-0f939f5430a3.png",
+        "ggclZmxOds__text": "The Real Relief Starts When the Inflammation Stops",
+        "ggkgBw2113r_text": "<p>No temporary numbing. No guesswork. Just real, clinical-strength support to help you sit, sleep, and move again without fear of flare-ups.</p>",
+        "ggzRfc3KmKh_text": "The Real Relief Starts When the Inflammation Stops"
+      },
+      "type": "gp-section-572012432579757208"
+    },
+    "gp_section_572012432579822744": {
+      "settings": {
+        "checksum": "28b373c5f4e539373aa0da4f3f745344c345f69d90fa9698a7bac663aa2ee913_1_1_0_0__1",
+        "gg0045cZav__text": "<p>Your nervous system becomes inflamed. The myelin sheath — the protective layer around your nerves — starts to degrade. And that exposes your nerves to pain, compression, and misfiring signals.</p>",
+        "gg4YoJ0BCta_text": "<p>But your nerve pain keeps coming back — the real reason may surprise you.</p>",
+        "gg6488J9La7_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-c179b183-a57b-4b75-9526-633781e94b8c.webp",
+        "gg8MDjGBaur_text": "<p>That’s why even light pressure or gentle movement can feel like electric shocks or stabbing pain.</p>",
+        "ggGkzemG1js_text": "<span style=\"color:#055BDC;\"><strong>I Thought I’d Be Living With Sciatica Forever… But Then I Started Taking SmoothSpine SciatiCalm</strong></span>",
+        "ggQAm8x-ujQ_text": "<p>Most chronic nerve pain and inflammation are caused by something called:</p>",
+        "ggRTR9XYKM9_text": "<p><strong>“Inflammatory Nerve Breakdown”</strong></p>",
+        "ggWQIG9fsLw_text": "Why Your Nerve Pain Won’t Go Away(Until This Is Fixed)",
+        "ggWaLe4w3DQ_text": "<p>Over time, when your body is exposed to stress, overuse, injury, or even poor sleep...</p>",
+        "ggic0fflxUn_text": "<p>Until you cool the inflammation and <strong>support the repair of the myelin sheath</strong> — you’re just covering up the symptoms. Not healing.</p>",
+        "ggj3LHKR5Jp_text": "<p>If you’ve tried ice packs, heating pads, stretches, painkillers, or even surgery...</p>",
+        "ggymlr3ksYA_text": "Why Your Nerve Pain Won’t Go Away (Until This Is Fixed)"
+      },
+      "type": "gp-section-572012432579822744"
+    },
+    "gp_section_572012432579888280": {
+      "block_order": [
+        "gp_app_kaching-bundles_g47gIx_PCV"
+      ],
+      "blocks": {
+        "gp_app_kaching-bundles_g47gIx_PCV": {
+          "type": "shopify://apps/kaching-bundles/blocks/app-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
+          "settings": {
+            "product": "{{ product }}"
+          }
+        }
+      },
+      "settings": {
+        "checksum": "65796cb8f6d2d7251cc22ecfb630d96fae5fc2264941929800d8715921234d18_1_1_0_0__1",
+        "gg1-nBNIy9D_text": "<p>\"Walking used to be agony with nerve pain shooting down my leg… now I move pain-free and love it. Living life fully again feels incredible!”</p>",
+        "gg3ero32Veq_text": "<p>Verified Purchase</p>",
+        "gg5UOLWagTT_text": "<p>Name</p>",
+        "gg6tXSXNWai_text": "<p>Fast relief from sciatica and nerve pain (without harmful painkillers or side effects)</p>",
+        "ggDMIiaV6W6_text": "<p>\"Walking used to be agony with nerve pain shooting down my leg… now I move pain-free and love it. Living life fully again feels incredible!”</p>",
+        "ggFoPISFWBa_text": "<p>Verified Purchase</p>",
+        "ggM-PIG0RRS_text": "<p>Formulated with scientifically backed ingredients</p>",
+        "ggMqSUhQV7T_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f4fc434c-7412-4e79-98b5-4dc8f7b20abd.png",
+        "ggMqSUhQV7T_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-36d87525-becd-4cb1-9288-4db32df62a7f.jpg",
+        "ggMqSUhQV7T_srcSet_tablet_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b936f1ab-3d8b-4295-9922-326000cffbe2.jpg",
+        "ggTWbR7J5A3_text": "<p>(4.7/5 Rated By 21,539+ Customers)</p>",
+        "ggV2Gzg1kTE_text": "<p>Denise R.</p>",
+        "ggavmk0YmvV_text": "<p>Struggling With Sciatica, Achy Hips, or Chronic Back Pain?</p><p><i><u>Get Natural Relief Starting in Just a Few Days!&nbsp;</u></i></p>",
+        "ggbcW1KUC8b_text": "<p>Supports nerve repair and reduces inflammation (to keep the pain away)</p>",
+        "ggc8Jx1axa0_text": "<p>Name</p>",
+        "gggrVIsDEcZ_text": "<p>Denise R.</p>",
+        "ggiIss1Rofn_customContent_prefix": "Save",
+        "ggifZ8Bz922_errorMessage": "Cannot add product to cart",
+        "ggifZ8Bz922_label": "Add to cart",
+        "ggifZ8Bz922_outOfStockLabel": "Out of stock",
+        "ggifZ8Bz922_unavailableLabel": "Unavailable",
+        "ggifZ8Bz922_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
+        "gglxMzPDaXv_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gglxMzPDaXv_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "gglysQczYG7_text": "<p>Feel results in just a few days with 2 capsules daily</p>",
+        "ggq_rOUUVUI_text": "<p>Verified Purchase</p>",
+        "ggrNfDYVOMR_text": "<p>90-Day Risk-Free Trial</p>",
+        "ggs0hHOJvUw_text": "<p>SmoothSpine™ SciatiCalm uses bio-enhanced turmeric and black pepper to calm inflammation around the sciatic nerve - so you can finally sit, sleep, and walk without that sharp pain.</p>",
+        "ggw7Cz9bPGD_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-36d87525-becd-4cb1-9288-4db32df62a7f.jpg",
+        "ggxHBZ5MOH6_text": "<p>Verified Purchase</p>",
+        "ggxUNGGnafQ_text": "<p>Promotes Circulation and Sensory Function in Legs and Feet (no more numbness, instability, or tingling)</p>",
+        "section_preload": "true"
+      },
+      "type": "gp-section-572012432579888280"
+    },
+    "gp_section_572012432579953816": {
+      "settings": {
+        "checksum": "86b15f2a5840603c99db2ea0e2b205ddd9e3665742732a0ff97830fcc9820d4b_1_1_0_0__1",
+        "gg8yY22gLoi_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">Formulated with compassion in mind - never tested on animals, supporting ethical and responsible wellness.</span></p>",
+        "ggLDYJogvxV_text": "<p>100% Natural</p>",
+        "ggM5PyQMWIe_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-644103e4-65c6-4887-9e9f-713bb7d707a8.webp",
+        "ggS7aImJyob_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-bac834d8-427a-4e0b-8d90-99789bbe59bd.webp",
+        "ggYRGn3_-rs_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dee3aa06-de9d-437c-8208-2a094458c975.webp",
+        "gggjLf4dDUF_text": "<p>Cruelty-Free&nbsp;</p>",
+        "ggnO_gdadKG_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">Try it risk‑free for 90 days - full refund, no questions asked if you’re not completely satisfied.</span></p>",
+        "ggnoiLlCDO__text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">Pure, plant-based ingredients combining bio-enhanced turmeric and black pepper for potent nervecalm support.</span></p>",
+        "ggtkmBCG_Es_text": "<p>90 Day Money Back Guarantee&nbsp;</p>"
+      },
+      "type": "gp-section-572012432579953816"
+    },
+    "gp_section_572012432580019352": {
+      "settings": {
+        "checksum": "6eb79bfa0332c9a5e61b505a535788da111b1c2b314187cd4c58bbf369b3f665_1_1_0_0__1",
+        "ggJ8hCrLXJq_text": "<p>“I was skeptical... but it worked. My hip used to ache so bad, and now I can finally go on my evening walks again.”</p>",
+        "ggQgcHb_VvV_text": "<p>– George M., 70</p>",
+        "ggReBUA1njy_text": "<p>– Judith F., 57</p>",
+        "ggZSVoxxXVa_text": "<p>“Every time I’d bend down, I’d get this zap down my thigh. Nothing helped until this. I’ve tried other supplements before, this is on another level.”</p>",
+        "gg_nv0E1WSj_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-57c1357c-5c08-463b-8736-6b9db39303f5.png",
+        "ggcIBXq5yW6_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f5f7df2c-9bcd-4b2d-aff5-1cc59eac8302.png",
+        "ggmciU_MO8m_text": "<p>– Sandra L., 64</p>",
+        "ggnkoHZd9S5_text": "<p>“My legs used to feel like they were on fire every morning. I started taking SciatiCalm before bed and within 10 days, I was sleeping through the night again. I’m stunned.”</p>",
+        "ggrydDXALPH_text": "Real Users, Real Life-Changing Results",
+        "ggx_FgcD6ei_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dfca8694-71e8-4de7-9991-b14dc7e0e5e0.png"
+      },
+      "type": "gp-section-572012432580019352"
+    },
+    "gp_section_572012432580084888": {
+      "settings": {
+        "checksum": "97012c6d80db88958852eb3569d9ec731dfc5514bd5b1c0e8b661867ce15813d_1_1_0_0__1",
+        "ggSb2fxxJNt_text": "Claim Your Discounted SmoothSpine - SciatiCalm Nerve Support Below While Stock Lasts"
+      },
+      "type": "gp-section-572012432580084888"
+    },
+    "gp_section_572012432580150424": {
+      "settings": {
+        "checksum": "942acd7b055ab7bcb973bebe261229a937e2fbd38d1476e115f9c033499faaf2_1_1_0_0__1",
+        "gg3QDkKONoV_text": "<p>Turmeric Root Extract</p><p>(100mg, 95% Curcuminoids)</p>",
+        "gg3crcXo3na_text": "<p>Clinically studied for its anti-inflammatory properties. Helps calm swollen joints, inflamed nerves, and chronic tissue damage. Support nerve regeneration by reducing oxidative stress.</p>",
+        "gg7ldKyJiXL_text": "<p>The concentrated, high-potency version of turmeric. Targets inflammation at the cellular level and supports healthy circulation to your legs, hips, and spine.</p>",
+        "ggFCfRwLbbT_text": "<p>Black Pepper Fruit Extract</p><p>(7mg)</p>",
+        "ggFP5SuHAh2_text": "<p>BioPerine® (Black Pepper Fruit Extract) boosts curcumin absorption by up to 2,000%. Ensures your body gets the full benefit of every capsule.&nbsp;</p>",
+        "ggS2lCsLZTi_text": "<p>Organic Turmeric Root Powder</p><p>(900mg)</p>",
+        "ggV7q1sUSxO_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-a3b7014e-60e3-42fd-a232-4a82f3418031.webp",
+        "ggboou9wiiS_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dd70aee8-c03d-46cf-bce5-a2c1fd53403f.webp",
+        "ggbvmdOXdhF_text": "Here’s Exactly What’s Inside Each Capsule of SmoothSpine SciatiCalm",
+        "ggzIqy2yuoy_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-5dfde832-61f8-47d6-9610-8dc3db25d6f6.webp"
+      },
+      "type": "gp-section-572012432580150424"
+    },
+    "gp_section_572012432580215960": {
+      "settings": {
+        "checksum": "f9d22ba5abc15e3ca407c7b6e2f8eece5493400e0d159eec2d9fe67143a9aa06_1_1_0_0__1",
+        "ggC4zPK4pqe_label": "<p>Shop now</p>",
+        "ggoTYQK7jZP_text": "<p>4.7/5 Rated&nbsp;</p>",
+        "ggyJ9flkH7P_text": "SciatiCalm Nerve Support"
+      },
+      "type": "gp-section-572012432580215960"
+    },
+    "gp_section_572382852570678144": {
+      "settings": {
+        "checksum": "0e449b2f7f440e8ca2e0bb1a350752489f94d86747d81a8b42df7713281f4d1b_1_1_0_0__1",
+        "gg61cWsvy_U_text": "<p><span style=\"color:#222323;\">1.<strong> </strong></span><a href=\"https://www.eatingwell.com/best-ingredient-to-combine-with-turmeric-11694659\"><span style=\"color:#055BDC;\">https://www.eatingwell.com/best-ingredient-to-combine-with-turmeric-11694659</span></a></p>",
+        "ggFj8oQL0yk_text": "<p><span style=\"color:#222323;\">3.</span><span style=\"color:#055BDC;\"> </span><a href=\"https://cmjournal.biomedcentral.com/articles/10.1186/s13020-022-00660-1\"><span style=\"color:#055BDC;\">https://cmjournal.biomedcentral.com/articles/10.1186/s13020-022-00660-1</span></a></p>",
+        "ggfX0Zdx7wc_text": "<p><span style=\"color:#222323;\">2.</span><span style=\"color:#055BDC;\"> </span><a href=\"https://www.mdpi.com/1424-8247/14/8/777\"><span style=\"color:#055BDC;\">https://www.mdpi.com/1424-8247/14/8/777</span></a></p>",
+        "ggoU1bLEnjt_text": "<p><span style=\"color:#222323;\">4.</span><span style=\"color:#055BDC;\"> </span><a href=\"https://www.healthline.com/nutrition/turmeric-and-black-pepper\"><span style=\"color:#055BDC;\">https://www.healthline.com/nutrition/turmeric-and-black-pepper</span></a></p>"
+      },
+      "type": "gp-section-572382852570678144"
+    }
+  },
+  "order": [
+    "gp_section_572012432579888280",
+    "gp_section_572012432579953816",
+    "gp_section_572012432579822744",
+    "gp_section_572012432579757208",
+    "gp_section_572012432579429528",
+    "gp_section_572012432580150424",
+    "gp_section_572012432579626136",
+    "gp_section_572012432580019352",
+    "gp_section_572012432580084888",
+    "gp_section_572012432579691672",
+    "gp_section_572012432579495064",
+    "gp_section_572012432579560600",
+    "gp_section_572012432579363992",
+    "gp_section_572382852570678144",
+    "gp_section_572012432580215960"
+  ]
+}
