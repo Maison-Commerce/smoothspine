@@ -1,0 +1,883 @@
+
+    
+    
+    <style {% if section.settings.section_preload == "false" %} class="gps-link gps-style" type="text/disabled-css" {% endif %}>.gps-575381853616341535.gps.gpsil [style*="--ai:"]{align-items:var(--ai)}.gps-575381853616341535.gps.gpsil [style*="--as:"]{align-self:var(--as)}.gps-575381853616341535.gps.gpsil [style*="--aspect:"]{aspect-ratio:var(--aspect)}.gps-575381853616341535.gps.gpsil [style*="--bg:"]{background:var(--bg)}.gps-575381853616341535.gps.gpsil [style*="--hvr-bg:"]:hover{background:var(--hvr-bg)}.gps-575381853616341535.gps.gpsil [style*="--bga:"]{background-attachment:var(--bga)}.gps-575381853616341535.gps.gpsil [style*="--bgc:"]{background-color:var(--bgc)}.gps-575381853616341535.gps.gpsil [style*="--bgi:"]{background-image:var(--bgi)}.gps-575381853616341535.gps.gpsil [style*="--hvr-bgi:"]:hover{background-image:var(--hvr-bgi)}.gps-575381853616341535.gps.gpsil [style*="--bgp:"]{background-position:var(--bgp)}.gps-575381853616341535.gps.gpsil [style*="--bgr:"]{background-repeat:var(--bgr)}.gps-575381853616341535.gps.gpsil [style*="--bgs:"]{background-size:var(--bgs)}.gps-575381853616341535.gps.gpsil [style*="--b:"]{border:var(--b)}.gps-575381853616341535.gps.gpsil [style*="--hvr-b:"]:hover{border:var(--hvr-b)}.gps-575381853616341535.gps.gpsil [style*="--bb:"]{border-bottom:var(--bb)}.gps-575381853616341535.gps.gpsil [style*="--hvr-bb:"]:hover{border-bottom:var(--hvr-bb)}.gps-575381853616341535.gps.gpsil [style*="--bc:"]{border-color:var(--bc)}.gps-575381853616341535.gps.gpsil [style*="--bblr:"]{border-bottom-left-radius:var(--bblr)}.gps-575381853616341535.gps.gpsil [style*="--hvr-bblr:"]:hover{border-bottom-left-radius:var(--hvr-bblr)}.gps-575381853616341535.gps.gpsil [style*="--bbrr:"]{border-bottom-right-radius:var(--bbrr)}.gps-575381853616341535.gps.gpsil [style*="--hvr-bbrr:"]:hover{border-bottom-right-radius:var(--hvr-bbrr)}.gps-575381853616341535.gps.gpsil [style*="--bl:"]{border-left:var(--bl)}.gps-575381853616341535.gps.gpsil [style*="--radius:"]{border-radius:var(--radius)}.gps-575381853616341535.gps.gpsil [style*="--bs:"]{border-style:var(--bs)}.gps-575381853616341535.gps.gpsil [style*="--bt:"]{border-top:var(--bt)}.gps-575381853616341535.gps.gpsil [style*="--hvr-bt:"]:hover{border-top:var(--hvr-bt)}.gps-575381853616341535.gps.gpsil [style*="--btlr:"]{border-top-left-radius:var(--btlr)}.gps-575381853616341535.gps.gpsil [style*="--hvr-btlr:"]:hover{border-top-left-radius:var(--hvr-btlr)}.gps-575381853616341535.gps.gpsil [style*="--btrr:"]{border-top-right-radius:var(--btrr)}.gps-575381853616341535.gps.gpsil [style*="--hvr-btrr:"]:hover{border-top-right-radius:var(--hvr-btrr)}.gps-575381853616341535.gps.gpsil [style*="--bw:"]{border-width:var(--bw)}.gps-575381853616341535.gps.gpsil [style*="--shadow:"]{box-shadow:var(--shadow)}.gps-575381853616341535.gps.gpsil [style*="--c:"]{color:var(--c)}.gps-575381853616341535.gps.gpsil [style*="--cg:"]{-moz-column-gap:var(--cg);column-gap:var(--cg)}.gps-575381853616341535.gps.gpsil [style*="--ff:"]{font-family:var(--ff)}.gps-575381853616341535.gps.gpsil [style*="--size:"]{font-size:var(--size)}.gps-575381853616341535.gps.gpsil [style*="--weight:"]{font-weight:var(--weight)}.gps-575381853616341535.gps.gpsil [style*="--fs:"]{font-style:var(--fs)}.gps-575381853616341535.gps.gpsil [style*="--gtc:"]{grid-template-columns:var(--gtc)}.gps-575381853616341535.gps.gpsil [style*="--h:"]{height:var(--h)}.gps-575381853616341535.gps.gpsil [style*="--jc:"]{justify-content:var(--jc)}.gps-575381853616341535.gps.gpsil [style*="--ls:"]{letter-spacing:var(--ls)}.gps-575381853616341535.gps.gpsil [style*="--lh:"]{line-height:var(--lh)}.gps-575381853616341535.gps.gpsil [style*="--tdt:"]{text-decoration-thickness:var(--tdt)}.gps-575381853616341535.gps.gpsil [style*="--tdl:"]{text-decoration-line:var(--tdl)}.gps-575381853616341535.gps.gpsil [style*="--m:"]{margin:var(--m)}.gps-575381853616341535.gps.gpsil [style*="--mb:"]{margin-bottom:var(--mb)}.gps-575381853616341535.gps.gpsil [style*="--mr:"]{margin-right:var(--mr)}.gps-575381853616341535.gps.gpsil [style*="--mt:"]{margin-top:var(--mt)}.gps-575381853616341535.gps.gpsil [style*="--minw:"]{min-width:var(--minw)}.gps-575381853616341535.gps.gpsil [style*="--objf:"]{-o-object-fit:var(--objf);object-fit:var(--objf)}.gps-575381853616341535.gps.gpsil [style*="--op:"]{opacity:var(--op)}.gps-575381853616341535.gps.gpsil [style*="--o:"]{order:var(--o)}.gps-575381853616341535.gps.gpsil [style*="--pc:"]{place-content:var(--pc)}.gps-575381853616341535.gps.gpsil [style*="--p:"]{padding:var(--p)}.gps-575381853616341535.gps.gpsil [style*="--pb:"]{padding-bottom:var(--pb)}.gps-575381853616341535.gps.gpsil [style*="--pl:"]{padding-left:var(--pl)}.gps-575381853616341535.gps.gpsil [style*="--pr:"]{padding-right:var(--pr)}.gps-575381853616341535.gps.gpsil [style*="--pt:"]{padding-top:var(--pt)}.gps-575381853616341535.gps.gpsil [style*="--pos:"]{position:var(--pos)}.gps-575381853616341535.gps.gpsil [style*="--rg:"]{row-gap:var(--rg)}.gps-575381853616341535.gps.gpsil [style*="--ta:"]{text-align:var(--ta)}.gps-575381853616341535.gps.gpsil [style*="--ts:"]{text-shadow:var(--ts)}.gps-575381853616341535.gps.gpsil [style*="--tt:"]{text-transform:var(--tt)}.gps-575381853616341535.gps.gpsil [style*="--top:"]{top:var(--top)}.gps-575381853616341535.gps.gpsil [style*="--t:"]{transform:var(--t)}.gps-575381853616341535.gps.gpsil [style*="--w:"]{width:var(--w)}.gps-575381853616341535.gps.gpsil [style*="--line-clamp:"]{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:var(--line-clamp)}@media only screen and (max-width:1024px){.gps-575381853616341535.gps.gpsil [style*="--ai-tablet:"]{align-items:var(--ai-tablet)}.gps-575381853616341535.gps.gpsil [style*="--aspect-tablet:"]{aspect-ratio:var(--aspect-tablet)}.gps-575381853616341535.gps.gpsil [style*="--cg-tablet:"]{-moz-column-gap:var(--cg-tablet);column-gap:var(--cg-tablet)}.gps-575381853616341535.gps.gpsil [style*="--size-tablet:"]{font-size:var(--size-tablet)}.gps-575381853616341535.gps.gpsil [style*="--h-tablet:"]{height:var(--h-tablet)}.gps-575381853616341535.gps.gpsil [style*="--lh-tablet:"]{line-height:var(--lh-tablet)}.gps-575381853616341535.gps.gpsil [style*="--mb-tablet:"]{margin-bottom:var(--mb-tablet)}.gps-575381853616341535.gps.gpsil [style*="--minw-tablet:"]{min-width:var(--minw-tablet)}.gps-575381853616341535.gps.gpsil [style*="--pb-tablet:"]{padding-bottom:var(--pb-tablet)}.gps-575381853616341535.gps.gpsil [style*="--pl-tablet:"]{padding-left:var(--pl-tablet)}.gps-575381853616341535.gps.gpsil [style*="--pr-tablet:"]{padding-right:var(--pr-tablet)}.gps-575381853616341535.gps.gpsil [style*="--pt-tablet:"]{padding-top:var(--pt-tablet)}.gps-575381853616341535.gps.gpsil [style*="--pos-tablet:"]{position:var(--pos-tablet)}.gps-575381853616341535.gps.gpsil [style*="--top-tablet:"]{top:var(--top-tablet)}.gps-575381853616341535.gps.gpsil [style*="--w-tablet:"]{width:var(--w-tablet)}.gps-575381853616341535.gps.gpsil [style*="--line-clamp-tablet:"]{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:var(--line-clamp-tablet)}}@media only screen and (max-width:767px){.gps-575381853616341535.gps.gpsil [style*="--ai-mobile:"]{align-items:var(--ai-mobile)}.gps-575381853616341535.gps.gpsil [style*="--aspect-mobile:"]{aspect-ratio:var(--aspect-mobile)}.gps-575381853616341535.gps.gpsil [style*="--bc-mobile:"]{border-color:var(--bc-mobile)}.gps-575381853616341535.gps.gpsil [style*="--bs-mobile:"]{border-style:var(--bs-mobile)}.gps-575381853616341535.gps.gpsil [style*="--bw-mobile:"]{border-width:var(--bw-mobile)}.gps-575381853616341535.gps.gpsil [style*="--cg-mobile:"]{-moz-column-gap:var(--cg-mobile);column-gap:var(--cg-mobile)}.gps-575381853616341535.gps.gpsil [style*="--size-mobile:"]{font-size:var(--size-mobile)}.gps-575381853616341535.gps.gpsil [style*="--gtc-mobile:"]{grid-template-columns:var(--gtc-mobile)}.gps-575381853616341535.gps.gpsil [style*="--h-mobile:"]{height:var(--h-mobile)}.gps-575381853616341535.gps.gpsil [style*="--jc-mobile:"]{justify-content:var(--jc-mobile)}.gps-575381853616341535.gps.gpsil [style*="--lh-mobile:"]{line-height:var(--lh-mobile)}.gps-575381853616341535.gps.gpsil [style*="--mb-mobile:"]{margin-bottom:var(--mb-mobile)}.gps-575381853616341535.gps.gpsil [style*="--mt-mobile:"]{margin-top:var(--mt-mobile)}.gps-575381853616341535.gps.gpsil [style*="--minw-mobile:"]{min-width:var(--minw-mobile)}.gps-575381853616341535.gps.gpsil [style*="--pb-mobile:"]{padding-bottom:var(--pb-mobile)}.gps-575381853616341535.gps.gpsil [style*="--pl-mobile:"]{padding-left:var(--pl-mobile)}.gps-575381853616341535.gps.gpsil [style*="--pr-mobile:"]{padding-right:var(--pr-mobile)}.gps-575381853616341535.gps.gpsil [style*="--pt-mobile:"]{padding-top:var(--pt-mobile)}.gps-575381853616341535.gps.gpsil [style*="--pos-mobile:"]{position:var(--pos-mobile)}.gps-575381853616341535.gps.gpsil [style*="--top-mobile:"]{top:var(--top-mobile)}.gps-575381853616341535.gps.gpsil [style*="--w-mobile:"]{width:var(--w-mobile)}.gps-575381853616341535.gps.gpsil [style*="--line-clamp-mobile:"]{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:var(--line-clamp-mobile)}}.gps-575381853616341535 .gp-relative{position:relative}.gps-575381853616341535 .gp-z-1{z-index:1}.gps-575381853616341535 .gp-mx-auto{margin-left:auto;margin-right:auto}.gps-575381853616341535 .gp-mb-0{margin-bottom:0}.gps-575381853616341535 .gp-inline-block{display:inline-block}.gps-575381853616341535 .gp-flex{display:flex}.gps-575381853616341535 .gp-inline-flex{display:inline-flex}.gps-575381853616341535 .gp-grid{display:grid}.gps-575381853616341535 .gp-contents{display:contents}.gps-575381853616341535 .\!gp-hidden{display:none!important}.gps-575381853616341535 .gp-hidden{display:none}.gps-575381853616341535 .gp-h-auto{height:auto}.gps-575381853616341535 .gp-h-full{height:100%}.gps-575381853616341535 .gp-w-full{width:100%}.gps-575381853616341535 .\!gp-max-w-none{max-width:none!important}.gps-575381853616341535 .gp-max-w-full{max-width:100%}.gps-575381853616341535 .gp-flex-none{flex:none}.gps-575381853616341535 .gp-shrink-0{flex-shrink:0}.gps-575381853616341535 .gp-grid-rows-\[1fr\]{grid-template-rows:1fr}.gps-575381853616341535 .gp-flex-col{flex-direction:column}.gps-575381853616341535 .gp-flex-wrap{flex-wrap:wrap}.gps-575381853616341535 .gp-items-center{align-items:center}.gps-575381853616341535 .gp-justify-center{justify-content:center}.gps-575381853616341535 .gp-overflow-hidden{overflow:hidden}.gps-575381853616341535 .gp-break-words{overflow-wrap:break-word}.gps-575381853616341535 .gp-border{border-width:1px}.gps-575381853616341535 .gp-border-transparent{border-color:transparent}.gps-575381853616341535 .gp-bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0/var(--tw-bg-opacity,1))}.gps-575381853616341535 .gp-text-left{text-align:left}.gps-575381853616341535 .gp-text-center{text-align:center}.gps-575381853616341535 .gp-leading-\[0\]{line-height:0}.gps-575381853616341535 .gp-text-g-text-3{color:var(--g-c-text-3)}.gps-575381853616341535 .gp-no-underline{text-decoration-line:none}.gps-575381853616341535 .gp-transition-colors{transition-duration:.15s;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1)}.gps-575381853616341535 .gp-duration-200{transition-duration:.2s}.gps-575381853616341535 .gp-ease-in-out{transition-timing-function:cubic-bezier(.4,0,.2,1)}.gps-575381853616341535 .disabled\:gp-btn-disabled:disabled{cursor:default}.gps-575381853616341535 .disabled\:gp-opacity-30:disabled{opacity:.3}.gps-575381853616341535 .gp-group\/button:active .group-active\/button\:\!gp-text-inherit{color:inherit!important}.gps-575381853616341535 .gp-group[data-state=loading] .group-data-\[state\=loading\]\:gp-invisible{visibility:hidden}@media (max-width:1024px){.gps-575381853616341535 .tablet\:\!gp-hidden{display:none!important}.gps-575381853616341535 .tablet\:gp-hidden{display:none}.gps-575381853616341535 .tablet\:gp-h-auto{height:auto}.gps-575381853616341535 .tablet\:gp-flex-none{flex:none}}@media (max-width:767px){.gps-575381853616341535 .mobile\:\!gp-hidden{display:none!important}.gps-575381853616341535 .mobile\:gp-hidden{display:none}.gps-575381853616341535 .mobile\:gp-h-auto{height:auto}.gps-575381853616341535 .mobile\:gp-flex-none{flex:none}}.gps-575381853616341535 .\[\&\>svg\]\:\!gp-h-\[var\(--height-desktop\)\]>svg{height:var(--height-desktop)!important}.gps-575381853616341535 .\[\&\>svg\]\:\!gp-h-\[var\(--size-desktop\)\]>svg{height:var(--size-desktop)!important}.gps-575381853616341535 .\[\&\>svg\]\:\!gp-w-\[var\(--size-desktop\)\]>svg{width:var(--size-desktop)!important}.gps-575381853616341535 .\[\&\>svg\]\:\!gp-w-auto>svg{width:auto!important}@media (max-width:1024px){.gps-575381853616341535 .tablet\:\[\&\>svg\]\:\!gp-h-\[var\(--height-tablet\)\]>svg{height:var(--height-tablet)!important}.gps-575381853616341535 .tablet\:\[\&\>svg\]\:\!gp-h-\[var\(--size-tablet\)\]>svg{height:var(--size-tablet)!important}.gps-575381853616341535 .tablet\:\[\&\>svg\]\:\!gp-w-\[var\(--size-tablet\)\]>svg{width:var(--size-tablet)!important}}@media (max-width:767px){.gps-575381853616341535 .mobile\:\[\&\>svg\]\:\!gp-h-\[var\(--height-mobile\)\]>svg{height:var(--height-mobile)!important}.gps-575381853616341535 .mobile\:\[\&\>svg\]\:\!gp-h-\[var\(--size-mobile\)\]>svg{height:var(--size-mobile)!important}.gps-575381853616341535 .mobile\:\[\&\>svg\]\:\!gp-w-\[var\(--size-mobile\)\]>svg{width:var(--size-mobile)!important}}.gps-575381853616341535 .\[\&_\*\]\:gp-max-w-full *{max-width:100%}.gps-575381853616341535 .\[\&_\>_article\]\:gp-aspect-\[var\(--aspect\)\]>article{aspect-ratio:var(--aspect)}@media (max-width:1024px){.gps-575381853616341535 .tablet\:\[\&_\>_article\]\:gp-aspect-\[var\(--aspect-tablet\2c _var\(--aspect\)\)\]>article{aspect-ratio:var(--aspect-tablet,var(--aspect))}}@media (max-width:767px){.gps-575381853616341535 .mobile\:\[\&_\>_article\]\:gp-aspect-\[var\(--aspect-mobile\2c _var\(--aspect-tablet\2c _var\(--aspect\)\)\)\]>article{aspect-ratio:var(--aspect-mobile,var(--aspect-tablet,var(--aspect)))}}.gps-575381853616341535 .\[\&_p\]\:gp-whitespace-pre-line p{white-space:pre-line}</style>
+    <style {% if section.settings.section_preload == "false" %} class="gps-link" type="text/disabled-css" {% endif %}>@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/l/font?kit=memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVQ&skey=62c1cbfccc78b4b2&v=v44) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/l/font?kit=memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjr0B4gaVQ&skey=62c1cbfccc78b4b2&v=v44) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/l/font?kit=memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsgH1x4gaVQ&skey=62c1cbfccc78b4b2&v=v44) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/l/font?kit=memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1x4gaVQ&skey=62c1cbfccc78b4b2&v=v44) format('woff');
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSKmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSumu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSOmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSymu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS2mu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* math */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTVOmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTUGmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSCmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSGmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSKmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSumu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSOmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSymu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS2mu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* math */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTVOmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTUGmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSCmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSGmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSKmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSumu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSOmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSymu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS2mu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* math */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTVOmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTUGmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSCmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSGmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSKmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSumu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSOmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSymu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* hebrew */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS2mu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F;
+}
+/* math */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTVOmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0302-0303, U+0305, U+0307-0308, U+0310, U+0312, U+0315, U+031A, U+0326-0327, U+032C, U+032F-0330, U+0332-0333, U+0338, U+033A, U+0346, U+034D, U+0391-03A1, U+03A3-03A9, U+03B1-03C9, U+03D1, U+03D5-03D6, U+03F0-03F1, U+03F4-03F5, U+2016-2017, U+2034-2038, U+203C, U+2040, U+2043, U+2047, U+2050, U+2057, U+205F, U+2070-2071, U+2074-208E, U+2090-209C, U+20D0-20DC, U+20E1, U+20E5-20EF, U+2100-2112, U+2114-2115, U+2117-2121, U+2123-214F, U+2190, U+2192, U+2194-21AE, U+21B0-21E5, U+21F1-21F2, U+21F4-2211, U+2213-2214, U+2216-22FF, U+2308-230B, U+2310, U+2319, U+231C-2321, U+2336-237A, U+237C, U+2395, U+239B-23B7, U+23D0, U+23DC-23E1, U+2474-2475, U+25AF, U+25B3, U+25B7, U+25BD, U+25C1, U+25CA, U+25CC, U+25FB, U+266D-266F, U+27C0-27FF, U+2900-2AFF, U+2B0E-2B11, U+2B30-2B4C, U+2BFE, U+3030, U+FF5B, U+FF5D, U+1D400-1D7FF, U+1EE00-1EEFF;
+}
+/* symbols */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTUGmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0001-000C, U+000E-001F, U+007F-009F, U+20DD-20E0, U+20E2-20E4, U+2150-218F, U+2190, U+2192, U+2194-2199, U+21AF, U+21E6-21F0, U+21F3, U+2218-2219, U+2299, U+22C4-22C6, U+2300-243F, U+2440-244A, U+2460-24FF, U+25A0-27BF, U+2800-28FF, U+2921-2922, U+2981, U+29BF, U+29EB, U+2B00-2BFF, U+4DC0-4DFF, U+FFF9-FFFB, U+10140-1018E, U+10190-1019C, U+101A0, U+101D0-101FD, U+102E0-102FB, U+10E60-10E7E, U+1D2C0-1D2D3, U+1D2E0-1D37F, U+1F000-1F0FF, U+1F100-1F1AD, U+1F1E6-1F1FF, U+1F30D-1F30F, U+1F315, U+1F31C, U+1F31E, U+1F320-1F32C, U+1F336, U+1F378, U+1F37D, U+1F382, U+1F393-1F39F, U+1F3A7-1F3A8, U+1F3AC-1F3AF, U+1F3C2, U+1F3C4-1F3C6, U+1F3CA-1F3CE, U+1F3D4-1F3E0, U+1F3ED, U+1F3F1-1F3F3, U+1F3F5-1F3F7, U+1F408, U+1F415, U+1F41F, U+1F426, U+1F43F, U+1F441-1F442, U+1F444, U+1F446-1F449, U+1F44C-1F44E, U+1F453, U+1F46A, U+1F47D, U+1F4A3, U+1F4B0, U+1F4B3, U+1F4B9, U+1F4BB, U+1F4BF, U+1F4C8-1F4CB, U+1F4D6, U+1F4DA, U+1F4DF, U+1F4E3-1F4E6, U+1F4EA-1F4ED, U+1F4F7, U+1F4F9-1F4FB, U+1F4FD-1F4FE, U+1F503, U+1F507-1F50B, U+1F50D, U+1F512-1F513, U+1F53E-1F54A, U+1F54F-1F5FA, U+1F610, U+1F650-1F67F, U+1F687, U+1F68D, U+1F691, U+1F694, U+1F698, U+1F6AD, U+1F6B2, U+1F6B9-1F6BA, U+1F6BC, U+1F6C6-1F6CF, U+1F6D3-1F6D7, U+1F6E0-1F6EA, U+1F6F0-1F6F3, U+1F6F7-1F6FC, U+1F700-1F7FF, U+1F800-1F80B, U+1F810-1F847, U+1F850-1F859, U+1F860-1F887, U+1F890-1F8AD, U+1F8B0-1F8BB, U+1F8C0-1F8C1, U+1F900-1F90B, U+1F93B, U+1F946, U+1F984, U+1F996, U+1F9E9, U+1FA00-1FA6F, U+1FA70-1FA7C, U+1FA80-1FA89, U+1FA8F-1FAC6, U+1FACE-1FADC, U+1FADF-1FAE9, U+1FAF0-1FAF8, U+1FB00-1FBFF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSCmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTSGmu0SC55K5gw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/opensans/v44/memvYaGs126MiZpBA-UvWbX2vVnXBbObj2OVTS-mu0SC55I.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+  
+    
+    
+    
+
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+
+    
+        <section
+          class="gp-mx-auto gp-max-w-full [&_*]:gp-max-w-full {% if section.settings.section_preload == "false" %}gps-lazy {% endif %}"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--pl:none;--pl-tablet:none;--pl-mobile:none;--pr:none;--pr-tablet:none;--pr-mobile:none"
+        >
+          
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"gDgEaOaXu_"}' data-id="gDgEaOaXu_" id="gDgEaOaXu_" data-same-height-subgrid-container class="gDgEaOaXu_ gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--blockPadding:base;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--pt:var(--g-s-2xl);--pb:var(--g-s-2xl);--pt-mobile:20px;--pl-mobile:13px;--pb-mobile:var(--g-s-xl);--pr-mobile:13px;--pt-tablet:var(--g-s-2xl);--pl-tablet:var(--g-s-l);--pb-tablet:var(--g-s-2xl);--pr-tablet:var(--g-s-l);--cg:32px;--gtc:minmax(0, 12fr);--w:100%;--w-tablet:100%;--w-mobile:100%;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="g16w_01iQv gp-relative gp-flex gp-flex-col"
+    >
+      
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"uid":"gN8SiOmNx1"}' data-id="gN8SiOmNx1" id="gN8SiOmNx1" data-same-height-subgrid-container class="gN8SiOmNx1 gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:grid;--d-mobile:grid;--d-tablet:grid;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--cg:40px;--cg-tablet:16px;--gtc:minmax(0, 9fr) minmax(0, 3fr);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--h:auto;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="gjga4xRp_9 gp-relative gp-flex gp-flex-col"
+    >
+      {% render 'gp-section-575381853616341535-1', product: product, variant: variant, product_form_id: product_form_id, productSelectedVariant: productSelectedVariant, form: form  %}
+    </div><div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="gmSGm3WDtE gp-relative gp-flex gp-flex-col"
+    >
+      
+    
+
+    
+
+    
+    <gp-row gp-data='{"background":{"desktop":{"attachment":"scroll","color":"#F7F9FB","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color","video":"","videoHtml5":""}},"uid":"g1GSgqGY_f"}' data-id="g1GSgqGY_f" id="g1GSgqGY_f" data-same-height-subgrid-container class="g1GSgqGY_f gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--bs:dashed;--bw:1px 1px 1px 1px;--bc:rgba(18, 18, 18, 0.5);--shadow:none;--d:grid;--d-mobile:none;--d-tablet:grid;--op:100%;--pageType:GP_STATIC;--pos:sticky;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--pt:20px;--pl:var(--g-s-m);--pb:20px;--pr:var(--g-s-m);--pt-mobile:var(--g-s-l);--pl-mobile:var(--g-s-s);--pb-mobile:var(--g-s-xl);--pr-mobile:var(--g-s-s);--pt-tablet:var(--g-s-m);--pl-tablet:var(--g-s-xs);--pb-tablet:var(--g-s-m);--pr-tablet:var(--g-s-xs);--top:0px;--cg:8px;--gtc:minmax(0, 12fr);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--h:auto;--bgc:#F7F9FB;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="g_i7VqHPnp gp-relative gp-flex gp-flex-col"
+    >
+      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gLGevyOt7I"
+        class="gLGevyOt7I"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h2
+          data-gp-text
+          class=" gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ts:none;--ta:center;--ff:var(--g-font-Open-Sans, 'Open Sans'), var(--g-font-heading, heading);--weight:700;--size:20px;--size-tablet:20px;--size-mobile:20px;--lh:26px;--lh-tablet:26px;--lh-mobile:130%;--ls:0.78px;--c:#222323;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggLGevyOt7I_text | replace: '$locationOrigin', locationOrigin }}
+        </h2>
+      </div>
+    </div>
+    
+    
+    <div data-id="g_tcDfAoXL"  style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll">
+      <div class="gp-flex gp-flex-wrap" style="--cg:2px;--jc:center;--ai:center">
+            <div gp-el-wrapper style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px" class="g--xX60ox6 ">
+      
+    <div  class="gp-flex gp-w-full gp-flex-col gp-items-center">
+      
+    <div id="gtX4jFnDBj" class="gp-leading-[0] gtX4jFnDBj" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left">
+      <div data-id="gtX4jFnDBj" class="icon-wrapper gp-inline-flex gp-overflow-hidden gtX4jFnDBj " style="--bs:none;--bw:1px 1px 1px 1px;--bc:#000000">
+      
+        <div >
+          <span style="--c:#FFD000;--t:rotate(0deg);--w:16px;--w-tablet:16px;--w-mobile:16px;--h:16px;--h-tablet:16px;--h-mobile:16px;--minw:16px;--minw-tablet:16px;--minw-mobile:16px;--height-desktop:16px;--height-tablet:16px;--height-mobile:16px" class="gp-inline-flex gp-items-center gp-justify-center gp-overflow-hidden [&>svg]:!gp-h-[var(--height-desktop)] [&>svg]:!gp-w-auto tablet:[&>svg]:!gp-h-[var(--height-tablet)] mobile:[&>svg]:!gp-h-[var(--height-mobile)] "><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" data-id="508414815326568800" viewBox="0 0 256 256"><path d="m234.29 114.85-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76 22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08 59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg></span>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+  
+      </div><div gp-el-wrapper style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px" class="g2UNloUTzo ">
+      
+    <div  class="gp-flex gp-w-full gp-flex-col gp-items-center">
+      
+    <div id="g2gloXrHXw" class="gp-leading-[0] g2gloXrHXw" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left">
+      <div data-id="g2gloXrHXw" class="icon-wrapper gp-inline-flex gp-overflow-hidden g2gloXrHXw " style="--bs:none;--bw:1px 1px 1px 1px;--bc:#000000">
+      
+        <div >
+          <span style="--c:#FFD000;--t:rotate(0deg);--w:16px;--w-tablet:16px;--w-mobile:16px;--h:16px;--h-tablet:16px;--h-mobile:16px;--minw:16px;--minw-tablet:16px;--minw-mobile:16px;--height-desktop:16px;--height-tablet:16px;--height-mobile:16px" class="gp-inline-flex gp-items-center gp-justify-center gp-overflow-hidden [&>svg]:!gp-h-[var(--height-desktop)] [&>svg]:!gp-w-auto tablet:[&>svg]:!gp-h-[var(--height-tablet)] mobile:[&>svg]:!gp-h-[var(--height-mobile)] "><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" data-id="508414815326568800" viewBox="0 0 256 256"><path d="m234.29 114.85-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76 22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08 59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg></span>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+  
+      </div><div gp-el-wrapper style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px" class="ge5H62Pa4s ">
+      
+    <div  class="gp-flex gp-w-full gp-flex-col gp-items-center">
+      
+    <div id="guUYgg3cSQ" class="gp-leading-[0] guUYgg3cSQ" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left">
+      <div data-id="guUYgg3cSQ" class="icon-wrapper gp-inline-flex gp-overflow-hidden guUYgg3cSQ " style="--bs:none;--bw:1px 1px 1px 1px;--bc:#000000">
+      
+        <div >
+          <span style="--c:#FFD000;--t:rotate(0deg);--w:16px;--w-tablet:16px;--w-mobile:16px;--h:16px;--h-tablet:16px;--h-mobile:16px;--minw:16px;--minw-tablet:16px;--minw-mobile:16px;--height-desktop:16px;--height-tablet:16px;--height-mobile:16px" class="gp-inline-flex gp-items-center gp-justify-center gp-overflow-hidden [&>svg]:!gp-h-[var(--height-desktop)] [&>svg]:!gp-w-auto tablet:[&>svg]:!gp-h-[var(--height-tablet)] mobile:[&>svg]:!gp-h-[var(--height-mobile)] "><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" data-id="508414815326568800" viewBox="0 0 256 256"><path d="m234.29 114.85-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76 22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08 59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg></span>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+  
+      </div><div gp-el-wrapper style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px" class="gBi2FTZcJJ ">
+      
+    <div  class="gp-flex gp-w-full gp-flex-col gp-items-center">
+      
+    <div id="gFCOsXoIsh" class="gp-leading-[0] gFCOsXoIsh" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left">
+      <div data-id="gFCOsXoIsh" class="icon-wrapper gp-inline-flex gp-overflow-hidden gFCOsXoIsh " style="--bs:none;--bw:1px 1px 1px 1px;--bc:#000000">
+      
+        <div >
+          <span style="--c:#FFD000;--t:rotate(0deg);--w:16px;--w-tablet:16px;--w-mobile:16px;--h:16px;--h-tablet:16px;--h-mobile:16px;--minw:16px;--minw-tablet:16px;--minw-mobile:16px;--height-desktop:16px;--height-tablet:16px;--height-mobile:16px" class="gp-inline-flex gp-items-center gp-justify-center gp-overflow-hidden [&>svg]:!gp-h-[var(--height-desktop)] [&>svg]:!gp-w-auto tablet:[&>svg]:!gp-h-[var(--height-tablet)] mobile:[&>svg]:!gp-h-[var(--height-mobile)] "><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" data-id="508414815326568800" viewBox="0 0 256 256"><path d="m234.29 114.85-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76 22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08 59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg></span>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+  
+      </div><div gp-el-wrapper style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px" class="g-mgSg8R0d ">
+      
+    <div  class="gp-flex gp-w-full gp-flex-col gp-items-center">
+      
+    <div id="gI4l-fNVBz" class="gp-leading-[0] gI4l-fNVBz" style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ta:left">
+      <div data-id="gI4l-fNVBz" class="icon-wrapper gp-inline-flex gp-overflow-hidden gI4l-fNVBz " style="--bs:none;--bw:1px 1px 1px 1px;--bc:#000000">
+      
+        <div >
+          <span style="--c:#FFD000;--t:rotate(0deg);--w:16px;--w-tablet:16px;--w-mobile:16px;--h:16px;--h-tablet:16px;--h-mobile:16px;--minw:16px;--minw-tablet:16px;--minw-mobile:16px;--height-desktop:16px;--height-tablet:16px;--height-mobile:16px" class="gp-inline-flex gp-items-center gp-justify-center gp-overflow-hidden [&>svg]:!gp-h-[var(--height-desktop)] [&>svg]:!gp-w-auto tablet:[&>svg]:!gp-h-[var(--height-tablet)] mobile:[&>svg]:!gp-h-[var(--height-mobile)] "><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" data-id="508414815326568800" viewBox="0 0 256 256"><path d="m234.29 114.85-45 38.83L203 211.75a16.4 16.4 0 0 1-24.5 17.82L128 198.49l-50.53 31.08A16.4 16.4 0 0 1 53 211.75l13.76-58.07-45-38.83A16.46 16.46 0 0 1 31.08 86l59-4.76 22.76-55.08a16.36 16.36 0 0 1 30.27 0l22.75 55.08 59 4.76a16.46 16.46 0 0 1 9.37 28.86Z"/></svg></span>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+  
+      </div>
+          </div>
+    </div>
+  
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gAkz1jQVJC"
+        class="gAkz1jQVJC"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h2
+          data-gp-text
+          class=" gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ts:none;--ta:center;--ff:var(--g-font-Open-Sans, 'Open Sans'), var(--g-font-heading, heading);--weight:400;--size:14px;--size-tablet:14px;--size-mobile:14px;--lh:28px;--lh-tablet:28px;--lh-mobile:130%;--ls:0.96px;--c:#222323;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggAkz1jQVJC_text | replace: '$locationOrigin', locationOrigin }}
+        </h2>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="g4UiviMG9p"
+        class="g4UiviMG9p"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:var(--g-s-m);--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h2
+          data-gp-text
+          class=" gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ts:none;--ta:center;--ff:var(--g-font-Open-Sans, 'Open Sans'), var(--g-font-heading, heading);--weight:700;--size:25px;--size-tablet:25px;--size-mobile:25px;--lh:32px;--lh-tablet:32px;--lh-mobile:130%;--ls:0.78px;--c:#222323;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.gg4UiviMG9p_text | replace: '$locationOrigin', locationOrigin }}
+        </h2>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gtFu4yDcD7"
+        class="gtFu4yDcD7"
+        style="--ta:left;--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mb:var(--g-s-l);--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <h2
+          data-gp-text
+          class=" gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--ts:none;--ta:center;--ff:var(--g-font-Open-Sans, 'Open Sans'), var(--g-font-heading, heading);--weight:400;--size:16px;--size-tablet:16px;--size-mobile:16px;--lh:20px;--lh-tablet:20px;--lh-mobile:130%;--ls:0.78px;--c:#222323;--tt:uppercase;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggtFu4yDcD7_text | replace: '$locationOrigin', locationOrigin }}
+        </h2>
+      </div>
+    </div>
+    <div gp-el-wrapper  class="gkWcDnYiSS ">
+      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <gp-icon-list
+      
+      uid="gkWcDnYiSS"
+      data-id="gkWcDnYiSS"
+      style="--shadow:none;--d:flex;--d-mobile:flex;--d-tablet:flex;--op:100%;--pageType:GP_STATIC;--jc:left"
+      className="gkWcDnYiSS"
+      gp-data='{"position":{"desktop":"baseline","mobile":"center","tablet":"center"},"iconWidth":{"desktop":24,"mobile":24,"tablet":24}}'
+    >
+      
+          <div class="gp-flex" style="--b:none;--bc:#121212;--bw:1px 1px 1px 1px;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--w:100%;--jc:left">
+            <div class="gp-inline-flex gp-flex-col" style="--rg:8px">
+              
+                    <div
+                      key="0"
+                      data-index="0"
+                      class="gp-icon-list-wrapper gp-flex gp-child-item-gkWcDnYiSS"
+                      style="--cg:6px;--ai:baseline;--ai-tablet:center;--ai-mobile:center"
+                    >
+                      <div class="gp-icon-list-icon gp-inline-flex gp-shrink-0 gp-overflow-hidden" style="--pl:0px;--pr:0px;--pt:0px;--pb:0px;--bs:none;--bw:1px 1px 1px 1px;--bc:#000000;--bg:transparent;--top:unset;--top-tablet:unset;--top-mobile:unset;--pos:relative;--pos-tablet:relative;--pos-mobile:relative">
+                        <span
+                          class="gp-icon gp-inline-flex gp-items-center gp-justify-center gp-overflow-hidden [&>svg]:!gp-h-[var(--size-desktop)] [&>svg]:!gp-w-[var(--size-desktop)] tablet:[&>svg]:!gp-h-[var(--size-tablet)] tablet:[&>svg]:!gp-w-[var(--size-tablet)] mobile:[&>svg]:!gp-h-[var(--size-mobile)] mobile:[&>svg]:!gp-w-[var(--size-mobile)]"
+                          style="--c:#00C853;--w:100%;--h:100%;--size-desktop:24px;--size-tablet:24px;--size-mobile:24px"
+                        >
+                          <svg height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" data-id="508414807831544168"><path fill="currentColor" strokelinecap="round" strokelinejoin="round" d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                        </span>
+                      </div>
+                      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id
+        class="gp-w-full"
+        style="--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" >
+        <div
+          data-gp-text
+          class=" gp-w-full gp-border gp-border-transparent gp-text-left gp-icon-list-text  gp-text-instant"
+          style="--w:100%;--tdt:auto;--ts:none;--ff:var(--g-font-Open-Sans, 'Open Sans'), var(--g-font-body, body);--weight:400;--size:16px;--size-tablet:16px;--size-mobile:16px;--lh:24px;--lh-tablet:24px;--lh-mobile:150%;--ls:0.96px;--c:#222323;word-break:break-word;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggkWcDnYiSS_childItem_0 | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+                    </div> 
+                    <div
+                      key="1"
+                      data-index="1"
+                      class="gp-icon-list-wrapper gp-flex gp-child-item-gkWcDnYiSS"
+                      style="--cg:6px;--ai:baseline;--ai-tablet:center;--ai-mobile:center"
+                    >
+                      <div class="gp-icon-list-icon gp-inline-flex gp-shrink-0 gp-overflow-hidden" style="--pl:0px;--pr:0px;--pt:0px;--pb:0px;--bs:none;--bw:1px 1px 1px 1px;--bc:#000000;--bg:transparent;--top:unset;--top-tablet:unset;--top-mobile:unset;--pos:relative;--pos-tablet:relative;--pos-mobile:relative">
+                        <span
+                          class="gp-icon gp-inline-flex gp-items-center gp-justify-center gp-overflow-hidden [&>svg]:!gp-h-[var(--size-desktop)] [&>svg]:!gp-w-[var(--size-desktop)] tablet:[&>svg]:!gp-h-[var(--size-tablet)] tablet:[&>svg]:!gp-w-[var(--size-tablet)] mobile:[&>svg]:!gp-h-[var(--size-mobile)] mobile:[&>svg]:!gp-w-[var(--size-mobile)]"
+                          style="--c:#00C853;--w:100%;--h:100%;--size-desktop:24px;--size-tablet:24px;--size-mobile:24px"
+                        >
+                          <svg height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" data-id="508414807831544168"><path fill="currentColor" strokelinecap="round" strokelinejoin="round" d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                        </span>
+                      </div>
+                      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id
+        class="gp-w-full"
+        style="--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" >
+        <div
+          data-gp-text
+          class=" gp-w-full gp-border gp-border-transparent gp-text-left gp-icon-list-text  gp-text-instant"
+          style="--w:100%;--tdt:auto;--ts:none;--ff:var(--g-font-Open-Sans, 'Open Sans'), var(--g-font-body, body);--weight:400;--size:16px;--size-tablet:16px;--size-mobile:16px;--lh:24px;--lh-tablet:24px;--lh-mobile:150%;--ls:0.96px;--c:#222323;word-break:break-word;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggkWcDnYiSS_childItem_1 | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+                    </div> 
+                    <div
+                      key="2"
+                      data-index="2"
+                      class="gp-icon-list-wrapper gp-flex gp-child-item-gkWcDnYiSS"
+                      style="--cg:6px;--ai:baseline;--ai-tablet:center;--ai-mobile:center"
+                    >
+                      <div class="gp-icon-list-icon gp-inline-flex gp-shrink-0 gp-overflow-hidden" style="--pl:0px;--pr:0px;--pt:0px;--pb:0px;--bs:none;--bw:1px 1px 1px 1px;--bc:#000000;--bg:transparent;--top:unset;--top-tablet:unset;--top-mobile:unset;--pos:relative;--pos-tablet:relative;--pos-mobile:relative">
+                        <span
+                          class="gp-icon gp-inline-flex gp-items-center gp-justify-center gp-overflow-hidden [&>svg]:!gp-h-[var(--size-desktop)] [&>svg]:!gp-w-[var(--size-desktop)] tablet:[&>svg]:!gp-h-[var(--size-tablet)] tablet:[&>svg]:!gp-w-[var(--size-tablet)] mobile:[&>svg]:!gp-h-[var(--size-mobile)] mobile:[&>svg]:!gp-w-[var(--size-mobile)]"
+                          style="--c:#00C853;--w:100%;--h:100%;--size-desktop:24px;--size-tablet:24px;--size-mobile:24px"
+                        >
+                          <svg height="20" width="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" data-id="508414807831544168"><path fill="currentColor" strokelinecap="round" strokelinejoin="round" d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm45.66,85.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z"></path></svg>
+                        </span>
+                      </div>
+                      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id
+        class="gp-w-full"
+        style="--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" >
+        <div
+          data-gp-text
+          class=" gp-w-full gp-border gp-border-transparent gp-text-left gp-icon-list-text  gp-text-instant"
+          style="--w:100%;--tdt:auto;--ts:none;--ff:var(--g-font-Open-Sans, 'Open Sans'), var(--g-font-body, body);--weight:400;--size:16px;--size-tablet:16px;--size-mobile:16px;--lh:24px;--lh-tablet:24px;--lh-mobile:150%;--ls:0.96px;--c:#222323;word-break:break-word;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggkWcDnYiSS_childItem_2 | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+                    </div>
+            </div>
+          </div>
+    </gp-icon-list>
+    <script {% if section.settings.section_preload == "false" %}class="gps-link" delay {% else %}src{% endif %}="https://assets.gemcommerce.com/assets-v2/gp-icon-list-v7-5.js?v={{ shop.metafields.GEMPAGES.ASSETS_VERSION }}" defer="defer"></script>
+  
+      </div>
+    <div
+      role="presentation"
+      data-id="giCbF4bELi"
+      style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:var(--g-s-m);--ta:center"
+      class="gp-group/image gp-relative force-publish-1776668648803 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto giCbF4bELi"
+    >
+      <div
+        
+        style="border-radius:inherit;--jc:center"
+        class="gp-h-full gp-w-full gp-flex pointer-events-auto"
+      >
+        
+    <picture style="border-radius:inherit" class="gp-contents">
+      
+      <source media="(max-width: 767px)" data-srcSet="{{ section.settings.ggiCbF4bELi_srcSet_desktop_src }}" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctNTAwLTUwMCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNnLTUwMC01MDApIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii01MDAiIHRvPSI1MDAiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAgLz4KICA8L3N2Zz4=" />
+      <source media="(max-width: 1024px)" data-srcSet="{{ section.settings.ggiCbF4bELi_srcSet_desktop_src }}" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctNTAwLTUwMCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNnLTUwMC01MDApIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii01MDAiIHRvPSI1MDAiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAgLz4KICA8L3N2Zz4=" />
+    
+      
+      <img
+        base-src="{{ section.settings.ggiCbF4bELi_srcSet_desktop_src }}" quality-type="{}" quality-percent="{}"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctNTAwLTUwMCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0idXJsKCNnLTUwMC01MDApIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii01MDAiIHRvPSI1MDAiIGR1cj0iMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiAgLz4KICA8L3N2Zz4=" data-src="{{ section.settings.ggiCbF4bELi_srcSet_desktop_src }}"
+        alt=""
+        width="100%"
+        style="--aspect:auto;--aspect-tablet:auto;--aspect-mobile:auto;--objf:cover;--h:auto;--h-tablet:auto;--h-mobile:auto;--b:none;--bc:#000000;--bw:1px 1px 1px 1px;--radiusType:none;--shadow:none"
+        class="gp-inline-block gp-w-full gp-max-w-full gp_lazyload"
+      />
+    
+    </picture>
+  
+      </div>
+    </div>
+  
+    <gp-button
+      gp-data='{"btnLink":{"link":"https://smoothspine.com/products/pres-alp","target":"_self"}}'
+      
+      class="gp-flex gp-flex-col"
+    >
+      <div style="--bs:none;--bw:1px 1px 1px 1px;--bc:#121212;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--pageType:GP_STATIC;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:var(--g-s-l);--ta:left" >
+        <style>[data-id="gK80D5UKCs"].gp-button-base::before, [data-id="gK80D5UKCs-interaction"].gp-button-base::before {
+      
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    border-style: none;
+  border-width: 1px 1px 1px 1px;
+  
+  
+    
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      
+  
+    }
+  
+      
+  [data-id="gK80D5UKCs"]:hover::before, [data-id="gK80D5UKCs-interaction"]:hover::before {
+    
+    
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      
+  }</style>
+        
+        <a
+          data-id="gK80D5UKCs" dataId="gK80D5UKCs" data-state="idle" aria-label="<p>Check Availability</p>"
+          
+          href="https://smoothspine.com/products/pres-alp" target="_self"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--h:Auto;--h-tablet:Auto;--h-mobile:Auto;--pl:var(--g-s-s);--pr:var(--g-s-s);--pt:var(--g-s-s);--pb:var(--g-s-s);--pl-tablet:var(--g-s-s);--pr-tablet:var(--g-s-s);--pt-tablet:var(--g-s-s);--pb-tablet:var(--g-s-s);--bblr:8px;--bbrr:8px;--btlr:8px;--btrr:8px;--hvr-bblr:8px;--hvr-bbrr:8px;--hvr-btlr:8px;--hvr-btrr:8px;--shadow:none;--bgi:;--hvr-bgi:;--hvr-bg:#41C527;--bg:#41C527;--c:#FFFFFF;--ff:var(--g-font-Open-Sans, 'Open Sans'), var(--g-font-body, body);--weight:700;--size:22px;--size-tablet:18px;--size-mobile:18px;--lh:44px;--lh-tablet:180%;--lh-mobile:180%;--ls:0.96px"
+          class="gK80D5UKCs gp-text-center gp-button-base gp-group gp-relative gp-inline-flex gp-max-w-full gp-items-center gp-justify-center gp-no-underline gp-transition-colors gp-duration-200 disabled:gp-btn-disabled disabled:gp-opacity-30 "
+        >
+        
+        <div class="gp-inline-flex">
+          
+          
+    <span
+      data-gp-text
+      style="--ff:var(--g-font-Open-Sans, 'Open Sans'), var(--g-font-body, body);--weight:700;--size:22px;--size-tablet:18px;--size-mobile:18px;--lh:44px;--lh-tablet:180%;--lh-mobile:180%;--ls:0.96px;--ts:none;word-break:break-word"
+      class="gp-content-product-button group-active/button:!gp-text-inherit gp-relative gp-flex gp-h-full gp-items-center gp-overflow-hidden gp-break-words group-data-[state=loading]:gp-invisible [&_p]:gp-whitespace-pre-line gp-text button-text"
+    >
+      {{ section.settings.ggK80D5UKCs_label }}
+    </span>
+        </div>
+        
+        </a>
+      </div>
+      <script {% if section.settings.section_preload == "false" %}class="gps-link" delay {% else %}src{% endif %}="https://assets.gemcommerce.com/assets-v2/gp-button-v7-5.js?v={{ shop.metafields.GEMPAGES.ASSETS_VERSION }}" defer="defer"></script>
+    </gp-button>
+  
+    </div>
+
+      
+    </gp-row>
+  
+  
+    </div>
+
+      
+    </gp-row>
+  
+  
+    </div>
+
+      
+    </gp-row>
+  
+        </section>
+      
+  
+    
+{% schema %}
+  {
+    
+    "name": "Section 2",
+    "tag": "section",
+    "class": "gps-575381853616341535 gps gpsil",
+    "settings": [{"type":"paragraph","content":"Section design by GemPages. [Click here to start design](https://admin.shopify.com/store/smooth-spine/apps/gempages-cro/app/shopify/edit?pageType=GP_STATIC&editorId=575381853381329439&sectionId=575381853616341535)"},{"type":"select","label":"Section Preload","id":"section_preload","options":[{"label":"On","value":"true"},{"label":"Off","value":"false"},{"label":"Off Lazy Script","value":"off_lazy_script"}],"default":"false"},{"type":"text","label":"Checksum","id":"checksum"},{"type":"html","id":"ggvFTRsiEhf_text","label":"ggvFTRsiEhf_text","default":"How a Simple Nighttime Fix Is Ending <span style=\"background-color:rgba(255,228,0,0.77);\">Years of Sciatica Pain</span>"},{"type":"html","id":"ggX4_f5toJx_text","label":"ggX4_f5toJx_text","default":"<p>Do you wake up stiff, sore, and already behind before your day even starts?</p>"},{"type":"html","id":"ggSRFFy-Soc_customText","label":"ggSRFFy-Soc_customText","default":"Melissa S. |"},{"type":"html","id":"ggKey2KlyRL_text","label":"ggKey2KlyRL_text","default":"<p>As a physical therapist who’s helped thousands of people with chronic back and sciatic pain, I can tell you this:</p><p>&nbsp;</p><p>If the pain always returns during a night's sleep or when you wake up — there’s a reason. And it’s the one most doctors <i>never</i> talk about.</p><p>&nbsp;</p><p>The most common question I hear is:</p>"},{"type":"html","id":"ggQ0l5ooEf9_text","label":"ggQ0l5ooEf9_text","default":"\"Why does my sciatica pain keep coming back <strong>—&nbsp;</strong>especially during sleep and in the mornings?\""},{"type":"html","id":"ggLsF6Hg25P_youtubeUrl","label":"ggLsF6Hg25P_youtubeUrl","default":"https://www.youtube.com/watch?v=cyzh48XRS4M"},{"type":"html","id":"ggLsF6Hg25P_vimeoUrl","label":"ggLsF6Hg25P_vimeoUrl","default":"https://vimeo.com/347119375"},{"type":"html","id":"ggLsF6Hg25P_html5Url","label":"ggLsF6Hg25P_html5Url","default":"https://cdn.shopify.com/videos/c/o/v/7693d3755ece4007a6c1d0d8ee69c802.mp4"},{"type":"html","id":"ggtIT50eNDY_text","label":"ggtIT50eNDY_text","default":"<p>Many of my patients come to me after trying everything:</p>"},{"type":"html","id":"ggOksm2tNyK_text","label":"ggOksm2tNyK_text","default":"<p>Medications</p>"},{"type":"html","id":"ggftcbFuQLo_text","label":"ggftcbFuQLo_text","default":"<p>Stretching routines</p>"},{"type":"html","id":"ggzwqCNIQXO_text","label":"ggzwqCNIQXO_text","default":"<p>Chiropractic visits</p>"},{"type":"html","id":"gg5Uia2v6fi_text","label":"gg5Uia2v6fi_text","default":"<p>Even surgery consultations</p>"},{"type":"html","id":"gggHQGBS0O9_text","label":"gggHQGBS0O9_text","default":"<p>Yet every morning, the pain is there before their feet even hit the floor.</p><p>&nbsp;</p><p>It still shocks me how many treatments they’ve gone through without ever being told <strong>the root cause of their pain</strong>.</p><p>&nbsp;</p><p>Did their doctors not know — or just not tell them?</p><p>&nbsp;</p><p>What my patients usually hear before coming to me is, “Oh, that’s just normal wear and tear.”</p><p>&nbsp;</p><p>As if they just have to surrender to this pain and accept this is their life now?</p><p>&nbsp;</p><p><strong>As if it’s impossible to fix sciatica?</strong></p><p>&nbsp;</p><p>The truth is, the root cause of sciatica pain is surprisingly simple. And once you understand it, everything changes.</p>"},{"type":"html","id":"ggXgtBAVWj3_text","label":"ggXgtBAVWj3_text","default":"The Real Root Cause of Sciatica Is Simpler Than You Think"},{"type":"html","id":"ggwLFhEg1MC_text","label":"ggwLFhEg1MC_text","default":"<p>It all comes down to one word:</p><p>&nbsp;</p><p><strong>Alignment.</strong></p><p>&nbsp;</p><p>Specifically, what I call a <strong>“misalignment lock”</strong> — a biomechanical issue that builds up silently every night.</p>"},{"type":"html","id":"ggENCcB0LPl_youtubeUrl","label":"ggENCcB0LPl_youtubeUrl","default":"https://www.youtube.com/watch?v=cyzh48XRS4M"},{"type":"html","id":"ggENCcB0LPl_vimeoUrl","label":"ggENCcB0LPl_vimeoUrl","default":"https://vimeo.com/347119375"},{"type":"html","id":"ggENCcB0LPl_html5Url","label":"ggENCcB0LPl_html5Url","default":"https://cdn.shopify.com/videos/c/o/v/323592b38113494db33cba0d042bbb18.mp4"},{"type":"html","id":"gghL19RzZ1S_text","label":"gghL19RzZ1S_text","default":"<p>When you sleep on your side, your top leg naturally pulls your hips and lower spine into a twisted position.</p><p>&nbsp;</p><p>It’s like twisting a garden hose. That twist blocks the flow, builds pressure, and eventually causes pain — just like the compression it puts on your sciatic nerve.</p><p>&nbsp;</p><p><strong>This subtle but sustained misalignment — for 6 to 8 hours every night — causes the stiffness, inflammation, and nerve compression that fuel chronic sciatica.</strong></p><p>&nbsp;</p><p>It’s not something you can feel in the moment — that could translate into sharp immediate pain. It builds up silently until one morning you wake up with that burning ache in your lower back.</p><p>&nbsp;</p><p>The worst thing?</p><p>&nbsp;</p><p>This misalignment lock during your sleep isn’t something you can consciously fix. You can’t control your posture while you’re not awake, can you?</p><p>&nbsp;</p><p>Sleeping on your back is also out of the question if you’re a chronic side sleeper.</p><p>&nbsp;</p><p>So what should you do?</p>"},{"type":"html","id":"gg912yBeZeE_text","label":"gg912yBeZeE_text","default":"Why Most Solutions Don’t Work"},{"type":"html","id":"ggmvc4TqCTS_text","label":"ggmvc4TqCTS_text","default":"<p>What comes first to your mind when you think of a way to fix pain in your back? Massage and chiropractic adjustments? I use them too — but they only offer temporary relief. They relax muscles, but they don’t fix the source.</p><p>&nbsp;</p><p>Painkillers? They mask pain. But they do nothing for the cause — and over time, they create bigger problems.</p>"},{"type":"html","id":"ggWlfwyb6ug_youtubeUrl","label":"ggWlfwyb6ug_youtubeUrl","default":"https://www.youtube.com/watch?v=cyzh48XRS4M"},{"type":"html","id":"ggWlfwyb6ug_vimeoUrl","label":"ggWlfwyb6ug_vimeoUrl","default":"https://vimeo.com/347119375"},{"type":"html","id":"ggWlfwyb6ug_html5Url","label":"ggWlfwyb6ug_html5Url","default":"https://cdn.shopify.com/videos/c/o/v/cf82e5710f2d452eadaee874e4476847.mp4"},{"type":"html","id":"gg-E0zj8IYQ_text","label":"gg-E0zj8IYQ_text","default":"<p>Even expensive mattresses or gadgets miss the mark. If your hips and spine aren't kept in proper alignment, the damage continues.</p><p>&nbsp;</p><p>Finally, a lot of people try to fix this misalignment lock by placing a regular pillow between their knees. But those pillows usually slip, flatten, or just don’t provide enough support. And every night, their spine falls back out of alignment, leading to that exruciating pain.</p><p>&nbsp;</p><p>However, if you thought of a pillow between your legs too, you’re on the right track! You definitely need to keep your hips and spine aligned while you sleep. But if a regular pillow isn’t the right solution, then what is?</p>"},{"type":"html","id":"ggTM2qZ0kSx_text","label":"ggTM2qZ0kSx_text","default":"The Fix: Alignment While You Sleep"},{"type":"html","id":"ggq_YC95ugY_text","label":"ggq_YC95ugY_text","default":"<p>A few years ago, I came across a tool I now recommend to almost every patient with sleep-related sciatica:</p><p>&nbsp;</p><p><span style=\"background-color:rgba(255,228,0,0.77);font-size:20px;\"><strong>The SmoothSpine Alignment Pillow</strong></span></p>"},{"type":"html","id":"ggzmIBO1Jpa_youtubeUrl","label":"ggzmIBO1Jpa_youtubeUrl","default":"https://www.youtube.com/watch?v=cyzh48XRS4M"},{"type":"html","id":"ggzmIBO1Jpa_vimeoUrl","label":"ggzmIBO1Jpa_vimeoUrl","default":"https://vimeo.com/347119375"},{"type":"html","id":"ggzmIBO1Jpa_html5Url","label":"ggzmIBO1Jpa_html5Url","default":"https://cdn.shopify.com/videos/c/o/v/6a0396ddc5ab4befb2367cee0282e784.mp4"},{"type":"html","id":"ggOcyTXwgmg_text","label":"ggOcyTXwgmg_text","default":"<p>It’s a contoured leg pillow made of high-density memory foam, with a breathable cover and a built-in strap to keep it in place.</p><p>&nbsp;</p><p><strong>Unlike other pillows, this one actually stays where it should — and keeps your spine in healthy alignment all night.</strong></p><p>&nbsp;</p><p>What actually sold me on it is that it’s developed by physiotherapists just like me!</p><p>&nbsp;</p><p>This pillow is using a breakthrough support system called “<strong>Active Spine Realignment™</strong>”that corrects your sleep posture, stabilizes your hips, and keeps your spine perfectly aligned while you sleep on your side.</p><p>&nbsp;</p><p>The first time I used it, I felt the difference right away. It was comfortable, supportive, and it worked.</p>"},{"type":"html","id":"ggya3-k2Fpq_text","label":"ggya3-k2Fpq_text","default":"<p><strong>Here are 4 key effects I noticed after the first night:</strong></p>"},{"type":"html","id":"ggpIxliJ6bd_text","label":"ggpIxliJ6bd_text","default":"<p>It lifted my top leg by just as much as necessary to keep my hips perfectly parallel to each other</p>"},{"type":"html","id":"ggGUl1E2jCm_text","label":"ggGUl1E2jCm_text","default":"<p>Even if I really wanted, I couldn’t put my body into that misalignment lock and twist my spine</p>"},{"type":"html","id":"ggE9B-5Lyso_text","label":"ggE9B-5Lyso_text","default":"<p>My lower back felt like… space was created there. Which means there was no pressure on the sciatic nerve</p>"},{"type":"html","id":"ggkdVazdzCa_text","label":"ggkdVazdzCa_text","default":"<p>Finally, I woke up having this pillow EXACTLY where I put it on my leg when I went to sleep. It didn’t shift one bit</p>"},{"type":"html","id":"ggKknn1X7Zt_text","label":"ggKknn1X7Zt_text","default":"<p>So, of course, I felt it’s my duty to start recommending this pillow to my patients. And the results were remarkable! Hands down, I could never achieve such results without this Alignment Pillow because no matter how hard I work, my side-sleeping patients will inevitably erase all the progress by twisting their spines all night long.</p>"},{"type":"html","id":"ggTQtEIPwIR_youtubeUrl","label":"ggTQtEIPwIR_youtubeUrl","default":"https://www.youtube.com/watch?v=cyzh48XRS4M"},{"type":"html","id":"ggTQtEIPwIR_vimeoUrl","label":"ggTQtEIPwIR_vimeoUrl","default":"https://vimeo.com/347119375"},{"type":"html","id":"ggTQtEIPwIR_html5Url","label":"ggTQtEIPwIR_html5Url","default":"https://cdn.shopify.com/videos/c/o/v/08e255c8ff3e4245b557323c2603a039.mp4"},{"type":"html","id":"ggPyOAJJWNa_text","label":"ggPyOAJJWNa_text","default":"Laura’s (55) story: from sleepless nights to pain-free morning walks"},{"type":"html","id":"ggl6IFgAKrk_text","label":"ggl6IFgAKrk_text","default":"<p>Let me tell you about Laura, my patient.</p><p>&nbsp;</p><p>She came into my clinic exhausted and defeated. She had been battling sciatic pain for five years. She’d seen specialists, taken meds, done PT. Nothing stuck.</p><p>&nbsp;</p><p>I asked her a simple question: <strong>“Are you a side sleeper?”</strong></p><p>&nbsp;</p><p>She said yes, and I explained everything: how her top leg pulls her spine into misalignment, how that builds pressure on her sciatic nerve night after night.</p><p>&nbsp;</p><p>She was shocked. No one had ever told her that before.</p><p>&nbsp;</p><p>We did some basic mobility work and she felt better. But I warned her — it wouldn’t last. Not unless we fixed the problem during sleep.</p><p>&nbsp;</p><p>So I gave her a SmoothSpine Alignment Pillow.</p><p>&nbsp;</p><p><strong>The next morning, she called me crying — happy tears.</strong></p><p>&nbsp;</p><p>“I slept through the night. No pain. I got out of bed without bracing myself. This has NEVER happened before.”</p><p>&nbsp;</p><p>So I asked her to keep a simple journal for 2 weeks to see how this pillow helps her long-term.</p><p>&nbsp;</p><p>She allowed me to share her notes in this article, so here they are:</p>"},{"type":"html","id":"ggCrJm6zHQy_label","label":"ggCrJm6zHQy_label","default":"<p>Night 1:</p>"},{"type":"html","id":"gg6sZSk6gMV_text","label":"gg6sZSk6gMV_text","default":"<p>I slept through the night without waking up from pain for the first time in years! I had no pain in the morning as well. Although, I still felt some stiffness in my lower back.</p>"},{"type":"html","id":"ggVDDAQD4fA_label","label":"ggVDDAQD4fA_label","default":"<p>Night 3:</p>"},{"type":"html","id":"ggrTon08aDs_text","label":"ggrTon08aDs_text","default":"<p>I think, I’m sleeping deeper now. I feel like I actually rest at night??? I wake up feeling much more energized. I didn’t realize my body didn’t rest well during sleep before.</p>"},{"type":"html","id":"ggrgqdVmkHg_label","label":"ggrgqdVmkHg_label","default":"<p>Night 7:</p>"},{"type":"html","id":"ggi7Yc08Xs8_text","label":"ggi7Yc08Xs8_text","default":"<p>I started doing some simple exercises! Unbelievable! I didn’t exercise for years because every movement surely brought pain. Now I can move my body without pain and I’m so happy about it!&nbsp;</p>"},{"type":"html","id":"ggquE0QL4aq_label","label":"ggquE0QL4aq_label","default":"<p>Week 2:</p>"},{"type":"html","id":"ggiKerermPT_text","label":"ggiKerermPT_text","default":"<p>I honestly forgot what sciatica pain feels like. The memories of it seem to be from some other life. I can do everything I want to do. I mean EVERYTHING! My body learned to not brace for pain anymore every time I even think of movement. I’m slowly getting back to my long walks and daily exercises. I can’t believe this small pillow made such a difference in such short time!</p>"},{"type":"html","id":"ggm1v7Qk5Db_text","label":"ggm1v7Qk5Db_text","default":"<p>It’s been two months. She hasn’t needed another appointment.</p>"},{"type":"html","id":"ggZRBaZf7bJ_youtubeUrl","label":"ggZRBaZf7bJ_youtubeUrl","default":"https://www.youtube.com/watch?v=cyzh48XRS4M"},{"type":"html","id":"ggZRBaZf7bJ_vimeoUrl","label":"ggZRBaZf7bJ_vimeoUrl","default":"https://vimeo.com/347119375"},{"type":"html","id":"ggZRBaZf7bJ_html5Url","label":"ggZRBaZf7bJ_html5Url","default":"https://cdn.shopify.com/videos/c/o/v/136520d6951e4e5f9e6d68f3ccd398a4.mp4"},{"type":"html","id":"ggm1CpQzLbl_text","label":"ggm1CpQzLbl_text","default":"More Than 57,000 People Have Tried It"},{"type":"html","id":"ggBTtYTKPEP_text","label":"ggBTtYTKPEP_text","default":"<p>This isn’t just about Laura. Over 57,000 people now use the SmoothSpine Alignment Pillow. Most feel relief within days.</p><p>&nbsp;</p><p>And it’s 100% risk-free: there’s a 90-night guarantee. Use it. Try it. If you don’t feel real results, return it. No questions.</p><p>&nbsp;</p><p><strong>But please — use it consistently. One night won’t undo years of damage.</strong></p>"},{"type":"html","id":"ggCrFeXtw36_srcSet_desktop_src","label":"ggCrFeXtw36_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-cb5f87ef-bbf9-40fa-a100-141946a4fb73.png"},{"type":"html","id":"ggNKYIS8IVk_text","label":"ggNKYIS8IVk_text","default":"I Trust It So Much I Got More For My Family"},{"type":"html","id":"ggXOE01RjUG_text","label":"ggXOE01RjUG_text","default":"<p>I bought this pillow for my wife, my son, and my brother. Because I trust it more than any stretch, pill, or fancy gadget.</p><p>&nbsp;</p><p>When you fix alignment, everything gets easier: pain fades, mobility returns, and mornings don’t feel like punishment.</p>"},{"type":"html","id":"ggQQOw-iQxa_text","label":"ggQQOw-iQxa_text","default":"If You’re Ready to Stop the Pain at Its Source…"},{"type":"html","id":"ggmBB4qObNZ_text","label":"ggmBB4qObNZ_text","default":"<p><strong>Try the SmoothSpine Alignment Pillow today with 60% off and a 90-day guarantee.</strong></p><p>&nbsp;</p><p>It could be the most important thing you ever do for your back. You don’t have to be stuck in the loop of painkillers and expensive appointments.</p><p>&nbsp;</p><p>You can start your way to pain-free life today. Give this pillow a try and get rid of pain once and for all! No need to thank me for this tip.</p>"},{"type":"html","id":"ggMD_Oze7Fx_text","label":"ggMD_Oze7Fx_text","default":"<p><strong>A Special Offer for Our Readers:</strong></p><p>&nbsp;</p><p>Claim Your SmoothSpine Pillow Now and <strong>SAVE 60% OFF</strong></p><p>&nbsp;</p><p>Take advantage of our discount link by clicking below!</p>"},{"type":"html","id":"ggKjEzidz8Q_label","label":"ggKjEzidz8Q_label","default":"<p>Apply Discount &amp; Check Availability</p>"},{"type":"html","id":"ggZSrKfxxYW_text","label":"ggZSrKfxxYW_text","default":"<p><strong>Note:</strong> Offer Not Available on Amazon Or eBay</p>"},{"type":"html","id":"gglyyH1mmmb_text","label":"gglyyH1mmmb_text","default":"What Are People Saying About The SmoothSpine Pillow?"},{"type":"html","id":"ggHckXgAKUr_srcSet_desktop_src","label":"ggHckXgAKUr_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-5177da4b-16e3-42fd-aa02-408bebb2c072.jpg"},{"type":"html","id":"ggE6IO9oUh8_srcSet_desktop_src","label":"ggE6IO9oUh8_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-3017b1b0-2b34-4229-a09f-5499df679f31.jpg"},{"type":"html","id":"ggApD-e2CTH_srcSet_desktop_src","label":"ggApD-e2CTH_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b6c4c810-edd0-48eb-86d1-73a91578b8bd.jpg"},{"type":"html","id":"gg16emhghS4_srcSet_desktop_src","label":"gg16emhghS4_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-5177da4b-16e3-42fd-aa02-408bebb2c072.jpg"},{"type":"html","id":"gg16emhghS4_srcSet_mobile_src","label":"gg16emhghS4_srcSet_mobile_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-59d65c5d-2422-44bf-9deb-ddd38083c961.jpg"},{"type":"html","id":"ggf-H3Sn5oV_srcSet_desktop_src","label":"ggf-H3Sn5oV_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-3017b1b0-2b34-4229-a09f-5499df679f31.jpg"},{"type":"html","id":"ggf-H3Sn5oV_srcSet_mobile_src","label":"ggf-H3Sn5oV_srcSet_mobile_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-0c27830a-6d21-40be-bd8f-316b0b6566cf.jpg"},{"type":"html","id":"ggZ9EtGSz1Q_srcSet_desktop_src","label":"ggZ9EtGSz1Q_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b6c4c810-edd0-48eb-86d1-73a91578b8bd.jpg"},{"type":"html","id":"ggZ9EtGSz1Q_srcSet_mobile_src","label":"ggZ9EtGSz1Q_srcSet_mobile_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-860d0c0d-ac87-496c-9fa5-acf0550939ec.jpg"},{"type":"html","id":"gg00qBxiwoT_srcSet_desktop_src","label":"gg00qBxiwoT_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b39bd931-c2c0-476d-8578-3c2e153fd0d6.jpg"},{"type":"html","id":"gggrWEvkADP_text","label":"gggrWEvkADP_text","default":"<p>\"I’ve been using the SmoothSpine™ Alignment Pillow for <strong>about 20 minutes each evening before bed</strong>, and I can’t believe how much tension it releases from my hips and lower back. <strong>I feel so relaxed afterward</strong> that I often drift off right away. It’s also starting to help with my morning stiffness. Definitely recommend if you're dealing with hip strain from sitting all day.\"</p>"},{"type":"html","id":"ggImIK06UZ7_text","label":"ggImIK06UZ7_text","default":"<p>~ Lisa M., 47. Verified Customer</p>"},{"type":"html","id":"ggRm6nuzhCm_srcSet_desktop_src","label":"ggRm6nuzhCm_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-42608570-7047-4b9c-8949-951fda186c1e.jpg"},{"type":"html","id":"ggwyL4OhTtF_text","label":"ggwyL4OhTtF_text","default":"<p>\"For years, I struggled with chronic hip tightness and <strong>lower back pain from my desk job</strong>. I’ve tried physical therapy, massage, and other support devices, but nothing gave me lasting relief—until now. <strong>After using the SmoothSpine™ Alignment Pillow nightly, my hip pain has almost completely disappeared</strong>, and my sleep quality has improved. This device has truly improved my quality of life.\"</p>"},{"type":"html","id":"ggGOs4x6wgM_text","label":"ggGOs4x6wgM_text","default":"<p>~ Mark R., 43. Verified Customer</p>"},{"type":"html","id":"ggItulXIn7X_srcSet_desktop_src","label":"ggItulXIn7X_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-17e6b322-d423-4a41-924b-6974cf0353c2.jpg"},{"type":"html","id":"gg2Hufy-Ooh_text","label":"gg2Hufy-Ooh_text","default":"<p>\"I bought the SmoothSpine™ Alignment Pillow for myself and one for my husband. We both use it every evening to relax before bed. <strong>It gently aligns our hips and relieves so much of the day’s tension.</strong> We’ve both been sleeping better and waking up without the usual stiffness. It’s honestly one of the <strong>best wellness purchases</strong> we’ve made in years.\"</p>"},{"type":"html","id":"ggUpcnbASAv_text","label":"ggUpcnbASAv_text","default":"<p>~ Susan W., 78. Verified Customer</p>"},{"type":"html","id":"gg_WRgXy3A8_srcSet_desktop_src","label":"gg_WRgXy3A8_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-53bcc618-51d5-4b46-b181-676c4ef5e692.jpg"},{"type":"html","id":"gg1gxB-NXpY_text","label":"gg1gxB-NXpY_text","default":"<p>\"I originally bought the SmoothSpine™ Alignment Pillow for my daughter who works long hours at a computer and <strong>constantly complains of hip pain.</strong> After seeing how much it helped her, I ordered one for myself too. We both feel a noticeable difference after using it for just a few minutes each night. <strong>It’s easy to use, comfortable, and works like a charm.</strong>\"</p>"},{"type":"html","id":"ggkZFpRbY8M_text","label":"ggkZFpRbY8M_text","default":"<p>~ Robert T., 61. Verified Customer</p>"},{"type":"html","id":"ggR7wDw06ra_text","label":"ggR7wDw06ra_text","default":"<p>Take advantage of our discount link by clicking below!</p>"},{"type":"html","id":"ggoAJmAG4lL_label","label":"ggoAJmAG4lL_label","default":"<p>Apply Discount &amp; Check Availability</p>"},{"type":"html","id":"ggHNb_9x1RY_text","label":"ggHNb_9x1RY_text","default":"<p><strong>Note:</strong> Offer Not Available on Amazon Or eBay</p>"},{"type":"html","id":"ggLGevyOt7I_text","label":"ggLGevyOt7I_text","default":"Recommended"},{"type":"html","id":"ggAkz1jQVJC_text","label":"ggAkz1jQVJC_text","default":"Rated 4.8/5 | 10,674+ Customers"},{"type":"html","id":"gg4UiviMG9p_text","label":"gg4UiviMG9p_text","default":"Alignment Pillow"},{"type":"html","id":"ggtFu4yDcD7_text","label":"ggtFu4yDcD7_text","default":"By SmoothSpine™"},{"type":"html","id":"ggkWcDnYiSS_childItem_0","label":"ggkWcDnYiSS_childItem_0","default":"<p>Alleviate Hip &amp; Lower Back Pain</p>"},{"type":"html","id":"ggkWcDnYiSS_childItem_1","label":"ggkWcDnYiSS_childItem_1","default":"<p>Enhance Circulation &amp; Reduce Numbness</p>"},{"type":"html","id":"ggkWcDnYiSS_childItem_2","label":"ggkWcDnYiSS_childItem_2","default":"<p>Promote Deeper, Restful Sleep</p>"},{"type":"html","id":"ggiCbF4bELi_srcSet_desktop_src","label":"ggiCbF4bELi_srcSet_desktop_src","default":"https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-1f6bb606-4269-4f4d-90c8-343e72ac1334.png"},{"type":"html","id":"ggK80D5UKCs_label","label":"ggK80D5UKCs_label","default":"<p>Check Availability</p>"}],
+    "blocks": [{"type": "@app"}],
+    "locales": {}
+  }
+{% endschema %}
