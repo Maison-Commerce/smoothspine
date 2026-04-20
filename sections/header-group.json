@@ -70,9 +70,9 @@
       "type": "maison-announcement",
       "name": "Announcement Bar",
       "settings": {
-        "text": "Valentine Sale | 90-Day Guarantee",
+        "text": "Spring Sale | 90-Day Guarantee",
         "enable_link": false,
-        "bar_link": "",
+        "bar_link": "shopify://collections/best-sellers",
         "show_icon": true,
         "icon_image": "shopify://shop_images/Discount-Percent-Circle--Streamline-Flex.svg",
         "color_background": "#065bdc",
