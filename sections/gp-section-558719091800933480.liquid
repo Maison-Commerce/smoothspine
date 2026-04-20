@@ -261,7 +261,7 @@
       
       {%- liquid
         if request.page_type != 'product'
-          assign product = all_products['smoothspine-triple-fusion-back-massager']
+          assign product = all_products['triple-fusion-back-massager']
           assign productId = '9756130640208' | times: 1
           if product == empty or product == null
             paginate collections.all.products by 100000
