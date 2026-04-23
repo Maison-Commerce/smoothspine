@@ -915,8 +915,11 @@
           {%- if section.settings.menu != blank -%}
             {%- for link in section.settings.menu.links -%}
               {%- if link.links.size > 0 -%}
-                {%- comment -%} Has sub-menu — skip if it's the shop accordion (already rendered above) {%- endcomment -%}
-                {%- unless forloop.first and has_dropdown_links -%}
+                {%- comment -%}
+                  Skip any sub-menu items if the Shop accordion (from dropdown_link blocks) is already rendered.
+                  This prevents duplication when the Shopify menu contains "Shop by pain type" with sub-links.
+                {%- endcomment -%}
+                {%- unless has_dropdown_links -%}
                   <div x-data="{ subOpen: false }">
                     <button class="drawer-primary-link" @click="subOpen = !subOpen">
                       <span class="drawer-primary-label">{{ link.title }}</span>
