@@ -151,7 +151,7 @@
         "gift_item_wh6nam": {
           "type": "gift_item",
           "settings": {
-            "gift_product": "sciatica-back-pain-relief-patches",
+            "gift_product": "back-pain-relief-patches",
             "image": "shopify://shop_images/cb4582c4961b57ab06ef9d95cd3e98c516992adc.png",
             "name": "12x Back Pain Relief Patches"
           }
@@ -177,9 +177,8 @@
       "name": "PDP Hero",
       "settings": {
         "show_trustpilot": true,
-        "trustpilot_full_stars": 4,
-        "trustpilot_has_half_star": true,
-        "trustpilot_rating_text": "4.4/5 (2,295 + reviews)",
+        "trustpilot_domain": "smoothspine.com",
+        "trustpilot_worker_url": "https://smoothspine-videoask.choojiie.workers.dev/trustpilot",
         "show_trustpilot_logo": true,
         "button_label": "Add to cart",
         "show_cart_icon": true,
