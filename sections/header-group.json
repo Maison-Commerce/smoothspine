@@ -70,7 +70,7 @@
       "type": "maison-announcement",
       "name": "Announcement Bar",
       "settings": {
-        "text": "Valentine Sale | 90-Day Guarantee",
+        "text": "Spring Sale | 90-Day Guarantee",
         "enable_link": false,
         "bar_link": "",
         "show_icon": true,
