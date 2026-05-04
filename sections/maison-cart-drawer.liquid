@@ -635,80 +635,134 @@
     }
   }
 
+  /* Track in-flight insurance request to prevent races */
+  var _insuranceBusy = false;
+
+  function _insuranceProductId() {
+    {% if section.settings.insurance_product != blank %}
+      return {{ section.settings.insurance_product.id }};
+    {% else %}
+      return 0;
+    {% endif %}
+  }
+
+  function _findInsuranceLine(cart) {
+    if (!cart || !cart.items) return null;
+    var pid = _insuranceProductId();
+    if (!pid) return null;
+    for (var i = 0; i < cart.items.length; i++) {
+      if (cart.items[i].product_id === pid) return cart.items[i];
+    }
+    return null;
+  }
+
+  /* Robust removal: fetch fresh cart, find current line key, remove via /cart/change.js.
+     Fallback to /cart/update.js with updates[variantId]=0 if change.js fails. */
+  function _removeInsuranceRobust(sectionId) {
+    return fetch('/cart.js', { credentials: 'same-origin' })
+      .then(function(res) { return res.json(); })
+      .then(function(cart) {
+        var line = _findInsuranceLine(cart);
+        if (!line) return null;
+
+        var body = { id: line.key, quantity: 0 };
+        if (sectionId) body.sections = sectionId;
+
+        return fetch('/cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify(body)
+        })
+        .then(function(res) {
+          if (!res.ok) throw new Error('change.js ' + res.status);
+          return res.json();
+        })
+        .catch(function(err) {
+          console.warn('[insurance] change.js failed, falling back to update.js:', err);
+          var updates = {};
+          updates[line.variant_id] = 0;
+          var updateBody = { updates: updates };
+          if (sectionId) updateBody.sections = sectionId;
+          return fetch('/cart/update.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify(updateBody)
+          }).then(function(res) { return res.json(); });
+        });
+      });
+  }
+
+  function _addInsurance(variantId, sectionId) {
+    return fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'same-origin',
+      body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(addData) {
+      var addedItem = addData.items ? addData.items[0] : null;
+      if (addedItem && sectionId) {
+        return fetch('/cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({ id: addedItem.key, quantity: addedItem.quantity, sections: sectionId })
+        }).then(function(res) { return res.json(); });
+      }
+      return null;
+    });
+  }
+
   function _insuranceChangeHandler(e) {
-    var el = e.target.closest('[data-maison-insurance]');
+    var checkbox = e.target;
+    var el = checkbox.closest('[data-maison-insurance]');
     if (!el) return;
+
+    if (_insuranceBusy) {
+      checkbox.checked = el.getAttribute('data-in-cart') === 'true';
+      return;
+    }
+    _insuranceBusy = true;
+    el.classList.add('is-loading');
+
     var variantId = el.getAttribute('data-variant-id');
-    var lineKey = el.getAttribute('data-line-key');
-    var isChecked = e.target.checked;
+    var isChecked = checkbox.checked;
     var sectionId = _getCartSectionId();
 
-    /* Track manual opt-out in sessionStorage */
     if (!isChecked) {
       sessionStorage.setItem('maison_insurance_opted_out', 'true');
     } else {
       sessionStorage.removeItem('maison_insurance_opted_out');
     }
 
-    if (isChecked) {
-      /* Add insurance, then fetch fresh section via /cart/change.js trick */
-      fetch('/cart/add.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items: [{ id: parseInt(variantId), quantity: 1 }] })
-      })
-      .then(function(res) { return res.json(); })
-      .then(function(addData) {
-        /* Now do a no-op change to get section HTML */
-        var addedItem = addData.items ? addData.items[0] : null;
-        if (addedItem && sectionId) {
-          return fetch('/cart/change.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id: addedItem.key, quantity: addedItem.quantity, sections: sectionId })
-          }).then(function(res) { return res.json(); });
-        }
-        return null;
-      })
-      .then(function(data) {
-        if (data) {
-          _dispatchCartChange(data);
-        } else {
-          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
-        }
-      });
-    } else {
-      if (lineKey) {
-        var body = { id: lineKey, quantity: 0 };
-        if (sectionId) body.sections = sectionId;
+    var op = isChecked ? _addInsurance(variantId, sectionId) : _removeInsuranceRobust(sectionId);
 
-        fetch('/cart/change.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body)
-        })
-        .then(function(res) { return res.json(); })
-        .then(function(data) { _dispatchCartChange(data); });
+    op.then(function(data) {
+      if (data) {
+        _dispatchCartChange(data);
+      } else {
+        document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
       }
+    })
+    .catch(function(err) {
+      console.error('[insurance] toggle failed:', err);
+      checkbox.checked = el.getAttribute('data-in-cart') === 'true';
+    })
+    .then(function() {
+      _insuranceBusy = false;
+      el.classList.remove('is-loading');
+    });
+  }
+
+  /* Event delegation — survives section re-renders */
+  document.addEventListener('change', function(e) {
+    if (e.target && e.target.matches && e.target.matches('[data-maison-insurance-checkbox]')) {
+      _insuranceChangeHandler(e);
     }
-  }
-
-  function initMaisonInsurance() {
-    var el = document.querySelector('[data-maison-insurance]');
-    if (!el) return;
-    var checkbox = el.querySelector('[data-maison-insurance-checkbox]');
-    if (!checkbox) return;
-
-    /* Remove old listener before adding new one */
-    checkbox.removeEventListener('change', _insuranceChangeHandler);
-    checkbox.addEventListener('change', _insuranceChangeHandler);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMaisonInsurance);
-  } else {
-    initMaisonInsurance();
-  }
+  }, true);
 
   /* Sync gift quantities when main product quantity changes */
   document.documentElement.addEventListener('cart:change', function(e) {
@@ -1504,6 +1558,12 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    transition: opacity 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .maison-cart-insurance.is-loading {
+    opacity: 0.6;
+    pointer-events: none;
   }
 
   #shopify-section-{{ section.id }} .maison-cart-insurance__icon {
