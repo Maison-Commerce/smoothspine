@@ -477,7 +477,9 @@
 
         <div
           class="ugc-videoask"
-          data-videoask-url="{{ section.settings.videoask_worker_url }}"
+          data-videoask-form-id="{{ section.settings.videoask_form_id }}"
+          data-videoask-share-id="{{ section.settings.videoask_share_id }}"
+          data-videoask-required-tag="{{ section.settings.videoask_required_tag }}"
           data-videoask-tag="{{ sub_tags[0] | default: '' }}"
         >
           <div class="ugc-videoask__loading">Loading testimonials…</div>
@@ -548,17 +550,60 @@
       if (e.key === 'Escape' && !modal.hidden) closeModal();
     });
 
-    // Shared cache: fetch reviews once, share across all containers
+    // Shared cache: fetch reviews once from VideoAsk public sharing API, share across all containers
     var reviewsPromise = null;
-    function getReviews(workerUrl) {
-      if (!reviewsPromise) {
-        reviewsPromise = fetch(workerUrl, { cache: 'default' })
+    function getReviews(formId, shareId, requiredTag) {
+      if (reviewsPromise) return reviewsPromise;
+
+      var apiBase = 'https://api.videoask.com/forms/' + formId + '/contacts';
+      var params = '?responses_share_id=' + encodeURIComponent(shareId) + '&include_answers=true&include_tags=true&limit=100';
+
+      function fetchPage(url, accumulated) {
+        return fetch(url, { cache: 'default' })
           .then(function(r) {
             if (!r.ok) throw new Error('HTTP ' + r.status);
             return r.json();
           })
-          .then(function(d) { return (d && d.reviews) || []; });
+          .then(function(d) {
+            var results = (d && d.results) || [];
+            accumulated = accumulated.concat(results);
+            if (d && d.next) return fetchPage(d.next, accumulated);
+            return accumulated;
+          });
       }
+
+      reviewsPromise = fetchPage(apiBase + params, [])
+        .then(function(contacts) {
+          var requiredTagLower = (requiredTag || '').toLowerCase();
+          return contacts
+            .filter(function(c) {
+              if (!c.thumbnail) return false; // text-only answers have null thumbnail
+              if (c.status !== 'completed') return false;
+              if (requiredTagLower) {
+                var tags = (c.tags || []).map(function(t) { return (t.title || '').toLowerCase(); });
+                if (!tags.includes(requiredTagLower)) return false;
+              }
+              return true;
+            })
+            .map(function(c) {
+              var videoAnswer = (c.answers || []).find(function(a) {
+                return a.media_url && a.transcode_status === 'completed';
+              }) || (c.answers || [])[0] || {};
+              return {
+                id: c.contact_id,
+                name: c.name || 'Anonymous',
+                video_url: videoAnswer.media_url || null,
+                thumbnail: videoAnswer.thumbnail || c.thumbnail || null,
+                gif: videoAnswer.gif || null,
+                duration: videoAnswer.media_duration || 0,
+                transcription: videoAnswer.transcription || '',
+                created_at: c.created_at,
+                tags: (c.tags || []).map(function(t) { return t.title; })
+              };
+            })
+            .filter(function(r) { return r.video_url; })
+            .sort(function(a, b) { return new Date(b.created_at) - new Date(a.created_at); });
+        });
       return reviewsPromise;
     }
 
@@ -566,7 +611,9 @@
       var loadingEl = container.querySelector('.ugc-videoask__loading');
       var gridEl = container.querySelector('.ugc-videoask__grid');
       var errorEl = container.querySelector('.ugc-videoask__error');
-      var workerUrl = container.dataset.videoaskUrl;
+      var formId = container.dataset.videoaskFormId;
+      var shareId = container.dataset.videoaskShareId;
+      var requiredTag = container.dataset.videoaskRequiredTag || '';
       var allReviews = [];
       var loaded = false;
 
@@ -649,7 +696,7 @@
       function load() {
         if (loaded) return;
         loaded = true;
-        getReviews(workerUrl)
+        getReviews(formId, shareId, requiredTag)
           .then(function(reviews) {
             allReviews = reviews;
             loadingEl.hidden = true;
@@ -727,14 +774,32 @@
     },
     {
       "type": "header",
-      "content": "VideoAsk (global)"
+      "content": "VideoAsk (public sharing API)"
+    },
+    {
+      "type": "paragraph",
+      "content": "Fetches reviews directly from VideoAsk's public sharing API. In your VideoAsk form settings, enable 'Make all interactions shareable' to generate the share URL."
     },
     {
       "type": "text",
-      "id": "videoask_worker_url",
-      "label": "VideoAsk Worker URL",
-      "info": "Shared by all VideoAsk-enabled tabs",
-      "default": "https://smoothspine-videoask.choojiie.workers.dev/reviews"
+      "id": "videoask_form_id",
+      "label": "VideoAsk Form ID",
+      "info": "UUID of the form (find in form URL or settings)",
+      "default": "ab496a65-6ba3-4470-acc4-2de28cb09cb5"
+    },
+    {
+      "type": "text",
+      "id": "videoask_share_id",
+      "label": "VideoAsk responses share ID",
+      "info": "From the shareable inbox URL: https://www.videoask.com/r{this_part}",
+      "default": "r0hmgobees8azqblsabuj57vsetvtlsojqsijiik"
+    },
+    {
+      "type": "text",
+      "id": "videoask_required_tag",
+      "label": "Required tag (optional)",
+      "info": "Only reviews with this tag will be shown. Leave empty to show all video reviews.",
+      "default": "Reviewed by CS"
     },
     {
       "type": "header",
