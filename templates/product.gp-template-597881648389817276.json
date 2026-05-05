@@ -9,417 +9,469 @@
  */
 {
   "sections": {
-    "gp_section_597881648624698300": {
-      "settings": {
-        "checksum": "f4a1ac7cd31c189394a86e04d2b9d346c448f0b2f4e5be8ad3e6b63b09a8c4ff_1_1_1_0__1",
-        "gg1Zyc2nEcp_text": "<p>Time to Relief</p>",
-        "gg2Gq3ahF5m_text": "<p>✅ Permanent with use</p>",
-        "gg3RrMs2Q-h_text": "<p>Treatment</p>",
-        "gg6sHoOniM-_text": "<p>$3,900/ year</p>",
-        "gg7m3VT-nql_text": "<p>❌ Temporary</p>",
-        "gg7sPfujTU1_text": "<p>$7,800/ year</p>",
-        "ggAAfTg-03F_text": "<p>Days</p>",
-        "ggCb9rTmYNi_text": "<p>SmoothSpine Triple Fusion vs. Traditional Treatments</p>",
-        "ggD8Y7tx9eT_text": "<p>30%</p>",
-        "ggFcYjKCLp4_text": "<p>Days–weeks</p>",
-        "ggHn0oiy-O5_text": "<p>Pain Pills</p>",
-        "ggI80Z9tCA4_text": "<p>$99 once</p>",
-        "ggIfuRQfnMI_text": "<p>❌ 3–6 months max</p>",
-        "ggJpLAygnSt_text": "<p>Weeks–months</p>",
-        "ggK2_QjRkxr_text": "<p>0%</p>",
-        "ggLybiaEZ-9_text": "<p>⚠️ 40% need revision</p>",
-        "ggMPIMeP4Go_text": "<p>Injections</p>",
-        "ggR2G6nDN2n_text": "<p>Months</p>",
-        "ggRfw7vDgSv_text": "<p>Physical Therapy</p>",
-        "ggSGIy40g6v_text": "<p>60%</p>",
-        "ggT3hS-Pwyl_text": "<p>Surgery</p>",
-        "ggTOdpQJizv_text": "<p>$9,000/ year</p>",
-        "ggTndR4s_A2_text": "<p>SmoothSpine</p>",
-        "ggYB4Cxf6KN_text": "<p>Lasting Results</p>",
-        "ggYV7HQekIo_text": "<p>Success Rate</p>",
-        "ggZlUZeRlcb_text": "<p>$3,600/ year</p>",
-        "gg_CwTNIS5u_text": "Compare Your Options",
-        "gg_FbUAdcPp_text": "<p>15 minutes</p>",
-        "gga8J98MasX_text": "<p>45%</p>",
-        "ggbrA1GUkje_text": "<p>Cost</p>",
-        "gggXkIAUTCe_text": "<p>❌ Requires ongoing</p>",
-        "ggi9aI6HP_O_text": "<p>❌ Masks symptoms</p>",
-        "ggmuHVgIFlc_text": "<p>30 minutes</p>",
-        "ggnM_lDRYVU_text": "<p>Chiropractic</p>",
-        "ggvdrHeXKDl_text": "<p>50%</p>",
-        "ggxUPVJNZ9c_text": "<p>$45,000+</p>",
-        "ggzUjuD6PFW_text": "<p>91%</p>"
-      },
-      "type": "gp-section-597881648624698300"
-    },
     "gp_section_597881648624763836": {
+      "type": "gp-section-597881648624763836",
       "settings": {
+        "section_preload": "true",
         "checksum": "275b7a6e164f64d554e8a65a3f74609ce621b3e6eda4270cec485b958fd1041f_1_1_1_0__1",
-        "gg-W9e7k4Co_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "gg-W9e7k4Co_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggw7Cz9bPGD_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_2.webp",
         "gg1-nBNIy9D_text": "<p>\"My neck pain was getting unbearable, and the hump at the base of my neck kept getting bigger. Sitting at work, looking down at my phone-<strong>everything hurt.</strong> I bought the Triple Fusion Neck Massager out of desperation, and after <strong>just 1 week</strong>, the relief blew me away. The tightness eased, the burning down my neck stopped, and <strong>I can finally turn my head without that sharp pinch.</strong> Even my neck hump looks visibly smaller. I use it every day now. If you're unsure, trust me… this thing WORKS!\"</p>",
+        "ggV2Gzg1kTE_text": "<p>Melissa H.</p>",
+        "gg3ero32Veq_text": "<p>Verified Purchase</p>",
+        "ggc8Jx1axa0_text": "<p>Name</p>",
+        "ggFoPISFWBa_text": "<p>Verified Purchase</p>",
+        "gglxMzPDaXv_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gglxMzPDaXv_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggTWbR7J5A3_text": "<p>(4.7/5 Rated By 21,539+ Customers)</p>",
+        "ggiIss1Rofn_customContent_prefix": "Save",
+        "ggavmk0YmvV_text": "<p>Struggling With Neck Pain &amp; Neck Hump?</p><p><i><u>Get Relief In Just 15 Minutes A Day!</u></i></p>",
+        "ggs0hHOJvUw_text": "<p>The Breakthrough Triple Fusion Technology That's Helping 21,539+ People With Neck Pain Avoid Surgery</p>",
+        "gg6tXSXNWai_text": "<p><strong>Decompresses Crushed Vertebrae with Gentle Traction Therapy</strong></p>",
+        "ggbcW1KUC8b_text": "<p><strong>Rehydrates Dried Discs Using Heat + Traction Combination</strong></p>",
+        "ggxUNGGnafQ_text": "<p><strong>Releases Locked Muscles with Multi-Mode Vibration</strong></p>",
+        "ggM-PIG0RRS_text": "<p><strong>Reduces Neck Hump Visibly in 6-8 Weeks</strong></p>",
+        "ggpY2W7_DGE_text": "<p><strong>Exclusive Offer! </strong>Order today for free gifts (valued at $64)!</p>",
+        "ggX94OVNJzX_label": "<p>FREE <s>$29</s></p>",
         "gg1r63QXDxt_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
         "gg1r63QXDxt_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
-        "gg3ero32Veq_text": "<p>Verified Purchase</p>",
-        "gg5UOLWagTT_text": "<p>Name</p>",
-        "gg6tXSXNWai_text": "<p><strong>Decompresses Crushed Vertebrae with Gentle Traction Therapy</strong></p>",
-        "ggDMIiaV6W6_text": "<p>\"My neck pain was getting unbearable, and the hump at the base of my neck kept getting bigger. Sitting at work, looking down at my phone-<strong>everything hurt.</strong> I bought the Triple Fusion Neck Massager out of desperation, and after <strong>just 1 week</strong>, the relief blew me away. The tightness eased, the burning down my neck stopped, and <strong>I can finally turn my head without that sharp pinch.</strong> Even my neck hump looks visibly smaller. I use it every day now. If you're unsure, trust me… this thing WORKS!\"</p>",
-        "ggFoPISFWBa_text": "<p>Verified Purchase</p>",
-        "ggIET4ER2Mj_text": "<p>Neck pain &amp; Hump elimination guide</p>",
-        "ggLeV_0-JsI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/12_patch_box_with_Patches_1.webp",
-        "ggM-PIG0RRS_text": "<p><strong>Reduces Neck Hump Visibly in 6-8 Weeks</strong></p>",
-        "ggMqSUhQV7T_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f4fc434c-7412-4e79-98b5-4dc8f7b20abd.png",
-        "ggMqSUhQV7T_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_2.webp",
-        "ggMqSUhQV7T_srcSet_tablet_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b936f1ab-3d8b-4295-9922-326000cffbe2.jpg",
-        "ggOTk-T51tk_text": "<p>12x Neck Pain Relief Patches</p>",
-        "ggTWbR7J5A3_text": "<p>(4.7/5 Rated By 21,539+ Customers)</p>",
-        "ggV2Gzg1kTE_text": "<p>Melissa H.</p>",
-        "ggX94OVNJzX_label": "<p>FREE <s>$29</s></p>",
-        "ggavmk0YmvV_text": "<p>Struggling With Neck Pain &amp; Neck Hump?</p><p><i><u>Get Relief In Just 15 Minutes A Day!</u></i></p>",
-        "ggbcW1KUC8b_text": "<p><strong>Rehydrates Dried Discs Using Heat + Traction Combination</strong></p>",
-        "ggc8Jx1axa0_text": "<p>Name</p>",
         "ggcfdtcFekE_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/TFBM_14_3951a0c9-67aa-417a-bec2-c3e363ffe358.webp",
+        "ggIET4ER2Mj_text": "<p>Neck pain &amp; Hump elimination guide</p>",
+        "ggjdTQ_EiGV_label": "<p>FREE <s>$20</s></p>",
         "ggfAMneB5xp_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
         "ggfAMneB5xp_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
-        "gggrVIsDEcZ_text": "<p>Melissa H.</p>",
-        "ggiIss1Rofn_customContent_prefix": "Save",
-        "ggifZ8Bz922_errorMessage": "Cannot add product to cart",
+        "ggLeV_0-JsI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/12_patch_box_with_Patches_1.webp",
+        "ggOTk-T51tk_text": "<p>12x Neck Pain Relief Patches</p>",
+        "ggpO2x28qf3_label": "<p>FREE <s>$15</s></p>",
+        "gg-W9e7k4Co_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gg-W9e7k4Co_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggrP19V0p8C_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
+        "ggiiSmHEhBj_text": "<p>SmoothSpine Zip Lock Travel Bag</p>",
         "ggifZ8Bz922_label": "Add to cart",
         "ggifZ8Bz922_outOfStockLabel": "Out of stock",
         "ggifZ8Bz922_unavailableLabel": "Unavailable",
         "ggifZ8Bz922_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
-        "ggiiSmHEhBj_text": "<p>SmoothSpine Zip Lock Travel Bag</p>",
-        "ggjdTQ_EiGV_label": "<p>FREE <s>$20</s></p>",
-        "gglxMzPDaXv_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "gglxMzPDaXv_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
-        "ggpO2x28qf3_label": "<p>FREE <s>$15</s></p>",
-        "ggpY2W7_DGE_text": "<p><strong>Exclusive Offer! </strong>Order today for free gifts (valued at $64)!</p>",
-        "ggq_rOUUVUI_text": "<p>Verified Purchase</p>",
+        "ggifZ8Bz922_errorMessage": "Cannot add product to cart",
         "ggrNfDYVOMR_text": "<p>90-Day Risk-Free Trial</p>",
-        "ggrP19V0p8C_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
-        "ggs0hHOJvUw_text": "<p>The Breakthrough Triple Fusion Technology That's Helping 21,539+ People With Neck Pain Avoid Surgery</p>",
-        "ggw7Cz9bPGD_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_2.webp",
-        "ggxHBZ5MOH6_text": "<p>Verified Purchase</p>",
-        "ggxUNGGnafQ_text": "<p><strong>Releases Locked Muscles with Multi-Mode Vibration</strong></p>",
-        "section_preload": "true"
-      },
-      "type": "gp-section-597881648624763836"
+        "ggMqSUhQV7T_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f4fc434c-7412-4e79-98b5-4dc8f7b20abd.png",
+        "ggMqSUhQV7T_srcSet_tablet_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b936f1ab-3d8b-4295-9922-326000cffbe2.jpg",
+        "ggMqSUhQV7T_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_2.webp",
+        "ggDMIiaV6W6_text": "<p>\"My neck pain was getting unbearable, and the hump at the base of my neck kept getting bigger. Sitting at work, looking down at my phone-<strong>everything hurt.</strong> I bought the Triple Fusion Neck Massager out of desperation, and after <strong>just 1 week</strong>, the relief blew me away. The tightness eased, the burning down my neck stopped, and <strong>I can finally turn my head without that sharp pinch.</strong> Even my neck hump looks visibly smaller. I use it every day now. If you're unsure, trust me… this thing WORKS!\"</p>",
+        "gg5UOLWagTT_text": "<p>Name</p>",
+        "ggq_rOUUVUI_text": "<p>Verified Purchase</p>",
+        "gggrVIsDEcZ_text": "<p>Melissa H.</p>",
+        "ggxHBZ5MOH6_text": "<p>Verified Purchase</p>"
+      }
     },
-    "gp_section_597881648624829372": {
-      "settings": {
-        "checksum": "047eaf13d09255cb3ae51cf71bef8e9b3d82a8d4c31964bec1d05b0796679da4_1_1_1_0__1",
-        "gg1rlZNSakA_text": "<p>Simply get yourself a <strong>SmoothSpine™️ - Triple Fusion Massager</strong> today, use it for 90 days, and then make your decision based on the results. <strong>If you are not absolutely thrilled with the relief, we will issue you an immediate refund.</strong></p>",
-        "ggCn6xOSitZ_text": "<p>That’s why we are offering a <strong>90-day “Results or Refund” guarantee.</strong></p>",
-        "ggDerpXpkv1_text": "Try It For 90 Days, 100% Risk-Free",
-        "ggGwm1Shj_V_text": "<p>In other words, you are only paying if it <strong>truly works</strong> and helps you reclaim a pain-free life.</p>",
-        "ggNH0yZYdL0_text": "Try It for 90 Days, 100% Risk-Free",
-        "ggNmha1SiOD_text": "<p>Here’s the deal: We believe in this product so much that <strong>we don’t want you to spend a dime until you are 100% certain that it works for you.</strong></p>",
-        "ggr-cdETAvt_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f56efdea-c394-4196-8c2d-0c85230a19dc.png"
+    "maison_gift_bundle_NT7CTh": {
+      "type": "maison-gift-bundle",
+      "blocks": {
+        "gift_product_JFCGkh": {
+          "type": "gift_product",
+          "settings": {
+            "product": "smoothspine™-30-day-sciatica-relief-plan-coc"
+          }
+        },
+        "gift_product_yTRFyT": {
+          "type": "gift_product",
+          "settings": {
+            "product": "sciatica-back-pain-relief-patches"
+          }
+        },
+        "gift_product_6Ftmnb": {
+          "type": "gift_product",
+          "settings": {
+            "product": "charging-kit-travel-bag"
+          }
+        }
       },
-      "type": "gp-section-597881648624829372"
-    },
-    "gp_section_597881648624894908": {
-      "settings": {
-        "checksum": "4eb71198b132212904d036c26fe36a0b8e7b31bf1177f0938cc3736bb8eb7f0b_1_1_1_0__1",
-        "ggTB9UV4fg5_text": "We're Getting Noticed!",
-        "ggqBiWApY31_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-2ef784eb-b38e-40bd-b5a1-a3771bcf0e2d.png"
-      },
-      "type": "gp-section-597881648624894908"
-    },
-    "gp_section_597881648624960444": {
-      "settings": {
-        "checksum": "7859e7e0da794aa9ec13f2fecc3e76c32b8018020a8f6720eac6b8cb86274b37_1_1_1_0__1",
-        "ggEEzbjA_WA_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
-        "gg_R_DeHFGg_text": "SmoothSpine Zip Lock Travel Bag",
-        "ggbeT0zYGDj_text": "<s>$15</s> FREE&nbsp;",
-        "ggu6lqOfqOo_text": "This water-resistant, compact zip lock bag <strong>keeps your SmoothSpine gear organized, clean, and protected</strong>—whether you're at home or on the go. <strong>Lightweight and durable.</strong>",
-        "ggzeMY49Px7_text": "Perfect Travel Companion—FREE with Your Order Today!"
-      },
-      "type": "gp-section-597881648624960444"
-    },
-    "gp_section_597881648625025980": {
-      "settings": {
-        "checksum": "5d6b4303a6e05a79eb42793ab9f0f704e1a8d3f5b88b0b321faf36daee71ad6f_1_1_1_0__1",
-        "gg2skFYSnGC_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-51bd7b08-f4ec-461e-bc36-e7734dd26e06.jpg",
-        "ggBZyLN-waC_text": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee. </strong>If you don't experience the remarkable <strong>relief from Neck Pain &amp; Neck Hump </strong>that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days,</strong> let us know and we will refund every single penny of your investment. <strong>No questions asked.</strong></p>",
-        "ggY5Kp_-GFD_text": "100% SATISFACTION<br>90-DAY MONEY BACK GUARANTEE",
-        "ggufORTUxtU_text": "<p>We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>"
-      },
-      "type": "gp-section-597881648625025980"
+      "block_order": [
+        "gift_product_JFCGkh",
+        "gift_product_yTRFyT",
+        "gift_product_6Ftmnb"
+      ],
+      "name": "Gift Bundle",
+      "settings": {}
     },
     "gp_section_597881648625091516": {
+      "type": "gp-section-597881648625091516",
       "settings": {
+        "section_preload": "false",
         "checksum": "efec298ae63f9522129462e58d86bfcce61f96fbabf664387f5f21236da72436_1_1_1_0__1",
-        "gg8yY22gLoi_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">We provide fast free shipping and handling for all orders.</span></p>",
-        "ggLDYJogvxV_text": "<p>90-DAY MONEY BACK GUARANTEE</p>",
         "ggM5PyQMWIe_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-4509bc60-7755-4bb1-bf01-ade8debf7b92.png",
+        "ggLDYJogvxV_text": "<p>90-DAY MONEY BACK GUARANTEE</p>",
+        "ggnoiLlCDO__text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">If you’re not absolutely thrilled with the results, we will refund every single penny of your investment. No hassle. </span></p>",
         "ggS7aImJyob_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-57c29034-4d6a-46b9-8286-ab77c5f0b8cb.png",
-        "ggYRGn3_-rs_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-00428b28-be38-4a92-add3-22f1e8e1171f.png",
         "gggjLf4dDUF_text": "<p>FREE SHIPPING</p>",
-        "ggnO_gdadKG_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">Made of high quality materials. Enjoy consistent, trouble-free performance for a long time.&nbsp;</span></p>",
-        "ggnoiLlCDO__text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">If you’re not absolutely thrilled with the results, we will refund every single penny of your investment. No hassle.&nbsp;</span></p>",
-        "ggtkmBCG_Es_text": "<p>GUARANTEED HIGH QUALITY</p>"
-      },
-      "type": "gp-section-597881648625091516"
-    },
-    "gp_section_597881648625157052": {
-      "settings": {
-        "checksum": "0e074280c3f63161175619bfe7fd10abcbf368e5adc92a209020020de9d63b1d_1_1_1_0__1",
-        "gg8UTtxkN-D_text": "<s>$29</s> FREE&nbsp;",
-        "ggTwHTgH5lQ_text": "This expert-backed eBook with 100+ pages of value-packed info covers <strong>how to best use your Triple Fusion Neck Massager</strong>, as well as proven techniques, exercises, and <strong>lifestyle tips</strong> to help you <strong>eliminate neck pain and get your life back naturally.</strong>",
-        "ggnsMK_i2tI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/TFBM_14_3951a0c9-67aa-417a-bec2-c3e363ffe358.webp",
-        "ggpjX8cUrAW_text": "Ultimate Guide to Beat Neck Pain—FREE with Your Order Today!",
-        "ggwWS9hcr4v_text": "Neck pain &amp; Hump elimination guide"
-      },
-      "type": "gp-section-597881648625157052"
-    },
-    "gp_section_597881648625222588": {
-      "settings": {
-        "checksum": "4ab279cd2ec38f00e77faf35b402247fb6b6bcf47b60d7e5d762f6ec3db81088_1_1_1_0__1",
-        "ggIOMzRL3lW_text": "<s>$20</s> FREE&nbsp;",
-        "ggjCpnyliMr_text": "Herbal Neck Pain Relief Patches—FREE with Your Order Today!",
-        "ggpjZRuk_E2_text": "12x Neck Pain Relief Patches",
-        "ggvGL5-tdwy_text": "<strong>Soothe Neck pain naturally</strong> with our herbal relief patches! Made from 100% <strong>natural ingredients</strong>, they promote muscle relaxation, easing tension and soreness. Simple to apply and brings freeing <strong>relief for up to 12 hours.</strong>",
-        "ggyEKece8hY_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/12_patch_box_with_Patches_1.webp"
-      },
-      "type": "gp-section-597881648625222588"
-    },
-    "gp_section_597881648625288124": {
-      "settings": {
-        "checksum": "c466eb4d0f409bb0156b2d32b7495a3413fae449be6e0c61dc8c174f6da2b3c7_1_1_1_0__1",
-        "gg5tUayJ_Gz_text": "<p>STEP 3:</p>",
-        "gg6uV7yqBqY_text": "<p>STEP 2:</p>",
-        "ggBNVTsuXWb_text": "<p>Hold the power button to turn it on. The device will automatically cycle through massage, traction, and heat therapy for a full session.</p>",
-        "ggU2h5Y-nxZ_text": "<p>Lay back, relax, and enjoy the soothing relief for 15-30 minutes while SmoothSpine works its magic on your neck.</p>",
-        "ggWC3h60DLZ_html5Url": "https://cdn.shopify.com/videos/c/o/v/ed5a7e4bff5349539d9ae5ffde3f1b30.mp4",
-        "ggWC3h60DLZ_vimeoUrl": "https://vimeo.com/347119375",
-        "ggWC3h60DLZ_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggYIIb-eOrd_html5Url": "https://cdn.shopify.com/videos/c/o/v/2d6fbcba315e442ea5ca3dd2a7ffaa48.mp4",
-        "ggYIIb-eOrd_vimeoUrl": "https://vimeo.com/347119375",
-        "ggYIIb-eOrd_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggZDZF7ux33_text": "<p>STEP 1:</p>",
-        "ggmAVCyGk7U_html5Url": "https://cdn.shopify.com/videos/c/o/v/49833f3979774432b1c49b1fc584564b.mp4",
-        "ggmAVCyGk7U_vimeoUrl": "https://vimeo.com/347119375",
-        "ggmAVCyGk7U_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggmue6CCCwq_text": "<p>Plug in the USB cable to the device. The button controls will light up, confirming it’s ready to use. Place the massager on a flat surface like your floor or bed.</p>"
-      },
-      "type": "gp-section-597881648625288124"
-    },
-    "gp_section_597881648625353660": {
-      "settings": {
-        "checksum": "7f19e1778044758c99c9fe27faeb57a293a4462f1dfadaae35e80f8b2c61bb95_1_1_1_0__1",
-        "gg4GNxuDqa0_html5Url": "https://cdn.shopify.com/videos/c/o/v/0bd4525a8ed9477c9b5bebc4ab6e267b.mp4",
-        "gg4GNxuDqa0_vimeoUrl": "https://vimeo.com/347119375",
-        "gg4GNxuDqa0_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "gg5gEyQLqLG_text": "<p>The SmoothSpine Triple Fusion Neck Massager is the only device that attacks all three root causes simultaneously:</p>",
-        "ggclZmxOds__text": "The SmoothSpine Triple Fusion Solution&nbsp;",
-        "gglNkdnoYHM_text": "<p>Used together for 15 minutes = Complete disc rehabilitation</p>",
-        "ggrYT7cGWvp_text": "<p><strong>3. VIBRATION MASSAGE: </strong>Releases muscle spasms and increases circulation. The oscillation literally helps “pump” fluid back into dehydrated discs.</p>",
-        "ggu6Yd3u6Yx_text": "<p><strong>1. SPINAL TRACTION THERAPY: </strong>Gently creates space between compressed vertebrae – the same principle used in $30,000 clinical decompression tables. This space allows discs to expand and pull in fluid.</p>",
-        "ggyZ6Gf5lWo_text": "<p><strong>2. THERAPEUTIC HEAT: </strong>Increases blood flow by 300%, flooding the area with oxygen and nutrients. Heat also makes disc tissue more permeable for faster rehydration.</p>",
-        "ggzRfc3KmKh_text": "The SmoothSpine Triple Fusion Solution&nbsp;"
-      },
-      "type": "gp-section-597881648625353660"
-    },
-    "gp_section_597881648625419196": {
-      "settings": {
-        "checksum": "aaa8335c81b2ceda0b59d73b507f2897d4f0a9b80ae83f99320e4fd1521a7ed1_1_1_1_0__1"
-      },
-      "type": "gp-section-597881648625419196"
-    },
-    "gp_section_597881648625484732": {
-      "settings": {
-        "checksum": "9622954e5dabb7ddcf1c07117f3f690080756a3042207058f804380e4c62b930_1_1_1_0__1",
-        "gg029TQ7PQT_text": "<p>\"Finally, Real Relief After Years of Pain!\"</p>",
-        "gg4lOxj8MET_text": "<p>\"Didn’t Expect It to Work THIS Well!\"</p>",
-        "ggBi7vQvbIj_text": "<p>\"I Can Move Freely Again!\"</p>",
-        "ggJ8hCrLXJq_text": "<p>\"My Hump Is Almost Gone\" \"The bump at my neck base was so bad I only wore turtlenecks. It's reduced by 70% after 2 months. I can wear normal clothes again!\"</p>",
-        "ggQgcHb_VvV_text": "<p>Ryan M., 41</p>",
-        "ggReBUA1njy_text": "<p>Patricia L., 52</p>",
-        "ggZSVoxxXVa_text": "<p>\"Better Than Years of Chiropractic\" \"I spent $200/month on adjustments for 3 years. This $119 device did more in 1 month than all those appointments combined.\"</p>",
-        "gg_nv0E1WSj_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/18.webp",
-        "ggcIBXq5yW6_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/20.webp",
-        "ggmciU_MO8m_text": "<p>Robert K., 58</p>",
-        "ggnkoHZd9S5_text": "<p>\"Canceled My $45,000 Surgery\" \"I was scheduled for cervical fusion. After 6 weeks using this device, my surgeon said my discs looked healthier on the MRI. Surgery canceled. Money saved. Life changed.\"</p>",
-        "ggrydDXALPH_text": "Real People. Real Results.",
-        "ggx_FgcD6ei_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/19.webp"
-      },
-      "type": "gp-section-597881648625484732"
-    },
-    "gp_section_597881648625550268": {
-      "settings": {
-        "checksum": "2678e83f651ee3199c84fa1becdaa7c9eda74de3fa3a4e7f60445926e8992137_1_1_1_0__1",
-        "gg7gfYbpkbD_text": "<p><strong>10–15 Minutes: </strong>Your neck naturally returns to proper alignment. The tissue creating that hump softens and begins to reduce.</p>",
-        "gg9sfrUDNiv_text": "See How It Works In Real Time&nbsp;",
-        "ggADn2FzsbO_text": "<p><strong>After 30 days: </strong>Visible posture improvement. Significant hump reduction. Pain-free movement.</p>",
-        "ggFoLsfJU5j_text": "<p>The moment you turn it on:&nbsp;</p>",
-        "ggNDYVqN7Gc_text": "See How It Works In Real Time&nbsp;",
-        "ggP5xbHg6z-_text": "<p><strong>After 15 minutes: </strong>Turn your head freely. Look down without pain. Stand taller.</p>",
-        "ggP9YY587P1_text": "<p><strong>30 Seconds–5 Minutes: </strong>Heat floods the area with nutrient-rich blood while traction maintains crucial disc space. You feel muscles finally releasing their death grip.</p>",
-        "gg_-MJSPsBq_text": "<p><strong>0–30 Seconds: </strong>Feel immediate decompression as vertebrae gently separate. That crushing pressure on your nerves? Gone.</p>",
-        "ggb3x-tTKfi_html5Url": "https://cdn.shopify.com/videos/c/o/v/f5fba972a4fe45708491f4de304d9373.mp4",
-        "ggb3x-tTKfi_vimeoUrl": "https://vimeo.com/347119375",
-        "ggb3x-tTKfi_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggiF75sp5pb_text": "<p><strong>5–10 Minutes: </strong>The combination of sustained traction + heat + vibration creates the perfect environment for disc rehydration. Years of compression begins reversing.</p>"
-      },
-      "type": "gp-section-597881648625550268"
-    },
-    "gp_section_597881648625615804": {
-      "settings": {
-        "checksum": "28c37e71a515a6b9a9b8c2d69cf4956bca95ca5579bbe738e5408d8c928d8ad5_1_1_1_0__1",
-        "gg95tYxwN9X_errorMessage": "Cannot add product to cart",
-        "gg95tYxwN9X_label": "BUY Now",
-        "gg95tYxwN9X_outOfStockLabel": "Out of stock",
-        "gg95tYxwN9X_unavailableLabel": "Unavailable",
-        "gg95tYxwN9X_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
-        "ggoTYQK7jZP_text": "<p>4.7/5 Rated&nbsp;</p>",
-        "ggyJ9flkH7P_text": "SmoothSpine™️ Triple Fusion Neck Massager"
-      },
-      "type": "gp-section-597881648625615804"
+        "gg8yY22gLoi_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">We provide fast free shipping and handling for all orders.</span></p>",
+        "ggYRGn3_-rs_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-00428b28-be38-4a92-add3-22f1e8e1171f.png",
+        "ggtkmBCG_Es_text": "<p>GUARANTEED HIGH QUALITY</p>",
+        "ggnO_gdadKG_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">Made of high quality materials. Enjoy consistent, trouble-free performance for a long time. </span></p>"
+      }
     },
     "gp_section_597881648625681340": {
+      "type": "gp-section-597881648625681340",
       "settings": {
+        "section_preload": "false",
         "checksum": "968b496b4c4528653a2e8abe15e8a577108c23d36db444e842f9f677ec319688_1_1_1_0__1",
-        "gg0045cZav__text": "<p>Until you decompress those vertebrae and rehydrate those discs, the pain always returns.</p>",
-        "gg4YoJ0BCta_text": "<p>Your cervical discs are like jelly donuts between your vertebrae. When they’re hydrated, you move without pain.</p>",
-        "ggA8gdNg1BQ_text": "<p><strong>Burning sensations down your arms</strong></p>",
         "ggGkzemG1js_text": "<span style=\"color:#055BDC;\"><strong>Your Spine Is LITERALLY Suffocating</strong></span>",
-        "ggGxVIgVHqv_text": "<p>Stretches don’t rehydrate discs. Pills just mask pain. Even surgery can’t restore disc hydration.</p>",
-        "ggN5O792d2I_html5Url": "https://cdn.shopify.com/videos/c/o/v/9f05a511678f4366b8dbd08b1063e83e.mp4",
-        "ggN5O792d2I_vimeoUrl": "https://vimeo.com/347119375",
+        "ggWQIG9fsLw_text": "If You Want To End Neck Pain… You Must Fix Your Dried-Out Discs",
         "ggN5O792d2I_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggN5O792d2I_vimeoUrl": "https://vimeo.com/347119375",
+        "ggN5O792d2I_html5Url": "https://cdn.shopify.com/videos/c/o/v/9f05a511678f4366b8dbd08b1063e83e.mp4",
+        "ggymlr3ksYA_text": "If You Want To End Neck Pain… You Must Fix Your Dried-Out Discs",
+        "ggj3LHKR5Jp_text": "<p>Here’s what’s really happening in your neck:</p>",
+        "gg4YoJ0BCta_text": "<p>Your cervical discs are like jelly donuts between your vertebrae. When they’re hydrated, you move without pain.</p>",
         "ggQAm8x-ujQ_text": "<p>But after age 30, they lose moisture and flatten. Your vertebrae compress together. Nerves get pinched. Muscles spasm trying to protect your spine.</p>",
         "ggRTR9XYKM9_text": "<p>This creates:</p>",
         "ggVM2rptFdA_text": "<p><strong>Constant neck pain and stiffness</strong></p>",
-        "ggWQIG9fsLw_text": "If You Want To End Neck Pain… You Must Fix Your Dried-Out Discs",
-        "ggWaLe4w3DQ_text": "<p>The problem?</p>",
+        "ggA8gdNg1BQ_text": "<p><strong>Burning sensations down your arms</strong></p>",
+        "ggjny4TEtrb_text": "<p><strong>Headaches and brain fog</strong></p>",
         "ggiOK05sJIZ_text": "<p><strong>That growing hump at your neck base</strong></p>",
         "ggiwIrcyC9Q_text": "<p><strong>Forward head posture that worsens daily</strong></p>",
-        "ggj3LHKR5Jp_text": "<p>Here’s what’s really happening in your neck:</p>",
-        "ggjny4TEtrb_text": "<p><strong>Headaches and brain fog</strong></p>",
-        "ggymlr3ksYA_text": "If You Want To End Neck Pain… You Must Fix Your Dried-Out Discs"
-      },
-      "type": "gp-section-597881648625681340"
+        "ggWaLe4w3DQ_text": "<p>The problem?</p>",
+        "ggGxVIgVHqv_text": "<p>Stretches don’t rehydrate discs. Pills just mask pain. Even surgery can’t restore disc hydration.</p>",
+        "gg0045cZav__text": "<p>Until you decompress those vertebrae and rehydrate those discs, the pain always returns.</p>"
+      }
+    },
+    "gp_section_597881648625353660": {
+      "type": "gp-section-597881648625353660",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "7f19e1778044758c99c9fe27faeb57a293a4462f1dfadaae35e80f8b2c61bb95_1_1_1_0__1",
+        "ggzRfc3KmKh_text": "The SmoothSpine Triple Fusion Solution ",
+        "gg4GNxuDqa0_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gg4GNxuDqa0_vimeoUrl": "https://vimeo.com/347119375",
+        "gg4GNxuDqa0_html5Url": "https://cdn.shopify.com/videos/c/o/v/0bd4525a8ed9477c9b5bebc4ab6e267b.mp4",
+        "ggclZmxOds__text": "The SmoothSpine Triple Fusion Solution ",
+        "gg5gEyQLqLG_text": "<p>The SmoothSpine Triple Fusion Neck Massager is the only device that attacks all three root causes simultaneously:</p>",
+        "ggu6Yd3u6Yx_text": "<p><strong>1. SPINAL TRACTION THERAPY: </strong>Gently creates space between compressed vertebrae – the same principle used in $30,000 clinical decompression tables. This space allows discs to expand and pull in fluid.</p>",
+        "ggyZ6Gf5lWo_text": "<p><strong>2. THERAPEUTIC HEAT: </strong>Increases blood flow by 300%, flooding the area with oxygen and nutrients. Heat also makes disc tissue more permeable for faster rehydration.</p>",
+        "ggrYT7cGWvp_text": "<p><strong>3. VIBRATION MASSAGE: </strong>Releases muscle spasms and increases circulation. The oscillation literally helps “pump” fluid back into dehydrated discs.</p>",
+        "gglNkdnoYHM_text": "<p>Used together for 15 minutes = Complete disc rehabilitation</p>"
+      }
     },
     "gp_section_597881648625746876": {
+      "type": "gp-section-597881648625746876",
       "settings": {
+        "section_preload": "false",
         "checksum": "09ca5cf62897c6e2ab5fbe2d3fde4d7220c86ddc7601be8c99e3fe25092f0a2c_1_1_1_0__1",
         "gg6lqX8ncBw_text": "Proven Results From Clinical Testing",
-        "ggD7WzaNuhK_text": "<p>experienced significant pain reduction within first week</p>",
-        "ggJi9ND0uXw_text": "<p>reported adverse effects</p>",
-        "ggR1aiW60Vj_text": "<p>0%</p>",
-        "ggTX3oVSncW_text": "<p>91%</p>",
-        "ggiVlsgDWSA_text": "<p>In our 90-day clinical trial with 312 participants:</p>",
+        "ggr9awOTvod_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggr9awOTvod_vimeoUrl": "https://vimeo.com/347119375",
+        "ggr9awOTvod_html5Url": "https://cdn.shopify.com/videos/c/o/v/a6b80b7b1c3d40c7a06bea52febe3a2b.mp4",
         "ggihisY810h_text": "Proven Results From Clinical Testing",
-        "ggjoZypnjJZ_text": "<p>89%</p>",
-        "ggk94K8mEi3_text": "<p>avoided planned surgery or injections</p>",
+        "ggiVlsgDWSA_text": "<p>In our 90-day clinical trial with 312 participants:</p>",
+        "ggTX3oVSncW_text": "<p>91%</p>",
+        "ggD7WzaNuhK_text": "<p>experienced significant pain reduction within first week</p>",
         "gglJnnis1Ok_text": "<p>87%</p>",
         "ggoi2j-OkEz_text": "<p>showed improved disc height on imaging after 6 weeks</p>",
-        "ggr9awOTvod_html5Url": "https://cdn.shopify.com/videos/c/o/v/a6b80b7b1c3d40c7a06bea52febe3a2b.mp4",
-        "ggr9awOTvod_vimeoUrl": "https://vimeo.com/347119375",
-        "ggr9awOTvod_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggjoZypnjJZ_text": "<p>89%</p>",
+        "ggvn2UupFfT_text": "<p>reduced neck hump appearance by at least 40%</p>",
         "ggrmX7ZveHA_text": "<p>94%</p>",
-        "ggvn2UupFfT_text": "<p>reduced neck hump appearance by at least 40%</p>"
-      },
-      "type": "gp-section-597881648625746876"
+        "ggk94K8mEi3_text": "<p>avoided planned surgery or injections</p>",
+        "ggR1aiW60Vj_text": "<p>0%</p>",
+        "ggJi9ND0uXw_text": "<p>reported adverse effects</p>"
+      }
+    },
+    "gp_section_597881648625550268": {
+      "type": "gp-section-597881648625550268",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "2678e83f651ee3199c84fa1becdaa7c9eda74de3fa3a4e7f60445926e8992137_1_1_1_0__1",
+        "gg9sfrUDNiv_text": "See How It Works In Real Time ",
+        "ggb3x-tTKfi_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggb3x-tTKfi_vimeoUrl": "https://vimeo.com/347119375",
+        "ggb3x-tTKfi_html5Url": "https://cdn.shopify.com/videos/c/o/v/f5fba972a4fe45708491f4de304d9373.mp4",
+        "ggNDYVqN7Gc_text": "See How It Works In Real Time ",
+        "ggFoLsfJU5j_text": "<p>The moment you turn it on: </p>",
+        "gg_-MJSPsBq_text": "<p><strong>0–30 Seconds: </strong>Feel immediate decompression as vertebrae gently separate. That crushing pressure on your nerves? Gone.</p>",
+        "ggP9YY587P1_text": "<p><strong>30 Seconds–5 Minutes: </strong>Heat floods the area with nutrient-rich blood while traction maintains crucial disc space. You feel muscles finally releasing their death grip.</p>",
+        "ggiF75sp5pb_text": "<p><strong>5–10 Minutes: </strong>The combination of sustained traction + heat + vibration creates the perfect environment for disc rehydration. Years of compression begins reversing.</p>",
+        "gg7gfYbpkbD_text": "<p><strong>10–15 Minutes: </strong>Your neck naturally returns to proper alignment. The tissue creating that hump softens and begins to reduce.</p>",
+        "ggP5xbHg6z-_text": "<p><strong>After 15 minutes: </strong>Turn your head freely. Look down without pain. Stand taller.</p>",
+        "ggADn2FzsbO_text": "<p><strong>After 30 days: </strong>Visible posture improvement. Significant hump reduction. Pain-free movement.</p>"
+      }
+    },
+    "gp_section_597881648624829372": {
+      "type": "gp-section-597881648624829372",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "047eaf13d09255cb3ae51cf71bef8e9b3d82a8d4c31964bec1d05b0796679da4_1_1_1_0__1",
+        "ggNH0yZYdL0_text": "Try It for 90 Days, 100% Risk-Free",
+        "ggr-cdETAvt_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f56efdea-c394-4196-8c2d-0c85230a19dc.png",
+        "ggDerpXpkv1_text": "Try It For 90 Days, 100% Risk-Free",
+        "ggNmha1SiOD_text": "<p>Here’s the deal: We believe in this product so much that <strong>we don’t want you to spend a dime until you are 100% certain that it works for you.</strong></p>",
+        "ggCn6xOSitZ_text": "<p>That’s why we are offering a <strong>90-day “Results or Refund” guarantee.</strong></p>",
+        "gg1rlZNSakA_text": "<p>Simply get yourself a <strong>SmoothSpine™️ - Triple Fusion Massager</strong> today, use it for 90 days, and then make your decision based on the results. <strong>If you are not absolutely thrilled with the relief, we will issue you an immediate refund.</strong></p>",
+        "ggGwm1Shj_V_text": "<p>In other words, you are only paying if it <strong>truly works</strong> and helps you reclaim a pain-free life.</p>"
+      }
     },
     "gp_section_597881648625812412": {
+      "type": "gp-section-597881648625812412",
       "settings": {
+        "section_preload": "false",
         "checksum": "9b7e282a45a4c48bae7c6e486b43025bf84884fa8f484393f32419ea710266ca_1_1_1_0__1",
-        "gg1s1r3CPAH_text": "<p>60%</p>",
-        "ggBZHWcbbCW_text": "<p>Cost</p>",
-        "ggCg2HhUC_o_text": "<p>❌ 3–6 months max</p>",
-        "ggD5TFHQOul_text": "<p>Treatment</p>",
-        "ggE6es1zBwA_text": "<p>15 minutes</p>",
-        "ggExWdC_cwe_text": "<p>50%</p>",
-        "ggGi22MLnc9_text": "<p>$3,900/ year</p>",
-        "ggKgTOkelee_text": "<p>$9,000/ year</p>",
-        "ggLHhVUFE3S_text": "<p>⚠️ 40% need revision</p>",
-        "ggLvNQZAufG_text": "<p>Days–weeks</p>",
-        "ggM3bM5cqro_text": "<p>30 minutes</p>",
-        "ggUIPR4uztb_text": "<p>SmoothSpine</p>",
-        "ggVX_jwNoUD_text": "<p>$45,000+</p>",
-        "ggZF0s8REuT_text": "<p>Lasting Results</p>",
-        "ggZWYjcI0Sj_text": "<p>SmoothSpine Triple Fusion vs. Traditional Treatments</p>",
-        "ggbk_HP42hR_text": "<p>✅ Permanent with use</p>",
-        "ggcT5jufCml_text": "<p>45%</p>",
         "ggchiUpfJH2_text": "Compare Your Options",
-        "ggd1e4gtpQZ_text": "<p>❌ Requires ongoing</p>",
-        "ggdS5SJJqef_text": "<p>Time to Relief&nbsp;&nbsp;&nbsp;&nbsp;</p>",
-        "ggda91P9l3o_text": "<p>Injections</p>",
-        "ggedWPzHeRS_text": "<p>Success Rate&nbsp;&nbsp;&nbsp;&nbsp;</p>",
-        "gggHvuEgv-H_text": "<p>$3,600/ year</p>",
-        "ggit8HXWyYJ_text": "<p>Days</p>",
-        "ggj8dPUQLv3_text": "<p>30%</p>",
-        "ggjAyQkCo2R_text": "<p>❌ Masks symptoms</p>",
-        "ggkIjZWSCph_text": "<p>Physical Therapy</p>",
-        "ggkta_5SNnw_text": "<p>Weeks–months</p>",
-        "gglbMFVk8A4_text": "<p>Surgery</p>",
+        "ggZWYjcI0Sj_text": "<p>SmoothSpine Triple Fusion vs. Traditional Treatments</p>",
+        "ggD5TFHQOul_text": "<p>Treatment</p>",
+        "ggBZHWcbbCW_text": "<p>Cost</p>",
+        "ggedWPzHeRS_text": "<p>Success Rate    </p>",
+        "ggdS5SJJqef_text": "<p>Time to Relief    </p>",
+        "ggZF0s8REuT_text": "<p>Lasting Results</p>",
+        "ggUIPR4uztb_text": "<p>SmoothSpine</p>",
         "ggqOBhPvnlp_text": "<p>$99 once</p>",
         "ggrbnhcYs32_text": "<p>91%</p>",
-        "ggs0dHbI39W_text": "<p>Months</p>",
-        "ggtjkKbA4KM_text": "<p>$7,800/ year</p>",
-        "ggunNDbivKp_text": "<p>0%</p>",
-        "ggz74JPwRrF_text": "<p>❌ Temporary</p>",
+        "ggE6es1zBwA_text": "<p>15 minutes</p>",
+        "ggbk_HP42hR_text": "<p>✅ Permanent with use</p>",
         "ggzGeGGTme5_text": "<p>Chiropractic</p>",
-        "ggzPZaZk_WZ_text": "<p>Pain Pills</p>"
-      },
-      "type": "gp-section-597881648625812412"
+        "ggGi22MLnc9_text": "<p>$3,900/ year</p>",
+        "ggcT5jufCml_text": "<p>45%</p>",
+        "ggLvNQZAufG_text": "<p>Days–weeks</p>",
+        "ggz74JPwRrF_text": "<p>❌ Temporary</p>",
+        "ggkIjZWSCph_text": "<p>Physical Therapy</p>",
+        "ggtjkKbA4KM_text": "<p>$7,800/ year</p>",
+        "ggExWdC_cwe_text": "<p>50%</p>",
+        "ggkta_5SNnw_text": "<p>Weeks–months</p>",
+        "ggd1e4gtpQZ_text": "<p>❌ Requires ongoing</p>",
+        "ggda91P9l3o_text": "<p>Injections</p>",
+        "ggKgTOkelee_text": "<p>$9,000/ year</p>",
+        "ggj8dPUQLv3_text": "<p>30%</p>",
+        "ggit8HXWyYJ_text": "<p>Days</p>",
+        "ggCg2HhUC_o_text": "<p>❌ 3–6 months max</p>",
+        "gglbMFVk8A4_text": "<p>Surgery</p>",
+        "ggVX_jwNoUD_text": "<p>$45,000+</p>",
+        "gg1s1r3CPAH_text": "<p>60%</p>",
+        "ggs0dHbI39W_text": "<p>Months</p>",
+        "ggLHhVUFE3S_text": "<p>⚠️ 40% need revision</p>",
+        "ggzPZaZk_WZ_text": "<p>Pain Pills</p>",
+        "gggHvuEgv-H_text": "<p>$3,600/ year</p>",
+        "ggunNDbivKp_text": "<p>0%</p>",
+        "ggM3bM5cqro_text": "<p>30 minutes</p>",
+        "ggjAyQkCo2R_text": "<p>❌ Masks symptoms</p>"
+      }
     },
-    "gp_section_597881648625877948": {
+    "gp_section_597881648624698300": {
+      "type": "gp-section-597881648624698300",
       "settings": {
-        "checksum": "c997c458b1b353df2c40a02ed4a7b0d08a5cfdec75c359db8ba4083010ab98de_1_1_1_0__1",
-        "gg8OBT-mwiy_text": "<p><strong>Fits most neck sizes 12\"-18\"</strong></p>",
-        "ggAUsTk6OC3_text": "<p><strong>Medical-grade materials</strong></p>",
-        "ggL4MnTf9K1_text": "<p><strong>3 Vibration Modes</strong></p>",
-        "ggRmjDjdLC5_text": "<p>Black Friday Mega Sale On Now!</p>",
-        "ggZo95s7bUZ_label": "<p>GET 60% OFF BEFORE WE SELL OUT!</p>",
-        "ggeOUQYXJ6q_text": "<p>Limited Time: Save $120 Today</p>",
-        "ggk2dVAurva_text": "<p><strong>Automatic Traction</strong></p>",
-        "ggqcynYj7rR_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/TFBM_12.png",
-        "ggr4TOUfTIs_text": "<p><u>Device Specifications:</u></p>",
-        "ggt6Awj6Ycu_text": "<p><strong>3 Heat Settings (45°C/55°C/65°C)</strong></p>",
-        "ggtCYt5fUxn_text": "<p><u>Note:&nbsp;</u> <span style=\"color:#0ABA4C;\"><strong>Not Available on Amazon or eBay</strong></span></p>",
-        "ggx79_2DNRs_text": "<p>SmoothSpine Triple Fusion Neck Massager<br>USB-C Charging Cable, Fast Charge Adapter<br>User Manual with Protocols<br>Quick Start Guide</p>"
-      },
-      "type": "gp-section-597881648625877948"
+        "section_preload": "false",
+        "checksum": "f4a1ac7cd31c189394a86e04d2b9d346c448f0b2f4e5be8ad3e6b63b09a8c4ff_1_1_1_0__1",
+        "gg_CwTNIS5u_text": "Compare Your Options",
+        "ggCb9rTmYNi_text": "<p>SmoothSpine Triple Fusion vs. Traditional Treatments</p>",
+        "gg3RrMs2Q-h_text": "<p>Treatment</p>",
+        "ggbrA1GUkje_text": "<p>Cost</p>",
+        "ggYV7HQekIo_text": "<p>Success Rate</p>",
+        "gg1Zyc2nEcp_text": "<p>Time to Relief</p>",
+        "ggYB4Cxf6KN_text": "<p>Lasting Results</p>",
+        "ggTndR4s_A2_text": "<p>SmoothSpine</p>",
+        "ggI80Z9tCA4_text": "<p>$99 once</p>",
+        "ggzUjuD6PFW_text": "<p>91%</p>",
+        "gg_FbUAdcPp_text": "<p>15 minutes</p>",
+        "gg2Gq3ahF5m_text": "<p>✅ Permanent with use</p>",
+        "ggnM_lDRYVU_text": "<p>Chiropractic</p>",
+        "gg6sHoOniM-_text": "<p>$3,900/ year</p>",
+        "gga8J98MasX_text": "<p>45%</p>",
+        "ggFcYjKCLp4_text": "<p>Days–weeks</p>",
+        "gg7m3VT-nql_text": "<p>❌ Temporary</p>",
+        "ggRfw7vDgSv_text": "<p>Physical Therapy</p>",
+        "gg7sPfujTU1_text": "<p>$7,800/ year</p>",
+        "ggvdrHeXKDl_text": "<p>50%</p>",
+        "ggJpLAygnSt_text": "<p>Weeks–months</p>",
+        "gggXkIAUTCe_text": "<p>❌ Requires ongoing</p>",
+        "ggMPIMeP4Go_text": "<p>Injections</p>",
+        "ggTOdpQJizv_text": "<p>$9,000/ year</p>",
+        "ggD8Y7tx9eT_text": "<p>30%</p>",
+        "ggAAfTg-03F_text": "<p>Days</p>",
+        "ggIfuRQfnMI_text": "<p>❌ 3–6 months max</p>",
+        "ggT3hS-Pwyl_text": "<p>Surgery</p>",
+        "ggxUPVJNZ9c_text": "<p>$45,000+</p>",
+        "ggSGIy40g6v_text": "<p>60%</p>",
+        "ggR2G6nDN2n_text": "<p>Months</p>",
+        "ggLybiaEZ-9_text": "<p>⚠️ 40% need revision</p>",
+        "ggHn0oiy-O5_text": "<p>Pain Pills</p>",
+        "ggZlUZeRlcb_text": "<p>$3,600/ year</p>",
+        "ggK2_QjRkxr_text": "<p>0%</p>",
+        "ggmuHVgIFlc_text": "<p>30 minutes</p>",
+        "ggi9aI6HP_O_text": "<p>❌ Masks symptoms</p>"
+      }
+    },
+    "gp_section_597881648625484732": {
+      "type": "gp-section-597881648625484732",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "9622954e5dabb7ddcf1c07117f3f690080756a3042207058f804380e4c62b930_1_1_1_0__1",
+        "ggrydDXALPH_text": "Real People. Real Results.",
+        "gg_nv0E1WSj_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/18.webp",
+        "gg029TQ7PQT_text": "<p>\"Finally, Real Relief After Years of Pain!\"</p>",
+        "ggnkoHZd9S5_text": "<p>\"Canceled My $45,000 Surgery\" \"I was scheduled for cervical fusion. After 6 weeks using this device, my surgeon said my discs looked healthier on the MRI. Surgery canceled. Money saved. Life changed.\"</p>",
+        "ggmciU_MO8m_text": "<p>Robert K., 58</p>",
+        "ggx_FgcD6ei_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/19.webp",
+        "ggBi7vQvbIj_text": "<p>\"I Can Move Freely Again!\"</p>",
+        "ggJ8hCrLXJq_text": "<p>\"My Hump Is Almost Gone\" \"The bump at my neck base was so bad I only wore turtlenecks. It's reduced by 70% after 2 months. I can wear normal clothes again!\"</p>",
+        "ggReBUA1njy_text": "<p>Patricia L., 52</p>",
+        "ggcIBXq5yW6_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/20.webp",
+        "gg4lOxj8MET_text": "<p>\"Didn’t Expect It to Work THIS Well!\"</p>",
+        "ggZSVoxxXVa_text": "<p>\"Better Than Years of Chiropractic\" \"I spent $200/month on adjustments for 3 years. This $119 device did more in 1 month than all those appointments combined.\"</p>",
+        "ggQgcHb_VvV_text": "<p>Ryan M., 41</p>"
+      }
+    },
+    "gp_section_597881648626074556": {
+      "type": "gp-section-597881648626074556",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "389a5585e5b072a07d70d381f97890530c0f8904cde720431b9633364244cb50_1_1_1_0__1",
+        "ggc0EeH0dDJ_text": "3 Simple Steps To Relieve Neck Pain &amp; Neck Hump",
+        "ggTKlZqCCUu_text": "<p>Simply select the massage mode and enjoy pain relief!</p>"
+      }
+    },
+    "gp_section_597881648625288124": {
+      "type": "gp-section-597881648625288124",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "c466eb4d0f409bb0156b2d32b7495a3413fae449be6e0c61dc8c174f6da2b3c7_1_1_1_0__1",
+        "ggZDZF7ux33_text": "<p>STEP 1:</p>",
+        "ggmue6CCCwq_text": "<p>Plug in the USB cable to the device. The button controls will light up, confirming it’s ready to use. Place the massager on a flat surface like your floor or bed.</p>",
+        "ggWC3h60DLZ_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggWC3h60DLZ_vimeoUrl": "https://vimeo.com/347119375",
+        "ggWC3h60DLZ_html5Url": "https://cdn.shopify.com/videos/c/o/v/ed5a7e4bff5349539d9ae5ffde3f1b30.mp4",
+        "gg6uV7yqBqY_text": "<p>STEP 2:</p>",
+        "ggBNVTsuXWb_text": "<p>Hold the power button to turn it on. The device will automatically cycle through massage, traction, and heat therapy for a full session.</p>",
+        "ggmAVCyGk7U_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggmAVCyGk7U_vimeoUrl": "https://vimeo.com/347119375",
+        "ggmAVCyGk7U_html5Url": "https://cdn.shopify.com/videos/c/o/v/49833f3979774432b1c49b1fc584564b.mp4",
+        "gg5tUayJ_Gz_text": "<p>STEP 3:</p>",
+        "ggU2h5Y-nxZ_text": "<p>Lay back, relax, and enjoy the soothing relief for 15-30 minutes while SmoothSpine works its magic on your neck.</p>",
+        "ggYIIb-eOrd_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggYIIb-eOrd_vimeoUrl": "https://vimeo.com/347119375",
+        "ggYIIb-eOrd_html5Url": "https://cdn.shopify.com/videos/c/o/v/2d6fbcba315e442ea5ca3dd2a7ffaa48.mp4"
+      }
     },
     "gp_section_597881648625943484": {
+      "type": "gp-section-597881648625943484",
       "settings": {
+        "section_preload": "false",
         "checksum": "9c3c91528ead42558875cfa7f8e817e6de25f29847b9b7050159d35a064a44d1_1_1_1_0__1",
         "ggSb2fxxJNt_text": "What's Included"
-      },
-      "type": "gp-section-597881648625943484"
+      }
+    },
+    "gp_section_597881648625877948": {
+      "type": "gp-section-597881648625877948",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "c997c458b1b353df2c40a02ed4a7b0d08a5cfdec75c359db8ba4083010ab98de_1_1_1_0__1",
+        "ggqcynYj7rR_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/TFBM_12.png",
+        "ggRmjDjdLC5_text": "<p>Black Friday Mega Sale On Now!</p>",
+        "ggx79_2DNRs_text": "<p>SmoothSpine Triple Fusion Neck Massager<br>USB-C Charging Cable, Fast Charge Adapter<br>User Manual with Protocols<br>Quick Start Guide</p>",
+        "ggr4TOUfTIs_text": "<p><u>Device Specifications:</u></p>",
+        "ggt6Awj6Ycu_text": "<p><strong>3 Heat Settings (45°C/55°C/65°C)</strong></p>",
+        "ggL4MnTf9K1_text": "<p><strong>3 Vibration Modes</strong></p>",
+        "ggk2dVAurva_text": "<p><strong>Automatic Traction</strong></p>",
+        "gg8OBT-mwiy_text": "<p><strong>Fits most neck sizes 12\"-18\"</strong></p>",
+        "ggAUsTk6OC3_text": "<p><strong>Medical-grade materials</strong></p>",
+        "ggeOUQYXJ6q_text": "<p>Limited Time: Save $120 Today</p>",
+        "ggZo95s7bUZ_label": "<p>GET 60% OFF BEFORE WE SELL OUT!</p>",
+        "ggtCYt5fUxn_text": "<p><u>Note: </u> <span style=\"color:#0ABA4C;\"><strong>Not Available on Amazon or eBay</strong></span></p>"
+      }
+    },
+    "gp_section_597881648625025980": {
+      "type": "gp-section-597881648625025980",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "5d6b4303a6e05a79eb42793ab9f0f704e1a8d3f5b88b0b321faf36daee71ad6f_1_1_1_0__1",
+        "ggY5Kp_-GFD_text": "100% SATISFACTION<br>90-DAY MONEY BACK GUARANTEE",
+        "gg2skFYSnGC_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-51bd7b08-f4ec-461e-bc36-e7734dd26e06.jpg",
+        "ggBZyLN-waC_text": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee. </strong>If you don't experience the remarkable <strong>relief from Neck Pain &amp; Neck Hump </strong>that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days,</strong> let us know and we will refund every single penny of your investment. <strong>No questions asked.</strong></p>",
+        "ggufORTUxtU_text": "<p>We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>"
+      }
+    },
+    "gp_section_597881648624894908": {
+      "type": "gp-section-597881648624894908",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "4eb71198b132212904d036c26fe36a0b8e7b31bf1177f0938cc3736bb8eb7f0b_1_1_1_0__1",
+        "ggTB9UV4fg5_text": "We're Getting Noticed!",
+        "ggqBiWApY31_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-2ef784eb-b38e-40bd-b5a1-a3771bcf0e2d.png"
+      }
     },
     "gp_section_597881648626009020": {
+      "type": "gp-section-597881648626009020",
       "settings": {
+        "section_preload": "false",
         "checksum": "5908311fac1146ec5dca1fefd18cdff972e2d1df5b831e438a7c8f26d043d239_1_1_1_0__1",
-        "gg5779-Q2LD_text": "<p>Yes. The device uses gentle, controlled traction - much safer than manual adjustments. We have thousands of users in their 60s, 70s, and 80s. Always consult your doctor if you have specific medical conditions.</p>",
         "ggBJa8Yn5GB_text": "Frequently Asked Questions",
-        "ggGBgdMGN1b_text": "<p>Most users feel immediate relief from the decompression (within 30 seconds). Significant pain reduction typically occurs within 7 days. Posture and hump improvement becomes visible after 4-6 weeks of daily use.</p>",
-        "ggJ59b-ywE__text": "<p>Heating pads only provide surface heat. The Triple Fusion combines medical-grade traction (creates space between vertebrae), therapeutic heat (increases blood flow 300%), and vibration massage (releases muscle tension) - all working together to actually rehydrate your discs.</p>",
-        "ggOF78_pLax_text": "<p>Yes. The forward head posture and hump are caused by compressed discs and muscle imbalance. By decompressing the spine and releasing tension, most users see visible improvement in 6-8 weeks.</p>",
-        "ggZ3I5t3Bhg_text": "<p>You're covered by our 90-day guarantee. If you don't see results, we'll refund 100% of your purchase. No risk to you.</p>",
         "gg_vblMSRbJ_childItem_0": "<p><strong>How is this different from a regular heating pad?</strong></p>",
         "gg_vblMSRbJ_childItem_1": "<p><strong>Will this work for my dowager's hump?</strong></p>",
         "gg_vblMSRbJ_childItem_2": "<p><strong>How long before I feel results?</strong></p>",
         "gg_vblMSRbJ_childItem_3": "<p><strong>Is it safe for older users?</strong></p>",
         "gg_vblMSRbJ_childItem_4": "<p><strong>How often should I use it?</strong></p>",
-        "gg_vblMSRbJ_childItem_5": "<p><strong>What if it doesn&#039;t work for me?</strong></p>",
-        "ggrcqOh_tmz_text": "<p>For best results, use 15 minutes once or twice daily. Most users do one session in the morning and one in the evening.</p>"
-      },
-      "type": "gp-section-597881648626009020"
+        "gg_vblMSRbJ_childItem_5": "<p><strong>What if it doesn't work for me?</strong></p>",
+        "ggJ59b-ywE__text": "<p>Heating pads only provide surface heat. The Triple Fusion combines medical-grade traction (creates space between vertebrae), therapeutic heat (increases blood flow 300%), and vibration massage (releases muscle tension) - all working together to actually rehydrate your discs.</p>",
+        "ggOF78_pLax_text": "<p>Yes. The forward head posture and hump are caused by compressed discs and muscle imbalance. By decompressing the spine and releasing tension, most users see visible improvement in 6-8 weeks.</p>",
+        "ggGBgdMGN1b_text": "<p>Most users feel immediate relief from the decompression (within 30 seconds). Significant pain reduction typically occurs within 7 days. Posture and hump improvement becomes visible after 4-6 weeks of daily use.</p>",
+        "gg5779-Q2LD_text": "<p>Yes. The device uses gentle, controlled traction - much safer than manual adjustments. We have thousands of users in their 60s, 70s, and 80s. Always consult your doctor if you have specific medical conditions.</p>",
+        "ggrcqOh_tmz_text": "<p>For best results, use 15 minutes once or twice daily. Most users do one session in the morning and one in the evening.</p>",
+        "ggZ3I5t3Bhg_text": "<p>You're covered by our 90-day guarantee. If you don't see results, we'll refund 100% of your purchase. No risk to you.</p>"
+      }
     },
-    "gp_section_597881648626074556": {
+    "gp_section_597881648625419196": {
+      "type": "gp-section-597881648625419196",
       "settings": {
-        "checksum": "389a5585e5b072a07d70d381f97890530c0f8904cde720431b9633364244cb50_1_1_1_0__1",
-        "ggTKlZqCCUu_text": "<p>Simply select the massage mode and enjoy pain relief!</p>",
-        "ggc0EeH0dDJ_text": "3 Simple Steps To Relieve Neck Pain &amp; Neck Hump"
-      },
-      "type": "gp-section-597881648626074556"
+        "section_preload": "false",
+        "checksum": "aaa8335c81b2ceda0b59d73b507f2897d4f0a9b80ae83f99320e4fd1521a7ed1_1_1_1_0__1"
+      }
+    },
+    "gp_section_597881648625615804": {
+      "type": "gp-section-597881648625615804",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "28c37e71a515a6b9a9b8c2d69cf4956bca95ca5579bbe738e5408d8c928d8ad5_1_1_1_0__1",
+        "ggyJ9flkH7P_text": "SmoothSpine™️ Triple Fusion Neck Massager",
+        "ggoTYQK7jZP_text": "<p>4.7/5 Rated </p>",
+        "gg95tYxwN9X_label": "BUY Now",
+        "gg95tYxwN9X_outOfStockLabel": "Out of stock",
+        "gg95tYxwN9X_unavailableLabel": "Unavailable",
+        "gg95tYxwN9X_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
+        "gg95tYxwN9X_errorMessage": "Cannot add product to cart"
+      }
+    },
+    "gp_section_597881648624960444": {
+      "type": "gp-section-597881648624960444",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "7859e7e0da794aa9ec13f2fecc3e76c32b8018020a8f6720eac6b8cb86274b37_1_1_1_0__1",
+        "ggEEzbjA_WA_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
+        "gg_R_DeHFGg_text": "SmoothSpine Zip Lock Travel Bag",
+        "ggbeT0zYGDj_text": "<s>$15</s> FREE ",
+        "ggzeMY49Px7_text": "Perfect Travel Companion—FREE with Your Order Today!",
+        "ggu6lqOfqOo_text": "This water-resistant, compact zip lock bag <strong>keeps your SmoothSpine gear organized, clean, and protected</strong>—whether you're at home or on the go. <strong>Lightweight and durable.</strong>"
+      }
+    },
+    "gp_section_597881648625222588": {
+      "type": "gp-section-597881648625222588",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "4ab279cd2ec38f00e77faf35b402247fb6b6bcf47b60d7e5d762f6ec3db81088_1_1_1_0__1",
+        "ggyEKece8hY_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/12_patch_box_with_Patches_1.webp",
+        "ggpjZRuk_E2_text": "12x Neck Pain Relief Patches",
+        "ggIOMzRL3lW_text": "<s>$20</s> FREE ",
+        "ggjCpnyliMr_text": "Herbal Neck Pain Relief Patches—FREE with Your Order Today!",
+        "ggvGL5-tdwy_text": "<strong>Soothe Neck pain naturally</strong> with our herbal relief patches! Made from 100% <strong>natural ingredients</strong>, they promote muscle relaxation, easing tension and soreness. Simple to apply and brings freeing <strong>relief for up to 12 hours.</strong>"
+      }
+    },
+    "gp_section_597881648625157052": {
+      "type": "gp-section-597881648625157052",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "0e074280c3f63161175619bfe7fd10abcbf368e5adc92a209020020de9d63b1d_1_1_1_0__1",
+        "ggnsMK_i2tI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/TFBM_14_3951a0c9-67aa-417a-bec2-c3e363ffe358.webp",
+        "ggwWS9hcr4v_text": "Neck pain &amp; Hump elimination guide",
+        "gg8UTtxkN-D_text": "<s>$29</s> FREE ",
+        "ggpjX8cUrAW_text": "Ultimate Guide to Beat Neck Pain—FREE with Your Order Today!",
+        "ggTwHTgH5lQ_text": "This expert-backed eBook with 100+ pages of value-packed info covers <strong>how to best use your Triple Fusion Neck Massager</strong>, as well as proven techniques, exercises, and <strong>lifestyle tips</strong> to help you <strong>eliminate neck pain and get your life back naturally.</strong>"
+      }
     }
   },
   "order": [
+    "maison_gift_bundle_NT7CTh",
     "gp_section_597881648624763836",
     "gp_section_597881648625091516",
     "gp_section_597881648625681340",
