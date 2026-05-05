@@ -63,34 +63,66 @@
         giftsAdded = true;
         addingGifts = true;
         var bundleId = 'gp-bundle-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
-        var giftItems = gifts.map(function(g, i) {
-          return {
-            id: g.variant_id,
-            quantity: 1,
-            properties: {
-              '_bundle_id': bundleId,
-              '_bundle_role': 'gift',
-              '_gift_index': String(i + 1)
-            }
-          };
-        });
 
-        origFetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          credentials: 'same-origin',
-          body: JSON.stringify({ items: giftItems })
-        })
-        .then(function() {
+        /* Parse main item from response to get its line key + existing properties */
+        res.clone().json().then(function(addData) {
+          var mainItem = (addData && addData.items && addData.items[0]) || addData;
+          if (!mainItem || !mainItem.key) {
+            addingGifts = false;
+            return;
+          }
+
+          /* Step 1: tag the main item with bundle properties so cart drawer groups gifts under it */
+          var mergedProps = Object.assign({}, mainItem.properties || {}, {
+            '_bundle_id': bundleId,
+            '_bundle_role': 'main'
+          });
+
+          return origFetch('/cart/change.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify({
+              id: mainItem.key,
+              quantity: mainItem.quantity,
+              properties: mergedProps
+            })
+          })
+          .then(function(changeRes) { return changeRes.ok ? changeRes.json() : null; })
+          .then(function() {
+            /* Step 2: add gifts with the same bundle_id */
+            var giftItems = gifts.map(function(g, i) {
+              return {
+                id: g.variant_id,
+                quantity: 1,
+                properties: {
+                  '_bundle_id': bundleId,
+                  '_bundle_role': 'gift',
+                  '_gift_index': String(i + 1)
+                }
+              };
+            });
+            return origFetch('/cart/add.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+              credentials: 'same-origin',
+              body: JSON.stringify({ items: giftItems })
+            });
+          })
+          .then(function() {
+            addingGifts = false;
+            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+            document.dispatchEvent(new CustomEvent('cart:refresh'));
+            var drawer = document.getElementById('cart-drawer');
+            if (drawer) drawer.setAttribute('open', '');
+          })
+          .catch(function(err) {
+            addingGifts = false;
+            console.warn('[gift-bundle] bundle setup failed:', err);
+          });
+        }).catch(function(err) {
           addingGifts = false;
-          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
-          document.dispatchEvent(new CustomEvent('cart:refresh'));
-          var drawer = document.getElementById('cart-drawer');
-          if (drawer) drawer.setAttribute('open', '');
-        })
-        .catch(function(err) {
-          addingGifts = false;
-          console.warn('[gift-bundle] failed to add gifts:', err);
+          console.warn('[gift-bundle] failed to parse response:', err);
         });
 
         return res;
