@@ -1,0 +1,64 @@
+{% comment %}
+  Section: Gift Bundle
+  Description: When the merchant adds this section to a product template (typically a GemPages
+    PDP), every successful add-to-cart on that page will also automatically add the picked
+    gift products to the cart with bundle properties.
+
+  How to use:
+    1. Open the template in the Theme editor
+    2. Add the "Gift Bundle" section
+    3. Add Gift product blocks and pick the products from the catalog
+
+  Renders:
+    - Hidden script setting window.__maisonGiftSectionVariants with picked variant ids
+    - Actual fetch interception is done in snippets/maison-gift-bundle.liquid (loaded globally)
+{% endcomment %}
+
+{%- assign gift_blocks = section.blocks | where: "type", "gift_product" -%}
+{%- if gift_blocks.size > 0 -%}
+  <script>
+    (function() {
+      window.__maisonGiftSectionVariants = [
+        {%- for block in gift_blocks -%}
+          {%- assign p = block.settings.product -%}
+          {%- if p != blank and p.first_available_variant != blank -%}
+            { variant_id: {{ p.first_available_variant.id }}, name: {{ p.title | json }} }{%- unless forloop.last -%},{%- endunless -%}
+          {%- endif -%}
+        {%- endfor -%}
+      ];
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Gift Bundle",
+  "tag": "section",
+  "class": "maison-gift-bundle-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Add gift products that will be auto-added to cart whenever the main product on this page is added. The section itself is invisible — gifts appear in the cart drawer."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "gift_product",
+      "name": "Gift product",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Gift product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift Bundle"
+    }
+  ]
+}
+{% endschema %}

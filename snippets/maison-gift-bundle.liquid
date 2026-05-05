@@ -1,0 +1,100 @@
+{% comment %}
+  Globally wraps window.fetch — when a POST /cart/add is detected on a page that
+  has the "Gift Bundle" section, automatically adds the picked gift products
+  with bundle properties.
+
+  Configuration:
+    - Add the "Gift Bundle" section to the relevant product template (e.g. a GemPages PDP)
+    - Pick gift products via product picker blocks in the Theme editor
+    - The section sets window.__maisonGiftSectionVariants — this snippet reads it
+
+  Bundle properties set on each gift line item:
+    _bundle_id    — unique id linking gifts to a single main purchase
+    _bundle_role  — 'gift'
+    _gift_index   — order in the bundle
+
+  Skipped:
+  - Pages without the section (no variants set)
+  - Subsequent add-to-cart calls in the same page session (gifts only added once)
+  - The gift add itself (no recursion)
+{% endcomment %}
+
+<script>
+  (function() {
+    if (window.__maisonGiftBundleInit) return;
+    window.__maisonGiftBundleInit = true;
+
+    function getGifts() {
+      var gifts = window.__maisonGiftSectionVariants;
+      if (!Array.isArray(gifts)) return [];
+      return gifts.filter(function(g) { return g && g.variant_id; });
+    }
+
+    if (!window.fetch) return;
+    var origFetch = window.fetch.bind(window);
+    var giftsAdded = false;
+    var addingGifts = false;
+
+    window.fetch = function(input, init) {
+      var url = typeof input === 'string' ? input : (input && input.url) || '';
+      var method = (init && init.method) || (typeof input !== 'string' && input && input.method) || 'GET';
+      var isAddToCart = url.indexOf('/cart/add') !== -1 && method.toUpperCase() === 'POST';
+
+      if (!isAddToCart || giftsAdded || addingGifts) {
+        return origFetch(input, init);
+      }
+
+      var gifts = getGifts();
+      if (gifts.length === 0) {
+        return origFetch(input, init);
+      }
+
+      /* Skip if the body itself is a gift add (avoid recursion if our /cart/add hits this wrap) */
+      var bodyStr = '';
+      var body = init && init.body;
+      if (typeof body === 'string') bodyStr = body;
+      if (bodyStr.indexOf('"_bundle_role":"gift"') !== -1) {
+        return origFetch(input, init);
+      }
+
+      return origFetch(input, init).then(function(res) {
+        if (!res.ok) return res;
+
+        giftsAdded = true;
+        addingGifts = true;
+        var bundleId = 'gp-bundle-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
+        var giftItems = gifts.map(function(g, i) {
+          return {
+            id: g.variant_id,
+            quantity: 1,
+            properties: {
+              '_bundle_id': bundleId,
+              '_bundle_role': 'gift',
+              '_gift_index': String(i + 1)
+            }
+          };
+        });
+
+        origFetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({ items: giftItems })
+        })
+        .then(function() {
+          addingGifts = false;
+          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+          document.dispatchEvent(new CustomEvent('cart:refresh'));
+          var drawer = document.getElementById('cart-drawer');
+          if (drawer) drawer.setAttribute('open', '');
+        })
+        .catch(function(err) {
+          addingGifts = false;
+          console.warn('[gift-bundle] failed to add gifts:', err);
+        });
+
+        return res;
+      });
+    };
+  })();
+</script>
