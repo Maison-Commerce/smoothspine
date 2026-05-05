@@ -9,400 +9,453 @@
  */
 {
   "sections": {
-    "gp_section_597882213446452108": {
+    "gp_section_597882213447828364": {
+      "type": "gp-section-597882213447828364",
       "settings": {
-        "checksum": "a69473cdb115876b363659b46d1d54cd13140cc912ef358e762ce444159f42a4_1_1_1_0__1",
-        "gg0TPWGVUYM_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
-        "gg2o9tbo4kE_text": "<p>Durability</p>",
-        "ggBWiaW6bhF_text": "<p>Deep relief at the root of sciatica pain</p>",
-        "ggBueBcyC_N_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
-        "ggC9KfPvidd_text": "<p>Relief</p>",
-        "ggCfpJ9b-qM_text": "<p>Approach</p>",
-        "ggEQ7s3w1cQ_text": "<p>Effectiveness</p>",
-        "ggGumWn84xm_text": "<p>Heating Pads</p>",
-        "ggIH5o4BGNn_text": "<p>Short-term comfort</p>",
-        "ggJha2PuNt6_text": "<p>4-in-1 therapy: traction, vibration, heat &amp; red light</p>",
-        "ggLv8c735AJ_text": "<p>Effectiveness</p>",
-        "ggPVTA3rQXV_text": "<p>Coverage</p>",
-        "ggVHuayvhgM_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
-        "ggXELzBJsMl_text": "<p>Premium, rechargeable, built to last</p>",
-        "gg_PFZT5Da3_text": "<p>Decompresses spine, restores blood flow, reactivates muscles</p>",
-        "gg_wSw_piET_childItem_0": "<p>SmoothSpine Red Light Therapy Belt</p>",
-        "gg_wSw_piET_childItem_1": "<p>Heating Pads</p>",
-        "ggbGWDqfUot_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
-        "ggde6VdF7Hm_text": "<p>Masks discomfort temporarily</p>",
-        "ggevMCsILSq_text": "<p>SmoothSpine Red Light Therapy Belt</p>",
-        "ggfG2d2fr-E_text": "<p>Flimsy, wears out fast</p>",
-        "ggkVMfN2Jfv_text": "<p>Approach</p>",
-        "ggme_kGZCVZ_text": "<p>Heats one spot</p>",
-        "ggs6zDpWNU4_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
-        "ggt8bn2-FbO_text": "<p>Surface warmth only</p>",
-        "ggumZgto9RZ_text": "<p>Relief</p>",
-        "ggwCDFoTZyV_text": "<p>Coverage</p>",
-        "ggxCAaes2sB_text": "<p>Durability</p>",
-        "ggy3kllWXww_text": "<p>Large wrap design covers entire lower back &amp; hips</p>"
-      },
-      "type": "gp-section-597882213446452108"
+        "section_preload": "true",
+        "checksum": "c48275ecdca230e76f86d65cf9adc43e53d5311e48c88fdfdb88a3fefeb9deda_1_1_1_0__1",
+        "ggw7Cz9bPGD_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_1.jpg",
+        "gg1-nBNIy9D_text": "<p><i>\"Lower back pain controlled my whole day. Sitting, walking, even lying down — everything hurt. I’ve tried <strong>multiple therapy systems</strong> over the years, but the pain always came right back. The <strong>SmoothSpine Belt</strong> is the only thing that actually reached the <strong>root of the pain</strong>. Within just <strong>one week</strong>, I noticed my muscles relaxing and the <strong>nerve pressure easing</strong>. Now I can cook, clean, and even sleep through the night without that <strong>burning ache</strong>. This belt genuinely <strong>changed my daily life</strong>.\"</i></p>",
+        "ggV2Gzg1kTE_text": "<p>Emma K.</p>",
+        "gg3ero32Veq_text": "<p>Verified Purchase</p>",
+        "ggc8Jx1axa0_text": "<p>Name</p>",
+        "ggFoPISFWBa_text": "<p>Verified Purchase</p>",
+        "gglxMzPDaXv_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gglxMzPDaXv_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggTWbR7J5A3_text": "<p>(4.7/5 Rated By 21,539+ Customers)</p>",
+        "ggiIss1Rofn_customContent_prefix": "Save",
+        "ggavmk0YmvV_text": "<p>Tired of Constant Sciatica and Back Pain?</p><p><i><u>Get Real Relief At Home with No Pills!</u></i></p>",
+        "ggs0hHOJvUw_text": "<p>The SmoothSpine Light Therapy Belt decompresses your spine, calms inflamed nerves, and reactivates the muscles that support your back — all in just <strong>15 minutes a day.</strong></p>",
+        "gg6tXSXNWai_text": "<p><strong>Relieves sciatica pain, stiffness, and nerve pressure naturally</strong></p>",
+        "ggbcW1KUC8b_text": "<p><strong>Combines heat, massage &amp; red light for total relief</strong></p>",
+        "ggxUNGGnafQ_text": "<p><strong>Portable &amp; cordless — wear it while cooking, working, or relaxing</strong></p>",
+        "ggM-PIG0RRS_text": "<p><strong>Results you can feel from the very first session</strong></p>",
+        "ggpY2W7_DGE_text": "<p><strong>Exclusive Offer! </strong>Order today for free gifts (valued at $64)!</p>",
+        "ggX94OVNJzX_label": "<p>FREE <s>$29</s></p>",
+        "gg1r63QXDxt_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gg1r63QXDxt_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggcfdtcFekE_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-e970ed04-dfe9-4e1d-b189-624fd3eb65c8.png",
+        "ggIET4ER2Mj_text": "<p>Back pain &amp; Sciatica Guide</p>",
+        "ggjdTQ_EiGV_label": "<p>FREE <s>$20</s></p>",
+        "ggfAMneB5xp_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggfAMneB5xp_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggLeV_0-JsI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-70e0977e-0f27-4256-b14f-dd4bb3ddf6a3.jpg",
+        "ggOTk-T51tk_text": "<p>12x Back Pain Relief Patches</p>",
+        "ggpO2x28qf3_label": "<p>FREE <s>$15</s></p>",
+        "gg-W9e7k4Co_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gg-W9e7k4Co_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggrP19V0p8C_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
+        "ggiiSmHEhBj_text": "<p>SmoothSpine Zip Lock Travel Bag</p>",
+        "ggifZ8Bz922_label": "Add to cart",
+        "ggifZ8Bz922_outOfStockLabel": "Out of stock",
+        "ggifZ8Bz922_unavailableLabel": "Unavailable",
+        "ggifZ8Bz922_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
+        "ggifZ8Bz922_errorMessage": "Cannot add product to cart",
+        "ggrNfDYVOMR_text": "<p>90-Day Risk-Free Trial</p>",
+        "ggMqSUhQV7T_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f4fc434c-7412-4e79-98b5-4dc8f7b20abd.png",
+        "ggMqSUhQV7T_srcSet_tablet_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b936f1ab-3d8b-4295-9922-326000cffbe2.jpg",
+        "ggMqSUhQV7T_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_1.jpg",
+        "ggDMIiaV6W6_text": "<p><i>\"Lower back pain controlled my whole day. Sitting, walking, even lying down — everything hurt. I’ve tried <strong>multiple therapy systems</strong> over the years, but the pain always came right back. The <strong>SmoothSpine Belt</strong> is the only thing that actually reached the <strong>root of the pain</strong>. Within just <strong>one week</strong>, I noticed my muscles relaxing and the <strong>nerve pressure easing</strong>. Now I can cook, clean, and even sleep through the night without that <strong>burning ache</strong>. This belt genuinely <strong>changed my daily life</strong>.\"</i></p>",
+        "gg5UOLWagTT_text": "<p>Name</p>",
+        "ggq_rOUUVUI_text": "<p>Verified Purchase</p>",
+        "gggrVIsDEcZ_text": "<p>Emma K.</p>",
+        "ggxHBZ5MOH6_text": "<p>Verified Purchase</p>"
+      }
     },
-    "gp_section_597882213446517644": {
-      "settings": {
-        "checksum": "8d39b4fc7b19018c72b2a7036fdc59d1312d6f62a136bc257891a158737e5582_1_1_1_0__1",
-        "gg8OBT-mwiy_text": "<p><strong>Fast &amp; FREE Shipping</strong>&nbsp;</p>",
-        "ggAUsTk6OC3_text": "<p><strong>FREE Sciatica Back Pain Relief Patches ($20.00 Value)</strong></p>",
-        "ggL4MnTf9K1_text": "<p><strong>90-Day Results or Refund Guarantee</strong></p>",
-        "ggRmjDjdLC5_text": "<p>Special Offer On Now!</p>",
-        "ggZo95s7bUZ_label": "<p>GET 60% OFF TODAY ONLY!</p>",
-        "ggcfNawjMqc_text": "<p><strong>FREE 30 Day Fix Sciatica Plan eBook ($29.00 Value)</strong></p>",
-        "ggk2dVAurva_text": "<p><strong>FREE Travel Bag: Reusable SmoothSpine Ziplock Travel Bag ($15.00 Value)</strong></p>",
-        "ggqcynYj7rR_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_f350cc34-d27e-40db-bd9d-e5062e1b8332.webp",
-        "ggr4TOUfTIs_text": "<p><u>Act Now and You'll Get:</u></p>",
-        "ggt6Awj6Ycu_text": "<p><strong>60% OFF -</strong> SmoothSpine - Red Light Therapy Belt (All-Inclusive treatment kit)</p>",
-        "ggtCYt5fUxn_text": "<p><u>Note:&nbsp;</u> <span style=\"color:#0ABA4C;\"><strong>Not Available on Amazon or eBay</strong></span></p>",
-        "ggx79_2DNRs_text": "<p>Try Your SmoothSpine - Red Light Therapy Belt NOW <u>Risk-Free</u> at an All Time Low Price!</p>"
+    "maison_gift_bundle_yFbWV7": {
+      "type": "maison-gift-bundle",
+      "blocks": {
+        "gift_product_QpdFA4": {
+          "type": "gift_product",
+          "settings": {
+            "product": "smoothspine™-30-day-sciatica-relief-plan-coc"
+          }
+        },
+        "gift_product_r4CcrL": {
+          "type": "gift_product",
+          "settings": {
+            "product": "sciatica-back-pain-relief-patches"
+          }
+        },
+        "gift_product_6phWqh": {
+          "type": "gift_product",
+          "settings": {
+            "product": "charging-kit-travel-bag"
+          }
+        }
       },
-      "type": "gp-section-597882213446517644"
+      "block_order": [
+        "gift_product_QpdFA4",
+        "gift_product_r4CcrL",
+        "gift_product_6phWqh"
+      ],
+      "name": "Gift Bundle",
+      "settings": {}
     },
-    "gp_section_597882213446583180": {
+    "gp_section_597882213446976396": {
+      "type": "gp-section-597882213446976396",
       "settings": {
-        "checksum": "334bb6dbc79e04057ed90697bfae063f38fb5e47c8ba69ed9c01a6e1ec13f581_1_1_1_0__1",
-        "gg2skFYSnGC_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-51bd7b08-f4ec-461e-bc36-e7734dd26e06.jpg",
-        "ggBZyLN-waC_text": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee. </strong>If you don't experience the remarkable <strong>relief from constant sciatica and back pain</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days,</strong> let us know and we will refund every single penny of your investment. <strong>No questions asked.</strong></p>",
-        "ggY5Kp_-GFD_text": "100% SATISFACTION<br>90-DAY MONEY BACK GUARANTEE",
-        "ggufORTUxtU_text": "<p>We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>"
-      },
-      "type": "gp-section-597882213446583180"
+        "section_preload": "false",
+        "checksum": "e0461e1e776adcdcdffb8692dce69acdede4bcf921bdad5378c0f58728b2815a_1_1_1_0__1",
+        "ggM5PyQMWIe_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-4509bc60-7755-4bb1-bf01-ade8debf7b92.png",
+        "ggLDYJogvxV_text": "<p>90-DAY MONEY BACK GUARANTEE</p>",
+        "ggnoiLlCDO__text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">If you’re not absolutely thrilled with the results, we will refund every single penny of your investment. No hassle. </span></p>",
+        "ggS7aImJyob_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-57c29034-4d6a-46b9-8286-ab77c5f0b8cb.png",
+        "gggjLf4dDUF_text": "<p>FREE SHIPPING</p>",
+        "gg8yY22gLoi_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">We provide fast free shipping and handling for all orders.</span></p>",
+        "ggYRGn3_-rs_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-00428b28-be38-4a92-add3-22f1e8e1171f.png",
+        "ggtkmBCG_Es_text": "<p>GUARANTEED HIGH QUALITY</p>",
+        "ggnO_gdadKG_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">Made of high quality materials. Enjoy consistent, trouble-free performance for a long time. </span></p>"
+      }
     },
-    "gp_section_597882213446648716": {
+    "gp_section_597882213447566220": {
+      "type": "gp-section-597882213447566220",
       "settings": {
-        "checksum": "777bf50a880f4eeaefb114f31e829d44428cdd1bdf8c02e70e244005f88922c7_1_1_1_0__1",
-        "gg5tUayJ_Gz_text": "<p>STEP 3:</p>",
-        "gg6uV7yqBqY_text": "<p>STEP 2:</p>",
-        "ggBNVTsuXWb_text": "<p>Choose the mode that feels best</p>",
-        "ggU2h5Y-nxZ_text": "<p>Relax and enjoy instant relief!</p>",
-        "ggWC3h60DLZ_html5Url": "https://cdn.shopify.com/videos/c/o/v/a3f5c0fae1da412e9fda9b8703a94ab2.mp4",
-        "ggWC3h60DLZ_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/step1.webp",
-        "ggWC3h60DLZ_vimeoUrl": "https://vimeo.com/347119375",
-        "ggWC3h60DLZ_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggYIIb-eOrd_html5Url": "https://cdn.shopify.com/videos/c/o/v/a5e2b631551640c183ad8fe3ad18a9d6.mp4",
-        "ggYIIb-eOrd_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Step_3.webp",
-        "ggYIIb-eOrd_vimeoUrl": "https://vimeo.com/347119375",
-        "ggYIIb-eOrd_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggZDZF7ux33_text": "<p>STEP 1:</p>",
-        "ggmAVCyGk7U_html5Url": "https://cdn.shopify.com/videos/c/o/v/9735fb650eb74bc98ab85e4463045402.mp4",
-        "ggmAVCyGk7U_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/step_2.webp",
-        "ggmAVCyGk7U_vimeoUrl": "https://vimeo.com/347119375",
-        "ggmAVCyGk7U_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggmue6CCCwq_text": "<p>Tighten the straps around your body</p>"
-      },
-      "type": "gp-section-597882213446648716"
-    },
-    "gp_section_597882213446714252": {
-      "settings": {
-        "checksum": "45b9780837da0e36e0f1e663cc6380da17b3c579fca14f4b7e8bef7f9fb3e420_1_1_1_0__1",
-        "gg1rlZNSakA_text": "<p>Simply get yourself a <strong>SmoothSpine - Red Light Therapy Belt</strong> today, use it for 90 days, and then make your decision based on the results. <strong>If you are not absolutely thrilled with the relief, we will issue you an immediate refund.</strong></p>",
-        "ggCn6xOSitZ_text": "<p>That’s why we are offering a <strong>90-day “Results or Refund” guarantee.</strong></p>",
-        "ggDerpXpkv1_text": "Try It For 90 Days, 100% Risk-Free",
-        "ggGwm1Shj_V_text": "<p>In other words, you are only paying if it <strong>truly works</strong> and helps you reclaim a pain-free life.</p>",
-        "ggNH0yZYdL0_text": "Try It for 90 Days, 100% Risk-Free",
-        "ggNmha1SiOD_text": "<p>Here’s the deal: We believe in this product so much that <strong>we don’t want you to spend a dime until you are 100% certain that it works for you.</strong></p>",
-        "ggrKTof5lXf_html5Url": "https://cdn.shopify.com/videos/c/o/v/e33f6d9751cd4b23afe558577af859ba.mov",
-        "ggrKTof5lXf_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/risk_free.webp",
-        "ggrKTof5lXf_vimeoUrl": "https://vimeo.com/347119375",
-        "ggrKTof5lXf_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M"
-      },
-      "type": "gp-section-597882213446714252"
+        "section_preload": "false",
+        "checksum": "8a34124bb6b3e7b8c8ead58b682149a1f9ac15b138024113b574fd5a977cef84_1_1_1_0__1",
+        "ggGkzemG1js_text": "<span style=\"color:#055BDC;\"><strong>You're One Step Away From Lasting At-Home Relief You Can Feel.</strong></span>",
+        "ggWQIG9fsLw_text": "Why Your Sciatica Keeps Coming Back (And Why Pills &amp; Appointments Never Fix It)",
+        "ggN5O792d2I_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggN5O792d2I_vimeoUrl": "https://vimeo.com/347119375",
+        "ggN5O792d2I_html5Url": "https://cdn.shopify.com/videos/c/o/v/598d5746026d49adada2d60864a5715a.mp4",
+        "ggN5O792d2I_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Sciatica_Keeps_Coming.webp",
+        "ggymlr3ksYA_text": "Why Your Sciatica Keeps Coming Back (And Why Pills &amp; Appointments Never Fix It)",
+        "ggj3LHKR5Jp_text": "<p>Most sciatica treatments fail because they only mask symptoms. Pills fade, appointments don’t last, and surgery is risky. The real cause is nerve compression and muscle shutdown in the lower back. When your discs collapse, they pinch the sciatic nerve, block muscle activation, and trap you in a cycle of pain, stiffness, and weakness.</p>",
+        "gg4YoJ0BCta_text": "<p>The only way out? Relieve the pressure, restore blood flow, and reactivate the muscles that support your spine.</p>"
+      }
     },
     "gp_section_597882213446779788": {
+      "type": "gp-section-597882213446779788",
       "settings": {
+        "section_preload": "false",
         "checksum": "25ce3fa7191a246406feadc398236a7f8ca5b669ec091061ce42819081a6ce9f_1_1_1_0__1",
-        "gg-RifOCijk_text": "<p>It’s the only at-home device that blends:</p>",
+        "ggzRfc3KmKh_text": "One Belt. Three Therapies. Total Back Relief at Home.",
+        "gg4GNxuDqa0_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gg4GNxuDqa0_vimeoUrl": "https://vimeo.com/347119375",
         "gg4GNxuDqa0_html5Url": "https://cdn.shopify.com/videos/c/o/v/ebefa6da57c146a3ab43b58e99b5fdaf.mp4",
         "gg4GNxuDqa0_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/One_Belt..webp",
-        "gg4GNxuDqa0_vimeoUrl": "https://vimeo.com/347119375",
-        "gg4GNxuDqa0_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "gg5gEyQLqLG_text": "<p>That’s exactly what the SmoothSpine Red Light Therapy Belt was designed to do.</p>",
         "ggclZmxOds__text": "One Belt. Three Therapies. Total Back Relief at Home.",
-        "gglNkdnoYHM_text": "<p>Together, these therapies create a complete healing environment — so your back can finally recover while you relax at home.</p>",
-        "ggrYT7cGWvp_text": "<p><strong>Vibration Massage </strong>— to stimulate circulation and reawaken dormant back muscles</p>",
+        "gg5gEyQLqLG_text": "<p>That’s exactly what the SmoothSpine Red Light Therapy Belt was designed to do.</p>",
+        "gg-RifOCijk_text": "<p>It’s the only at-home device that blends:</p>",
         "ggu6Yd3u6Yx_text": "<p><strong>Infrared &amp; Red Light Therapy (660nm + 850nm) </strong>— to calm inflammation and restore tissue health</p>",
         "ggyZ6Gf5lWo_text": "<p><strong>Soothing Heat </strong>— to melt stiffness and loosen tight muscles</p>",
-        "ggzRfc3KmKh_text": "One Belt. Three Therapies. Total Back Relief at Home."
-      },
-      "type": "gp-section-597882213446779788"
+        "ggrYT7cGWvp_text": "<p><strong>Vibration Massage </strong>— to stimulate circulation and reawaken dormant back muscles</p>",
+        "gglNkdnoYHM_text": "<p>Together, these therapies create a complete healing environment — so your back can finally recover while you relax at home.</p>"
+      }
+    },
+    "gp_section_597882213447500684": {
+      "type": "gp-section-597882213447500684",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "0ab486b2ec71428156bb91ce1aaa20b636135e1dd2f26946489607cba81bb3a3_1_1_1_0__1",
+        "gg6lqX8ncBw_text": "Backed by Experts. Built on Proven Clinic Therapies.",
+        "ggr9awOTvod_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggr9awOTvod_vimeoUrl": "https://vimeo.com/347119375",
+        "ggr9awOTvod_html5Url": "https://cdn.shopify.com/videos/c/o/v/e90e767df8e1414bb8deb370636c690c.mp4",
+        "ggr9awOTvod_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Backed_by_Experts.webp",
+        "ggihisY810h_text": "Backed by Experts. Built on Proven Clinic Therapies.",
+        "ggiVlsgDWSA_text": "<p>Developed with input from leading physiotherapists and pain specialists, this technology is grounded in proven therapies already used in clinics — but now made simple, portable, and affordable for at-home use.</p>",
+        "gg9L3EDUCMV_text": "Trusted by Thousands: From Sleepless Nights to Pain-Free Days",
+        "ggW6FuzFFTV_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggW6FuzFFTV_vimeoUrl": "https://vimeo.com/347119375",
+        "ggW6FuzFFTV_html5Url": "https://cdn.shopify.com/videos/c/o/v/9e81285dd00c475296faa9a79c31f46e.mov",
+        "ggW6FuzFFTV_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Trusted_by_Thousands.webp",
+        "ggGQXnMY5zT_text": "Trusted by Thousands: From Sleepless Nights to Pain-Free Days",
+        "ggaFHF5sugD_text": "<p>Thousands of users report their pain and stiffness going from 10 to 6 after the very first session! Our customers are finally cancelling expensive treatments, not relying on daily pain meds, and enjoying pain-free life just a few weeks after they start using the Red Light Therapy Belt.</p>"
+      }
+    },
+    "gp_section_597882213447435148": {
+      "type": "gp-section-597882213447435148",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "5619db54f9e7231b42aa5ddecb0a5d1c7f95bd178f746a68b7b88e0b5a490332_1_1_1_0__1",
+        "gg9sfrUDNiv_text": "Relief in 3 Simple Steps.",
+        "ggb3x-tTKfi_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggb3x-tTKfi_vimeoUrl": "https://vimeo.com/347119375",
+        "ggb3x-tTKfi_html5Url": "https://cdn.shopify.com/videos/c/o/v/438845eea3424c84a61445e1fdbc2042.mov",
+        "ggb3x-tTKfi_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/3_Simple_Steps.webp",
+        "ggNDYVqN7Gc_text": "Relief in 3 Simple Steps.",
+        "ggFoLsfJU5j_text": "<p>Just put the Red Light Therapy Belt on, choose your mode and intensity, and enjoy the effect!</p>",
+        "ggNxAHEd9SQ_text": "<p>While you sit, cook, or even take a walk around the house, the belt works on three levels:</p>",
+        "gg_-MJSPsBq_text": "<p><strong>Releasing pressure on the sciatic nerve</strong></p>",
+        "ggP9YY587P1_text": "<p><strong>Boosting blood flow and oxygen delivery</strong></p>",
+        "ggiF75sp5pb_text": "<p><strong>Reactivating weak muscles to support your spine again</strong></p>",
+        "ggd9w5iVAlN_text": "<p>The more you use it, the more your back rebuilds strength and mobility — so relief lasts longer every day.</p>"
+      }
+    },
+    "gp_section_597882213446714252": {
+      "type": "gp-section-597882213446714252",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "45b9780837da0e36e0f1e663cc6380da17b3c579fca14f4b7e8bef7f9fb3e420_1_1_1_0__1",
+        "ggNH0yZYdL0_text": "Try It for 90 Days, 100% Risk-Free",
+        "ggrKTof5lXf_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggrKTof5lXf_vimeoUrl": "https://vimeo.com/347119375",
+        "ggrKTof5lXf_html5Url": "https://cdn.shopify.com/videos/c/o/v/e33f6d9751cd4b23afe558577af859ba.mov",
+        "ggrKTof5lXf_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/risk_free.webp",
+        "ggDerpXpkv1_text": "Try It For 90 Days, 100% Risk-Free",
+        "ggNmha1SiOD_text": "<p>Here’s the deal: We believe in this product so much that <strong>we don’t want you to spend a dime until you are 100% certain that it works for you.</strong></p>",
+        "ggCn6xOSitZ_text": "<p>That’s why we are offering a <strong>90-day “Results or Refund” guarantee.</strong></p>",
+        "gg1rlZNSakA_text": "<p>Simply get yourself a <strong>SmoothSpine - Red Light Therapy Belt</strong> today, use it for 90 days, and then make your decision based on the results. <strong>If you are not absolutely thrilled with the relief, we will issue you an immediate refund.</strong></p>",
+        "ggGwm1Shj_V_text": "<p>In other words, you are only paying if it <strong>truly works</strong> and helps you reclaim a pain-free life.</p>"
+      }
+    },
+    "gp_section_597882213447697292": {
+      "type": "gp-section-597882213447697292",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "42dbf05ef5f18f0d9ca850e9bb010abac5d95848af2b7a29b4d4aa481e88fb68_1_1_1_0__1",
+        "gg89Nl2jtC8_text": "The SmoothSpine - Red Light Therapy Belt Is The Safer, Healthier Choice",
+        "ggMNnsj0E6I_text": "<p>It’s non-addictive, works fast, and actually does GOOD things for your body.</p>"
+      }
+    },
+    "gp_section_597882213447631756": {
+      "type": "gp-section-597882213447631756",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "4f6b7643f8017b9773d9146a0acf0a1e09b70c6e1f707d45434b6b555acd5729_1_1_1_0__1",
+        "ggchiUpfJH2_text": "The SmoothSpine - Red Light Therapy Belt Is The Safer, Healthier Choice",
+        "ggZWYjcI0Sj_text": "<p>It’s non-addictive, works fast, and actually does GOOD things for your body.</p>",
+        "gg9BWc0M8dN_text": "Heating Pads",
+        "gg1_oC72_tJ_text": "SmoothSpine Red Light Therapy Belt",
+        "gg778RjsMnq_text": "<p>Relief</p>",
+        "ggAI295agNN_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggudtr--VGI_text": "<p>Surface warmth only</p>",
+        "ggXtVzcIn4i_text": "<p>Deep relief at the root of sciatica pain</p>",
+        "ggbw6m67G9n_text": "<p>Approach</p>",
+        "ggJwbWr2e9h_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggv2rJxreOV_text": "<p>Masks discomfort temporarily</p>",
+        "ggnqhHgonui_text": "<p>Decompresses spine, restores blood flow, reactivates muscles</p>",
+        "ggADlBx3OWM_text": "<p>Coverage</p>",
+        "ggHQpopcfgk_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "gg9TUJqo9zB_text": "<p>Heats one spot</p>",
+        "gguuhz4c8ox_text": "<p>Large wrap design covers entire lower back &amp; hips</p>",
+        "gg5dIOY-6fz_text": "<p>Durability</p>",
+        "ggao6JqmRZh_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggh0As70_yZ_text": "<p>Flimsy, wears out fast</p>",
+        "gg6fMv8K2ag_text": "<p>Premium, rechargeable, built to last</p>",
+        "gggY5FM0gri_text": "<p>Effectiveness</p>",
+        "ggrs--tY-Qb_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "gg69nRRFubI_text": "<p>Short-term comfort</p>",
+        "ggxTb43HvUE_text": "<p>4-in-1 therapy: traction, vibration, heat &amp; red light</p>"
+      }
+    },
+    "gp_section_597882213446452108": {
+      "type": "gp-section-597882213446452108",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "a69473cdb115876b363659b46d1d54cd13140cc912ef358e762ce444159f42a4_1_1_1_0__1",
+        "gg_wSw_piET_childItem_0": "<p>SmoothSpine Red Light Therapy Belt</p>",
+        "gg_wSw_piET_childItem_1": "<p>Heating Pads</p>",
+        "ggevMCsILSq_text": "<p>SmoothSpine Red Light Therapy Belt</p>",
+        "ggumZgto9RZ_text": "<p>Relief</p>",
+        "ggBWiaW6bhF_text": "<p>Deep relief at the root of sciatica pain</p>",
+        "ggkVMfN2Jfv_text": "<p>Approach</p>",
+        "gg_PFZT5Da3_text": "<p>Decompresses spine, restores blood flow, reactivates muscles</p>",
+        "ggPVTA3rQXV_text": "<p>Coverage</p>",
+        "ggy3kllWXww_text": "<p>Large wrap design covers entire lower back &amp; hips</p>",
+        "ggxCAaes2sB_text": "<p>Durability</p>",
+        "ggXELzBJsMl_text": "<p>Premium, rechargeable, built to last</p>",
+        "ggEQ7s3w1cQ_text": "<p>Effectiveness</p>",
+        "ggJha2PuNt6_text": "<p>4-in-1 therapy: traction, vibration, heat &amp; red light</p>",
+        "ggGumWn84xm_text": "<p>Heating Pads</p>",
+        "ggC9KfPvidd_text": "<p>Relief</p>",
+        "ggs6zDpWNU4_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggt8bn2-FbO_text": "<p>Surface warmth only</p>",
+        "ggCfpJ9b-qM_text": "<p>Approach</p>",
+        "ggBueBcyC_N_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggde6VdF7Hm_text": "<p>Masks discomfort temporarily</p>",
+        "ggwCDFoTZyV_text": "<p>Coverage</p>",
+        "gg0TPWGVUYM_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggme_kGZCVZ_text": "<p>Heats one spot</p>",
+        "gg2o9tbo4kE_text": "<p>Durability</p>",
+        "ggbGWDqfUot_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggfG2d2fr-E_text": "<p>Flimsy, wears out fast</p>",
+        "ggLv8c735AJ_text": "<p>Effectiveness</p>",
+        "ggVHuayvhgM_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggIH5o4BGNn_text": "<p>Short-term comfort</p>"
+      }
+    },
+    "gp_section_597882213447369612": {
+      "type": "gp-section-597882213447369612",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "1ba286a8cab59d181ee5b9bdbdc6e8a581cd4db4b5768bc341b452c74c0b58d4_1_1_1_0__1",
+        "ggrydDXALPH_text": "Real Users, Real Life-Changing Results",
+        "gg_nv0E1WSj_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/1758119542121_Screenshot_2_1.webp",
+        "gg029TQ7PQT_text": "<p>“I Didn’t Think Anything Could Replace My Heating Pad”</p>",
+        "ggnkoHZd9S5_text": "<p>\"I’ve been using heating pads for years, and while they felt good in the moment, the pain always came back the second I stood up. I didn’t believe anything portable could go deeper. But after two weeks with the SmoothSpine Therapy Belt, I can honestly say it’s night and day. The combination of heat, vibration, and light therapy gives lasting relief. I finally wake up without stiffness.\"</p>",
+        "ggmciU_MO8m_text": "<p>— Jennifer S.</p>",
+        "ggx_FgcD6ei_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/1758119553841_Screenshot_1_1.webp",
+        "ggBi7vQvbIj_text": "<p>“I Was Skeptical About Another ‘At-Home Gadget’”</p>",
+        "ggJ8hCrLXJq_text": "<p>\"When you’ve tried chiropractors, physical therapy, and endless gadgets, it’s hard to believe one more thing will work. I almost didn’t order this belt, but I’m glad I did. The compression plus red light therapy eased the stabbing pain down my leg within a week. By the second week, I could cook dinner and walk my dog without wincing. This isn’t a gimmick — it’s real relief.\"</p>",
+        "ggReBUA1njy_text": "<p>— Mark D.</p>",
+        "ggcIBXq5yW6_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/1758119578101_Screenshot_3_1.webp",
+        "gg4lOxj8MET_text": "<p>“I Was Afraid of Needing Surgery”</p>",
+        "ggZSVoxxXVa_text": "<p>\"My doctor was already bringing up surgery for my sciatica, and that terrified me. I needed something safe to try first. A friend recommended the SmoothSpine Therapy Belt, and it changed everything. The first session gave me a sense of release I’d never felt before, and within a month, my daily pain went from an 8 to a 2. I’m moving again — no surgery needed.\"</p>",
+        "ggQgcHb_VvV_text": "<p>— Linda K.</p>"
+      }
+    },
+    "gp_section_597882213447893900": {
+      "type": "gp-section-597882213447893900",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "ae7f9e9f76f595269910153e84a3d96296b2e39fd43901282d72336b390d8dd8_1_1_1_0__1",
+        "ggc0EeH0dDJ_text": "How To Use"
+      }
+    },
+    "gp_section_597882213446648716": {
+      "type": "gp-section-597882213446648716",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "777bf50a880f4eeaefb114f31e829d44428cdd1bdf8c02e70e244005f88922c7_1_1_1_0__1",
+        "ggZDZF7ux33_text": "<p>STEP 1:</p>",
+        "ggmue6CCCwq_text": "<p>Tighten the straps around your body</p>",
+        "ggWC3h60DLZ_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggWC3h60DLZ_vimeoUrl": "https://vimeo.com/347119375",
+        "ggWC3h60DLZ_html5Url": "https://cdn.shopify.com/videos/c/o/v/a3f5c0fae1da412e9fda9b8703a94ab2.mp4",
+        "ggWC3h60DLZ_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/step1.webp",
+        "gg6uV7yqBqY_text": "<p>STEP 2:</p>",
+        "ggBNVTsuXWb_text": "<p>Choose the mode that feels best</p>",
+        "ggmAVCyGk7U_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggmAVCyGk7U_vimeoUrl": "https://vimeo.com/347119375",
+        "ggmAVCyGk7U_html5Url": "https://cdn.shopify.com/videos/c/o/v/9735fb650eb74bc98ab85e4463045402.mp4",
+        "ggmAVCyGk7U_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/step_2.webp",
+        "gg5tUayJ_Gz_text": "<p>STEP 3:</p>",
+        "ggU2h5Y-nxZ_text": "<p>Relax and enjoy instant relief!</p>",
+        "ggYIIb-eOrd_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggYIIb-eOrd_vimeoUrl": "https://vimeo.com/347119375",
+        "ggYIIb-eOrd_html5Url": "https://cdn.shopify.com/videos/c/o/v/a5e2b631551640c183ad8fe3ad18a9d6.mp4",
+        "ggYIIb-eOrd_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Step_3.webp"
+      }
+    },
+    "gp_section_597882213447762828": {
+      "type": "gp-section-597882213447762828",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "07558c25c0cde852e31529c733084dbed471710efd7689b711325bd8d324d211_1_1_1_0__1",
+        "ggSb2fxxJNt_text": "Claim Your Discounted SmoothSpine - Red Light Therapy Belt Below While Stock Lasts"
+      }
+    },
+    "gp_section_597882213446517644": {
+      "type": "gp-section-597882213446517644",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "8d39b4fc7b19018c72b2a7036fdc59d1312d6f62a136bc257891a158737e5582_1_1_1_0__1",
+        "ggqcynYj7rR_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_f350cc34-d27e-40db-bd9d-e5062e1b8332.webp",
+        "ggRmjDjdLC5_text": "<p>Special Offer On Now!</p>",
+        "ggx79_2DNRs_text": "<p>Try Your SmoothSpine - Red Light Therapy Belt NOW <u>Risk-Free</u> at an All Time Low Price!</p>",
+        "ggr4TOUfTIs_text": "<p><u>Act Now and You'll Get:</u></p>",
+        "ggt6Awj6Ycu_text": "<p><strong>60% OFF -</strong> SmoothSpine - Red Light Therapy Belt (All-Inclusive treatment kit)</p>",
+        "ggL4MnTf9K1_text": "<p><strong>90-Day Results or Refund Guarantee</strong></p>",
+        "ggk2dVAurva_text": "<p><strong>FREE Travel Bag: Reusable SmoothSpine Ziplock Travel Bag ($15.00 Value)</strong></p>",
+        "gg8OBT-mwiy_text": "<p><strong>Fast &amp; FREE Shipping</strong> </p>",
+        "ggAUsTk6OC3_text": "<p><strong>FREE Sciatica Back Pain Relief Patches ($20.00 Value)</strong></p>",
+        "ggcfNawjMqc_text": "<p><strong>FREE 30 Day Fix Sciatica Plan eBook ($29.00 Value)</strong></p>",
+        "ggZo95s7bUZ_label": "<p>GET 60% OFF TODAY ONLY!</p>",
+        "ggtCYt5fUxn_text": "<p><u>Note: </u> <span style=\"color:#0ABA4C;\"><strong>Not Available on Amazon or eBay</strong></span></p>"
+      }
+    },
+    "gp_section_597882213446583180": {
+      "type": "gp-section-597882213446583180",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "334bb6dbc79e04057ed90697bfae063f38fb5e47c8ba69ed9c01a6e1ec13f581_1_1_1_0__1",
+        "ggY5Kp_-GFD_text": "100% SATISFACTION<br>90-DAY MONEY BACK GUARANTEE",
+        "gg2skFYSnGC_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-51bd7b08-f4ec-461e-bc36-e7734dd26e06.jpg",
+        "ggBZyLN-waC_text": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee. </strong>If you don't experience the remarkable <strong>relief from constant sciatica and back pain</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days,</strong> let us know and we will refund every single penny of your investment. <strong>No questions asked.</strong></p>",
+        "ggufORTUxtU_text": "<p>We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>"
+      }
     },
     "gp_section_597882213446845324": {
+      "type": "gp-section-597882213446845324",
       "settings": {
+        "section_preload": "false",
         "checksum": "cf98442b6fd9cc969432030cfbd34a3e3fff8978be213e62dd7f10ccfb48b9f9_1_1_1_0__1",
         "ggTB9UV4fg5_text": "We're Getting Noticed!",
         "ggqBiWApY31_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-2ef784eb-b38e-40bd-b5a1-a3771bcf0e2d.png"
-      },
-      "type": "gp-section-597882213446845324"
-    },
-    "gp_section_597882213446910860": {
-      "settings": {
-        "checksum": "7139dd28e3d0745963617a490ca443f4e1aa6e6fe7083aeb9566a12f4a3d463b_1_1_1_0__1",
-        "ggEEzbjA_WA_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
-        "gg_R_DeHFGg_text": "SmoothSpine Zip Lock Travel Bag",
-        "ggbeT0zYGDj_text": "<s>$15</s> FREE&nbsp;",
-        "ggu6lqOfqOo_text": "This water-resistant, compact zip lock bag <strong>keeps your SmoothSpine gear organized, clean, and protected</strong>—whether you're at home or on the go. <strong>Lightweight and durable.</strong>",
-        "ggzeMY49Px7_text": "Perfect Travel Companion—FREE with Your Order Today!"
-      },
-      "type": "gp-section-597882213446910860"
-    },
-    "gp_section_597882213446976396": {
-      "settings": {
-        "checksum": "e0461e1e776adcdcdffb8692dce69acdede4bcf921bdad5378c0f58728b2815a_1_1_1_0__1",
-        "gg8yY22gLoi_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">We provide fast free shipping and handling for all orders.</span></p>",
-        "ggLDYJogvxV_text": "<p>90-DAY MONEY BACK GUARANTEE</p>",
-        "ggM5PyQMWIe_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-4509bc60-7755-4bb1-bf01-ade8debf7b92.png",
-        "ggS7aImJyob_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-57c29034-4d6a-46b9-8286-ab77c5f0b8cb.png",
-        "ggYRGn3_-rs_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-00428b28-be38-4a92-add3-22f1e8e1171f.png",
-        "gggjLf4dDUF_text": "<p>FREE SHIPPING</p>",
-        "ggnO_gdadKG_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">Made of high quality materials. Enjoy consistent, trouble-free performance for a long time.&nbsp;</span></p>",
-        "ggnoiLlCDO__text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">If you’re not absolutely thrilled with the results, we will refund every single penny of your investment. No hassle.&nbsp;</span></p>",
-        "ggtkmBCG_Es_text": "<p>GUARANTEED HIGH QUALITY</p>"
-      },
-      "type": "gp-section-597882213446976396"
-    },
-    "gp_section_597882213447041932": {
-      "settings": {
-        "checksum": "3e92f67db4d43227f24f04c18174c4051256f5df2271c7b218e9cc4c83aad994_1_1_1_0__1",
-        "gg8UTtxkN-D_text": "<s>$29</s> FREE&nbsp;",
-        "ggTwHTgH5lQ_text": "This expert-backed eBook with 100+ pages of value-packed info covers <strong>how to best use your Triple Fusion Massager</strong>, as well as proven techniques, exercises, and <strong>lifestyle tips</strong> to help you <strong>eliminate pain and get your life back naturally.</strong>",
-        "ggnsMK_i2tI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-e970ed04-dfe9-4e1d-b189-624fd3eb65c8.png",
-        "ggpjX8cUrAW_text": "Ultimate Guide to Beat Back Pain and Sciatica—FREE with Your Order Today!",
-        "ggwWS9hcr4v_text": "Back pain &amp; Sciatica Guide"
-      },
-      "type": "gp-section-597882213447041932"
-    },
-    "gp_section_597882213447107468": {
-      "settings": {
-        "checksum": "fbd88d21eb00eb46df11d457e31c5cffdb3d6eb1a7d2d727b616948c458c1eb3_1_1_1_0__1",
-        "ggIOMzRL3lW_text": "<s>$20</s> FREE&nbsp;",
-        "ggjCpnyliMr_text": "Herbal Back Pain Relief Patches—FREE with Your Order Today!",
-        "ggpjZRuk_E2_text": "12x Back Pain Relief Patches",
-        "ggvGL5-tdwy_text": "<strong>Soothe back pain naturally</strong> with our herbal relief patches! Made from 100% <strong>natural ingredients</strong>, they promote muscle relaxation, easing tension and soreness. Simple to apply and brings freeing <strong>relief for up to 12 hours.</strong>",
-        "ggyEKece8hY_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-70e0977e-0f27-4256-b14f-dd4bb3ddf6a3.jpg"
-      },
-      "type": "gp-section-597882213447107468"
-    },
-    "gp_section_597882213447173004": {
-      "settings": {
-        "checksum": "b939b5fec353e9ea11009ef0da3b1848cc6ec1886e03f9f5e2877db8cd98813c_1_1_1_0__1"
-      },
-      "type": "gp-section-597882213447173004"
+      }
     },
     "gp_section_597882213447238540": {
+      "type": "gp-section-597882213447238540",
       "settings": {
+        "section_preload": "false",
         "checksum": "2f90b750c5759fa3d7ec25877e5b56f7c59ad65a422aef6562d7d015f7270a81_1_1_1_0__1",
-        "gg5779-Q2LD_text": "<p>Not at all! Just strap it comfortably around your lower back, choose your mode, and press start. The adjustable fit works for all body types, and the simple controls make it easy to relax while the belt does the work.</p>",
         "ggBJa8Yn5GB_text": "Frequently Asked Questions",
-        "ggGBgdMGN1b_text": "<p>Some people notice relief after the very first session. Most report feeling lighter, looser, and less stiff within the first week, with major improvements showing by the 2–3 week mark when used consistently for 15 minutes a day.</p>",
-        "ggJ59b-ywE__text": "<p>Yes! The SmoothSpine Therapy Belt uses the same clinically proven therapies used by physiotherapists, but at safe, adjustable levels for home use. Everything is non-invasive, drug-free, and designed to work gently with your body.</p>",
-        "ggOF78_pLax_text": "<p>Many of our customers struggled with sciatica and back pain for 5, 10, even 20 years before finding relief with the belt. By addressing the root cause — nerve compression and muscle shutdown — the therapies work regardless of how long you’ve been suffering.</p>",
-        "ggZ3I5t3Bhg_text": "<p>You’re fully covered by our 90-day money-back guarantee. Try the SmoothSpine Therapy Belt daily for three months. If you don’t feel a noticeable difference, simply send it back for a full refund — no questions asked.</p>",
         "gg_vblMSRbJ_childItem_0": "<p>Is this safe to use at home?</p>",
         "gg_vblMSRbJ_childItem_1": "<p>Will it actually work if I’ve had pain for years?</p>",
         "gg_vblMSRbJ_childItem_2": "<p>How soon can I feel results?</p>",
         "gg_vblMSRbJ_childItem_3": "<p>Is it complicated to set up?</p>",
         "gg_vblMSRbJ_childItem_4": "<p>Can I use it if I’m not flexible or have limited mobility?</p>",
         "gg_vblMSRbJ_childItem_5": "<p>What if it doesn’t work for me?</p>",
-        "ggrcqOh_tmz_text": "<p>Absolutely. You don’t need to do any special exercises or positions. The belt does the heavy lifting — decompressing your spine, restoring blood flow, and reactivating muscles — all while you’re sitting, lying down, or even lightly moving around the house.</p>"
-      },
-      "type": "gp-section-597882213447238540"
+        "ggJ59b-ywE__text": "<p>Yes! The SmoothSpine Therapy Belt uses the same clinically proven therapies used by physiotherapists, but at safe, adjustable levels for home use. Everything is non-invasive, drug-free, and designed to work gently with your body.</p>",
+        "ggOF78_pLax_text": "<p>Many of our customers struggled with sciatica and back pain for 5, 10, even 20 years before finding relief with the belt. By addressing the root cause — nerve compression and muscle shutdown — the therapies work regardless of how long you’ve been suffering.</p>",
+        "ggGBgdMGN1b_text": "<p>Some people notice relief after the very first session. Most report feeling lighter, looser, and less stiff within the first week, with major improvements showing by the 2–3 week mark when used consistently for 15 minutes a day.</p>",
+        "gg5779-Q2LD_text": "<p>Not at all! Just strap it comfortably around your lower back, choose your mode, and press start. The adjustable fit works for all body types, and the simple controls make it easy to relax while the belt does the work.</p>",
+        "ggrcqOh_tmz_text": "<p>Absolutely. You don’t need to do any special exercises or positions. The belt does the heavy lifting — decompressing your spine, restoring blood flow, and reactivating muscles — all while you’re sitting, lying down, or even lightly moving around the house.</p>",
+        "ggZ3I5t3Bhg_text": "<p>You’re fully covered by our 90-day money-back guarantee. Try the SmoothSpine Therapy Belt daily for three months. If you don’t feel a noticeable difference, simply send it back for a full refund — no questions asked.</p>"
+      }
+    },
+    "gp_section_597882213447173004": {
+      "type": "gp-section-597882213447173004",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "b939b5fec353e9ea11009ef0da3b1848cc6ec1886e03f9f5e2877db8cd98813c_1_1_1_0__1"
+      }
     },
     "gp_section_597882213447304076": {
+      "type": "gp-section-597882213447304076",
       "settings": {
+        "section_preload": "false",
         "checksum": "2cc6f99586723919c8712e988fb055760673e9d9cb5bc912327b5fd19bd64fe8_1_1_1_0__1",
-        "gg95tYxwN9X_errorMessage": "Cannot add product to cart",
+        "ggyJ9flkH7P_text": "SmoothSpine - Red Light Therapy Belt",
+        "ggoTYQK7jZP_text": "<p>4.7/5 Rated </p>",
         "gg95tYxwN9X_label": "BUY Now",
         "gg95tYxwN9X_outOfStockLabel": "Out of stock",
         "gg95tYxwN9X_unavailableLabel": "Unavailable",
         "gg95tYxwN9X_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
-        "ggoTYQK7jZP_text": "<p>4.7/5 Rated&nbsp;</p>",
-        "ggyJ9flkH7P_text": "SmoothSpine - Red Light Therapy Belt"
-      },
-      "type": "gp-section-597882213447304076"
+        "gg95tYxwN9X_errorMessage": "Cannot add product to cart"
+      }
     },
-    "gp_section_597882213447369612": {
+    "gp_section_597882213446910860": {
+      "type": "gp-section-597882213446910860",
       "settings": {
-        "checksum": "1ba286a8cab59d181ee5b9bdbdc6e8a581cd4db4b5768bc341b452c74c0b58d4_1_1_1_0__1",
-        "gg029TQ7PQT_text": "<p>“I Didn’t Think Anything Could Replace My Heating Pad”</p>",
-        "gg4lOxj8MET_text": "<p>“I Was Afraid of Needing Surgery”</p>",
-        "ggBi7vQvbIj_text": "<p>“I Was Skeptical About Another ‘At-Home Gadget’”</p>",
-        "ggJ8hCrLXJq_text": "<p>\"When you’ve tried chiropractors, physical therapy, and endless gadgets, it’s hard to believe one more thing will work. I almost didn’t order this belt, but I’m glad I did. The compression plus red light therapy eased the stabbing pain down my leg within a week. By the second week, I could cook dinner and walk my dog without wincing. This isn’t a gimmick — it’s real relief.\"</p>",
-        "ggQgcHb_VvV_text": "<p>— Linda K.</p>",
-        "ggReBUA1njy_text": "<p>— Mark D.</p>",
-        "ggZSVoxxXVa_text": "<p>\"My doctor was already bringing up surgery for my sciatica, and that terrified me. I needed something safe to try first. A friend recommended the SmoothSpine Therapy Belt, and it changed everything. The first session gave me a sense of release I’d never felt before, and within a month, my daily pain went from an 8 to a 2. I’m moving again — no surgery needed.\"</p>",
-        "gg_nv0E1WSj_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/1758119542121_Screenshot_2_1.webp",
-        "ggcIBXq5yW6_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/1758119578101_Screenshot_3_1.webp",
-        "ggmciU_MO8m_text": "<p>— Jennifer S.</p>",
-        "ggnkoHZd9S5_text": "<p>\"I’ve been using heating pads for years, and while they felt good in the moment, the pain always came back the second I stood up. I didn’t believe anything portable could go deeper. But after two weeks with the SmoothSpine Therapy Belt, I can honestly say it’s night and day. The combination of heat, vibration, and light therapy gives lasting relief. I finally wake up without stiffness.\"</p>",
-        "ggrydDXALPH_text": "Real Users, Real Life-Changing Results",
-        "ggx_FgcD6ei_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/1758119553841_Screenshot_1_1.webp"
-      },
-      "type": "gp-section-597882213447369612"
+        "section_preload": "false",
+        "checksum": "7139dd28e3d0745963617a490ca443f4e1aa6e6fe7083aeb9566a12f4a3d463b_1_1_1_0__1",
+        "ggEEzbjA_WA_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
+        "gg_R_DeHFGg_text": "SmoothSpine Zip Lock Travel Bag",
+        "ggbeT0zYGDj_text": "<s>$15</s> FREE ",
+        "ggzeMY49Px7_text": "Perfect Travel Companion—FREE with Your Order Today!",
+        "ggu6lqOfqOo_text": "This water-resistant, compact zip lock bag <strong>keeps your SmoothSpine gear organized, clean, and protected</strong>—whether you're at home or on the go. <strong>Lightweight and durable.</strong>"
+      }
     },
-    "gp_section_597882213447435148": {
+    "gp_section_597882213447107468": {
+      "type": "gp-section-597882213447107468",
       "settings": {
-        "checksum": "5619db54f9e7231b42aa5ddecb0a5d1c7f95bd178f746a68b7b88e0b5a490332_1_1_1_0__1",
-        "gg9sfrUDNiv_text": "Relief in 3 Simple Steps.",
-        "ggFoLsfJU5j_text": "<p>Just put the Red Light Therapy Belt on, choose your mode and intensity, and enjoy the effect!</p>",
-        "ggNDYVqN7Gc_text": "Relief in 3 Simple Steps.",
-        "ggNxAHEd9SQ_text": "<p>While you sit, cook, or even take a walk around the house, the belt works on three levels:</p>",
-        "ggP9YY587P1_text": "<p><strong>Boosting blood flow and oxygen delivery</strong></p>",
-        "gg_-MJSPsBq_text": "<p><strong>Releasing pressure on the sciatic nerve</strong></p>",
-        "ggb3x-tTKfi_html5Url": "https://cdn.shopify.com/videos/c/o/v/438845eea3424c84a61445e1fdbc2042.mov",
-        "ggb3x-tTKfi_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/3_Simple_Steps.webp",
-        "ggb3x-tTKfi_vimeoUrl": "https://vimeo.com/347119375",
-        "ggb3x-tTKfi_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggd9w5iVAlN_text": "<p>The more you use it, the more your back rebuilds strength and mobility — so relief lasts longer every day.</p>",
-        "ggiF75sp5pb_text": "<p><strong>Reactivating weak muscles to support your spine again</strong></p>"
-      },
-      "type": "gp-section-597882213447435148"
+        "section_preload": "false",
+        "checksum": "fbd88d21eb00eb46df11d457e31c5cffdb3d6eb1a7d2d727b616948c458c1eb3_1_1_1_0__1",
+        "ggyEKece8hY_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-70e0977e-0f27-4256-b14f-dd4bb3ddf6a3.jpg",
+        "ggpjZRuk_E2_text": "12x Back Pain Relief Patches",
+        "ggIOMzRL3lW_text": "<s>$20</s> FREE ",
+        "ggjCpnyliMr_text": "Herbal Back Pain Relief Patches—FREE with Your Order Today!",
+        "ggvGL5-tdwy_text": "<strong>Soothe back pain naturally</strong> with our herbal relief patches! Made from 100% <strong>natural ingredients</strong>, they promote muscle relaxation, easing tension and soreness. Simple to apply and brings freeing <strong>relief for up to 12 hours.</strong>"
+      }
     },
-    "gp_section_597882213447500684": {
+    "gp_section_597882213447041932": {
+      "type": "gp-section-597882213447041932",
       "settings": {
-        "checksum": "0ab486b2ec71428156bb91ce1aaa20b636135e1dd2f26946489607cba81bb3a3_1_1_1_0__1",
-        "gg6lqX8ncBw_text": "Backed by Experts. Built on Proven Clinic Therapies.",
-        "gg9L3EDUCMV_text": "Trusted by Thousands: From Sleepless Nights to Pain-Free Days",
-        "ggGQXnMY5zT_text": "Trusted by Thousands: From Sleepless Nights to Pain-Free Days",
-        "ggW6FuzFFTV_html5Url": "https://cdn.shopify.com/videos/c/o/v/9e81285dd00c475296faa9a79c31f46e.mov",
-        "ggW6FuzFFTV_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Trusted_by_Thousands.webp",
-        "ggW6FuzFFTV_vimeoUrl": "https://vimeo.com/347119375",
-        "ggW6FuzFFTV_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggaFHF5sugD_text": "<p>Thousands of users report their pain and stiffness going from 10 to 6 after the very first session! Our customers are finally cancelling expensive treatments, not relying on daily pain meds, and enjoying pain-free life just a few weeks after they start using the Red Light Therapy Belt.</p>",
-        "ggiVlsgDWSA_text": "<p>Developed with input from leading physiotherapists and pain specialists, this technology is grounded in proven therapies already used in clinics — but now made simple, portable, and affordable for at-home use.</p>",
-        "ggihisY810h_text": "Backed by Experts. Built on Proven Clinic Therapies.",
-        "ggr9awOTvod_html5Url": "https://cdn.shopify.com/videos/c/o/v/e90e767df8e1414bb8deb370636c690c.mp4",
-        "ggr9awOTvod_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Backed_by_Experts.webp",
-        "ggr9awOTvod_vimeoUrl": "https://vimeo.com/347119375",
-        "ggr9awOTvod_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M"
-      },
-      "type": "gp-section-597882213447500684"
-    },
-    "gp_section_597882213447566220": {
-      "settings": {
-        "checksum": "8a34124bb6b3e7b8c8ead58b682149a1f9ac15b138024113b574fd5a977cef84_1_1_1_0__1",
-        "gg4YoJ0BCta_text": "<p>The only way out? Relieve the pressure, restore blood flow, and reactivate the muscles that support your spine.</p>",
-        "ggGkzemG1js_text": "<span style=\"color:#055BDC;\"><strong>You're One Step Away From Lasting At-Home Relief You Can Feel.</strong></span>",
-        "ggN5O792d2I_html5Url": "https://cdn.shopify.com/videos/c/o/v/598d5746026d49adada2d60864a5715a.mp4",
-        "ggN5O792d2I_poster_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Sciatica_Keeps_Coming.webp",
-        "ggN5O792d2I_vimeoUrl": "https://vimeo.com/347119375",
-        "ggN5O792d2I_youtubeUrl": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggWQIG9fsLw_text": "Why Your Sciatica Keeps Coming Back (And Why Pills &amp; Appointments Never Fix It)",
-        "ggj3LHKR5Jp_text": "<p>Most sciatica treatments fail because they only mask symptoms. Pills fade, appointments don’t last, and surgery is risky. The real cause is nerve compression and muscle shutdown in the lower back. When your discs collapse, they pinch the sciatic nerve, block muscle activation, and trap you in a cycle of pain, stiffness, and weakness.</p>",
-        "ggymlr3ksYA_text": "Why Your Sciatica Keeps Coming Back (And Why Pills &amp; Appointments Never Fix It)"
-      },
-      "type": "gp-section-597882213447566220"
-    },
-    "gp_section_597882213447631756": {
-      "settings": {
-        "checksum": "4f6b7643f8017b9773d9146a0acf0a1e09b70c6e1f707d45434b6b555acd5729_1_1_1_0__1",
-        "gg1_oC72_tJ_text": "SmoothSpine Red Light Therapy Belt",
-        "gg5dIOY-6fz_text": "<p>Durability</p>",
-        "gg69nRRFubI_text": "<p>Short-term comfort</p>",
-        "gg6fMv8K2ag_text": "<p>Premium, rechargeable, built to last</p>",
-        "gg778RjsMnq_text": "<p>Relief</p>",
-        "gg9BWc0M8dN_text": "Heating Pads",
-        "gg9TUJqo9zB_text": "<p>Heats one spot</p>",
-        "ggADlBx3OWM_text": "<p>Coverage</p>",
-        "ggAI295agNN_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
-        "ggHQpopcfgk_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
-        "ggJwbWr2e9h_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
-        "ggXtVzcIn4i_text": "<p>Deep relief at the root of sciatica pain</p>",
-        "ggZWYjcI0Sj_text": "<p>It’s non-addictive, works fast, and actually does GOOD things for your body.</p>",
-        "ggao6JqmRZh_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
-        "ggbw6m67G9n_text": "<p>Approach</p>",
-        "ggchiUpfJH2_text": "The SmoothSpine - Red Light Therapy Belt Is The Safer, Healthier Choice",
-        "gggY5FM0gri_text": "<p>Effectiveness</p>",
-        "ggh0As70_yZ_text": "<p>Flimsy, wears out fast</p>",
-        "ggnqhHgonui_text": "<p>Decompresses spine, restores blood flow, reactivates muscles</p>",
-        "ggrs--tY-Qb_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
-        "ggudtr--VGI_text": "<p>Surface warmth only</p>",
-        "gguuhz4c8ox_text": "<p>Large wrap design covers entire lower back &amp; hips</p>",
-        "ggv2rJxreOV_text": "<p>Masks discomfort temporarily</p>",
-        "ggxTb43HvUE_text": "<p>4-in-1 therapy: traction, vibration, heat &amp; red light</p>"
-      },
-      "type": "gp-section-597882213447631756"
-    },
-    "gp_section_597882213447697292": {
-      "settings": {
-        "checksum": "42dbf05ef5f18f0d9ca850e9bb010abac5d95848af2b7a29b4d4aa481e88fb68_1_1_1_0__1",
-        "gg89Nl2jtC8_text": "The SmoothSpine - Red Light Therapy Belt Is The Safer, Healthier Choice",
-        "ggMNnsj0E6I_text": "<p>It’s non-addictive, works fast, and actually does GOOD things for your body.</p>"
-      },
-      "type": "gp-section-597882213447697292"
-    },
-    "gp_section_597882213447762828": {
-      "settings": {
-        "checksum": "07558c25c0cde852e31529c733084dbed471710efd7689b711325bd8d324d211_1_1_1_0__1",
-        "ggSb2fxxJNt_text": "Claim Your Discounted SmoothSpine - Red Light Therapy Belt Below While Stock Lasts"
-      },
-      "type": "gp-section-597882213447762828"
-    },
-    "gp_section_597882213447828364": {
-      "settings": {
-        "checksum": "c48275ecdca230e76f86d65cf9adc43e53d5311e48c88fdfdb88a3fefeb9deda_1_1_1_0__1",
-        "gg-W9e7k4Co_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "gg-W9e7k4Co_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
-        "gg1-nBNIy9D_text": "<p><i>\"Lower back pain controlled my whole day. Sitting, walking, even lying down — everything hurt. I’ve tried <strong>multiple therapy systems</strong> over the years, but the pain always came right back. The <strong>SmoothSpine Belt</strong> is the only thing that actually reached the <strong>root of the pain</strong>. Within just <strong>one week</strong>, I noticed my muscles relaxing and the <strong>nerve pressure easing</strong>. Now I can cook, clean, and even sleep through the night without that <strong>burning ache</strong>. This belt genuinely <strong>changed my daily life</strong>.\"</i></p>",
-        "gg1r63QXDxt_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "gg1r63QXDxt_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
-        "gg3ero32Veq_text": "<p>Verified Purchase</p>",
-        "gg5UOLWagTT_text": "<p>Name</p>",
-        "gg6tXSXNWai_text": "<p><strong>Relieves sciatica pain, stiffness, and nerve pressure naturally</strong></p>",
-        "ggDMIiaV6W6_text": "<p><i>\"Lower back pain controlled my whole day. Sitting, walking, even lying down — everything hurt. I’ve tried <strong>multiple therapy systems</strong> over the years, but the pain always came right back. The <strong>SmoothSpine Belt</strong> is the only thing that actually reached the <strong>root of the pain</strong>. Within just <strong>one week</strong>, I noticed my muscles relaxing and the <strong>nerve pressure easing</strong>. Now I can cook, clean, and even sleep through the night without that <strong>burning ache</strong>. This belt genuinely <strong>changed my daily life</strong>.\"</i></p>",
-        "ggFoPISFWBa_text": "<p>Verified Purchase</p>",
-        "ggIET4ER2Mj_text": "<p>Back pain &amp; Sciatica Guide</p>",
-        "ggLeV_0-JsI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-70e0977e-0f27-4256-b14f-dd4bb3ddf6a3.jpg",
-        "ggM-PIG0RRS_text": "<p><strong>Results you can feel from the very first session</strong></p>",
-        "ggMqSUhQV7T_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f4fc434c-7412-4e79-98b5-4dc8f7b20abd.png",
-        "ggMqSUhQV7T_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_1.jpg",
-        "ggMqSUhQV7T_srcSet_tablet_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b936f1ab-3d8b-4295-9922-326000cffbe2.jpg",
-        "ggOTk-T51tk_text": "<p>12x Back Pain Relief Patches</p>",
-        "ggTWbR7J5A3_text": "<p>(4.7/5 Rated By 21,539+ Customers)</p>",
-        "ggV2Gzg1kTE_text": "<p>Emma K.</p>",
-        "ggX94OVNJzX_label": "<p>FREE <s>$29</s></p>",
-        "ggavmk0YmvV_text": "<p>Tired of Constant Sciatica and Back Pain?</p><p><i><u>Get Real Relief At Home with No Pills!</u></i></p>",
-        "ggbcW1KUC8b_text": "<p><strong>Combines heat, massage &amp; red light for total relief</strong></p>",
-        "ggc8Jx1axa0_text": "<p>Name</p>",
-        "ggcfdtcFekE_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-e970ed04-dfe9-4e1d-b189-624fd3eb65c8.png",
-        "ggfAMneB5xp_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggfAMneB5xp_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
-        "gggrVIsDEcZ_text": "<p>Emma K.</p>",
-        "ggiIss1Rofn_customContent_prefix": "Save",
-        "ggifZ8Bz922_errorMessage": "Cannot add product to cart",
-        "ggifZ8Bz922_label": "Add to cart",
-        "ggifZ8Bz922_outOfStockLabel": "Out of stock",
-        "ggifZ8Bz922_unavailableLabel": "Unavailable",
-        "ggifZ8Bz922_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
-        "ggiiSmHEhBj_text": "<p>SmoothSpine Zip Lock Travel Bag</p>",
-        "ggjdTQ_EiGV_label": "<p>FREE <s>$20</s></p>",
-        "gglxMzPDaXv_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "gglxMzPDaXv_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
-        "ggpO2x28qf3_label": "<p>FREE <s>$15</s></p>",
-        "ggpY2W7_DGE_text": "<p><strong>Exclusive Offer! </strong>Order today for free gifts (valued at $64)!</p>",
-        "ggq_rOUUVUI_text": "<p>Verified Purchase</p>",
-        "ggrNfDYVOMR_text": "<p>90-Day Risk-Free Trial</p>",
-        "ggrP19V0p8C_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
-        "ggs0hHOJvUw_text": "<p>The SmoothSpine Light Therapy Belt decompresses your spine, calms inflamed nerves, and reactivates the muscles that support your back — all in just <strong>15 minutes a day.</strong></p>",
-        "ggw7Cz9bPGD_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_1.jpg",
-        "ggxHBZ5MOH6_text": "<p>Verified Purchase</p>",
-        "ggxUNGGnafQ_text": "<p><strong>Portable &amp; cordless — wear it while cooking, working, or relaxing</strong></p>",
-        "section_preload": "true"
-      },
-      "type": "gp-section-597882213447828364"
-    },
-    "gp_section_597882213447893900": {
-      "settings": {
-        "checksum": "ae7f9e9f76f595269910153e84a3d96296b2e39fd43901282d72336b390d8dd8_1_1_1_0__1",
-        "ggc0EeH0dDJ_text": "How To Use"
-      },
-      "type": "gp-section-597882213447893900"
+        "section_preload": "false",
+        "checksum": "3e92f67db4d43227f24f04c18174c4051256f5df2271c7b218e9cc4c83aad994_1_1_1_0__1",
+        "ggnsMK_i2tI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-e970ed04-dfe9-4e1d-b189-624fd3eb65c8.png",
+        "ggwWS9hcr4v_text": "Back pain &amp; Sciatica Guide",
+        "gg8UTtxkN-D_text": "<s>$29</s> FREE ",
+        "ggpjX8cUrAW_text": "Ultimate Guide to Beat Back Pain and Sciatica—FREE with Your Order Today!",
+        "ggTwHTgH5lQ_text": "This expert-backed eBook with 100+ pages of value-packed info covers <strong>how to best use your Triple Fusion Massager</strong>, as well as proven techniques, exercises, and <strong>lifestyle tips</strong> to help you <strong>eliminate pain and get your life back naturally.</strong>"
+      }
     }
   },
   "order": [
+    "maison_gift_bundle_yFbWV7",
     "gp_section_597882213447828364",
     "gp_section_597882213446976396",
     "gp_section_597882213447566220",
