@@ -9,295 +9,340 @@
  */
 {
   "sections": {
-    "gp_section_599882144214418277": {
+    "gp_section_599882144215663461": {
+      "type": "gp-section-599882144215663461",
       "settings": {
-        "checksum": "0793d76f95265b7a1b914f50bf66cce73e4465258757a3b6be323901a823b5a4_1_1_1_0__1",
-        "gg1Zyc2nEcp_text": "<p>Time to Relief</p>",
-        "gg2Gq3ahF5m_text": "<p>✅ Permanent with use</p>",
-        "gg3RrMs2Q-h_text": "<p>Treatment</p>",
-        "gg6sHoOniM-_text": "<p>$3,900/ year</p>",
-        "gg7m3VT-nql_text": "<p>❌ Temporary</p>",
-        "gg7sPfujTU1_text": "<p>$7,800/ year</p>",
-        "ggAAfTg-03F_text": "<p>Days</p>",
-        "ggCb9rTmYNi_text": "<p>SmoothSpine Triple Fusion vs. Traditional Treatments</p>",
-        "ggD8Y7tx9eT_text": "<p>30%</p>",
-        "ggFcYjKCLp4_text": "<p>Days–weeks</p>",
-        "ggHn0oiy-O5_text": "<p>Pain Pills</p>",
-        "ggI80Z9tCA4_text": "<p>$99 once</p>",
-        "ggIfuRQfnMI_text": "<p>❌ 3–6 months max</p>",
-        "ggJpLAygnSt_text": "<p>Weeks–months</p>",
-        "ggK2_QjRkxr_text": "<p>0%</p>",
-        "ggLybiaEZ-9_text": "<p>⚠️ 40% need revision</p>",
-        "ggMPIMeP4Go_text": "<p>Injections</p>",
-        "ggR2G6nDN2n_text": "<p>Months</p>",
-        "ggRfw7vDgSv_text": "<p>Physical Therapy</p>",
-        "ggSGIy40g6v_text": "<p>60%</p>",
-        "ggT3hS-Pwyl_text": "<p>Surgery</p>",
-        "ggTOdpQJizv_text": "<p>$9,000/ year</p>",
-        "ggTndR4s_A2_text": "<p>SmoothSpine</p>",
-        "ggYB4Cxf6KN_text": "<p>Lasting Results</p>",
-        "ggYV7HQekIo_text": "<p>Success Rate</p>",
-        "ggZlUZeRlcb_text": "<p>$3,600/ year</p>",
-        "gg_CwTNIS5u_text": "Compare Your Options",
-        "gg_FbUAdcPp_text": "<p>15 minutes</p>",
-        "gga8J98MasX_text": "<p>45%</p>",
-        "ggbrA1GUkje_text": "<p>Cost</p>",
-        "gggXkIAUTCe_text": "<p>❌ Requires ongoing</p>",
-        "ggi9aI6HP_O_text": "<p>❌ Masks symptoms</p>",
-        "ggmuHVgIFlc_text": "<p>30 minutes</p>",
-        "ggnM_lDRYVU_text": "<p>Chiropractic</p>",
-        "ggvdrHeXKDl_text": "<p>50%</p>",
-        "ggxUPVJNZ9c_text": "<p>$45,000+</p>",
-        "ggzUjuD6PFW_text": "<p>91%</p>"
+        "section_preload": "true",
+        "checksum": "d921fa6b203ce4370b88d7c18213f88c113fd6083ec5a1944a6df100e7aa2667_1_1_1_0__1",
+        "ggw7Cz9bPGD_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_2.webp",
+        "gg1-nBNIy9D_text": "<p>“I’ve struggled with neck pain and stiffness for years. Turning my head, looking down at my phone, even sleeping was uncomfortable. I honestly didn’t expect much, but after a week of using this device, the difference was unbelievable. The tightness eased up, the tension headaches stopped, and I can actually move my neck without wincing. I still use it every day - it’s well-made and feels amazing. If you’re unsure, seriously… just try it.”</p>",
+        "ggV2Gzg1kTE_text": "<p>Melissa H.</p>",
+        "gg3ero32Veq_text": "<p>Verified Purchase</p>",
+        "ggc8Jx1axa0_text": "<p>Name</p>",
+        "ggFoPISFWBa_text": "<p>Verified Purchase</p>",
+        "gglxMzPDaXv_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gglxMzPDaXv_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggTWbR7J5A3_text": "<p>(4.7/5 Rated By 21,539+ Customers)</p>",
+        "ggiIss1Rofn_customContent_prefix": "Save",
+        "ggavmk0YmvV_text": "<p>Struggling With Neck Pain &amp; Neck Hump?</p><p><i><u>Get Relief In Just 15 Minutes A Day!</u></i></p>",
+        "ggs0hHOJvUw_text": "<p>SmoothSpine CerviPro Max Uses Four Technologies To Help Rehydrate Cervical Discs, Easing Neck Pain, Reducing Neck Hump, And Relieving Tension Naturally.</p>",
+        "gg6tXSXNWai_text": "<p><strong>Provides Fast Relief From Neck Pain And Cervical Discomfort</strong></p>",
+        "ggbcW1KUC8b_text": "<p><strong>Helps Rehydrate Your Cervical Discs</strong></p>",
+        "ggxUNGGnafQ_text": "<p><strong>Relieves Tightness, Stiffness, And Posture-Related Tension</strong></p>",
+        "ggM-PIG0RRS_text": "<p><strong>Feel The Difference In Just 15 Minutes Per Day</strong></p>",
+        "ggpY2W7_DGE_text": "<p><strong>Exclusive Offer! </strong>Order today for free gifts (valued at $64)!</p>",
+        "ggX94OVNJzX_label": "<p>FREE <s>$29</s></p>",
+        "gg1r63QXDxt_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gg1r63QXDxt_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggcfdtcFekE_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/TFBM_14_3951a0c9-67aa-417a-bec2-c3e363ffe358.webp",
+        "ggIET4ER2Mj_text": "<p>Neck pain &amp; Hump elimination guide</p>",
+        "ggjdTQ_EiGV_label": "<p>FREE <s>$20</s></p>",
+        "ggfAMneB5xp_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "ggfAMneB5xp_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggLeV_0-JsI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/12_patch_box_with_Patches_1.webp",
+        "ggOTk-T51tk_text": "<p>12x Neck Pain Relief Patches</p>",
+        "ggpO2x28qf3_label": "<p>FREE <s>$15</s></p>",
+        "gg-W9e7k4Co_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gg-W9e7k4Co_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggrP19V0p8C_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
+        "ggiiSmHEhBj_text": "<p>SmoothSpine Zip Lock Travel Bag</p>",
+        "ggifZ8Bz922_label": "Add to cart",
+        "ggifZ8Bz922_outOfStockLabel": "Out of stock",
+        "ggifZ8Bz922_unavailableLabel": "Unavailable",
+        "ggifZ8Bz922_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
+        "ggifZ8Bz922_errorMessage": "Cannot add product to cart",
+        "ggrNfDYVOMR_text": "<p>90-Day Risk-Free Trial</p>",
+        "ggMqSUhQV7T_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f4fc434c-7412-4e79-98b5-4dc8f7b20abd.png",
+        "ggMqSUhQV7T_srcSet_tablet_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b936f1ab-3d8b-4295-9922-326000cffbe2.jpg",
+        "ggMqSUhQV7T_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_2.webp",
+        "ggDMIiaV6W6_text": "<p>\"My neck pain was getting unbearable, and the hump at the base of my neck kept getting bigger. Sitting at work, looking down at my phone-<strong>everything hurt.</strong> I bought the Triple Fusion Neck Massager out of desperation, and after <strong>just 1 week</strong>, the relief blew me away. The tightness eased, the burning down my neck stopped, and <strong>I can finally turn my head without that sharp pinch.</strong> Even my neck hump looks visibly smaller. I use it every day now. If you're unsure, trust me… this thing WORKS!\"</p>",
+        "gg5UOLWagTT_text": "<p>Name</p>",
+        "ggq_rOUUVUI_text": "<p>Verified Purchase</p>",
+        "gggrVIsDEcZ_text": "<p>Melissa H.</p>",
+        "ggxHBZ5MOH6_text": "<p>Verified Purchase</p>"
+      }
+    },
+    "maison_gift_bundle_Y9xB4Q": {
+      "type": "maison-gift-bundle",
+      "blocks": {
+        "gift_product_REeUbb": {
+          "type": "gift_product",
+          "settings": {
+            "product": "smoothspine™-30-day-sciatica-relief-plan-coc"
+          }
+        },
+        "gift_product_FEUXPM": {
+          "type": "gift_product",
+          "settings": {
+            "product": "sciatica-back-pain-relief-patches"
+          }
+        },
+        "gift_product_y9EWeW": {
+          "type": "gift_product",
+          "settings": {
+            "product": "charging-kit-travel-bag"
+          }
+        }
       },
-      "type": "gp-section-599882144214418277"
+      "block_order": [
+        "gift_product_REeUbb",
+        "gift_product_FEUXPM",
+        "gift_product_y9EWeW"
+      ],
+      "name": "Gift Bundle",
+      "settings": {}
+    },
+    "gp_section_599882144214745957": {
+      "type": "gp-section-599882144214745957",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "391e73b31adad9ef596553c24b8ed8829700eebb1a4b004f6473b308a0e9042f_1_1_1_0__1",
+        "ggM5PyQMWIe_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-4509bc60-7755-4bb1-bf01-ade8debf7b92.png",
+        "ggLDYJogvxV_text": "<p>90-DAY MONEY BACK GUARANTEE</p>",
+        "ggnoiLlCDO__text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">If you’re not absolutely thrilled with the results, we will refund every single penny of your investment. No hassle. </span></p>",
+        "ggS7aImJyob_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-57c29034-4d6a-46b9-8286-ab77c5f0b8cb.png",
+        "gggjLf4dDUF_text": "<p>FREE SHIPPING</p>",
+        "gg8yY22gLoi_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">We provide fast free shipping and handling for all orders.</span></p>",
+        "ggYRGn3_-rs_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-00428b28-be38-4a92-add3-22f1e8e1171f.png",
+        "ggtkmBCG_Es_text": "<p>GUARANTEED HIGH QUALITY</p>",
+        "ggnO_gdadKG_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">Made of high quality materials. Enjoy consistent, trouble-free performance for a long time. </span></p>"
+      }
+    },
+    "gp_section_599882144215335781": {
+      "type": "gp-section-599882144215335781",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "acb3eb521b2dc58cc4ea1fb1683cc7c0c1a647e253e46b5b6989831f0e06db7d_1_1_1_0__1",
+        "ggchiUpfJH2_text": "Compare Your Options",
+        "ggZWYjcI0Sj_text": "<p>SmoothSpine CerviPro Max vs. Traditional Treatments</p>",
+        "ggD5TFHQOul_text": "<p>Treatment</p>",
+        "ggBZHWcbbCW_text": "<p>Cost</p>",
+        "ggedWPzHeRS_text": "<p>Success Rate    </p>",
+        "ggdS5SJJqef_text": "<p>Time to Relief    </p>",
+        "ggZF0s8REuT_text": "<p>Lasting Results</p>",
+        "ggUIPR4uztb_text": "<p>SmoothSpine</p>",
+        "ggqOBhPvnlp_text": "<p>$249,95 once</p>",
+        "ggrbnhcYs32_text": "<p>91%</p>",
+        "ggE6es1zBwA_text": "<p>15 minutes</p>",
+        "ggbk_HP42hR_text": "<p>✅ Permanent with use</p>",
+        "ggzGeGGTme5_text": "<p>Chiropractic</p>",
+        "ggGi22MLnc9_text": "<p>$3,900/ year</p>",
+        "ggcT5jufCml_text": "<p>45%</p>",
+        "ggLvNQZAufG_text": "<p>Days–weeks</p>",
+        "ggz74JPwRrF_text": "<p>❌ Temporary</p>",
+        "ggkIjZWSCph_text": "<p>Physical Therapy</p>",
+        "ggtjkKbA4KM_text": "<p>$7,800/ year</p>",
+        "ggExWdC_cwe_text": "<p>50%</p>",
+        "ggkta_5SNnw_text": "<p>Weeks–months</p>",
+        "ggd1e4gtpQZ_text": "<p>❌ Requires ongoing</p>",
+        "ggda91P9l3o_text": "<p>Injections</p>",
+        "ggKgTOkelee_text": "<p>$9,000/ year</p>",
+        "ggj8dPUQLv3_text": "<p>30%</p>",
+        "ggit8HXWyYJ_text": "<p>Days</p>",
+        "ggCg2HhUC_o_text": "<p>❌ 3–6 months max</p>",
+        "gglbMFVk8A4_text": "<p>Surgery</p>",
+        "ggVX_jwNoUD_text": "<p>$45,000+</p>",
+        "gg1s1r3CPAH_text": "<p>60%</p>",
+        "ggs0dHbI39W_text": "<p>Months</p>",
+        "ggLHhVUFE3S_text": "<p>⚠️ 40% need revision</p>",
+        "ggzPZaZk_WZ_text": "<p>Pain Pills</p>",
+        "gggHvuEgv-H_text": "<p>$3,600/ year</p>",
+        "ggunNDbivKp_text": "<p>0%</p>",
+        "ggM3bM5cqro_text": "<p>30 minutes</p>",
+        "ggjAyQkCo2R_text": "<p>❌ Masks symptoms</p>"
+      }
+    },
+    "gp_section_599882144214418277": {
+      "type": "gp-section-599882144214418277",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "0793d76f95265b7a1b914f50bf66cce73e4465258757a3b6be323901a823b5a4_1_1_1_0__1",
+        "gg_CwTNIS5u_text": "Compare Your Options",
+        "ggCb9rTmYNi_text": "<p>SmoothSpine Triple Fusion vs. Traditional Treatments</p>",
+        "gg3RrMs2Q-h_text": "<p>Treatment</p>",
+        "ggbrA1GUkje_text": "<p>Cost</p>",
+        "ggYV7HQekIo_text": "<p>Success Rate</p>",
+        "gg1Zyc2nEcp_text": "<p>Time to Relief</p>",
+        "ggYB4Cxf6KN_text": "<p>Lasting Results</p>",
+        "ggTndR4s_A2_text": "<p>SmoothSpine</p>",
+        "ggI80Z9tCA4_text": "<p>$99 once</p>",
+        "ggzUjuD6PFW_text": "<p>91%</p>",
+        "gg_FbUAdcPp_text": "<p>15 minutes</p>",
+        "gg2Gq3ahF5m_text": "<p>✅ Permanent with use</p>",
+        "ggnM_lDRYVU_text": "<p>Chiropractic</p>",
+        "gg6sHoOniM-_text": "<p>$3,900/ year</p>",
+        "gga8J98MasX_text": "<p>45%</p>",
+        "ggFcYjKCLp4_text": "<p>Days–weeks</p>",
+        "gg7m3VT-nql_text": "<p>❌ Temporary</p>",
+        "ggRfw7vDgSv_text": "<p>Physical Therapy</p>",
+        "gg7sPfujTU1_text": "<p>$7,800/ year</p>",
+        "ggvdrHeXKDl_text": "<p>50%</p>",
+        "ggJpLAygnSt_text": "<p>Weeks–months</p>",
+        "gggXkIAUTCe_text": "<p>❌ Requires ongoing</p>",
+        "ggMPIMeP4Go_text": "<p>Injections</p>",
+        "ggTOdpQJizv_text": "<p>$9,000/ year</p>",
+        "ggD8Y7tx9eT_text": "<p>30%</p>",
+        "ggAAfTg-03F_text": "<p>Days</p>",
+        "ggIfuRQfnMI_text": "<p>❌ 3–6 months max</p>",
+        "ggT3hS-Pwyl_text": "<p>Surgery</p>",
+        "ggxUPVJNZ9c_text": "<p>$45,000+</p>",
+        "ggSGIy40g6v_text": "<p>60%</p>",
+        "ggR2G6nDN2n_text": "<p>Months</p>",
+        "ggLybiaEZ-9_text": "<p>⚠️ 40% need revision</p>",
+        "ggHn0oiy-O5_text": "<p>Pain Pills</p>",
+        "ggZlUZeRlcb_text": "<p>$3,600/ year</p>",
+        "ggK2_QjRkxr_text": "<p>0%</p>",
+        "ggmuHVgIFlc_text": "<p>30 minutes</p>",
+        "ggi9aI6HP_O_text": "<p>❌ Masks symptoms</p>"
+      }
+    },
+    "gp_section_599882144215794533": {
+      "type": "gp-section-599882144215794533",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "80ee23f390a14274dbc6fe7c6b0d531343e0f503a92bb1fd95adfd0df739c7c0_1_1_1_0__1",
+        "ggrydDXALPH_text": "Real People. Real Results.",
+        "gg_nv0E1WSj_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/7_a7265580-b90e-42d5-8645-652f0277e71b.png",
+        "gg029TQ7PQT_text": "<p>\"Canceled My $45,000 Surgery\"</p>",
+        "ggnkoHZd9S5_text": "<p>\"I was scheduled for cervical fusion. After 6 weeks using this device, my surgeon said my discs looked healthier on the MRI. Surgery canceled. Money saved. Life changed.\"</p>",
+        "ggmciU_MO8m_text": "<p>Robert K., 48</p>",
+        "ggx_FgcD6ei_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/8_e0e9cbc7-cdf7-43ec-960e-0b4ff211ec58.png",
+        "ggBi7vQvbIj_text": "<p>\"My Hump Is Almost Gone\"</p>",
+        "ggJ8hCrLXJq_text": "<p>\"The bump at my neck base was so bad I only wore turtlenecks. It's reduced by 70% after 2 months. I can wear normal clothes again!\"</p>",
+        "ggReBUA1njy_text": "<p>Patricia L., 46</p>",
+        "ggcIBXq5yW6_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/9_daa985b7-21d1-4626-a3e2-6da6daa87455.png",
+        "gg4lOxj8MET_text": "<p>\"Better Than Years of Chiropractic\"</p>",
+        "ggZSVoxxXVa_text": "<p>\"I spent $200/month on adjustments for 3 years. This $249 device did more in 1 month than all those appointments combined.\"</p>",
+        "ggQgcHb_VvV_text": "<p>Melissa M., 41</p>"
+      }
+    },
+    "gp_section_599882144215466853": {
+      "type": "gp-section-599882144215466853",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "6b424203b4921df6ec1693a234d665beed1403831edbd466d7a500cedd5b033e_1_1_1_0__1",
+        "ggSb2fxxJNt_text": "What's Included"
+      }
+    },
+    "gp_section_599882144215401317": {
+      "type": "gp-section-599882144215401317",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "c74a696534da5c90e12fa6d223feaaa588ed98910cc88b8f9bd8d6bca3f535bd_1_1_1_0__1",
+        "ggqcynYj7rR_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/TFBM_15.png",
+        "ggRmjDjdLC5_text": "<p><strong>Special Offer On Now!</strong></p>",
+        "ggx79_2DNRs_text": "<p>SmoothSpine CerviPro Max<br>USB-C Charging Cable, Fast Charge Adapter<br>User Manual with Protocols<br>Quick Start Guide</p>",
+        "ggr4TOUfTIs_text": "<p><u>Device Specifications:</u></p>",
+        "ggt6Awj6Ycu_text": "<p><strong>Therapeutic Heat &amp; Red Light Therapy</strong></p>",
+        "ggL4MnTf9K1_text": "<p><strong>EMS Function</strong></p>",
+        "ggk2dVAurva_text": "<p><strong>Intelligent Traction</strong></p>",
+        "gg8OBT-mwiy_text": "<p><strong>Fits most neck sizes 12\"-18\"</strong></p>",
+        "ggAUsTk6OC3_text": "<p><strong>Medical-grade materials</strong></p>",
+        "ggeOUQYXJ6q_text": "<p>Limited Time: Save $114 Today</p>",
+        "ggZo95s7bUZ_label": "<p>GET 17% OFF BEFORE WE SELL OUT!</p>",
+        "ggtCYt5fUxn_text": "<p><u>Note: </u> <span style=\"color:#0ABA4C;\"><strong>Not Available on Amazon or eBay</strong></span></p>"
+      }
+    },
+    "gp_section_599882144214680421": {
+      "type": "gp-section-599882144214680421",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "a7b924aa91c030ded059e8003a6edb742e680f230de8bf89144c250a4db55178_1_1_1_0__1",
+        "ggY5Kp_-GFD_text": "100% SATISFACTION<br>90-DAY MONEY BACK GUARANTEE",
+        "gg2skFYSnGC_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-51bd7b08-f4ec-461e-bc36-e7734dd26e06.jpg",
+        "ggBZyLN-waC_text": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee. </strong>If you don't experience the remarkable <strong>relief from Neck Pain &amp; Neck Hump </strong>that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days,</strong> let us know and we will refund every single penny of your investment. <strong>No questions asked.</strong></p>",
+        "ggufORTUxtU_text": "<p>We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>"
+      }
     },
     "gp_section_599882144214549349": {
+      "type": "gp-section-599882144214549349",
       "settings": {
+        "section_preload": "false",
         "checksum": "f4ee3a221e20c72c3f9d30c616ca233cbfc5afcdec11508bc510ca7de7d73163_1_1_1_0__1",
         "ggTB9UV4fg5_text": "We're Getting Noticed!",
         "ggqBiWApY31_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-2ef784eb-b38e-40bd-b5a1-a3771bcf0e2d.png"
-      },
-      "type": "gp-section-599882144214549349"
-    },
-    "gp_section_599882144214614885": {
-      "settings": {
-        "checksum": "9bdd95e5d53b25f240710e1f3cceaa5337b17dcd99e226de7fea5509fca4c876_1_1_1_0__1",
-        "ggEEzbjA_WA_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
-        "gg_R_DeHFGg_text": "SmoothSpine Zip Lock Travel Bag",
-        "ggbeT0zYGDj_text": "<s>$15</s> FREE&nbsp;",
-        "ggu6lqOfqOo_text": "This water-resistant, compact zip lock bag <strong>keeps your SmoothSpine gear organized, clean, and protected</strong>—whether you're at home or on the go. <strong>Lightweight and durable.</strong>",
-        "ggzeMY49Px7_text": "Perfect Travel Companion—FREE with Your Order Today!"
-      },
-      "type": "gp-section-599882144214614885"
-    },
-    "gp_section_599882144214680421": {
-      "settings": {
-        "checksum": "a7b924aa91c030ded059e8003a6edb742e680f230de8bf89144c250a4db55178_1_1_1_0__1",
-        "gg2skFYSnGC_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-51bd7b08-f4ec-461e-bc36-e7734dd26e06.jpg",
-        "ggBZyLN-waC_text": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee. </strong>If you don't experience the remarkable <strong>relief from Neck Pain &amp; Neck Hump </strong>that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days,</strong> let us know and we will refund every single penny of your investment. <strong>No questions asked.</strong></p>",
-        "ggY5Kp_-GFD_text": "100% SATISFACTION<br>90-DAY MONEY BACK GUARANTEE",
-        "ggufORTUxtU_text": "<p>We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>"
-      },
-      "type": "gp-section-599882144214680421"
-    },
-    "gp_section_599882144214745957": {
-      "settings": {
-        "checksum": "391e73b31adad9ef596553c24b8ed8829700eebb1a4b004f6473b308a0e9042f_1_1_1_0__1",
-        "gg8yY22gLoi_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">We provide fast free shipping and handling for all orders.</span></p>",
-        "ggLDYJogvxV_text": "<p>90-DAY MONEY BACK GUARANTEE</p>",
-        "ggM5PyQMWIe_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-4509bc60-7755-4bb1-bf01-ade8debf7b92.png",
-        "ggS7aImJyob_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-57c29034-4d6a-46b9-8286-ab77c5f0b8cb.png",
-        "ggYRGn3_-rs_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-00428b28-be38-4a92-add3-22f1e8e1171f.png",
-        "gggjLf4dDUF_text": "<p>FREE SHIPPING</p>",
-        "ggnO_gdadKG_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">Made of high quality materials. Enjoy consistent, trouble-free performance for a long time.&nbsp;</span></p>",
-        "ggnoiLlCDO__text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">If you’re not absolutely thrilled with the results, we will refund every single penny of your investment. No hassle.&nbsp;</span></p>",
-        "ggtkmBCG_Es_text": "<p>GUARANTEED HIGH QUALITY</p>"
-      },
-      "type": "gp-section-599882144214745957"
-    },
-    "gp_section_599882144214942565": {
-      "settings": {
-        "checksum": "aa8c3372966a25cd84564d304aba8a316371b366c8bf4b5fb1223900855663bd_1_1_1_0__1",
-        "gg8UTtxkN-D_text": "<s>$29</s> FREE&nbsp;",
-        "ggTwHTgH5lQ_text": "This expert-backed eBook with 100+ pages of value-packed info covers <strong>how to best use your Triple Fusion Neck Massager</strong>, as well as proven techniques, exercises, and <strong>lifestyle tips</strong> to help you <strong>eliminate neck pain and get your life back naturally.</strong>",
-        "ggnsMK_i2tI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/TFBM_14_3951a0c9-67aa-417a-bec2-c3e363ffe358.webp",
-        "ggpjX8cUrAW_text": "Ultimate Guide to Beat Neck Pain—FREE with Your Order Today!",
-        "ggwWS9hcr4v_text": "Neck pain &amp; Hump elimination guide"
-      },
-      "type": "gp-section-599882144214942565"
-    },
-    "gp_section_599882144215008101": {
-      "settings": {
-        "checksum": "6066f3235e2981a2270f80b7bebc53dbb986b8db42109eb7a273dcb2d3ed3c80_1_1_1_0__1",
-        "ggIOMzRL3lW_text": "<s>$20</s> FREE&nbsp;",
-        "ggjCpnyliMr_text": "Herbal Neck Pain Relief Patches—FREE with Your Order Today!",
-        "ggpjZRuk_E2_text": "12x Neck Pain Relief Patches",
-        "ggvGL5-tdwy_text": "<strong>Soothe Neck pain naturally</strong> with our herbal relief patches! Made from 100% <strong>natural ingredients</strong>, they promote muscle relaxation, easing tension and soreness. Simple to apply and brings freeing <strong>relief for up to 12 hours.</strong>",
-        "ggyEKece8hY_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/12_patch_box_with_Patches_1.webp"
-      },
-      "type": "gp-section-599882144215008101"
-    },
-    "gp_section_599882144215073637": {
-      "settings": {
-        "checksum": "56145abca9956e1a0052a49c9eca16cd7fc43490b7531685e264368ff3fd36a4_1_1_1_0__1"
-      },
-      "type": "gp-section-599882144215073637"
-    },
-    "gp_section_599882144215335781": {
-      "settings": {
-        "checksum": "acb3eb521b2dc58cc4ea1fb1683cc7c0c1a647e253e46b5b6989831f0e06db7d_1_1_1_0__1",
-        "gg1s1r3CPAH_text": "<p>60%</p>",
-        "ggBZHWcbbCW_text": "<p>Cost</p>",
-        "ggCg2HhUC_o_text": "<p>❌ 3–6 months max</p>",
-        "ggD5TFHQOul_text": "<p>Treatment</p>",
-        "ggE6es1zBwA_text": "<p>15 minutes</p>",
-        "ggExWdC_cwe_text": "<p>50%</p>",
-        "ggGi22MLnc9_text": "<p>$3,900/ year</p>",
-        "ggKgTOkelee_text": "<p>$9,000/ year</p>",
-        "ggLHhVUFE3S_text": "<p>⚠️ 40% need revision</p>",
-        "ggLvNQZAufG_text": "<p>Days–weeks</p>",
-        "ggM3bM5cqro_text": "<p>30 minutes</p>",
-        "ggUIPR4uztb_text": "<p>SmoothSpine</p>",
-        "ggVX_jwNoUD_text": "<p>$45,000+</p>",
-        "ggZF0s8REuT_text": "<p>Lasting Results</p>",
-        "ggZWYjcI0Sj_text": "<p>SmoothSpine CerviPro Max vs. Traditional Treatments</p>",
-        "ggbk_HP42hR_text": "<p>✅ Permanent with use</p>",
-        "ggcT5jufCml_text": "<p>45%</p>",
-        "ggchiUpfJH2_text": "Compare Your Options",
-        "ggd1e4gtpQZ_text": "<p>❌ Requires ongoing</p>",
-        "ggdS5SJJqef_text": "<p>Time to Relief&nbsp;&nbsp;&nbsp;&nbsp;</p>",
-        "ggda91P9l3o_text": "<p>Injections</p>",
-        "ggedWPzHeRS_text": "<p>Success Rate&nbsp;&nbsp;&nbsp;&nbsp;</p>",
-        "gggHvuEgv-H_text": "<p>$3,600/ year</p>",
-        "ggit8HXWyYJ_text": "<p>Days</p>",
-        "ggj8dPUQLv3_text": "<p>30%</p>",
-        "ggjAyQkCo2R_text": "<p>❌ Masks symptoms</p>",
-        "ggkIjZWSCph_text": "<p>Physical Therapy</p>",
-        "ggkta_5SNnw_text": "<p>Weeks–months</p>",
-        "gglbMFVk8A4_text": "<p>Surgery</p>",
-        "ggqOBhPvnlp_text": "<p>$249,95 once</p>",
-        "ggrbnhcYs32_text": "<p>91%</p>",
-        "ggs0dHbI39W_text": "<p>Months</p>",
-        "ggtjkKbA4KM_text": "<p>$7,800/ year</p>",
-        "ggunNDbivKp_text": "<p>0%</p>",
-        "ggz74JPwRrF_text": "<p>❌ Temporary</p>",
-        "ggzGeGGTme5_text": "<p>Chiropractic</p>",
-        "ggzPZaZk_WZ_text": "<p>Pain Pills</p>"
-      },
-      "type": "gp-section-599882144215335781"
-    },
-    "gp_section_599882144215401317": {
-      "settings": {
-        "checksum": "c74a696534da5c90e12fa6d223feaaa588ed98910cc88b8f9bd8d6bca3f535bd_1_1_1_0__1",
-        "gg8OBT-mwiy_text": "<p><strong>Fits most neck sizes 12\"-18\"</strong></p>",
-        "ggAUsTk6OC3_text": "<p><strong>Medical-grade materials</strong></p>",
-        "ggL4MnTf9K1_text": "<p><strong>EMS Function</strong></p>",
-        "ggRmjDjdLC5_text": "<p><strong>Special Offer On Now!</strong></p>",
-        "ggZo95s7bUZ_label": "<p>GET 17% OFF BEFORE WE SELL OUT!</p>",
-        "ggeOUQYXJ6q_text": "<p>Limited Time: Save $114 Today</p>",
-        "ggk2dVAurva_text": "<p><strong>Intelligent Traction</strong></p>",
-        "ggqcynYj7rR_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/TFBM_15.png",
-        "ggr4TOUfTIs_text": "<p><u>Device Specifications:</u></p>",
-        "ggt6Awj6Ycu_text": "<p><strong>Therapeutic Heat &amp; Red Light Therapy</strong></p>",
-        "ggtCYt5fUxn_text": "<p><u>Note:&nbsp;</u> <span style=\"color:#0ABA4C;\"><strong>Not Available on Amazon or eBay</strong></span></p>",
-        "ggx79_2DNRs_text": "<p>SmoothSpine CerviPro Max<br>USB-C Charging Cable, Fast Charge Adapter<br>User Manual with Protocols<br>Quick Start Guide</p>"
-      },
-      "type": "gp-section-599882144215401317"
-    },
-    "gp_section_599882144215466853": {
-      "settings": {
-        "checksum": "6b424203b4921df6ec1693a234d665beed1403831edbd466d7a500cedd5b033e_1_1_1_0__1",
-        "ggSb2fxxJNt_text": "What's Included"
-      },
-      "type": "gp-section-599882144215466853"
+      }
     },
     "gp_section_599882144215532389": {
+      "type": "gp-section-599882144215532389",
       "settings": {
+        "section_preload": "false",
         "checksum": "e9b8c4525ce834d13d00be87ebd7d7d740ee7a4477d0c9d139fb9341e1f959c3_1_1_1_0__1",
-        "gg5779-Q2LD_text": "<p>Yes. The device uses gentle, controlled traction - much safer than manual adjustments. We have thousands of users in their 60s, 70s, and 80s. Always consult your doctor if you have specific medical conditions.</p>",
         "ggBJa8Yn5GB_text": "Frequently Asked Questions",
-        "ggGBgdMGN1b_text": "<p>Most users feel immediate relief from the decompression (within 30 seconds). Significant pain reduction typically occurs within 7 days. Posture and hump improvement becomes visible after 4-6 weeks of daily use.</p>",
-        "ggJ59b-ywE__text": "<p>Heating pads only provide surface heat. The CerviPro Max combines medical-grade traction (creates space between vertebrae), therapeutic heat (increases blood flow 300%), and EMS and Red Light functions (release muscle tension) - all working together to actually rehydrate your discs.</p>",
-        "ggOF78_pLax_text": "<p>Yes. The forward head posture and hump are caused by compressed discs and muscle imbalance. By decompressing the spine and releasing tension, most users see visible improvement in 6-8 weeks.</p>",
-        "ggZ3I5t3Bhg_text": "<p>You're covered by our 90-day guarantee. If you don't see results, we'll refund 100% of your purchase. No risk to you.</p>",
         "gg_vblMSRbJ_childItem_0": "<p><strong>How is this different from a regular heating pad?</strong></p>",
         "gg_vblMSRbJ_childItem_1": "<p><strong>Will this work for my dowager's hump?</strong></p>",
         "gg_vblMSRbJ_childItem_2": "<p><strong>How long before I feel results?</strong></p>",
         "gg_vblMSRbJ_childItem_3": "<p><strong>Is it safe for older users?</strong></p>",
         "gg_vblMSRbJ_childItem_4": "<p><strong>How often should I use it?</strong></p>",
-        "gg_vblMSRbJ_childItem_5": "<p><strong>What if it doesn&#039;t work for me?</strong></p>",
-        "ggrcqOh_tmz_text": "<p>For best results, use 15 minutes once or twice daily. Most users do one session in the morning and one in the evening.</p>"
-      },
-      "type": "gp-section-599882144215532389"
+        "gg_vblMSRbJ_childItem_5": "<p><strong>What if it doesn't work for me?</strong></p>",
+        "ggJ59b-ywE__text": "<p>Heating pads only provide surface heat. The CerviPro Max combines medical-grade traction (creates space between vertebrae), therapeutic heat (increases blood flow 300%), and EMS and Red Light functions (release muscle tension) - all working together to actually rehydrate your discs.</p>",
+        "ggOF78_pLax_text": "<p>Yes. The forward head posture and hump are caused by compressed discs and muscle imbalance. By decompressing the spine and releasing tension, most users see visible improvement in 6-8 weeks.</p>",
+        "ggGBgdMGN1b_text": "<p>Most users feel immediate relief from the decompression (within 30 seconds). Significant pain reduction typically occurs within 7 days. Posture and hump improvement becomes visible after 4-6 weeks of daily use.</p>",
+        "gg5779-Q2LD_text": "<p>Yes. The device uses gentle, controlled traction - much safer than manual adjustments. We have thousands of users in their 60s, 70s, and 80s. Always consult your doctor if you have specific medical conditions.</p>",
+        "ggrcqOh_tmz_text": "<p>For best results, use 15 minutes once or twice daily. Most users do one session in the morning and one in the evening.</p>",
+        "ggZ3I5t3Bhg_text": "<p>You're covered by our 90-day guarantee. If you don't see results, we'll refund 100% of your purchase. No risk to you.</p>"
+      }
     },
-    "gp_section_599882144215663461": {
+    "gp_section_599882144215073637": {
+      "type": "gp-section-599882144215073637",
       "settings": {
-        "checksum": "d921fa6b203ce4370b88d7c18213f88c113fd6083ec5a1944a6df100e7aa2667_1_1_1_0__1",
-        "gg-W9e7k4Co_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "gg-W9e7k4Co_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
-        "gg1-nBNIy9D_text": "<p>“I’ve struggled with neck pain and stiffness for years. Turning my head, looking down at my phone, even sleeping was uncomfortable. I honestly didn’t expect much, but after a week of using this device, the difference was unbelievable. The tightness eased up, the tension headaches stopped, and I can actually move my neck without wincing. I still use it every day - it’s well-made and feels amazing. If you’re unsure, seriously… just try it.”</p>",
-        "gg1r63QXDxt_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "gg1r63QXDxt_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
-        "gg3ero32Veq_text": "<p>Verified Purchase</p>",
-        "gg5UOLWagTT_text": "<p>Name</p>",
-        "gg6tXSXNWai_text": "<p><strong>Provides Fast Relief From Neck Pain And Cervical Discomfort</strong></p>",
-        "ggDMIiaV6W6_text": "<p>\"My neck pain was getting unbearable, and the hump at the base of my neck kept getting bigger. Sitting at work, looking down at my phone-<strong>everything hurt.</strong> I bought the Triple Fusion Neck Massager out of desperation, and after <strong>just 1 week</strong>, the relief blew me away. The tightness eased, the burning down my neck stopped, and <strong>I can finally turn my head without that sharp pinch.</strong> Even my neck hump looks visibly smaller. I use it every day now. If you're unsure, trust me… this thing WORKS!\"</p>",
-        "ggFoPISFWBa_text": "<p>Verified Purchase</p>",
-        "ggIET4ER2Mj_text": "<p>Neck pain &amp; Hump elimination guide</p>",
-        "ggLeV_0-JsI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/12_patch_box_with_Patches_1.webp",
-        "ggM-PIG0RRS_text": "<p><strong>Feel The Difference In Just 15 Minutes Per Day</strong></p>",
-        "ggMqSUhQV7T_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f4fc434c-7412-4e79-98b5-4dc8f7b20abd.png",
-        "ggMqSUhQV7T_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_2.webp",
-        "ggMqSUhQV7T_srcSet_tablet_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b936f1ab-3d8b-4295-9922-326000cffbe2.jpg",
-        "ggOTk-T51tk_text": "<p>12x Neck Pain Relief Patches</p>",
-        "ggTWbR7J5A3_text": "<p>(4.7/5 Rated By 21,539+ Customers)</p>",
-        "ggV2Gzg1kTE_text": "<p>Melissa H.</p>",
-        "ggX94OVNJzX_label": "<p>FREE <s>$29</s></p>",
-        "ggavmk0YmvV_text": "<p>Struggling With Neck Pain &amp; Neck Hump?</p><p><i><u>Get Relief In Just 15 Minutes A Day!</u></i></p>",
-        "ggbcW1KUC8b_text": "<p><strong>Helps Rehydrate Your Cervical Discs</strong></p>",
-        "ggc8Jx1axa0_text": "<p>Name</p>",
-        "ggcfdtcFekE_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/TFBM_14_3951a0c9-67aa-417a-bec2-c3e363ffe358.webp",
-        "ggfAMneB5xp_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "ggfAMneB5xp_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
-        "gggrVIsDEcZ_text": "<p>Melissa H.</p>",
-        "ggiIss1Rofn_customContent_prefix": "Save",
-        "ggifZ8Bz922_errorMessage": "Cannot add product to cart",
-        "ggifZ8Bz922_label": "Add to cart",
-        "ggifZ8Bz922_outOfStockLabel": "Out of stock",
-        "ggifZ8Bz922_unavailableLabel": "Unavailable",
-        "ggifZ8Bz922_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
-        "ggiiSmHEhBj_text": "<p>SmoothSpine Zip Lock Travel Bag</p>",
-        "ggjdTQ_EiGV_label": "<p>FREE <s>$20</s></p>",
-        "gglxMzPDaXv_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
-        "gglxMzPDaXv_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
-        "ggpO2x28qf3_label": "<p>FREE <s>$15</s></p>",
-        "ggpY2W7_DGE_text": "<p><strong>Exclusive Offer! </strong>Order today for free gifts (valued at $64)!</p>",
-        "ggq_rOUUVUI_text": "<p>Verified Purchase</p>",
-        "ggrNfDYVOMR_text": "<p>90-Day Risk-Free Trial</p>",
-        "ggrP19V0p8C_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
-        "ggs0hHOJvUw_text": "<p>SmoothSpine CerviPro Max Uses Four Technologies To Help Rehydrate Cervical Discs, Easing Neck Pain, Reducing Neck Hump, And Relieving Tension Naturally.</p>",
-        "ggw7Cz9bPGD_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/download_2.webp",
-        "ggxHBZ5MOH6_text": "<p>Verified Purchase</p>",
-        "ggxUNGGnafQ_text": "<p><strong>Relieves Tightness, Stiffness, And Posture-Related Tension</strong></p>",
-        "section_preload": "true"
-      },
-      "type": "gp-section-599882144215663461"
+        "section_preload": "false",
+        "checksum": "56145abca9956e1a0052a49c9eca16cd7fc43490b7531685e264368ff3fd36a4_1_1_1_0__1"
+      }
     },
     "gp_section_599882144215728997": {
+      "type": "gp-section-599882144215728997",
       "settings": {
+        "section_preload": "false",
         "checksum": "6e0646da72f35659125c26eee0883a7eb184a6de1d4c03f279b67e1e79a161e2_1_1_1_0__1",
-        "gg95tYxwN9X_errorMessage": "Cannot add product to cart",
+        "ggyJ9flkH7P_text": "SmoothSpine™️ Triple Fusion Neck Massager",
+        "ggoTYQK7jZP_text": "<p>4.7/5 Rated </p>",
         "gg95tYxwN9X_label": "BUY Now",
         "gg95tYxwN9X_outOfStockLabel": "Out of stock",
         "gg95tYxwN9X_unavailableLabel": "Unavailable",
         "gg95tYxwN9X_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
-        "ggoTYQK7jZP_text": "<p>4.7/5 Rated&nbsp;</p>",
-        "ggyJ9flkH7P_text": "SmoothSpine™️ Triple Fusion Neck Massager"
-      },
-      "type": "gp-section-599882144215728997"
+        "gg95tYxwN9X_errorMessage": "Cannot add product to cart"
+      }
     },
-    "gp_section_599882144215794533": {
+    "gp_section_599882144214614885": {
+      "type": "gp-section-599882144214614885",
       "settings": {
-        "checksum": "80ee23f390a14274dbc6fe7c6b0d531343e0f503a92bb1fd95adfd0df739c7c0_1_1_1_0__1",
-        "gg029TQ7PQT_text": "<p>\"Canceled My $45,000 Surgery\"</p>",
-        "gg4lOxj8MET_text": "<p>\"Better Than Years of Chiropractic\"</p>",
-        "ggBi7vQvbIj_text": "<p>\"My Hump Is Almost Gone\"</p>",
-        "ggJ8hCrLXJq_text": "<p>\"The bump at my neck base was so bad I only wore turtlenecks. It's reduced by 70% after 2 months. I can wear normal clothes again!\"</p>",
-        "ggQgcHb_VvV_text": "<p>Melissa M., 41</p>",
-        "ggReBUA1njy_text": "<p>Patricia L., 46</p>",
-        "ggZSVoxxXVa_text": "<p>\"I spent $200/month on adjustments for 3 years. This $249 device did more in 1 month than all those appointments combined.\"</p>",
-        "gg_nv0E1WSj_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/7_a7265580-b90e-42d5-8645-652f0277e71b.png",
-        "ggcIBXq5yW6_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/9_daa985b7-21d1-4626-a3e2-6da6daa87455.png",
-        "ggmciU_MO8m_text": "<p>Robert K., 48</p>",
-        "ggnkoHZd9S5_text": "<p>\"I was scheduled for cervical fusion. After 6 weeks using this device, my surgeon said my discs looked healthier on the MRI. Surgery canceled. Money saved. Life changed.\"</p>",
-        "ggrydDXALPH_text": "Real People. Real Results.",
-        "ggx_FgcD6ei_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/8_e0e9cbc7-cdf7-43ec-960e-0b4ff211ec58.png"
-      },
-      "type": "gp-section-599882144215794533"
+        "section_preload": "false",
+        "checksum": "9bdd95e5d53b25f240710e1f3cceaa5337b17dcd99e226de7fea5509fca4c876_1_1_1_0__1",
+        "ggEEzbjA_WA_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-dbe7f9da-6e74-479b-b67d-0eb15e1024aa.webp",
+        "gg_R_DeHFGg_text": "SmoothSpine Zip Lock Travel Bag",
+        "ggbeT0zYGDj_text": "<s>$15</s> FREE ",
+        "ggzeMY49Px7_text": "Perfect Travel Companion—FREE with Your Order Today!",
+        "ggu6lqOfqOo_text": "This water-resistant, compact zip lock bag <strong>keeps your SmoothSpine gear organized, clean, and protected</strong>—whether you're at home or on the go. <strong>Lightweight and durable.</strong>"
+      }
+    },
+    "gp_section_599882144215008101": {
+      "type": "gp-section-599882144215008101",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "6066f3235e2981a2270f80b7bebc53dbb986b8db42109eb7a273dcb2d3ed3c80_1_1_1_0__1",
+        "ggyEKece8hY_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/12_patch_box_with_Patches_1.webp",
+        "ggpjZRuk_E2_text": "12x Neck Pain Relief Patches",
+        "ggIOMzRL3lW_text": "<s>$20</s> FREE ",
+        "ggjCpnyliMr_text": "Herbal Neck Pain Relief Patches—FREE with Your Order Today!",
+        "ggvGL5-tdwy_text": "<strong>Soothe Neck pain naturally</strong> with our herbal relief patches! Made from 100% <strong>natural ingredients</strong>, they promote muscle relaxation, easing tension and soreness. Simple to apply and brings freeing <strong>relief for up to 12 hours.</strong>"
+      }
+    },
+    "gp_section_599882144214942565": {
+      "type": "gp-section-599882144214942565",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "aa8c3372966a25cd84564d304aba8a316371b366c8bf4b5fb1223900855663bd_1_1_1_0__1",
+        "ggnsMK_i2tI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/TFBM_14_3951a0c9-67aa-417a-bec2-c3e363ffe358.webp",
+        "ggwWS9hcr4v_text": "Neck pain &amp; Hump elimination guide",
+        "gg8UTtxkN-D_text": "<s>$29</s> FREE ",
+        "ggpjX8cUrAW_text": "Ultimate Guide to Beat Neck Pain—FREE with Your Order Today!",
+        "ggTwHTgH5lQ_text": "This expert-backed eBook with 100+ pages of value-packed info covers <strong>how to best use your Triple Fusion Neck Massager</strong>, as well as proven techniques, exercises, and <strong>lifestyle tips</strong> to help you <strong>eliminate neck pain and get your life back naturally.</strong>"
+      }
     }
   },
   "order": [
+    "maison_gift_bundle_Y9xB4Q",
     "gp_section_599882144215663461",
     "gp_section_599882144214745957",
     "gp_section_599882144215335781",
