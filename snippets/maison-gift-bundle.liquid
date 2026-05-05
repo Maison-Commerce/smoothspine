@@ -1,22 +1,12 @@
 {% comment %}
-  Globally wraps window.fetch — when a POST /cart/add is detected on a page that
-  has the "Gift Bundle" section, automatically adds the picked gift products
-  with bundle properties.
+  Globally intercepts add-to-cart for the main product (via fetch OR XHR) on
+  pages that have the "Gift Bundle" section. After main product is added,
+  tags it with _bundle_id + _bundle_role: main, then adds the picked gifts
+  with the same _bundle_id so the cart drawer groups them under the main.
 
   Configuration:
-    - Add the "Gift Bundle" section to the relevant product template (e.g. a GemPages PDP)
+    - Add the "Gift Bundle" section to the relevant product template
     - Pick gift products via product picker blocks in the Theme editor
-    - The section sets window.__maisonGiftSectionVariants — this snippet reads it
-
-  Bundle properties set on each gift line item:
-    _bundle_id    — unique id linking gifts to a single main purchase
-    _bundle_role  — 'gift'
-    _gift_index   — order in the bundle
-
-  Skipped:
-  - Pages without the section (no variants set)
-  - Subsequent add-to-cart calls in the same page session (gifts only added once)
-  - The gift add itself (no recursion)
 {% endcomment %}
 
 <script>
@@ -30,11 +20,72 @@
       return gifts.filter(function(g) { return g && g.variant_id; });
     }
 
-    if (!window.fetch) return;
-    var origFetch = window.fetch.bind(window);
     var giftsAdded = false;
     var addingGifts = false;
+    if (!window.fetch) return;
+    var origFetch = window.fetch.bind(window);
 
+    function bundleMainAndAddGifts(mainItemPromise) {
+      var gifts = getGifts();
+      if (gifts.length === 0) return;
+      giftsAdded = true;
+      addingGifts = true;
+      var bundleId = 'gp-bundle-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
+
+      Promise.resolve(mainItemPromise).then(function(mainItem) {
+        if (!mainItem || !mainItem.key) {
+          addingGifts = false;
+          return;
+        }
+        var mergedProps = Object.assign({}, mainItem.properties || {}, {
+          '_bundle_id': bundleId,
+          '_bundle_role': 'main'
+        });
+        return origFetch('/cart/change.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          credentials: 'same-origin',
+          body: JSON.stringify({
+            id: mainItem.key,
+            quantity: mainItem.quantity || 1,
+            properties: mergedProps
+          })
+        })
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function() {
+          var giftItems = gifts.map(function(g, i) {
+            return {
+              id: g.variant_id,
+              quantity: 1,
+              properties: {
+                '_bundle_id': bundleId,
+                '_bundle_role': 'gift',
+                '_gift_index': String(i + 1)
+              }
+            };
+          });
+          return origFetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            credentials: 'same-origin',
+            body: JSON.stringify({ items: giftItems })
+          });
+        })
+        .then(function() {
+          addingGifts = false;
+          document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+          document.dispatchEvent(new CustomEvent('cart:refresh'));
+          var drawer = document.getElementById('cart-drawer');
+          if (drawer) drawer.setAttribute('open', '');
+        })
+        .catch(function(err) {
+          addingGifts = false;
+          console.warn('[gift-bundle] bundle setup failed:', err);
+        });
+      });
+    }
+
+    /* ── fetch wrap ── */
     window.fetch = function(input, init) {
       var url = typeof input === 'string' ? input : (input && input.url) || '';
       var method = (init && init.method) || (typeof input !== 'string' && input && input.method) || 'GET';
@@ -43,13 +94,10 @@
       if (!isAddToCart || giftsAdded || addingGifts) {
         return origFetch(input, init);
       }
-
-      var gifts = getGifts();
-      if (gifts.length === 0) {
+      if (getGifts().length === 0) {
         return origFetch(input, init);
       }
 
-      /* Skip if the body itself is a gift add (avoid recursion if our /cart/add hits this wrap) */
       var bodyStr = '';
       var body = init && init.body;
       if (typeof body === 'string') bodyStr = body;
@@ -59,74 +107,53 @@
 
       return origFetch(input, init).then(function(res) {
         if (!res.ok) return res;
-
-        giftsAdded = true;
-        addingGifts = true;
-        var bundleId = 'gp-bundle-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
-
-        /* Parse main item from response to get its line key + existing properties */
-        res.clone().json().then(function(addData) {
-          var mainItem = (addData && addData.items && addData.items[0]) || addData;
-          if (!mainItem || !mainItem.key) {
-            addingGifts = false;
-            return;
-          }
-
-          /* Step 1: tag the main item with bundle properties so cart drawer groups gifts under it */
-          var mergedProps = Object.assign({}, mainItem.properties || {}, {
-            '_bundle_id': bundleId,
-            '_bundle_role': 'main'
-          });
-
-          return origFetch('/cart/change.js', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            credentials: 'same-origin',
-            body: JSON.stringify({
-              id: mainItem.key,
-              quantity: mainItem.quantity,
-              properties: mergedProps
-            })
-          })
-          .then(function(changeRes) { return changeRes.ok ? changeRes.json() : null; })
-          .then(function() {
-            /* Step 2: add gifts with the same bundle_id */
-            var giftItems = gifts.map(function(g, i) {
-              return {
-                id: g.variant_id,
-                quantity: 1,
-                properties: {
-                  '_bundle_id': bundleId,
-                  '_bundle_role': 'gift',
-                  '_gift_index': String(i + 1)
-                }
-              };
-            });
-            return origFetch('/cart/add.js', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-              credentials: 'same-origin',
-              body: JSON.stringify({ items: giftItems })
-            });
-          })
-          .then(function() {
-            addingGifts = false;
-            document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
-            document.dispatchEvent(new CustomEvent('cart:refresh'));
-            var drawer = document.getElementById('cart-drawer');
-            if (drawer) drawer.setAttribute('open', '');
-          })
-          .catch(function(err) {
-            addingGifts = false;
-            console.warn('[gift-bundle] bundle setup failed:', err);
-          });
-        }).catch(function(err) {
-          addingGifts = false;
-          console.warn('[gift-bundle] failed to parse response:', err);
-        });
-
+        var mainItemPromise = res.clone().json().then(function(addData) {
+          return (addData && addData.items && addData.items[0]) || addData;
+        }).catch(function() { return null; });
+        bundleMainAndAddGifts(mainItemPromise);
         return res;
       });
     };
+
+    /* ── XHR wrap (catches GemPages or other libs that use XMLHttpRequest) ── */
+    if (window.XMLHttpRequest) {
+      var XHRProto = XMLHttpRequest.prototype;
+      var origOpen = XHRProto.open;
+      var origSend = XHRProto.send;
+      XHRProto.open = function(method, url) {
+        this.__maisonMethod = method;
+        this.__maisonUrl = url;
+        return origOpen.apply(this, arguments);
+      };
+      XHRProto.send = function(body) {
+        var xhr = this;
+        var url = xhr.__maisonUrl || '';
+        var method = (xhr.__maisonMethod || 'GET').toUpperCase();
+        var isAddToCart = method === 'POST' && url.indexOf('/cart/add') !== -1;
+        if (isAddToCart && !giftsAdded && !addingGifts && getGifts().length > 0) {
+          var bodyStr = '';
+          if (typeof body === 'string') bodyStr = body;
+          var isGiftAdd = bodyStr.indexOf('"_bundle_role":"gift"') !== -1 || bodyStr.indexOf('_bundle_role%5D=gift') !== -1;
+          if (!isGiftAdd) {
+            xhr.addEventListener('load', function() {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                var mainItemPromise;
+                try {
+                  var resp = JSON.parse(xhr.responseText);
+                  var mainItem = (resp && resp.items && resp.items[0]) || resp;
+                  mainItemPromise = Promise.resolve(mainItem);
+                } catch (e) {
+                  mainItemPromise = origFetch('/cart.js', { credentials: 'same-origin' })
+                    .then(function(r) { return r.json(); })
+                    .then(function(c) { return c.items && c.items[c.items.length - 1]; });
+                }
+                bundleMainAndAddGifts(mainItemPromise);
+              }
+            });
+          }
+        }
+        return origSend.apply(this, arguments);
+      };
+    }
   })();
 </script>
