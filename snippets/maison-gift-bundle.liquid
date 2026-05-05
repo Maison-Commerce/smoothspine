@@ -20,7 +20,6 @@
       return gifts.filter(function(g) { return g && g.variant_id; });
     }
 
-    var giftsAdded = false;
     var addingGifts = false;
     if (!window.fetch) return;
     var origFetch = window.fetch.bind(window);
@@ -28,7 +27,6 @@
     function bundleMainAndAddGifts(mainItemPromise) {
       var gifts = getGifts();
       if (gifts.length === 0) return;
-      giftsAdded = true;
       addingGifts = true;
       var bundleId = 'gp-bundle-' + Date.now() + '-' + Math.floor(Math.random() * 10000);
 
@@ -91,7 +89,7 @@
       var method = (init && init.method) || (typeof input !== 'string' && input && input.method) || 'GET';
       var isAddToCart = url.indexOf('/cart/add') !== -1 && method.toUpperCase() === 'POST';
 
-      if (!isAddToCart || giftsAdded || addingGifts) {
+      if (!isAddToCart || addingGifts) {
         return origFetch(input, init);
       }
       if (getGifts().length === 0) {
@@ -130,7 +128,7 @@
         var url = xhr.__maisonUrl || '';
         var method = (xhr.__maisonMethod || 'GET').toUpperCase();
         var isAddToCart = method === 'POST' && url.indexOf('/cart/add') !== -1;
-        if (isAddToCart && !giftsAdded && !addingGifts && getGifts().length > 0) {
+        if (isAddToCart && !addingGifts && getGifts().length > 0) {
           var bodyStr = '';
           if (typeof body === 'string') bodyStr = body;
           var isGiftAdd = bodyStr.indexOf('"_bundle_role":"gift"') !== -1 || bodyStr.indexOf('_bundle_role%5D=gift') !== -1;
