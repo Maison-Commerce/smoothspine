@@ -1,0 +1,121 @@
+{% comment %}
+  Globally intercept all "Add to cart" form submissions so they:
+  1. POST via fetch to /cart/add.js (no redirect)
+  2. Open our custom cart drawer (#cart-drawer)
+  3. Refresh cart state via cart:refresh event
+
+  Catches:
+  - Standard Shopify product forms (action ends with /cart/add)
+  - GemPages product forms
+  - Any custom form that POSTs to /cart/add
+
+  Skipped (intentional):
+  - Forms with [data-no-intercept] attribute (e.g. our maison-pd-hero handles its own bundle logic)
+  - Forms inside elements marked [data-no-intercept]
+{% endcomment %}
+
+<script>
+(function() {
+  if (window.__maisonCartFormInterceptInit) return;
+  window.__maisonCartFormInterceptInit = true;
+
+  function isAddToCartForm(form) {
+    if (!form || form.tagName !== 'FORM') return false;
+    if (form.closest('[data-no-intercept]')) return false;
+    var action = (form.getAttribute('action') || '').split('?')[0];
+    return action.indexOf('/cart/add') !== -1;
+  }
+
+  function getFormItems(form) {
+    var fd = new FormData(form);
+    var id = fd.get('id');
+    if (!id) return null;
+
+    var quantity = parseInt(fd.get('quantity') || '1', 10);
+    if (isNaN(quantity) || quantity < 1) quantity = 1;
+
+    var properties = {};
+    fd.forEach(function(value, key) {
+      var m = key.match(/^properties\[(.+)\]$/);
+      if (m) properties[m[1]] = value;
+    });
+
+    var item = { id: parseInt(id, 10), quantity: quantity };
+    if (Object.keys(properties).length > 0) item.properties = properties;
+    return item;
+  }
+
+  function openCartDrawer() {
+    var drawer = document.getElementById('cart-drawer');
+    if (drawer) {
+      drawer.setAttribute('open', '');
+      document.dispatchEvent(new CustomEvent('cart:refresh'));
+      document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+      return true;
+    }
+    return false;
+  }
+
+  function showError(form, message) {
+    console.error('[cart-intercept]', message);
+    var existing = form.querySelector('[data-cart-intercept-error]');
+    if (existing) existing.remove();
+    var el = document.createElement('div');
+    el.setAttribute('data-cart-intercept-error', '');
+    el.style.cssText = 'color:#c0392b;font-size:13px;margin-top:8px;';
+    el.textContent = message;
+    form.appendChild(el);
+    setTimeout(function() { el.remove(); }, 5000);
+  }
+
+  document.addEventListener('submit', function(e) {
+    var form = e.target;
+    if (!isAddToCartForm(form)) return;
+
+    e.preventDefault();
+
+    var item = getFormItems(form);
+    if (!item || !item.id) {
+      showError(form, 'Please select a variant.');
+      return;
+    }
+
+    var submitBtn = form.querySelector('[type="submit"], [name="add"]');
+    if (submitBtn) {
+      submitBtn.setAttribute('aria-busy', 'true');
+      submitBtn.disabled = true;
+    }
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      credentials: 'same-origin',
+      body: JSON.stringify({ items: [item] })
+    })
+    .then(function(res) {
+      if (!res.ok) {
+        return res.json().then(function(err) {
+          throw new Error(err.description || err.message || ('HTTP ' + res.status));
+        }).catch(function() {
+          throw new Error('Failed to add to cart (' + res.status + ')');
+        });
+      }
+      return res.json();
+    })
+    .then(function() {
+      if (!openCartDrawer()) {
+        window.location.href = '/cart';
+      }
+    })
+    .catch(function(err) {
+      showError(form, err.message || 'Could not add to cart.');
+    })
+    .then(function() {
+      if (submitBtn) {
+        submitBtn.removeAttribute('aria-busy');
+        submitBtn.disabled = false;
+      }
+    });
+  }, true);
+})();
+</script>
