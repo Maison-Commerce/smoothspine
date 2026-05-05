@@ -63,6 +63,105 @@ export default {
       }
     }
 
+    // Debug: explore interactions endpoint
+    if (url.pathname === '/debug-interactions') {
+      try {
+        const accessToken = await getAccessToken(env);
+        const all = await fetchAllConversations(accessToken, env);
+        const requiredTag = (env.REQUIRED_TAG || '').toLowerCase();
+        const matching = all.filter(c => {
+          const tags = (c.tags || []).map(t => (t.title || '').toLowerCase());
+          return tags.includes(requiredTag) && c.status === 'completed';
+        });
+        // Try interactions endpoint for first matching contact
+        const c = matching[0];
+        const url1 = `${VIDEOASK_API}/forms/${env.VIDEOASK_FORM_ID}/contacts/${c.contact_id}/interactions`;
+        const r1 = await fetch(url1, {
+          headers: { 'Authorization': `Bearer ${accessToken}`, 'organization-id': env.VIDEOASK_ORG_ID }
+        });
+        const d1 = r1.ok ? await r1.json() : { error: r1.status, body: await r1.text() };
+        return jsonResponse({
+          contact: c.name,
+          contact_thumbnail: c.thumbnail,
+          interactions_status: r1.status,
+          interactions_data: d1
+        }, request, env);
+      } catch (err) {
+        return jsonResponse({ error: err.message }, request, env, 500);
+      }
+    }
+
+    // Debug: try fetching answers for one contact
+    if (url.pathname === '/debug-contact') {
+      try {
+        const accessToken = await getAccessToken(env);
+        const all = await fetchAllConversations(accessToken, env);
+        const requiredTag = (env.REQUIRED_TAG || '').toLowerCase();
+        const matching = all.filter(c => {
+          const tags = (c.tags || []).map(t => (t.title || '').toLowerCase());
+          return tags.includes(requiredTag) && c.status === 'completed';
+        });
+        if (matching.length === 0) return jsonResponse({ error: 'no matching contacts' }, request, env);
+        const c = matching[0];
+        const contactUrl = `${VIDEOASK_API}/forms/${env.VIDEOASK_FORM_ID}/contacts/${c.contact_id}?include_answers=true`;
+        const res = await fetch(contactUrl, {
+          headers: { 'Authorization': `Bearer ${accessToken}`, 'organization-id': env.VIDEOASK_ORG_ID }
+        });
+        const data = res.ok ? await res.json() : { error: res.status, body: await res.text() };
+        // Sort oldest first (older may still have video)
+        matching.sort(function(a, b) { return new Date(a.created_at) - new Date(b.created_at); });
+        const typeCounts = {};
+        let firstNonTextAnswer = null;
+        for (const cc of matching.slice(0, 30)) {
+          const r = await fetch(`${VIDEOASK_API}/forms/${env.VIDEOASK_FORM_ID}/contacts/${cc.contact_id}?include_answers=true`, {
+            headers: { 'Authorization': `Bearer ${accessToken}`, 'organization-id': env.VIDEOASK_ORG_ID }
+          });
+          if (!r.ok) continue;
+          const d = await r.json();
+          for (const a of (d.answers || [])) {
+            const t = a.type || 'undefined';
+            typeCounts[t] = (typeCounts[t] || 0) + 1;
+            if (!firstNonTextAnswer && t !== 'text') firstNonTextAnswer = { contact: cc.name, answer: a };
+          }
+        }
+        return jsonResponse({
+          total_matching_contacts: matching.length,
+          answer_types: typeCounts,
+          first_non_text_answer: firstNonTextAnswer
+        }, request, env);
+      } catch (err) {
+        return jsonResponse({ error: err.message, stack: err.stack }, request, env, 500);
+      }
+    }
+
+    // Debug: peek conversations + tags
+    if (url.pathname === '/debug') {
+      try {
+        const accessToken = await getAccessToken(env);
+        const all = await fetchAllConversations(accessToken, env);
+        const tagSet = new Set();
+        all.forEach(c => (c.tags || []).forEach(t => tagSet.add(t.title)));
+        const requiredTag = (env.REQUIRED_TAG || '').toLowerCase();
+        const matchingCount = all.filter(c => {
+          const tags = (c.tags || []).map(t => (t.title || '').toLowerCase());
+          return tags.includes(requiredTag) && c.status === 'completed';
+        }).length;
+        return jsonResponse({
+          total_conversations: all.length,
+          unique_tags: Array.from(tagSet).sort(),
+          required_tag: env.REQUIRED_TAG,
+          matching_count: matchingCount,
+          sample_status: all.slice(0, 3).map(c => ({
+            name: c.name,
+            status: c.status,
+            tags: (c.tags || []).map(t => t.title)
+          }))
+        }, request, env);
+      } catch (err) {
+        return jsonResponse({ error: err.message }, request, env, 500);
+      }
+    }
+
     // Reviews endpoint
     if (url.pathname === '/reviews') {
       try {
@@ -230,7 +329,7 @@ async function fetchTrustpilot(domain) {
 
 // ─── Reviews fetch with Cache API ───
 async function getCachedReviews(request, env, ctx) {
-  const cacheKey = new Request('https://cache.smoothspine.videoask/reviews/v2', { method: 'GET' });
+  const cacheKey = new Request('https://cache.smoothspine.videoask/reviews/v3', { method: 'GET' });
   const cache = caches.default;
 
   const cached = await cache.match(cacheKey);
@@ -261,15 +360,22 @@ async function fetchAndProcessReviews(env) {
   // 1. Get all conversations (paginated)
   const conversations = await fetchAllConversations(accessToken, env);
 
-  // 2. Filter by required tag
+  // 2. Filter by required tag + must have video (conversation thumbnail = video preview)
   const requiredTag = env.REQUIRED_TAG;
   const approved = conversations.filter(c => {
     const tags = (c.tags || []).map(t => (t.title || '').toLowerCase());
-    return tags.includes(requiredTag.toLowerCase()) && c.status === 'completed';
+    const hasTag = tags.includes(requiredTag.toLowerCase());
+    const isCompleted = c.status === 'completed';
+    const hasVideo = !!c.thumbnail; // text-only answers have null thumbnail
+    return hasTag && isCompleted && hasVideo;
   });
 
-  // 3. Fetch answers for each approved conversation (parallel batches)
-  const reviewsWithAnswers = await fetchAnswersForContacts(approved, accessToken, env);
+  // 3. Sort by date desc, then cap to ~40 to stay under Cloudflare subrequest limit (50)
+  approved.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  const limited = approved.slice(0, 40);
+
+  // 4. Fetch answers for each approved conversation (parallel batches)
+  const reviewsWithAnswers = await fetchAnswersForContacts(limited, accessToken, env);
 
   // 4. Filter only those with valid video answer
   const validReviews = reviewsWithAnswers.filter(r => r.video_url);
