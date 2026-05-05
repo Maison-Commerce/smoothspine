@@ -12,8 +12,7 @@
     logo_class       — CSS class for the Trustpilot logo <div> (only rendered if show_logo)
     show_logo        — boolean, default false
     logo_label       — text next to logo, default "Trustpilot"
-    domain           — trustpilot domain, default "smoothspine.com"
-    worker_url       — Cloudflare Worker URL returning live Trustpilot JSON
+    business_unit_id — Trustpilot business unit id, default "65ca8fb41ab9f95071487503"
     href             — if set, wraps the badge in <a href> (opens Trustpilot in new tab)
     rating_format    — "score_count" (default), "count_only", "score_only"
     fallback_stars   — float fallback star count (default 4.5)
@@ -21,8 +20,7 @@
     fallback_count   — fallback review count (default 3448)
 {% endcomment %}
 
-{%- assign mt_domain = domain | default: 'smoothspine.com' -%}
-{%- assign mt_worker = worker_url | default: 'https://smoothspine-videoask.choojiie.workers.dev/trustpilot' -%}
+{%- assign mt_bu_id = business_unit_id | default: '65ca8fb41ab9f95071487503' -%}
 {%- assign mt_logo_label = logo_label | default: 'Trustpilot' -%}
 {%- assign mt_format = rating_format | default: 'score_count' -%}
 {%- assign mt_link = href | default: blank -%}
@@ -68,11 +66,11 @@
 {%- endcapture -%}
 
 {% if mt_link != blank %}
-  <a class="{{ wrapper_class }}" href="{{ mt_link }}" target="_blank" rel="noopener" data-tp-badge data-tp-domain="{{ mt_domain }}" data-tp-worker="{{ mt_worker }}" data-tp-format="{{ mt_format }}">
+  <a class="{{ wrapper_class }}" href="{{ mt_link }}" target="_blank" rel="noopener" data-tp-badge data-tp-business-unit-id="{{ mt_bu_id }}" data-tp-format="{{ mt_format }}">
     {{ mt_badge_inner }}
   </a>
 {% else %}
-  <div class="{{ wrapper_class }}" data-tp-badge data-tp-domain="{{ mt_domain }}" data-tp-worker="{{ mt_worker }}" data-tp-format="{{ mt_format }}">
+  <div class="{{ wrapper_class }}" data-tp-badge data-tp-business-unit-id="{{ mt_bu_id }}" data-tp-format="{{ mt_format }}">
     {{ mt_badge_inner }}
   </div>
 {% endif %}

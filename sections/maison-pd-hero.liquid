@@ -800,8 +800,6 @@
             rating_class: 'pdp-trustpilot-rating',
             logo_class: 'pdp-trustpilot-logo',
             show_logo: section.settings.show_trustpilot_logo,
-            domain: section.settings.trustpilot_domain,
-            worker_url: section.settings.trustpilot_worker_url,
             href: 'https://www.trustpilot.com/review/smoothspine.com'
           %}
         {% endif %}
@@ -1256,19 +1254,6 @@
       "id": "show_trustpilot",
       "label": "Show Trustpilot rating",
       "default": true
-    },
-    {
-      "type": "text",
-      "id": "trustpilot_domain",
-      "label": "Trustpilot domain",
-      "default": "smoothspine.com"
-    },
-    {
-      "type": "text",
-      "id": "trustpilot_worker_url",
-      "label": "Worker URL",
-      "info": "Cloudflare Worker endpoint that returns live Trustpilot data",
-      "default": "https://smoothspine-videoask.choojiie.workers.dev/trustpilot"
     },
     {
       "type": "checkbox",

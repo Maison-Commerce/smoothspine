@@ -1,14 +1,26 @@
 {% comment %}
   Global Trustpilot badge hydration.
   Included once in layout/theme.liquid. Finds all [data-tp-badge] elements on the page,
-  fetches live data from the Worker (shared promise per worker URL), and updates
-  stars + rating text inside each badge.
+  fetches live data directly from Trustpilot's public TrustBox data endpoint (CORS
+  open, no auth, no API key, edge-cached 30 min), and updates stars + rating text
+  inside each badge.
+
+  Each badge needs:
+    data-tp-business-unit-id  — Trustpilot business unit id (e.g. 65ca8fb41ab9f95071487503)
+    data-tp-format            — score_count | count_only | score_only
+
+  SSR fallback values stay visible if the fetch fails (ad blocker, CORS, network).
 {% endcomment %}
 
 <script>
 (function() {
   if (window.__mtTrustpilotBadgeInit) return;
   window.__mtTrustpilotBadgeInit = true;
+
+  /* TrustBox template id used to query the data endpoint — Micro Review Count
+     returns full businessUnit info (stars/score/numberOfReviews) for any BU. */
+  var TP_DATA_TEMPLATE = '5419b6a8b0d04a076446a9ad';
+  var TP_DATA_URL = 'https://widget.trustpilot.com/trustbox-data/' + TP_DATA_TEMPLATE;
 
   function starFull() {
     return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect width="16" height="16" fill="#00B67A"/><path d="M8 11.1509L10.6071 10.4528L11.6964 14L8 11.1509ZM14 6.56604H9.41071L8 2L6.58929 6.56604H2L5.71429 9.39623L4.30357 13.9623L8.01786 11.1321L10.3036 9.39623L14 6.56604Z" fill="white"/></svg>';
@@ -36,42 +48,52 @@
     return n >= 1000 ? n.toLocaleString('en-US') : String(n);
   }
 
-  function formatRating(data, format) {
-    if (!data || data.score == null || data.reviews_count == null) return '';
+  function formatRating(score, count, format) {
+    if (score == null || count == null) return '';
     switch (format) {
       case 'count_only':
-        return formatCount(data.reviews_count) + '+ reviews';
+        return formatCount(count) + '+ reviews';
       case 'score_only':
-        return data.score + '/5';
+        return score + '/5';
       default:
-        return data.score + '/5 (' + formatCount(data.reviews_count) + '+ reviews)';
+        return score + '/5 (' + formatCount(count) + '+ reviews)';
     }
   }
 
-  // Shared fetch promise per worker URL
+  /* Shared fetch promise per business unit id */
   var fetchCache = {};
-  function fetchData(workerUrl, domain) {
-    var url = workerUrl + (workerUrl.indexOf('?') === -1 ? '?domain=' : '&domain=') + encodeURIComponent(domain);
-    if (!fetchCache[url]) {
-      fetchCache[url] = fetch(url, { cache: 'default' })
+  function fetchData(buId) {
+    if (!buId) return Promise.resolve(null);
+    if (!fetchCache[buId]) {
+      var url = TP_DATA_URL + '?businessUnitId=' + encodeURIComponent(buId) + '&locale=en-US';
+      fetchCache[buId] = fetch(url, { cache: 'default' })
         .then(function(r) { return r.ok ? r.json() : null; })
+        .then(function(d) {
+          if (!d || !d.businessUnit) return null;
+          var bu = d.businessUnit;
+          return {
+            stars: typeof bu.stars === 'number' ? bu.stars : null,
+            score: typeof bu.trustScore === 'number' ? bu.trustScore : null,
+            reviews_count: bu.numberOfReviews && bu.numberOfReviews.total != null ? bu.numberOfReviews.total : null,
+            profile_url: (d.links && d.links.profileUrl) || null
+          };
+        })
         .catch(function() { return null; });
     }
-    return fetchCache[url];
+    return fetchCache[buId];
   }
 
   function hydrate(badge) {
-    var workerUrl = badge.dataset.tpWorker;
-    var domain = badge.dataset.tpDomain || 'smoothspine.com';
+    var buId = badge.dataset.tpBusinessUnitId;
     var format = badge.dataset.tpFormat || 'score_count';
-    if (!workerUrl) return;
+    if (!buId) return;
 
-    fetchData(workerUrl, domain).then(function(data) {
+    fetchData(buId).then(function(data) {
       if (!data) return;
       var starsWrap = badge.querySelector('[data-tp-stars]');
       var ratingEl = badge.querySelector('[data-tp-rating]');
       if (starsWrap && typeof data.stars === 'number') renderStars(starsWrap, data.stars);
-      if (ratingEl) ratingEl.textContent = formatRating(data, format);
+      if (ratingEl) ratingEl.textContent = formatRating(data.score, data.reviews_count, format);
     });
   }
 
