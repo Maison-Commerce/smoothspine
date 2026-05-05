@@ -1,0 +1,170 @@
+{% comment %}
+  Intercept ALL add-to-cart attempts and route them through our cart drawer:
+  1. Standard form submit on form[action*="/cart/add"]
+  2. Click on add-to-cart buttons (GemPages/custom that don't use form)
+  3. Wrap window.fetch — if anything POSTs to /cart/add, open drawer after
+  4. Intercept window.location='/cart' redirects — open drawer instead
+
+  Skipped:
+  - Forms / buttons inside [data-no-intercept]
+{% endcomment %}
+
+<script>
+(function() {
+  if (window.__maisonCartFormInterceptInit) return;
+  window.__maisonCartFormInterceptInit = true;
+
+  function isInsideNoIntercept(el) {
+    return el && el.closest && el.closest('[data-no-intercept]');
+  }
+
+  function openCartDrawer() {
+    var drawer = document.getElementById('cart-drawer');
+    if (drawer) {
+      drawer.setAttribute('open', '');
+      document.dispatchEvent(new CustomEvent('cart:refresh'));
+      document.documentElement.dispatchEvent(new CustomEvent('cart:refresh'));
+      return true;
+    }
+    return false;
+  }
+
+  function looksLikeAddToCart(el) {
+    if (!el) return false;
+    if (el.matches && el.matches('button[name="add"], input[name="add"], [data-pdp-add-to-cart]')) return true;
+    /* Look at button inside form that posts to /cart/add */
+    var form = el.closest && el.closest('form');
+    if (form) {
+      var action = (form.getAttribute('action') || '').split('?')[0];
+      if (action.indexOf('/cart/add') !== -1) return true;
+    }
+    return false;
+  }
+
+  function getItemFromForm(form) {
+    var fd = new FormData(form);
+    var id = fd.get('id');
+    if (!id) return null;
+    var quantity = parseInt(fd.get('quantity') || '1', 10);
+    if (isNaN(quantity) || quantity < 1) quantity = 1;
+    var properties = {};
+    fd.forEach(function(value, key) {
+      var m = key.match(/^properties\[(.+)\]$/);
+      if (m) properties[m[1]] = value;
+    });
+    var item = { id: parseInt(id, 10), quantity: quantity };
+    if (Object.keys(properties).length > 0) item.properties = properties;
+    return item;
+  }
+
+  function showError(target, message) {
+    console.error('[cart-intercept]', message);
+  }
+
+  function performAddToCart(item, sourceEl) {
+    if (sourceEl) sourceEl.setAttribute('aria-busy', 'true');
+    return fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      credentials: 'same-origin',
+      body: JSON.stringify({ items: [item] })
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
+    .then(function() {
+      openCartDrawer();
+    })
+    .catch(function(err) {
+      showError(sourceEl, err.message);
+    })
+    .then(function() {
+      if (sourceEl) sourceEl.removeAttribute('aria-busy');
+    });
+  }
+
+  /* 1. Form submit intercept */
+  document.addEventListener('submit', function(e) {
+    var form = e.target;
+    if (!form || form.tagName !== 'FORM') return;
+    if (isInsideNoIntercept(form)) return;
+    var action = (form.getAttribute('action') || '').split('?')[0];
+    if (action.indexOf('/cart/add') === -1) return;
+
+    e.preventDefault();
+    var item = getItemFromForm(form);
+    if (!item || !item.id) return;
+    var btn = form.querySelector('[type="submit"], [name="add"]');
+    performAddToCart(item, btn);
+  }, true);
+
+  /* 2. Click intercept on add-to-cart buttons (catches GemPages etc that prevent form submit) */
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest && e.target.closest('button, input[type="submit"], a');
+    if (!btn) return;
+    if (isInsideNoIntercept(btn)) return;
+    if (!looksLikeAddToCart(btn)) return;
+
+    var form = btn.closest('form');
+    if (!form) return;
+    var action = (form.getAttribute('action') || '').split('?')[0];
+    if (action.indexOf('/cart/add') === -1) return;
+
+    /* Stop the click from triggering both default form submit AND any handler that calls window.location='/cart' */
+    e.preventDefault();
+    e.stopPropagation();
+
+    var item = getItemFromForm(form);
+    if (!item || !item.id) return;
+    performAddToCart(item, btn);
+  }, true);
+
+  /* 3. Wrap window.fetch — catches direct AJAX add-to-cart calls (e.g. some apps) */
+  if (window.fetch && !window.__maisonFetchWrapped) {
+    window.__maisonFetchWrapped = true;
+    var origFetch = window.fetch.bind(window);
+    window.fetch = function(input, init) {
+      var url = typeof input === 'string' ? input : (input && input.url) || '';
+      var method = (init && init.method) || (typeof input !== 'string' && input && input.method) || 'GET';
+      var isAddToCart = url.indexOf('/cart/add') !== -1 && method.toUpperCase() === 'POST';
+      var p = origFetch(input, init);
+      if (isAddToCart) {
+        p.then(function(res) {
+          if (res && res.ok) {
+            setTimeout(openCartDrawer, 50);
+          }
+        }).catch(function() {});
+      }
+      return p;
+    };
+  }
+
+  /* 4. Block redirects to /cart — open drawer instead */
+  function isCartUrl(url) {
+    if (!url) return false;
+    try {
+      var u = new URL(url, window.location.origin);
+      return u.pathname === '/cart' && u.origin === window.location.origin;
+    } catch (e) { return false; }
+  }
+  /* Wrap location.assign / replace */
+  ['assign', 'replace'].forEach(function(method) {
+    var orig = window.location[method].bind(window.location);
+    try {
+      Object.defineProperty(window.location, method, {
+        configurable: true,
+        value: function(url) {
+          if (isCartUrl(url) && document.getElementById('cart-drawer')) {
+            openCartDrawer();
+            return;
+          }
+          return orig(url);
+        }
+      });
+    } catch (e) { /* some browsers freeze location */ }
+  });
+  /* Click on plain <a href="/cart"> still works — only intercept programmatic redirects */
+
+})();
+</script>
