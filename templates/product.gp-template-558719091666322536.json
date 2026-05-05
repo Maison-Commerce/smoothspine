@@ -9,6 +9,36 @@
  */
 {
   "sections": {
+    "maison_gift_bundle_ieAXad": {
+      "type": "maison-gift-bundle",
+      "blocks": {
+        "gift_product_B4VB7V": {
+          "type": "gift_product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "gift_product_wLRXX7": {
+          "type": "gift_product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "gift_product_FtMGJ4": {
+          "type": "gift_product",
+          "settings": {
+            "product": "charging-kit-travel-bag"
+          }
+        }
+      },
+      "block_order": [
+        "gift_product_B4VB7V",
+        "gift_product_wLRXX7",
+        "gift_product_FtMGJ4"
+      ],
+      "name": "Gift Bundle",
+      "settings": {}
+    },
     "gp_section_558719091800736872": {
       "type": "gp-section-558719091800736872",
       "settings": {
@@ -60,19 +90,6 @@
         "ggq_rOUUVUI_text": "<p>Verified Purchase</p>",
         "gggrVIsDEcZ_text": "<p>Barbara L.</p>",
         "ggxHBZ5MOH6_text": "<p>Verified Purchase</p>"
-      }
-    },
-    "custom_liquid_WATiK8": {
-      "type": "custom-liquid",
-      "name": "Custom Liquid",
-      "settings": {
-        "full_width": true,
-        "remove_vertical_spacing": true,
-        "remove_horizontal_spacing": true,
-        "liquid": "<div data-maison-gifts=\"smoothspine™-30-day-sciatica-relief-plan-coc,sciatica-back-pain-relief-patches,charging-kit-travel-bag\" hidden></div>",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
       }
     },
     "gp_section_558719091800999016": {
@@ -408,8 +425,8 @@
     }
   },
   "order": [
+    "maison_gift_bundle_ieAXad",
     "gp_section_558719091800736872",
-    "custom_liquid_WATiK8",
     "gp_section_558719091800999016",
     "gp_section_558719091800671336",
     "gp_section_558719091801523304",
