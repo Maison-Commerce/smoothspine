@@ -1,0 +1,429 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "gp_section_565050739283526451": {
+      "type": "gp-section-565050739283526451",
+      "blocks": {
+        "gp_app_kaching-bundles_gMGzdw_LPb": {
+          "type": "shopify://apps/kaching-bundles/blocks/app-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
+          "settings": {
+            "product": "{{ product }}",
+            "manual_deal_block_id": ""
+          }
+        }
+      },
+      "block_order": [
+        "gp_app_kaching-bundles_gMGzdw_LPb"
+      ],
+      "settings": {
+        "section_preload": "true",
+        "checksum": "c74a4ecb472d7925bfea43866928112bff83f91ce9b373e301cf736637789029_1_1_1_0__1",
+        "ggw7Cz9bPGD_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-02cd5730-dd94-4602-a8fd-ee82e8a43a88.jpg",
+        "gg1-nBNIy9D_text": "<p>\"Even short errands would flare up my hip pain and leave me limping by the end of the day. I’ve tried braces before, but they were either bulky or didn’t help at all. This one felt different right away — snug, supportive, and surprisingly comfortable. <strong>After the first full day wearing it</strong>, I realized… I wasn’t in pain. For the first time in months. It works.\"</p>",
+        "ggV2Gzg1kTE_text": "<p>Jane T.</p>",
+        "gg3ero32Veq_text": "<p>Verified Purchase</p>",
+        "ggc8Jx1axa0_text": "<p>Name</p>",
+        "ggFoPISFWBa_text": "<p>Verified Purchase</p>",
+        "gglxMzPDaXv_background_desktop_video": "https://www.youtube.com/watch?v=cyzh48XRS4M",
+        "gglxMzPDaXv_background_desktop_videoHtml5": "https://media.w3.org/2010/05/sintel/trailer.mp4",
+        "ggTWbR7J5A3_text": "<p>(4.7/5 Rated By 21,539+ Customers)</p>",
+        "ggiIss1Rofn_customContent_prefix": "Save",
+        "ggavmk0YmvV_text": "<p>Every step feels like a knife to the hip?</p><p><i><u>Stop masking the pain. Fix the root cause - and finally move without flinching.</u></i></p>",
+        "ggs0hHOJvUw_text": "<p>The SmoothSpine™ Align Hip &amp; Back Stabilizer uses advanced compression to support your hips and lower back, relieving pressure on the sciatic nerve and helping your body heal naturally - all from the comfort of home.</p>",
+        "gg6tXSXNWai_text": "<p>Rapid relief from stabbing sciatica and deep hip pain</p>",
+        "ggbcW1KUC8b_text": "<p>Locks your spine and hips into perfect alignment</p>",
+        "ggxUNGGnafQ_text": "<p>Reduces nerve pressure and inflammation from day one</p>",
+        "ggM-PIG0RRS_text": "<p>Wear it anytime - even while walking or watching TV</p>",
+        "ggifZ8Bz922_label": "Add to cart",
+        "ggifZ8Bz922_outOfStockLabel": "Out of stock",
+        "ggifZ8Bz922_unavailableLabel": "Unavailable",
+        "ggifZ8Bz922_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
+        "ggifZ8Bz922_errorMessage": "Cannot add product to cart",
+        "ggrNfDYVOMR_text": "<p>90-Day Risk-Free Trial</p>",
+        "ggMqSUhQV7T_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f4fc434c-7412-4e79-98b5-4dc8f7b20abd.png",
+        "ggMqSUhQV7T_srcSet_tablet_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b936f1ab-3d8b-4295-9922-326000cffbe2.jpg",
+        "ggMqSUhQV7T_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-02cd5730-dd94-4602-a8fd-ee82e8a43a88.jpg",
+        "ggDMIiaV6W6_text": "<p>\"Even short errands would flare up my hip pain and leave me limping by the end of the day. I’ve tried braces before, but they were either bulky or didn’t help at all. This one felt different right away — snug, supportive, and surprisingly comfortable. <strong>After the first full day wearing it</strong>, I realized… I wasn’t in pain. For the first time in months. It works.\"</p>",
+        "gg5UOLWagTT_text": "<p>Name</p>",
+        "ggq_rOUUVUI_text": "<p>Verified Purchase</p>",
+        "gggrVIsDEcZ_text": "<p>Jane T.</p>",
+        "ggxHBZ5MOH6_text": "<p>Verified Purchase</p>"
+      }
+    },
+    "gp_section_565050739282871091": {
+      "type": "gp-section-565050739282871091",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "80a2dba8e878255240c680ec1ef941ec299fe4fae2eb8a886d21b48051b07a32_1_1_1_0__1",
+        "ggM5PyQMWIe_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-4509bc60-7755-4bb1-bf01-ade8debf7b92.png",
+        "ggLDYJogvxV_text": "<p>90-DAY MONEY BACK GUARANTEE</p>",
+        "ggnoiLlCDO__text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">If you’re not absolutely thrilled with the results, we will refund every single penny of your investment. No hassle. </span></p>",
+        "ggS7aImJyob_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-57c29034-4d6a-46b9-8286-ab77c5f0b8cb.png",
+        "gggjLf4dDUF_text": "<p>FREE SHIPPING</p>",
+        "gg8yY22gLoi_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">We provide fast free shipping and handling for all orders.</span></p>",
+        "ggYRGn3_-rs_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-00428b28-be38-4a92-add3-22f1e8e1171f.png",
+        "ggtkmBCG_Es_text": "<p>GUARANTEED HIGH QUALITY</p>",
+        "ggnO_gdadKG_text": "<p><span style=\"background-color:transparent;color:#000000;font-size:18px;\">Engineered for real results, built to last. Every brace is made with durable, medical-grade materials and precision stitching to deliver serious support - day after day.</span></p>"
+      }
+    },
+    "gp_section_565050739282805555": {
+      "type": "gp-section-565050739282805555",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "cabe26921e2b62bcc1c5aedf84e76aedbfcc8a9a6927f92bdb12860e7e56ce29_1_1_1_0__1",
+        "ggGkzemG1js_text": "<span style=\"color:#055BDC;\"><strong>You’re one wear away from standing tall, walking free, and finally shutting down that relentless pain.</strong></span>",
+        "ggWQIG9fsLw_text": "Your Pain Isn’t Random - It’s a Warning Sign ",
+        "ggvRuJ9v83P_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-48f244fe-1ee7-47b9-95ae-ede9ed840e1d.png",
+        "ggymlr3ksYA_text": "Your Pain Isn’t Random - It’s a Warning Sign ",
+        "ggj3LHKR5Jp_text": "<p>That stabbing pain in your hip or lower back didn’t come from one wrong move. It built up over time - from sitting too long, poor posture, weak support muscles, and years of strain your body’s been silently absorbing.</p>",
+        "gg4YoJ0BCta_text": "<p>Eventually, your spine shifts. Your hips misalign. And the pressure lands right on your sciatic nerve - turning every step, bend, or twist into agony.</p>",
+        "ggQAm8x-ujQ_text": "<p>Pills won’t fix it. Stretching helps, but it’s not enough. Until you stop the nerve compression at its source, the pain will keep coming back.</p>"
+      }
+    },
+    "gp_section_565050739283329843": {
+      "type": "gp-section-565050739283329843",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "cd963d58033a4964303f89ab5021176aa5ab9105384d24573e0686be589551d8_1_1_1_0__1",
+        "ggzRfc3KmKh_text": "Here’s How You Finally Fix the Problem - Not Just Numb It",
+        "gg1XAFZKoNB_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-d2484f7a-f767-44ae-b698-f7576d04de1b.png",
+        "ggclZmxOds__text": "Here’s How You Finally Fix the Problem - Not Just Numb It",
+        "gg5gEyQLqLG_text": "<p>The SmoothSpine™ Align Hip &amp; Back Stabilizer was built to do what painkillers and stretches can’t - stop the pressure at its source.</p>",
+        "gg-RifOCijk_text": "<p>With just one wear, its advanced compression targets your lower back, hips, and sacroiliac joint - locking everything into proper alignment and taking direct pressure off the sciatic nerve.</p>",
+        "gg6VOc0b2kk_text": "<p>No pills. No therapy visits. No guesswork.</p>",
+        "ggFSvu4q1Qg_text": "<p>By stabilizing the muscles and ligaments around your spine and hips, it:</p>",
+        "ggsFX5L6qta_text": "<p><strong>Reduces inflammation</strong></p>",
+        "ggplgIk_kcW_text": "<p><strong>Improves circulation</strong></p>",
+        "ggJzClcBPhP_text": "<p><strong>Prevents further nerve compression</strong></p>",
+        "ggjZnI4Pmdn_text": "<p>And the best part? You don’t have to move a muscle. Just strap it on, sit back, and let your body finally recover - the way it was meant to.</p>"
+      }
+    },
+    "gp_section_565050739282412339": {
+      "type": "gp-section-565050739282412339",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "9d6c42ca52db9f493ad72c0e2d039ac03e88d978ea0a8e1a5542143b6a91740e_1_1_1_0__1",
+        "gg6lqX8ncBw_text": "Professionally Designed. Backed by Real Science.",
+        "gg9y5JdW85Y_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-f44680e2-de43-42ec-8625-476091f28124.png",
+        "ggihisY810h_text": "Professionally Designed. Backed by Real Science.",
+        "ggiVlsgDWSA_text": "<p>The SmoothSpine™ Align Hip &amp; Back Stabilizer is built on proven physical therapy principles.</p>",
+        "ggAVlXtnnao_text": "<p><strong>Engineered by</strong> pain specialists to stabilize the hips and spine</p>",
+        "ggN9leWSo1V_text": "<p><strong>Targets</strong> the root cause of sciatica and lower back pain: nerve compression</p>",
+        "ggR6PQbclBZ_text": "<p><strong>Based on</strong> clinically supported compression technology</p>",
+        "ggYDgNhO7t0_text": "<p><strong>Inspired by</strong> the same methods used in physical therapy clinics - now wearable at home</p>",
+        "ggTX3oVSncW_text": "<p>Hip braces are an effective, drug-free way to reduce pain and improve mobility in people dealing with sciatica.</p>",
+        "ggmC_ttV0mJ_text": "<p>(<a href=\"https://nih.gov/\"><span style=\"color:#055BDC;\"><strong><u>Zhang et al., Journal of Orthopaedic Surgery &amp; Research, 2018</u></strong></span></a>)</p>",
+        "ggcllM8jPEK_text": "<p>Now, that same relief is as easy as strapping it on - no appointments needed.</p>",
+        "gg9L3EDUCMV_text": "Real Support That Works with Your Body - Not Against It",
+        "ggCRWiTBGEh_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b7cea502-5666-4b45-b79c-443cc40ad2d7.png",
+        "ggGQXnMY5zT_text": "Real Support That Works with Your Body - Not Against It",
+        "ggihBBrHnWy_text": "<p>Pain happens when your hips and spine fall out of alignment and start compressing the sciatic nerve. That pressure builds over time - turning into burning, stabbing, or radiating pain that doesn’t go away on its own.</p>",
+        "gg5A_s7vPft_text": "<p>The SmoothSpine™ Align Hip &amp; Back Stabilizer uses targeted compression to support your hips, spine, and surrounding muscles - helping reduce nerve pressure, increase circulation, and ease inflammation at the root.</p>",
+        "ggaFHF5sugD_text": "<p>It’s lightweight, discreet, and easy to wear under clothes - no complex setup, no learning curve. Just wrap it on and let it do the work while you move, rest, or recover. The more consistently you wear it, the better you feel - and the longer relief lasts.</p>"
+      }
+    },
+    "gp_section_565408081333191840": {
+      "type": "gp-section-565408081333191840",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "09f070b66ee43347d0b118638ccf808c76acfcbdf55cfe7ba005676184a8dd3e_1_1_1_0__1",
+        "ggJDa5sRNb3_text": "<p>SmoothSpine ™ Align Hip &amp; Back Stabilizer </p>",
+        "ggIVUvk8aDL_text": "<p>Painkillers </p>",
+        "ggcbeUzT733_text": "<p>Physical Therapy </p>",
+        "gg78q3LlwrN_text": "<p>Targets the root cause </p>",
+        "gg1lrkXHIRc_text": "<p>Supports alignment &amp; reduces nerve pressure </p>",
+        "ggTrKI6sgLF_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggGn6TPsi0A_text": "<p>Numbs pain but doesn't fix the problem </p>",
+        "ggPGjJb0m_u_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggyAW7IpZJK_text": "<p>Eventually helps if you go consistently </p>",
+        "ggJUVFo8VoQ_text": "<p>Works on day one </p>",
+        "ggYj19ei2IV_text": "<p>Compression relief starts immediately </p>",
+        "ggQUXMjtBFQ_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "gg6pLM9Igb__text": "<p>Temporary relief after 30-60 min </p>",
+        "ggHZ4YjxkaU_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "gggoQ_84Ini_text": "<p>Takes weeks or months to feel real change </p>",
+        "ggch7wyMLmo_text": "<p>Drug-free &amp; non-invasive </p>",
+        "gg5gxzBIXQw_text": "<p>No pills, shots, or prescriptions needed </p>",
+        "ggaf30IsG9O_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggNAmWKXmKB_text": "<p>Risk of dependency &amp; side effects </p>",
+        "gg_-W8bmF64_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggJa5wyxenp_text": "<p>Safe, but time-consuming and expensive </p>",
+        "ggrB7D0TYyI_text": "<p>Easy &amp; convenient </p>",
+        "ggckuq8ChBQ_text": "<p>Wear it anytime, anywhere no appointments </p>",
+        "ggBWfq_2avN_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "gg8eSxVUsKg_text": "<p>Easy to pop a pill </p>",
+        "ggmKE68hJeX_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggrLapuU9JR_text": "<p>Requires scheduling, travel, and time commitment </p>",
+        "gguLwPAa0O0_text": "<p>Cost-effective </p>",
+        "gg-VZaX-aGW_text": "<p>One-time purchase, long-term relief </p>",
+        "ggWWgE58nHG_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "gg7mYeRgBnS_text": "<p>Ongoing cost monthly refills </p>",
+        "ggeqFt7cMfp_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggSUqqYjzXG_text": "<p>Hundreds per month for multiple sessions</p>",
+        "gggHeQCANkw_text": "<p>SmoothSpine ™ Align Hip &amp; Back Stabilizer </p>",
+        "gg0EBKJpSOs_text": "<p>Painkillers </p>",
+        "ggMTtCwwMTL_text": "<p>Physical Therapy </p>",
+        "ggNmdfZa8ue_text": "<p>Targets the root cause </p>",
+        "gg0deBu0KUJ_text": "<p>Supports alignment &amp; reduces nerve pressure </p>",
+        "ggfH4o21dYH_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggepTaNpv9V_text": "<p>Numbs pain but doesn't fix the problem </p>",
+        "ggJqJTSDSDI_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggNQOojrgzw_text": "<p>Eventually helps if you go consistently </p>",
+        "ggXUDowwYmn_text": "<p>Works on day one </p>",
+        "gg0A7o-fBpm_text": "<p>Compression relief starts immediately </p>",
+        "ggkvqtCB2j7_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggtRc0eY5fZ_text": "<p>Temporary relief after 30-60 min </p>",
+        "ggw5MJvSGio_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggmlHBSEwmT_text": "<p>Takes weeks or months to feel real change </p>",
+        "ggfdAWNRSFr_text": "<p>Drug-free &amp; non-invasive </p>",
+        "ggch0ie1-uq_text": "<p>No pills, shots, or prescriptions needed </p>",
+        "ggz7ymMfUBj_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggcLJMcXQiE_text": "<p>Risk of dependency &amp; side effects </p>",
+        "ggtpoHYP68X_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggk999iGfgw_text": "<p>Safe, but time-consuming and expensive </p>",
+        "ggOCzy7FnuX_text": "<p>Easy &amp; convenient </p>",
+        "ggjS3yjEhBU_text": "<p>Wear it anytime, anywhere no appointments </p>",
+        "ggthsJ319Su_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "gg1-2KvCNL7_text": "<p>Easy to pop a pill </p>",
+        "ggLi5WKxBXJ_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggfaAH43Boa_text": "<p>Requires scheduling, travel, and time commitment </p>",
+        "ggNVzmbIdl__text": "<p>Cost-effective </p>",
+        "gg78m0Tvafa_text": "<p>One-time purchase, long-term relief </p>",
+        "ggNU0DUMeTz_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggdNCB8lMJB_text": "<p>Ongoing cost monthly refills </p>",
+        "gg7cBw4-RKj_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-23ff5eac-98d6-4932-bb00-6836a417b18e.png",
+        "ggyfL9YASXK_text": "<p>Hundreds per month for multiple sessions</p>"
+      }
+    },
+    "gp_section_565431197149168625": {
+      "type": "gp-section-565431197149168625",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "aef5e72d7e36a13c01fc55eb5b0a55d37a4995c470c4fda9e164e71f33396014_1_1_1_0__1",
+        "ggdxFF8dN_K_childItem_0": "<p>SmoothSpine ™</p>",
+        "ggdxFF8dN_K_childItem_1": "<p>Painkillers</p>",
+        "ggdxFF8dN_K_childItem_2": "<p>Physical Therapy </p>",
+        "ggNgV0gvGkb_text": "<p>SmoothSpine ™ Align Hip &amp; Back Stabilizer </p>",
+        "ggWgk9fxtNA_text": "<p>Targets the root cause </p>",
+        "ggLGudu5o0J_text": "<p>Supports alignment &amp; reduces nerve pressure </p>",
+        "ggGIkcuRs7__text": "<p>Works on day one </p>",
+        "ggsDvmPtchU_text": "<p>Compression relief starts immediately </p>",
+        "ggOE-8MPAUV_text": "<p>Drug-free &amp; non-invasive </p>",
+        "ggTDSzYGYYV_text": "<p>No pills, shots, or prescriptions needed </p>",
+        "ggh2aZ9G0sw_text": "<p>Easy &amp; convenient</p>",
+        "gg9go4anByF_text": "<p>Wear it anytime, anywhere no appointments </p>",
+        "ggQLfOzC-Wc_text": "<p>Cost-effective </p>",
+        "ggWo8Qw3wyJ_text": "<p>One-time purchase, long-term relief </p>",
+        "ggWF4vIU9Yc_text": "<p>Painkillers </p>",
+        "ggGJ_XoWzyh_text": "<p>Targets the root cause </p>",
+        "ggnQ8uZqzV5_srcSet_desktop_src": "https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/",
+        "ggnQ8uZqzV5_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-fe91c9ff-7071-4714-b829-dad7864cb27f.png",
+        "ggJeFc2CRU6_text": "<p>Numbs pain but doesn't fix the problem </p>",
+        "ggtQr5TjqgP_text": "<p>Works on day one </p>",
+        "ggYz3JnVa9M_srcSet_desktop_src": "https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/",
+        "ggYz3JnVa9M_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-fe91c9ff-7071-4714-b829-dad7864cb27f.png",
+        "ggWsqUcvRZm_text": "<p>Temporary relief after 30-60 min </p>",
+        "ggWtDfDlmsc_text": "<p>Drug-free &amp; non-invasive </p>",
+        "ggrvHM1VUu3_srcSet_desktop_src": "https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/",
+        "ggrvHM1VUu3_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-fe91c9ff-7071-4714-b829-dad7864cb27f.png",
+        "ggDI5sRpm-a_text": "<p>Risk of dependency &amp; side effects </p>",
+        "ggkEqHaoA58_text": "<p>Easy &amp; convenient</p>",
+        "ggLSejWwHZS_srcSet_desktop_src": "https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/",
+        "ggLSejWwHZS_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-fe91c9ff-7071-4714-b829-dad7864cb27f.png",
+        "ggZA4-_UA4x_text": "<p>Easy to pop a pill </p>",
+        "ggnV8EGyPO6_text": "<p>Cost-effective </p>",
+        "ggaEixwWPsK_srcSet_desktop_src": "https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/",
+        "ggaEixwWPsK_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-fe91c9ff-7071-4714-b829-dad7864cb27f.png",
+        "ggRVGlpxX75_text": "<p>Ongoing cost monthly refills </p>",
+        "ggQjJaC9Avc_text": "<p>Physical Therapy </p>",
+        "ggxOQXJ89AS_text": "<p>Targets the root cause </p>",
+        "gg_mH2K6ySe_srcSet_desktop_src": "https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/",
+        "gg_mH2K6ySe_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-fe91c9ff-7071-4714-b829-dad7864cb27f.png",
+        "gghfqnhLyXC_text": "<p>Eventually helps if you go consistently </p>",
+        "ggHhBshvLtX_text": "<p>Works on day one </p>",
+        "gg3L56j5k4c_srcSet_desktop_src": "https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/",
+        "gg3L56j5k4c_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-fe91c9ff-7071-4714-b829-dad7864cb27f.png",
+        "ggDr-yhkWiT_text": "<p>Takes weeks or months to feel real change </p>",
+        "ggNWuBF9Cl1_text": "<p>Drug-free &amp; non-invasive </p>",
+        "ggNhKSPzD_6_srcSet_desktop_src": "https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/",
+        "ggNhKSPzD_6_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-fe91c9ff-7071-4714-b829-dad7864cb27f.png",
+        "gglMMe8JQb5_text": "<p>Safe, but time-consuming and expensive </p>",
+        "ggro3VgMkrz_text": "<p>Easy &amp; convenient</p>",
+        "ggmqBjBDT2Q_srcSet_desktop_src": "https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/",
+        "ggmqBjBDT2Q_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-fe91c9ff-7071-4714-b829-dad7864cb27f.png",
+        "ggNSasdDsk-_text": "<p>Requires scheduling, travel, and time commitment </p>",
+        "ggEt_MoIeWu_text": "<p>Cost-effective </p>",
+        "ggX1z3xDGf8_srcSet_desktop_src": "https://ucarecdn.com/ee6d5074-1640-4cc7-8933-47c8589c3dee/-/format/auto/",
+        "ggX1z3xDGf8_srcSet_mobile_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-fe91c9ff-7071-4714-b829-dad7864cb27f.png",
+        "ggQhvH9OWI0_text": "<p>Hundreds per month for multiple sessions</p>"
+      }
+    },
+    "gp_section_565050739283002163": {
+      "type": "gp-section-565050739283002163",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "5bc05cd872450cbd4ee22437060196ab3b8c7ec716dbc9d0287985157ff38806_1_1_1_0__1",
+        "ggrydDXALPH_text": "What Our Customers Are Saying",
+        "gg_nv0E1WSj_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-7367ddd9-7e46-46e2-b6d9-c82753fe4be8.png",
+        "gg029TQ7PQT_text": "<p>“I couldn’t stand or sit without pain - now I barely think about it.”</p>",
+        "ggnkoHZd9S5_text": "<p>I’ve had sciatica for years and nothing ever helped long term. This brace made a difference immediately. I wear it around the house and feel so much more mobile.</p>",
+        "ggmciU_MO8m_text": "<p>— Karen D., 58</p>",
+        "ggx_FgcD6ei_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-b420fdda-8fe1-4506-8a99-8e3ddcea98b2.png",
+        "ggBi7vQvbIj_text": "<p>“I was skeptical. But the relief was instant.”</p>",
+        "ggJ8hCrLXJq_text": "<p>I’ve tried pills, stretches, therapy - nothing lasted. I felt stupid for trying another thing , but this one actually took the edge off the pain in minutes.</p>",
+        "ggReBUA1njy_text": "<p>— Jason T., 47</p>",
+        "ggcIBXq5yW6_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-181172db-ea96-42e4-bc11-035d816f21e5.png",
+        "gg4lOxj8MET_text": "<p>“I sleep better, walk better, and I’m not scared of the pain anymore.”</p>",
+        "ggZSVoxxXVa_text": "<p>Every step used to send a shock down my leg. Now I wear this daily and I’m moving with way more confidence - even sleeping through the night again.</p>",
+        "ggQgcHb_VvV_text": "<p>— Elena M., 63</p>"
+      }
+    },
+    "gp_section_565050739282674483": {
+      "type": "gp-section-565050739282674483",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "d1353561a890e9aecd546d43778cf6118bbdfca7079488ef3c86323a5277af51_1_1_1_0__1",
+        "ggc0EeH0dDJ_text": "3 Simple Steps"
+      }
+    },
+    "gp_section_565050739283395379": {
+      "type": "gp-section-565050739283395379",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "7f34796a416f4115082c1ee622cc39b272ec8561b061059c537a681e000cf923_1_1_1_0__1",
+        "ggZDZF7ux33_text": "<p>STEP 1</p>",
+        "ggmue6CCCwq_text": "<p><strong>Wrap the brace</strong></p><p><strong>around your waist</strong></p>",
+        "gg4UzvYzRMo_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-94c13a59-5f09-408d-b94b-fff782698c8e.png",
+        "gg6uV7yqBqY_text": "<p>STEP 2</p>",
+        "ggBNVTsuXWb_text": "<p><strong>Adjust the strap</strong></p><p><strong>around your hip</strong></p>",
+        "ggqPNjqAO0X_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-036a465c-9107-412d-857c-f738a842251c.png",
+        "gg5tUayJ_Gz_text": "<p>STEP 3</p>",
+        "ggU2h5Y-nxZ_text": "<p><strong>Go about your day</strong></p><p><strong>- walk, sit, stretch, or rest!</strong></p>",
+        "ggZF6pF-VIH_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-ae5f98eb-03e3-453f-8105-2537851bb09a.png"
+      }
+    },
+    "gp_section_565050739283067699": {
+      "type": "gp-section-565050739283067699",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "c2bfd99ebf2c0b15cc83c8f0c818b03638a01652aa80532f0ec670d68ff2f06c_1_1_1_0__1",
+        "ggSb2fxxJNt_text": "Claim Your Discounted SmoothSpine Align Hip &amp; Back Stabilizer"
+      }
+    },
+    "gp_section_565050739283133235": {
+      "type": "gp-section-565050739283133235",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "9575f7f62464f78a11f0a3893832d693a8cfe00f7aa8e33268771e28ff9eb836_1_1_1_0__1",
+        "ggqcynYj7rR_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-7f1f8a0d-f721-46cc-b7df-382766f03516.png",
+        "ggRmjDjdLC5_text": "<p>Special Offer On Now!</p>",
+        "ggx79_2DNRs_text": "<p>Try Your SmoothSpine™ Align Hip &amp; Back Stabilizer<br>NOW R<u>isk-Free</u> at an All Time Low Price! </p>",
+        "ggr4TOUfTIs_text": "<p><u>Act Now and You'll Get:</u></p>",
+        "ggt6Awj6Ycu_text": "<p><strong>Up To 50% OFF -</strong> SmoothSpine™ Align Hip &amp; Back Stabilizer</p>",
+        "ggL4MnTf9K1_text": "<p><strong>90-Night Results or Refund Guarantee</strong></p>",
+        "ggk2dVAurva_text": "<p><strong>FREE Travel Bag: Reusable SmoothSpine Ziplock Travel Bag ($29.00 Value)</strong></p>",
+        "gg8OBT-mwiy_text": "<p><strong>FREE Shipping</strong> </p>",
+        "ggZo95s7bUZ_label": "<p>Get your Hip &amp; Back Stabilizer Now!</p>",
+        "ggtCYt5fUxn_text": "<p><u>Note: </u> <span style=\"color:#0ABA4C;\"><strong>Not Available on Amazon or eBay</strong></span></p>"
+      }
+    },
+    "gp_section_565050739282608947": {
+      "type": "gp-section-565050739282608947",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "56bab83740fdf789ded3029b366b4d18b99768fec6e64249583478d2700257d0_1_1_1_0__1",
+        "ggY5Kp_-GFD_text": "100% SATISFACTION<br>90-DAY MONEY BACK GUARANTEE",
+        "gg2skFYSnGC_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-51bd7b08-f4ec-461e-bc36-e7734dd26e06.jpg",
+        "ggBZyLN-waC_text": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee. </strong>If you don't experience the remarkable <strong>relief from back pain and Sciatica</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days,</strong> let us know and we will refund every single penny of your investment. <strong>No questions asked.</strong></p>",
+        "ggufORTUxtU_text": "<p>We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>"
+      }
+    },
+    "gp_section_565050739283198771": {
+      "type": "gp-section-565050739283198771",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "c0d0954c4b80f3e7a27c2c916b35716fad2947ceaa8629d0ceb86940268156ec_1_1_1_0__1",
+        "ggTB9UV4fg5_text": "We're Getting Noticed!",
+        "ggqBiWApY31_srcSet_desktop_src": "https://cdn.shopify.com/s/files/1/0252/1261/6781/files/gempages_464015397612422087-2ef784eb-b38e-40bd-b5a1-a3771bcf0e2d.png"
+      }
+    },
+    "gp_section_565050739282477875": {
+      "type": "gp-section-565050739282477875",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "487521c248a0a7aa0f163c9ba6d7c1af0d8fdf38b8ef5e92f57fd5b159a67418_1_1_1_0__1",
+        "ggBJa8Yn5GB_text": "Frequently Asked Questions",
+        "gg_vblMSRbJ_childItem_0": "<p>Will it actually relieve my sciatica or hip pain?</p>",
+        "gg_vblMSRbJ_childItem_1": "<p>How long should I wear it each day?</p>",
+        "gg_vblMSRbJ_childItem_2": "<p>Can I wear it under my clothes?</p>",
+        "gg_vblMSRbJ_childItem_3": "<p>Is it uncomfortable or restrictive?</p>",
+        "gg_vblMSRbJ_childItem_4": "<p>Do I need to be active while wearing it for it to work?</p>",
+        "ggJ59b-ywE__text": "<p>Yes - the SmoothSpine™ Align Hip &amp; Back Stabilizer is designed to support your lower back and hips, taking pressure off the sciatic nerve, which is a major cause of pain. Many users report noticeable relief within the first few wears.</p>",
+        "ggOF78_pLax_text": "<p>We recommend wearing it for 15–60 minutes a day to start, gradually increasing as your body adjusts. Many users wear it while walking, working, or relaxing at home.</p>",
+        "ggGBgdMGN1b_text": "<p>Absolutely. The SmoothSpine™ Align Hip &amp; Back Stabilizeris low-profile and designed to be worn discreetly under clothing without bulk - perfect for daily use without anyone noticing.</p>",
+        "gg5779-Q2LD_text": "<p>Not at all. It’s made with breathable, flexible materials and adjustable straps for a snug but comfortable fit. Most users forget they’re even wearing it.</p>",
+        "ggZ3I5t3Bhg_text": "<p>Nope! SmoothSpine™ Align Hip &amp; Back Stabilizer works whether you're moving around or just sitting. It’s designed to support your body in any position - including while you rest or sleep.</p>"
+      }
+    },
+    "gp_section_565050739282740019": {
+      "type": "gp-section-565050739282740019",
+      "disabled": true,
+      "settings": {
+        "section_preload": "false",
+        "checksum": "6f87d0a3bd075e2a053affd0dabd38db99139ed6dcd6d32a2b780308c61274c3_1_1_1_0__1"
+      }
+    },
+    "custom_liquid_U7LMAq": {
+      "type": "custom-liquid",
+      "custom_css": [],
+      "name": "Custom Liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<div class=\"maison-reviews-general\">\n<!-- Start of Judge.me code -->{% assign has_legacy = false %}{% if product.metafields.judgeme.widget.size > 20 %}{% assign has_legacy = true %}{% endif %}<div style='clear:both'></div><div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-product-id='{{ product.id }}' data-widget='review' data-auto-install='false' data-shop-reviews-count='{{ shop.metafields.judgeme.shop_reviews_count | default: 0 | escape }}' data-entry-point='review_widget.js' data-entry-key='review-widget/main.js'>{% if has_legacy %}<div class='jdgm-legacy-widget-content' style='display: none;'>{{ product.metafields.judgeme.widget }}</div>{% endif %}</div>{% if product.metafields.judgeme.review_widget_data %}<script>jdgm.data ||= {}; jdgm.data.reviewWidget ||= {}; jdgm.data.reviewWidget[{{ product.id }}] = {{ product.metafields.judgeme.review_widget_data }}</script>{% endif %}<!-- End of Judge.me code -->\n</div>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "gp_section_565050739283460915": {
+      "type": "gp-section-565050739283460915",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "0fdefa2e6ee51c29adfc2bbfa1e144b42bf557e243c4459d5c23ae51f358c192_1_1_1_0__1",
+        "ggyJ9flkH7P_text": "SmoothSpine™<br>Align Hip &amp; Back Stabilizer",
+        "ggoTYQK7jZP_text": "<p>4.7/5 Rated </p>",
+        "gg5HN9rX0dc_label": "<p>SHOP NOW</p>"
+      }
+    }
+  },
+  "order": [
+    "gp_section_565050739283526451",
+    "gp_section_565050739282871091",
+    "gp_section_565050739282805555",
+    "gp_section_565050739283329843",
+    "gp_section_565050739282412339",
+    "gp_section_565408081333191840",
+    "gp_section_565431197149168625",
+    "gp_section_565050739283002163",
+    "gp_section_565050739282674483",
+    "gp_section_565050739283395379",
+    "gp_section_565050739283067699",
+    "gp_section_565050739283133235",
+    "gp_section_565050739282608947",
+    "gp_section_565050739283198771",
+    "gp_section_565050739282477875",
+    "gp_section_565050739282740019",
+    "custom_liquid_U7LMAq",
+    "gp_section_565050739283460915"
+  ]
+}
