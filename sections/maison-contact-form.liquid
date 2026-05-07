@@ -249,6 +249,24 @@
     color: var(--s-color-btn-text);
   }
 
+  #shopify-section-{{ section.id }} .cf-message {
+    font-family: 'Open Sans', sans-serif;
+    font-size: var(--s-font-size-input);
+    line-height: 1.5;
+    padding: 12px 16px;
+    border-radius: var(--s-radius-md);
+  }
+
+  #shopify-section-{{ section.id }} .cf-message-success {
+    background: rgba(6, 91, 220, 0.08);
+    color: var(--s-color-text-primary);
+  }
+
+  #shopify-section-{{ section.id }} .cf-message-error {
+    background: rgba(240, 126, 59, 0.12);
+    color: #b34a1a;
+  }
+
   @media (max-width: 767px) {
     #shopify-section-{{ section.id }} .maisoncode_contact-form {
       background-color: var(--s-color-bg-mobile);
@@ -320,37 +338,52 @@
       {% endif %}
     </div>
 
-    <form class="cf-right" onsubmit="event.preventDefault()">
+    {%- form 'contact', class: 'cf-right', id: 'contact_form' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="cf-message cf-message-success">Thanks! Your message has been sent — we'll get back to you soon.</p>
+      {%- elsif form.errors -%}
+        <p class="cf-message cf-message-error">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+
       <div class="cf-fields">
         {% if section.settings.show_name_field %}
           <input
             type="text"
+            name="contact[name]"
+            value="{{ form.name }}"
             class="cf-input"
             placeholder="{{ section.settings.name_placeholder }}"
             aria-label="{{ section.settings.name_placeholder }}"
+            autocomplete="name"
           />
         {% endif %}
 
         {% if section.settings.show_email_field %}
           <input
             type="email"
+            name="contact[email]"
+            value="{{ form.email }}"
             class="cf-input"
             placeholder="{{ section.settings.email_placeholder }}"
             aria-label="{{ section.settings.email_placeholder }}"
+            autocomplete="email"
+            required
           />
         {% endif %}
 
         {% if section.settings.show_message_field %}
           <textarea
+            name="contact[body]"
             class="cf-textarea"
             placeholder="{{ section.settings.message_placeholder }}"
             aria-label="{{ section.settings.message_placeholder }}"
-          ></textarea>
+            required
+          >{{ form.body }}</textarea>
         {% endif %}
 
         {% if section.settings.show_checkbox %}
           <label class="cf-checkbox-row">
-            <input type="checkbox" />
+            <input type="checkbox" required />
             <span class="cf-checkbox-label">{{ section.settings.checkbox_label }}</span>
           </label>
         {% endif %}
@@ -361,7 +394,7 @@
           <span>{{ section.settings.button_label }}</span>
         </button>
       {% endif %}
-    </form>
+    {%- endform -%}
   </div>
 </section>
 
