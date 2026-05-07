@@ -167,6 +167,24 @@
     height: 16px;
   }
 
+  #shopify-section-{{ section.id }} .footer-newsletter-form {
+    display: contents;
+  }
+
+  #shopify-section-{{ section.id }} .footer-newsletter-message {
+    font-size: var(--s-font-size-body);
+    line-height: 1.5;
+    margin-top: 8px;
+  }
+
+  #shopify-section-{{ section.id }} .footer-newsletter-success {
+    color: var(--s-color-white);
+  }
+
+  #shopify-section-{{ section.id }} .footer-newsletter-error {
+    color: #ff6b6b;
+  }
+
   /* Right columns */
   #shopify-section-{{ section.id }} .footer-columns {
     display: flex;
@@ -463,14 +481,32 @@
           {% endif %}
         </div>
         {% if section.settings.show_newsletter %}
-          <div class="footer-email-input">
-            <input type="email" placeholder="{{ section.settings.email_placeholder }}">
-            <button class="footer-email-btn" aria-label="Subscribe">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M6 12L10 8L6 4" stroke="{{ section.settings.color_bg }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-          </div>
+          {%- form 'customer', class: 'footer-newsletter-form', id: 'footer-newsletter-desktop' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <div class="footer-email-input">
+              <input
+                type="email"
+                name="contact[email]"
+                value="{{ form.email }}"
+                placeholder="{{ section.settings.email_placeholder }}"
+                autocorrect="off"
+                autocapitalize="off"
+                autocomplete="email"
+                aria-label="{{ section.settings.email_placeholder }}"
+                required
+              >
+              <button type="submit" class="footer-email-btn" aria-label="Subscribe">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M6 12L10 8L6 4" stroke="{{ section.settings.color_bg }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            {%- if form.errors -%}
+              <p class="footer-newsletter-message footer-newsletter-error">{{ form.errors | default_errors }}</p>
+            {%- elsif form.posted_successfully? -%}
+              <p class="footer-newsletter-message footer-newsletter-success">Thanks for subscribing!</p>
+            {%- endif -%}
+          {%- endform -%}
         {% endif %}
       </div>
 
@@ -538,14 +574,32 @@
         {% endif %}
       </div>
       {% if section.settings.show_newsletter %}
-        <div class="footer-email-input footer-mobile-email">
-          <input type="email" placeholder="{{ section.settings.email_placeholder }}">
-          <button class="footer-email-btn" aria-label="Subscribe">
-            <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 8h14M9 2l6 6-6 6" stroke="{{ section.settings.color_bg }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
+        {%- form 'customer', class: 'footer-newsletter-form', id: 'footer-newsletter-mobile' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="footer-email-input footer-mobile-email">
+            <input
+              type="email"
+              name="contact[email]"
+              value="{{ form.email }}"
+              placeholder="{{ section.settings.email_placeholder }}"
+              autocorrect="off"
+              autocapitalize="off"
+              autocomplete="email"
+              aria-label="{{ section.settings.email_placeholder }}"
+              required
+            >
+            <button type="submit" class="footer-email-btn" aria-label="Subscribe">
+              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 8h14M9 2l6 6-6 6" stroke="{{ section.settings.color_bg }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+          {%- if form.errors -%}
+            <p class="footer-newsletter-message footer-newsletter-error">{{ form.errors | default_errors }}</p>
+          {%- elsif form.posted_successfully? -%}
+            <p class="footer-newsletter-message footer-newsletter-success">Thanks for subscribing!</p>
+          {%- endif -%}
+        {%- endform -%}
       {% endif %}
     </div>
 
