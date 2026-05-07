@@ -537,7 +537,7 @@
           {% if social_links.size > 0 %}
             <div class="footer-social">
               {% for block in social_links %}
-                <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} class="footer-social-icon" aria-label="{{ block.settings.label }}" {{ block.shopify_attributes }}>
+                <a {% if block.settings.link != blank %}href="{{ block.settings.link }}" target="_blank" rel="noopener noreferrer"{% endif %} class="footer-social-icon" aria-label="{{ block.settings.label }}" {{ block.shopify_attributes }}>
                   {% if block.settings.icon != blank %}
                     {{ block.settings.icon | image_url: width: 48 | image_tag:
                       loading: 'lazy',
@@ -639,7 +639,7 @@
           {% endif %}
           <div class="footer-social">
             {% for block in social_links %}
-              <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} class="footer-social-icon" aria-label="{{ block.settings.label }}" {{ block.shopify_attributes }}>
+              <a {% if block.settings.link != blank %}href="{{ block.settings.link }}" target="_blank" rel="noopener noreferrer"{% endif %} class="footer-social-icon" aria-label="{{ block.settings.label }}" {{ block.shopify_attributes }}>
                 {% if block.settings.icon != blank %}
                   {{ block.settings.icon | image_url: width: 48 | image_tag:
                     loading: 'lazy',
