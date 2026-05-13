@@ -1,14 +1,59 @@
-{%- comment -%}
-Original announcement text / marquee code has been replaced with responsive image banners.
+{% comment %}
+================================================================================
+OLD ANNOUNCEMENT BAR CODE - COMMENTED OUT / DISABLED
+================================================================================
 
-Desktop banner:
-https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Smoothspine_-_Memorial_Day_Sale_Banner_min.png?v=1778701606
+NOTE:
+The original Liquid announcement code is intentionally disabled here.
+I replaced the internal Liquid comment tags with plain text markers so this
+whole block stays safely commented out and does not break Shopify Liquid.
 
-Mobile banner:
-https://cdn.shopify.com/s/files/1/0252/1261/6781/files/M_-_Smoothspine_-_Memorial_Day_Sale_Banner_v1_Mobile.png?v=1778701607
-{%- endcomment -%}
+OLD CODE START:
+
+{%- if section.blocks.size > 0 -%}
+  {%- unless request.page_type != 'index' and section.settings.show_on_homepage_only -%}
+
+    OLD COMMENT: CSS
+
+    <style>
+      :root {
+        --sticky-announcement-bar-enabled: {%- if section.settings.enable_sticky -%}1{% else %}0{% endif %};
+      }
+
+      {%- if section.settings.enable_sticky -%}
+        #shopify-section-{{ section.id }} {
+          position: sticky;
+          top: 0;
+          z-index: 20;
+        }
+
+        .shopify-section--header ~ #shopify-section-{{ section.id }} {
+          top: calc(var(--sticky-header-enabled, 0) * var(--header-height, 0px));
+        }
+      {%- endif -%}
+    </style>
+
+    OLD COMMENT: LIQUID
+
+    <height-observer variable="announcement-bar">
+      <div {% render 'surface', class: 'announcement-bar', background_gradient: section.settings.background_gradient, background: section.settings.background, text_color: section.settings.text_color %}>
+        OLD TEXT / MARQUEE ANNOUNCEMENT BAR CODE WAS HERE
+      </div>
+    </height-observer>
+
+    <script>
+      document.documentElement.style.setProperty('--announcement-bar-height', Math.round(document.getElementById('shopify-section-{{ section.id }}').clientHeight) + 'px');
+    </script>
+  {%- endunless -%}
+{%- endif -%}
+
+OLD CODE END
+================================================================================
+{% endcomment %}
+
 
 {%- unless request.page_type != 'index' and section.settings.show_on_homepage_only -%}
+
   <style>
     :root {
       --sticky-announcement-bar-enabled: {%- if section.settings.enable_sticky -%}1{% else %}0{% endif %};
@@ -26,39 +71,43 @@ https://cdn.shopify.com/s/files/1/0252/1261/6781/files/M_-_Smoothspine_-_Memoria
       }
     {%- endif -%}
 
-    #shopify-section-{{ section.id }} .announcement-sale-banner {
+    #shopify-section-{{ section.id }} .announcement-banner-image {
       width: 100%;
+      display: block;
       overflow: hidden;
       line-height: 0;
     }
 
-    #shopify-section-{{ section.id }} .announcement-sale-banner__link,
-    #shopify-section-{{ section.id }} .announcement-sale-banner__picture,
-    #shopify-section-{{ section.id }} .announcement-sale-banner__image {
+    #shopify-section-{{ section.id }} .announcement-banner-image a {
       display: block;
       width: 100%;
     }
 
-    #shopify-section-{{ section.id }} .announcement-sale-banner__image {
+    #shopify-section-{{ section.id }} .announcement-banner-image picture {
+      display: block;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .announcement-banner-image img {
+      width: 100%;
       height: auto;
-      object-fit: cover;
+      display: block;
     }
   </style>
 
   <height-observer variable="announcement-bar">
-    <div class="announcement-sale-banner" role="region" aria-label="Announcement">
+    <div class="announcement-banner-image">
       {%- if section.settings.banner_link != blank -%}
-        <a href="{{ section.settings.banner_link }}" class="announcement-sale-banner__link">
+        <a href="{{ section.settings.banner_link }}">
       {%- endif -%}
 
-        <picture class="announcement-sale-banner__picture">
+        <picture>
           <source
             media="(max-width: 749px)"
             srcset="https://cdn.shopify.com/s/files/1/0252/1261/6781/files/M_-_Smoothspine_-_Memorial_Day_Sale_Banner_v1_Mobile.png?v=1778701607"
           >
 
           <img
-            class="announcement-sale-banner__image"
             src="https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Smoothspine_-_Memorial_Day_Sale_Banner_min.png?v=1778701606"
             alt="{{ section.settings.banner_alt | escape }}"
             loading="eager"
@@ -73,63 +122,34 @@ https://cdn.shopify.com/s/files/1/0252/1261/6781/files/M_-_Smoothspine_-_Memoria
   </height-observer>
 
   <script>
-    (function () {
-      var section = document.getElementById('shopify-section-{{ section.id }}');
+    document.documentElement.style.setProperty(
+      '--announcement-bar-height',
+      Math.round(document.getElementById('shopify-section-{{ section.id }}').clientHeight) + 'px'
+    );
 
-      if (!section) {
-        return;
-      }
+    window.addEventListener('load', function () {
+      document.documentElement.style.setProperty(
+        '--announcement-bar-height',
+        Math.round(document.getElementById('shopify-section-{{ section.id }}').clientHeight) + 'px'
+      );
+    });
 
-      function updateAnnouncementBarHeight() {
-        document.documentElement.style.setProperty(
-          '--announcement-bar-height',
-          Math.round(section.clientHeight) + 'px'
-        );
-      }
-
-      updateAnnouncementBarHeight();
-
-      window.addEventListener('load', updateAnnouncementBarHeight);
-      window.addEventListener('resize', updateAnnouncementBarHeight);
-
-      var image = section.querySelector('.announcement-sale-banner__image');
-
-      if (image) {
-        image.addEventListener('load', updateAnnouncementBarHeight);
-      }
-
-      if ('ResizeObserver' in window) {
-        new ResizeObserver(updateAnnouncementBarHeight).observe(section);
-      }
-    })();
+    window.addEventListener('resize', function () {
+      document.documentElement.style.setProperty(
+        '--announcement-bar-height',
+        Math.round(document.getElementById('shopify-section-{{ section.id }}').clientHeight) + 'px'
+      );
+    });
   </script>
+
 {%- endunless -%}
+
 
 {% schema %}
 {
   "name": "Announcement bar",
   "class": "shopify-section--announcement-bar",
   "tag": "aside",
-  "max_blocks": 5,
-  "blocks": [
-    {
-      "type": "message",
-      "name": "Message",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "label": "Text",
-          "default": "Announce something here"
-        },
-        {
-          "type": "url",
-          "id": "url",
-          "label": "Link"
-        }
-      ]
-    }
-  ],
   "settings": [
     {
       "type": "checkbox",
@@ -153,94 +173,6 @@ https://cdn.shopify.com/s/files/1/0252/1261/6781/files/M_-_Smoothspine_-_Memoria
       "id": "banner_alt",
       "label": "Banner alt text",
       "default": "Memorial Day Sale"
-    },
-    {
-      "type": "select",
-      "id": "navigation_mode",
-      "label": "Multiple message navigation",
-      "options": [
-        {
-          "value": "arrows",
-          "label": "Arrows"
-        },
-        {
-          "value": "scrolling",
-          "label": "Auto-scrolling"
-        }
-      ],
-      "default": "arrows"
-    },
-    {
-      "type": "checkbox",
-      "id": "autoplay",
-      "label": "Auto rotate between messages",
-      "default": false,
-      "visible_if": "{{ section.settings.navigation_mode == 'arrows' }}"
-    },
-    {
-      "type": "range",
-      "id": "cycle_speed",
-      "min": 4,
-      "max": 20,
-      "step": 1,
-      "unit": "sec",
-      "label": "Change messages every",
-      "default": 6,
-      "visible_if": "{{ section.settings.navigation_mode == 'arrows' and section.settings.autoplay }}"
-    },
-    {
-      "type": "range",
-      "id": "scrolling_speed",
-      "label": "Scrolling speed",
-      "min": 10,
-      "max": 30,
-      "unit": "s",
-      "default": 20,
-      "visible_if": "{{ section.settings.navigation_mode == 'scrolling' }}"
-    },
-    {
-      "type": "select",
-      "id": "text_size",
-      "label": "Text size",
-      "options": [
-        {
-          "value": "text-xxs",
-          "label": "X-Small"
-        },
-        {
-          "value": "text-xs",
-          "label": "Small"
-        },
-        {
-          "value": "text-base",
-          "label": "Medium"
-        },
-        {
-          "value": "text-lg",
-          "label": "Large"
-        }
-      ],
-      "default": "text-xs"
-    },
-    {
-      "type": "header",
-      "content": "Colors",
-      "info": "These old color settings are kept for compatibility but are not used by the image banner."
-    },
-    {
-      "type": "color",
-      "id": "background",
-      "label": "Background"
-    },
-    {
-      "type": "color_background",
-      "id": "background_gradient",
-      "label": "Background gradient"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text"
     }
   ]
 }
