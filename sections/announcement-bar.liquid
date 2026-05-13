@@ -1,95 +1,109 @@
-{%- if section.blocks.size > 0 -%}
-  {%- unless request.page_type != 'index' and section.settings.show_on_homepage_only -%}
-    {%- comment -%}
-    ------------------------------------------------------------------------------------------------------------------------
-    CSS
-    ------------------------------------------------------------------------------------------------------------------------
-    {%- endcomment -%}
-    <style>
-      :root {
-        --sticky-announcement-bar-enabled: {%- if section.settings.enable_sticky -%}1{% else %}0{% endif %};
+{%- comment -%}
+Original announcement text / marquee code has been replaced with responsive image banners.
+
+Desktop banner:
+https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Smoothspine_-_Memorial_Day_Sale_Banner_min.png?v=1778701606
+
+Mobile banner:
+https://cdn.shopify.com/s/files/1/0252/1261/6781/files/M_-_Smoothspine_-_Memorial_Day_Sale_Banner_v1_Mobile.png?v=1778701607
+{%- endcomment -%}
+
+{%- unless request.page_type != 'index' and section.settings.show_on_homepage_only -%}
+  <style>
+    :root {
+      --sticky-announcement-bar-enabled: {%- if section.settings.enable_sticky -%}1{% else %}0{% endif %};
+    }
+
+    {%- if section.settings.enable_sticky -%}
+      #shopify-section-{{ section.id }} {
+        position: sticky;
+        top: 0;
+        z-index: 20;
       }
 
-      {%- if section.settings.enable_sticky -%}
-        #shopify-section-{{ section.id }} {
-          position: sticky;
-          top: 0;
-          z-index: 20;
-        }
+      .shopify-section--header ~ #shopify-section-{{ section.id }} {
+        top: calc(var(--sticky-header-enabled, 0) * var(--header-height, 0px));
+      }
+    {%- endif -%}
 
-        .shopify-section--header ~ #shopify-section-{{ section.id }} {
-          top: calc(var(--sticky-header-enabled, 0) * var(--header-height, 0px));
-        }
+    #shopify-section-{{ section.id }} .announcement-sale-banner {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    #shopify-section-{{ section.id }} .announcement-sale-banner__link,
+    #shopify-section-{{ section.id }} .announcement-sale-banner__picture,
+    #shopify-section-{{ section.id }} .announcement-sale-banner__image {
+      display: block;
+      width: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .announcement-sale-banner__image {
+      height: auto;
+      object-fit: cover;
+    }
+  </style>
+
+  <height-observer variable="announcement-bar">
+    <div class="announcement-sale-banner" role="region" aria-label="Announcement">
+      {%- if section.settings.banner_link != blank -%}
+        <a href="{{ section.settings.banner_link }}" class="announcement-sale-banner__link">
       {%- endif -%}
-    </style>
 
-    {%- comment -%}
-    ------------------------------------------------------------------------------------------------------------------------
-    LIQUID
-    ------------------------------------------------------------------------------------------------------------------------
-    {%- endcomment -%}
+        <picture class="announcement-sale-banner__picture">
+          <source
+            media="(max-width: 749px)"
+            srcset="https://cdn.shopify.com/s/files/1/0252/1261/6781/files/M_-_Smoothspine_-_Memorial_Day_Sale_Banner_v1_Mobile.png?v=1778701607"
+          >
 
-    <height-observer variable="announcement-bar">
-      <div {% render 'surface', class: 'announcement-bar', background_gradient: section.settings.background_gradient, background: section.settings.background, text_color: section.settings.text_color %}>
-        {%- if section.settings.navigation_mode == 'scrolling' -%}
-          <marquee-text scrolling-speed="{{ section.settings.scrolling_speed }}" class="announcement-bar__scrolling-list">
-            {%- capture content -%}
-              {%- for block in section.blocks -%}
-                <p class="bold {{ section.settings.text_size }}" {{ block.shopify_attributes }}>
-                  {%- if block.settings.url != blank -%}
-                    <a href="{{ block.settings.url }}">{{ block.settings.text | escape }}</a>
-                  {%- else -%}
-                    {{ block.settings.text | escape }}
-                  {%- endif -%}
-                </p>
+          <img
+            class="announcement-sale-banner__image"
+            src="https://cdn.shopify.com/s/files/1/0252/1261/6781/files/Smoothspine_-_Memorial_Day_Sale_Banner_min.png?v=1778701606"
+            alt="{{ section.settings.banner_alt | escape }}"
+            loading="eager"
+            fetchpriority="high"
+          >
+        </picture>
 
-                <span class="shape-circle shape--sm"></span>
-              {%- endfor -%}
-            {%- endcapture -%}
+      {%- if section.settings.banner_link != blank -%}
+        </a>
+      {%- endif -%}
+    </div>
+  </height-observer>
 
-            {%- for i in (1..10) -%}
-              <span class="announcement-bar__item" {% unless forloop.first %}aria-hidden="true"{% endunless %}>
-                {{- content -}}
-              </span>
-            {%- endfor -%}
-          </marquee-text>
-        {%- else -%}
-          <div class="container">
-            <div class="announcement-bar__wrapper {% if section.blocks.size == 1 %}justify-center{% else %}justify-between{% endif %}">
-              {%- if section.blocks.size > 1 -%}
-                <button class="tap-area" is="prev-button" aria-controls="announcement-bar" aria-label="{{ 'general.accessibility.previous' | t }}">
-                  {%- render 'icon' with 'chevron-left', direction_aware: true -%}
-                </button>
-              {%- endif -%}
+  <script>
+    (function () {
+      var section = document.getElementById('shopify-section-{{ section.id }}');
 
-              <announcement-bar swipeable {% if section.settings.autoplay %}autoplay="{{ section.settings.cycle_speed }}"{% endif %} id="announcement-bar" class="announcement-bar__static-list">
-                {%- for block in section.blocks -%}
-                  <p class="bold {{ section.settings.text_size }} {% unless forloop.first %}reveal-invisible{% endunless %}" {{ block.shopify_attributes }}> 
-                    {%- if block.settings.url != blank -%}
-                      <a href="{{ block.settings.url }}">{{ block.settings.text | escape }}</a>
-                    {%- else -%}
-                      {{ block.settings.text | escape }}
-                    {%- endif -%}
-                  </p>
-                {%- endfor -%}
-              </announcement-bar>
+      if (!section) {
+        return;
+      }
 
-              {%- if section.blocks.size > 1 -%}
-                <button class="tap-area" is="next-button" aria-controls="announcement-bar" aria-label="{{ 'general.accessibility.next' | t }}">
-                  {%- render 'icon' with 'chevron-right', direction_aware: true -%}
-                </button>
-              {%- endif -%}
-            </div>
-          </div>
-        {%- endif -%}
-      </div>
-    </height-observer>
+      function updateAnnouncementBarHeight() {
+        document.documentElement.style.setProperty(
+          '--announcement-bar-height',
+          Math.round(section.clientHeight) + 'px'
+        );
+      }
 
-    <script>
-      document.documentElement.style.setProperty('--announcement-bar-height', Math.round(document.getElementById('shopify-section-{{ section.id }}').clientHeight) + 'px');
-    </script>
-  {%- endunless -%}
-{%- endif -%}
+      updateAnnouncementBarHeight();
+
+      window.addEventListener('load', updateAnnouncementBarHeight);
+      window.addEventListener('resize', updateAnnouncementBarHeight);
+
+      var image = section.querySelector('.announcement-sale-banner__image');
+
+      if (image) {
+        image.addEventListener('load', updateAnnouncementBarHeight);
+      }
+
+      if ('ResizeObserver' in window) {
+        new ResizeObserver(updateAnnouncementBarHeight).observe(section);
+      }
+    })();
+  </script>
+{%- endunless -%}
 
 {% schema %}
 {
@@ -128,6 +142,17 @@
       "id": "show_on_homepage_only",
       "label": "Show on homepage only",
       "default": false
+    },
+    {
+      "type": "url",
+      "id": "banner_link",
+      "label": "Banner link"
+    },
+    {
+      "type": "text",
+      "id": "banner_alt",
+      "label": "Banner alt text",
+      "default": "Memorial Day Sale"
     },
     {
       "type": "select",
@@ -200,7 +225,7 @@
     {
       "type": "header",
       "content": "Colors",
-      "info": "Gradient replaces solid colors when set."
+      "info": "These old color settings are kept for compatibility but are not used by the image banner."
     },
     {
       "type": "color",
