@@ -492,6 +492,7 @@
         "check_item_4FCY94",
         "check_item_tptGmy"
       ],
+      "disabled": true,
       "name": "Content Block List",
       "settings": {
         "heading": "The Perfect Therapy Every Time",
@@ -541,6 +542,7 @@
     },
     "maison_pdp_content_list_hcMWE3": {
       "type": "maison-pdp-content-list",
+      "disabled": true,
       "name": "Content Block List",
       "settings": {
         "heading": "How SmoothSpine “Triple Fusion” Massager Works",
@@ -590,6 +592,7 @@
     },
     "maison_before_after_U8xfYJ": {
       "type": "maison-before-after",
+      "disabled": true,
       "name": "Before After Pain Points",
       "settings": {
         "subheading": "",
@@ -644,71 +647,71 @@
         "good_item_iMXrEk": {
           "type": "good_item",
           "settings": {
-            "title": "DRUG-FREE PAIN RELIEF",
-            "description": "It's natural and non-habit-forming."
+            "title": "ADDRESSES THE ROOT CAUSE",
+            "description": "Supports the muscles around your carpal tunnel"
           }
         },
         "good_item_YE4Jk9": {
           "type": "good_item",
           "settings": {
-            "title": "FAST-ACTING & EFFECTIVE",
-            "description": "Works in as little as 15 minutes!"
+            "title": "WORKS IN 15 MINUTES",
+            "description": "Feel the difference from your first session"
           }
         },
         "good_item_Q9Nb7k": {
           "type": "good_item",
           "settings": {
-            "title": "BACKED BY EXPERTS",
-            "description": "\"Highly recommended to anyone dealing with Sciatica, herniated discs, and back pain.\""
+            "title": "GENTLE, NON-INVASIVE",
+            "description": "Designed to support your hands without drugs or surgery"
           }
         },
         "good_item_jhp6Rr": {
           "type": "good_item",
           "settings": {
-            "title": "LONG-LASTING RELIEF",
-            "description": "Daily use can even completely realign your spine and rehydrate your discs"
+            "title": "ONE-TIME COST",
+            "description": "Buy once, use ongoing"
           }
         },
         "good_item_cyjtmy": {
           "type": "good_item",
           "settings": {
-            "title": "EASY TO USE AT HOME",
-            "description": "No need for expensive doctor visits"
+            "title": "HIGH CUSTOMER SATISFACTION",
+            "description": "Backed by real customer reviews"
           }
         },
         "bad_item_cPiNNi": {
           "type": "bad_item",
           "settings": {
-            "title": "RELY ON DRUGS & CHEMICALS",
-            "description": "It's natural and non-habit-forming."
+            "title": "RELIES ON DRUGS & CHEMICALS",
+            "description": "Cortisone can wear down tissue over repeated use"
           }
         },
         "bad_item_MbheKe": {
           "type": "bad_item",
           "settings": {
-            "title": "TAKE HOURS TO WORK",
-            "description": "Painkillers and other methods take hours or even days to show results."
+            "title": "TAKES WEEKS TO WORK",
+            "description": "Splints and PT can take months with limited lasting results"
           }
         },
         "bad_item_FPWFty": {
           "type": "bad_item",
           "settings": {
             "title": "QUESTIONED BY DOCTORS",
-            "description": "Medical professionals are increasingly skeptical of long-term painkiller use."
+            "description": "Many surgeries don't fully resolve symptoms"
           }
         },
         "bad_item_iEwJVr": {
           "type": "bad_item",
           "settings": {
             "title": "SHORT-ACTING, REQUIRES CONSTANT USE",
-            "description": "Painkillers wear off quickly, forcing you to take more doses."
+            "description": "Cortisone effects fade in 4–8 weeks, requiring repeat shots"
           }
         },
         "bad_item_MeaaTQ": {
           "type": "bad_item",
           "settings": {
-            "title": "HARMFUL TO YOUR BODY",
-            "description": "Painkillers also don't help your mood, your stress or your anxiety."
+            "title": "CAN CARRY RISKS",
+            "description": "Surgery and repeated injections come with their own downsides"
           }
         }
       },
@@ -726,10 +729,10 @@
       ],
       "name": "Product Comparison",
       "settings": {
-        "heading_highlight": "The SmoothSpine Massager",
+        "heading_highlight": "The HandRenew System",
         "heading_main": "Is The Safer Healthier Choice",
-        "subtitle": "It's non-addictive, works fast, and actually does GOOD things for your body.",
-        "good_card_title": "SmoothSpine Massager",
+        "subtitle": "It's non-addictive and works fast. Stop choosing between cortisone and the surgeon's table.",
+        "good_card_title": "HandRenew Triple Fusion System",
         "bad_card_title": "Other Pain Relief Methods",
         "color_primary": "#102a43",
         "color_brand_blue": "#065bdc",
@@ -738,7 +741,7 @@
         "color_success": "#12b76a",
         "color_error": "#f04438",
         "color_card_header_text": "#fafcfe",
-        "color_gradient": "linear-gradient(180deg, #E5EEFB 0%, #FDFCFA 100%)",
+        "color_gradient": "linear-gradient(180deg, rgba(229, 238, 251, 1), rgba(253, 252, 250, 1) 100%)",
         "title_font_size": 32,
         "title_font_size_mobile": 24,
         "subtitle_font_size": 16,
