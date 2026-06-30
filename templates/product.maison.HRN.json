@@ -924,25 +924,37 @@
         "check_item_pktdCR": {
           "type": "check_item",
           "settings": {
-            "text": "Provides Fast Relief From Sciatica And Herniated Discs"
+            "text": "60% OFF — HandRenew Triple Fusion System (All-Inclusive treatment kit)"
           }
         },
         "check_item_fHyq7x": {
           "type": "check_item",
           "settings": {
-            "text": "Rehydrates and Restores Your Spinal Discs"
+            "text": "90-Day Results or Refund Guarantee"
           }
         },
         "check_item_Db6zmY": {
           "type": "check_item",
           "settings": {
-            "text": "Relieves Back Pain, Stiffness, and Discomfort"
+            "text": "FREE 30-Day Fix Your Hands Plan eBook ($29.00 Value)"
           }
         },
         "check_item_agiMKh": {
           "type": "check_item",
           "settings": {
-            "text": "Feel The Difference In Just 15 Minutes Per Day"
+            "text": "FREE Charging Kit + Travel Bag ($29.00 Value)"
+          }
+        },
+        "check_item_6cEnza": {
+          "type": "check_item",
+          "settings": {
+            "text": "FREE Grip Strengthener ($19.00 Value)"
+          }
+        },
+        "check_item_dMifPM": {
+          "type": "check_item",
+          "settings": {
+            "text": "FAST & FREE Shipping"
           }
         },
         "gift_item_tWMj4K": {
@@ -975,6 +987,8 @@
         "check_item_fHyq7x",
         "check_item_Db6zmY",
         "check_item_agiMKh",
+        "check_item_6cEnza",
+        "check_item_dMifPM",
         "gift_item_tWMj4K",
         "gift_item_P6DjMz",
         "gift_item_eh9AQd"
@@ -986,8 +1000,8 @@
         "rating_text": "4.4/5 (2,295 + reviews)",
         "show_trustpilot_logo": true,
         "offer_heading": "<em>Special Offer</em> On Now!",
-        "offer_description": "Try Your SmoothSpine Massager NOW <span style=\"text-decoration:underline\">Risk-Free</span> at an All Time Low Price! Act Now and You'll Get:",
-        "offer_image": "shopify://shop_images/e145c8657a0ce71caabd4bdcd69218a3f7cd9ff7.png",
+        "offer_description": "Try Your HandRenew Triple Fusion System NOW <span style=\"text-decoration:underline\">Risk-Free</span> at an All Time Low Price! Act Now and You'll Get:",
+        "offer_image": "shopify://shop_images/1779235524210_HRN_SP_Offer_Bundle.webp",
         "show_gifts": true,
         "cta_label": "GET 60% OFF TODAY ONLY!",
         "cta_link": "shopify://products/triple-fusion-back-massager",
@@ -997,7 +1011,7 @@
         "wave_guarantee_top": "shopify://shop_images/banner-wave-bottom.svg",
         "guarantee_image": "shopify://shop_images/Home-Info-Guar-IMG.png",
         "guarantee_heading": "100% Satisfaction 90-Day <em>Money Back Guarantee</em>",
-        "guarantee_body": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee.</strong> If you don't experience the remarkable <strong>relief from back pain and Sciatica</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days</strong>, let us know and we will refund every single penny of your investment.</p><p><strong>No questions asked.</strong> We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>",
+        "guarantee_body": "<p>Your order today is protected by our iron-clad 90-day <strong>100% money-back guarantee.</strong> If you don't experience the remarkable <strong>relief from hand pain and numbness</strong> that you were anticipating, or if you're not amazed by how much easier it is to move, then at any time in the next <strong>90 days</strong>, let us know and we will refund every single penny of your investment.</p><p><strong>No questions asked.</strong> We have 24/7/365 Online Email Support. Please contact us if you need any assistance.</p>",
         "color_bg_outer": "#fdfcfa",
         "color_bg_offer": "#f8f4ee",
         "color_bg_guarantee": "#e5eefb",
