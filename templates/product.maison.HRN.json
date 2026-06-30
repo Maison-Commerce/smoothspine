@@ -798,7 +798,7 @@
             "image": "shopify://shop_images/faeb5ca68eb985659295a2b8bf9c19fb00e86042.jpg",
             "rating": 5,
             "title": "Didn't Expect It to Work THIS Well!",
-            "quote": "\"When I wrapped this thing on my hand, I felt the warmth go deep and then something just released. Like pressure letting go. First time in two years my hands haven't felt totally seized up. My wife cried when she saw me open a jar on the first try. If you're on the fence, I'd say give it a real try.\"",
+            "quote": "\"Ok, mine got here last week. I was skeptical at first, but after just a few sessions, my stiffness and sciatica pain improved drastically. I used to dread getting out of bed in the morning because of the pain, but now I can move freely again. So easy to use, and the heat feels amazing on my lower back.\"",
             "author": "Linda R.",
             "show_verified": true
           }
@@ -855,7 +855,7 @@
             "image": "shopify://shop_images/67e9ab94c2eb4c879f0f9c0cd77be3717385fdc6.png",
             "image_alt": "Step 1 - Plug in the USB cable to the device",
             "badge_label": "STEP 1",
-            "description": "<p><strong>Plug in the USB cable to the device.</strong> The button controls will light up, confirming it's ready to use. Place the massager on a flat surface like your floor or bed.</p>"
+            "description": "<p><strong>Wrap HandRenew around your palm and wrist.</strong> The device fits left or right hand. Controls will light up confirming it's ready.</p>"
           }
         },
         "step_card_bYAMK9": {
@@ -864,7 +864,7 @@
             "image": "shopify://shop_images/c689f526162a5f3a0fec30db5c9ccfd35011816c.png",
             "image_alt": "Step 2 - Hold the power button to turn it on",
             "badge_label": "STEP 2",
-            "description": "<p><strong>Hold the power button to turn it on.</strong> The device will automatically cycle through massage, traction, and heat therapy for a full session.</p>"
+            "description": "<p><strong>Hold the power button to turn it on. The device will automatically cycle</strong> through the light, heat, and vibration phases for a complete 15-minute session.</p>"
           }
         },
         "step_card_CQK3qC": {
@@ -873,7 +873,7 @@
             "image": "shopify://shop_images/90fdd075107aef8cb3b6b912e29b401892cc7d3e.png",
             "image_alt": "Step 3 - Lay back and relax",
             "badge_label": "STEP 3",
-            "description": "<p><strong>Lay back, relax, and enjoy the soothing relief for 15-30 minutes</strong> while SmoothSpine works its magic on your back.</p>"
+            "description": "<p><strong>Relax your hand and let HandRenew do the work. After 15 minutes, flex your fingers, make a fist, and feel the difference. </strong>Use both hands back-to-back or get the two-pack for simultaneous treatment.</p>"
           }
         }
       },
@@ -884,7 +884,7 @@
       ],
       "name": "How It Works",
       "settings": {
-        "heading": "<p>3 Simple Steps To Relieve </p><p><em>Sciatica And Back Pain</em></p>",
+        "heading": "<p>3 Simple Steps To Relieve </p><p><em>Carpal Tunnel Pain</em></p>",
         "button_label": "",
         "button_link": "",
         "color_button_bg": "#f07e3b",
