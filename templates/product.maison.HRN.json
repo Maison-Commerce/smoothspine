@@ -221,25 +221,25 @@
         "usp_item_8qjUcG": {
           "type": "usp_item",
           "settings": {
-            "icon": "shopify://shop_images/ag2g23g3vrgb.svg",
-            "title": "Relief You Can Feel",
-            "description": "We offer a daily routine with traction, heat, and massage to decompress your spine."
+            "icon": "shopify://shop_images/1771330172205_1771268146030_1752755715585_gempages_464015397612422087_4509bc60_7755_4bb1_bf01_ade8debf7b92.webp",
+            "title": "90-DAY MONEY BACK GUARANTEE",
+            "description": "If you're not absolutely thrilled with the results, we will refund every single penny of your investment. No hassle."
           }
         },
         "usp_item_8Vbz4q": {
           "type": "usp_item",
           "settings": {
-            "icon": "shopify://shop_images/bwfjkabwjaw.svg",
-            "title": "On Your Time, At Home",
-            "description": "No appointments or waiting. Just 15 minutes a day in your living room."
+            "icon": "shopify://shop_images/1771330168438_1771268173141_shui.png",
+            "title": "FREE SHIPPING",
+            "description": "We provide fast free shipping and handling from US warehouse for all orders."
           }
         },
         "usp_item_pfyEtU": {
           "type": "usp_item",
           "settings": {
-            "icon": "shopify://shop_images/jabwfabwfjkg3g.svg",
-            "title": "No Risk, Real Support",
-            "description": "90 days to see if it works. If not, get your money back. A real person is here to help."
+            "icon": "shopify://shop_images/1771330165557_1771268199243_1752755726287_gempages_464015397612422087_00428b28_be38_4a92_add3_22f1e8e1171f.webp",
+            "title": "GUARANTEED HIGH QUALITY",
+            "description": "Made of high quality materials. Enjoy consistent, trouble-free performance for a long time."
           }
         }
       },
@@ -288,8 +288,8 @@
       "type": "maison-pdp-content-list",
       "name": "Content Block List",
       "settings": {
-        "heading": "Why Your Hands May Feel Like They're Losing the Battle",
-        "body_text": "<p>Your spinal discs act as the shock absorbers between your vertebrae, cushioning your spine and protecting your nerves.</p><p>When at full height, you should be able to move and bend without any issues, and your discs should be able to absorb any impact with ease.</p><p>But imagine, as we sit for prolonged periods, work long hours, and grow older…</p><p>Our discs dry out and shrink, forcing the vertebrae closer together and putting pressure on the nerves.</p><p>This is the root cause of Sciatica and the leading reason why back pain and stiffness feel never ending.</p><p>And until you rehydrate your spinal discs, the pain will never truly go away.</p>",
+        "heading": "Why Your Hands May Feel Like They're Losing the Battle (And What Braces Don't Address)",
+        "body_text": "<p>Your hand has a narrow tunnel, with bone on one side and a ligament on the other, and your median nerve running through the middle. That's the nerve responsible for feeling and grip strength in your fingers.</p><p>Repetitive strain, inflammation, and weakened surrounding muscles can all add pressure on that nerve, which is part of why symptoms like burning, numbness, and tingling show up.</p><p>Braces can help limit movement. Pills can help with inflammation. But neither addresses muscle support around the area, which is where HandRenew comes in.</p>",
         "video": "shopify://files/videos/560e1b00e09a4822b3dd9099f72c91b8.mp4",
         "image_placeholder_text": "Product lifestyle image",
         "image_aspect_ratio": "1 / 1",
@@ -339,13 +339,13 @@
         "benefit_item_KBDgjd": {
           "type": "benefit_item",
           "settings": {
-            "description": "<strong>Dynamic Traction:</strong> Gently stretches and separates your vertebrae, reducing nerve compression and creating space for discs to rehydrate."
+            "description": "<strong>Red & Infrared Light:</strong> Helps support circulation and ease inflammation around the area."
           }
         },
         "benefit_item_jbJWct": {
           "type": "benefit_item",
           "settings": {
-            "description": "<strong>Target Point Massage:</strong> Targets tight muscles and deep knots, easing tension and improving circulation for faster relief."
+            "description": "<strong>Therapeutic Heat:</strong> Warms tissue and helps relax tight, tense muscles."
           }
         },
         "benefit_item_JWQKaf": {
@@ -362,8 +362,8 @@
       ],
       "name": "Content Block Benefits",
       "settings": {
-        "heading": "SmoothSpine \"Triple Fusion\" Massager Restores Spinal Disc Hydration and Relieves Pressure on Your Sciatic Nerve",
-        "body_text_above": "<p>The <a href=\"#\">SmoothSpine \"Triple Fusion\" Massager</a> fully harnesses the power of three advanced therapies to relieve nerve compression, stiffness, and pain in your back and legs.</p><p>The moment you lay back on the <strong>SmoothSpine \"Triple Fusion\" Massager</strong>, you'll immediately feel the powerful combination of <strong>dynamic traction, target point massage, and soothing heat therapy</strong> working together.</p>",
+        "heading": "How It Works",
+        "body_text_above": "<p>The SmoothSpine \"Triple Fusion\" HandRenew System combines three therapies designed to help relieve hand pain, stiffness, and tingling from carpal tunnel.</p><p>The moment you wrap on the HandRenew, you'll feel the combination of red & infrared light, therapeutic heat, and targeted vibration working together.</p>",
         "body_text_below": "<p>These three therapies work in perfect harmony to rehydrate your discs and bring lasting relief.</p><p>The best part?</p><p>You can use it from the comfort of your own home, even in your bed.</p>",
         "video": "shopify://files/videos/d6b555b3f24e4fd2b87985bb36f0c056.mp4",
         "image_placeholder_text": "Product lifestyle image",
