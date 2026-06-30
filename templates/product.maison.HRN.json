@@ -351,7 +351,7 @@
         "benefit_item_JWQKaf": {
           "type": "benefit_item",
           "settings": {
-            "description": "<strong>Soothing Heat Therapy:</strong> Warms tissues and enhances fluid absorption, accelerating disc rehydration and healing."
+            "description": "<strong>Targeted Vibration:</strong> Gently engages the palm muscles for added support."
           }
         }
       },
@@ -364,7 +364,7 @@
       "settings": {
         "heading": "How It Works",
         "body_text_above": "<p>The SmoothSpine \"Triple Fusion\" HandRenew System combines three therapies designed to help relieve hand pain, stiffness, and tingling from carpal tunnel.</p><p>The moment you wrap on the HandRenew, you'll feel the combination of red & infrared light, therapeutic heat, and targeted vibration working together.</p>",
-        "body_text_below": "<p>These three therapies work in perfect harmony to rehydrate your discs and bring lasting relief.</p><p>The best part?</p><p>You can use it from the comfort of your own home, even in your bed.</p>",
+        "body_text_below": "<p>These three therapies work together to help bring your hands relief.</p><p>The best part? You can use it from the comfort of your own home, at your desk, on the couch, or in bed.</p>",
         "video": "shopify://files/videos/d6b555b3f24e4fd2b87985bb36f0c056.mp4",
         "image_placeholder_text": "Product lifestyle image",
         "image_aspect_ratio": "1 / 1",
@@ -414,7 +414,7 @@
       "name": "Content Block List",
       "settings": {
         "heading": "Professionally Designed & Recommended",
-        "body_text": "<p>Physical therapists and spine specialists aren't always within reach and can be very expensive.</p><p>The <a href=\"#\" title=\"#\">SmoothSpine \"Triple Fusion\" Massager</a> has been designed alongside leading spine specialists as an effective way to get relief from back pain and Sciatica.</p><p>For less than 1/3 of the cost of a single therapy session, you can get results that last a lifetime.</p>",
+        "body_text": "<p>Physical therapists and hand specialists aren't always within reach, and appointments can be expensive.</p><p>The HandRenew Triple Fusion System was designed alongside hand-care professionals and is recommended by hand specialists as a convenient way to help support relief from carpal tunnel discomfort.</p><p>For a fraction of the cost of ongoing therapy sessions, you can use it as part of your routine from home.</p>",
         "video": "shopify://files/videos/0c82734003f546349dd4f4973892f5d3.mp4",
         "image_placeholder_text": "Product lifestyle image",
         "image_aspect_ratio": "1 / 1",
