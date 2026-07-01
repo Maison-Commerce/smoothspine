@@ -125,19 +125,19 @@
         "check_item_DLQCxf": {
           "type": "check_item",
           "settings": {
-            "text": "Targets the muscle weakness associated with carpal tunnel pain"
+            "text": "Targets the muscle weakness associated with hand pain"
           }
         },
         "check_item_Gat3yA": {
           "type": "check_item",
           "settings": {
-            "text": "Helps wake up tired, under-used palm muscles"
+            "text": "Helps wake up tired, under-used hand muscles"
           }
         },
         "check_item_JTW6TX": {
           "type": "check_item",
           "settings": {
-            "text": "Designed to address carpal tunnel pain naturally"
+            "text": "Designed to address hand pain naturally"
           }
         }
       },
@@ -158,7 +158,7 @@
         "show_gifts": true,
         "show_review": true,
         "review_avatar": "shopify://shop_images/1779811630193_HRN_Woman_in_blue_top_wearing_HRN.webp",
-        "review_text": "<p>2 years of <strong>carpal tunnel nearly</strong> broke me. My husband Dr. Blane spent months building this just to stop my suffering. First time I tried it, <strong>I cried happy tears.</strong> That burning pain from my wrists was just... gone. Back to chopping vegetables. Back to holding my sister's newborn. My surgeon called it '<strong>medically impossible.</strong>' Then referred three patients to us.</p>",
+        "review_text": "<p>2 years of <strong>carpal tunnel nearly</strong> broke me.  I eventually found this, and <strong>the first time I tried it, I cried...</strong> That burning pain from my wrists was just... gone. Back to chopping vegetables. Back to holding my sister's newborn. My surgeon called it '<strong>medically impossible.</strong>' Then referred three patients to us.</p>",
         "review_author": "Maggie S.",
         "review_rating": 5,
         "show_verified_badge": true,
@@ -363,7 +363,7 @@
       "name": "Content Block Benefits",
       "settings": {
         "heading": "How It Works",
-        "body_text_above": "<p>The SmoothSpine \"Triple Fusion\" HandRenew System combines three therapies designed to help relieve hand pain, stiffness, and tingling from carpal tunnel.</p><p>The moment you wrap on the HandRenew, you'll feel the combination of red & infrared light, therapeutic heat, and targeted vibration working together.</p>",
+        "body_text_above": "<p>The SmoothSpine \"Triple Fusion\" HandRenew System combines three therapies designed to help relieve hand pain, stiffness, and tingling.</p><p>The moment you wrap on the HandRenew, you'll feel the combination of red & infrared light, therapeutic heat, and targeted vibration working together.</p>",
         "body_text_below": "<p>These three therapies work together to help bring your hands relief.</p><p>The best part? You can use it from the comfort of your own home, at your desk, on the couch, or in bed.</p>",
         "video": "shopify://files/videos/GIF STEP 3_594adaae-df93-49ae-b342-a907d073b3bd.mp4",
         "image_placeholder_text": "Product lifestyle image",
