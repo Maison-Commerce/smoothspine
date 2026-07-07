@@ -375,30 +375,6 @@
       margin-top: 16px;
     }
 
-    #shopify-section-{{ section.id }} .footer-mobile-disclaimer {
-      display: block;
-      max-width: 100%;
-      color: var(--s-color-light-blue);
-      font-size: 10px;
-      line-height: 1.5;
-      opacity: 0.9;
-      text-align: left;
-      margin-top: 4px;
-    }
-
-    #shopify-section-{{ section.id }} .footer-mobile-disclaimer p {
-      margin: 0;
-    }
-
-    #shopify-section-{{ section.id }} .footer-mobile-disclaimer strong {
-      color: var(--s-color-white);
-      font-weight: 700;
-    }
-
-    #shopify-section-{{ section.id }} .footer-bottom .footer-disclaimer {
-      display: none;
-    }
-
     #shopify-section-{{ section.id }} .footer-accordion {
       display: flex;
       flex-direction: column;
@@ -461,6 +437,31 @@
     #shopify-section-{{ section.id }} .footer-mobile-community .footer-col-title {
       font-size: var(--s-font-size-body);
       margin-bottom: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .footer-mobile-disclaimer {
+      display: block;
+      max-width: 100%;
+      color: var(--s-color-light-blue);
+      font-size: 10px;
+      line-height: 1.5;
+      opacity: 0.9;
+      text-align: left;
+      margin-top: 16px;
+      padding-top: 8px;
+    }
+
+    #shopify-section-{{ section.id }} .footer-mobile-disclaimer p {
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .footer-mobile-disclaimer strong {
+      color: var(--s-color-white);
+      font-weight: 700;
+    }
+
+    #shopify-section-{{ section.id }} .footer-bottom .footer-disclaimer {
+      display: none;
     }
 
     #shopify-section-{{ section.id }} .footer-columns {
@@ -646,12 +647,6 @@
           {%- endif -%}
         {%- endform -%}
       {% endif %}
-
-      {% if section.settings.disclaimer_text != blank %}
-        <div class="footer-mobile-disclaimer">
-          {{ section.settings.disclaimer_text }}
-        </div>
-      {% endif %}
     </div>
 
     <div class="footer-accordion">
@@ -703,6 +698,12 @@
               </a>
             {% endfor %}
           </div>
+        </div>
+      {% endif %}
+
+      {% if section.settings.disclaimer_text != blank %}
+        <div class="footer-mobile-disclaimer">
+          {{ section.settings.disclaimer_text }}
         </div>
       {% endif %}
     </div>
