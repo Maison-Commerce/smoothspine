@@ -78,7 +78,6 @@
     gap: var(--s-gap-sections);
   }
 
-  /* Top content row */
   #shopify-section-{{ section.id }} .footer-top {
     display: flex;
     gap: var(--s-gap-columns);
@@ -86,7 +85,6 @@
     justify-content: space-between;
   }
 
-  /* Left column - newsletter */
   #shopify-section-{{ section.id }} .footer-newsletter {
     flex: 1;
     display: flex;
@@ -185,7 +183,6 @@
     color: #ff6b6b;
   }
 
-  /* Right columns */
   #shopify-section-{{ section.id }} .footer-columns {
     display: flex;
     flex-wrap: wrap;
@@ -226,7 +223,6 @@
     opacity: 0.8;
   }
 
-  /* Social links */
   #shopify-section-{{ section.id }} .footer-social {
     display: flex;
     flex-wrap: wrap;
@@ -249,7 +245,6 @@
     height: 24px;
   }
 
-  /* Bottom section */
   #shopify-section-{{ section.id }} .footer-bottom {
     display: flex;
     flex-direction: column;
@@ -271,6 +266,10 @@
   #shopify-section-{{ section.id }} .footer-disclaimer strong {
     color: var(--s-color-white);
     font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .footer-mobile-disclaimer {
+    display: none;
   }
 
   #shopify-section-{{ section.id }} .footer-divider {
@@ -317,7 +316,6 @@
     display: block;
   }
 
-  /* Mobile accordion elements - hidden on desktop */
   #shopify-section-{{ section.id }} .footer-accordion {
     display: none;
   }
@@ -330,7 +328,6 @@
     display: none;
   }
 
-  /* ===== MOBILE STYLES ===== */
   @media (max-width: 767px) {
     #shopify-section-{{ section.id }} .maisoncode_Footer {
       border-radius: {{ section.settings.border_radius_section_mobile }}px {{ section.settings.border_radius_section_mobile }}px 0 0;
@@ -341,12 +338,10 @@
       gap: 20px;
     }
 
-    /* Hide desktop layout */
     #shopify-section-{{ section.id }} .footer-top {
       display: none;
     }
 
-    /* Show mobile elements */
     #shopify-section-{{ section.id }} .footer-mobile-logo {
       display: flex;
       flex-direction: column;
@@ -378,6 +373,30 @@
     #shopify-section-{{ section.id }} .footer-mobile-email {
       display: flex;
       margin-top: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .footer-mobile-disclaimer {
+      display: block;
+      max-width: 100%;
+      color: var(--s-color-light-blue);
+      font-size: 10px;
+      line-height: 1.5;
+      opacity: 0.9;
+      text-align: left;
+      margin-top: 4px;
+    }
+
+    #shopify-section-{{ section.id }} .footer-mobile-disclaimer p {
+      margin: 0;
+    }
+
+    #shopify-section-{{ section.id }} .footer-mobile-disclaimer strong {
+      color: var(--s-color-white);
+      font-weight: 700;
+    }
+
+    #shopify-section-{{ section.id }} .footer-bottom .footer-disclaimer {
+      display: none;
     }
 
     #shopify-section-{{ section.id }} .footer-accordion {
@@ -444,19 +463,10 @@
       margin-bottom: 16px;
     }
 
-    /* Hide desktop columns */
     #shopify-section-{{ section.id }} .footer-columns {
       display: none;
     }
 
-    #shopify-section-{{ section.id }} .footer-disclaimer {
-      max-width: 100%;
-      font-size: 10px;
-      line-height: 1.5;
-      text-align: left;
-    }
-
-    /* Bottom section */
     #shopify-section-{{ section.id }} .footer-credits {
       flex-direction: column;
       gap: 16px;
@@ -484,9 +494,7 @@
 <section class="maisoncode_Footer">
   <div class="footer-inner">
 
-    {%- comment -%} ===== DESKTOP: Top Content ===== {%- endcomment -%}
     <div class="footer-top">
-      {%- comment -%} Newsletter Column {%- endcomment -%}
       <div class="footer-newsletter">
         {% if section.settings.logo != blank %}
           {{ section.settings.logo | image_url: width: 400 | image_tag:
@@ -498,17 +506,21 @@
         {% else %}
           <span class="footer-logo" style="font-size:20px;font-weight:700;color:{{ section.settings.color_white }};">{{ section.settings.brand_name }}</span>
         {% endif %}
+
         <div>
           {% if section.settings.newsletter_title != blank %}
             <p class="footer-newsletter-title">{{ section.settings.newsletter_title }}</p>
           {% endif %}
+
           {% if section.settings.newsletter_text != blank %}
             <div class="footer-newsletter-text">{{ section.settings.newsletter_text }}</div>
           {% endif %}
         </div>
+
         {% if section.settings.show_newsletter %}
           {%- form 'customer', class: 'footer-newsletter-form', id: 'footer-newsletter-desktop' -%}
             <input type="hidden" name="contact[tags]" value="newsletter">
+
             <div class="footer-email-input">
               <input
                 type="email"
@@ -521,12 +533,14 @@
                 aria-label="{{ section.settings.email_placeholder }}"
                 required
               >
+
               <button type="submit" class="footer-email-btn" aria-label="Subscribe">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M6 12L10 8L6 4" stroke="{{ section.settings.color_bg }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </button>
             </div>
+
             {%- if form.errors -%}
               <p class="footer-newsletter-message footer-newsletter-error">{{ form.errors | default_errors }}</p>
             {%- elsif form.posted_successfully? -%}
@@ -536,13 +550,12 @@
         {% endif %}
       </div>
 
-      {%- comment -%} Link Columns {%- endcomment -%}
       <div class="footer-columns">
-        {%- comment -%} Menu Columns {%- endcomment -%}
         {%- for block in section.blocks -%}
           {%- if block.type == 'menu' and block.settings.menu != blank -%}
             <div class="footer-col" {{ block.shopify_attributes }}>
               <p class="footer-col-title">{{ block.settings.menu_title | default: block.settings.menu.title }}</p>
+
               <ul class="footer-links">
                 {%- for link in block.settings.menu.links -%}
                   <li>
@@ -554,12 +567,13 @@
           {%- endif -%}
         {%- endfor -%}
 
-        {%- comment -%} Our Community Column {%- endcomment -%}
         <div class="footer-col">
           {% if section.settings.community_column_title != blank %}
             <p class="footer-col-title">{{ section.settings.community_column_title }}</p>
           {% endif %}
+
           {% assign social_links = section.blocks | where: "type", "social_link" %}
+
           {% if social_links.size > 0 %}
             <div class="footer-social">
               {% for block in social_links %}
@@ -579,7 +593,6 @@
       </div>
     </div>
 
-    {%- comment -%} ===== MOBILE: Content ===== {%- endcomment -%}
     <div class="footer-mobile-logo">
       {% if section.settings.logo != blank %}
         {{ section.settings.logo | image_url: width: 300 | image_tag:
@@ -591,17 +604,21 @@
       {% else %}
         <span class="footer-logo" style="font-size:20px;font-weight:700;color:{{ section.settings.color_white }};">{{ section.settings.brand_name }}</span>
       {% endif %}
+
       <div class="footer-mobile-newsletter">
         {% if section.settings.newsletter_title != blank %}
           <p class="footer-newsletter-title">{{ section.settings.newsletter_title }}</p>
         {% endif %}
+
         {% if section.settings.newsletter_text != blank %}
           <div class="footer-newsletter-text">{{ section.settings.newsletter_text }}</div>
         {% endif %}
       </div>
+
       {% if section.settings.show_newsletter %}
         {%- form 'customer', class: 'footer-newsletter-form', id: 'footer-newsletter-mobile' -%}
           <input type="hidden" name="contact[tags]" value="newsletter">
+
           <div class="footer-email-input footer-mobile-email">
             <input
               type="email"
@@ -614,12 +631,14 @@
               aria-label="{{ section.settings.email_placeholder }}"
               required
             >
+
             <button type="submit" class="footer-email-btn" aria-label="Subscribe">
               <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 8h14M9 2l6 6-6 6" stroke="{{ section.settings.color_bg }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
           </div>
+
           {%- if form.errors -%}
             <p class="footer-newsletter-message footer-newsletter-error">{{ form.errors | default_errors }}</p>
           {%- elsif form.posted_successfully? -%}
@@ -627,22 +646,29 @@
           {%- endif -%}
         {%- endform -%}
       {% endif %}
+
+      {% if section.settings.disclaimer_text != blank %}
+        <div class="footer-mobile-disclaimer">
+          {{ section.settings.disclaimer_text }}
+        </div>
+      {% endif %}
     </div>
 
     <div class="footer-accordion">
       <div class="footer-divider" style="margin-bottom: 4px;"></div>
 
-      {%- comment -%} Menu Accordions {%- endcomment -%}
       {%- for block in section.blocks -%}
         {%- if block.type == 'menu' and block.settings.menu != blank -%}
           <div class="footer-accordion-item" x-data="{ menuOpen: false }" {{ block.shopify_attributes }}>
             <button class="footer-accordion-header" @click="menuOpen = !menuOpen">
               <span>{{ block.settings.menu_title | default: block.settings.menu.title }}</span>
+
               <svg class="accordion-icon" :class="{ 'open': menuOpen }" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <line x1="6" y1="0" x2="6" y2="12" stroke="currentColor" stroke-width="1.5"/>
                 <line x1="0" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.5"/>
               </svg>
             </button>
+
             <div class="footer-accordion-content" x-show="menuOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
               <ul class="footer-links">
                 {%- for link in block.settings.menu.links -%}
@@ -656,13 +682,14 @@
         {%- endif -%}
       {%- endfor -%}
 
-      {%- comment -%} Our Community (not accordion) {%- endcomment -%}
       {% assign social_links = section.blocks | where: "type", "social_link" %}
+
       {% if social_links.size > 0 %}
         <div class="footer-mobile-community">
           {% if section.settings.community_column_title != blank %}
             <p class="footer-col-title">{{ section.settings.community_column_title }}</p>
           {% endif %}
+
           <div class="footer-social">
             {% for block in social_links %}
               <a {% if block.settings.link != blank %}href="{{ block.settings.link }}" target="_blank" rel="noopener noreferrer"{% endif %} class="footer-social-icon" aria-label="{{ block.settings.label }}" {{ block.shopify_attributes }}>
@@ -680,7 +707,6 @@
       {% endif %}
     </div>
 
-    {%- comment -%} ===== Bottom: Disclaimer + Divider + Credits ===== {%- endcomment -%}
     <div class="footer-bottom">
       {% if section.settings.disclaimer_text != blank %}
         <div class="footer-disclaimer">
@@ -694,7 +720,9 @@
         {% if section.settings.copyright_text != blank %}
           <p class="footer-copyright">{{ section.settings.copyright_text }}</p>
         {% endif %}
+
         {% assign payment_icons = section.blocks | where: "type", "payment_icon" %}
+
         {% if payment_icons.size > 0 %}
           <div class="footer-payments">
             {% for block in payment_icons %}
