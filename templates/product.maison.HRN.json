@@ -159,7 +159,7 @@
         "gift_item_cFJYTf": {
           "type": "gift_item",
           "settings": {
-            "gift_product": "smoothspine-travel-bag",
+            "gift_product": "charging-kit-travel-bag",
             "image": "shopify://shop_images/1769789622998_TFBM_18_1__2.png",
             "name": "Zip Lock Travel Bag"
           }
@@ -986,7 +986,7 @@
         "gift_item_tWMj4K": {
           "type": "gift_item",
           "settings": {
-            "gift_product": "smoothspine™-30-day-sciatica-relief-plan-coc",
+            "gift_product": "30-day-fix-your-hands-plan-ebook",
             "image": "shopify://shop_images/1779235691590_HRN_CO_Fix_Your_Hand_Pain_book_removebg_preview.png",
             "name": "30-Day Fix Your Hands Plan eBook"
           }
@@ -994,7 +994,7 @@
         "gift_item_P6DjMz": {
           "type": "gift_item",
           "settings": {
-            "gift_product": "sciatica-back-pain-relief-patches",
+            "gift_product": "grip-strengthener",
             "image": "shopify://shop_images/1779235700528_HRN_CO_Grip_Strengthener_removebg_preview.png",
             "name": "Grip Strengthener"
           }
@@ -1002,8 +1002,8 @@
         "gift_item_eh9AQd": {
           "type": "gift_item",
           "settings": {
-            "gift_product": "smoothspine™-zip-lock-travel-bag-coc",
-            "image": "shopify://shop_images/gsejnjn3gn4knf_egegh.png",
+            "gift_product": "charging-kit-travel-bag",
+            "image": "shopify://shop_images/TFBM_18.png",
             "name": "Zip Lock Travel Bag"
           }
         }
