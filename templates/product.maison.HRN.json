@@ -139,13 +139,40 @@
           "settings": {
             "text": "Designed to address hand pain naturally"
           }
+        },
+        "gift_item_Rt66xB": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "30-day-fix-your-hands-plan-ebook",
+            "image": "shopify://shop_images/1779235691590_HRN_CO_Fix_Your_Hand_Pain_book_removebg_preview.png",
+            "name": "30-Day Fix Your Hands Plan eBook"
+          }
+        },
+        "gift_item_FjyBg6": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "grip-strengthener",
+            "image": "shopify://shop_images/1779235700528_HRN_CO_Grip_Strengthener_removebg_preview.png",
+            "name": "grip strengthener"
+          }
+        },
+        "gift_item_cFJYTf": {
+          "type": "gift_item",
+          "settings": {
+            "gift_product": "smoothspine-travel-bag",
+            "image": "shopify://shop_images/1769789622998_TFBM_18_1__2.png",
+            "name": "Zip Lock Travel Bag"
+          }
         }
       },
       "block_order": [
         "check_item_AtN6R7",
         "check_item_DLQCxf",
         "check_item_Gat3yA",
-        "check_item_JTW6TX"
+        "check_item_JTW6TX",
+        "gift_item_Rt66xB",
+        "gift_item_FjyBg6",
+        "gift_item_cFJYTf"
       ],
       "name": "PDP Hero",
       "settings": {
