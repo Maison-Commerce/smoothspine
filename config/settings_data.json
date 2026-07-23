@@ -61,10 +61,12 @@
         "disabled": false,
         "settings": {}
       },
-      "9748842746885543223": {
-        "type": "shopify://apps/caliber-dev-smoothspine/blocks/storefront/019ef449-87a6-7995-b356-855cb4e43479",
+      "10605408327587305396": {
+        "type": "shopify://apps/eg-auto-add-to-cart/blocks/app-embed/0f7d4f74-1e89-4820-aec4-6564d7e535d2",
         "disabled": false,
-        "settings": {}
+        "settings": {
+          "version": "v3"
+        }
       }
     }
   },
